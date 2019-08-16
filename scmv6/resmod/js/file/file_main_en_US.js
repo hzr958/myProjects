@@ -1,0 +1,15 @@
+var fileMain={
+		cancelShareSuccess:"Cancelled successfully",
+		delSuccessPre:"",
+		delSuccessFiles:" files hava bean deleted successfully",
+		delSuccessFile:" file has bean deleted successfully",
+		delFail:"Deleted failed",
+		cancelShareFail:"Cancelled failed",
+		uploadSuccess:"Uploaded successfully",
+		uploadFail:"Uploaded failed",
+		uploadFile:"Please select files to upload",
+		delFileConfirm:"Are you sure to delete the file?",
+		delScuess:"Deleted successfully",
+		delFail:"Deleted failed",
+		saveScuess:"Saved successfully",
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<script type="text/javascript" src=""></script>
+<link rel="stylesheet" type="text/css" href="scmpcframe.css">
+<script type="text/javascript" src="pub.js"></script>
+<script type="text/javascript">
+		window.onload = function(){ 
+            document.getElementById("dd").onclick = function(){ 
+                var box = document.getElementsByClassName("new_edit-psninfor")[0];
+	            positionfix({screentarget:box});
+		    }
+		}
+	</script>
+</head>
+<body>
+  <div id="dd">sss</div>
+  <!-- 所需的HTML代码 -->
+  <div class="bckground-cover">
+    <div class="new_edit-psninfor">
+      <div class="new_edit-psninfor_title">
+        <span class="new_edit-psninfor_title-container">联系信息</span> <i class="material-icons"></i>
+      </div>
+      <div class="new_edit-psninfor_body">
+        <div class="new_edit-psninfor_body-item"">
+          <i class="new_edit-psninfor_body-phone"></i>
+          <div class="new_edit-psninfor_body-content_tip">
+            <div class="new_edit-psninfor_body-phone_content">
+              <input type="" class="new_edit-psninfor_body-phone_input">
+            </div>
+          </div>
+        </div>
+        <div class="new_edit-psninfor_body-item">
+          <i class="new_edit-psninfor_body-email"></i>
+          <div class="new_edit-psninfor_body-content_tip">
+            <div class="new_edit-psninfor_body-email_content">
+              <input type="" class="new_edit-psninfor_body-email_content-email_input"> <span
+                class="new_edit-psninfor_body-email_edit">编辑邮件</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="new_edit-psninfor_footer">
+        <div class="new_edit-psninfor_footer-continue positionfix-cancle">取消</div>
+        <div class="new_edit-psninfor_footer-cancle positionfix-cancle">保存</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

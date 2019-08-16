@@ -1,0 +1,106 @@
+.pop_box {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+}
+
+.pop_bg {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.2); /* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+}
+
+@media \0screen\,screen\9 { /* 只支持IE6、7、8 */
+  .pop_bg {
+    background-color: #000000;
+    filter: Alpha(opacity = 20);
+    position: static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+    *zoom: 1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
+  }
+}
+
+.pop {
+  margin: 20px auto;
+  padding: 0 20px;
+  border-radius: 5px;
+  background: #fff;
+  behavior: url(../../js_v5/js2016/pie.htc);
+  position: relative;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-top: -100px;
+  margin-left: -254px;
+}
+
+.pop_top {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  color: #555;
+  border-bottom: 1px solid #ddd;
+}
+
+.pop_top span {
+  font-size: 14px;
+  color: #999;
+}
+
+.pop_top .close {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  behavior: url(../../js_v5/js2016/pie.htc);
+  position: relative;
+  margin-top: 9px;
+  display: inline-block;
+  float: right;
+  background: #fff;
+  text-align: center;
+}
+
+.pop_top .close .material-icons {
+  color: #ccc;
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: lighter;
+}
+
+.pop_top .close:hover {
+  background: #bc3227;
+  text-decoration: none;
+}
+
+.pop_top .close:hover .material-icons {
+  color: #fff;
+}
+
+.pop_top .close:active {
+  background: #9f1f20;
+}
+
+.pop_top .close:active .material-icons {
+  color: #fff;
+  margin-left: 1px;
+  margin-top: 1px;
+}
+
+.pop_bottom {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  overflow: hidden;
+}
+
+.pop_tx {
+  width: 100%;
+  margin: 20px 0;
+}

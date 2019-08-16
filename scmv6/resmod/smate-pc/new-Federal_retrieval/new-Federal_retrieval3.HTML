@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<link href="../css/scmpcframe.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+           window.onload = function(){
+               if(document.getElementsByClassName("selected-author").length>0){
+                   var singllist = document.getElementsByClassName("selected-author");
+                   for(var i = 0; i < singllist.length; i++){
+                       singllist[i].onclick = function(){
+                           if(this.classList.contains("selected-author_confirm")){
+                               this.classList.remove("selected-author_confirm");
+                           }else{
+                               this.classList.add("selected-author_confirm");
+                           }
+                       }
+                   }
+               }
+        
+           }
+    </script>
+</head>
+<body>
+  <div class="Federal-retrieval_container">
+    <!-- 	<div class="Federal-retrieval_header">
+    		<div class="Federal-retrieval_header-item">
+    			<div class="Federal-retrieval_header-avator Federal-retrieval_header-item_fifth">
+    			    <span class="Federal-retrieval_header-avator_infor">1</span>
+    			</div>
+    			<span class="Federal-retrieval_header-line3"></span>
+    			<div class="Federal-retrieval_header-avator Federal-retrieval_header-item_first">
+    			    <span class="Federal-retrieval_header-avator_infor">2</span>
+    		    </div>
+    		    <span class="Federal-retrieval_header-line"></span>
+		        <div class="Federal-retrieval_header-avator Federal-retrieval_header-item_third">
+    			    <span class="Federal-retrieval_header-avator_infor">3</span>
+    		    </div>
+    		</div>
+
+    		<div class="Federal-retrieval_header-tip_box">
+    			<span class="Federal-retrieval_header-item_detail" style="color:#7eb4e8;">输入检索条件</span>
+    			<span class="Federal-retrieval_header-item_detail" style="color:#2882d8;">选择成果</span>
+    			<span class="Federal-retrieval_header-item_detail">导入成果</span>
+    		</div>
+    	</div>
+
+        <div class="Federal-retrieval_searchtip">
+       	    <span class="Federal-retrieval_searchtip-detail">查找条件:文献库=(<span class="Federal-retrieval_searchtip-detail_color" >万方</span>) 并且标题=(<span class="Federal-retrieval_searchtip-detail_color">dna</span>) 并且 所属机构=(<span class="Federal-retrieval_searchtip-detail_color" >爱瑞思软件(深圳)有限公司</span>) 并且年份=(<span>2015-2018</span>)</span>
+        </div>
+
+        <div class="Federal-retrieval_searchbox">
+        	<div class="Federal-retrieval_searchtitle">
+        		<div class="Federal-retrieval_searchtitle-left">
+        			<span class="Federal-retrieval_searchtitle-haedline">查询结果</span>
+        			<span class="Federal-retrieval_searchtitle-left_tip">(选择需要导入的记录,并点击[导入]按钮导入系统)</span>
+        			<i class="find-nothing_tip"></i> 
+        			<span class="Federal-retrieval_searchtitle-left_answer">找不到你想要的记录?</span>
+        		</div>
+                <div class="Federal-retrieval_searchtitle-right">
+                	<div class="Federal-retrieval_searchtitle-right_import">导入</div>
+                	<div class="Federal-retrieval_searchtitle-right_back">返回</div>
+                	<div class="Federal-retrieval_searchtitle-right_check">查看已导入记录</div>
+                </div>
+            </div>
+        	<div class="Federal-retrieval_Resultbox">
+        		<div class="Federal-retrieval_Resultbox-left">
+        			<div class="Federal-retrieval_Resultbox-left_item">
+        			    <span class="Federal-retrieval_Resultbox-left_item-detail">万方</span>
+        		    </div>
+        			<div class="Federal-retrieval_Resultbox-left_item">
+                         <span class="Federal-retrieval_Resultbox-left_item-detail">中国知网</span>
+        			</div>
+        			
+        		</div>
+                <div class="Federal-retrieval_Resultbox-right"></div>
+        	</div>
+        </div>
+    </div> -->
+    <div class="background-cover">
+      <div class="new-importresult_container">
+        <div class="new-importresult_container-header">
+          <span class="new-importresult_container-header_title">成果列表</span> <i
+            class="list-results_close new-importresult_container-header_tip"></i>
+        </div>
+        <div class="new-importresult_container-neck">
+          请为以下记录设置合适的类型，并点击保存按钮记录。底色为 <span class="new-importresult_container-neck_tip"></span>可能不属于自己。
+        </div>
+        <div class="new-importresult_container-body">
+          <div class="new-importresult_container-body_header">
+            <div class="new-importresult_container-body_header-chioce">选择</div>
+            <div class="new-importresult_container-body_header-infor">作者题目来源年份</div>
+            <div class="new-importresult_container-body_header-Collection">收录情况</div>
+            <div class="new-importresult_container-body_header-style">类别</div>
+            <div class="new-importresult_container-body_header-record">重复记录</div>
+          </div>
+          <div class="new-importresult_container-body_item">
+            <div class="new-importresult_container-body_item-chioce">
+              <i class="selected-author"></i>
+            </div>
+            <div class="new-importresult_container-body_item-infor">
+              <div class="new-importresult_container-body_item-infor_title" style="height: 40px; overflow: hidden;">
+                <div class="multipleline-ellipsis__content-box">Alkynes-DNA-Functionalized Alloyed Au/Ag
+                  Nanospheres for Ratiometric SERS Imaging Assay of Endonuclease Activity in Live Cells.</div>
+              </div>
+              <div class="new-importresult_container-body_item-infor_author">Si; Yanmei; Bai; Yaocai; Qin;
+                Xiaojie; Li; Jun</div>
+              <div class="new-importresult_container-body_item-infor_time">Mil Med, 2018.3.2</div>
+            </div>
+            <div class="new-importresult_container-body_item-style">
+              <div class="new-importresult_container-body_item-style_item">
+                <i class="selected-author"></i><span>EI</span>
+              </div>
+              <div class="new-importresult_container-body_item-style_item">
+                <i class="selected-author"></i><span>SCIE</span>
+              </div>
+              <div class="new-importresult_container-body_item-style_item">
+                <i class="selected-author"></i><span>ISTP</span>
+              </div>
+              <div class="new-importresult_container-body_item-style_item">
+                <i class="selected-author"></i><span>SSCI</span>
+              </div>
+            </div>
+            <div class="new-importresult_container-body_item-Collection">
+              <select>
+                <option>期刊论文</option>
+                <option>会议论文</option>
+                <option>著作</option>
+                <option>书籍章节</option>
+                <option>奖励</option>
+                <option>学位论文</option>
+                <option>专利</option>
+                <option>其他</option>
+              </select>
+            </div>
+            <div class="new-importresult_container-body_item-record">
+              <div class="new-importresult_container-body_item-record_tip">个人成果库有相同的记录</div>
+              <div class="new-importresult_container-body_item-record_chioce">
+                <select>
+                  <option>更新</option>
+                  <option></option>
+                </select>
+              </div>
+              <div class="new-importresult_container-body_item-record_detail">将现有的成果更新为最新</div>
+            </div>
+          </div>
+        </div>
+        <div class="new-importresult_container-footer">
+          <div class="new-importresult_container-footer_close close">关闭</div>
+          <div class="new-importresult_container-footer_save">保存</div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

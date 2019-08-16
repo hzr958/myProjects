@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+  <!-- SpringMvc配置文件 -->
+  <!-- mvc注解扫描 -->
+  <mvc:annotation-driven conversion-service="conversionService">
+    <mvc:message-converters>
+      <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+        <property name="supportedMediaTypes">
+          <list>
+            <value>text/plain;charset=UTF-8</value>
+          </list>
+        </property>
+      </bean>
+      <!-- 输出对象转JSON支持 -->
+      <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="objectMapper" ref="emptyValueObjectMapper"/>
+      </bean>
+    </mvc:message-converters>
+  </mvc:annotation-driven>
+  <!--注册conversionService，加入自定义实现的类型转换器-->
+  <bean id="conversionService"
+    class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+    <property name="converters">
+      <list>
+        <bean class="com.smate.center.job.web.support.spring.convert.String2OrderEnumConverter"/>
+        <bean
+          class="com.smate.center.job.web.support.spring.convert.String2JobStatusEnumConverter"/>
+        <bean
+          class="com.smate.center.job.web.support.spring.convert.String2JobWeightEnumConverter"/>
+        <bean class="com.smate.center.job.web.support.spring.convert.String2SearchFilterConverter"/>
+      </list>
+    </property>
+  </bean>
+
+
+  <!--开启扫描配置注入-->
+  <context:annotation-config/>
+
+  <!-- ①：对web包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
+  <context:component-scan base-package="com.smate.center.job.web.controller"/>
+  <context:component-scan base-package="com.smate.center.job.web.support.spring"/>
+
+  <!-- 设置静态资源文件目录 -->
+  <mvc:resources mapping="/res/**" location="/res/"/>
+  <!-- 这个类用于Spring MVC视图解析 -->
+  <bean id="viewResolver"
+    class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+    <property name="prefix" value="/WEB-INF/jsp/"/>
+    <property name="suffix" value=".jsp"/>
+  </bean>
+
+</beans>

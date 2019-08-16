@@ -1,0 +1,7 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*=============footer部分===========*/
+#footer_box { margin:0 auto; width:980px; border-top:1px solid #c0ccd6; padding-top:5px; height:50px; margin-top:25px;}
+.footer_left{ float:left; width:50%;}
+.footer_right{ float:right;}

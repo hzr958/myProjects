@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+  default-lazy-init="true">
+  <description>Spring公共配置文件</description>
+  <!-- 定义受环境影响易变的变量 -->
+  <bean id="propertyPlaceholderConfigurer" class="com.smate.core.base.utils.factory.config.DynamicServerConfig">
+    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+    <property name="ignoreResourceNotFound" value="true" />
+    <property name="locations">
+      <list>
+        <value>classpath:config/system.development.properties</value>
+        <value>classpath:config/system.test.properties</value>
+        <value>classpath:config/system.uat.properties</value>
+        <value>classpath:config/system.run.properties</value>
+        <value>classpath:config/system.testyali.properties</value>
+        <value>classpath:config/system.alpha.properties</value>
+      </list>
+    </property>
+  </bean>
+  <context:component-scan base-package="com.smate.center.mail.connector.service"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.center.mail.connector.dao"
+    scoped-proxy="targetClass" />
+  <!-- SCM-14486-移动端地址跳转功能 -->
+  <context:component-scan base-package="com.smate.core.web.sns.filter" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.project.dao"
+    scoped-proxy="targetClass" />
+  <!-- utils包扫描 -->
+  <context:component-scan base-package="com.smate.core.base.email.service"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.core.base.solr.service"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.core.base.utils.dao" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.email.dao" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.utils.datasource.annotation"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.center.batch.connector.dao*"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.center.batch.connector.service*"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.core.base.utils.sys" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.psn.dao*" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.psn.service*"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.file.dao*" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.file.service"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.core.base.statistics.dao*"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.consts.dao*"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.center.job.common.service*"
+    scoped-proxy="interfaces" />
+    <context:component-scan base-package="com.smate.core.base.utils.service.psn"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.center.job.common.dao*"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.pub.dao*" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.pub.po.dao"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.web.v8pub.utils*" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.privacy.dao"
+    scoped-proxy="targetClass" />
+  <!-- 同步restful -->
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+  <!-- 数据库查询session对象定义 -->
+  <bean id="sessionFactoryMap" class="java.util.HashMap">
+    <constructor-arg>
+      <map>
+        <entry key="sns" value-ref="sessionFactory-sns"></entry>
+        <entry key="pdwh" value-ref="sessionFactory-pdwh"></entry>
+        <entry key="cas" value-ref="sessionFactory-cas"></entry>
+        <entry key="emailsrv" value-ref="sessionFactory-emailsrv"></entry>
+      </map>
+    </constructor-arg>
+  </bean>
+</beans>

@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>core-web-sns</artifactId>
+  <packaging>war</packaging>
+  <version>${core-web-sns.version}</version>
+  <name>core-web-sns Maven Webapp</name>
+  <url>https://www.scholarmate.com</url>
+  <parent>
+    <groupId>com.smate</groupId>
+    <artifactId>smate-parent</artifactId>
+    <version>6.0.0</version>
+    <relativePath>../smate-parent/pom.xml</relativePath>
+  </parent>
+  <description>web公共（皮肤、菜单等）</description>
+  <dependencies>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-mod-web</artifactId>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-base-utils</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-base-public</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>core-web-sns</finalName>
+  </build>
+</project>

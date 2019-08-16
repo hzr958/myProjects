@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+  content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>科研之友-微信端</title>
+<link href="css/common.css" rel="stylesheet" type="text/css">
+<link href="css/mobile.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+        //模拟单选按钮
+        var obj={
+            typeSpan:"",
+            holderSpan:"",
+        };
+        function change(span)
+        {
+            $('span[name="'+$(span).attr('name')+'"]').each(function(){
+                if(this.checked&&this!=span)
+                {
+                    this.className="unchecked";
+                    this.checked=false;
+                }
+            });
+            obj[$(span).attr('name')]=span.innerHTML;
+            span.className="checked";
+            span.checked=true;
+            select();
+        }
+    </script>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+        //模拟复选框
+        $(function () {
+            $('.checkbox').on('click',function(){
+                if($(this).siblings("input[type='checkbox']").attr('checked')){
+                    $(this).removeClass('cur');
+                    $(this).siblings("input[type='checkbox']").removeAttr('checked')
+                }
+                else{
+                    $(this).addClass('cur');
+                    $(this).siblings("input[type='checkbox']").attr('checked','checked')
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+  <div class="black_top">
+    <div class="screening_box">
+      <div class="screening">
+        <h2>排序</h2>
+        <div class="screen_box">
+          <ul class="lt_three">
+            <li><span class='unchecked' name='typeSpan' checked='false' onclick='change(this);'>转让</span></li>
+            <li><span class='unchecked' name='typeSpan' checked='false' onclick='change(this);'>许可</span></li>
+            <li><span class='unchecked' name='typeSpan' checked='false' onclick='change(this);'>众筹</span></li>
+          </ul>
+          <h2>论文类别</h2>
+          <ul class="lt_three checkbox-con">
+            <li><span class="check_fx"><input type="checkbox" class="ipt-hide"><label
+                class="checkbox"></label>期刊论文</span></li>
+            <li><span class="check_fx"><input type="checkbox" class="ipt-hide"><label
+                class="checkbox"></label>会议论文</span></li>
+            <li><span class="check_fx"><input type="checkbox" class="ipt-hide"><label
+                class="checkbox"></label>专利</span></li>
+            <li><span class="check_fx"><input type="checkbox" class="ipt-hide"><label
+                class="checkbox"></label>其他</span></li>
+          </ul>
+          <h2>语言</h2>
+          <ul class="lt_three checkbox-con">
+            <li><span class="check_fx"><input type="checkbox" class="ipt-hide"><label
+                class="checkbox"></label>英文</span></li>
+            <li><span class="check_fx"><input type="checkbox" class="ipt-hide"><label
+                class="checkbox"></label>中文</span></li>
+          </ul>
+        </div>
+        <p>
+          <input type="button" value="确定" class="determine_btn"><input type="button" value="取消"
+            class="cancel_btn">
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="m-top">
+    <a href="#" class="fl"><i class="material-icons close">&#xe5cd;</i></a> <a href="#" class="fr"><i
+      class="material-icons filter_list">&#xe152;</i></a> 分享成果
+  </div>
+  <div class="top_clear"></div>
+  <div class="content">
+    <div class="effort_list">
+      <div class="paper">
+        <a href="#" class="paper_pic"></a>
+        <div class="paper_cont">
+          <p>
+            <a href="#">ScholarMate is a platform for sharing publications and disseminating research outputs. Using
+              techniques of big data analytics, researchers can receive .</a>
+          </p>
+          <p class="p1">Jianshan Sun; Wei Xu; Jian Ma; Jiasen Sun</p>
+          <p class="p3 f999">
+            <em>International Journal of Production</em><span class="fccc"> | 2016</span>
+          </p>
+        </div>
+      </div>
+      <div class="paper">
+        <a href="#" class="paper_pic1"></a>
+        <div class="paper_cont">
+          <p>
+            <a href="#">研究與開發基於商務智能技術的企業安全管理系統及决策系统</a>
+          </p>
+          <p class="p1">Jianshan Sun; Wei Xu; Jian Ma; Jiasen Sun</p>
+          <p class="p3 f999">
+            <em>管理学报管理学报管理学报管理学报管理学报管理学报管理学报管理学报管理学报管理学报管理学报管理学报管理学报管理学报</em><span class="fccc"> | 2016</span>
+          </p>
+        </div>
+      </div>
+      <div class="paper">
+        <a href="#" class="paper_pic"></a>
+        <div class="paper_cont">
+          <p>
+            <a href="#">研究與開發基於商務智能技術的企業安全管理系統及决策系统</a>
+          </p>
+          <p class="p1">Xin Li; Jian Ma; Shouyang Wang; Xun Zhang</p>
+          <p class="p3 f999">
+            <em>管理学报</em><span class="fccc"> | 2016</span>
+          </p>
+        </div>
+      </div>
+      <div class="paper">
+        <a href="#" class="paper_pic"></a>
+        <div class="paper_cont">
+          <p>
+            <a href="#">ScholarMate is a platform for sharing publications and disseminating research outputs. Using
+              techniques of big data analytics, researchers can receive .</a>
+          </p>
+          <p class="p1">Jianshan Sun; Wei Xu; Jian Ma; Jiasen Sun</p>
+          <p class="p3 f999">
+            <em>International Journal of Production</em><span class="fccc"> | 2016</span>
+          </p>
+        </div>
+      </div>
+      <div class="paper">
+        <a href="#" class="paper_pic"></a>
+        <div class="paper_cont">
+          <p>
+            <a href="#">How does Google search affect trader positions and crude oil prices?</a>
+          </p>
+          <p class="p1">Jianshan Sun; Wei Xu; Jian Ma; Jiasen Sun</p>
+          <p class="p3 f999">
+            <em>Economic Modelling</em><span class="fccc"> | 2016</span>
+          </p>
+        </div>
+      </div>
+      <div class="paper">
+        <a href="#" class="paper_pic"></a>
+        <div class="paper_cont">
+          <p>
+            <a href="#">ScholarMate is a platform for sharing publications and disseminating research outputs. Using
+              techniques of big data analytics, researchers can receive .</a>
+          </p>
+          <p class="p1">Jianshan Sun; Wei Xu; Jian Ma; Jiasen Sun</p>
+          <p class="p3 f999">
+            <em>International Journal of Production</em><span class="fccc"> | 2016</span>
+          </p>
+        </div>
+      </div>
+      <div class="paper">
+        <a href="#" class="paper_pic"></a>
+        <div class="paper_cont">
+          <p>
+            <a href="#">研究與開發基於商務智能技術的企業安全管理系統及决策系统</a>
+          </p>
+          <p class="p1">Jianshan Sun; Wei Xu; Jian Ma; Jiasen Sun</p>
+          <p class="p3 f999">
+            <em>管理学报管理学报管理学报管理学报管理学报管理学报管理学报管理学报管理学报管理学报管理学报管理学报管理学报管理学报</em><span class="fccc"> | 2016</span>
+          </p>
+        </div>
+      </div>
+      <div class="paper">
+        <a href="#" class="paper_pic"></a>
+        <div class="paper_cont">
+          <p>
+            <a href="#">研究與開發基於商務智能技術的企業安全管理系統及决策系统</a>
+          </p>
+          <p class="p1">Xin Li; Jian Ma; Shouyang Wang; Xun Zhang</p>
+          <p class="p3 f999">
+            <em>管理学报</em><span class="fccc"> | 2016</span>
+          </p>
+        </div>
+      </div>
+      <div class="paper">
+        <a href="#" class="paper_pic"></a>
+        <div class="paper_cont">
+          <p>
+            <a href="#">ScholarMate is a platform for sharing publications and disseminating research outputs. Using
+              techniques of big data analytics, researchers can receive .</a>
+          </p>
+          <p class="p1">Jianshan Sun; Wei Xu; Jian Ma; Jiasen Sun</p>
+          <p class="p3 f999">
+            <em>International Journal of Production</em><span class="fccc"> | 2016</span>
+          </p>
+        </div>
+      </div>
+      <div class="paper">
+        <a href="#" class="paper_pic"></a>
+        <div class="paper_cont">
+          <p>
+            <a href="#">How does Google search affect trader positions and crude oil prices?</a>
+          </p>
+          <p class="p1">Jianshan Sun; Wei Xu; Jian Ma; Jiasen Sun</p>
+          <p class="p3 f999">
+            <em>Economic Modelling</em><span class="fccc"> | 2016</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

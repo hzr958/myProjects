@@ -1,0 +1,1 @@
+<ul><li><a href=http://domain/profile.action?id=[@psn_id@]>XXX</a>通过<a href=”http://baseURL/[@function@]”>系统推荐功能</a>，与<a href=”http://domain/profile.action?id=[@psn_id@]”>XXX</a>成为了好友。</li></ul>

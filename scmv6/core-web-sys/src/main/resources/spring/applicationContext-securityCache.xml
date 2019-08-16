@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+  default-lazy-init="true">
+  <description>缓存服务</description>
+  <!--Iris memcached 客户端工厂 -->
+  <bean id="memcacheClient" class="com.smate.core.base.utils.cache.IrisMemcachedClientFactoryBean">
+    <property name="memcachedSrvUrls" value="${memcache.common.url}" />
+  </bean>
+  <!-- 权限用的缓存 -->
+  <bean id="memcacheSessionClient" class="com.smate.core.base.utils.cache.IrisMemcachedClientFactoryBean">
+    <property name="memcachedSrvUrls" value="${memcache.session.url}" />
+  </bean>
+  <!--end memcache缓存服务 客户端 -->
+  <!-- user memcache缓存服务 -->
+  <bean id="userCacheService" class="com.smate.core.web.sys.security.cache.UserCacheServiceImpl">
+    <property name="memcacheClient" ref="memcacheSessionClient"></property>
+  </bean>
+  <!--end memcache缓存服务 -->
+  <bean id="snsCacheService" class="com.smate.core.base.utils.cache.SnsCacheServiceImpl">
+    <property name="memcacheClient" ref="memcacheClient"></property>
+  </bean>
+</beans>

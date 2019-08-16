@@ -1,0 +1,69 @@
+.authority_div ul {
+  list-style: none outside none
+}
+
+.authority_div {
+  position: absolute;
+  border: 1px solid #3d6096;
+  right: 0px;
+  top: 12px;
+  padding-top: 2px;
+  padding-bottom: 1px;
+  z-index: 9999;
+  background-color: #FFF;
+  width: 130px;
+}
+
+.authority_div ul li {
+  /*width: 130px;*/
+  color: #333;
+  margin-bottom: 1px;
+  margin-top: 0px;
+  text-align: left;
+}
+
+.authority_div ul li a {
+  /*width: 110px;*/
+  height: 16px;
+  padding: 4px 10px 4px 8px;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  background-color: #f0f7ff;
+}
+
+.authority_div ul li a:hover {
+  /*width: 110px;*/
+  padding: 4px 10px 4px 8px;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  background-color: #558bc6;
+}
+/*"公开"选项块样式*/
+.img_all {
+  background: url("../../images_v5/plugin/authoritydiv/img_all.gif") no-repeat scroll 0 2px transparent;
+  display: inline-block;
+  height: 16px;
+  margin-right: 5px;
+  vertical-align: middle;
+  width: 16px;
+}
+/*"仅好友可见"选项块样式*/
+.img_only_friend {
+  background: url("../../images_v5/plugin/authoritydiv/img_only_friend.gif") no-repeat scroll 0 2px transparent;
+  display: inline-block;
+  height: 16px;
+  margin-right: 5px;
+  vertical-align: middle;
+  width: 16px;
+}
+/*"仅自己"选项块样式*/
+.img_only_me {
+  background: url("../../images_v5/plugin/authoritydiv/img_only_me.gif") no-repeat scroll 0 2px transparent;
+  display: inline-block;
+  height: 16px;
+  margin-right: 5px;
+  vertical-align: middle;
+  width: 16px;
+}

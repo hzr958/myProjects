@@ -1,0 +1,133 @@
+#!/bin/sh
+#此脚本在dbscript目录下执行
+
+#获取最新的版本号文件夹名
+newdirname=''
+ for i in `ls -tr |grep 6`;
+do
+        newdirname=$i;
+done;
+
+#最新版本号文件夹路径
+sqlpath=/home/oracle/dbscripts/$newdirname
+
+#样例sql文件目录
+exsqlpath=/home/oracle/dbscripts/example
+
+#执行SQL脚本
+#1
+sqlplus bpo2test/$bpotest <<EOF
+@/home/oracle/dbscripts/$newdirname/dev/v3bpo.sql
+exit;
+EOF
+sleep 2
+
+#2
+sqlplus cas2test/$castest <<EOF
+@/home/oracle/dbscripts/$newdirname/dev/v3cas.sql
+exit;
+EOF
+sleep 2
+
+#3
+sqlplus egtexperttest/$experttest <<EOF
+@/home/oracle/dbscripts/$newdirname/dev/v3egtexpert.sql
+exit;
+EOF
+sleep 2
+
+#4
+sqlplus emailsrv2test/$emailsrvtest <<EOF
+@/home/oracle/dbscripts/$newdirname/dev/v3emailsrv.sql
+exit;
+EOF
+sleep 2
+
+#5
+sqlplus gxrol2test/$gxroltest <<EOF
+@/home/oracle/dbscripts/$newdirname/dev/v3gxrol.sql
+exit;
+EOF
+sleep 2
+
+#6
+sqlplus hnstdrol2test/$hnroltest <<EOF
+@/home/oracle/dbscripts/$newdirname/dev/v3hnrol.sql
+exit;
+EOF
+sleep 2
+
+#7
+sqlplus md2test/$mdtest <<EOF
+@/home/oracle/dbscripts/$newdirname/dev/v3md.sql
+exit;
+EOF
+sleep 2
+
+#8
+sqlplus scmpdwhtest/$pdwhtest <<EOF
+@/home/oracle/dbscripts/$newdirname/dev/v3pdwh.sql
+exit;
+EOF
+sleep 2
+
+#9
+sqlplus rcmd2test/$rcmdtest <<EOF
+@/home/oracle/dbscripts/$newdirname/dev/v3rcmd.sql
+exit;
+EOF
+sleep 2
+
+#10
+sqlplus rol2test/$roltest <<EOF
+@/home/oracle/dbscripts/$newdirname/dev/v3rol.sql
+exit;
+EOF
+sleep 2
+
+#11
+sqlplus scnf2test/$scnftest <<EOF
+@/home/oracle/dbscripts/$newdirname/dev/v3scnf.sql
+exit;
+EOF
+sleep 2
+
+#12
+sqlplus scholar2test/$scholartest <<EOF
+@/home/oracle/dbscripts/$newdirname/dev/v3sns.sql
+exit;
+EOF
+sleep 2
+
+#13
+sqlplus zsrol2test/$zsroltest <<EOF
+@/home/oracle/dbscripts/$newdirname/dev/v3zsrol.sql;
+exit;
+EOF
+sleep 2
+
+#sql到此执行完毕
+
+
+#sql执行完后进行的操作
+
+for i in `ls $sqlpath/dev`;
+do
+   echo 正在操作$i;
+#将/dev目录下的.sql文件内容追加一份到/test目录下的相应文件内
+  sed -n '10,10000p' $sqlpath/dev/$i >> $sqlpath/test/$i
+#将/dev/目录下的.sql文件恢复到默认内容
+  cp -rf $exsqlpath/dev/$i $sqlpath/dev/$i
+done;
+
+#svn 进行内容提交
+cd $sqlpath && svn ci -m "测试机执行开发sql.."
+
+
+
+
+
+
+
+
+

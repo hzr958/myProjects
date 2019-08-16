@@ -1,0 +1,1 @@
+<c:set var="ctx" value="/pubweb" />

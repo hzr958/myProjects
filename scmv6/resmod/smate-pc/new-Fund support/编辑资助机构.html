@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>编辑资助机构</title>
+<meta charset="utf-8">
+<meta name="viewport"
+  content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="../../mobile/css/mobile.css">
+<link rel="stylesheet" type="text/css" href="../../mobile/css/scmmobileframe.css">
+<script type="text/javascript">
+		window.onload = function(){
+            var keylist = document.getElementsByClassName("new_edit-financial_Optional-item_onkey");
+            var checklist = document.getElementsByClassName("new_edit-financial_Optional-list");
+            var closelist = document.getElementsByClassName("new_edit-financial_attention-close");
+            for(var i = 0; i < keylist.length; i++){
+                keylist[i].onclick = function(){
+                	if(this.innerHTML == "expand_more"){
+                        this.innerHTML = "expand_less";
+                        this.closest(".new_edit-financial_Optional-item").querySelector(".new_edit-financial_Optional-container").style.display = "flex";
+                	}else{
+                		this.innerHTML = "expand_more";
+                		this.closest(".new_edit-financial_Optional-item").querySelector(".new_edit-financial_Optional-container").style.display = "none";
+                	}
+                }
+            }
+            for(var i = 0; i < checklist.length; i++ ){
+                checklist[i].onclick = function(){
+                	if(this.classList.contains("new_edit-financial_Optional-checked")){
+                		var selfthis = this;
+                        this.classList.remove("new_edit-financial_Optional-checked");
+                        repeatcount(selfthis);
+                	}else{
+                		var selfthis = this;
+                		this.classList.add("new_edit-financial_Optional-checked");
+                		repeatcount(selfthis);
+                	}
+                }
+            }
+            for(var i = 0; i < closelist.length; i++){
+                closelist[i].onclick = function(){
+                	this.closest(".new_edit-financial_attention-box").removeChild(this.closest(".new_edit-financial_attention-item"));
+                }
+            }
+		}
+		function repeatcount(obj){
+            var inner = obj.closest(".new_edit-financial_Optional-container").getElementsByClassName("new_edit-financial_Optional-checked").length;
+            if(inner == "0"){
+                obj.closest(".new_edit-financial_Optional-item").querySelector(".new_edit-financial_Optional-item_cont").innerHTML = "";
+            }else{
+                obj.closest(".new_edit-financial_Optional-item").querySelector(".new_edit-financial_Optional-item_cont").innerHTML = "(" +  inner +")";
+            }
+		}
+	</script>
+</head>
+<body>
+  <div class="message-page__header"
+    style="position: fixed; top: 0px; z-index: 55; display: flex; justify-content: space-between;">
+    <i class="material-icons" style="margin-left: 15px; width: 10vw;">keyboard_arrow_left</i> <span
+      style="width: 80vw; display: flex; justify-content: center; align-items: center;">编辑资助机构</span> <i
+      style="width: 10vw; margin-right: 15px"></i>
+  </div>
+  <div class="new_edit-financial_body" style="margin: 56px 0px;">
+    <div class="new_edit-financial_attention">
+      <div class="new_edit-financial_attention-title">我关注的资助机构</div>
+      <div class="new_edit-financial_attention-box">
+        <div class="new_edit-financial_attention-item">
+          国家基金委 <i class="new_edit-financial_attention-close"></i>
+        </div>
+        <div class="new_edit-financial_attention-item">
+          国家科技部 <i class="new_edit-financial_attention-close"></i>
+        </div>
+        <div class="new_edit-financial_attention-item">
+          广东省科技厅 <i class="new_edit-financial_attention-close"></i>
+        </div>
+      </div>
+    </div>
+    <div class="new_edit-financial_Optional">
+      <div class="new_edit-financial_Optional-title">
+        <div class="new_edit-financial_Optional-title_content">待关注的资助机构</div>
+        <span class="new_edit-financial_Optional-title_func">点击添加</span>
+      </div>
+      <div class="new_edit-financial_Optional-item">
+        <div class="new_edit-financial_Optional-item_title">
+          <div class="new_edit-financial_Optional-item_name">
+            <span>国家级</span><span class="new_edit-financial_Optional-item_cont">(0)</span>
+          </div>
+          <i class="material-icons new_edit-financial_Optional-item_onkey">expand_more</i>
+        </div>
+        <div class="new_edit-financial_Optional-container">
+          <div class="new_edit-financial_Optional-list">教育部</div>
+          <div class="new_edit-financial_Optional-list">交通部</div>
+          <div class="new_edit-financial_Optional-list">科技部</div>
+        </div>
+      </div>
+      <div class="new_edit-financial_Optional-item">
+        <div class="new_edit-financial_Optional-item_title">
+          <div class="new_edit-financial_Optional-item_name">
+            <span>天津</span><span class="new_edit-financial_Optional-item_cont">(0)</span>
+          </div>
+          <i class="material-icons new_edit-financial_Optional-item_onkey">expand_more</i>
+        </div>
+        <div class="new_edit-financial_Optional-container">
+          <div class="new_edit-financial_Optional-list">教育部</div>
+          <div class="new_edit-financial_Optional-list">交通部</div>
+          <div class="new_edit-financial_Optional-list">科技部</div>
+        </div>
+      </div>
+      <div class="new_edit-financial_Optional-item">
+        <div class="new_edit-financial_Optional-item_title">
+          <div class="new_edit-financial_Optional-item_name">
+            <span>上海</span><span class="new_edit-financial_Optional-item_cont">(0)</span>
+          </div>
+          <i class="material-icons new_edit-financial_Optional-item_onkey">expand_more</i>
+        </div>
+        <div class="new_edit-financial_Optional-container">
+          <div class="new_edit-financial_Optional-list">教育部</div>
+          <div class="new_edit-financial_Optional-list">交通部</div>
+          <div class="new_edit-financial_Optional-list">科技部</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="new_subject-field_checked-container_footer">确定</div>
+</body>
+</html>

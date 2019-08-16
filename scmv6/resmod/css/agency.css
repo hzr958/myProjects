@@ -1,0 +1,258 @@
+@charset "utf-8";
+/* CSS Document */
+.agency_box {
+  width: 980px;
+  margin: 0px auto 0px;
+  margin-bottom: 30px;
+}
+/*menu*/
+.menu {
+  width: 980px;
+  height: 35px;
+  margin: 0px auto;
+}
+
+.menu-bjleft {
+  background: url(../images/index/nav_leftbj.gif) no-repeat;
+  width: 7px;
+  height: 35px;
+  float: left;
+}
+
+.menu-bjcenter {
+  background: url(../images/index/nav_middlebj.gif) repeat-x;
+  height: 29px;
+  float: left;
+  width: 954px;
+  padding: 0px 0px 0px 12px;
+  padding-top: 6px;
+}
+
+.menu-bjright {
+  background: url(../images/index/nav_rightbj.gif) no-repeat;
+  width: 7px;
+  height: 35px;
+  float: right;
+}
+
+.m-text {
+  margin-top: 2px;
+}
+
+.agency_bg01 {
+  background: url(../images/agency_bg01.gif) no-repeat;
+  width: 980px;
+  height: 27px;
+}
+
+.agency_bg02 {
+  background: url(../images/agency_bg02.gif) repeat-y;
+  width: 950px;
+  padding: 10px 15px 20px;
+}
+
+.agency_bg03 {
+  background: url(../images/agency_bg03.gif) no-repeat;
+  width: 980px;
+  height: 17px;
+}
+
+.agency_search {
+  background: #f6f6f6;
+  border: 1px solid #e0e0e0;
+  padding: 8px 10px;
+  overflow: hidden;
+}
+
+.ag_search_box {
+  float: left;
+  margin-left: 15px;
+  display: inline;
+}
+
+.ag_search_box span {
+  line-height: 25px;
+}
+
+.icon_agency {
+  background: url(../images/sm_icon.png) no-repeat;
+  background-position: -33px -221px;
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 5px;
+  width: 16px;
+  height: 16px;
+}
+
+.province_CN_ch {
+  background-color: #fffeeb;
+  border: 1px solid #cbc88a;
+  border-top: 0px;
+  padding: 15px 10px 15px 18px;
+  _padding: 15px 10px 15px 15px;
+  overflow: hidden;
+}
+
+.province_CN_ch ul li {
+  white-space: nowrap;
+  float: left;
+  margin-top: 5px;
+  margin-right: 6px;
+  _margin-right: 10px;
+}
+
+.province_CN_ch a {
+  background-color: #efefe9;
+  padding: 3px 10px;
+  text-decoration: none;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.province_CN_ch a:hover {
+  background-color: #ff8f00;
+  color: #fff;
+  padding: 3px 10px;
+  text-decoration: none;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.province_CN_ch ul li .hover {
+  white-space: nowrap;
+  background-color: #ff8f00;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.province_US_en {
+  background-color: #fffeeb;
+  border: 1px solid #cbc88a;
+  border-top: 0px;
+  padding: 15px 10px 15px 18px;
+  *padding: 15px 5px 15px 8px;
+  _padding: 15px 10px 15px 18px;
+  overflow: hidden;
+}
+
+.province_US_en ul li {
+  white-space: nowrap;
+  float: left;
+  margin-top: 5px;
+  text-align: center;
+  margin-right: 6px;
+}
+
+.province_US_en a {
+  text-align: center;
+  background-color: #efefe9;
+  padding: 3px 10px;
+  text-decoration: none;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.province_US_en a:hover {
+  background-color: #ff8f00;
+  color: #fff;
+  text-align: center;
+  padding: 3px 10px;
+  text-decoration: none;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.province_US_en ul li .hover {
+  white-space: nowrap;
+  background-color: #ff8f00;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  display: inline-block;
+}
+
+/*===成果检索==*/
+.search_main tr td {
+  padding: 6px 3px;
+}
+
+/**/
+.abc_list {
+  padding: 15px 10px 12px 20px;
+  *padding-bottom: 0px;
+  _padding-bottom: 12px;
+  overflow: hidden;
+}
+
+.abc_list ul li {
+  float: left;
+}
+
+.abc_list ul li a { /*width:28px;*/
+  padding: 0px 10px;
+  height: 28px;
+  line-height: 28px;
+  background-color: #f7fbfd;
+  border: 1px solid #cbd9e1;
+  border-right: none;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #999;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.abc_list ul li a:hover, .abc_hover { /*width:30px;*/
+  height: 28px;
+  line-height: 28px;
+  padding: 0px 10px;
+  background-color: #5b74a8 !important;
+  border-top: 1px solid #5b74a8 !important;
+  border-bottom: 1px solid #5b74a8 !important;
+  border-left: 1px solid #5b74a8 !important;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff !important;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.person_list {
+  
+}
+
+.person_list ul li {
+  float: left;
+  width: 290px;
+  padding-left: 20px;
+  margin-top: 5px;
+  height: 23px;
+  line-height: 23px;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.achievement_list {
+  
+}
+
+.achievement_list ul li {
+  float: left;
+  width: 430px;
+  padding-left: 20px;
+  margin-top: 5px;
+  height: 23px;
+  line-height: 23px;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

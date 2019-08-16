@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>浏览器版本过低</title>
+<link href="/resmod/css/upgrade-browser.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/resmod/js/plugin/judge-browser/browser.match.js"></script>
+<script type="text/javascript">
+	if(!!client.modernBrowser){
+		window.location.href="/";
+	}
+</script>
+</head>
+<body>
+  <div class="content-1200">
+    <div class="version-tip">
+      <h1 data-rel="browser.tip.h1"></h1>
+      <h2 data-rel="browser.tip.h2"></h2>
+      <ul id="ul">
+        <li id="browser-ie"><a href="" data-rel="browser.ie.url"> <img
+            src="/resmod/images/browser/ie_browser.png" alt="" style="padding-bottom: 16px;" />
+            <p data-rel="browser.ie"></p>
+        </a></li>
+        <li id="browser-360"><a> <img src="/resmod/images/browser/360_browser1.png"
+            data-rel="browser.360.se.url" style="padding-bottom: 16px;" /> <img
+            src="/resmod/images/browser/360_browser2.png" data-rel="browser.360.chrome.url"
+            style="padding-bottom: 16px;" />
+            <p data-rel="browser.360"></p>
+        </a></li>
+        <li id="browser-firefox"><a href="" data-rel="browser.firefox.url"> <img
+            src="/resmod/images/browser/firefox_browser.png" style="width: 70px; height: 70px; margin-top: -4px;" />
+            <p data-rel="browser.firefox"></p>
+        </a>
+          <p>不支持在线检索成果</p></li>
+        <li id="browser-edge" style="display: none;"><a href="" data-rel="browser.edge.url"> <img
+            src="/resmod/images/browser/edge_browser.png" />
+            <p data-rel="browser.edge"></p>
+        </a></li>
+        <li id="browser-chrome"><a href="" data-rel="browser.chrome.url"> <img
+            src="/resmod/images/browser/chrome_browser.png" style="width: 70px; height: 70px; margin-top: -4px;" />
+            <p data-rel="browser.chrome"></p>
+        </a>
+          <p>不支持在线检索成果</p></li>
+      </ul>
+      <div id="common-question" class="version-tip-q">
+        <h2>常见问题</h2>
+        <div class="version-tip-qc">
+          我已经升级到最新版本的360浏览器，却仍然提示我版本过低，我该
+          <div class="version-tip_pop">
+            <a href="#">怎么办</a>？
+            <div class="version-tip_popcont">
+              <div class="version-tip-arrow">
+                <em></em> <span></span>
+              </div>
+              <p>
+                请尝试手动切换浏览模式为极速模式。切换按钮在浏览器地址输入栏的 <img src="/resmod/images/browser/360_version_tip_01.jpg"> 这个红色
+                圈起的图标，点击它，出现选择框 <img src="/resmod/images/browser/360_version_tip_02.jpg"> 选择极速模式。 然后重新打开科研之友
+                首页即可正常浏览。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="/resmod/js/jquery.js"></script>
+  <script type="text/javascript" src="/resmod/js/plugin/jquery.i18n.properties.js"></script>
+  <!-- <script type="text/javascript" src="/resmod/js/plugin/judge-browser/judge-browser.js"></script> -->
+  <script type="text/javascript">
+		$(function(){
+			var locale = getQueryString("locale");
+			var lang = navigator.language || navigator.userLanguage || navigator.browserLanguage || navigator.systemLanguage;
+			if(locale != null && locale.toString().length > 1){
+				lang = locale;
+			}
+			if(/^(zh|ZH)[-_]{1}(CN|cn)$/.test(lang) ){
+				lang = "zh_CN";
+			}else{
+				lang = "en_US";
+			}
+			if(lang == "en_US"){
+				$("#browser-360").hide();
+				$("#common-question").hide();
+			}
+			jQuery.i18n.properties({
+				name:'upgrade-browser',
+				path:'/resmod/js/plugin/judge-browser/i18n/',
+				mode:'map',
+				language: lang,
+				success: function() {// 加载成功后设置显示内容
+					$("[data-rel]").each(function(){
+						var $this = $(this);
+						if($this.is('a')){
+							$this.attr("href", $.i18n.prop($this.attr("data-rel")));
+						}else if($this.is("img")){
+							$this.attr("alt", $.i18n.prop($this.attr("data-rel")));
+							$this.click(function(){
+								jump($.i18n.prop($this.attr("data-rel")));
+							});
+						}else if($this.is("p")){
+							$this.html($.i18n.prop($this.attr("data-rel")));
+							if($this.attr("data-rel") == "browser.360"){
+								$this.click(function(){
+									jump($.i18n.prop('browser.360.chrome.url'));
+								});
+							}
+						}else{
+							$this.html($.i18n.prop($this.attr("data-rel")));
+						}
+					});
+				}
+
+			});
+			if(client.system.name && client.system.name.indexOf("Windows") < 0){
+				var ie = document.getElementById("browser-ie");
+                ie.parentNode.removeChild(ie);
+				var b360 = document.getElementById("browser-360");
+                b360.parentNode.removeChild(b360);
+			}else if(client.system.version){
+				if(parseFloat(client.system.version) <= 5.2){
+					var ie = document.getElementById("browser-ie");
+                    ie.parentNode.removeChild(ie);
+                    var firefox = document.getElementById("browser-firefox");
+                    firefox.parentNode.removeChild(firefox);
+                    var chrome = document.getElementById("browser-chrome");
+                    chrome.parentNode.removeChild(chrome);
+                    var edge = document.getElementById("browser-edge");
+                    edge.parentNode.removeChild(edge);
+				}
+				if(parseFloat(client.system.version) >= 6.4){
+                    document.getElementById("browser-edge").setAttribute("style", "display: inline-block");
+				}
+			}
+		});
+
+        function jump(url){
+			window.location.href = url;
+		}
+		function getQueryString(name)
+		{
+		     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		     var r = window.location.search.substr(1).match(reg);
+		     if(r!=null)return  unescape(r[2]); return null;
+		}
+	</script>
+</body>
+</html>

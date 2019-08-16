@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <bean id="weChatPreProcessPsnTaskLaunch" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+    <property name="jobRepository" ref="jobRepository" />
+  </bean>
+  <job id="weChatPreProcessPsnTask" xmlns="http://www.springframework.org/schema/batch">
+    <step id="weChatPreProcessPsnStep">
+      <tasklet>
+        <chunk reader="weChatPreProcessPsnReader" writer="weChatPreProcessPsnWriter" commit-interval="1">
+        </chunk>
+      </tasklet>
+    </step>
+  </job>
+  <bean id="weChatPreProcessPsnReader"
+    class="com.smate.center.batch.jobdetail.wechatpreprocesspsn.WeChatPreProcessPsnReader" scope="step">
+  </bean>
+  <bean id="weChatPreProcessPsnWriter"
+    class="com.smate.center.batch.jobdetail.wechatpreprocesspsn.WeChatPreProcessPsnWriter" scope="step">
+  </bean>
+  <!--注入共享的任务map list，方便多线程调用 -->
+  <!-- <bean id = "batchTaskPool" class="com.smate.center.batch.model.wechat.BatchTaskPool"></bean> <bean id = "jobLaunchMultiThreadServiceImpl" 
+    class="com.smate.center.batch.service.JobLaunchMultiThreadServiceImpl"> <property name="taskPool" ref="batchTaskPool"/> </bean> 
+    <bean id = "weChatMsgPsnWriter" class="com.smate.center.batch.jobdetail.wechatmsgpsn.WeChatMsgPsnWriter"> <property name="taskPool" 
+    ref="batchTaskPool"/> </bean> -->
+</beans>

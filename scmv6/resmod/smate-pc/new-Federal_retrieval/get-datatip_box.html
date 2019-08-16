@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<link href="../css/scmpcframe.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+		window.onload = function(){
+            var targetele = document.getElementsByClassName("new-getdata_tip-container")[0];
+            targetele.style.left = (window.innerWidth - targetele.offsetWidth)/2 + "px";
+		    targetele.style.top = (window.innerHeight - targetele.offsetHeight)/2 + "px";
+		    window.onresize = function(){
+		    	targetele.style.left = (window.innerWidth - targetele.offsetWidth)/2 + "px";
+		        targetele.style.top = (window.innerHeight - targetele.offsetHeight)/2 + "px";
+		    }
+		}
+	</script>
+</head>
+<body>
+  <div class="new-getdata_tip-container">
+    <img src="../img/upload.gif" class="new-getdata_tip-container_avator">
+    <div class="new-getdata_tip-container_content">正在从万方获取数据</div>
+    <div class="new-getdata_tip-container_cancel">取消</div>
+  </div>
+</body>
+</html>

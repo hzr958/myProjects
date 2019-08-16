@@ -1,0 +1,44 @@
+/* Scss Start*/
+$lineheight-small: 20px;
+$adjusttop:20px;
+$showrowcontent:"\02026";
+$fixedwidth: 10px;
+$fixedSize: 3em;
+
+@mixin ShowrowsNum(rownum,height){
+     line-height:height;
+     height:num*height;
+}
+
+.exp-idx__main_intro {
+	 overflow:hidden;
+	 border: 1px solid #4C4C4C;
+	 line-height:20px;
+     height:60px;
+	/* @include ShowrowsNum(3,20px);*/
+}
+.exp-idx__main_intro:before {
+	content:"";
+    float: left;
+    margin-right: 10px;
+    height: 60px; 
+    line-height: 20px;
+	/* @include ShowrowsNum(3,20px);*/
+}
+.main_infor-ellipsis_content{
+    float: right;
+    width: 100%;
+    margin-left: -10px;
+}
+.exp-idx__main_intro:after{
+    content: "\02026";  
+    box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    float: right; position: relative;
+    top: -20px; left: 100%; 
+    width: 3em; margin-left: -3em;
+    padding-right: 10px;
+    text-align: right;
+    background-size: 100% 100%;
+}

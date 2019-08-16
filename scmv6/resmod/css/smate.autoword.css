@@ -1,0 +1,93 @@
+/* CSS Document */
+.auto_word_outer_div {
+  height: auto !important;
+  min-height: 40px;
+  height: 40px;
+  width: 500px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #c1c8d2;
+}
+
+.auto_friend_input_div {
+  display: inline-block;
+  height: auto !important;
+  min-height: 22px;
+  line-height: 20px;
+  width: 410px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #c1c8d2;
+}
+
+.auto_word_collect_plugin_div {
+  height: 45px;;
+  min-height: 40px;
+  height: 40px;
+  width: 420px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #c1c8d2;
+  margin-bottom: 15px;
+}
+
+.auto_word_div {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  white-space: nowrap;
+  height: 20px;
+  padding-left: 8px;
+  vertical-align: middle;
+  background-color: #EFEFEF;
+  margin: 2px;
+  overflow: visible;
+}
+
+.auto_word {
+  white-space: nowrap;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+a.auto_word_div_del {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  background: url(../images/plugin/delete_word.gif);
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  text-decoration: none;
+}
+
+.auto_word_input_div {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  white-space: nowrap;
+  height: 20px;
+  vertical-align: middle;
+  background-color: #EFEFEF;
+  margin: 2px 0;
+  overflow: visible;
+}
+
+.auto_word_input {
+  float: left;
+  width: 7px;
+  height: 20px;
+  border: 0;
+}
+
+.auto_word_watermark {
+  color: #bababa;
+  font-size: 12px;
+  display: none;
+}

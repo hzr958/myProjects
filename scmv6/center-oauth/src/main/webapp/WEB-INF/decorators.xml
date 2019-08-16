@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/skins">
+  <!-- 排除不需要装潢的目录或文件 -->
+  <excludes>
+    <!-- 根目录或子目录的ajax都排除 -->
+    <pattern>/ac/**</pattern>
+    <pattern>/*ajax*.action*</pattern>
+    <pattern>/**/*ajax*.action*</pattern>
+    <pattern>/*ajax*</pattern>
+    <pattern>/**/*ajax*</pattern>
+    <!-- 附件 -->
+    <pattern>/archiveFiles/*</pattern>
+    <pattern>/pubweb/publication/wait*</pattern>
+    <!-- 发布新闻弹出框 -->
+    <pattern>/inspg/inspgnews/showshareinspgnews*</pattern>
+    <pattern>/inspg/noaccesspermission*</pattern>
+    <pattern>/inspg/noresource*</pattern>
+    <!-- 微信 成果 -->
+    <pattern>/pubweb/wechat*</pattern>
+    <!-- 成果保存提示框 -->
+    <pattern>/pubweb/publication/savesuccesstip*</pattern>
+    <!-- 成果全文上传 -->
+    <pattern>/pubweb/publication/uploadfullltext*</pattern>
+    <!-- 成果检索 -->
+    <pattern>/pubweb/publication/import/showPubListFrm*</pattern>
+    <pattern>/pubweb/publication/import/savePubFrm*</pattern>
+    <!-- 成果查重 -->
+    <pattern>/pubweb/publication/pdwh/showdup*</pattern>
+    <!-- 结题报告 -->
+    <pattern>/ronline/prjfinal/viewmyrptpublist*</pattern>
+    <!-- 基金委申请书-查看申请书成果 -->
+    <pattern>/ronline/proposal/viewmyprppublist*</pattern>
+    <!-- 基金委研究报告成果-查看已收录成果信息 -->
+    <pattern>/ronline/prjresearch/viewmyrptpublist*</pattern>
+    <!-- 基金委研究报告成果-查看延续报告成果信息 -->
+    <pattern>/ronline/continueProject/viewReportPubList*</pattern>
+    <!-- 我的成果页面左边栏菜单 -->
+    <pattern>/pubweb/publication/showLeftMenu*</pattern>
+  </excludes>
+  <decorator name="nsfcrol_main" page="nsfcrol_skins_main.jsp">
+    <pattern>/ronline*</pattern>
+  </decorator>
+  <decorator name="inspg_main" page="inspg_skins_main.jsp">
+    <pattern>/*inspg*</pattern>
+  </decorator>
+  <decorator name="pub_main" page="pub_skins_main.jsp">
+    <pattern>/pubweb*</pattern>
+  </decorator>
+  <decorator name="group_main" page="skins_main.jsp">
+    <pattern>/groupweb*</pattern>
+  </decorator>
+  <decorator name="outsidemain" page="inspg_skins_outside.jsp">
+    <pattern>/inspg/outside/show*</pattern>
+  </decorator>
+</decorators>

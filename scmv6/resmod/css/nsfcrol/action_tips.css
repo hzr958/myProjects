@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*=====================操作提示样式====================*/
+#div1 {
+  position: fixed;
+  z-index: 99999;
+  color: #000000;
+  border-width: 3px;
+  border-style: solid;
+  background-color: #fff;
+  border-color: #C1D9FF;
+  text-align: left;
+  top: 50%;
+  left: 50%;
+  border-style: solid;
+  /*padding: 1px;*/
+}
+
+.InfoTitle {
+  color: #0c2358;
+}
+
+/* ---------->>> jtip <<<---------------------------------------------------------------*/
+.JT_arrow_left {
+  background-image: url(../../images/jtips/arrow_left.gif);
+  background-repeat: no-repeat;
+  background-position: left top;
+  position: absolute;
+  z-index: 101;
+  left: -36px;
+  height: 37px;
+  width: 36px;
+  top: 15px;
+}
+
+.JT {
+  position: absolute;
+  top: 300px;
+  left: 200px;
+  z-index: 202;
+  border: 1px solid #FBBF15;
+  background-color: #FFFFB4;
+  color: #D22119;
+  display: none;
+}
+
+.JT_bg {
+  position: absolute;
+  z-index: 99;
+  background: #000;
+  border: 1px solid #000;
+  filter: alpha(opacity = 25);
+  -moz-opacity: 0.25;
+  opacity: 0.25;
+}
+
+.JT_copy {
+  color: #D22119;
+  font-size: 1.2em;
+  padding: 15px 25px 15px 25px;
+  /*	background:url(notice_ico.gif) no-repeat 20px 19px;*/
+}
+
+.JT_close_left {
+  text-align: left;
+  padding-bottom: 5px;
+  padding-top: 12px;
+  font-weight: bold;
+}

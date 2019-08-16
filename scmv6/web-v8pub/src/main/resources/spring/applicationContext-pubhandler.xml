@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+  <description>配置成果处理器 对应 的链接</description>
+  <!-- 权限判断 -->
+  <bean id="asPubModifiedAuthorityCheckImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.authority.ASPubModifiedAuthorityCheckImpl" />
+  <!-- open系统服务 -->
+  <bean id="asOpenSnsIndexUrlProduceImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.open.ASOpenSnsIndexUrlProduceImpl" />
+  <bean id="asOpenPdwhIndexUrlProduceImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.open.ASOpenPdwhIndexUrlProduceImpl" />
+  <bean id="asOpenDynamicProduceImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.open.ASOpenDynamicProduceImpl" />
+  <!-- sns库组装类 -->
+  <bean id="asPubAccessorySaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubAccessorySaveImpl" />
+  <bean id="asPubCitationsSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubCitationsSaveImpl" />
+  <bean id="asPubDetailSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubDetailSaveImpl" />
+  <bean id="asPubDuplicateSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubDuplicateSaveImpl" />
+  <bean id="asPubIndexUrlSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubIndexUrlSaveImpl" />
+  <bean id="asPubKeywordsSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubKeywordsSaveImpl" />
+  <bean id="asPubMemberSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubMemberSaveImpl" />
+  <bean id="asPubPsnConfigPubSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubPsnConfigPubSaveImpl" />
+  <bean id="asPubSituationSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubSituationSaveImpl" />
+  <bean id="asPubSnsSaveImpl" class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubSnsSaveImpl" />
+  <bean id="asPubStatisticsSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubStatisticsSaveImpl" />
+  <bean id="asPubFulltextSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubFulltextSaveImpl" />
+  <bean id="asPubFulltextUploadLogSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.AsPubFulltextUploadLogSaveImpl" />
+  <bean id="asPubPsnDeleteImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubdelete.ASPubPsnDeleteImpl" />
+  <bean id="asPubDuplicateDeleteImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubdelete.ASPubDuplicateDeleteImpl" />
+  <bean id="asPubGroupDeleteImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubdelete.ASPubGroupDeleteImpl" />
+  <bean id="asPubGroupPubSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubGroupPubSaveImpl" />
+  <bean id="asPubPsnPubSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubPsnPubSaveImpl" />
+  <bean id="asPdwhSnsRelationSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPdwhSnsRelationSaveImpl" />
+  <bean id="asPubScienceAreaSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubScienceAreaSaveImpl" />
+  <bean id="asPubGroupPubUpdateImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubupdate.ASPubGroupPubUpdateImpl" />
+  <bean id="asPubCitationsUpdateImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubupdate.ASPubCitationsUpdateImpl" />
+  <bean id="asSnsDetailFulltextIdUpdateImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubupdate.ASSnsDetailFulltextIdUpdateImpl" />
+  <bean id="asPdwhDetailFulltextIdUpdateImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubupdate.ASPdwhDetailFulltextIdUpdateImpl" />
+  <bean id="asPubPdwhCitationsUpdateImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubupdate.ASPubPdwhCitationsUpdateImpl" />
+  <bean id="asPdwhDetailCitationsUpdateImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubupdate.ASPdwhDetailCitationsUpdateImpl" />
+  <bean id="asPdwhStatisticCitationsUpdateImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubupdate.ASPdwhStatisticCitationsUpdateImpl" />
+  <bean id="asPubSnsCitationsUpdateImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubupdate.ASPubSnsCitationsUpdateImpl" />
+  <bean id="asPubDetailCitationsUpdateImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubupdate.ASPubDetailCitationsUpdateImpl" />
+  <bean id="asPsnStatisticsSubImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPsnStatisticsSubImpl" />
+  <bean id="asPsnStatisticsAddImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPsnStatisticsAddImpl" />
+  <bean id="asPubStatisticCitationsUpdateImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubupdate.ASPubStatisticCitationsUpdateImpl" />
+  <bean id="asPsnStatisticCitationsUpdateImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubupdate.ASPsnStatisticCitationsUpdateImpl" />
+  <bean id="asPubSnsDeleteImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubdelete.ASPubSnsDeleteImpl" />
+  <bean id="asRepeatPubRecordDeleteImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubdelete.ASRepeatPubRecordDeleteImpl" />
+  <bean id="asPsnRepresentPubDeleteImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubdelete.ASPsnRepresentPubDeleteImpl" />
+  <bean id="asPubKnowSaveImpl" class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubKnowSaveImpl" />
+  <bean id="asPubModifyHistorySaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubupdate.ASPubModifyHistorySaveImpl" />
+  <bean id="asPubLikeSaveImpl" class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubLikeSaveImpl" />
+  <bean id="asPubCommentSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubCommentSaveImpl" />
+  <bean id="asPubShareSaveImpl" class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubShareSaveImpl" />
+    <bean id="asPubIndustrySaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubIndustrySaveImpl"></bean>
+  <!-- 基准库组装类 -->
+  <bean id="asPdwhStatisticsSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.ASPdwhStatisticsSaveImpl" />
+  <bean id="asPubPdwhSaveImpl" class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.ASPubPdwhSaveImpl" />
+  <bean id="asPdwhSituationSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.ASPdwhSituationSaveImpl" />
+  <bean id="asPdwhDetailSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.ASPdwhDetailSaveImpl" />
+  <bean id="asConstructPubHashImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.construct.ASConstructPubHashImpl" />
+  <bean id="asPdwhDuplicateSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.ASPdwhDuplicateSaveImpl" />
+  <bean id="asPdwhIndexUrlSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.ASPdwhIndexUrlSaveImpl" />
+  <bean id="asPdwhCitationsSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.ASPdwhCitationsSaveImpl" />
+  <bean id="asPdwhFulltextSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.ASPdwhFulltextSaveImpl" />
+  <bean id="asUpdateSnsCitationsImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.ASUpdateSnsCitationsImpl" />
+  <bean id="asPdwhPubFulltextUploadLogSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.AsPdwhPubFulltextUploadLogSaveImpl" />
+  <bean id="asPdwhKeywordsSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.ASPdwhKeywordsSaveImpl" />
+  <bean id="asPdwhMemberSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.ASPdwhMemberSaveImpl" />
+  <bean id="asPdwhMemberEmailSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.ASPdwhMemberEmailSaveImpl" />
+  <bean id="aSBatchJobsSaveImpl" class="com.smate.web.v8pub.service.handler.assembly.jobsave.ASBatchJobsSaveImpl"></bean>
+  <bean id="asPdwhMemberInsNameSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.ASPdwhMemberInsNameSaveImpl"></bean>
+
+  <!-- 成果类别组装类 -->
+  <bean id="asAwardsInfoSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pubtypebean.ASAwardsInfoSaveImpl" />
+  <bean id="asBookInfoSaveImpl" class="com.smate.web.v8pub.service.handler.assembly.pubtypebean.ASBookInfoSaveImpl" />
+  <bean id="asConferencePaperSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pubtypebean.ASConferencePaperSaveImpl" />
+  <bean id="asJournalInfoSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pubtypebean.ASJournalInfoSaveImpl" />
+  <bean id="asOtherInfoSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pubtypebean.ASOtherInfoSaveImpl" />
+  <bean id="asPatentInfoSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pubtypebean.ASPatentInfoSaveImpl" />
+  <bean id="asThesisInfoSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pubtypebean.ASThesisInfoSaveImpl" />
+  <bean id="asStandardInfoSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pubtypebean.ASStandardInfoSaveImpl" />
+  <bean id="asSoftwareCopyrightSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pubtypebean.ASSoftwareCopyrightSaveImpl" />
+  <!-- 参数构造组装类 -->
+  <bean id="asConstructPubPermissionImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.construct.ASConstructPubPermissionImpl" />
+  <bean id="asConstructPubParamsImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.construct.ASConstructPubParamsImpl" />
+  <bean id="asConstructPubLabeledImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.construct.ASConstructPubLabeledImpl" />
+  <bean id="asConstructPubRelevanceImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.construct.ASConstructPubRelevanceImpl" />
+  <bean id="asConstructPubAuthorNameImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.construct.ASConstructPubAuthorNameImpl" />
+  <bean id="asConstructPubCitationsImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.construct.ASConstructPubCitationsImpl" />
+  <bean id="asConstructPubMemberEmailImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.construct.ASConstructPubMemberEmailImpl" />
+  <!-- 参数处理组装类 -->
+  <bean id="asDisposePubJournalMatchImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.dispose.ASDisposePubJournalMatchImpl" />
+  <bean id="asDisposePubDecodeIDImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.dispose.ASDisposePubDecodeIDImpl" />
+  <bean id="asDisposePdwhJournalMatchImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.dispose.ASDisposePdwhJournalMatchImpl" />
+  <bean id="asDisposePdwhUpdatePriorityImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.dispose.ASDisposePdwhUpdatePriorityImpl" />
+  <bean id="asDisposePubAuthorMatchImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.dispose.ASDisposePubAuthorMatchImpl" />
+  <bean id="asDisposePubAwardIAMatchImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.dispose.ASDisposePubAwardIAMatchImpl" />
+  <bean id="asDisposePubMembersPerfectImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.dispose.ASDisposePubMembersPerfectImpl" />
+  <bean id="asPdwhSolrIndexDifSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.pdwhpubsave.ASPdwhSolrIndexDifSaveImpl" />
+  <bean id="asPsnRepeatPubRecordJobSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.jobsave.ASPsnRepeatPubRecordJobSaveImpl" />
+  <bean id="asPubPdwhScmRolJobSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.jobsave.ASPubPdwhScmRolJobSaveImpl" />
+  <bean id="asPubBackupsJobSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.jobsave.ASPubBackupsJobSaveImpl" />
+  <bean id="asPubAssignLogUpdateImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubupdate.ASPubAssignLogUpdateImpl" />
+  <bean id="asPubGroupPubRcmdUpdateImpl" 
+    class="com.smate.web.v8pub.service.handler.assembly.snspubupdate.ASPubGroupPubRcmdUpdateImpl"/>
+  <bean id="asConstructPubUpdateMarkImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.construct.ASConstructPubUpdateMarkImpl" />
+  <bean id="asGroupPubIndexSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASGroupPubIndexSaveImpl" />
+  <bean id="asGrpStatisticsAddImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASGrpStatisticsAddImpl" />
+  <bean id="asPubFileRelationSaveImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.ASPubFileRelationSaveImpl" />
+  <bean id="asRefreshPsnInfoInSolrImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubsave.AsRefreshPsnInfoInSolrImpl" />
+  <bean id="asPubFulltextPsnRcmdDeleteImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubdelete.AsPubFulltextPsnRcmdDeleteImpl" />
+  <bean id="asPubPdwhDeleteImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubdelete.ASPubPdwhDeleteImpl" />
+  <bean id="asPubAssignLogDeleteImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubdelete.ASPubAssignLogDeleteImpl" />
+  <bean id="asPubPdwhSnsRelationDeleteImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubdelete.ASPubPdwhSnsRelationDeleteImpl" />
+  <bean id="asPubGrpPubRcmdDeleteImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubdelete.ASPubGrpPubRcmdDeleteImpl" />
+  <bean id="asPubPdwhInSolrDeleteImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubdelete.ASPubPdwhInSolrDeleteImpl" />
+  <bean id="asPubPdwhAddrInsRecordDeleteImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubdelete.ASPubPdwhAddrInsRecordDeleteImpl" />
+  <bean id="asPubPdwhAuthorSnsPsnRecordDeleteImpl"
+    class="com.smate.web.v8pub.service.handler.assembly.snspubdelete.ASPubPdwhAuthorSnsPsnRecordDeleteImpl" />
+  <!-- sns库成果全文更新保存业务组装 -->
+  <bean id="updateSnsFullTextHandler" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <ref bean="asDisposePubDecodeIDImpl" />
+        <ref bean="asPubModifiedAuthorityCheckImpl" />
+        <ref bean="asPubFulltextSaveImpl" />
+        <ref bean="asPubFulltextUploadLogSaveImpl" />
+        <ref bean="asSnsDetailFulltextIdUpdateImpl" />
+        <ref bean="asPubGroupPubUpdateImpl" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <!-- sns库成果引用次数更新业务组装 -->
+  <bean id="updateSnsCitationsHandler" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <ref bean="asDisposePubDecodeIDImpl" />
+        <ref bean="asPubModifiedAuthorityCheckImpl" />
+        <ref bean="asPubCitationsUpdateImpl" />
+        <ref bean="asPubSnsCitationsUpdateImpl" />
+        <ref bean="asPubDetailCitationsUpdateImpl" />
+        <ref bean="asPubStatisticCitationsUpdateImpl" />
+        <ref bean="asPsnStatisticCitationsUpdateImpl" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <!-- sns库个人成果删除业务组装 -->
+  <bean id="deletePsnPubHandler" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <ref bean="asDisposePubDecodeIDImpl" />
+        <ref bean="asPubModifiedAuthorityCheckImpl" />
+        <ref bean="asPubPsnDeleteImpl" />
+        <ref bean="asPubDuplicateDeleteImpl" />
+        <ref bean="asPsnStatisticsSubImpl" />
+        <ref bean="asRepeatPubRecordDeleteImpl" />
+        <ref bean="asPubSnsDeleteImpl" />
+        <!-- 更新保存PubKnow -->
+        <ref bean="asPubKnowSaveImpl" />
+        <!-- 删除人员代表性成果 -->
+        <ref bean="asPsnRepresentPubDeleteImpl" />
+        <ref bean="asPubFulltextPsnRcmdDeleteImpl" />
+        <ref bean="asRefreshPsnInfoInSolrImpl" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <!-- sns库群组成果删除业务组装 -->
+  <bean id="deleteGroupPubHandler" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <ref bean="asDisposePubDecodeIDImpl" />
+        <ref bean="asPubGroupDeleteImpl" />
+        <ref bean="asPubSnsDeleteImpl" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <!-- pdwh库成果全文更新保存业务组装 -->
+  <bean id="updatePdwhFullTextHandler" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <ref bean="asDisposePubDecodeIDImpl" />
+        <ref bean="asPdwhFulltextSaveImpl" />
+        <ref bean="asPdwhPubFulltextUploadLogSaveImpl" />
+        <ref bean="asPdwhDetailFulltextIdUpdateImpl" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <!-- pdwh库成果引用次数更新业务组装 -->
+  <bean id="updatePdwhCitationsHandler" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <ref bean="asDisposePubDecodeIDImpl" />
+        <ref bean="asPdwhCitationsSaveImpl" />
+        <ref bean="asPubPdwhCitationsUpdateImpl" />
+        <ref bean="asPdwhDetailCitationsUpdateImpl" />
+        <ref bean="asPdwhStatisticCitationsUpdateImpl" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <!-- 构造成果类型对象 -->
+  <bean id="pubTypeInfo" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <ref bean="asAwardsInfoSaveImpl" />
+        <ref bean="asBookInfoSaveImpl" />
+        <ref bean="asConferencePaperSaveImpl" />
+        <ref bean="asJournalInfoSaveImpl" />
+        <ref bean="asOtherInfoSaveImpl" />
+        <ref bean="asPatentInfoSaveImpl" />
+        <ref bean="asThesisInfoSaveImpl" />
+        <ref bean="asStandardInfoSaveImpl" />
+        <ref bean="asSoftwareCopyrightSaveImpl" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <bean id="savePdwhPubInfo" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <ref bean="asPubPdwhSaveImpl" />
+        <ref bean="asPdwhFulltextSaveImpl" />
+        <ref bean="asPdwhMemberSaveImpl" />
+        <ref bean="asPdwhDetailSaveImpl" />
+        <ref bean="asPdwhKeywordsSaveImpl" />
+        <!-- asPdwhMemberInsNameSaveImpl的保存必须在asPdwhMemberSaveImpl之后，不得改动 -->
+        <ref bean="asPdwhMemberInsNameSaveImpl" />
+        <ref bean="asPdwhSituationSaveImpl" />
+        <ref bean="asPdwhDuplicateSaveImpl" />
+        <ref bean="asPdwhMemberEmailSaveImpl" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <!-- pdwh库成果保存业务组装 -->
+  <bean id="savePdwhPubHandler" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <ref bean="asDisposePubDecodeIDImpl" />
+        <ref bean="asConstructPubParamsImpl" />
+        <!-- 获取成果作者邮件信息，必须在拆分作者逻辑之前 -->
+        <ref bean="asConstructPubMemberEmailImpl" />
+        <!-- 新增拆分作者名，进行补充完善members数据 -->
+        <ref bean="asDisposePubMembersPerfectImpl" />
+        <ref bean="asConstructPubHashImpl" />
+        <ref bean="asDisposePdwhJournalMatchImpl" />
+        <ref bean="pubTypeInfo" />
+        <ref bean="savePdwhPubInfo" />
+        <!-- 保存时初始化统计数 -->
+        <ref bean="asPdwhStatisticsSaveImpl" />
+        <ref bean="asOpenPdwhIndexUrlProduceImpl" />
+        <ref bean="asPdwhIndexUrlSaveImpl" />
+        <ref bean="asPdwhCitationsSaveImpl" />
+        <ref bean="asUpdateSnsCitationsImpl" />
+        <ref bean="aSBatchJobsSaveImpl" />
+        <!-- 基准库索引的创建 -->
+        <ref bean="asPdwhSolrIndexDifSaveImpl" />
+        <ref bean="asPubBackupsJobSaveImpl" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <!-- pdwh库成果更新业务组装 -->
+  <bean id="updatePdwhPubHandler" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <ref bean="asDisposePubDecodeIDImpl" />
+        <ref bean="asDisposePdwhUpdatePriorityImpl" />
+        <ref bean="asConstructPubParamsImpl" />
+        <!-- 获取成果作者邮件信息，必须在拆分作者逻辑之前 -->
+        <ref bean="asConstructPubMemberEmailImpl" />
+        <!-- 新增拆分作者名，进行补充完善members数据 -->
+        <ref bean="asDisposePubMembersPerfectImpl" />
+        <ref bean="asConstructPubHashImpl" />
+        <ref bean="asDisposePdwhJournalMatchImpl" />
+        <ref bean="pubTypeInfo" />
+        <ref bean="savePdwhPubInfo" />
+        <!-- 更新时改变统计数 -->
+        <ref bean="asPdwhStatisticsSaveImpl" />
+        <ref bean="asPdwhCitationsSaveImpl" />
+        <ref bean="asUpdateSnsCitationsImpl" />
+        <ref bean="aSBatchJobsSaveImpl" />
+        <ref bean="asPubBackupsJobSaveImpl" />
+        <!-- 基准库索引的创建 -->
+        <ref bean="asPdwhSolrIndexDifSaveImpl" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <bean id="saveSnsPubInfo" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <ref bean="asPubSnsSaveImpl" />
+        <ref bean="asPubAssignLogUpdateImpl" />
+        <ref bean="asPubGroupPubRcmdUpdateImpl"/>
+        <ref bean="asPubPsnConfigPubSaveImpl" />
+        <ref bean="asPubFulltextSaveImpl" />
+        <ref bean="asPubFulltextUploadLogSaveImpl" />
+        <ref bean="asPubMemberSaveImpl" />
+        <ref bean="asPubDetailSaveImpl" />
+        <ref bean="asPubKeywordsSaveImpl" />
+        <ref bean="asPubAccessorySaveImpl" />
+        <ref bean="asPubSituationSaveImpl" />
+        <ref bean="asPubDuplicateSaveImpl" />
+        <ref bean="asPubScienceAreaSaveImpl" />
+        <ref bean="asPubIndustrySaveImpl" />
+        <ref bean="asPubPsnPubSaveImpl" />
+        <ref bean="asPubGroupPubSaveImpl" />
+        <ref bean="asPdwhSnsRelationSaveImpl" />
+        <!-- 基准库导入到sns库的成果 sns库成果保存基准库的赞/评论/分享记录 begin -->
+        <ref bean="asPubLikeSaveImpl" />
+        <ref bean="asPubCommentSaveImpl" />
+        <ref bean="asPubShareSaveImpl" />
+        <!-- 基准库导入到sns库的成果 sns库成果保存基准库的赞/评论/分享记录 end -->
+        <ref bean="asPubCitationsSaveImpl" />
+        <!-- 成果统计表次数的更新保存 -->
+        <ref bean="asPubStatisticsSaveImpl" />
+        <!-- 更新个人重复成果分组任务状态 -->
+        <ref bean="asPsnRepeatPubRecordJobSaveImpl" />
+        <!--保存到临时表，匹配基准库成果 -->
+        <ref bean="asPubPdwhScmRolJobSaveImpl" />
+        <!-- 成果文件关联关系 -->
+        <ref bean="asPubFileRelationSaveImpl" />
+        <!-- 更新人员solr信息 -->
+        <ref bean="asRefreshPsnInfoInSolrImpl" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <bean id="constructPubInfo" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <!-- 解密id -->
+        <ref bean="asDisposePubDecodeIDImpl" />
+        <!-- 权限判断 -->
+        <ref bean="asPubModifiedAuthorityCheckImpl" />
+        <ref bean="asConstructPubParamsImpl" />
+        <!-- 基准库成果导入时增加authorNames匹配逻辑 -->
+        <ref bean="asDisposePubAuthorMatchImpl" />
+        <ref bean="asConstructPubLabeledImpl" />
+        <ref bean="asConstructPubRelevanceImpl" />
+        <ref bean="asConstructPubAuthorNameImpl" />
+        <ref bean="asConstructPubHashImpl" />
+        <!-- 奖励的颁奖机构匹配 -->
+        <ref bean="asDisposePubAwardIAMatchImpl" />
+        <!-- 期刊匹配 -->
+        <ref bean="asDisposePubJournalMatchImpl" />
+        <!-- 构造更新标记字段 -->
+        <ref bean="asConstructPubUpdateMarkImpl" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <!-- sns库成果保存业务组装 -->
+  <bean id="saveSnsPubHandler" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <!-- 前期参数构造 -->
+        <ref bean="constructPubInfo" />
+        <!-- 构造permission权限字段 -->
+        <ref bean="asConstructPubPermissionImpl" />
+        <!-- 构造成果类型对象 -->
+        <ref bean="pubTypeInfo" />
+        <ref bean="saveSnsPubInfo" />
+        <!-- 群组成果统计数 -->
+        <ref bean="asGrpStatisticsAddImpl" />
+        <!-- 保存时才生成 -->
+        <ref bean="asOpenSnsIndexUrlProduceImpl" />
+        <ref bean="asPubIndexUrlSaveImpl" />
+        <ref bean="asGroupPubIndexSaveImpl" />
+        <!-- 保存时更新人员统计数 -->
+        <ref bean="asPsnStatisticsAddImpl" />
+        <!-- 更新保存PubKnow -->
+        <ref bean="asPubKnowSaveImpl" />
+        <ref bean="asPubBackupsJobSaveImpl" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <!-- 导入他人成果至个人库 -->
+  <bean id="psnPubToSnsHandler" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <ref bean="saveSnsPubHandler" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <!-- sns库成果保存业务组装 -->
+  <bean id="updateSnsPubHandler" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <!-- 前期参数构造 -->
+        <ref bean="constructPubInfo" />
+        <!-- 构造成果类型对象 -->
+        <ref bean="pubTypeInfo" />
+        <ref bean="saveSnsPubInfo" />
+        <ref bean="asPubModifyHistorySaveImpl" />
+        <!-- 人员统计表重新计算统计数 -->
+        <ref bean="asPsnStatisticCitationsUpdateImpl" />
+        <!-- 更新保存PubKnow -->
+        <ref bean="asPubKnowSaveImpl" />
+        <ref bean="asPubBackupsJobSaveImpl" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <bean id="pubImportInfoDriverFactory" class="com.smate.web.v8pub.service.searchimport.PubImportInfoDriverFactory"
+    lazy-init="false">
+    <property name="drivers">
+      <list>
+        <bean class="com.smate.web.v8pub.service.searchimport.PubAwardInfoDriver" />
+        <bean class="com.smate.web.v8pub.service.searchimport.PubBookInfoDriver" />
+        <bean class="com.smate.web.v8pub.service.searchimport.PubBookChpaterInfoDriver" />
+        <bean class="com.smate.web.v8pub.service.searchimport.PubConfPaperInfoDriver" />
+        <bean class="com.smate.web.v8pub.service.searchimport.PubJournalArticleInfoDriver" />
+        <bean class="com.smate.web.v8pub.service.searchimport.PubOtherInfoDriver" />
+        <bean class="com.smate.web.v8pub.service.searchimport.PubPatentInfoDriver" />
+        <bean class="com.smate.web.v8pub.service.searchimport.PubTheisInfoDriver" />
+        <bean class="com.smate.web.v8pub.service.searchimport.PubStandardInfoDriver" />
+        <bean class="com.smate.web.v8pub.service.searchimport.PubSoftwareCopyrightDriver" />
+      </list>
+    </property>
+  </bean>
+  <!-- pdwh库成果删除业务组装 -->
+  <bean id="deletePdwhPubHandler" class="java.util.ArrayList">
+    <constructor-arg>
+      <list>
+        <ref bean="asDisposePubDecodeIDImpl" />
+        <ref bean="asPubPdwhDeleteImpl" />
+        <ref bean="asPubAssignLogDeleteImpl" />
+        <ref bean="asPubPdwhSnsRelationDeleteImpl" />
+        <ref bean="asPubFulltextPsnRcmdDeleteImpl" />
+        <ref bean="asPubGrpPubRcmdDeleteImpl" />
+        <ref bean="asPubPdwhInSolrDeleteImpl"/>
+        <ref bean="asPubPdwhAddrInsRecordDeleteImpl"/>
+        <ref bean="asPubPdwhAuthorSnsPsnRecordDeleteImpl"/>
+      </list>
+    </constructor-arg>
+  </bean>
+</beans>

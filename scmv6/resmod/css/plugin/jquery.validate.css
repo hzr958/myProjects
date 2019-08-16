@@ -1,0 +1,9 @@
+label.error {
+  color: #c00;
+  background: transparent url(../../images/mainreg_icon_error.gif) no-repeat scroll 0 0;
+  padding-left: 20px;
+}
+
+label.checked {
+  background: transparent url(images/checked.gif) no-repeat scroll 0 0;
+}

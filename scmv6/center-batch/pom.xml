@@ -1,0 +1,177 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.smate</groupId>
+	<artifactId>center-batch</artifactId>
+	<packaging>war</packaging>
+	<version>6.0.1-SNAPSHOT</version>
+	<name>center-batch Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+		    <properties>
+     <maven.deploy.skip>true</maven.deploy.skip>
+        </properties>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- json -->
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<classifier>jdk15</classifier>
+		</dependency>
+		<!-- dom -->
+		<dependency>
+			<groupId>jaxen</groupId>
+			<artifactId>jaxen</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-core</artifactId>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.smate</groupId>
+			<artifactId>core-base-public</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.smate</groupId>
+			<artifactId>core-base-utils</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.smate</groupId>
+			<artifactId>center-batch-connector</artifactId>
+		</dependency>
+
+		<!-- <dependency> <groupId>com.smate</groupId> <artifactId>center-searcher</artifactId> 
+			<version>${center-searcher.version}</version> </dependency> -->
+
+		<dependency>
+			<groupId>com.smate</groupId>
+			<artifactId>core-mod-noweb</artifactId>
+			<type>pom</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2</artifactId>
+			<version>1.5</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2-adb</artifactId>
+			<version>1.5</version>
+			<type>jar</type>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>geronimo-javamail_1.4_spec</artifactId>
+					<groupId>org.apache.geronimo.specs</groupId>
+
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2-kernel</artifactId>
+			<version>1.5</version>
+			<type>jar</type>
+			<scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                </exclusion>
+            </exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>org.apache.axis2.osgi</artifactId>
+			<version>1.5</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>axis2-transport-http</artifactId>
+					<groupId>org.apache.axis2</groupId>
+
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.jai-imageio</groupId>
+			<artifactId>jai-imageio-core</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.jai-imageio</groupId>
+			<artifactId>jai-imageio-jpeg2000</artifactId>
+			<version>1.3.0</version>
+		</dependency>
+
+        <dependency>  
+          <groupId>org.ansj</groupId>  
+          <artifactId>ansj_seg</artifactId>  
+        <version>5.1.2</version>  
+    	</dependency>
+
+        <dependency>
+            <groupId>gov.nist.math</groupId>
+            <artifactId>jama</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>colt</groupId>
+            <artifactId>colt</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+        
+		<!-- 其它项目 引用这个jia包有问题 把它放在这里 -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.coobird</groupId>
+			<artifactId>thumbnailator</artifactId>
+		</dependency>
+    
+        <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.6</version>
+      </dependency>
+          <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-client</artifactId>
+      <version>2.5.1</version>
+    </dependency>
+	</dependencies>
+  
+	<build>
+		<finalName>center-batch</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>logback-test.xml</exclude>
+				</excludes>
+			</resource>
+		</resources>
+	</build>
+
+	<parent>
+		<groupId>com.smate</groupId>
+		<artifactId>smate-parent</artifactId>
+		<version>6.0.0</version>
+		<relativePath>../smate-parent/pom.xml</relativePath>
+	</parent>
+</project>

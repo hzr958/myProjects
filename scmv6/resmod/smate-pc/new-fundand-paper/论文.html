@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	 <link href="../css/scmpcframe.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript">
+		window.onload = function(){
+			var keylist = document.getElementsByClassName("new-mainpage_left-list_header-onkey");
+			var closelist = document.getElementsByClassName("new-mainpage_left-sublist_header-onkey");
+			var selectlist = document.getElementsByClassName("new-mainpage_left-sublist_body-item");
+			var heightlist = document.getElementsByClassName("new-mainpage_scroll-height");
+			for(var i = 0; i < heightlist.length; i++){
+                heightlist[i].style.height = window.innerHeight - 96 + "px";
+			}
+            for(var i = 0; i < keylist.length; i++){
+                keylist[i].onclick = function(){
+                	if(this.innerHTML == "expand_less"){
+                        this.innerHTML = "expand_more";
+                        if(this.closest(".new-mainpage_left-list").querySelector(".new-mainpage_left-list_body")){
+                            this.closest(".new-mainpage_left-list").querySelector(".new-mainpage_left-list_body").style.display = "none";
+                        }
+                	}else{
+                		this.innerHTML = "expand_less";
+                		if(this.closest(".new-mainpage_left-list").querySelector(".new-mainpage_left-list_body")){
+                            this.closest(".new-mainpage_left-list").querySelector(".new-mainpage_left-list_body").style.display = "block";
+                        }
+                	}
+                }
+            }
+            for(var i = 0;i < closelist.length; i++){
+                closelist[i].onclick = function(){
+                	if(this.classList.contains("new-mainpage_left-sublist_header-open")){
+                        this.classList.remove("new-mainpage_left-sublist_header-open");
+                        this.closest(".new-mainpage_left-sublist").querySelector(".new-mainpage_left-sublist_body").style.display = "none";
+                	}else{
+                		this.classList.add("new-mainpage_left-sublist_header-open");
+                		this.closest(".new-mainpage_left-sublist").querySelector(".new-mainpage_left-sublist_body").style.display = "block";
+                	}
+                }
+            }
+
+            for(var i = 0; i < selectlist.length; i++){
+               selectlist[i].onclick = function(){ 
+                   if(this.closest(".new-mainpage_left-list_body").classList.contains("new-mainpage_left-sublist_body-single")){
+
+                       if(this.closest(".new-mainpage_left-list_body").querySelector(".new-mainpage_left-sublist_body-item_selected")){
+                            if(this.classList.contains("new-mainpage_left-sublist_body-item_selected")){
+                                this.classList.remove("new-mainpage_left-sublist_body-item_selected");
+                            }else{
+                                this.closest(".new-mainpage_left-list_body").querySelector(".new-mainpage_left-sublist_body-item_selected").classList.remove("new-mainpage_left-sublist_body-item_selected");
+                                this.classList.add("new-mainpage_left-sublist_body-item_selected");
+                            }
+                       }else{
+                           this.classList.add("new-mainpage_left-sublist_body-item_selected");
+                       }
+                   }else{
+                       if(this.classList.contains("new-mainpage_left-sublist_body-item_selected")){
+                           this.classList.remove("new-mainpage_left-sublist_body-item_selected");
+                       }else{
+                           this.classList.add("new-mainpage_left-sublist_body-item_selected");
+                       }
+                   }
+
+               }
+            }
+		}
+	</script>
+</head>
+<body>
+        <div class="new-mainpage_container">
+    	<div class="new-mainpage_left-container new-mainpage_scroll-height">
+    		<div class="new-mainpage_left-item  new-mainpage_scroll-height">
+                <div class="new-mainpage_left-list">
+    				<div  class="new-mainpage_left-list_header">
+    					<span class="new-mainpage_left-list_header-title">科研领域</span>
+    					<i class="material-icons new-mainpage_left-list_header-onkey">expand_less</i>
+    				</div>
+    				<div class="new-mainpage_left-list_body">
+    			        <div class="new-mainpage_left-sublist">
+    			        	<div class="new-mainpage_left-sublist_header">
+    			        		<i class="new-mainpage_left-sublist_header-onkey new-mainpage_left-sublist_header-open"></i>
+    			        		<span class="new-mainpage_left-sublist_header-title">农业</span>
+    			        	</div>
+    			        	<div class="new-mainpage_left-sublist_body">
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">插秧</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">嫁接</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">灌溉</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+                                <div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">栽培</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        	</div>
+    			        </div>
+
+                        <div class="new-mainpage_left-sublist">
+    			        	<div class="new-mainpage_left-sublist_header">
+    			        		<i class="new-mainpage_left-sublist_header-onkey new-mainpage_left-sublist_header-open"></i>
+    			        		<span class="new-mainpage_left-sublist_header-title">数学</span>
+    			        	</div>
+    			        	<div class="new-mainpage_left-sublist_body">
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">大数据</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">概率论</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">立体几何</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+                                <div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">高等数学</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        	</div>
+    			        </div>
+
+    			        <div class="new-mainpage_left-sublist">
+    			        	<div class="new-mainpage_left-sublist_header">
+    			        		<i class="new-mainpage_left-sublist_header-onkey new-mainpage_left-sublist_header-open"></i>
+    			        		<span class="new-mainpage_left-sublist_header-title">数学</span>
+    			        	</div>
+    			        	<div class="new-mainpage_left-sublist_body">
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">大数据</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">概率论</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">立体几何</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+                                <div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">高等数学</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        	</div>
+    			        </div>
+
+    				</div>
+    			</div>
+    				<div class="new-mainpage_left-list">
+    				<div  class="new-mainpage_left-list_header">
+    					<span class="new-mainpage_left-list_header-title">收录情况</span>
+    					<i class="material-icons new-mainpage_left-list_header-onkey">expand_less</i>
+    				</div>
+    				<div class="new-mainpage_left-list_body new-mainpage_left-list_body-limit">
+    					 <div class="new-mainpage_left-sublist">
+    			        	<div class="new-mainpage_left-sublist_body ">
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">大数据</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">概率论</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">立体几何</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+                                <div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">高等数学</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">高等数学</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">高等数学</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">高等数学</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">高等数学</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">高等数学</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">高等数学</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">高等数学</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        	</div>
+    			        </div>
+    				</div>
+    			</div>
+
+    				<div class="new-mainpage_left-list">
+    				<div  class="new-mainpage_left-list_header">
+    					<span class="new-mainpage_left-list_header-title">发表年份</span>
+    					<i class="material-icons new-mainpage_left-list_header-onkey">expand_less</i>
+    				</div>
+    				<div class="new-mainpage_left-list_body new-mainpage_left-sublist_body-single">
+    					 <div class="new-mainpage_left-sublist">
+    			        	<div class="new-mainpage_left-sublist_body">
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">近一年</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">近三年</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">近五年</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+                                <div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">不限</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        	</div>
+    			        </div>
+    				</div>
+    			</div>
+
+
+    				<div class="new-mainpage_left-list">
+    				<div  class="new-mainpage_left-list_header">
+    					<span class="new-mainpage_left-list_header-title">语言</span>
+    					<i class="material-icons new-mainpage_left-list_header-onkey">expand_less</i>
+    				</div>
+    				<div class="new-mainpage_left-list_body new-mainpage_left-sublist_body-single">
+    					 <div class="new-mainpage_left-sublist">
+    			        	<div class="new-mainpage_left-sublist_body ">
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">中文</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">英语</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">不限</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        	</div>
+    			        </div>
+    				</div>
+    			</div>
+
+    		</div>
+    	</div>
+    	<div class="new-mainpage_right-container  new-mainpage_scroll-height">
+    		<div class="new-mainpage_right-container-scroll  new-mainpage_scroll-height">
+    		<div class="new-mainpage_right-container_search" style="justify-content: space-between;">
+    			<div style="display: flex; align-items: center;">
+    			    <div class="new-mainpage_right-container_search-box">
+    				    <input type="text" placeholder="输入成果名称或者关键词">
+    				    <i class="searchbox__icon"></i>
+    			    </div>
+    			    <div class="new-mainpage_right-container_search-btn">检索</div>
+                </div>
+    			<div class="sort-container" style="margin-right: 35px;">
+			        <div class="sort-container_header" style=" width: 220px;">
+			        	<div class="sort-container_header-tip">
+			                <i class="sort-container_header-flag sort-container_header-up"></i><i class="sort-container_header-down"></i>
+			            </div>
+			            <div class="sort-container_header-title" style=" white-space: nowrap;overflow: hidden;text-overflow: ellipsis; display: block; text-align: left; width: 198px;" select_sen="false" code="1" title="企业">
+			            阅读数</div>
+			          
+			        </div>
+			        <div class="sort-container_item" style="; z-index: 999; width: 218px!important;">
+			          <div class="filter-list vert-style option_has-stats">
+			            <div class="filter-list__section js_filtersection" style="margin: 0; padding: 0;">
+			              <ul class="filter-value__list">
+			                <li class="filter-value__item js_filtervalue sort-container_item-list">
+			                  <div class="filter-value__option js_filteroption sort-container_item_name" style="font-size: 14px !important;">
+			                    阅读数</div>
+			                </li>
+			                <li class="filter-value__item js_filtervalue sort-container_item-list">
+			                  <div class="filter-value__option js_filteroption sort-container_item_name" style="font-size: 14px !important;" title="科研机构">
+			                    下载数</div>
+			                </li>
+			                <li class="filter-value__item js_filtervalue sort-container_item-list">
+			                  <div class="filter-value__option js_filteroption sort-container_item_name dev_seniority_unlimit" style="font-size: 14px !important;">
+			                    引用数</div>
+			                </li>
+			                <li class="filter-value__item js_filtervalue sort-container_item-list">
+			                  <div class="filter-value__option js_filteroption sort-container_item_name dev_seniority_unlimit" style="font-size: 14px !important;">
+			                    发表时间</div>
+			                </li>
+			              </ul>
+			            </div>
+			          </div>
+			        </div>
+			    </div>
+    		</div>
+    		<div class="new-mainpage_right-item">
+    			<div class="new-mainpage_right-list">
+    				<div class="new-mainpage_right-list_paper-avator">
+    					<img src="file_img1.jpg">
+    					<div class="pub-idx__full-text_newbox-box_load"></div>
+    				</div>
+
+    					<div class="new-mainpage_right-list_infor-box">
+    					   <div class="new-mainpage_right-list_infor-left">
+    						    <div class="new-mainpage_right-list_title">基础医学管理无地区企业时间不限基础医学管理无地区企业时间不限基础医学管理无地区企业时间不限</div>
+    						   
+    					        <div class="new-mainpage_right-list_author">基础医学管理无地区企业时间不限基础医学管理无地区企业时间不限</div>
+    					        <div class="new-mainpage_right-list_abstract">基础医学管理无地区企业时间不限基础医学管理无地区企业时间不限</div>
+    					        <div class="new-mainpage_right-list_author">
+    					        	<div class="new-Standard_Function-bar">
+                                        <div class="new-Standard_Function-bar_item" style="margin-left: 0px;">
+                                           <i class="new-Standard_function-icon new-Standard_Praise-icon"></i> 
+                                           <span class="new-Standard_Function-bar_item-title"> 赞</span>
+    	                                   
+                                        </div>
+                
+                                        <div class="new-Standard_Function-bar_item">
+                                            <i class="new-Standard_function-icon new-Standard_Share-icon"></i> 
+                                            <span class="new-Standard_Function-bar_item-title"> 分享 </span>
+    	                                    
+                                        </div>
+
+                                        <div class="new-Standard_Function-bar_item">
+                                            <i class="new-Standard_function-icon new-Standard_Save-icon"></i> 
+                                            <span class="new-Standard_Function-bar_item-title"> 收藏</span>
+                                        </div>
+
+                                        <div class="new-Standard_Function-bar_item">
+                                            <i class="new-Standard_function-icon new-Standard_Quote-icon"></i> 
+                                            <span class="new-Standard_Function-bar_item-title">引用</span>
+                                        </div>
+                                    </div>
+    					        </div>
+    				     	</div>
+    				     	<div class="new-mainpage_right-list_infor-right">
+    						    <div class="func_container-item">
+						            <div>40</div>
+						            <div>阅读数</div>
+						        </div>
+
+						        <div class="func_container-item">
+						            <div>58</div>
+						            <div>下载数</div>
+						        </div>
+
+						        <div class="func_container-item">
+						            <div>78</div>
+						             <div>引用数</div>
+						        </div>
+    					    </div>
+    				    </div>
+    			</div> 
+                
+                <div class="new-mainpage_right-list">
+    				<div class="new-mainpage_right-list_paper-avator  file-left__download ">
+    					<img src="file_img1.jpg">
+    					<div class="pub-idx__full-text_newbox-box dev_img_title" title="请求全文"></div>
+    					<div class="pub-idx__full-text_newbox-box_request" title="请求全文"></div>
+    				</div>
+
+    					<div class="new-mainpage_right-list_infor-box">
+    					   <div class="new-mainpage_right-list_infor-left">
+    						    <div class="new-mainpage_right-list_title">基础医学管理无地区企业时间不限基础医学管理无地区企业时间不限基础医学管理无地区企业时间不限</div>
+    						   
+    					        <div class="new-mainpage_right-list_author">基础医学管理无地区企业时间不限基础医学管理无地区企业时间不限</div>
+    					        <div class="new-mainpage_right-list_abstract">基础医学管理无地区企业时间不限基础医学管理无地区企业时间不限</div>
+    					        <div class="new-mainpage_right-list_author">
+    					        	<div class="new-Standard_Function-bar">
+                                        <div class="new-Standard_Function-bar_item" style="margin-left: 0px;">
+                                           <i class="new-Standard_function-icon new-Standard_Praise-icon"></i> 
+                                           <span class="new-Standard_Function-bar_item-title"> 赞</span>
+    	                                   
+                                        </div>
+                
+                                        <div class="new-Standard_Function-bar_item">
+                                            <i class="new-Standard_function-icon new-Standard_Share-icon"></i> 
+                                            <span class="new-Standard_Function-bar_item-title"> 分享 </span>
+    	                                    
+                                        </div>
+
+                                        <div class="new-Standard_Function-bar_item">
+                                            <i class="new-Standard_function-icon new-Standard_Save-icon"></i> 
+                                            <span class="new-Standard_Function-bar_item-title"> 收藏</span>
+                                        </div>
+
+                                        <div class="new-Standard_Function-bar_item">
+                                            <i class="new-Standard_function-icon new-Standard_Quote-icon"></i> 
+                                            <span class="new-Standard_Function-bar_item-title">引用</span>
+                                        </div>
+                                    </div>
+    					        </div>
+    				     	</div>
+    				     	<div class="new-mainpage_right-list_infor-right">
+    						    <div class="func_container-item">
+						            <div>40</div>
+						            <div>阅读数</div>
+						        </div>
+
+						        <div class="func_container-item">
+						            <div>58</div>
+						            <div>下载数</div>
+						        </div>
+
+						        <div class="func_container-item">
+						            <div>78</div>
+						             <div>引用数</div>
+						        </div>
+    					    </div>
+    				    </div>
+    			</div> 
+
+
+
+
+    		</div>
+    	</div>
+    	</div>
+    </div>
+</body>
+</html>

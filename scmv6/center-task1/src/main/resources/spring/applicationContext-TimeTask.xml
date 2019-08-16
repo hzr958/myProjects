@@ -1,0 +1,3414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+  default-lazy-init="false">
+  <!-- 在<Beans>中不能够设置default-lazy-init="true",否则定时任务不触发，如果不明确指明default-lazy-init的值，默认是false。 -->
+  <bean id="schedulerFactoryBean" lazy-init="true" autowire="no"
+    class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="triggers">
+      <list>
+        <ref bean="quartzCronExpressionResetTaskTriggers" />
+        <ref bean="dynamicRelationTaskTrigger" />
+        <ref bean="tokenizerExtendThesauriTaskTrigger" />
+        <ref bean="isisPrjMemberMatchTaskTrigger" />
+        <ref bean="BaseRaRecmdTaskTrigger" />
+        <ref bean="userClassificationTaskTrigger" />
+        <ref bean="cnkiPubClassificationTaskTrigger" />
+        <ref bean="isiPubClassificationTaskTrigger" />
+        <ref bean="nsfcPrjClassificationTaskTrigger" />
+        <ref bean="chineseNameSplitTaskTrigger" />
+        <!-- solr start -->
+        <ref bean="keywordsSuggestIndexTaskTrigger" />
+        <ref bean="pubAllIndexTaskTrigger" />
+        <ref bean="publicationIndexTrigger" />
+        <ref bean="userIndexTaskTrigger" />
+        <ref bean="patentIndexTaskTrigger" />
+        <ref bean="SimplePdwhPubIndexTaskTrigger" />
+        <ref bean="SimpleSnsPubIndexTaskTrigger" />
+        <ref bean="JxProjectIndexTaskTrigger" />
+        <ref bean="JxstcPrpInfoIndexTaskTrigger" />
+        <ref bean="patentRcmdIndexTaskTrigger" />
+        <ref bean="fundIndexTaskTrigger" />
+        <!-- solr end -->
+        <ref bean="InterfaceTestTaskTrigger" />
+        <ref bean="requirementRcmdTaskTrigger" />
+        <ref bean="patentRcmdTaskTrigger" />
+        <ref bean="ShortUrlInitTaskTrigger" />
+        <ref bean="CleanExpiredShortUrlTaskTrigger" />
+        <ref bean="pubReconfirmTaskTrigger" />
+        <ref bean="PsnScoreUpdateTaskTrigger" />
+        <ref bean="InitMsgTaskTrigger" />
+        <ref bean="RecomMsgTaskTrigger" />
+        <ref bean="PsnKwRmcTaskTrigger" />
+        <ref bean="psnKwEptTaskTrigger" />
+        <ref bean="KnowPsnWorkEduTaskTrigger" />
+        <ref bean="UpdateDynContentTaskTrigger" />
+        <ref bean="UpdateMobileDynContentTaskTrigger" />
+        <ref bean="GetPubInfoTaskTrigger" />
+        <ref bean="SplitPubAuthorInfoTaskTrigger" />
+        <ref bean="UpdateCategoryDisTaskTrigger" />
+        <ref bean="BatchFulltextPdfToImageTaskTrigger" />
+        <ref bean="PdwhPubAuthorMatchSnsTaskTrigger" />
+        <ref bean="GeneratePsnDefaultAvatarsTaskTrigger" />
+        <ref bean="PubConfirmPromoteTaskTrigger" />
+        <ref bean="GetPubAndPrjSumTaskTrigger" />
+        <ref bean="NsfcFullTextMatchTaskTrigger" />
+        <ref bean="GeneratePersonNullNameTaskTrigger" />
+        <ref bean="insSyncTaskTrigger" />
+        <ref bean="SavePubPdwhScmRolTaskTrigger" />
+        <ref bean="GenerateGroupCodeTaskTrigger" />
+        <ref bean="HandlePubListTaskTrigger" />
+        <ref bean="GenerateIKAnalyerDictTaskTrigger" />
+        <ref bean="WriteIKAnalyerDictFileTaskTrigger" />
+        <ref bean="UpdateInsInfoFromSIETaskTrigger" />
+        <ref bean="AddFileSizeIntoArchiveFilesTaskTrigger" />
+        <ref bean="SplitPatentCategoryTaskTrigger" />
+        <ref bean="PreGenerateShortUrlTaskTrigger" />
+        <ref bean="RenamePdwhFulltextFileTaskTrigger" />
+        <ref bean="RegisterIsisPsnTaskTrigger" />
+        <ref bean="PdwhPubPatentMatchIpcTaskTrigger" />
+        <ref bean="PubProvInteriorAnalysisTaskTrigger" />
+        <ref bean="PubProvInternationalAnalysisTaskTrigger" />
+        <ref bean="PubPrCityAnalysisTaskTrigger" />
+        <ref bean="PubIndependentPrCityAnalysisTaskTrigger" />
+        <ref bean="InitPdwhPubCleanDoiHashTaskTrigger" />
+        <ref bean="FundAgencyAddressTaskTrigger" />
+        <ref bean="CompPdwhKwsWithNsfcKwsTaskTrigger" />
+        <ref bean="InsGuidRefreshTaskTrigger" />
+        <ref bean="UpdateFundConditionTaskTrigger" />
+        <ref bean="HandleISISEnameTaskTrigger" />
+        <ref bean="InfluenceStatisticalTaskTrigger" />
+        <!--Bdsp start -->
+        <ref bean="BdspPsnInfoTaskTrigger" />
+        <ref bean="BdspPrjBuildInfoTaskTrigger" />
+        <ref bean="BdspPaperBuildInfoTaskTrigger" />
+        <ref bean="BdspPatentInfoTaskTrigger" />
+        <ref bean="BdspInterfacePushDataTaskTrigger" />
+        <ref bean="BdspStatisticsAnalysisTaskTrigger" />
+        <!--Bdsp end -->
+        <!-- mail start -->
+        <ref bean="groupPublcationEmailTaskTrigger" /><!--添加群组文件通知成员 邮件任务 -->
+        <ref bean="SendPrjGrpEmailTaskTrigger" /><!--项目成果推荐邮件任务 -->
+        <ref bean="SendNewYearMailTaskTrigger" /><!--新年邮件任务 -->
+        <ref bean="SendDealMessageNoticeMailTaskTrigger" /><!-- 待处理消息通知邮件 任务 -->
+        <ref bean="SendGroupPubRcmdMailTaskTrigger" /><!--群组成果推荐邮件任务 -->
+        <ref bean="SendPubAssignEmailTaskTrigger" /><!-- 成果认领邮件任务 -->
+        <ref bean="PsnFundRecommendMailTaskTrigger" /><!--基金推荐邮件任务 -->
+        <ref bean="noticeBeEndorseeAndEndorseTaskTrigger" /><!-- 认同研究领域邮件任务 -->
+        <ref bean="InviteEndorseResearchAreaTaskTrigger" /><!-- 邀请认同研究领域邮件任务 -->
+        <!-- mail end -->
+        <!--pdwh start -->
+        <ref bean="ShortUrlGeneratorSiteMapTaskTrigger"/><!--短地址生成sitemap任务  -->
+        <ref bean="UpdateConfirmPubBriefTaskTrigger" />
+        <ref bean="UpdatePdwhPubKeywordsTaskTrigger" />
+        <ref bean="UpdatePdwhPubBriefTaskTrigger" />
+        <ref bean="UpdatePdwhPubMatchConstTaskTrigger" /><!--更新基准库成果地址常量，人员别名常量任务 -->
+        <ref bean="SaveFundInfoFromXMlTaskTrigger" /><!--拆分成果基金信息 -->
+        <ref bean="SaveFundInfoFromXMlTask1Trigger" /><!--拆分成果基金信息 -->
+        <ref bean="SaveFundInfoFromXMlTask2Trigger" /><!--拆分成果基金信息 -->
+        <ref bean="SaveFundInfoFromXMlTask3Trigger" /><!--拆分成果基金信息 -->
+        <ref bean="SaveFundInfoFromXMlTask4Trigger" /><!--拆分成果基金信息 -->
+        <ref bean="UpdateAllPdwhPubCiteTimesTaskTrigger" /><!-- 更新系统所有pdwh成果引用次数 -->
+        <ref bean="PreImportPdwhPubXmlTaskTrigger" /><!-- 原始xml预处理 -->
+        <ref bean="UpdatePubCiteTimesTaskTrigger" /><!-- 更新引用次数任务 -->
+        <ref bean="PdwhPubAssignTaskTrigger" /><!-- 成果指派 -->
+        <ref bean="indexInfoInitTaskTrigger" /><!-- seo 论文列表生成 -->
+        <ref bean="inputFullTextTaskTrigger" /><!--全文上传任务 -->
+        <ref bean="DbcacheBfetchTaskTrigger" /><!--基准库成果导入任务 -->
+        <ref bean="DbcachePfetchTaskTrigger" /><!-- 联邦检索成果导入基准库 -->
+        <ref bean="PdwhPubFulltextToImageTaskTrigger" /><!--pdwh 全文缩略图生成 -->
+        <ref bean="CleanPdwhIndexPubDataTaskTrigger" /><!-- 处理 seo首页中文转化拼音的问题 -->
+        <ref bean="PubPdwhDataInitTaskTrigger" /><!-- pdwh 历史数据初始化 -->
+        <ref bean="PubPdwhDataBackupsTaskTrigger" /><!-- pdwh mongdb数据备份 -->
+        <ref bean="SavePdwhPubDataTaskTrigger" /><!-- 保存基准库成果 -->
+        <ref bean="PdwhPubAssignInsTaskTrigger" /><!-- 特定成果优先指派 -->
+        <!--pdwh end -->
+        <!--sns start -->
+        <ref bean="HandlePatentHisDataTaskTrigger" />
+        <ref bean="SyncPmNameFromPersonTaskTrigger" />
+        <ref bean="updatePsnStatisticsTaskTrigger" />
+        <ref bean="UpdateSnsPubBriefTaskTrigger" />
+        <ref bean="GeneratePsnPmNameTmpTaskTrigger" /><!-- 人员别名生成任务 -->
+        <ref bean="indexPsnInfoInitTaskTrigger" /><!-- seo 人员列表生成 -->
+        <ref bean="SnsDupPubGroupingTaskTrigger" /><!--sns 重复成果分组 -->
+        <ref bean="SystemRecommendTrigger" /><!-- 好友推荐 -->
+        <ref bean="PsnFundRecommendTaskTrigger" /><!-- 基金推荐 (登录过系统且关联过其他业务系统)-->
+        <ref bean="PsnFundRecommendTaskTrigger1" /><!-- 基金推荐 (未登录过系统但关联过其他业务系统)-->
+        <ref bean="PsnFundRecommendTaskTrigger2" /><!-- 基金推荐 (登录过系统未关联过其他业务系统)-->
+        <ref bean="PubSnsDataInitTaskTrigger" /><!-- sns 历史数据初始化 -->
+        <ref bean="SnsPubFulltextToImageTaskTrigger" /><!--pdwh 全文缩略图生成 -->
+        <ref bean="PubSnsDataBackupsTaskTrigger" /><!--sns mongdb数据备份 -->
+        <ref bean="HandlePubRelationErrorDataTaskTrigger" /><!--处理基个人库与准库成果数据关联错误问题 -->
+        <ref bean="InsertDataFromPubViewToVistStatisticsTaskTrigger" /><!--将数据从V_PUB_VIEW中 修复vist_statistics表中的数据，插入那些没有导入的数据，修复浏览数 -->
+        <ref bean="ConferencePaperDataStatisticsTaskTrigger" /><!--会议论文数据统计 -->
+        <!--sns end -->
+        <ref bean="BaiduMapGetInsAddsTaskTrigger" /><!-- 使用百度地图API获取单位具体地址 -->
+        <ref bean="pdwhScmRolPubRelationTaskTrigger" /><!-- 个人库成果与基准库成果匹配 -->
+        <ref bean="GenerateAddrPsnConstDicTaskTrigger" /><!--人名，单位地址生成词典 -->
+        <ref bean="SaveCrossRefDataTaskTrigger" /><!-- 保存crossref数据 -->
+        <ref bean="PreImportCrossrefDataTaskTrigger"/>
+        <ref bean="DbcacheCfetchTaskTrigger"/>
+        <ref bean="IsiPubClassificationToNsfcTaskTrigger" />
+        <ref bean="CnkiPubClassificationToNsfcTaskTrigger" />
+        <ref bean="CnkiPubClassificationToNsfcTaskTrigger" />
+        <ref bean="PubfulltextRcmdTaskTrigger" />
+        <!-- sie start -->
+        <ref bean="sieStInsTaskTrigger" />
+        <ref bean="sieStUnitTaskTrigger" />
+        <ref bean="sieStPsnTaskTrigger" />
+        <ref bean="sieAddInsByBacthTaskTrigger" />
+        <ref bean="sieImportPublicationsTaskTrigger" />
+        <ref bean="sieGenPdwhInsAddrConstTaskTrigger" />
+        <ref bean="siePubFulltextToImageTaskTriggers" />
+        <ref bean="siePrjFulltextToImageTaskTriggers" />
+        <ref bean="siePatFulltextToImageTaskTriggers" />
+        <ref bean="sieDataSrvPubTmpTaskTriggers" />
+        <ref bean="sieDataSrvPatTmpTaskTriggers" />
+        <ref bean="sieMergeInsTaskTriggers" />
+        <ref bean="sieRobotManTaskTriggers" />
+        <ref bean="sieSyncDynMsgTaskTriggers" />
+        <ref bean="sieSynBpoGrantInfoTaskTrigger" />
+        <ref bean="sieFixPubXml2JsonTaskTrigger" />
+        <ref bean="sieAuditLogTaskTriggers" />
+        <ref bean="sieImportThirdUnitsTaskTrigger" />
+        <ref bean="sieImportThirdPsnsTaskTrigger" />
+        <ref bean="sieSyncPatSocialBehaveTaskTrigger" />
+        <ref bean="sieSyncPubSocialBehaveTaskTrigger" />
+        <ref bean="sieKpiValidateTaskTrigger" /> 
+        <ref bean="sieBaiduMapGetInsAddsTaskTrigger" /><!-- 机构版处理ins_baidu_get_addr -->
+        <ref bean="sieSplitPubOrgsTaskTrigger" />
+        <ref bean="sieSplitKpiValidateDetailTrigger"/>
+        <ref bean="sieImpactBaseTaskTrigger" />
+        <ref bean="sieImpactExtendTaskTrigger" />
+        <ref bean="sieSynNotificationLogoTaskTriggers" /> <!-- 同步sns的全文至sie -->
+        <ref bean="sieGenerateInsLogoTaskTrigger" /> <!-- 批量生成单位默认LOGO -->
+        <!-- sie end -->
+        
+        <ref bean="PdwhPubSorlUpdateTaskTrigger" /><!-- 指定成果id进行更新sorl --> 
+        <ref bean="PdwhMemberInitTaskTrigger" /><!-- 初始化基准库成果作者信息表 -->
+        <ref bean="SendInvitePsnValidateMailTaskTrigger" />
+        <ref bean="PdwhPubUpdateImportPublicationTaskTrigger"/>
+        <ref bean="suggestStrIndexTaskTrigger" />
+        <ref bean="SynSnsPdwhRelationLikeTaskTrigger" /><!-- 关联成果个人库基准库赞记录同步 -->
+        <ref bean="SynSnsPdwhRelationCommentTaskTrigger" /><!-- 关联成果个人库基准库评论记录同步 -->
+        <ref bean="SynSnsPdwhRelationShareTaskTrigger" /><!-- 关联成果个人库基准库分享记录同步 -->
+        <ref bean="GeneratePsnPubCopartnerTaskTrigger"/><!-- 成果合作者 -->
+        <ref bean="GeneratePsnPrjCopartnerTaskTrigger"/><!-- 项目合作者 -->
+        <ref bean="RemOriPdwhPubRelationDataTaskTrigger"/><!-- 备份OriginalPdwhPubRelation表数据 -->
+        <ref bean="GetThirdPartyDataTaskTrigger"/><!-- 第三方数据获取任务  -->
+        <ref bean="PdwhRebuildPublishDateTaskTrigger"/>
+        <ref bean="PubRebuildPublishDateTaskTrigger"/>
+        <ref bean="SyncUserUnionLoginLogTaskTrigger"/><!-- 同步系统人员的登录及关联其他系统情况 -->
+        <ref bean="InitPsnRecommendFundTaskTrigger"/>
+        <ref bean="BaseJournalTitleRepairTaskTrigger"/><!-- 修复base_journal中的标题数据 -->
+        <ref bean="PdwhPubRepeatTaskTrigger"/><!-- 基准库重复成果筛选任务 -->
+        <ref bean="FillPsnWorkHistoryTaskTrigger"/><!--个人工作经历填充 -->
+        <ref bean="InstrestGrpPubInitTaskTrigger"/><!-- 兴趣群组成果初始化 -->
+        <ref bean="InstrestGrpAddPubTaskTrigger"/><!-- 兴趣群组加成果 -->
+        <ref bean="GroupRcmdTaskTrigger"/><!-- 群组推荐 -->
+        <ref bean="GroupRcmdIncTaskTrigger"/><!-- 更新，新增群组推荐 -->
+        <ref bean="PdwhPaperIndexHandleTaskTrigger"/>
+        <ref bean="SendGrpDnyUpdateEmailTaskTrigger"/><!-- 兴趣群组动态更新通知 -->
+        
+        <!-- 基准库期刊数据修复任务 -->
+        <ref bean="PdwhPubJournalRepairTaskTrigger" />
+        
+      </list>
+    </property>
+    <property name="quartzProperties">
+      <props>
+        <prop key="org.quartz.threadPool.threadCount">50</prop>
+      </props>
+    </property>
+  </bean>
+  <!-- 定时器任务时间重置任务 -->
+  <bean id="quartzCronExpressionResetTaskDetaill"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.sys.quartz.service.QuartzCronExpressionResetTask"></bean>
+    </property>
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="quartzCronExpressionResetTaskTriggers"
+    class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="quartzCronExpressionResetTaskDetaill" />
+    <property name="cronExpression" value="0 0/1 * * * ?" />
+  </bean>
+  <!-- end定时器任务时间重置任务 -->
+  <!-- 临时接口测试任务,start -->
+  <bean id="InterfaceTestTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.InterfaceTestTask">
+        <constructor-arg name="beanName" value="InterfaceTestTaskTrigger"></constructor-arg>
+        <property name="requestUrl" value="http://testwebservice.scholarmate.com:39593/psnInfoService"></property>
+        <!-- soapXml文件格式可以查看WSDL文档或者直接用soapui访问wsdl -->
+        <property name="soapXml" value="${ws.soapXml.addr}"></property>
+        <property name="soapAction" value="${ws.deslogfile.addr}"></property>
+        <property name="desFile" value="D:/interfacetestlog.txt"></property>
+      </bean>
+    </property>
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="InterfaceTestTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="triggerName" value="InterfaceTestTaskTrigger" />
+    <property name="jobDetail" ref="InterfaceTestTaskDetail" />
+    <!-- cron表达式 ,配置在数据库 -->
+    <!-- <property name="cronExpression" value="0/5 * * * * ?" /> -->
+  </bean>
+  <!-- 临时接口测试任务,end -->
+  <!-- 科研月度影响力统计 hht start -->
+  <bean id="InfluenceStatisticalTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.InfluenceStatisticalTask">
+        <constructor-arg name="beanName" value="InfluenceStatisticalTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="InfluenceStatisticalTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="InfluenceStatisticalTaskDetail" />
+    <property name="triggerName" value="InfluenceStatisticalTaskTrigger" />
+  </bean>
+  <!-- 科研月度影响力统计 hht end -->
+  <!-- start 推荐研究领域 -->
+  <bean id="BaseRaRecmdTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.email.BaseRaRecmdTask">
+        <constructor-arg name="beanName" value="BaseRaRecmdTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="BaseRaRecmdTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="BaseRaRecmdTaskDetail" />
+    <property name="triggerName" value="BaseRaRecmdTaskTrigger" />
+  </bean>
+  <!-- end 推荐研究领域 -->
+  <!-- start 赞研究领域 -->
+  <bean id="noticeBeEndorseeAndEndorseTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.email.NoticeBeEndorseeAndEndorseTask">
+        <constructor-arg name="beanName" value="noticeBeEndorseeAndEndorseTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="noticeBeEndorseeAndEndorseTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="noticeBeEndorseeAndEndorseTaskDetail" />
+    <property name="triggerName" value="noticeBeEndorseeAndEndorseTaskTrigger" />
+  </bean>
+  <!-- end 赞研究领域 -->
+  <!-- start 动态关系建立任务 -->
+  <bean id="dynamicRelationTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.dyn.task.DynamicRelationTask">
+        <constructor-arg name="beanName" value="dynamicRelationTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="dynamicRelationTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="dynamicRelationTaskDetail" />
+    <property name="triggerName" value="dynamicRelationTaskTrigger" />
+  </bean>
+  <!-- end 动态关系建立任务 -->
+  <!-- start 分词器额外词库任务 -->
+  <bean id="tokenizerExtendThesauriTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.tokenizer.task.TokenizerExtendThesauriTask">
+        <constructor-arg name="beanName" value="tokenizerExtendThesauriTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="tokenizerExtendThesauriTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="tokenizerExtendThesauriTaskDetail" />
+    <property name="triggerName" value="tokenizerExtendThesauriTaskTrigger" />
+  </bean>
+  <!-- end 分词器额外词库任务 -->
+  <!-- start grpFile 新增文件到群组发送邮件任务 -->
+  <bean id="grpFileEmailTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.email.GrpFileEmailTask">
+        <constructor-arg name="beanName" value="grpFileEmailTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="grpFileEmailTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="grpFileEmailTaskDetail" />
+    <property name="triggerName" value="grpFileEmailTaskTrigger" />
+  </bean>
+  <!-- end grpFile 新增文件到群组发送邮件任务 -->
+  <!-- start 新增成果到群组发送邮件任务 -->
+  <bean id="groupPublcationEmailTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.email.GroupPublcationEmailTask">
+        <constructor-arg name="beanName" value="groupPublcationEmailTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="groupPublcationEmailTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="groupPublcationEmailTaskDetail" />
+    <property name="triggerName" value="groupPublcationEmailTaskTrigger" />
+  </bean>
+  <!-- end 新增成果到群组发送邮件任务 -->
+  <!-- start isisPrjMemberMatchTask 人员匹配任务 -->
+  <bean id="isisPrjMemberMatchTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.IsisPrjMemberMatchTask">
+        <constructor-arg name="beanName" value="isisPrjMemberMatchTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="Run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="isisPrjMemberMatchTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="isisPrjMemberMatchTaskDetail" />
+    <property name="triggerName" value="isisPrjMemberMatchTaskTrigger" />
+  </bean>
+  <!-- end 人员匹配任务 -->
+  <!-- start inputFullTextTaskTrigger -->
+  <bean id="inputFullTextTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.InputFullTextTask">
+        <constructor-arg name="beanName" value="inputFullTextTaskTrigger"></constructor-arg>
+        <property name="skipDir" value="tmp_tohandle"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="Execute" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="inputFullTextTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="inputFullTextTaskDetail" />
+    <property name="triggerName" value="inputFullTextTaskTrigger" />
+  </bean>
+  <!-- end inputFullTextTaskTrigger -->
+  <!-- start UserClassificationTaskTrigger -->
+  <bean id="userClassificationTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.UserClassificationTask">
+        <constructor-arg name="beanName" value="userClassificationTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="userClassificationTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="userClassificationTaskDetail" />
+    <property name="triggerName" value="userClassificationTaskTrigger" />
+  </bean>
+  <!-- end pubToPubsimpleTask2Trigger -->
+  <!-- start pubToPubsimpleTask5Trigger -->
+  <bean id="pubToPubsimpleTask5Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PubToPubsimpleTask5">
+        <constructor-arg name="beanName" value="pubToPubsimpleTask5Trigger"></constructor-arg>
+        <property name="startPubId" value="0"></property>
+        <property name="endPubId" value="120000008774000"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pubToPubsimpleTask5Trigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask5Detail" />
+    <property name="triggerName" value="pubToPubsimpleTask5Trigger" />
+  </bean>
+  <!-- end pubToPubsimpleTask5Trigger -->
+  <!-- start pubToPubsimpleTask7Trigger -->
+  <bean id="pubToPubsimpleTask7Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PubToPubsimpleTask7">
+        <constructor-arg name="beanName" value="pubToPubsimpleTask7Trigger"></constructor-arg>
+        <property name="startPubId" value="1000006000000"></property>
+        <property name="endPubId" value="1000001500000"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pubToPubsimpleTask7Trigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask7Detail" />
+    <property name="triggerName" value="pubToPubsimpleTask7Trigger" />
+  </bean>
+  <!-- end pubToPubsimpleTask7Trigger -->
+  <!-- start pubToPubsimpleTask8Trigger -->
+  <bean id="pubToPubsimpleTask8Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PubToPubsimpleTask8">
+        <constructor-arg name="beanName" value="pubToPubsimpleTask8Trigger"></constructor-arg>
+        <property name="startPubId" value="1000007500000"></property>
+        <property name="endPubId" value="1000009000000"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pubToPubsimpleTask8Trigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask8Detail" />
+    <property name="triggerName" value="pubToPubsimpleTask8Trigger" />
+  </bean>
+  <!-- end pubToPubsimpleTask8Trigger -->
+  <!-- start pubToPubsimpleTask9Trigger -->
+  <bean id="pubToPubsimpleTask9Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PubToPubsimpleTask9">
+        <constructor-arg name="beanName" value="pubToPubsimpleTask9Trigger"></constructor-arg>
+        <property name="startPubId" value="1000009000000"></property>
+        <property name="endPubId" value="1000010500000"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pubToPubsimpleTask9Trigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask9Detail" />
+    <property name="triggerName" value="pubToPubsimpleTask9Trigger" />
+  </bean>
+  <!-- end pubToPubsimpleTask9Trigger -->
+  <!-- start pubToPubsimpleTask10Trigger -->
+  <bean id="pubToPubsimpleTask10Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PubToPubsimpleTask10">
+        <constructor-arg name="beanName" value="pubToPubsimpleTask10Trigger"></constructor-arg>
+        <property name="startPubId" value="1000010500000"></property>
+        <property name="endPubId" value="1000012000000"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pubToPubsimpleTask10Trigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask10Detail" />
+    <property name="triggerName" value="pubToPubsimpleTask10Trigger" />
+  </bean>
+  <!-- end pubToPubsimpleTask10Trigger -->
+  <!-- start 基金solr索引生成定时任务 -->
+  <bean id="fundIndexTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.FundIndexTask">
+        <constructor-arg name="beanName" value="fundIndexTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="fundIndexTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="fundIndexTaskDetail" />
+    <property name="triggerName" value="fundIndexTaskTrigger" />
+  </bean>
+  <!-- end 基金solr索引生成定时任务 -->
+  <!-- start pdwhScmRolPubRelationTaskTrigger -->
+  <bean id="pdwhScmRolPubRelationTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PdwhScmRolPubRelationTask">
+        <constructor-arg name="beanName" value="pdwhScmRolPubRelationTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pdwhScmRolPubRelationTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="pdwhScmRolPubRelationTaskDetail" />
+    <property name="triggerName" value="pdwhScmRolPubRelationTaskTrigger" />
+  </bean>
+  <!-- end pdwhScmRolPubRelationTaskTrigger -->
+  <!-- start pubToPubsimpleTask13Trigger -->
+  <bean id="pubToPubsimpleTask13Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PubToPubsimpleTask13">
+        <constructor-arg name="beanName" value="pubToPubsimpleTask13Trigger"></constructor-arg>
+        <property name="startGroupId" value="100000001257710"></property>
+        <property name="endGroupId" value="100000001291565"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pubToPubsimpleTask13Trigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask13Detail" />
+    <property name="triggerName" value="pubToPubsimpleTask13Trigger" />
+  </bean>
+  <!-- end pubToPubsimpleTask13Trigger -->
+  <!-- start pubToPubsimpleTask14Trigger -->
+  <bean id="pubToPubsimpleTask14Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PubToPubsimpleTask14">
+        <constructor-arg name="beanName" value="pubToPubsimpleTask14Trigger"></constructor-arg>
+        <property name="startGroupId" value="100000001291565"></property>
+        <property name="endGroupId" value="100000001425420"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pubToPubsimpleTask14Trigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask14Detail" />
+    <property name="triggerName" value="pubToPubsimpleTask14Trigger" />
+  </bean>
+  <!-- end pubToPubsimpleTask14Trigger -->
+  <!-- start pubAllIndexTaskTrigger -->
+  <bean id="PubAllIndexTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PubAllIndexTask">
+        <constructor-arg name="beanName" value="pubAllIndexTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pubAllIndexTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PubAllIndexTaskDetail" />
+    <property name="triggerName" value="pubAllIndexTaskTrigger" />
+  </bean>
+  <!-- end pubAllIndexTaskTrigger -->
+  <!-- start PublicationIndexTrigger ，重建Publication索引 -->
+  <bean id="PublicationIndexTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PublicationIndexTask">
+        <constructor-arg name="beanName" value="publicationIndexTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="publicationIndexTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PublicationIndexTaskDetail" />
+    <property name="triggerName" value="publicationIndexTrigger" />
+  </bean>
+  <!-- endPublicationIndexTrigger -->
+  <!-- start PubReconfirmTaskTrigger，成果认领 -->
+  <bean id="pubReconfirmTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PubReconfirmTask">
+        <constructor-arg name="beanName" value="pubReconfirmTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pubReconfirmTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="pubReconfirmTaskDetail" />
+    <property name="triggerName" value="pubReconfirmTaskTrigger" />
+  </bean>
+  <!-- PubReconfirmTrigger -->
+  <!-- start PsnKwEptTask，人员关键词 -->
+  <bean id="psnKwEptTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PsnKwEptTask">
+        <constructor-arg name="beanName" value="psnKwEptTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="psnKwEptTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="psnKwEptTaskDetail" />
+    <property name="triggerName" value="psnKwEptTaskTrigger" />
+  </bean>
+  <!-- PubReconfirmTrigger -->
+  <!-- start userIndexTaskTrigger ，重建人员user索引 -->
+  <bean id="UserIndexTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.UserIndexTask">
+        <constructor-arg name="beanName" value="userIndexTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="userIndexTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="UserIndexTaskDetail" />
+    <property name="triggerName" value="userIndexTaskTrigger" />
+  </bean>
+  <!-- enduserIndexTaskTrigger -->
+  <!-- start patentIndexTaskTrigger ，重建专利索引 -->
+  <bean id="PatentIndexTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PatentIndexTask">
+        <constructor-arg name="beanName" value="patentIndexTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="patentIndexTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PatentIndexTaskDetail" />
+    <property name="triggerName" value="patentIndexTaskTrigger" />
+  </bean>
+  <!-- endpatentIndexTaskTrigger -->
+  <!-- start 基准库改造 ,xml文本文件导入任务 ，从DbcacheBfetch表获取数据 -->
+  <bean id="DbcacheBfetchTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.DbcacheBfetchTask">
+        <constructor-arg name="beanName" value="DbcacheBfetchTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="DbcacheBfetchTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="DbcacheBfetchTaskDetail" />
+    <property name="triggerName" value="DbcacheBfetchTaskTrigger" />
+  </bean>
+  <!-- end 基准库改造,xml文本文件导入任务 -->
+  <!-- start 基准库改造 ,xml文本文件导入任务 ，从DbcachePfetch表获取数据 -->
+  <bean id="DbcachePfetchTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.DbcachePfetchTask">
+        <constructor-arg name="beanName" value="DbcachePfetchTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="DbcachePfetchTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="DbcachePfetchTaskDetail" />
+    <property name="triggerName" value="DbcachePfetchTaskTrigger" />
+  </bean>
+  <!-- end 基准库改造,xml文本文件导入任务 -->
+  <!-- start 初始化系统未登录首页-index页面的站外成果检索结果信息 -->
+  <bean id="IndexInfoInitTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.IndexInfoInitTask">
+        <constructor-arg name="beanName" value="indexInfoInitTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="indexInfoInitTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="IndexInfoInitTaskDetail"></property>
+    <property name="triggerName" value="indexInfoInitTaskTrigger"></property>
+  </bean>
+  <!-- end 初始化系统未登录首页-index页面的站外成果检索结果信息 -->
+  <!-- start 初始化系统未登录首页-index页面的站外人员检索结果信息 -->
+  <bean id="IndexPsnInfoInitTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.sns.IndexPsnInfoInitTask">
+        <constructor-arg name="beanName" value="indexPsnInfoInitTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="indexPsnInfoInitTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="IndexPsnInfoInitTaskDetail"></property>
+    <property name="triggerName" value="indexPsnInfoInitTaskTrigger"></property>
+  </bean>
+  <!-- end 初始化系统未登录首页-index页面的站外人员检索结果信息 -->
+  <!-- 为innocity中需求书推荐专利 -->
+  <bean id="patentRcmdTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PatentRcmdTask">
+        <constructor-arg name="beanName" value="patentRcmdTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="patentRcmdTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="patentRcmdTaskDetail" />
+    <property name="triggerName" value="patentRcmdTaskTrigger" />
+  </bean>
+  <!-- 为innocity中专利书推荐相关需求书 -->
+  <bean id="requirementRcmdTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.RequirementRcmdTask">
+        <constructor-arg name="beanName" value="requirementRcmdTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="requirementRcmdTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="requirementRcmdTaskDetail" />
+    <property name="triggerName" value="requirementRcmdTaskTrigger" />
+  </bean>
+  <bean id="patentRcmdIndexTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PatentRcmdIndexTask">
+        <constructor-arg name="beanName" value="patentRcmdIndexTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="patentRcmdIndexTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="patentRcmdIndexTaskDetail" />
+    <property name="triggerName" value="patentRcmdIndexTaskTrigger" />
+  </bean>
+  <!-- 基准库成果引用更新 -->
+  <bean id="UpdatePubCiteTimesTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.UpdatePubCiteTimesTask">
+        <constructor-arg name="beanName" value="UpdatePubCiteTimesTaskTrigger"></constructor-arg>
+        <property name="skipDir" value="tmp_tohandle"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="UpdatePubCiteTimesTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="UpdatePubCiteTimesTaskDetail" />
+    <property name="triggerName" value="UpdatePubCiteTimesTaskTrigger" />
+  </bean>
+  <!-- 短地址数据初始化 -->
+  <bean id="ShortUrlInitTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.ShortUrlInitTask">
+        <constructor-arg name="beanName" value="ShortUrlInitTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="ShortUrlInitTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="ShortUrlInitTaskDetail" />
+    <property name="triggerName" value="ShortUrlInitTaskTrigger" />
+  </bean>
+  <!-- 清理过期短地址 -->
+  <bean id="CleanExpiredShortUrlTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.CleanExpiredShortUrlTask">
+        <constructor-arg name="beanName" value="CleanExpiredShortUrlTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="CleanExpiredShortUrlTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="CleanExpiredShortUrlTaskDetail" />
+    <property name="triggerName" value="CleanExpiredShortUrlTaskTrigger" />
+  </bean>
+  <!-- start 人员信息完整度任务 -->
+  <bean id="PsnScoreUpdateTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PsnScoreUpdateTask">
+        <constructor-arg name="beanName" value="PsnScoreUpdateTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PsnScoreUpdateTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PsnScoreUpdateTaskDetail" />
+    <property name="triggerName" value="PsnScoreUpdateTaskTrigger" />
+  </bean>
+  <!-- end 人员信息完整度任务 -->
+  <!-- 基准库cnki成果按scm分类 -->
+  <bean id="cnkiPubClassificationTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.CnkiPubClassificationTask">
+        <constructor-arg name="beanName" value="cnkiPubClassificationTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="cnkiPubClassificationTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="cnkiPubClassificationTaskDetail" />
+    <property name="triggerName" value="cnkiPubClassificationTaskTrigger" />
+  </bean>
+  <!-- 基准库isi成果按scm分类 -->
+  <bean id="isiPubClassificationTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.IsiPubClassificationTask">
+        <constructor-arg name="beanName" value="isiPubClassificationTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="isiPubClassificationTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="isiPubClassificationTaskDetail" />
+    <property name="triggerName" value="isiPubClassificationTaskTrigger" />
+  </bean>
+  <!-- nsfc项目按scm分类，用于项目群组分类 -->
+  <bean id="nsfcPrjClassificationTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.NsfcPrjClassificationTask">
+        <constructor-arg name="beanName" value="nsfcPrjClassificationTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="nsfcPrjClassificationTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="nsfcPrjClassificationTaskDetail" />
+    <property name="triggerName" value="nsfcPrjClassificationTaskTrigger" />
+  </bean>
+  <!-- msg -->
+  <bean id="InitMsgTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.InitMsgTask">
+        <constructor-arg name="beanName" value="InitMsgTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="InitMsgTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="InitMsgTaskDetail" />
+    <property name="triggerName" value="InitMsgTaskTrigger" />
+  </bean>
+  <bean id="RecomMsgTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.RecomMsgTask">
+        <constructor-arg name="beanName" value="RecomMsgTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="RecomMsgTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="RecomMsgTaskDetail" />
+    <property name="triggerName" value="RecomMsgTaskTrigger" />
+  </bean>
+  <!-- 智能推荐好友 start -->
+  <bean id="SystemRecommendDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.sns.SystemRecommendTask">
+        <constructor-arg name="beanName" value="SystemRecommendTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SystemRecommendTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SystemRecommendDetail" />
+    <property name="triggerName" value="SystemRecommendTrigger" />
+  </bean>
+  <!-- 智能推荐好友 end -->
+  <!-- pkg_psn_kw_rmc存储过程 -->
+  <bean id="PsnKwRmcTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PsnKwRmcTask">
+        <constructor-arg name="beanName" value="PsnKwRmcTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PsnKwRmcTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PsnKwRmcTaskDetail" />
+    <property name="triggerName" value="PsnKwRmcTaskTrigger" />
+  </bean>
+  <!-- start 智能推荐人员工作经历，教育经历所有单位 -->
+  <bean id="KnowPsnWorkEduTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.KnowPsnWorkEduTask">
+        <constructor-arg name="beanName" value="KnowPsnWorkEduTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="KnowPsnWorkEduTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="KnowPsnWorkEduTaskDetail" />
+    <property name="triggerName" value="KnowPsnWorkEduTaskTrigger" />
+  </bean>
+  <!-- end 智能推荐人员工作经历，教育经历所有单位 -->
+  <!-- 分解中文名字姓与名ChineseNameSplitTask -->
+  <bean id="chineseNameSplitTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.ChineseNameSplitTask">
+        <constructor-arg name="beanName" value="chineseNameSplitTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="chineseNameSplitTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="chineseNameSplitTaskDetail" />
+    <property name="triggerName" value="chineseNameSplitTaskTrigger" />
+  </bean>
+  <!-- UpdateAllPdwhPubCiteTimesTask -->
+  <bean id="UpdateAllPdwhPubCiteTimesTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.UpdateAllPdwhPubCiteTimesTask">
+        <constructor-arg name="beanName" value="UpdateAllPdwhPubCiteTimesTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="UpdateAllPdwhPubCiteTimesTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="UpdateAllPdwhPubCiteTimesTaskDetail" />
+    <property name="triggerName" value="UpdateAllPdwhPubCiteTimesTaskTrigger" />
+  </bean>
+  <!-- end UpdateAllPdwhPubCiteTimesTask -->
+  <!-- UpdateDynContentTask -->
+  <bean id="UpdateDynContentTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.UpdateDynContentTask">
+        <constructor-arg name="beanName" value="UpdateDynContentTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="UpdateDynContentTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="UpdateDynContentTaskDetail" />
+    <property name="triggerName" value="UpdateDynContentTaskTrigger" />
+  </bean>
+  <!-- end UpdateDynContentTask -->
+  <!-- UpdateMobileDynContentTask -->
+  <bean id="UpdateMobileDynContentTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.UpdateMobileDynContentTask">
+        <constructor-arg name="beanName" value="UpdateMobileDynContentTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="UpdateMobileDynContentTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="UpdateMobileDynContentTaskDetail" />
+    <property name="triggerName" value="UpdateMobileDynContentTaskTrigger" />
+  </bean>
+  <!-- end UpdateMobileDynContentTask -->
+  <!--GetPubInfoTask -->
+  <bean id="GetPubInfoTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.GetPubInfoTask">
+        <constructor-arg name="beanName" value="GetPubInfoTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="GetPubInfoTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="GetPubInfoTaskDetail" />
+    <property name="triggerName" value="GetPubInfoTaskTrigger" />
+  </bean>
+  <!--GetPubInfoTask -->
+  <!--psnPubAndPrjStatisticsTask获取个人的公开成果和项目数 -->
+  <bean id="GetPubAndPrjSumTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.psnPubAndPrjStatisticsTask">
+        <constructor-arg name="beanName" value="GetPubAndPrjSumTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="GetPubAndPrjSumTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="GetPubAndPrjSumTaskDetail" />
+    <property name="triggerName" value="GetPubAndPrjSumTaskTrigger" />
+  </bean>
+  <!--psnPubAndPrjStatisticsTask获取个人的公开成果和项目数 -->
+  <!-- psnRefRecommendTaskTriggers -->
+  <bean id="PsnRefRecommendTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PsnRefRecommendTask">
+        <constructor-arg name="beanName" value="PsnRefRecommendTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PsnRefRecommendTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PsnRefRecommendTaskDetail" />
+    <property name="triggerName" value="PsnRefRecommendTaskTrigger" />
+  </bean>
+  <!-- psnRefRecommendTaskTriggers -->
+  <!--SplitPubAuthorInfoTaskTrigger获取成果作者信息 -->
+  <bean id="SplitPubAuthorInfoTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.SplitPubAuthorInfoTask">
+        <constructor-arg name="beanName" value="SplitPubAuthorInfoTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SplitPubAuthorInfoTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SplitPubAuthorInfoTaskDetail" />
+    <property name="triggerName" value="SplitPubAuthorInfoTaskTrigger" />
+  </bean>
+  <!--SplitPubAuthorInfoTaskTrigger获取成果作者信息 -->
+  <bean id="UpdateCategoryDisTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.UpdateCategoryDisTask">
+        <constructor-arg name="beanName" value="UpdateCategoryDisTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="UpdateCategoryDisTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="UpdateCategoryDisTaskDetail" />
+    <property name="triggerName" value="UpdateCategoryDisTaskTrigger" />
+  </bean>
+  <!-- FundRecommendTaskTrigger 基金推荐 -->
+  <bean id="PsnFundRecommendTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.sns.PsnFundRecommendTask">
+        <constructor-arg name="beanName" value="PsnFundRecommendTaskTrigger"></constructor-arg>
+        <property name="fundpsnCache" value="fund_recommend_psn_id_cache"></property>
+        <property name="remCacheName" value="PsnFundRecommendTask_removePatCache"></property>
+        <property name="psnType" value="1"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PsnFundRecommendTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PsnFundRecommendTaskDetail" />
+    <property name="triggerName" value="PsnFundRecommendTaskTrigger" />
+  </bean>
+  <!-- FundRecommendTaskTrigger 基金推荐 -->
+  
+    <!-- FundRecommendTaskTrigger 基金推荐 -->
+  <bean id="PsnFundRecommendTaskDetail1"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.sns.PsnFundRecommendTask">
+        <constructor-arg name="beanName" value="PsnFundRecommendTaskTrigger1"></constructor-arg>
+        <property name="fundpsnCache" value="fund_recommend_psn_id_cache1"></property>
+        <property name="remCacheName" value="PsnFundRecommendTask1_removePatCache"></property>
+        <property name="psnType" value="2"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PsnFundRecommendTaskTrigger1" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PsnFundRecommendTaskDetail1" />
+    <property name="triggerName" value="PsnFundRecommendTaskTrigger1" />
+  </bean>
+  <!-- FundRecommendTaskTrigger 基金推荐 -->
+  
+    <!-- FundRecommendTaskTrigger 基金推荐 -->
+  <bean id="PsnFundRecommendTaskDetail2"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.sns.PsnFundRecommendTask">
+        <constructor-arg name="beanName" value="PsnFundRecommendTaskTrigger"></constructor-arg>
+        <property name="fundpsnCache" value="fund_recommend_psn_id_cache2"></property>
+        <property name="remCacheName" value="PsnFundRecommendTask2_removePatCache"></property>
+        <property name="psnType" value="3"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PsnFundRecommendTaskTrigger2" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PsnFundRecommendTaskDetail2" />
+    <property name="triggerName" value="PsnFundRecommendTaskTrigger2" />
+  </bean>
+  <!-- FundRecommendTaskTrigger 基金推荐 -->
+  
+  <!-- FundRecommendTaskTrigger 基金推荐邮件 -->
+  <bean id="PsnFundRecommendMailTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.email.PsnFundRecommendMailTask">
+        <constructor-arg name="beanName" value="PsnFundRecommendMailTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PsnFundRecommendMailTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PsnFundRecommendMailTaskDetail" />
+    <property name="triggerName" value="PsnFundRecommendMailTaskTrigger" />
+  </bean>
+  <!-- FundRecommendTaskTrigger 基金推荐邮件 -->
+  <!--BatchFulltextPdfToImageTaskTrigger全文pdf-imge -->
+  <bean id="BatchFulltextPdfToImageTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.BatchFulltextPdfToImageTask">
+        <constructor-arg name="beanName" value="BatchFulltextPdfToImageTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="BatchFulltextPdfToImageTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="BatchFulltextPdfToImageTaskDetail" />
+    <property name="triggerName" value="BatchFulltextPdfToImageTaskTrigger" />
+  </bean>
+  <!--PdwhPubAuthorMatchSnsTask -->
+  <bean id="PdwhPubAuthorMatchSnsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PdwhPubAuthorMatchSnsTask">
+        <constructor-arg name="beanName" value="PdwhPubAuthorMatchSnsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhPubAuthorMatchSnsTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PdwhPubAuthorMatchSnsTaskDetail" />
+    <property name="triggerName" value="PdwhPubAuthorMatchSnsTaskTrigger" />
+  </bean>
+  <!--GeneratePsnDefaultAvatarsTask -->
+  <bean id="GeneratePsnDefaultAvatarsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.GeneratePsnDefaultAvatarsTask">
+        <constructor-arg name="beanName" value="GeneratePsnDefaultAvatarsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="GeneratePsnDefaultAvatarsTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="GeneratePsnDefaultAvatarsTaskDetail" />
+    <property name="triggerName" value="GeneratePsnDefaultAvatarsTaskTrigger" />
+  </bean>
+  <!--NsfcFullTextMatchTaskTrigger -->
+  <bean id="NsfcFullTextMatchTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.NsfcFullTextMatchTask">
+        <constructor-arg name="beanName" value="NsfcFullTextMatchTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="NsfcFullTextMatchTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="NsfcFullTextMatchTaskDetail" />
+    <property name="triggerName" value="NsfcFullTextMatchTaskTrigger" />
+  </bean>
+  <!--GeneratePersonNullNameTaskTrigger -->
+  <bean id="GeneratePersonNullNameTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.GeneratePersonNullNameTask">
+        <constructor-arg name="beanName" value="GeneratePersonNullNameTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="GeneratePersonNullNameTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="GeneratePersonNullNameTaskDetail" />
+    <property name="triggerName" value="GeneratePersonNullNameTaskTrigger" />
+  </bean>
+  <!--GenerateGroupCodeTaskTrigger -->
+  <bean id="GenerateGroupCodeTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.GenerateGroupCodeTask">
+        <constructor-arg name="beanName" value="GenerateGroupCodeTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="GenerateGroupCodeTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="GenerateGroupCodeTaskDetail" />
+    <property name="triggerName" value="GenerateGroupCodeTaskTrigger" />
+  </bean>
+  <bean id="PubConfirmPromoteTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.email.PubConfirmPromoteTask">
+        <constructor-arg name="beanName" value="PubConfirmPromoteTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PubConfirmPromoteTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PubConfirmPromoteTaskDetail" />
+    <property name="triggerName" value="PubConfirmPromoteTaskTrigger" />
+  </bean>
+  <bean id="keywordsSuggestIndexTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.KeywordsSuggestIndexTask">
+        <constructor-arg name="beanName" value="keywordsSuggestIndexTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="keywordsSuggestIndexTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="keywordsSuggestIndexTaskDetail" />
+    <property name="triggerName" value="keywordsSuggestIndexTaskTrigger" />
+  </bean>
+  <!-- start 同步单位数据 -->
+  <bean id="insSyncTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.rol.InsSyncTask">
+        <constructor-arg name="beanName" value="insSyncTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="insSyncTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="insSyncTaskDetail" />
+    <property name="triggerName" value="insSyncTaskTrigger" />
+  </bean>
+  <!-- end 同步单位数据 -->
+  <!-- start 批量创建单位 -->
+  <bean id="sieAddInsByBacthTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieAddInsByBacthTask">
+        <constructor-arg name="beanName" value="sieAddInsByBacthTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieAddInsByBacthTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieAddInsByBacthTaskDetail" />
+    <property name="triggerName" value="sieAddInsByBacthTaskTrigger" />
+  </bean>
+  <!-- end 批量创建单位 -->
+  <!-- start 批量生成单位默认LOGO -->
+  <bean id="sieGenerateInsLogoTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieGenerateInsLogoTask">
+        <constructor-arg name="beanName" value="sieGenerateInsLogoTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieGenerateInsLogoTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieGenerateInsLogoTaskDetail" />
+    <property name="triggerName" value="sieGenerateInsLogoTaskTrigger" />
+  </bean>
+  <!-- end 批量生成单位默认LOGO -->
+  <!-- start 单位统计 -->
+  <bean id="sieStInsTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieStInsTask">
+        <constructor-arg name="beanName" value="sieStInsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieStInsTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieStInsTaskDetail" />
+    <property name="triggerName" value="sieStInsTaskTrigger" />
+  </bean>
+  <!-- start 部门统计 -->
+  <bean id="sieStUnitTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieStUnitTask">
+        <constructor-arg name="beanName" value="sieStUnitTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieStUnitTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieStUnitTaskDetail" />
+    <property name="triggerName" value="sieStUnitTaskTrigger" />
+  </bean>
+  <!-- end 部门统计 -->
+  <!-- start 人员统计 -->
+  <bean id="sieStPsnTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieStPsnTask">
+        <constructor-arg name="beanName" value="sieStPsnTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieStPsnTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieStPsnTaskDetail" />
+    <property name="triggerName" value="sieStPsnTaskTrigger" />
+  </bean>
+  <!-- end 人员统计 -->
+  <!-- start 基准库成果导入SIE -->
+  <bean id="sieImportPublicationsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieImportPublicationsTask">
+        <constructor-arg name="beanName" value="sieImportPublicationsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieImportPublicationsTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieImportPublicationsTaskDetail" />
+    <property name="triggerName" value="sieImportPublicationsTaskTrigger" />
+  </bean>
+  <!-- end 基准库成果导入SIE -->
+  <!-- start 生成单位GUID -->
+  <bean id="InsGuidRefreshTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.InsGuidRefreshTask">
+        <constructor-arg name="beanName" value="InsGuidRefreshTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="InsGuidRefreshTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="InsGuidRefreshTaskDetail" />
+    <property name="triggerName" value="InsGuidRefreshTaskTrigger" />
+  </bean>
+  <!-- end 生成单位GUID -->
+  <!-- start 处理单位别名表 -->
+  <bean id="SieGenPdwhInsAddrConstTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieGenPdwhInsAddrConstTask">
+        <constructor-arg name="beanName" value="sieGenPdwhInsAddrConstTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieGenPdwhInsAddrConstTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SieGenPdwhInsAddrConstTaskDetail" />
+    <property name="triggerName" value="sieGenPdwhInsAddrConstTaskTrigger" />
+  </bean>
+  <!-- end 处理单位别名表 -->
+  <!-- start 生成成果全文缩略图 -->
+  <bean id="siePubFulltextToImageTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SiePubFulltextToImageTask">
+        <constructor-arg name="beanName" value="siePubFulltextToImageTaskTriggers"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="siePubFulltextToImageTaskTriggers"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="siePubFulltextToImageTaskDetail" />
+    <property name="triggerName" value="siePubFulltextToImageTaskTriggers" />
+  </bean>
+  <!-- end 生成成果全文缩略图 -->
+  <!-- start 生成项目全文缩略图 -->
+  <bean id="siePrjFulltextToImageTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SiePrjFulltextToImageTask">
+        <constructor-arg name="beanName" value="siePrjFulltextToImageTaskTriggers"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="siePrjFulltextToImageTaskTriggers"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="siePrjFulltextToImageTaskDetail" />
+    <property name="triggerName" value="siePrjFulltextToImageTaskTriggers" />
+  </bean>
+  <!-- end 生成项目全文缩略图 -->
+  <!-- start 生成专利全文缩略图 -->
+  <bean id="siePatFulltextToImageTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SiePatFulltextToImageTask">
+        <constructor-arg name="beanName" value="siePatFulltextToImageTaskTriggers"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="siePatFulltextToImageTaskTriggers"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="siePatFulltextToImageTaskDetail" />
+    <property name="triggerName" value="siePatFulltextToImageTaskTriggers" />
+  </bean>
+  <!-- end 生成专利全文缩略图 -->
+  <!-- start 数据服务：生成单位成果数据 -->
+  <bean id="sieDataSrvPubTmpTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieDataSrvPubTmpTask">
+        <constructor-arg name="beanName" value="sieDataSrvPubTmpTaskTriggers"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieDataSrvPubTmpTaskTriggers" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieDataSrvPubTmpTaskDetail" />
+    <property name="triggerName" value="sieDataSrvPubTmpTaskTriggers" />
+  </bean>
+  <!-- end 数据服务：生成单位成果数据 -->
+  <!-- start 数据服务：生成单位专利数据 -->
+  <bean id="sieDataSrvPatTmpTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieDataSrvPatTmpTask">
+        <constructor-arg name="beanName" value="sieDataSrvPatTmpTaskTriggers"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieDataSrvPatTmpTaskTriggers" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieDataSrvPatTmpTaskDetail" />
+    <property name="triggerName" value="sieDataSrvPatTmpTaskTriggers" />
+  </bean>
+  <!-- end 数据服务：生成单位专利数据 -->
+  <!-- start SIE合并单位 -->
+  <bean id="sieMergeInsTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieMergeInsTask">
+        <constructor-arg name="beanName" value="sieMergeInsTaskTriggers"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieMergeInsTaskTriggers" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieMergeInsTaskDetail" />
+    <property name="triggerName" value="sieMergeInsTaskTriggers" />
+  </bean>
+  <!-- end SIE合并单位 -->
+  <!-- start SIE 社交机器人 -->
+  <bean id="sieRobotManTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieRobotManTask">
+        <constructor-arg name="beanName" value="sieRobotManTaskTriggers"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieRobotManTaskTriggers" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieRobotManTaskDetail" />
+    <property name="triggerName" value="sieRobotManTaskTriggers" />
+  </bean>
+  <!-- end SIE单位分析机器人 -->
+  <!-- start SIE 同步Sns动态信息到Sie库中 -->
+  <bean id="sieSynchronizeSnsDynMsgTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieSyncDynMsgTask">
+        <constructor-arg name="beanName" value="sieSyncDynMsgTaskTriggers"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieSyncDynMsgTaskTriggers" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieSynchronizeSnsDynMsgTaskDetail" />
+    <property name="triggerName" value="sieSyncDynMsgTaskTriggers" />
+  </bean>
+  <!-- end SIE 同步Sns动态信息到Sie库中  -->
+  <!-- start SIE 同步个人版成果全文信息至SIE库中 -->
+  <bean id="sieSynNotificationLogoTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieSynNotificationLogoTask">
+        <constructor-arg name="beanName" value="sieSynNotificationLogoTaskTriggers"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieSynNotificationLogoTaskTriggers" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieSynNotificationLogoTaskDetail" />
+    <property name="triggerName" value="sieSynNotificationLogoTaskTriggers" />
+  </bean>
+  <!-- end SIE 同步个人版成果全文信息至SIE库中  -->
+  <!-- start SIE 同步bpo基金机构和基金机会信息到Sie库基金业务表中 -->
+  <bean id="sieSynBpoGrantInfoTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieSynBpoGrantInfoTask">
+        <constructor-arg name="beanName" value="sieSynBpoGrantInfoTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieSynBpoGrantInfoTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieSynBpoGrantInfoTaskDetail" />
+    <property name="triggerName" value="sieSynBpoGrantInfoTaskTrigger" />
+  </bean>
+  <!-- end SIE 同步bpo基金机构和基金机会信息到Sie库基金业务表中 -->
+  <!-- start SIE 生产机成果、专利历史数据XML转换到JSON格式 -->
+  <bean id="fixPubXml2JsonTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieFixPubXml2JsonTask">
+        <constructor-arg name="beanName" value="sieFixPubXml2JsonTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieFixPubXml2JsonTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="fixPubXml2JsonTaskDetail" />
+    <property name="triggerName" value="sieFixPubXml2JsonTaskTrigger" />
+  </bean>
+  <!-- end SIE 生产机成果、专利历史数据XML转换到JSON格式 -->
+  <!-- start SIE 解析AOP切面日志任务  -->
+  <bean id="sieAuditLogTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieAuditLogTask">
+        <constructor-arg name="beanName" value="sieAuditLogTaskTriggers"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieAuditLogTaskTriggers" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieAuditLogTaskDetail" />
+    <property name="triggerName" value="sieAuditLogTaskTriggers" />
+  </bean>
+  <!-- end SIE 解析AOP切面日志任务  -->
+  <!--start 从pdhw_pub_xml拆分fundInfo -->
+  <bean id="SaveFundInfoFromXMlTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.SaveFundInfoFromXMlTask">
+        <constructor-arg name="beanName" value="SaveFundInfoFromXMlTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SaveFundInfoFromXMlTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SaveFundInfoFromXMlTaskDetail" />
+    <property name="triggerName" value="SaveFundInfoFromXMlTaskTrigger" />
+  </bean>
+  <bean id="SaveFundInfoFromXMlTask1Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.SaveFundInfoFromXMlTask1">
+        <constructor-arg name="beanName" value="SaveFundInfoFromXMlTask1Trigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SaveFundInfoFromXMlTask1Trigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SaveFundInfoFromXMlTask1Detail" />
+    <property name="triggerName" value="SaveFundInfoFromXMlTask1Trigger" />
+  </bean>
+  <bean id="SaveFundInfoFromXMlTask2Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.SaveFundInfoFromXMlTask2">
+        <constructor-arg name="beanName" value="SaveFundInfoFromXMlTask2Trigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SaveFundInfoFromXMlTask2Trigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SaveFundInfoFromXMlTask2Detail" />
+    <property name="triggerName" value="SaveFundInfoFromXMlTask2Trigger" />
+  </bean>
+  <bean id="SaveFundInfoFromXMlTask3Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.SaveFundInfoFromXMlTask3">
+        <constructor-arg name="beanName" value="SaveFundInfoFromXMlTask3Trigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SaveFundInfoFromXMlTask3Trigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SaveFundInfoFromXMlTask3Detail" />
+    <property name="triggerName" value="SaveFundInfoFromXMlTask3Trigger" />
+  </bean>
+  <bean id="SaveFundInfoFromXMlTask4Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.SaveFundInfoFromXMlTask4">
+        <constructor-arg name="beanName" value="SaveFundInfoFromXMlTask4Trigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SaveFundInfoFromXMlTask4Trigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SaveFundInfoFromXMlTask4Detail" />
+    <property name="triggerName" value="SaveFundInfoFromXMlTask4Trigger" />
+  </bean>
+  <!--start 从pdhw_pub_xml拆分fundInfo -->
+  <bean id="SavePubPdwhScmRolTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.SavePubPdwhScmRolTask">
+        <constructor-arg name="beanName" value="SavePubPdwhScmRolTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SavePubPdwhScmRolTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SavePubPdwhScmRolTaskDetail"></property>
+    <property name="triggerName" value="SavePubPdwhScmRolTaskTrigger" />
+  </bean>
+  <!--end 从pdhw_pub_xml拆分fundInfo -->
+  <!--start 处理pub_list数据 -->
+  <bean id="HandlePubListTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.HandlePubListTask">
+        <constructor-arg name="beanName" value="HandlePubListTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="HandlePubListTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="HandlePubListTaskDetail"></property>
+    <property name="triggerName" value="HandlePubListTaskTrigger" />
+  </bean>
+  <!--end 处理pub_list数据 -->
+  <!--start 处理 关键词拆分 -->
+  <bean id="GenerateIKAnalyerDictTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.GenerateIKAnalyerDictTask">
+        <constructor-arg name="beanName" value="GenerateIKAnalyerDictTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="GenerateIKAnalyerDictTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="GenerateIKAnalyerDictTaskDetail"></property>
+    <property name="triggerName" value="GenerateIKAnalyerDictTaskTrigger" />
+  </bean>
+  <!--end 处理 关键词拆分 -->
+  <bean id="WriteIKAnalyerDictFileTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.WriteIKAnalyerDictFileTask">
+        <constructor-arg name="beanName" value="WriteIKAnalyerDictFileTaskTrigger"></constructor-arg>
+        <property name="datesuffix" value="_171201"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="WriteIKAnalyerDictFileTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="WriteIKAnalyerDictFileTaskDetail"></property>
+    <property name="triggerName" value="WriteIKAnalyerDictFileTaskTrigger" />
+    <!--end 生成字典 -->
+  </bean>
+  <!--通知项目负责人项目相关成果 -->
+  <bean id="SendPrjGrpEmailTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.email.SendPrjGrpEmailTask">
+        <constructor-arg name="beanName" value="SendPrjGrpEmailTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SendPrjGrpEmailTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SendPrjGrpEmailTaskDetail"></property>
+    <property name="triggerName" value="SendPrjGrpEmailTaskTrigger" />
+  </bean>
+  <!--通知项目负责人项目相关成果 -->
+  <!-- start 从ROL更新sns单位数据 -->
+  <bean id="UpdateInsInfoFromSIETaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.institution.UpdateInsInfoFromSIETask">
+        <constructor-arg name="beanName" value="UpdateInsInfoFromSIETaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="UpdateInsInfoFromSIETaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="UpdateInsInfoFromSIETaskDetail" />
+    <property name="triggerName" value="UpdateInsInfoFromSIETaskTrigger" />
+  </bean>
+  <!-- end 从ROL更新sns单位数据 -->
+  <!-- start 处理文件表文件大小数据 -->
+  <bean id="AddFileSizeIntoArchiveFilesTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.AddFileSizeIntoArchiveFilesTask">
+        <constructor-arg name="beanName" value="AddFileSizeIntoArchiveFilesTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="AddFileSizeIntoArchiveFilesTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="AddFileSizeIntoArchiveFilesTaskDetail" />
+    <property name="triggerName" value="AddFileSizeIntoArchiveFilesTaskTrigger" />
+  </bean>
+  <!-- end 处理文件表文件大小数据 -->
+  <bean id="SplitPatentCategoryTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.tmp.SplitPatentCategoryTask">
+        <constructor-arg name="beanName" value="SplitPatentCategoryTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SplitPatentCategoryTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SplitPatentCategoryTaskDetail" />
+    <property name="triggerName" value="SplitPatentCategoryTaskTrigger" />
+  </bean>
+  <bean id="PreGenerateShortUrlTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.tmp.PreGenerateShortUrlTask">
+        <constructor-arg name="beanName" value="PreGenerateShortUrlTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PreGenerateShortUrlTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PreGenerateShortUrlTaskDetail" />
+    <property name="triggerName" value="PreGenerateShortUrlTaskTrigger" />
+  </bean>
+  <!--创建基准库成果索引，简易版 -->
+  <bean id="SimplePdwhPubIndexTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.SimplePdwhPubIndexTask">
+        <constructor-arg name="beanName" value="SimplePdwhPubIndexTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SimplePdwhPubIndexTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SimplePdwhPubIndexTaskDetail"></property>
+    <property name="triggerName" value="SimplePdwhPubIndexTaskTrigger" />
+  </bean>
+  <!--创建基准库成果索引，简易版 -->
+  <!--创建sns成果索引，简易版 -->
+  <bean id="SimpleSnsPubIndexTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.SimpleSnsPubIndexTask">
+        <constructor-arg name="beanName" value="SimpleSnsPubIndexTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SimpleSnsPubIndexTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SimpleSnsPubIndexTaskDetail"></property>
+    <property name="triggerName" value="SimpleSnsPubIndexTaskTrigger" />
+  </bean>
+  <!--创建sns成果索引，简易版 -->
+  <!-- 同步数据到PMName -->
+  <bean id="SyncPmNameFromPersonTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.sns.SyncPmNameFromPersonTask">
+        <constructor-arg name="beanName" value="SyncPmNameFromPersonTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SyncPmNameFromPersonTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SyncPmNameFromPersonTaskDetail"></property>
+    <property name="triggerName" value="SyncPmNameFromPersonTaskTrigger" />
+  </bean>
+  <bean id="SnsDupPubGroupingTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.sns.SnsDupPubGroupingTask">
+        <constructor-arg name="beanName" value="SnsDupPubGroupingTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SnsDupPubGroupingTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SnsDupPubGroupingTaskDetail"></property>
+    <property name="triggerName" value="SnsDupPubGroupingTaskTrigger" />
+  </bean>
+  <!-- pdwh全文文件重命名 -->
+  <bean id="RenamePdwhFulltextFileTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.tmp.RenamePdwhFulltextFileTask">
+        <constructor-arg name="beanName" value="RenamePdwhFulltextFileTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="RenamePdwhFulltextFileTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="RenamePdwhFulltextFileTaskDetail"></property>
+    <property name="triggerName" value="RenamePdwhFulltextFileTaskTrigger" />
+  </bean>
+  <!-- isis人员注册 -->
+  <bean id="RegisterIsisPsnTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.RegisterIsisPsnTask">
+        <constructor-arg name="beanName" value="RegisterIsisPsnTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="RegisterIsisPsnTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="RegisterIsisPsnTaskDetail" />
+    <property name="triggerName" value="RegisterIsisPsnTaskTrigger" />
+  </bean>
+  <!-- JxstcPrpInfo -->
+  <bean id="JxstcPrpInfoIndexTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.JxstcPrpInfoIndexTask">
+        <constructor-arg name="beanName" value="JxstcPrpInfoIndexTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="JxstcPrpInfoIndexTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="JxstcPrpInfoIndexTaskDetail" />
+    <property name="triggerName" value="JxstcPrpInfoIndexTaskTrigger" />
+  </bean>
+  <!-- PdwhPubPatentMatchIpcTask -->
+  <bean id="PdwhPubPatentMatchIpcTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PdwhPubPatentMatchIpcTask">
+        <constructor-arg name="beanName" value="PdwhPubPatentMatchIpcTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhPubPatentMatchIpcTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PdwhPubPatentMatchIpcTaskDetail" />
+    <property name="triggerName" value="PdwhPubPatentMatchIpcTaskTrigger" />
+  </bean>
+  <!-- BdspStatisticsAnalysisTask -->
+  <bean id="BdspStatisticsAnalysisTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.bdsp.BdspStatisticsAnalysisTask">
+        <constructor-arg name="beanName" value="BdspStatisticsAnalysisTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="BdspStatisticsAnalysisTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="BdspStatisticsAnalysisTaskDetail" />
+    <property name="triggerName" value="BdspStatisticsAnalysisTaskTrigger" />
+  </bean>
+  <!-- PubProvInteriorAnalysisTask -->
+  <bean id="PubProvInteriorAnalysisTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PubProvInteriorAnalysisTask">
+        <constructor-arg name="beanName" value="PubProvInteriorAnalysisTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PubProvInteriorAnalysisTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PubProvInteriorAnalysisTaskDetail" />
+    <property name="triggerName" value="PubProvInteriorAnalysisTaskTrigger" />
+  </bean>
+  <!-- PubProvInternationalAnalysisTask -->
+  <bean id="PubProvInternationalAnalysisTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PubProvInternationalAnalysisTask">
+        <constructor-arg name="beanName" value="PubProvInternationalAnalysisTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PubProvInternationalAnalysisTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PubProvInternationalAnalysisTaskDetail" />
+    <property name="triggerName" value="PubProvInternationalAnalysisTaskTrigger" />
+  </bean>
+  <!-- PubPrCityAnalysisTask -->
+  <bean id="PubPrCityAnalysisTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PubPrCityAnalysisTask">
+        <constructor-arg name="beanName" value="PubPrCityAnalysisTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PubPrCityAnalysisTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PubPrCityAnalysisTaskDetail" />
+    <property name="triggerName" value="PubPrCityAnalysisTaskTrigger" />
+  </bean>
+  <!-- JxstcPrpInfo -->
+  <bean id="JxProjectIndexTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.JxProjectIndexTask">
+        <constructor-arg name="beanName" value="JxProjectIndexTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="JxProjectIndexTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="JxProjectIndexTaskDetail" />
+    <property name="triggerName" value="JxProjectIndexTaskTrigger" />
+  </bean>
+  <!--1start -->
+  <!-- UpdateSnsPubBriefTask更新个人库v_pub_simple、Publication、scm_pub_xml表的brief字段 -->
+  <bean id="UpdateSnsPubBriefTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.sns.UpdateSnsPubBriefTask">
+        <constructor-arg name="beanName" value="UpdateSnsPubBriefTaskTrigger"></constructor-arg>
+        <property name="triggerName" value="UpdateSnsPubBriefTaskTrigger"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="UpdateSnsPubBriefTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="UpdateSnsPubBriefTaskDetail" />
+    <property name="triggerName" value="UpdateSnsPubBriefTaskTrigger" />
+  </bean>
+  <!-- 1start UpdatePdwhPubBriefTask更新基准库的pdwh_publication、pdwh_pub_xml -->
+  <bean id="UpdatePdwhPubBriefTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.UpdatePdwhPubBriefTask">
+        <constructor-arg name="beanName" value="UpdatePdwhPubBriefTaskTrigger"></constructor-arg>
+        <property name="triggerName" value="UpdatePdwhPubBriefTaskTrigger"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="UpdatePdwhPubBriefTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="UpdatePdwhPubBriefTaskDetail" />
+    <property name="triggerName" value="UpdatePdwhPubBriefTaskTrigger" />
+  </bean>
+  <!-- UpdateConfirmPubBriefTaskDetaill -->
+  <bean id="UpdateConfirmPubBriefTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.UpdateConfirmPubBriefTask">
+        <constructor-arg name="beanName" value="UpdateConfirmPubBriefTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="UpdateConfirmPubBriefTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="UpdateConfirmPubBriefTaskDetail" />
+    <property name="triggerName" value="UpdateConfirmPubBriefTaskTrigger" />
+  </bean>
+  <bean id="PubIndependentPrCityAnalysisTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PubIndependentPrCityAnalysisTask">
+        <constructor-arg name="beanName" value="PubIndependentPrCityAnalysisTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PubIndependentPrCityAnalysisTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PubIndependentPrCityAnalysisTaskDetail" />
+    <property name="triggerName" value="PubIndependentPrCityAnalysisTaskTrigger" />
+  </bean>
+  <!-- SendNewYearMailTaskTrigger -->
+  <bean id="SendNewYearMailTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.email.SendNewYearMailTask">
+        <constructor-arg name="beanName" value="SendNewYearMailTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SendNewYearMailTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SendNewYearMailTaskDetail" />
+    <property name="triggerName" value="SendNewYearMailTaskTrigger" />
+  </bean>
+  <!-- InitPdwhPubCleanDoiHashTaskTrigger -->
+  <bean id="InitPdwhPubCleanDoiHashTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.tmp.InitPdwhPubCleanDoiHashTask">
+        <constructor-arg name="beanName" value="InitPdwhPubCleanDoiHashTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="InitPdwhPubCleanDoiHashTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="InitPdwhPubCleanDoiHashTaskDetail" />
+    <property name="triggerName" value="InitPdwhPubCleanDoiHashTaskTrigger" />
+  </bean>
+  <!-- BaiduMapGetInsAddsTaskTrigger -->
+  <bean id="BaiduMapGetInsAddsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.tmp.BaiduMapGetInsAddsTask">
+        <constructor-arg name="beanName" value="BaiduMapGetInsAddsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="BaiduMapGetInsAddsTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="BaiduMapGetInsAddsTaskDetail" />
+    <property name="triggerName" value="BaiduMapGetInsAddsTaskTrigger" />
+  </bean>
+ 
+  <bean id="FundAgencyAddressTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.tmp.FundAgencyAddressTask">
+        <constructor-arg name="beanName" value="FundAgencyAddressTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="FundAgencyAddressTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="FundAgencyAddressTaskDetail" />
+    <property name="triggerName" value="FundAgencyAddressTaskTrigger" />
+  </bean>
+  <bean id="UpdatePdwhPubMatchConstTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.UpdatePdwhPubMatchConstTask">
+        <constructor-arg name="beanName" value="UpdatePdwhPubMatchConstTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="UpdatePdwhPubMatchConstTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="UpdatePdwhPubMatchConstTaskDetail" />
+    <property name="triggerName" value="UpdatePdwhPubMatchConstTaskTrigger" />
+  </bean>
+  <bean id="GenerateAddrPsnConstDicTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.GenerateAddrPsnConstDicTask">
+        <constructor-arg name="beanName" value="GenerateAddrPsnConstDicTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="GenerateAddrPsnConstDicTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="GenerateAddrPsnConstDicTaskDetail" />
+    <property name="triggerName" value="GenerateAddrPsnConstDicTaskTrigger" />
+  </bean>
+  <bean id="CompPdwhKwsWithNsfcKwsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.tmp.CompPdwhKwsWithNsfcKwsTask">
+        <constructor-arg name="beanName" value="CompPdwhKwsWithNsfcKwsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="CompPdwhKwsWithNsfcKwsTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="CompPdwhKwsWithNsfcKwsTaskDetail" />
+    <property name="triggerName" value="CompPdwhKwsWithNsfcKwsTaskTrigger" />
+  </bean>
+  <!--基准库成果xml导入，原始xml处理任务 -->
+  <bean id="PreImportPdwhPubXmlTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.PreImportPdwhPubXmlTask">
+        <constructor-arg name="beanName" value="PreImportPdwhPubXmlTaskTrigger"></constructor-arg>
+        <property name="fileDir" value="${pdwh.xmlfile.dir}"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PreImportPdwhPubXmlTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PreImportPdwhPubXmlTaskDetail" />
+    <property name="triggerName" value="PreImportPdwhPubXmlTaskTrigger" />
+  </bean>
+  <bean id="UpdateFundConditionTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.tmp.UpdateFundConditionTask">
+        <constructor-arg name="beanName" value="UpdateFundConditionTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="UpdateFundConditionTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="UpdateFundConditionTaskDetail" />
+    <property name="triggerName" value="UpdateFundConditionTaskTrigger" />
+  </bean>
+  <!-- start 基准库成果关键词任务 -->
+  <bean id="pdwhPubKeywordZhSplitTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.PdwhPubKeywordZhSplitTask">
+        <constructor-arg name="beanName" value="pdwhPubKeywordZhSplitTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pdwhPubKeywordZhSplitTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="pdwhPubKeywordZhSplitTaskDetail" />
+    <property name="triggerName" value="pdwhPubKeywordZhSplitTaskTrigger" />
+  </bean>
+  <!-- end 基准库成果关键词任务 -->
+  <!-- start 基准库成果指派任务 -->
+  <bean id="PdwhPubAssignTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.PdwhPubAssignTask">
+        <constructor-arg name="beanName" value="PdwhPubAssignTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhPubAssignTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PdwhPubAssignTaskDetail" />
+    <property name="triggerName" value="PdwhPubAssignTaskTrigger" />
+  </bean>
+  <!-- end 基准库成果指派任务 -->
+    <!-- start 基准库特定成果优先指派任务 -->
+  <bean id="PdwhPubAssignInsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.PdwhPubAssignInsTask">
+        <constructor-arg name="beanName" value="PdwhPubAssignInsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhPubAssignInsTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PdwhPubAssignInsTaskDetail" />
+    <property name="triggerName" value="PdwhPubAssignInsTaskTrigger" />
+  </bean>
+  <!-- end 基准库特定成果优先指派任务 -->
+  <!-- start 基准库成果关键词更新临时任务 -->
+  <bean id="UpdatePdwhPubKeywordsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.tmp.UpdatePdwhPubKeywordsTask">
+        <constructor-arg name="beanName" value="UpdatePdwhPubKeywordsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="UpdatePdwhPubKeywordsTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="UpdatePdwhPubKeywordsTaskDetail" />
+    <property name="triggerName" value="UpdatePdwhPubKeywordsTaskTrigger" />
+  </bean>
+  <!-- end 基准库成果关键词更新临时任务 -->
+  <!-- start 成果认领邮件发送 -->
+  <bean id="SendPubAssignEmailTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.email.SendPubAssignEmailTask">
+        <constructor-arg name="beanName" value="SendPubAssignEmailTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SendPubAssignEmailTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SendPubAssignEmailTaskDetail" />
+    <property name="triggerName" value="SendPubAssignEmailTaskTrigger" />
+  </bean>
+  <!-- end 成果认领邮件发送 -->
+  <!-- start 处理isis英文名字数据-一次性任务 -->
+  <bean id="HandleISISEnameTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.HandleISISEnameTask">
+        <constructor-arg name="beanName" value="HandleISISEnameTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="HandleISISEnameTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="HandleISISEnameTaskDetail" />
+    <property name="triggerName" value="HandleISISEnameTaskTrigger" />
+  </bean>
+  <!-- end 处理isis英文名字数据-一次性任务 -->
+  <bean id="GeneratePsnPmNameTmpTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.tmp.GeneratePsnPmNameTmpTask">
+        <constructor-arg name="beanName" value="GeneratePsnPmNameTmpTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="GeneratePsnPmNameTmpTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="GeneratePsnPmNameTmpTaskDetail" />
+    <property name="triggerName" value="GeneratePsnPmNameTmpTaskTrigger" />
+  </bean>
+  <!-- Bdsp-psn -->
+  <bean id="BdspPsnInfoTaskTriggerDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.bdsp.BdspPsnInfoTask">
+        <constructor-arg name="beanName" value="BdspPsnInfoTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="handle" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="BdspPsnInfoTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="BdspPsnInfoTaskTriggerDetail" />
+    <property name="triggerName" value="BdspPsnInfoTaskTrigger" />
+  </bean>
+  <!-- Bdsp-prj -->
+  <bean id="BdspPrjBuildInfoTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.bdsp.BdspPrjBuildInfoTask">
+        <constructor-arg name="beanName" value="BdspPrjBuildInfoTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="handle" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="BdspPrjBuildInfoTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="BdspPrjBuildInfoTaskDetail" />
+    <property name="triggerName" value="BdspPrjBuildInfoTaskTrigger" />
+  </bean>
+  <!-- Bdsp-paper -->
+  <bean id="BdspPaperBuildInfoTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.bdsp.BdspPaperBuildInfoTask">
+        <constructor-arg name="beanName" value="BdspPaperBuildInfoTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="handle" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="BdspPaperBuildInfoTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="BdspPaperBuildInfoTaskDetail" />
+    <property name="triggerName" value="BdspPaperBuildInfoTaskTrigger" />
+  </bean>
+  <!-- Bdsp-patent -->
+  <bean id="BdspPatentInfoTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.bdsp.BdspPatentInfoTask">
+        <constructor-arg name="beanName" value="BdspPatentInfoTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="handle" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="BdspPatentInfoTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="BdspPatentInfoTaskDetail" />
+    <property name="triggerName" value="BdspPatentInfoTaskTrigger" />
+  </bean>
+  <!--将数据从V_PUB_VIEW中 修复vist_statistics表中的数据，插入那些没有导入的数据，用于修复浏览数 -->
+  <bean id="InsertDataFromPubViewToVistStatisticsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.InsertDataFromPubViewToVistStatisticsTask">
+        <constructor-arg name="beanName" value="InsertDataFromPubViewToVistStatisticsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="InsertDataFromPubViewToVistStatisticsTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="InsertDataFromPubViewToVistStatisticsTaskDetail" />
+    <property name="triggerName" value="InsertDataFromPubViewToVistStatisticsTaskTrigger" />
+  </bean>
+  <!-- end -->
+  <!-- Bdsp-push -->
+  <bean id="BdspInterfacePushDataTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.bdsp.BdspInterfacePushDataTask">
+        <constructor-arg name="beanName" value="BdspInterfacePushDataTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="handle" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="BdspInterfacePushDataTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="BdspInterfacePushDataTaskDetail" />
+    <property name="triggerName" value="BdspInterfacePushDataTaskTrigger" />
+  </bean>
+  <!-- <bean id="updateVistStatisticsTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> 
+    <property name="targetObject"> <bean class="com.smate.center.task.quartz.viststatis.updateVistStatisticsTask"> <constructor-arg 
+    name="beanName" value="updateVistStatisticsTaskTrigger"></constructor-arg> </bean> </property> <property name="targetMethod" 
+    value="doRun"/> <property name="concurrent" value="false"/> </bean> <bean id="updateVistStatisticsTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean"> 
+    <property name="jobDetail" ref="updateVistStatisticsTaskDetail"/> <property name="triggerName" value="updateVistStatisticsTaskTrigger"/> 
+    </bean> -->
+  <bean id="handlePatentHisDataTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.HandlePatentHisDataTask">
+        <constructor-arg name="beanName" value="HandlePatentHisDataTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="HandlePatentHisDataTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="handlePatentHisDataTaskDetail" />
+    <property name="triggerName" value="HandlePatentHisDataTaskTrigger" />
+  </bean>
+  <bean id="inviteEndorseResearchAreaTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.email.InviteEndorseResearchAreaTask">
+        <constructor-arg name="beanName" value="InviteEndorseResearchAreaTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="InviteEndorseResearchAreaTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="inviteEndorseResearchAreaTaskDetail" />
+    <property name="triggerName" value="InviteEndorseResearchAreaTaskTrigger" />
+  </bean>
+  <!-- 导入第三方部门信息 begin -->
+  <bean id="sieImportThirdUnitsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieImportThirdUnitsTask">
+        <constructor-arg name="beanName" value="sieImportThirdUnitsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieImportThirdUnitsTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieImportThirdUnitsTaskDetail" />
+    <property name="triggerName" value="sieImportThirdUnitsTaskTrigger" />
+  </bean>
+  <!-- 导入第三方部门信息 end -->
+  <!-- 导入第三方人员信息 begin -->
+  <bean id="sieImportThirdPsnsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieImportThirdPsnsTask">
+        <constructor-arg name="beanName" value="sieImportThirdPsnsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieImportThirdPsnsTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieImportThirdPsnsTaskDetail" />
+    <property name="triggerName" value="sieImportThirdPsnsTaskTrigger" />
+  </bean>
+  <!-- 导入第三方人员信息 end -->
+  <bean id="sendDealMessageNoticeMailTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.email.SendDealMessageNoticeMailTask">
+        <constructor-arg name="beanName" value="SendDealMessageNoticeMailTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SendDealMessageNoticeMailTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sendDealMessageNoticeMailTaskDetail" />
+    <property name="triggerName" value="SendDealMessageNoticeMailTaskTrigger" />
+  </bean>
+  <bean id="cleanPdwhIndexPubDataTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.CleanPdwhIndexPubDataTask">
+        <constructor-arg name="beanName" value="CleanPdwhIndexPubDataTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="CleanPdwhIndexPubDataTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="cleanPdwhIndexPubDataTaskDetail" />
+    <property name="triggerName" value="CleanPdwhIndexPubDataTaskTrigger" />
+  </bean>
+  <!-- start IsiPubClassificationToNsfcTask -->
+  <bean id="IsiPubClassificationToNsfcTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.IsiPubClassificationToNsfcTask">
+        <constructor-arg name="beanName" value="IsiPubClassificationToNsfcTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="IsiPubClassificationToNsfcTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="IsiPubClassificationToNsfcTaskDetail" />
+    <property name="triggerName" value="IsiPubClassificationToNsfcTaskTrigger" />
+  </bean>
+  <!-- end IsiPubClassificationToNsfcTask -->
+  <!-- start CnkiPubClassificationToNsfcTask -->
+  <bean id="CnkiPubClassificationToNsfcDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.CnkiPubClassificationToNsfcTask">
+        <constructor-arg name="beanName" value="CnkiPubClassificationToNsfcTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="CnkiPubClassificationToNsfcTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="CnkiPubClassificationToNsfcDetail" />
+    <property name="triggerName" value="CnkiPubClassificationToNsfcTaskTrigger" />
+  </bean>
+  <bean id="pubfulltextRcmdTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PubfulltextRcmdTask">
+        <constructor-arg name="beanName" value="PubfulltextRcmdTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PubfulltextRcmdTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="pubfulltextRcmdTaskDetail" />
+    <property name="triggerName" value="PubfulltextRcmdTaskTrigger" />
+  </bean>
+  <bean id="updatePsnStatisticsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.sns.UpdatePsnStatisticsTask">
+        <constructor-arg name="beanName" value="updatePsnStatisticsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="updatePsnStatisticsTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="updatePsnStatisticsTaskDetail" />
+    <property name="triggerName" value="updatePsnStatisticsTaskTrigger" />
+  </bean>
+  <bean id="snsPubFulltextToImageTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.sns.SnsPubFulltextToImageTask">
+        <constructor-arg name="beanName" value="SnsPubFulltextToImageTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SnsPubFulltextToImageTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="snsPubFulltextToImageTaskDetail" />
+    <property name="triggerName" value="SnsPubFulltextToImageTaskTrigger" />
+  </bean>
+  <bean id="pdwhPubFulltextToImageTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PdwhPubFulltextToImageTask">
+        <constructor-arg name="beanName" value="PdwhPubFulltextToImageTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhPubFulltextToImageTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="pdwhPubFulltextToImageTaskDetail" />
+    <property name="triggerName" value="PdwhPubFulltextToImageTaskTrigger" />
+  </bean>
+  <!-- start PubPdwhDataInitTask -->
+  <bean id="PubPdwhDataInitTask" class="com.smate.center.task.v8pub.task.PubPdwhDataInitTask">
+    <constructor-arg name="beanName" value="PubPdwhDataInitTaskTrigger"></constructor-arg>
+    <property name="startId" value="30000000000" />
+    <property name="endId" value="0" />
+  </bean>
+  <bean id="PubPdwhDataInitTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="PubPdwhDataInitTask" />
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PubPdwhDataInitTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PubPdwhDataInitTaskDetail" />
+    <property name="triggerName" value="PubPdwhDataInitTaskTrigger" />
+  </bean>
+  <!-- end PubPdwhDataInitTask -->
+  <!-- start PubSnsDataInitTask -->
+  <bean id="PubSnsDataInitTask" class="com.smate.center.task.v8pub.task.PubSnsDataInitTask">
+    <constructor-arg name="beanName" value="PubSnsDataInitTaskTrigger"></constructor-arg>
+    <property name="startId" value="1200000000000" />
+    <property name="endId" value="0" />
+  </bean>
+  <bean id="PubSnsDataInitTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="PubSnsDataInitTask" />
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PubSnsDataInitTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PubSnsDataInitTaskDetail" />
+    <property name="triggerName" value="PubSnsDataInitTaskTrigger" />
+  </bean>
+  <!-- end PubSnsDataInitTask -->
+  <bean id="SendGroupPubRcmdMailTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.email.SendGroupPubRcmdMailTask">
+        <constructor-arg name="beanName" value="SendGroupPubRcmdMailTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SendGroupPubRcmdMailTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SendGroupPubRcmdMailTaskDetail" />
+    <property name="triggerName" value="SendGroupPubRcmdMailTaskTrigger" />
+  </bean>
+  <!-- 同步个人库成果的赞，分享，阅读统计数 begin -->
+  <bean id="sieSyncPubSocialBehaveTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieSyncPubSocialBehaveTask">
+        <constructor-arg name="beanName" value="sieSyncPubSocialBehaveTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieSyncPubSocialBehaveTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieSyncPubSocialBehaveTaskDetail" />
+    <property name="triggerName" value="sieSyncPubSocialBehaveTaskTrigger" />
+  </bean>
+  <!-- 同步个人库成果的赞，分享，阅读统计数 end -->
+  <!-- 同步个人库专利的赞，分享，阅读统计数 begin -->
+  <bean id="sieSyncPatSocialBehaveTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieSyncPatSocialBehaveTask">
+        <constructor-arg name="beanName" value="sieSyncPatSocialBehaveTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieSyncPatSocialBehaveTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieSyncPatSocialBehaveTaskDetail" />
+    <property name="triggerName" value="sieSyncPatSocialBehaveTaskTrigger" />
+  </bean>
+  <!-- 同步个人库专利的赞，分享，阅读统计数 end -->
+  <bean id="SaveCrossRefDataTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.SaveCrossRefDataTask">
+        <constructor-arg name="beanName" value="SaveCrossRefDataTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SaveCrossRefDataTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SaveCrossRefDataTaskDetail" />
+    <property name="triggerName" value="SaveCrossRefDataTaskTrigger" />
+  </bean>
+  <!-- 保存Crossref数据 end -->
+  <!--处理基准库成果与个人库数据关联错误问题 start -->
+  <bean id="HandlePubRelationErrorDataTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.sns.HandlePubRelationErrorDataTask">
+        <constructor-arg name="beanName" value="HandlePubRelationErrorDataTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="HandlePubRelationErrorDataTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="HandlePubRelationErrorDataTaskDetail" />
+    <property name="triggerName" value="HandlePubRelationErrorDataTaskTrigger" />
+  </bean>
+  <!--处理基准库成果与个人库数据关联错误问题 end -->
+  
+  <!--会议论文数据统计 start -->
+  <bean id="ConferencePaperDataStatisticsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.sns.ConferencePaperDataStatisticsTask">
+        <constructor-arg name="beanName" value="ConferencePaperDataStatisticsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="ConferencePaperDataStatisticsTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="ConferencePaperDataStatisticsTaskDetail" />
+    <property name="triggerName" value="ConferencePaperDataStatisticsTaskTrigger" />
+  </bean>
+  <!--会议论文数据统计 end -->
+  
+  <!-- mongdb数据备份任务 start -->
+  <bean id="PubPdwhDataBackupsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.v8pub.backups.task.PubPdwhDataBackupsTask">
+        <constructor-arg name="beanName" value="PubPdwhDataBackupsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PubPdwhDataBackupsTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PubPdwhDataBackupsTaskDetail" />
+    <property name="triggerName" value="PubPdwhDataBackupsTaskTrigger" />
+  </bean>
+  <bean id="PubSnsDataBackupsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.v8pub.backups.task.PubSnsDataBackupsTask">
+        <constructor-arg name="beanName" value="PubSnsDataBackupsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PubSnsDataBackupsTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PubSnsDataBackupsTaskDetail" />
+    <property name="triggerName" value="PubSnsDataBackupsTaskTrigger" />
+  </bean>
+  <!-- mongdb数据备份任务 start -->
+  <!--轮询kpi_validate_detail表并根据业务类型调用具体的验证接口 begin -->
+  <bean id="sieKpiValidateTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieKpiValidateTask">
+        <constructor-arg name="beanName" value="sieKpiValidateTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieKpiValidateTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieKpiValidateTaskDetail" />
+    <property name="triggerName" value="sieKpiValidateTaskTrigger" />
+  </bean>
+  <!-- 轮询kpi_validate_detail表并根据业务类型调用具体的验证接口 end -->
+  <!--crossref数据预处理start -->
+  <bean id="PreImportCrossrefDataTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PreImportCrossrefDataTask">
+        <constructor-arg name="beanName" value="PreImportCrossrefDataTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PreImportCrossrefDataTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PreImportCrossrefDataTaskDetail" />
+    <property name="triggerName" value="PreImportCrossrefDataTaskTrigger" />
+  </bean>
+  <!--crossref数据预处理 end -->
+  <!--拆分保存crossref数据start -->
+  <bean id="DbcacheCfetchTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.DbcacheCfetchTask">
+        <constructor-arg name="beanName" value="DbcacheCfetchTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="DbcacheCfetchTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="DbcacheCfetchTaskDetail" />
+    <property name="triggerName" value="DbcacheCfetchTaskTrigger" />
+  </bean>
+  <!--拆分保存crossref数据 end -->
+  <!-- 保存基准库成果 start -->
+  <bean id="SavePdwhPubDataTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.pdwh.SavePdwhPubDataTask">
+        <constructor-arg name="beanName" value="SavePdwhPubDataTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SavePdwhPubDataTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SavePdwhPubDataTaskDetail" />
+    <property name="triggerName" value="SavePdwhPubDataTaskTrigger" />
+  </bean>
+  <!-- 保存基准库成果 end -->
+  <!--PdwhPubSorlUpdateTask 指定成果进行sorl更新 start -->
+  <bean id="PdwhPubSorlUpdateTask" class="com.smate.center.task.v8pub.sorl.update.PdwhPubSorlUpdateTask">
+    <constructor-arg name="beanName" value="PdwhPubSorlUpdateTaskTrigger"></constructor-arg>
+    <property name="startId" value="23000000000" />
+    <property name="endId" value="0" />
+  </bean>
+  <bean id="PdwhPubSorlUpdateTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="PdwhPubSorlUpdateTask" />
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhPubSorlUpdateTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PdwhPubSorlUpdateTaskDetail" />
+    <property name="triggerName" value="PdwhPubSorlUpdateTaskTrigger" />
+  </bean>
+  <!--PdwhPubSorlUpdateTask 指定成果进行sorl更新 end -->
+  
+  <!--PdwhMemberInitTask 初始化基准库成果作者信息表 start -->
+  <bean id="PdwhMemberInitTask" class="com.smate.center.task.v8pub.task.PdwhMemberInitTask">
+    <constructor-arg name="beanName" value="PdwhMemberInitTaskTrigger"></constructor-arg>
+    <property name="startId" value="22000000000" />
+    <property name="endId" value="0" />
+  </bean>
+  <bean id="PdwhMemberInitTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="PdwhMemberInitTask" />
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhMemberInitTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PdwhMemberInitTaskDetail" />
+    <property name="triggerName" value="PdwhMemberInitTaskTrigger" />
+  </bean>
+  <!--PdwhMemberInitTask 初始化基准库成果作者信息表 end -->
+  
+  <bean id="SendInvitePsnValidateMailTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.SendInvitePsnValidateMailTask">
+        <constructor-arg name="beanName" value="SendInvitePsnValidateMailTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SendInvitePsnValidateMailTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SendInvitePsnValidateMailTaskDetail" />
+    <property name="triggerName" value="SendInvitePsnValidateMailTaskTrigger" />
+  </bean>
+
+   <!--轮询处理TASK_INS_BAIDU_GET_ADDR表调用百度地图api接口获得单位地址  begin -->
+  <bean id="sieBaiduMapGetInsAddsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class=" com.smate.sie.center.task.quartz.tmp.SieBaiduMapGetInsAddsTask">
+        <constructor-arg name="beanName" value="sieBaiduMapGetInsAddsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieBaiduMapGetInsAddsTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieBaiduMapGetInsAddsTaskDetail" />
+    <property name="triggerName" value="sieBaiduMapGetInsAddsTaskTrigger" />
+  </bean>
+  <!-- 轮询处理TASK_INS_BAIDU_GET_ADDR表调用百度地图api接口获得单位地址 end -->
+  <!--生产机，task_split_pub_orgs拆分成果署名单位和通讯作者任务 start-->
+  <bean id="sieSplitPubOrgsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.tmp.SieSplitPubOrgsTask">
+        <constructor-arg name="beanName" value="sieSplitPubOrgsTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieSplitPubOrgsTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieSplitPubOrgsTaskDetail" />
+    <property name="triggerName" value="sieSplitPubOrgsTaskTrigger" />
+  </bean>
+  <!-- 生产机，task_split_pub_orgs拆分成果署名单位和通讯作者任务 end-->
+  <!--轮询task_kpi_validate_main, task_kpi_validate_detail表并根据业务类型拆分数据 begin -->
+  <bean id="sieSplitKpiValidateDetailTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.tmp.SieSplitKpiValidateDetailTask">
+        <constructor-arg name="beanName" value="sieSplitKpiValidateDetailTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieSplitKpiValidateDetailTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieSplitKpiValidateDetailTaskDetail" />
+    <property name="triggerName" value="sieSplitKpiValidateDetailTrigger" />
+  </bean>
+  <!-- 轮询task_kpi_validate_main, task_kpi_validate_detail表并根据业务类型拆分数据end -->
+  
+      <!-- 单位影响力，社交化数据处理  begin -->
+  <bean id="sieImpactBaseTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieImpactBaseTask">
+        <constructor-arg name="beanName" value="sieImpactBaseTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieImpactBaseTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieImpactBaseTaskDetail" />
+    <property name="triggerName" value="sieImpactBaseTaskTrigger" />
+  </bean>
+  
+      <bean id="sieImpactExtendTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.sie.center.task.quartz.SieImpactExtendTask">
+        <constructor-arg name="beanName" value="sieImpactExtendTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="sieImpactExtendTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="sieImpactExtendTaskDetail" />
+    <property name="triggerName" value="sieImpactExtendTaskTrigger" />
+  </bean>
+  <!-- 单位影响力，社交化数据处理 end --> 
+  <bean id="ShortUrlGeneratorSiteMapTaskDetail"
+   class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+   <property name="targetObject">
+   <bean class="com.smate.center.task.quartz.pdwh.ShortUrlGeneratorSiteMapTask">
+   <constructor-arg name="beanName" value="ShortUrlGeneratorSiteMapTaskTrigger"></constructor-arg>
+   </bean>
+   </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+   <bean id="ShortUrlGeneratorSiteMapTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="ShortUrlGeneratorSiteMapTaskDetail" />
+    <property name="triggerName" value="ShortUrlGeneratorSiteMapTaskTrigger" />
+  </bean>
+  <!--PdwhPubUpdateImportPublicationTask start  -->
+  <bean id="PdwhPubUpdateImportPublicationTaskDetail"
+   class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+   <property name="targetObject">
+   <bean class="com.smate.center.task.quartz.pdwh.PdwhPubUpdateImportPublicationTask">
+   <constructor-arg name="beanName" value="PdwhPubUpdateImportPublicationTaskTrigger"></constructor-arg>
+   </bean>
+   </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="true" />
+  </bean>
+   <bean id="PdwhPubUpdateImportPublicationTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PdwhPubUpdateImportPublicationTaskDetail" />
+    <property name="triggerName" value="PdwhPubUpdateImportPublicationTaskTrigger" />
+  </bean>
+   <!--PdwhPubUpdateImportPublicationTask end  -->
+  
+  <!-- SuggestStrIndexTask -->
+    <bean id="suggestStrIndexTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.SuggestStrIndexTask">
+        <constructor-arg name="beanName" value="suggestStrIndexTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="suggestStrIndexTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="suggestStrIndexTaskDetail" />
+    <property name="triggerName" value="suggestStrIndexTaskTrigger" />
+  </bean>
+  <!-- SynSnsPdwhRelationLikeTask 同步赞 start -->
+  <bean id="SynSnsPdwhRelationLikeTask" class="com.smate.center.task.v8pub.task.SynSnsPdwhRelationLikeTask">
+    <constructor-arg name="beanName" value="SynSnsPdwhRelationLikeTaskTrigger"></constructor-arg>
+    <property name="startId" value="30000000000" />
+    <property name="endId" value="0" />
+  </bean>
+  <bean id="SynSnsPdwhRelationLikeTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="SynSnsPdwhRelationLikeTask" />
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SynSnsPdwhRelationLikeTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SynSnsPdwhRelationLikeTaskDetail" />
+    <property name="triggerName" value="SynSnsPdwhRelationLikeTaskTrigger" />
+  </bean>
+  <!-- SynSnsPdwhRelationLikeTask 同步赞 end -->
+  <!-- SynSnsPdwhRelationCommentTask 同步评论 start --> 
+  <bean id="SynSnsPdwhRelationCommentTask" class="com.smate.center.task.v8pub.task.SynSnsPdwhRelationCommentTask">
+    <constructor-arg name="beanName" value="SynSnsPdwhRelationCommentTaskTrigger"></constructor-arg>
+    <property name="startId" value="30000000000" />
+    <property name="endId" value="0" />
+  </bean>
+  <bean id="SynSnsPdwhRelationCommentTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="SynSnsPdwhRelationCommentTask" />
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SynSnsPdwhRelationCommentTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SynSnsPdwhRelationCommentTaskDetail" />
+    <property name="triggerName" value="SynSnsPdwhRelationCommentTaskTrigger" />
+  </bean>
+  <!-- SynSnsPdwhRelationCommentTask 同步评论 end -->
+  <!-- SynSnsPdwhRelationShareTask 同步分享 start -->
+  <bean id="SynSnsPdwhRelationShareTask" class="com.smate.center.task.v8pub.task.SynSnsPdwhRelationShareTask">
+    <constructor-arg name="beanName" value="SynSnsPdwhRelationShareTaskTrigger"></constructor-arg>
+    <property name="startId" value="30000000000" />
+    <property name="endId" value="0" />
+  </bean>
+  <bean id="SynSnsPdwhRelationShareTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="SynSnsPdwhRelationShareTask" />
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SynSnsPdwhRelationShareTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SynSnsPdwhRelationShareTaskDetail" />
+    <property name="triggerName" value="SynSnsPdwhRelationShareTaskTrigger" />
+  </bean>
+  <!-- SynSnsPdwhRelationShareTask 同步分享 end -->
+  <!-- 成果合作者  start -->
+  <bean id="GeneratePsnPubCopartnerTaskDetail"
+   class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+   <property name="targetObject">
+   <bean class="com.smate.center.task.quartz.GeneratePsnPubCopartnerTask">
+   <constructor-arg name="beanName" value="GeneratePsnPubCopartnerTaskTrigger"></constructor-arg>
+   </bean>
+   </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+   <bean id="GeneratePsnPubCopartnerTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="GeneratePsnPubCopartnerTaskDetail" />
+    <property name="triggerName" value="GeneratePsnPubCopartnerTaskTrigger" />
+  </bean>
+  <!-- 成果合作者  end -->
+   <!-- 项目合作者  start -->
+  <bean id="GeneratePsnPrjCopartnerTaskDetail"
+   class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+   <property name="targetObject">
+   <bean class="com.smate.center.task.quartz.GeneratePsnPrjCopartnerTask">
+   <constructor-arg name="beanName" value="GeneratePsnPrjCopartnerTaskTrigger"></constructor-arg>
+   </bean>
+   </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+   <bean id="GeneratePsnPrjCopartnerTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="GeneratePsnPrjCopartnerTaskDetail" />
+    <property name="triggerName" value="GeneratePsnPrjCopartnerTaskTrigger" />
+  </bean>
+  <!-- 项目合作者  end -->
+  <!-- 备份OriginalPdwhPubRelation表数据  start -->
+  <bean id="RemOriPdwhPubRelationDataTaskDetail"
+   class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+   <property name="targetObject">
+   <bean class="com.smate.center.task.quartz.RemOriPdwhPubRelationDataTask">
+   <constructor-arg name="beanName" value="RemOriPdwhPubRelationDataTaskTrigger"></constructor-arg>
+   </bean>
+   </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+   <bean id="RemOriPdwhPubRelationDataTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="RemOriPdwhPubRelationDataTaskDetail" />
+    <property name="triggerName" value="RemOriPdwhPubRelationDataTaskTrigger" />
+  </bean>
+  <!--备份OriginalPdwhPubRelation表数据  end -->
+  
+      <!-- 第三方信息接口调用  start -->
+  <bean id="GetThirdPartyDataTaskDetail"
+   class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+   <property name="targetObject">
+   <bean class="com.smate.center.task.quartz.thirdparty.GetThirdPartyDataTask">
+   <constructor-arg name="beanName" value="GetThirdPartyDataTaskTrigger"></constructor-arg>
+   </bean>
+   </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+   <bean id="GetThirdPartyDataTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="GetThirdPartyDataTaskDetail" />
+    <property name="triggerName" value="GetThirdPartyDataTaskTrigger" />
+  </bean>
+  <!-- 第三方信息接口调用  end -->
+  
+  <!-- 拆分个人库成果发表日期  start -->
+  <bean id="PubRebuildPublishDateTaskDetail"
+   class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+   <property name="targetObject">
+   <bean class="com.smate.center.task.v8pub.repair.task.PubRebuildPublishDateTask">
+   <constructor-arg name="beanName" value="PubRebuildPublishDateTaskTrigger"></constructor-arg>
+    <property name="startId" value="1200000000000"></property>
+   <property name="endId" value="0"></property>
+   </bean>
+   </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+   <bean id="PubRebuildPublishDateTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PubRebuildPublishDateTaskDetail" />
+    <property name="triggerName" value="PubRebuildPublishDateTaskTrigger" />
+  </bean>
+  <!-- 拆分个人库成果发表日期  end -->
+  
+    <!-- 拆分个人库成果发表日期  start -->
+  <bean id="PdwhRebuildPublishDateTaskDetail"
+   class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+   <property name="targetObject">
+   <bean class="com.smate.center.task.v8pub.repair.task.PdwhRebuildPublishDateTask">
+   <constructor-arg name="beanName" value="PdwhRebuildPublishDateTaskTrigger"></constructor-arg>
+   <property name="startId" value="22000871443"></property>
+   <property name="endId" value="0"></property>
+   </bean>
+   </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+   <bean id="PdwhRebuildPublishDateTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PdwhRebuildPublishDateTaskDetail" />
+    <property name="triggerName" value="PdwhRebuildPublishDateTaskTrigger" />
+  </bean>
+  <!-- 拆分个人库成果发表日期  end -->
+  <!-- 同步系统人员的登录及关联其他系统情况  start-->
+   <bean id="SyncUserUnionLoginLogTaskDetail"
+   class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+   <property name="targetObject">
+   <bean class="com.smate.center.task.quartz.sns.SyncUserUnionLoginLogTask">
+   <constructor-arg name="beanName" value="SyncUserUnionLoginLogTaskTrigger"></constructor-arg>
+   </bean>
+   </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+   <bean id="SyncUserUnionLoginLogTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SyncUserUnionLoginLogTaskDetail" />
+    <property name="triggerName" value="SyncUserUnionLoginLogTaskTrigger" />
+  </bean>
+  <!-- 同步系统人员的登录及关联其他系统情况  end-->
+    <!-- 初始化人员基金推荐的条件  start-->
+   <bean id="InitPsnRecommendFundTaskDetail"
+   class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+   <property name="targetObject">
+   <bean class="com.smate.center.task.quartz.sns.InitPsnRecommendFundTask">
+   <constructor-arg name="beanName" value="InitPsnRecommendFundTaskTrigger"></constructor-arg>
+   </bean>
+   </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+   <bean id="InitPsnRecommendFundTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="InitPsnRecommendFundTaskDetail" />
+    <property name="triggerName" value="InitPsnRecommendFundTaskTrigger" />
+  </bean>
+  <!-- 初始化人员基金推荐的条件   end-->
+   <!-- 修复base_journal表中的标题数据  start-->
+   <bean id="BaseJournalTitleRepairTaskDetail"
+   class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+   <property name="targetObject">
+   <bean class="com.smate.center.task.journal.task.BaseJournalTitleRepairTask">
+   <constructor-arg name="beanName" value="BaseJournalTitleRepairTaskTrigger"></constructor-arg>
+   </bean>
+   </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+   <bean id="BaseJournalTitleRepairTaskTrigger"
+    class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="BaseJournalTitleRepairTaskDetail" />
+    <property name="triggerName" value="BaseJournalTitleRepairTaskTrigger" />
+  </bean>
+  <!-- 修复base_journal表中的标题数据   end-->
+  <!-- 基准库重复成果筛选任务   start-->
+  <bean id="PdwhPubRepeatTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.v8pub.pdwh.repeat.task.PdwhPubRepeatTask">
+        <constructor-arg name="beanName" value="PdwhPubRepeatTaskTrigger"></constructor-arg>
+        <property name="startId" value="110000000000000"></property>
+        <property name="endId" value="0"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhPubRepeatTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PdwhPubRepeatTaskDetail" />
+    <property name="triggerName" value="PdwhPubRepeatTaskTrigger" />
+  </bean>
+  <!-- 基准库重复成果筛选任务   end-->
+  <!--个人工作经历填充 start-->
+  <bean id="FillPsnWorkHistoryTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.sns.FillPsnWorkHistoryTask">
+        <constructor-arg name="beanName" value="FillPsnWorkHistoryTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="FillPsnWorkHistoryTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="FillPsnWorkHistoryTaskDetail" />
+    <property name="triggerName" value="FillPsnWorkHistoryTaskTrigger" />
+  </bean>
+   <!--个人工作经历填充 end-->
+  <!--兴趣群组成果初始化 start-->
+  <bean id="InstrestGrpPubInitTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.group.InstrestGrpPubInitTask">
+        <constructor-arg name="beanName" value="InstrestGrpPubInitTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="InstrestGrpPubInitTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="InstrestGrpPubInitTaskDetail" />
+    <property name="triggerName" value="InstrestGrpPubInitTaskTrigger" />
+  </bean>
+  <!--兴趣群组成果初始化 end-->
+  <!--兴趣群组加成果 start-->
+  <bean id="InstrestGrpAddPubTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.group.InstrestGrpAddPubTask">
+        <constructor-arg name="beanName" value="InstrestGrpAddPubTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="InstrestGrpAddPubTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="InstrestGrpAddPubTaskDetail" />
+    <property name="triggerName" value="InstrestGrpAddPubTaskTrigger" />
+  </bean>
+  <!--兴趣群组加成果 end-->
+    <!--群组推荐 start-->
+  <bean id="GroupRcmdTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.group.GroupRcmdTask">
+        <constructor-arg name="beanName" value="GroupRcmdTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="GroupRcmdTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="GroupRcmdTaskDetail" />
+    <property name="triggerName" value="GroupRcmdTaskTrigger" />
+  </bean>
+  <!--群组推荐 end-->
+  <!--更新、新增群组推荐 start-->
+  <bean id="GroupRcmdIncTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.group.GroupRcmdIncTask">
+        <constructor-arg name="beanName" value="GroupRcmdIncTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="GroupRcmdIncTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="GroupRcmdIncTaskDetail" />
+    <property name="triggerName" value="GroupRcmdIncTaskTrigger" />
+  </bean>
+  <!--群组推荐 end-->
+  <!--PdwhPubJournalRepairTask 期刊信息完善任务 start -->
+  <bean id="PdwhPubJournalRepairTask" class="com.smate.center.task.v8pub.repair.task.PdwhPubJournalRepairTask">
+    <constructor-arg name="beanName" value="PdwhPubJournalRepairTaskTrigger"></constructor-arg>
+    <property name="startId" value="1200000000000" />
+    <property name="endId" value="0" />
+  </bean>  
+  
+  <bean id="PdwhPubJournalRepairTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="PdwhPubJournalRepairTask" />
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  
+  <bean id="PdwhPubJournalRepairTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PdwhPubJournalRepairTaskDetail" />
+    <property name="triggerName" value="PdwhPubJournalRepairTaskTrigger" />
+  </bean>
+  
+  <!--PdwhPubJournalRepairTask 期刊信息完善任务 end -->
+  
+ <bean id="PdwhPaperIndexHandleTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.PdwhPaperIndexHandleTask">
+        <constructor-arg name="beanName" value="PdwhPaperIndexHandleTaskTrigger"></constructor-arg>
+        <property name="startId" value="0"></property>
+        <property name="endId" value="23000000000"></property>
+        <property name="paperKeyValue" value="pdwh_paper_index"></property>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhPaperIndexHandleTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="PdwhPaperIndexHandleTaskDetail" />
+    <property name="triggerName" value="PdwhPaperIndexHandleTaskTrigger" />
+  </bean>
+  
+   <bean id="SendGrpDnyUpdateEmailTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <bean class="com.smate.center.task.quartz.email.SendGrpDnyUpdateEmailTask">
+        <constructor-arg name="beanName" value="SendGrpDnyUpdateEmailTaskTrigger"></constructor-arg>
+      </bean>
+    </property>
+    <property name="targetMethod" value="doRun" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="SendGrpDnyUpdateEmailTaskTrigger" class="com.smate.center.task.sys.quartz.service.IrisDbCronTriggerBean">
+    <property name="jobDetail" ref="SendGrpDnyUpdateEmailTaskDetail" />
+    <property name="triggerName" value="SendGrpDnyUpdateEmailTaskTrigger" />
+  </bean>
+
+</beans>

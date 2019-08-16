@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+  default-lazy-init="true">
+  <description>文件服务</description>
+  <context:component-scan base-package="com.smate.web.file.service*" scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.web.pub.service*" scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.web.file.dao*" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.statistics.dao*"
+    scoped-proxy="targetClass" />
+  <!-- 文件上传 start -->
+  <bean id="fileUploadService" class="com.smate.web.file.service.upload.FileUploadServiceImpl">
+    <property name="serviceMap">
+      <map>
+        <entry key="generalfile" value-ref="generalBuildFileService"></entry>
+        <entry key="groupavatars" value-ref="groupAvatarsBuildFile"></entry>
+        <entry key="personavatars" value-ref="personAvatarsBuildFile"></entry>
+        <entry key="appfile" value-ref="appBuildFileService"></entry>
+        <entry key="pubsrcfile" value-ref="pubSrcFileBuildFileServiceImpl"></entry>
+        <entry key="newsfile" value-ref="newsFileBuildFileServiceImpl"></entry>
+      </map>
+    </property>
+  </bean>
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+  <bean id="generalBuildFileService" class="com.smate.web.file.service.upload.GeneralBuildFileServiceImpl"></bean>
+  <bean id="groupAvatarsBuildFile" class="com.smate.web.file.service.upload.GroupAvatarsBuildFileServiceImpl">
+    <property name="basicPath" value="/groupimg"></property>
+    <property name="imgType" value="png"></property>
+  </bean>
+  <bean id="personAvatarsBuildFile" class="com.smate.web.file.service.upload.PersonAvatarsBuildFileServiceImpl">
+    <property name="basicPath" value="/avatars"></property>
+    <property name="imgType" value="png"></property>
+  </bean>
+  <bean id="appBuildFileService" class="com.smate.web.file.service.upload.AppBuildFileServiceImpl">
+    <property name="allowSize" value="70"></property>
+  </bean>
+  <bean id="pubSrcFileBuildFileServiceImpl" class="com.smate.web.file.service.upload.PubSrcFileBuildFileServiceImpl">
+  <property name="basicPath" value="/pubsrcfile"></property>
+</bean>
+  <bean id="newsFileBuildFileServiceImpl" class="com.smate.web.file.service.upload.NewsFileBuildFileServiceImpl">
+  <property name="basicPath" value="/newsfile"></property>
+</bean>
+  <!-- 文件上传 end -->
+  <!-- 文件下载 start -->
+  <!-- 单文件下载资源构建服务 -->
+  <bean id="fileDownloadService" class="com.smate.web.file.service.download.FileDownloadServiceImpl">
+    <property name="serviceMap">
+      <map>
+        <entry key="0" value-ref="buildPsnFileResService"></entry>
+        <entry key="1" value-ref="buildGrpFileResService"></entry>
+        <entry key="2" value-ref="buildFulltextFileResService"></entry>
+        <entry key="3" value-ref="buildPdwhFullTextFileResService"></entry>
+        <entry key="4" value-ref="buildRcmdFulltextFileResService"></entry>
+        <entry key="5" value-ref="buildPubAttachmentFileResService"></entry>
+        <entry key="6" value-ref="buildSieFulltextFileResService"></entry>
+        <entry key="7" value-ref="buildSiePDWHFulltextFileResService"></entry>
+        <entry key="8" value-ref="buildArchiveFileService"></entry>
+      </map>
+    </property>
+  </bean>
+  <!-- 批量文件下载资源构建服务 -->
+  <bean id="batchFileDownloadService" class="com.smate.web.file.service.download.BatchFileDownloadServiceImpl">
+    <property name="serviceMap">
+      <map>
+        <entry key="0" value-ref="buildBatchPsnFileResService"></entry>
+        <entry key="1" value-ref="buildBatchGrpFileResService"></entry>
+      </map>
+    </property>
+  </bean>
+  <!-- 个人文件 单文件资源构造服务 -->
+  <bean id="buildPsnFileResService" class="com.smate.web.file.service.download.BuildPsnFileResServiceImpl"></bean>
+  <!-- 个人文件 多文件资源构造服务 -->
+  <bean id="buildBatchPsnFileResService"
+    class="com.smate.web.file.service.download.BuildBatchPsnFileResServiceImpl"></bean>
+  <!-- 个人成果全文 -->
+  <bean id="buildFulltextFileResService"
+    class="com.smate.web.file.service.download.BuildPubFulltextFileResServiceImpl"></bean>
+  <!-- 基准库成果全文下载 -->
+  <bean id="buildPdwhFullTextFileResService"
+    class="com.smate.web.file.service.download.BuildPdwhFullTextFileResServiceImpl"></bean>
+  <!-- 群组文件 多文件资源构造服务 -->
+  <bean id="buildBatchGrpFileResService"
+    class="com.smate.web.file.service.download.BuildBatchGrpFileResServiceImpl"></bean>
+  <!-- 群组文件下载 -->
+  <bean id="buildGrpFileResService" class="com.smate.web.file.service.download.BuildGroupFileResServiceImpl"></bean>
+  <!-- 全文认领的全文下载 -->
+  <bean id="buildRcmdFulltextFileResService"
+    class="com.smate.web.file.service.download.BuildRcmdFulltextFileResServiceImpl"></bean>
+  <!-- 全文附件的下载 -->
+  <bean id="buildPubAttachmentFileResService"
+    class="com.smate.web.file.service.download.BuildPubAttachmentFileResServiceImpl"></bean>
+  <!-- SIE成果的全文下载 -->
+  <bean id="buildSieFulltextFileResService"
+    class="com.smate.web.file.service.download.BuildSieFulltextFileResServiceImpl"></bean>
+  <!-- SIE基准库成果的全文下载 -->
+  <bean id="buildSiePDWHFulltextFileResService"
+    class="com.smate.web.file.service.download.BuildSiePdwhFullTextFileResServiceImpl"></bean>
+  <!-- 文件下载 end -->
+  <!-- archiveFile下载 -->
+  <bean id="buildArchiveFileService" class="com.smate.web.file.service.download.BuildArchiveFileServiceImpl"></bean>
+  <!-- archiveFile 文件下载end -->
+</beans>

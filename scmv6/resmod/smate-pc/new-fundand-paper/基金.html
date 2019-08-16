@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+    <link href="../css/scmpcframe.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript">
+		window.onload = function(){
+			var keylist = document.getElementsByClassName("new-mainpage_left-list_header-onkey");
+			var closelist = document.getElementsByClassName("new-mainpage_left-sublist_header-onkey");
+			var selectlist = document.getElementsByClassName("new-mainpage_left-sublist_body-item");
+			var heightlist = document.getElementsByClassName("new-mainpage_scroll-height");
+			for(var i = 0; i < heightlist.length; i++){
+                heightlist[i].style.height = window.innerHeight - 96 + "px";
+			}
+            for(var i = 0; i < keylist.length; i++){
+                keylist[i].onclick = function(){
+                	if(this.innerHTML == "expand_less"){
+                        this.innerHTML = "expand_more";
+                        if(this.closest(".new-mainpage_left-list").querySelector(".new-mainpage_left-list_body")){
+                            this.closest(".new-mainpage_left-list").querySelector(".new-mainpage_left-list_body").style.display = "none";
+                        }
+                	}else{
+                		this.innerHTML = "expand_less";
+                		if(this.closest(".new-mainpage_left-list").querySelector(".new-mainpage_left-list_body")){
+                            this.closest(".new-mainpage_left-list").querySelector(".new-mainpage_left-list_body").style.display = "block";
+                        }
+                	}
+                }
+            }
+            for(var i = 0;i < closelist.length; i++){
+                closelist[i].onclick = function(){
+                	if(this.classList.contains("new-mainpage_left-sublist_header-open")){
+                        this.classList.remove("new-mainpage_left-sublist_header-open");
+                        this.closest(".new-mainpage_left-sublist").querySelector(".new-mainpage_left-sublist_body").style.display = "none";
+                	}else{
+                		this.classList.add("new-mainpage_left-sublist_header-open");
+                		this.closest(".new-mainpage_left-sublist").querySelector(".new-mainpage_left-sublist_body").style.display = "block";
+                	}
+                }
+            }
+
+            for(var i = 0; i < selectlist.length; i++){
+               selectlist[i].onclick = function(){
+               	    if(this.classList.contains("new-mainpage_left-sublist_body-item_selected")){
+                        this.classList.remove("new-mainpage_left-sublist_body-item_selected");
+               	    }else{
+               	    	this.classList.add("new-mainpage_left-sublist_body-item_selected")
+               	    }
+               }
+            }
+		}
+	</script>
+</head>
+<body>
+    <div class="new-mainpage_container">
+    	<div class="new-mainpage_left-container new-mainpage_scroll-height">
+    		<div class="new-mainpage_left-item  new-mainpage_scroll-height">
+    			<div class="new-mainpage_left-list">
+    				<div class="new-mainpage_left-list_header">
+    					<span class="new-mainpage_left-list_header-title">所在区域</span>
+    					<i class="material-icons new-mainpage_left-list_header-onkey">expand_less</i>
+    				</div>
+    				<div class="new-mainpage_left-list_body">
+    					<div class="new-mainpage_left-list_body-search">
+    						<input type="text" placeholder="输入要关注的地区">
+    						<i class="searchbox__icon"></i>
+    					</div>
+    				</div>
+    			</div>
+                <div class="new-mainpage_left-list">
+    				<div  class="new-mainpage_left-list_header">
+    					<span class="new-mainpage_left-list_header-title">单位类型</span>
+    					<i class="material-icons new-mainpage_left-list_header-onkey">expand_less</i>
+    				</div>
+    				<div class="new-mainpage_left-list_body">
+    					<div class="new-mainpage_left-list_body-item">高等院校</div>
+    					<div class="new-mainpage_left-list_body-item">科研院校</div>
+    					<div class="new-mainpage_left-list_body-item">科技企业</div>
+    					<div class="new-mainpage_left-list_body-item">不限</div>
+    				</div>
+    			</div>
+                <div class="new-mainpage_left-list">
+    				<div  class="new-mainpage_left-list_header">
+    					<span class="new-mainpage_left-list_header-title">科研领域</span>
+    					<i class="material-icons new-mainpage_left-list_header-onkey">expand_less</i>
+    				</div>
+    				<div class="new-mainpage_left-list_body">
+    			        <div class="new-mainpage_left-sublist">
+    			        	<div class="new-mainpage_left-sublist_header">
+    			        		<i class="new-mainpage_left-sublist_header-onkey new-mainpage_left-sublist_header-open"></i>
+    			        		<span class="new-mainpage_left-sublist_header-title">农业</span>
+    			        	</div>
+    			        	<div class="new-mainpage_left-sublist_body">
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">插秧</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">嫁接</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">灌溉</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+                                <div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">栽培</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        	</div>
+    			        </div>
+    			        <div class="new-mainpage_left-sublist">
+    			        	<div class="new-mainpage_left-sublist_header">
+    			        		<i class="new-mainpage_left-sublist_header-onkey new-mainpage_left-sublist_header-open"></i>
+    			        		<span class="new-mainpage_left-sublist_header-title">数学</span>
+    			        	</div>
+    			        	<div class="new-mainpage_left-sublist_body">
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">大数据</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">概率论</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        		<div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">立体几何</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+                                <div class="new-mainpage_left-sublist_body-item">
+    			        			<span class="new-mainpage_left-sublist_body-detail">高等数学</span>
+    			        			<i class="material-icons  new-mainpage_left-sublist_body-onclose">close</i>
+    			        		</div>
+    			        	</div>
+    			        </div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="new-mainpage_right-container  new-mainpage_scroll-height">
+           <div class="new-mainpage_right-container_search">
+                <div class="new-mainpage_right-container_search-box">
+                    <input type="text" placeholder="输入成果名称或者关键词">
+                    <i class="searchbox__icon"></i>
+                </div>
+                <div class="new-mainpage_right-container_search-btn">检索</div>
+            </div>
+    		<div class="new-mainpage_right-container-scroll  new-mainpage_scroll-height">
+    		
+    		<div class="new-mainpage_right-item">
+    			<div class="new-mainpage_right-list">
+    				<div class="new-mainpage_right-list_avator">
+    					<img src="3-1-2.jpg">
+    				</div>
+    					<div class="new-mainpage_right-list_infor-box">
+    					   <div class="new-mainpage_right-list_infor-left">
+    						    <div class="new-mainpage_right-list_title">基础医学管理无地区企业时间不限基础医学管理无地区企业时间不限基础医学管理无地区企业时间不限</div>
+    					        <div class="new-mainpage_right-list_author">基础医学管理无地区企业时间不限基础医学管理无地区企业时间不限</div>
+    					        <div class="new-mainpage_right-list_functool">
+    					        	<div class="new-Standard_Function-bar">
+                                        <div class="new-Standard_Function-bar_item" style="margin-left: 0px;">
+                                           <i class="new-Standard_function-icon new-Standard_Praise-icon"></i> 
+                                           <span class="new-Standard_Function-bar_item-title"> 赞</span>
+    	                                   <span></span>
+                                        </div>
+                
+                                        <div class="new-Standard_Function-bar_item">
+                                            <i class="new-Standard_function-icon new-Standard_Share-icon"></i> 
+                                            <span class="new-Standard_Function-bar_item-title"> 分享 </span>
+    	                                    <span></span>
+                                        </div>
+                                    </div>
+    					        </div>
+    				     	</div>
+    				     	<div class="new-mainpage_right-list_infor-right">
+    						   2017-10-01 ~ 2018-12-27
+    					    </div>
+    				    </div>
+    			</div> 
+                
+
+    		</div>
+    	</div>
+    	</div>
+    </div>
+</body>
+</html>

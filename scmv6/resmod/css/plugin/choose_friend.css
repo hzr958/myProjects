@@ -1,0 +1,257 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*==============选择好友=================*/
+.p_friend_search {
+  height: 25px;
+  line-height: 25px;
+  width: 500px; /*float:left;*/
+}
+
+.p_friend_search ul li {
+  float: left;
+  margin-right: 8px;
+}
+
+.P_search_iuput {
+  border: 1px solid #e5e5e5;
+  width: 280px;
+  height: 23px;
+  line-height: 23px;
+  padding-left: 3px;
+  background-color: #fafafa;
+  color: #b1b1b1;
+}
+
+.P_friend_list {
+  margin-top: 10px;
+  border: 1px solid #cecece;
+  width: 100%;
+  height: auto;
+  float: left;
+  overflow: hidden;
+  _margin-bottom: 20px;
+}
+
+.P_f_tit {
+  width: 100%;
+  background-color: #f5f5f5;
+  height: 27px;
+  line-height: 27px;
+  border-bottom: 1px solid #cecece; /*float:left;*/
+  position: relative;
+}
+
+.all_fr_left {
+  margin-left: 10px;
+  width: 50px;
+  float: left;
+  display: inline;
+  _margin-top: 5px;
+}
+
+.all_fr_left a {
+  width: 60px;
+  color: #0756aa;
+  text-decoration: none;
+  display: block;
+}
+
+.all_fr_left a:hover {
+  width: 60px;
+  color: #0756aa;
+  text-decoration: underline;
+  display: block;
+}
+
+.all_fr_right {
+  float: right;
+  display: inline;
+}
+
+a.P_lanse:link, a.P_lanse:visited {
+  color: #0756aa;
+  text-decoration: none;
+  float: left;
+  height: 27px;
+  padding: 0px 7px;
+}
+
+a.P_lanse:hover, a.P_lanse:active {
+  color: #0756aa;
+  text-decoration: underline;
+  float: left;
+  height: 27px;
+  padding: 0px 7px;
+}
+
+a.all_hover:link, a.all_hover:visited {
+  color: #fff;
+  text-decoration: none;
+  background-color: #363a40;
+  padding: 0px 7px;
+  height: 27px;
+  display: block;
+  text-align: center;
+  float: left;
+}
+
+a.all_hover:hover, a.all_hover:active {
+  color: #fff;
+  text-decoration: underline;
+  background-color: #363a40;
+  padding: 0px 7px;
+  height: 27px;
+  display: block;
+  text-align: center;
+  float: left;
+}
+
+.P_f_pic { /*float:left;*/
+  width: 100%;
+  height: 246px;
+  overflow-y: auto;
+  padding-top: 10px;
+}
+
+.P_f_pic ul li {
+  float: left;
+  margin-left: 10px;
+  display: inline;
+}
+
+.P_f_pic ul li a {
+  background: none;
+  width: 147px;
+  height: 54px;
+  display: block;
+  padding-top: 4px;
+  padding-left: 4px;
+  color: #545454;
+  text-decoration: none;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.P_f_pic ul li a:hover {
+  background: url(../../images/icon_hover1_bj.gif) no-repeat;
+  width: 147px;
+  height: 54px;
+  display: block;
+  padding-top: 4px;
+  padding-left: 4px;
+  color: #545454;
+  text-decoration: none;
+  margin-bottom: 8px;
+  padding-bottom: 0px;
+  cursor: pointer;
+}
+
+.Pleft_tupian {
+  float: left;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.Pleft_tupian img {
+  border-radius: 50%;
+}
+
+.Pright_name {
+  float: left;
+  margin-left: 10px;
+}
+
+.Pright_name p {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 80px;
+  line-height: 18px;
+}
+
+a.P_hover, a.P_hover:hover {
+  background: url(../../images/icon_hover_bj.gif) no-repeat !important;
+  display: block;
+  color: #fff !important;
+}
+
+.P_anniu {
+  float: left;
+  margin-top: 10px;
+  width: 100%;
+  text-align: right;
+}
+/*全部好友分类下拉菜单*/
+.fri_nav {
+  position: absolute;
+  top: 32px;
+  left: 2px;
+}
+
+.f_jt {
+  background: url(../../images/arrow.gif) no-repeat;
+  width: 15px;
+  height: 8px;
+  position: absolute;
+  top: -8px;
+  left: 25px;
+}
+
+.fri_nav_nr {
+  width: 150px;
+  border: 1px solid #cbae85;
+  background-color: #fffdf4;
+  position: relative;
+}
+
+.fr_class {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px 0px;
+}
+
+.fr_class li {
+  width: 150px;
+  line-height: 25px;
+  height: 25px;
+}
+
+.fr_class li a {
+  width: 135px;
+  height: 25px;
+  background-color: none;
+  color: #555555;
+  text-decoration: none;
+  display: block;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+
+.fr_class li a:hover {
+  width: 135px;
+  height: 25px;
+  background-color: #f7f2dd;
+  color: #555555;
+  text-decoration: none;
+  display: block;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+
+.gain_nr li {
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.gain_nr p {
+  line-height: 25px;
+}
+
+.info_tool02 {
+  border-left: 1px solid #c1c8d2;
+  border-top: 1px solid #c1c8d2;
+  border-right: 1px solid #c1c8d2;
+}

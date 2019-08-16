@@ -1,0 +1,1462 @@
+/* CSS Document */
+html {
+  color: #222;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p,
+  blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav,
+  section {
+  margin: 0;
+  padding: 0;
+}
+
+body, button, input, select, textarea {
+  font-size: 12px;
+  font-family: arial, Tahoma, Verdana, simsun;
+}
+
+input {
+  overflow: visible;
+}
+/*input, select, textarea,span,a,i,li,ul,dl,dd,dt { font-size:100%; vertical-align:middle;}*/
+.v_align input, table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+b {
+  font-weight: normal;
+}
+
+.ttr {
+  text-align: right;
+}
+/* IE bug fixed: th 不继承 text-align*/
+table, th, td, tr {
+  margin: 0px;
+  padding: 0px;
+  line-height: 150%;
+}
+/* 去除默认边框 */
+fieldset, img, a img {
+  border: 0;
+}
+
+img {
+  vertical-align: middle;
+}
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe {
+  display: block;
+}
+
+address, caption, cite, code, dfn, th, var {
+  font-style: normal;
+  font-weight: 500;
+}
+/* 去掉列表前的标识, li 会继承 */
+ol, ul {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+}
+
+q:before, q:after {
+  content: '';
+}
+
+ins, a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #005bac;
+}
+/* 清理浮动 */
+.clear:after {
+  content: ".";
+  display: block;
+  height: 0px;
+  visibility: hidden;
+  clear: both;
+}
+
+.clear {
+  clear: both;
+}
+
+body .none {
+  display: none;
+}
+
+.fl, .fr {
+  display: inline;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tc {
+  text-align: center;
+}
+
+.tr {
+  text-align: right;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.blue {
+  color: #0f5ba0;
+}
+
+.f999 {
+  color: #999;
+}
+
+.f666 {
+  color: #666;
+}
+
+.f333 {
+  color: #333;
+}
+
+.clear20 {
+  clear: both;
+  height: 20px;
+}
+
+.pop_box {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  font-family: "Microsoft Yahei";
+}
+
+.pop_bg {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.2); /* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+}
+
+@media \0screen\,screen\9 { /* 只支持IE6、7、8 */
+  .pop_bg {
+    background-color: #000000;
+    filter: Alpha(opacity = 20);
+    position: static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+    *zoom: 1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
+  }
+}
+
+.pop {
+  margin: 20px auto;
+  background: #fff;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -455px;
+}
+
+.pop_top {
+  width: 100%;
+  height: 40px;
+  background: #106abc;
+  line-height: 40px;
+  border-bottom: 1px solid #ddd;
+}
+
+.pop_top span {
+  font-size: 16px;
+  color: #fff;
+}
+
+.pop_top .close {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  float: right;
+}
+
+.pop_top .close .close_icon {
+  width: 16px;
+  height: 16px;
+  background: url("../images/icon.png") no-repeat;
+  display: inline-block;
+  margin: 12px 0 0 12px;
+}
+
+.pop_top .close:hover {
+  background: #c81623;
+}
+
+.pop_top .close:active {
+  background: #c81623;
+}
+
+.pop_top .close:active .close_icon {
+  margin: 13px 0 0 13px;
+}
+
+.pop_tx {
+  padding: 15px 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pop_shelter_bg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+@media \0screen\,screen\9 { /* 只支持IE6、7、8 */
+  .pop_shelter_bg {
+    background-color: #000;
+    filter: Alpha(opacity = 40);
+    position: static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+    *zoom: 1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
+  }
+}
+
+.pop_shelter {
+  width: 250px;
+  height: 120px;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -60px;
+  margin-left: -125px;
+  z-index: 1001;
+}
+
+.pop_slt_tit {
+  width: 100%;
+  height: 20px;
+}
+
+.pop_slt_tit {
+  width: 100%;
+  height: 32px;
+}
+
+.close_btn {
+  width: 24px;
+  height: 24px;
+  background: url("../images/close.png") no-repeat;
+  display: block;
+  float: right;
+  margin: 4px;
+  cursor: pointer;
+}
+
+.close_btn:hover {
+  background-position: -34px 0;
+}
+
+.close_btn:active {
+  background-position: -68px 0;
+}
+
+.pop_slt_cont {
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.pop_slt_cont span {
+  vertical-align: middle;
+}
+
+.login_modified {
+  float: right;
+  width: 389px;
+  height: 415px;
+  background: url("../images/login_bg.jpg") bottom left no-repeat;
+  padding-left: 45px;
+  margin-left: 45px;
+  border-left: 1px solid #ddd;
+}
+
+.login_ad {
+  width: 280px;
+  margin: 15px auto;
+  font-size: 16px;
+  color: #666;
+  line-height: 30px;
+}
+
+.login_ad img {
+  width: 280px;
+  height: 24px;
+  margin-bottom: 20px;
+}
+/*---选项卡---*/
+#tab {
+  width: 390px;
+  height: 435px;
+  float: left;
+  margin: 0 auto;
+}
+
+.menubox {
+  height: 35px;
+  line-height: 35px;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.menubox ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+.menubox li {
+  float: left;
+  display: block;
+  cursor: pointer;
+  padding: 0px 20px;
+  text-align: center;
+  color: #333;
+  height: 35px;
+  line-height: 35px;
+  font-size: 16px;
+}
+
+.menubox li.hover {
+  border: 1px solid #e6e6e6;
+  border-top: 2px solid #106abc;
+  height: 34px;
+  line-height: 34px;
+  color: #106abc;
+  font-size: 16px;
+  position: relative;
+  border-bottom: 0px solid #fff;
+  background: #fff;
+}
+
+.contentbox {
+  clear: both;
+  height: auto;
+  background-color: #FFF;
+  overflow: hidden;
+}
+
+.login_box {
+  margin: 15px 20px;
+  min-height: 250px;
+}
+
+.login_box p {
+  font-size: 14px;
+  padding: 10px 0;
+  color: #999;
+  overflow: hidden;
+}
+
+.login_box p a {
+  text-decoration: underline;
+}
+
+.login_input {
+  width: 348px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.reg_box {
+  margin-top: 10px;
+  overflow: hidden;
+  width: 350px;
+  margin-top: 20px;
+  overflow: hidden;
+  border: 1px solid #d0d0d0;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 3px
+}
+
+.reg_box span {
+  width: 70px;
+  display: block;
+  float: left;
+  font-size: 14px;
+  color: #666;
+  height: 40px;
+  line-height: 40px;
+  text-align: right;
+}
+
+.reg_box a {
+  padding: 0 5px;
+  height: 40px;
+  line-height: 40px;
+  color: #999;
+  float: left;
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+}
+
+.reg_box input {
+  width: 220px;
+  padding: 0 10px;
+  height: 24px;
+  outline: none;
+  border-radius: 3px;
+  float: left;
+  margin: 8px 8px 8px 0;
+}
+
+.reg_box input.ipt_grey {
+  background: #f1f1f1;
+}
+
+.quick_login {
+  width: 328px;
+  height: 72px;
+  padding: 10px;
+  border: 1px dotted #ddd;
+  background: #f5f6f5;
+  display: inline-block;
+}
+
+.quick_login img {
+  width: 72px;
+  height: 72px;
+  float: left;
+  margin-right: 10px;
+}
+
+.quick_login p {
+  width: 246px;
+  height: 24px;
+  line-height: 26px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: left;
+  padding: 0;
+  color: #666;
+}
+
+.contact_btn, .contact_btn_grey {
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  border-radius: 3px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+  font-family: "Microsoft Yahei";
+}
+
+.contact_btn1, .contact_btn_grey1 {
+  width: 242px;
+  height: 44px;
+  line-height: 44px;
+  margin-left: 70px;
+  text-align: center;
+  border-radius: 3px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+  font-family: "Microsoft Yahei";
+}
+
+.ml70 {
+  margin-left: 70px;
+}
+
+.contact_btn, .contact_btn1 {
+  background: #106abc;
+}
+
+.contact_btn:hover, .contact_btn1:hover {
+  background: #1981df;
+}
+
+.contact_btn:active, .contact_btn1:active {
+  background: #0f5ba0;
+}
+
+.contact_btn_grey, .contact_btn_grey1 {
+  background: #ccc;
+}
+
+.admin_icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background: url("../images/user.png") no-repeat;
+  margin: 8px 10px;
+  float: left;
+  background-position: 0 0;
+  background-size: 24px 24px;
+}
+.demo-admin_icon{
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url("../images/Account2@2x.png") no-repeat;
+  margin: 8px 10px;
+  float: left;
+  background-position: 0 0;
+  background-size: 20px 20px;
+}
+.demo-user_icon{
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url("../images/user2@2x.png") no-repeat;
+  margin: 8px 10px;
+  float: left;
+  background-position: 0 0;
+  background-size: 20px 20px;
+}
+.password_icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background: url("../images/password.png") no-repeat;
+  margin: 8px 10px;
+  float: left;
+  background-position: 0 0px;
+  background-size: 24px 24px;
+}
+.demo-password_icon{
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url("../images/password@2x.png") no-repeat;
+  margin: 8px 10px;
+  float: left;
+  background-position: 0 0px;
+  background-size: 20px 20px;
+}
+.login_input input {
+  width: 275px;
+  height: 24px;
+  margin: 8px 8px 8px 0;
+  padding: 0 10px;
+  border: none;
+  border-left: 1px solid #ddd;
+  float: left;
+  outline: none;
+}
+
+.agreement {
+  width: 350px;
+  padding: 15px 20px;
+  overflow: hidden;
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+  color: #999;
+}
+
+.agreement a {
+  color: #666;
+}
+
+.tip_icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url("../images/icon.png") no-repeat;
+  background-position: 0 -26px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.import_mn {
+  width: 100%;
+  overflow: hidden;
+}
+
+.rounded_btn {
+  padding: 0 15px;
+  height: 25px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  position: relative;
+  behavior: url(../js/pie.htc);
+  float: right;
+  margin-top: 2px;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 25px;
+  color: #333;
+  font-size: 12px;
+}
+
+.input_default {
+  color: #ccc;
+  outline: none;
+}
+
+.import_btn01, .import_btn02 {
+  height: 33px;
+  line-height: 33px;
+  text-align: center;
+  background: url("../images/btn.png") no-repeat;
+  display: inline-block;
+  float: left;
+  color: #333;
+  font-size: 12px;
+}
+
+.import_btn01 {
+  width: 119px;
+  background-position: 0 0;
+}
+
+.import_btn01:hover {
+  background-position: 0 -34px;
+  text-decoration: none;
+  color: #333;
+}
+
+.import_btn01:active, .import_btn01_hover {
+  background-position: 0 -68px;
+}
+
+.import_btn02 {
+  width: 159px;
+  background-position: -119px 0;
+}
+
+.import_btn02:hover {
+  background-position: -119px -34px;
+  text-decoration: none;
+  color: #333;
+}
+
+.import_btn02:active, .import_btn02_hover {
+  background-position: -119px -68px;
+}
+
+.rush {
+  width: 60px;
+  height: 25px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  position: relative;
+  behavior: url(../js/pie.htc);
+  float: right;
+  margin-top: 2px;
+  text-align: center;
+  line-height: 25px;
+  color: #333;
+  font-size: 12px;
+}
+
+.rush_icon {
+  width: 24px;
+  height: 24px;
+  background: url("../images/rush.png") no-repeat 4px 4px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.query_box {
+  width: 220px;
+  height: 28px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  position: relative;
+  behavior: url(../js/pie.htc);
+  float: left;
+  margin-top: 2px;
+  margin-left: 30px;
+}
+
+.import_slt {
+  width: 445px;
+  height: auto;;
+  margin: 0 auto;
+}
+
+.import_slt .query_box {
+  width: 443px;
+  margin: 20px 0 10px 0px;
+}
+
+.import_slt .contact_btn_grey, .import_slt .contact_btn {
+  height: 42px;
+  line-height: 42px;
+}
+
+.input_default {
+  width: 172px;
+  padding: 0 10px;
+  float: left;
+  height: 28px;
+  line-height: 28px;
+  border: 0;
+  font-size: 12px;
+}
+
+.query_btn {
+  width: 28px;
+  height: 28px;
+  background: url("../images/icon.png") no-repeat;
+  background-position: -98px 5px;
+  cursor: pointer;
+  border: none;
+  float: right;
+}
+
+.pro_btn {
+  width: 130px;
+  height: 28px;
+  display: inline-block;
+  float: right;
+  border: 1px solid #ddd;
+  background: #fff;
+  line-height: 28px;
+  color: #106abc;
+  text-align: center;
+  border-radius: 3px;
+  position: relative;
+  behavior: url(../js/pie.htc);
+  font-size: 12px;
+  margin: 6px 0;
+}
+
+.pro_effort {
+  width: 924px;
+  padding: 8px;
+  height: 42px;
+  background: #f8f8f8;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.pro_effort_ple {
+  width: 600px;
+  float: left;
+  font-size: 12px;
+  line-height: 21px;
+}
+
+.pro_effort_ple:hover {
+  text-decoration: none;
+}
+
+.pro_effort_ple img {
+  width: 42px;
+  height: 42px;
+  margin: 0 10px;
+  float: left;
+  border-radius: 100%;
+  position: relative;
+  behavior: url(../js/pie.htc);
+}
+
+.pro_effort_ple span {
+  color: #333;
+}
+
+.pro_effort_ple p {
+  color: #999;
+}
+
+.pro_btn:hover {
+  text-decoration: none;
+}
+
+.sm_logo {
+  width: 18px;
+  height: 18px;
+  background: url("../images/sm_logo.png") no-repeat;
+  display: inline-block;
+  margin: 5px 10px 5px 0;
+  vertical-align: middle;
+}
+
+.cont_l {
+  width: 152px;
+  height: 480px;
+  padding: 10px 15px;
+  float: left;
+  background: #f8f8f8;
+}
+
+.cont_r {
+  width: 738px;
+  float: right;
+  min-height: 480px;
+  position: relative;
+}
+
+.l_menu_tit {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  color: #333;
+}
+
+.menu {
+  height: 150px;
+}
+
+.menuParent {
+  padding: 0px;
+  font-size: 14px;
+}
+
+.menu .ListTitle {
+  padding-top: 5px;
+  border-top: 1px #dddddd solid;
+  display: block;
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.keyboard_arrow_up, .keyboard_arrow_down {
+  width: 16px;
+  height: 16px;
+  background: url("../images/icon.png") no-repeat;
+  display: inline-block;;
+  vertical-align: middle;
+}
+
+.keyboard_arrow_up {
+  background-position: -78px 0;
+}
+
+.keyboard_arrow_down {
+  background-position: -78px -26px;
+}
+
+.menu .ListTitle strong {
+  width: 120px;
+  height: 32px;
+  line-height: 32px;
+  float: left;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  float: left;
+  font-weight: normal;
+}
+
+.ListTitlePanel {
+  position: relative;
+}
+
+.ListTitlePanel .leftbgbt {
+  width: 32px;
+  height: 32px;
+  float: right;
+  text-align: center;
+}
+
+.menuList {
+  display: block;
+  height: auto;
+  position: relative;
+}
+
+.menuList em {
+  font-style: normal;
+  font-size: 12px;
+  color: #999;
+  line-height: 28px;
+  margin-left: 5px;
+}
+
+.menuList div {
+  padding-left: 15px;
+  text-align: left;
+  height: 32px;
+  line-height: 32px;
+  font-size: 12px;
+}
+
+.menuList div.cur {
+  background: #f1f1f1;
+}
+
+.menuList div:hover {
+  background: #fff;
+}
+
+.menuList div.menuList_sc {
+  padding: 5px 0;
+  height: 24px;
+}
+
+.menuList div.menuList_sc a {
+  width: 66px;
+  height: 22px;
+  border-radius: 10px;
+  position: relative;
+  behavior: url(../js/pie.htc);
+  text-align: center;
+  line-height: 22px;
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #999;
+}
+
+.menuList div.menuList_sc a:hover, .menuList div.menuList_sc a.hover {
+  border: 1px solid #106abc;
+  color: #106abc;
+  background: #fff;
+}
+
+.menuList div:hover a {
+  color: #333;
+}
+
+.menuList div.menuList_st:hover, .menuList div.menuList_sc:hover {
+  background: none;
+}
+
+.menuList div a {
+  display: block;
+  text-decoration: none;
+}
+
+.menuList div a span {
+  max-width: 100px;
+  height: 32px;
+  float: left;
+  white-space: nowrap;
+  color: #333;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/*模拟单选框 开始*/
+.unchecked {
+  padding-left: 20px;
+  background: url("../images/radio_bg_02.png") no-repeat left center;
+  cursor: pointer;
+}
+
+.checked {
+  padding-left: 20px;
+  background: url("../images/radio_bg_01.png") no-repeat left center;
+  cursor: pointer;
+}
+/*模拟单选框 结束*/
+/*没有找到与检索条件相关结果 end*/
+.sorting_box {
+  width: 100%;
+  height: auto;
+  padding: 10px 0;
+  font-size: 12px;
+  height: 26px;
+  line-height: 26px;
+}
+
+.sorting_box .unchecked, .sorting_box .checked {
+  margin-right: 20px;
+}
+/*模拟滚动条 开始*/
+.sky_warpper {
+  
+}
+
+.sky_scrollTopOuter {
+  width: 7px;
+  background: #ddd;
+  opacity: 0.3;
+}
+
+.sky_scrollTopOuter:hover {
+  opacity: 0.8;
+  width: 7px;
+  -webkit-transition: opacity, width 0.3s ease-out;
+}
+
+.sky_scrollTop {
+  background: #999;
+  opacity: 0.3;
+  width: 7px;
+  -webkit-border-radius: 5px;
+  -webkit-transition: opacity, width 0.3s ease-out;
+  cursor: default;
+}
+
+.sky_warpper:hover .sky_scrollTop {
+  opacity: 0.8;
+  width: 7px;
+  -webkit-transition: opacity, width 0.3s ease-out;
+}
+
+.sky_scrollLeftOuter {
+  height: 7px;
+  background: #fcfcfc;
+  opacity: 0.3;
+}
+
+.sky_scrollLeftOuter:hover {
+  opacity: 0.8;
+  height: 7px;
+  -webkit-transition: opacity, height 0.3s ease-out;
+}
+
+.sky_scrollLeft {
+  background: #333;
+  opacity: 0.3;
+  height: 7px;
+  -webkit-border-radius: 5px;
+  -webkit-transition: opacity, height 0.3s ease-out;
+  cursor: default;
+}
+
+.sky_warpper:hover .sky_scrollLeft {
+  opacity: 0.5;
+  height: 7px;
+  -webkit-transition: opacity, height 0.3s ease-out;
+}
+/*模拟滚动条 结束*/
+/*模拟复选框 开始*/
+.checkbox {
+  width: 11px;
+  height: 11px;
+  display: block;
+  float: none;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.checkbox-con .cur {
+  border: none;
+  width: 12px;
+  height: 12px;
+  background: url("../images/checked_fx.jpg") no-repeat;
+}
+
+.checkbox-con span.check_fx {
+  display: inline-block;
+  position: relative;
+  padding-left: 10px;
+  margin-right: 10px;
+  top: -5px;
+}
+
+.checkbox-con .ipt-hide {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: none;
+  left: 0;
+}
+/*模拟复选框 结束*/
+.tab_style {
+  width: 100%;
+  overflow: hidden;
+}
+
+.tab_style th {
+  color: #999;
+  padding: 7px;
+  background: #f4f4f4;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.tab_style td {
+  color: #999;
+  padding: 10px 0;
+  border-bottom: 1px dashed #dddddd;
+}
+
+.ord {
+  width: 270px;
+}
+
+.ord_box {
+  width: 121px;
+  height: 26px;
+  float: right;
+  position: relative;
+}
+
+.sl_box {
+  width: 114px;
+  position: absolute;
+  left: 0;
+  top: 26px;
+  border: 1px solid #ddd;
+  background: #fff;
+  z-index: 100;
+}
+
+.sl_box ul li {
+  padding: 0 10px;
+  height: 32px;
+  line-height: 32px;
+}
+
+.sl_box ul li:hover {
+  background: #f5f5f5;
+}
+
+.sl_box ul li a {
+  color: #333;
+  display: block;
+}
+
+.sl_box ul li a:hover {
+  text-decoration: none;
+}
+
+.relevance_but, .import_but {
+  padding: 0 10px;
+  margin: 0 5px;
+  height: 24px;
+  line-height: 24px;
+  border: 1px solid #ddd;
+  display: inline-block;
+  border-radius: 3px;
+  position: relative;
+  behavior: url(../js/pie.htc);
+  color: #333;
+  float: right;
+}
+
+.sl_icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url("../images/icon.png") no-repeat;
+  background-position: -106px -26px;
+  margin: 4px 0 0 0;
+  float: right;
+}
+
+.relevance_but {
+  width: 94px;
+}
+
+.import_but {
+  width: 50px;
+  text-align: center;
+}
+
+.file_bg {
+  width: 58px;
+  height: 70px;
+  padding: 1px 3px 3px 1px;
+  display: inline-block;
+  float: left;
+  background: url("../images/file_bg.jpg");
+  margin-right: 20px;
+}
+
+.screen_result {
+  
+}
+
+.screen_result p {
+  font-size: 12px;
+}
+
+.screen_result p.blue i {
+  margin-left: 10px;
+}
+
+.relevance_icon01, .relevance_icon02, .relevance_icon03, .relevance_icon04 {
+  width: 16px;
+  height: 16px;
+  background: url("../images/relevance.png") no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+.relevance_icon01 {
+  background-position: 0 0;
+}
+
+.relevance_icon02 {
+  background-position: -26px 0;
+}
+
+.relevance_icon03 {
+  background-position: -52px 0;
+}
+
+.relevance_icon04 {
+  background-position: -78px 0;
+}
+
+.mark_icon01, .mark_icon02, .included01, .included02 {
+  width: 16px;
+  height: 16px;
+  background: url("../images/icon.png") no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.mark_icon01 {
+  background-position: -52px 0;
+}
+
+.mark_icon02 {
+  background-position: -52px -26px;
+}
+
+.included01 {
+  background-position: -26px 0;
+}
+
+.included02 {
+  background-position: -26px -26px;
+}
+/*---翻页样式---*/
+.page {
+  width: 100%;
+  height: 26px;
+  line-height: 26px;
+  color: #999;
+  font-size: 12px;
+  float: left;
+  overflow: hidden;
+  border-top: 1px solid #ddd;
+  position: absolute;
+  bottom: -11px;
+  padding-top: 9px;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
+.page_cont {
+  
+}
+
+.page_cont a {
+  padding: 0 8px;
+  float: left;
+  height: 24px;
+  display: inline-block;
+  background: #fff;
+  font-size: 12px;
+  color: #106abc;
+  line-height: 24px;
+}
+
+.page_cont span {
+  line-height: 24px;
+  float: left;
+  margin-right: 3px;
+}
+
+.page_cont a.hover, .page_cont a:hover {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.page_lt {
+  border: 1px solid #ddd;
+  padding: 0 5px;
+}
+
+.page_lt option {
+  border: 1px solid #ddd;
+}
+
+.arldy_sld {
+  width: 100%;
+  margin-top: 20px;
+  color: #333;
+}
+
+.arldy_sld a {
+  color: #106abc;
+}
+
+.btn_box {
+  width: 100%;
+  border-top: 1px solid #ddd;
+  padding: 40px 0;
+}
+
+.btn {
+  width: 446px;
+  height: 46px;
+  margin: 0 auto;
+  font-size: 18px;
+  color: #fff;
+  background: #53a93f;
+  border: 1px solid #1b8f00;
+  display: block;
+  line-height: 46px;
+  text-align: center;
+  border-radius: 3px;
+  position: relative;
+  behavior: url(../js/pie.htc);
+}
+
+.btn:hover {
+  background: #1b8f00;
+  border: 1px solid #1b8f00;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn:active {
+  background: #2b621e;
+  border: 1px solid #2b621e;
+  color: #fff;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+/*模拟滚动条1 开始*/
+.divScrollBar {
+  background-color: #f1f1f1;
+  position: absolute;
+  opacity: 0.5;
+  filter: Alpha(opacity = 50);
+  z-index: 10000;
+}
+
+.divScrollBar:hover {
+  opacity: 1;
+  filter: Alpha(opacity = 100);
+}
+
+.divScrollBar div {
+  background-color: #aaa;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  border-radius: 6px;
+}
+/*模拟滚动条1 结束*/
+.group_lt {
+  width: 446px;
+  height: 265px;
+  padding: 10px 0;
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+
+.group_lt ul li {
+  padding: 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 27px;
+  line-height: 27px;
+}
+
+.group_lt ul li:hover, .group_lt ul li.hover {
+  background: #e5e5e5;
+}
+.reg_box-inputbox{
+    width: 259px;
+    padding: 0 10px;
+    height: 24px;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    border-left: 1px solid #ddd;
+    border-radius: 3px;
+    float: left;
+    outline: none;
+    height: 24px;
+    margin: 8px 8px 8px 0;
+}
+.demo-email_icon{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background: url(../images/email2@2x.png) no-repeat;
+    margin: 8px 10px;
+    float: left;
+    background-position: 0px 0px;
+    background-size: 20px 20px;
+}
+.demo-reg_box-line{
+    width: 1px;  
+    height: 295px; 
+    border-left: 1px solid #d0d0d0; 
+    float: left; 
+    margin-left: 20px; 
+    margin-top: 60px;
+}
+.demo-reg_box-right{
+    width: 360px; 
+    height: 279px; 
+    float: right; 
+    margin-right: 54px; 
+    margin-top: 35px; 
+    position: relative;
+}
+.demo-reg_box-right_line{
+   position: absolute;
+   width: 401px; 
+   height: 1px; 
+   border-top: 1px solid #d0d0d0; 
+   left: -41px;
+}
+.demo-reg_box-right_avator{
+   width: 219px; 
+   height: 222px;
+   margin: 0 auto;
+   margin-top: 45px;
+}
+.demo-reg_box-right_title{
+   width: 100%; 
+   height: 24px; 
+   line-height: 24px; 
+   color: #666; 
+   font-size: 16px; 
+   text-align: center; 
+   word-break: keep-all;
+   margin-top: 25px;
+}

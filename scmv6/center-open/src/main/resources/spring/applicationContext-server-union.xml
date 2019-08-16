@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:export="https://www.scholarmate.com/schema/remote-export"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+	https://www.scholarmate.com/schema/remote-export
+	https://www.scholarmate.com/schema/remote-export.xsd "
+  default-lazy-init="false">
+  <!-- 获取 互联互通url -->
+  <bean id="getOpenUnionPageUrl"
+    class="com.smate.center.open.service.interconnection.GetOpenUnionPageUrlServiceImpl"></bean>
+  <!-- 获取 互联互通成果 -->
+  <bean id="getPubInfo" class="com.smate.center.open.service.interconnection.pub.GetPubInfoServiceImpl"></bean>
+  <!-- 获取 互联互通成果 通过 pubId 来获取 -->
+  <bean id="getPubInfoByPubId"
+    class="com.smate.center.open.service.interconnection.pub.GetPubInfoByPubIdServiceImpl"></bean>
+  <!-- 获取 互联互通 人员信息 -->
+  <bean id="getPsnInfo" class="com.smate.center.open.service.interconnection.psn.GePsnInfoServiceImpl"></bean>
+  <!-- 互联互通 群组 获取群组信息 -->
+  <bean id="getInterconnectionGroupInfo"
+    class="com.smate.center.open.service.interconnection.group.InterconnectionGetGroupInfoServiceImpl"></bean>
+  <!-- 互联互通 群组 获取群组成果 -->
+  <bean id="getInterconnectionGroupPub"
+    class="com.smate.center.open.service.interconnection.group.InterconnectionGetGroupPubServiceImpl"></bean>
+  <!-- 互联互通 群组 获取 项目群组 -->
+  <bean id="getInterconnectionProjectGroup"
+    class="com.smate.center.open.service.interconnection.group.InterconnectionGetProjectGroupServiceImpl"></bean>
+  <!-- 互联互通 群组 关联群组 -->
+  <bean id="interconnectionUnionGroup"
+    class="com.smate.center.open.service.interconnection.group.InterconnectionUnionGroupServiceImpl"></bean>
+</beans>

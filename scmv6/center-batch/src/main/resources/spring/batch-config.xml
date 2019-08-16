@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+  default-lazy-init="true">
+  <!-- 定义受环境影响易变的变量 -->
+  <bean id="propertyPlaceholderConfigurer" class="com.smate.core.base.utils.factory.config.DynamicServerConfig">
+    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+    <property name="ignoreResourceNotFound" value="true" />
+    <property name="locations">
+      <list>
+        <value>classpath:config/system.development.properties</value>
+        <value>classpath:config/system.test.properties</value>
+        <value>classpath:config/system.uat.properties</value>
+        <value>classpath:config/system.run.properties</value>
+        <value>classpath:config/system.testyali.properties</value>
+        <value>classpath:config/system.alpha.properties</value>
+      </list>
+    </property>
+  </bean>
+  <context:component-scan base-package="com.smate.center.batch.service*"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.center.batch.quartz.service*"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.center.batch.model.dao"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.center.batch.dao*" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.center.batch.model*" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.center.batch.connector.model*"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.center.batch.connector.service*"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.center.batch.connector.dao*"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.center.batch.base*" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.center.batch.tasklet*"
+    scoped-proxy="interfaces" />
+  <!-- utils包扫描 -->
+  <context:component-scan base-package="com.smate.core.base.psn.service"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.core.base.psn.dao" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.utils.service.consts"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.utils.datasource.annotation"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.core.base.utils.dao*"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.utils.file*"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.core.base.file.dao*" scoped-proxy="targetClass" />
+  <!-- <context:component-scan base-package="com.smate.center.batch.processor*" scoped-proxy="targetClass"/> -->
+  <!-- 同步restful -->
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+  <!-- 异步restful -->
+  <bean id="asyncRestTemplate" class="org.springframework.web.client.AsyncRestTemplate" />
+  <!-- BatchJobs创建器 -->
+  <bean id="batchJobsContextFactory" class="com.smate.center.batch.connector.factory.BatchJobsContextFactory" />
+  <bean id="batchJobsNormalFactory" class="com.smate.center.batch.connector.factory.BatchJobsNormalFactory" />
+  <bean id="appSettingContext" class="com.smate.center.batch.base.AppSettingContext" lazy-init="false"></bean>
+  <!-- 数据库查询session对象定义 -->
+  <bean id="sessionFactoryMap" class="java.util.HashMap">
+    <constructor-arg>
+      <map>
+        <entry key="pdwh" value-ref="sessionFactory-pdwh"></entry>
+        <entry key="sns" value-ref="sessionFactory-sns"></entry>
+        <entry key="rol" value-ref="sessionFactory-sie"></entry>
+        <entry key="rcmd" value-ref="sessionFactory-rcmd"></entry>
+        <entry key="cas" value-ref="sessionFactory-cas"></entry>
+        <entry key="emailsrv" value-ref="sessionFactory-emailsrv"></entry>
+      </map>
+    </constructor-arg>
+  </bean>
+  <bean id="baseConstUtils" class="com.smate.center.batch.service.rol.pub.BaseConstUtils">
+    <property name="props">
+      <map>
+        <entry key="file.root">
+          <value>${file.root}</value>
+        </entry>
+      </map>
+    </property>
+  </bean>
+  <!-- 用于生成站内消息Freemarker配置 -->
+  <bean id="msgFreemarkereConfiguration"
+    class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:template/msgtemplate" />
+  </bean>
+  <bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPaths">
+      <list>
+        <value>classpath:template/mailtemplate/sns</value>
+        <value>classpath:template/mailtemplate/rol</value>
+        <value>classpath:template/mailtemplate/bpo</value>
+        <value>classpath:template/mailtemplate/nsfc</value>
+        <value>classpath:template/mailtemplate/net</value>
+        <value>classpath:template/mailtemplate/common</value>
+        <value>classpath:template/mailtemplate/promote</value>
+        <value>classpath:template/mailtemplate/md</value>
+        <value>classpath:template/mailtemplate/inspg</value>
+        <value>classpath:template/scmhtml</value>
+        <value>classpath:template/scmhtml/project</value>
+        <value>classpath:template/scmhtml/researcher</value>
+        <value>classpath:template/scmhtml/publication</value>
+      </list>
+    </property>
+  </bean>
+  <!-- 用于生成成果显示消息的Freemarker配置_MJG_SCM-6129 -->
+  <bean id="pubFreemarkerConfiguration"
+    class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:template/publication" />
+  </bean>
+  <!-- 用于生成HTML动态消息内容的Freemarker配置 -->
+  <bean id="dynFreemarkerConfiguration"
+    class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:template/dyntemplate/v5/newversion" />
+  </bean>
+  <!-- 用于申请加入群组消息Freemarker配置 -->
+  <bean id="groupinviteFreemarkereConfiguration"
+    class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:template/groupinvite" />
+  </bean>
+</beans>

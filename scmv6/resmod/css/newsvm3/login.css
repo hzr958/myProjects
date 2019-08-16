@@ -1,0 +1,351 @@
+@charset "utf-8";
+/* CSS Document */
+.IE6_prompt {
+  font-size: 14px;
+  background-color: #fffbd6;
+  border-bottom: 1px solid #e5dd9a;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.IE6_prompt .icon_error {
+  background: url(../../images_v5/index/icon_error.gif) no-repeat;
+  padding-left: 20px;
+}
+
+#scholarmate_hearder {
+  background: url(../../images_v5/body_top_bj.gif) repeat-x;
+  height: 90px;
+}
+
+.scholarmate_top {
+  width: 900px;
+  margin: 0px auto;
+  padding-top: 40px;
+}
+
+.sm_logo {
+  background: url(../../images_v5/logo.gif) no-repeat;
+  width: 277px;
+  height: 20px;
+  float: left;
+}
+
+.sm_logo_zh_CN {
+  background: url(../../images_v5/logo_zh_CN.gif) no-repeat;
+  width: 277px;
+  height: 20px;
+  float: left;
+}
+
+.sm_logo_en_US {
+  background: url(../../images_v5/logo_en_US.gif) no-repeat;
+  width: 179px;
+  height: 20px;
+  float: left;
+}
+
+.sm_logo a {
+  background: url(../../images_v5/logo.gif) no-repeat;
+  display: block;
+  width: 277px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.sm_logo_zh_CN a {
+  background: url(../../images_v5/logo_zh_CN.gif) no-repeat;
+  display: block;
+  width: 277px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.sm_logo_en_US a {
+  background: url(../../images_v5/logo_en_US.gif) no-repeat;
+  display: block;
+  width: 179px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.sm_top_nav {
+  float: right;
+  margin-top: 3px;
+}
+
+#sm_contant {
+  background-color: #fff;
+  border-bottom: 1px solid #cbcbcb;
+  padding-bottom: 60px;
+}
+
+.sm_main {
+  width: 980px;
+  margin: 0px auto;
+  overflow: hidden;
+  padding-top: 50px;
+}
+
+.sm_login {
+  float: right;
+}
+
+.sm_banner {
+  float: left;
+}
+
+.sm_login_top {
+  background: url(../images_v5/index/login_top_img.gif) no-repeat;
+  width: 342px;
+  height: 3px;
+  overflow: hidden;
+}
+
+.sm_login_box {
+  width: 340px;
+  border: 1px solid #dadada;
+  border-top: none;
+  overflow: hidden;
+  background-color: #FFF;
+}
+
+.sm_login_title li {
+  float: left;
+  text-align: center;
+  border-bottom: 1px solid #dadada;
+}
+
+.sm_login_title li a, .sm_login_title li a:hover {
+  width: 168px; /*background:url(../images_v5/index/login_hoverbj.gif) repeat-x;*/
+  height: 35px;
+  line-height: 35px;
+  border-bottom: 1px solid #e1e1e1;
+  border-right: 1px solid #e1e1e1;
+  border-left: 1px solid #dadada;
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+  background: #ececec;
+  background: -moz-linear-gradient(top, #f0f0f0, #e8e8e8);
+  background: -webkit-gradient(linear, 0 0, 0 0, from(#f0f0f0), to(#f0f0f0));
+  cursor: pointer;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#e8e8e8');
+  -ms-fileter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0',endColorstr='#e8e8e8')";
+}
+
+.sm_hover {
+  width: 170px !important;
+  background: #fff !important;
+  filter: none !important;
+  height: 37px;
+  line-height: 35px;
+  border: none !important;
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+}
+
+.sm_box {
+  padding-top: 15px;
+  overflow: hidden;
+}
+
+.sm_box2 {
+  padding-top: 25px;
+  overflow: hidden;
+}
+
+.sm_box table tr td, .sm_box2 table tr td {
+  padding: 5px 3px;
+}
+
+.l_input {
+  font-family: verdana;
+  font-size: 14px;
+  border: 1px solid #c0c5cf;
+  background-color: #fbfbfb;
+  height: 24px;
+  line-height: 24px;
+  width: 170px;
+  padding-left: 3px;
+}
+
+.code_input {
+  border: 1px solid #c0c5cf;
+  background-color: #fbfbfb;
+  height: 24px;
+  line-height: 24px;
+  width: 80px;
+  padding-left: 3px;
+}
+
+.sm_entries {
+  background-color: #f5f5f5;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #bfbfbf;
+  padding: 12px 0px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.sm_entries2 {
+  background-color: #f0f0f0;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #a0a0a0;
+  padding: 12px 10px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#sm_footer {
+  width: 900px;
+  margin: 0px auto;
+  text-align: center;
+  padding-top: 25px;
+}
+
+#sm_footer p {
+  line-height: 25px;
+  color: #7b7c81;
+}
+
+#sm_footer p a {
+  color: #7b7c81;
+  text-decoration: none;
+}
+
+#sm_footer p a:hover {
+  color: #7b7c81;
+  text-decoration: underline;
+}
+
+.sm_menu {
+  background: url(../images_v5/index/sm_home_navbj.gif) repeat-x;
+  height: 32px;
+  line-height: 32px;
+}
+
+.sm_menu_nr {
+  width: 900px;
+  margin: 0px auto;
+  color: #FFF;
+}
+
+.sm_navleft {
+  float: left;
+  margin-top: 10px;
+}
+
+.sm_navleft a {
+  color: #FFF;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 14px;
+}
+
+.sm_navleft a:hover {
+  color: #FFF;
+  text-decoration: underline;
+  margin-right: 20px;
+  font-size: 14px;
+}
+
+.sm_search_right {
+  float: right;
+  margin-top: 5px;
+}
+
+.sm_input {
+  height: 20px;
+  line-height: 20px;
+  padding-left: 3px;
+  width: 185px;
+  float: left;
+  border-bottom: 1px solid #254786;
+  border-top: 1px solid #254786;
+  border-left: 1px solid #254786;
+  border-right: none;
+}
+
+.sm_btn_zh_CN {
+  float: left;
+  background: url(../images_v5/index/sm_btn_zh_CN.gif) no-repeat;
+  width: 62px;
+  height: 22px;
+  border: 0;
+  cursor: pointer;
+}
+
+.sm_btn_en_US {
+  float: left;
+  background: url(../images_v5/index/sm_btn_en_US.gif) no-repeat;
+  width: 62px;
+  height: 22px;
+  border: 0;
+  cursor: pointer;
+}
+
+/*报价*/
+.w900 {
+  width: 900px;
+  margin: 0px auto;
+}
+
+.container-wrapper {
+  width: 100%;
+  margin: 0px auto;
+}
+
+.nrbg {
+  background-color: #f5f7f9;
+  padding: 30px 0px;
+}
+
+.topic_pane {
+  width: 290px;
+  float: left;
+}
+
+.topic_pane h2 {
+  color: #FFF;
+  font-family: "微软雅黑";
+  font-size: 24px;
+  padding: 15px 0px;
+  text-align: center;
+  background-color: #7b98a8;
+}
+
+.pane_nr {
+  background-color: #e5e9eb;
+  padding: 25px 15px;
+}
+
+.pane_nr p {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.pane_nr .price {
+  font-family: "微软雅黑";
+  font-size: 24px;
+  text-align: center;
+}
+
+.pane_nr .price h3 {
+  padding-top: 30px;
+}
+
+.p_tcss {
+  font-size: 14px;
+  line-height: 160%;
+}
+
+.p_tcss tr td {
+  padding: 10px 5px;
+}

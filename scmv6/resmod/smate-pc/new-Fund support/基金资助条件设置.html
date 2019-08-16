@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>资助机构条件设置</title>
+<meta charset="utf-8">
+<meta name="viewport"
+  content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="../../mobile/css/mobile.css">
+<script type="text/javascript">
+    	window.onload = function(){
+    		var checklist =  document.getElementsByClassName("new-financial_body-items");
+    		for(var i = 0 ; i < checklist.length; i++){
+                checklist[i].onclick = function(){
+               	    if(!this.classList.contains("new-financial_body-items_check")){
+               	   	    if(document.getElementsByClassName("new-financial_body-items_check").length>0){
+               	   	    	document.getElementsByClassName("new-financial_body-items_check")[0].classList.remove("new-financial_body-items_check");
+                            this.classList.add("new-financial_body-items_check");
+               	   	    }else{
+                            this.classList.add("new-financial_body-items_check");
+               	   	    }
+               	   }
+               }
+    		}
+    	
+    	}
+
+    </script>
+</head>
+<body>
+  <div class="message-page__header"
+    style="position: fixed; top: 0px; z-index: 55; display: flex; justify-content: space-between;">
+    <i class="material-icons" style="margin-left: 15px; width: 10vw;">keyboard_arrow_left</i> <span
+      style="width: 80vw; display: flex; justify-content: center; align-items: center;">条件设置</span> <i
+      style="width: 10vw; margin-right: 15px"></i>
+  </div>
+  <div class="new-financial_body-container">
+    <div class="new-financial_body-items">国家</div>
+    <div class="new-financial_body-items">北京</div>
+    <div class="new-financial_body-items">上海</div>
+    <div class="new-financial_body-items">天津</div>
+    <div class="new-financial_body-items">重庆</div>
+    <div class="new-financial_body-items">香港</div>
+    <div class="new-financial_body-items">澳门</div>
+    <div class="new-financial_body-items">台湾</div>
+    <div class="new-financial_body-items">河北</div>
+    <div class="new-financial_body-items">河南</div>
+    <div class="new-financial_body-items">山西</div>
+    <div class="new-financial_body-items">辽宁</div>
+    <div class="new-financial_body-items">黑龙江</div>
+    <div class="new-financial_body-items">吉林</div>
+    <div class="new-financial_body-items">山东</div>
+    <div class="new-financial_body-items">安徽</div>
+    <div class="new-financial_body-items">江苏</div>
+    <div class="new-financial_body-items">浙江</div>
+    <div class="new-financial_body-items">福建</div>
+    <div class="new-financial_body-items">江西</div>
+    <div class="new-financial_body-items">广东</div>
+    <div class="new-financial_body-items">广西</div>
+    <div class="new-financial_body-items">云南</div>
+    <div class="new-financial_body-items">四川</div>
+    <div class="new-financial_body-items">贵州</div>
+    <div class="new-financial_body-items">宁夏</div>
+    <div class="new-financial_body-items">西藏</div>
+    <div class="new-financial_body-items">新疆</div>
+    <div class="new-financial_body-items">陕西</div>
+    <div class="new-financial_body-items">新疆</div>
+    <div class="new-financial_body-items">内蒙古</div>
+  </div>
+  <div class="new_subject-field_checked-container_footer">确定</div>
+</body>
+</html>

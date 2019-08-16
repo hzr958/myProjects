@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+	default-lazy-init="true">
+	<!-- 在<Beans>中不能够设置default-lazy-init="true",否则定时任务不触发，如果不明确指明default-lazy-init的值，默认是false。 -->
+	<bean id="startQuartz" lazy-init="true" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="jobSingleThreadExecuteTrigger" />
+				<ref bean="jobMultiThreadExecuteTrigger" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- batch多线程触发任务, Step2, start -->
+ 	<bean id="jobMultiThreadExecute" class="com.smate.batchtask.test.run.JobMultiThreadExecute" />
+	<bean id="jobMultiThreadExecuteDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="jobMultiThreadExecute" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="run" />
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="jobMultiThreadExecuteTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="jobMultiThreadExecuteDetail" />
+		<!-- cron表达式 -->
+		<property name="cronExpression" value="0/30 * * * * ?" />
+	</bean>
+	
+		<!-- batch单线程触发任务,Step1,start -->
+	<bean id="jobSingleThreadExecute" class="com.smate.batchtask.test.run.JobSingleThreadExecute" />
+	<bean id="jobSingleThreadExecuteDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="jobSingleThreadExecute" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="run" />
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="jobSingleThreadExecuteTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="jobSingleThreadExecuteDetail" />
+		<!-- cron表达式 -->
+		<property name="cronExpression" value="0/30 * * * * ?" />
+	</bean>
+	
+</beans>

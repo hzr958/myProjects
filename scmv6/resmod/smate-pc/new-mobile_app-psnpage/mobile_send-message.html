@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+  content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+<link href="../../mobile/css/mobile.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+    	window.onload = function(){
+            var constheight = document.documentElement.clientHeight; 
+            document.getElementsByClassName("new_mobile-send_message-body")[0].style.height =  constheight - 48 - 49 - 61 +"px";
+            const inputele = document.getElementsByClassName("new_mobile-send_message-footer_content")[0];
+            document.getElementsByClassName("new_mobile-send_message-footer_send")[0].onclick = function(){
+                if (inputele.innerText!="") {}
+                    var element = '<div class="new_mobile-send_message-body_left-detail">'
+                        +'</div>';
+                    var  psntarget = document.createElement("div");
+                    psntarget.className = "new_mobile-send_message-body_left-container";
+                    psntarget.innerHTML = element;
+                    psntarget.getElementsByClassName("new_mobile-send_message-body_left-detail")[0].innerText = inputele.innerText.trim();
+                    document.getElementsByClassName("new_mobile-send_message-body")[0].appendChild(psntarget);
+                    inputele.innerText="";
+                }
+    	}
+    </script>
+</head>
+<body>
+  <div class="new_mobile-send_message">
+    <div class="new_mobile-send_message-header">
+      <div class="new_mobile-send_message-header_title">新建消息</div>
+      <div class="new_mobile-send_message-header_cancle">取消</div>
+    </div>
+    <div class="new_mobile-send_message-neck">
+      <div class="new_mobile-send_message-neck_input">
+        <span class="new_mobile-send_message-neck_input-contacts">联系人:</span> <span
+          class="new_mobile-send_message-neck_input-box"></span>
+      </div>
+      <div class="new_mobile-send_message-neck_add">添加</div>
+    </div>
+    <div class="new_mobile-send_message-body">
+      <div class="new_mobile-send_message-body_time">
+        <span class="new_mobile-send_message-body_line"></span> <span class="new_mobile-send_message-body_time-detail">2018-3-15</span>
+        <span class="new_mobile-send_message-body_line"></span>
+      </div>
+      <div class="new_mobile-send_message-body_left-container">
+        <div class="new_mobile-send_message-body_left-detail">事件撒肯德基</div>
+      </div>
+      <div class="new_mobile-send_message-body_right-container">
+        <div class="new_mobile-send_message-body_right-detail">事件撒肯德基</div>
+      </div>
+    </div>
+    <div class="new_mobile-send_message-footer">
+      <div class="new_mobile-send_message-footer_content" contenteditable="true" placeholder="请输入"></div>
+      <div class="new_mobile-send_message-footer_send">发送</div>
+    </div>
+  </div>
+</body>
+</html>

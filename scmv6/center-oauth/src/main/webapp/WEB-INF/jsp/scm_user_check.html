@@ -1,0 +1,191 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>科研之友</title>
+<link href="jquery.validate.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="jquery.scmtips.css" />
+<link href="agency.css" rel="stylesheet" type="text/css" />
+<link href="header.css" rel="stylesheet" type="text/css" />
+<link href="public.css" rel="stylesheet" type="text/css" />
+<link href="public2016.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class="menu">
+    <input type="hidden" value="${passwordError}" id="passwordError" name="passwordError" />
+    <div class="menu-bjleft"></div>
+    <div class="menu-bjcenter">
+      <div class="m-text">
+        <span class="fcu14"></span>
+      </div>
+      <div class="mailbox">
+        <span class="fcu14"></span>
+      </div>
+    </div>
+    <div class="menu-bjright"></div>
+  </div>
+  <div id="zhuce">
+    <div class="z-left">
+      <table width="729" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="23" valign="top"><img src="login_nrbj2.gif" width="729" height="23" /></td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" class="login_centerbg pb60">
+            <div class="binding">
+              <ul>
+                <li id="tab1" class="hover" onclick=""><s:text name="third.login.hasaccount" /> <!-- <span class="">登录完成绑定</span> --></li>
+                <li id="tab2" onclick=""><s:text name="third.login.noaccount" /> <!-- <span class="">创建新账号绑定</span> --></li>
+              </ul>
+            </div>
+            <div id="linkSnsTab">
+              <form class="cmxform" id="regForm_1" name="regForm_1" action="" method="post">
+                <input type="hidden" name="des3ThirdId" value="${des3ThirdId}" /> <input type="hidden" name="loginType"
+                  value="${loginType }" />
+                <table width="580" border="0" align="center" cellpadding="0" cellspacing="0" class="login-mail bound">
+                  <tr>
+                    <td width="120" align="right">&nbsp;</td>
+                    <td width="460" align="left"><c:if test="${loginType eq '1' }">
+                        <s:text name="third.login.welcomeyou" />
+                        <img alt="QQ" src="qq_login.png" />${qqName }
+                    	</c:if> <c:if test="${loginType eq '2' }">
+                        <s:text name="third.login.welcomeyou" />
+                        <img alt="weibo" src="weibo_sina_login.png" />${weiboUserName }
+                    	</c:if> <c:if test="${loginType eq '3' }">
+                        <s:text name="third.login.welcomeyou" />
+                        <img alt="QQ" src="qq_login.png" />${wechatName }
+                    	</c:if></td>
+                  </tr>
+                  <tr>
+                    <td width="120" align="right">&nbsp;</td>
+                    <td width="460" align="left"><span class="hint"><s:text
+                          name="third.login.inputhasaccount" /> <c:if test="${loginType eq '1' }">QQ</c:if> <c:if
+                          test="${loginType eq '2' }">
+                          <s:text name="third.login.wechat" />
+                        </c:if> <c:if test="${loginType eq '3' }">
+                          <s:text name="third.login.sinaweibo" />
+                        </c:if> <s:text name="third.login.accountbinding" /></span></td>
+                  </tr>
+                  <tr>
+                    <td align="right"><span class="red">*</span>&nbsp;&nbsp;<s:text name='third.login.email' />：</td>
+                    <td align="left"><input type="text" name="userName" id="userName_1" class="inp_text"
+                      style="width: 250px;" onblur="$(this).val($.trim($(this).val()));" /></td>
+                  </tr>
+                  <tr>
+                    <td align="right"><span class="red">*</span>&nbsp;&nbsp;<s:text name="third.login.password" />：</td>
+                    <td align="left"><input type="password" name="password" id="password" class="inp_text"
+                      style="width: 250px;" /></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>
+                      <div class="binding_but">
+                        <input type="submit" name="registerButton" class="uiButton-green"
+                          style="float: left; padding: 10px 40px;" id="registerButton"
+                          value="<s:text name='third.login.button.connect' />" /> <a href="#" onclick="setTab(2);"
+                          class="ml16"><span class="span"><s:text name="third.login.newaccountbinding" /></span></a>
+                        <div class="errorMessage">
+                          <s:actionmessage />
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </div> <!--  -------------------- -->
+            <div id="registSnsTab" style="display: none">
+              <form class="cmxform" id="regForm_2" name="regForm_2" action="${ctx}/thirdlogin/scmregist" method="post">
+                <input type="hidden" name="des3ThirdId" value="${des3ThirdId}" /> <input type="hidden" name="loginType"
+                  value="${loginType }" />
+                <table width="580" border="0" align="center" cellpadding="0" cellspacing="0" class="login-mail bound">
+                  <tr>
+                    <td width="120" align="right">&nbsp;</td>
+                    <td width="460" align="left"><c:if test="${loginType eq '1' }">
+                        <s:text name="third.login.welcomeyou" />
+                        <img alt="QQ" src="qq_login.png" />${qqName }
+                    	</c:if> <c:if test="${loginType eq '2' }">
+                        <s:text name="third.login.welcomeyou" />
+                        <img alt="weibo" src="weibo_sina_login.png" />${weiboUserName }
+                    	</c:if> <c:if test="${loginType eq '3' }">
+                        <s:text name="third.login.welcomeyou" />
+                        <img alt="QQ" src="qq_login.png" />${wechatName }
+                    	</c:if></td>
+                  </tr>
+                  <tr>
+                    <td width="120" align="right">&nbsp;</td>
+                    <td width="460" align="left"><span class="hint"><s:text
+                          name="third.login.createnewaccount" /> <c:if test="${loginType eq '1' }">QQ</c:if> <c:if
+                          test="${loginType eq '2' }">
+                          <s:text name="third.login.sinaweibo" />
+                        </c:if> <c:if test="${loginType eq '3' }">
+                          <s:text name="third.login.wechat" />
+                        </c:if> <s:text name="third.login.accountbinding" /></span></td>
+                  </tr>
+                  <tr>
+                    <td align="right"><span class="red">*</span>&nbsp;&nbsp;<s:text name='third.login.email' />：</td>
+                    <td align="left"><input type="text" name="userName" id="userName_2" class="inp_text"
+                      style="width: 250px;" onblur="$(this).val($.trim($(this).val()));" /></td>
+                  </tr>
+                  <tr>
+                    <td align="right"><span class="red">*</span>&nbsp;&nbsp;<s:text name="third.login.password" />：</td>
+                    <td align="left"><input type="password" name="password" id="password" class="inp_text"
+                      style="width: 250px;" /></td>
+                  </tr>
+                  <tr>
+                    <td align="right"><span class="red">*</span>&nbsp;<s:text name='third.login.name' />：</td>
+                    <td align="left"><input type="text" name="name" id="name" class="inp_text"
+                      style="width: 250px;" maxlength="61" onblur="$(this).val($.trim($(this).val()));" /></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>
+                      <div class="binding_but">
+                        <input type="submit" name="registerButton" class="uiButton-green" style="padding: 10px 40px;"
+                          id="registerButton" value="<s:text name='third.login.button.connect'/>" />
+                        <div class="errorMessage">
+                          <s:actionmessage />
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td height="6" valign="top"><img src="login_nrbj4.gif" width="729" height="6" /></td>
+        </tr>
+      </table>
+    </div>
+    <div class="z-right">
+      <div class="z-joinbj"></div>
+      <div class="join-prompt">
+        <div class="join-p-title">
+          <s:text name="third.login.binding" />
+          <c:if test="${loginType eq '1' }">QQ</c:if>
+          <c:if test="${loginType eq '2' }">
+            <s:text name="third.login.sinaweibo" />
+          </c:if>
+          <c:if test="${loginType eq '3' }">
+            <s:text name="third.login.wechat" />
+          </c:if>
+          <s:text name="third.login.account" />
+        </div>
+        <div class="binding_rq">
+          <c:if test="${loginType eq '1' }">
+            <img src="qqpic.png" />
+          </c:if>
+          <c:if test="${loginType eq '2' }">
+            <img src="weibo_to_scm.png" />
+          </c:if>
+          <c:if test="${loginType eq '3' }">
+            <img src="wechat_to_scm.png" />
+          </c:if>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

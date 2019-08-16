@@ -1,0 +1,21 @@
+var  PsnsettingMerge={
+		confirm1:"您确认将" ,
+		confirm2:"帐号合并至" ,
+		confirm3:"帐号吗？",
+		account:"登录帐号",
+		password:"密码",
+		mergeAccount:"合并帐号" ,
+		mergeAccountTip:"请输入需要被合并的帐号",
+		cancel:"取消",
+		confirm:"增加",
+		accountNotExist:"被合并的帐号不存在",
+		passwordNotExist:"被合并的帐号密码错误，请先获取正确密码再尝试合并" ,
+		accountNotBlank:"帐号不能为空",
+		passwordNotBlank:"密码不能为空",
+		account_1:"帐号：",
+		mergeSuccess:"合并成功"  ,
+	    mergeFail:"合并失败。请联系客服",
+	    acountHadMerge:"该帐号正在被合并中，不能操作合并功能",
+	    colon:"：",
+}
+

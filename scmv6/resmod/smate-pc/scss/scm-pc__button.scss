@@ -1,0 +1,566 @@
+@mixin generateDifferentColoredStyle($name, $primarycolor) {
+	&.button__color-plain.color-display_#{$name} {
+		color: $primarycolor;
+    }
+    
+    &.button__color-reverse.color-display_#{$name} {
+		background-color: $primarycolor;
+		color: white;
+    }
+    
+    &.button__color-outline.color-display_#{$name} {
+		color: $primarycolor;
+		border-radius: 4px;
+		border-width: 1px;
+		border-style: solid;
+		border-color: $primarycolor;
+    }
+}
+.new-standard_normal-cancle{
+    width: 79px;
+    height: 30px;
+    border: 1px solid #ddd;
+    color: #333;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: #fafafa;
+    &:hover{
+        color: #288aed;
+        border-color: #288aed;
+    }
+}
+
+.ripple-effect {
+	position: relative;
+	overflow: hidden;
+	&.circle-active-state {
+		.ripple-effect__circle {
+			transition: transform 196ms cubic-bezier(0.4,0,1,0.2);
+			transform: scale3d(1,1,1);
+			opacity: 1;
+		}
+	}
+	&.circle-release-state {
+		.ripple-effect__circle {
+			transition: transform 240ms cubic-bezier(0,0.4,0.2,1);
+			transform: scale3d(1,1,1);
+			opacity: 1;
+		}
+	}
+	.ripple-effect__circle {
+		cursor: pointer;
+		pointer-events: none; //Avoid Firefox blocking click events.
+		position: absolute;
+		border-radius: 50%;
+		overflow: hidden;
+		background-color: rgba(186,186,186,0.32);
+		transition: none;
+		transform: scale3d(0,0,1);
+		opacity: 1;
+	}
+}
+.multiple-button-container {
+	flex-shrink: 0;
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	.button__model_rect {
+		margin: 0 8px;
+		&:first-child {
+			margin-left: 0px;
+		}
+		&:last-child {
+			margin-right: 0px;
+		}
+	}
+}
+.button__model_rect{
+	margin-right: 4px;
+}
+.button__box {
+	flex-shrink: 0;
+	vertical-align: middle;
+	display: flex;
+	*{
+		margin: 0;
+	}
+	&>a {
+		display: flex;
+	}
+	&[disabled] {
+		pointer-events: none;
+		.button__color-plain {
+			color: $light-theme-monochrome4 !important;
+		}
+		.button__color-reverse {
+			background-color: $light-theme-monochrome5 !important;
+			color: $light-theme-monochrome4 !important;
+		}
+		.button__color-outline {
+			color: $light-theme-monochrome4 !important;
+			border-color: $light-theme-monochrome5 !important;
+		}
+	}
+	&.button__model_rect,&.button__model_icon {
+		.button__main {
+			@include generateDifferentColoredStyle(blue, $button-primary-color);
+			@include generateDifferentColoredStyle(grey, $light-theme-monochrome2);
+			@include generateDifferentColoredStyle(lightgrey, $light-theme-monochrome4);
+			@include generateDifferentColoredStyle(red, $error-primary-color);
+		}
+	}
+	&.button__model_rect {
+		.button__main {
+			min-width: 64px;
+			border-radius: 2px;
+			box-sizing: border-box;
+			cursor: pointer;
+			border: 0;
+			outline: none;
+			user-select: none;
+			background: transparent;
+			white-space: nowrap;
+			font-size: 14px;
+			line-height: 16px;
+			font-weight: 500;
+			letter-spacing: 0.2px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			transition: box-shadow $animation-standard, background-color $animation-standard;
+			&.button__style_flat {
+				padding-left: 8px;
+				padding-right: 8px;
+			}
+			&.button__style_raised {
+				padding-left: 16px;
+				padding-right: 16px;
+				&:hover {
+					box-shadow: $depth2;
+				}
+			}
+			&.button__size_normal {
+				min-height: 36px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			&.button__size_dense {
+				min-height: 32px;
+				padding-top: 8px;
+				padding-bottom: 8px;
+			}
+			.button__inline-icon { //Used for additional icon besides text.
+				width: 16px;
+				height: 16px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-right: 6px;
+			}
+		}
+	}
+	&.button__model_icon {
+		.button__main {
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			box-sizing: content-box;
+			cursor: pointer;
+			border: 0;
+			outline: none;
+			user-select: none;
+			background: transparent;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			transition: box-shadow $animation-standard, background-color $animation-standard;
+			&.button__size_normal {
+				padding: 8px;
+				.ripple-effect__circle {
+					width: 40px !important;
+					height: 40px !important;
+					top: 0px !important;
+					left: 0px !important;
+				}
+			}
+			&.button__size_dense {
+				padding: 0px;
+			}
+			.button__icon-container {
+				display: flex;
+				justify-content: center;
+				align-content: center;
+			}
+		}
+	}
+}
+
+//BUTTON START
+.button_main { //all button should include this class
+	display: inline-block;
+    position: relative;
+    cursor: pointer;
+    min-height: 28px;
+    line-height: 28px;
+    min-width: 82px;
+    border-radius: 3px;
+    
+/*    min-height: 36px;
+    min-width: 64px;
+    line-height: 36px;
+	border-radius: 2px;*/
+    
+    box-sizing: border-box;
+	flex-shrink: 0;
+	text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    outline: none;
+    border: 0;
+    padding: 0 8px;
+    margin: 0 8px;
+    background: transparent;
+	overflow: hidden;
+    white-space: nowrap;
+/*    text-transform: uppercase;*/
+    /*font-weight: 500;*/
+    font-size: 14px;
+	color: $light-theme-monochrome1;
+    text-decoration: none;
+    transition: box-shadow $animation-standard, background-color $animation-standard;
+	&.button_dense {
+		min-width: 82px;
+		min-height: 30px;
+		line-height: 30px;
+		font-size: 14px;
+	}
+    &.button_main_button_dense_ignore:hover{
+        color: #288aed!important;
+    }
+    &.button_clickable{
+		cursor: pointer;
+		&:hover{
+			font-size: 16px;
+		    background-color: #288AED;
+		    color:#FFFFFF!important;
+		}
+	}
+	&.button_link {
+		min-width: 0px;
+		min-height: 20px;
+		line-height: 20px;
+		font-weight: 400;
+		font-size: 13px;
+		color: $light-theme-monochrome2;
+		&:hover{
+			color: #2882d8;
+		}
+	}
+	&.button_icon { //add this class for a icon button
+		margin: 0 6px;
+		padding: 8px;
+		min-width: 0;
+		width: 40px;
+		height: 40px;
+		line-height: 24px;
+		border-radius: 50%;
+        display: flex;
+		&:hover{
+			color: #c03228;
+		}
+	}
+	&.google__icon-close{
+	    color:#333!important;
+	    &:hover{
+		    color:#c03228!important;
+	    }
+    }
+	&.button_primary {
+		color: $button-primary-color;
+		border-radius: 3px;
+        border: 1px solid #fff;
+		&:hover{
+			border: 1px solid #2882d8;
+			color: #2882d8;
+		}
+	}
+	&.button_grey {
+		color: $light-theme-monochrome2;
+        border: 1px solid #ddd!important;
+		&:hover{
+			color: #2882d8;
+			border: 1px solid #2882d8!important;
+		}
+	}
+	&.button_send-specil_style{
+	    border-radius: 0!important;
+		padding: 0px!important;
+		margin: 0px!important;
+        @include flexcenter;
+ 	}
+	&.button_light-grey {
+		color: $light-theme-monochrome4;
+		 background-color: #f4f4f4;
+		.button_main-sendmessage_tip{
+			  background:url("/resmod/smate-pc/img/add-Achievements2.png") no-repeat scroll;
+              display: inline-block;
+              height: 24px;
+              width: 24px;
+		      &:hover{
+				 background:url("/resmod/smate-pc/img/add-Achievements1.png") no-repeat scroll;
+			  }
+		}
+		.button_main-sendfile_tip{
+			  background:url("/resmod/smate-pc/img/add-Files2.png") no-repeat scroll;
+              display: inline-block;
+              height: 24px;
+              width: 24px;
+			  &:hover{
+				  background:url("/resmod/smate-pc/img/add-Files1.png") no-repeat scroll;
+			  }
+		}
+		.button_main-addfile_tip{
+			  background:url("/resmod/smate-pc/img/acquiescence-add-file1.png") no-repeat scroll;
+              display: inline-block;
+              height: 24px;
+              width: 24px;
+			  &:hover{
+				  background:url("/resmod/smate-pc/img/acquiescence-add-file2.png") no-repeat scroll;
+			  }
+		}
+		.button_main-filebox_tip{
+			  background-image: url(/resmod/smate-pc/img/smate_cssspirit01.png);
+		      background-repeat: no-repeat;
+		      width: 24px;
+		      height: 24px;
+			  background-position: -147px -517px;
+			  margin-left: 7px;
+			  &:hover{
+				  background-position: -150px -578px;
+			  }
+		}
+		.button_main-addfile_tip{
+			  background:url("/resmod/smate-pc/img/acquiescence-add-file1.png") no-repeat scroll;
+              display: inline-block;
+              height: 24px;
+              width: 24px;
+			  &:hover{
+				  background:url("/resmod/smate-pc/img/acquiescence-add-file2.png") no-repeat scroll;
+			  }
+		}
+		
+	}
+	&.button_error {
+		color: $error-primary-color;
+	}
+	&[disabled],&.button_primary[disabled],&.button_error[disabled] {
+		color: $light-theme-monochrome3;
+		pointer-events: none;
+		cursor: default;
+	}
+	&.button_primary-reverse {
+		background-color: $button-primary-color;
+		border: 1px solid #2882d8;
+		background-color: #2882d8;
+		color: #FFFFFF;
+		&:hover{
+			background-color: #218aed;
+			border: 1px solid #218aed;
+		}
+	}
+    &.button_primary-normalstyle{
+        border:1px solid #ddd;
+		color: #333;
+        &:hover{
+            border:1px solid #2882d8;
+		    color: #288AED!important;
+		}
+    }
+	&.button_primary-changestyle {
+	    border:1px solid #288aed;
+		color: #288AED;
+		&:hover{
+            border:1px solid #288aed;
+		    color: #288AED!important;
+		}
+	}
+    &.button_primary-cancle{
+        &:hover{
+             color: #218aed!important;
+        }
+    }
+	&.button_primary-overstyle{
+		&:hover{
+			color: #218aed;
+		}
+	}
+	&.button_error-reverse {
+		background-color: $error-primary-color;
+		color: white;
+	}
+	&.button_primary-reverse[disabled],&.button_error-reverse[disabled] {
+		background-color: $light-theme-monochrome5;
+		color: $light-theme-monochrome3;
+		pointer-events: none;
+		cursor: default;
+	}
+	
+}
+.button_primary-cancle{
+    &:hover{
+        color: #288aed;
+    }
+}
+.action-dropdown {
+	position: relative;
+	.action-dropdown__list {		
+		font-size: 14px;
+		opacity: 0;
+		position: absolute;
+		top: -8px;
+		right: 0;
+		padding: 8px 0;
+		z-index: -10;
+		background-color: white;
+		box-shadow: $depth8;
+		transition: opacity $animation-standard;
+		&.list_shown {
+			opacity: 1;
+			z-index: 999999;
+		}
+		.action-dropdown__item {
+			min-width: 136px;
+			height: 36px;
+			line-height: 36px;
+			word-break: keep-all;
+			text-align: left;
+			padding: 0 16px;
+			cursor: pointer;
+			&:hover {
+				background-color: $light-theme-monochrome5;
+			}
+		}
+	}
+}
+//BUTTON END
+
+//SPIRIT ICON
+.css-spirit__main {
+	&:hover {
+		.css-spirit__large-icon {
+			&.spirit-icon__me-profile {
+				background-position: -8px -576px;
+			}
+			&.spirit-icon__me-project {
+				background-position: -36px -576px;
+			}
+			&.spirit-icon__me-publication {
+				background-position: -65px -576px;
+			}
+			&.spirit-icon__friend-rcmd {
+				background-position: -93px -576px;
+			}
+			&.spirit-icon__mygroup {
+				background-position: -122px -576px;
+			}
+			&.spirit-icon__myfile {
+                background-position: -150px -546px;
+			}
+            &.spirit-icon__researchverification{
+                background-position: -195px -545px;
+            }
+            &.spirit-icon__researchverification-US{
+                background-position: -220px -545px;
+            }
+            
+		}
+	}
+	.css-spirit__icon {
+		background-image: url(/resmod/smate-pc/img/smate_cssspirit01.png);
+		background-repeat: no-repeat;
+		width: 16px;
+		height: 16px;
+		&.spirit-icon__thumbup-outline-flag {
+			background-position: -8px -295px;
+		}
+		&.spirit-icon__thumbup-outline {
+			background-position: -8px -295px;
+		}
+		&.spirit-icon__thumbup {
+			background-position: -8px -389px;
+		}
+		&.spirit-icon__comment-flag {
+			background-position: -30px -295px;
+		}
+		&.spirit-icon__comment {
+			background-position: -30px -295px;
+		}
+		&.spirit-icon__share-flag{
+			background-position: -52px -295px;
+		}
+		&.spirit-icon__share {
+			background-position: -52px -295px;
+		}
+		&.spirit-icon__favorite-outline-flag {
+			background-position: -75px -295px;
+		}
+		&.spirit-icon__favorite-outline {
+			background-position: -75px -296px;
+		}
+		&.spirit-icon__favorite {
+			background-position: -75px -388px;
+		}
+		&.spirit-icon__cite-flag {
+			background-position: -98px -296px;
+		}
+		&.spirit-icon__cite {
+			background-position: -98px -295px;
+		}
+	}
+	.css-spirit__large-icon {
+		background-image: url(/resmod/smate-pc/img/smate_cssspirit01.png);
+		background-repeat: no-repeat;
+		width: 24px;
+		height: 24px;
+		&.spirit-icon__me-profile {
+			background-position: -8px -516px;
+		}
+		&.spirit-icon__me-project {
+			background-position: -36px -516px;
+		}
+		&.spirit-icon__me-publication {
+			background-position: -65px -516px;
+		}
+		&.spirit-icon__friend-rcmd {
+			background-position: -93px -516px;
+		}
+		&.spirit-icon__mygroup {
+			background-position: -122px -516px;
+		}
+		&.spirit-icon__myfile {
+            background-position: -150px -516px;
+        }
+        &.spirit-icon__researchverification{
+           /* background-position: -195px -516px;*/
+            background-position: -195px -545px;
+        }
+        &.spirit-icon__researchverification-US{
+           background-position: -220px -545px!important;
+           /* background-position: -195px -545px;*/
+        }
+        
+	}
+}
+.css-spirit__icon-title{
+	color: #666!important;    
+    font-weight: normal;
+}
+.datepicker__footer{
+    .button_dense{
+        margin: 0px;
+    }
+}

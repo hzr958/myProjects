@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/scmpcframe.css">
+<script type="text/javascript">
+		window.onload = function(){
+            var parentbox = document.getElementsByClassName("new-delete_alias-container")[0];
+            parentbox.style.left = (window.innerWidth - parentbox.offsetWidth)/2 + "px";
+            parentbox.style.bottom = (window.innerHeight - parentbox.offsetHeight)/2 + "px";
+            window.onresize = function(){
+            	parentbox.style.left = (window.innerWidth - parentbox.offsetWidth)/2 + "px";
+                parentbox.style.bottom = (window.innerHeight - parentbox.offsetHeight)/2 + "px";
+            }
+            var closebtn = document.getElementsByClassName("new-delete_alias-close");
+            var closelist = document.getElementsByClassName("new-delete_alias-body_item-close");
+            for(var j = 0; j < closebtn.length; j++){
+                closebtn[j].onclick = function(){
+                	this.closest(".new-delete_alias-container").style.bottom = - 500 + "px";
+                }
+            };
+            for(var i = 0; i < closelist.length; i++){
+                closelist[i].onclick = function(){
+                	this.closest(".new-delete_alias-body").removeChild(this.closest(".new-delete_alias-body_item"));
+                }
+            }
+		}
+	</script>
+</head>
+<body>
+  <div class="bckground-cover">
+    <div class="new-delete_alias-container">
+      <div class="new-delete_alias-header">
+        <span class="new-delete_alias-header_title">已排除别名</span> <i class="new-delete_alias-close list-results_close"></i>
+      </div>
+      <div class="new-delete_alias-body">
+        <div class="new-delete_alias-body_item">
+          <div class="new-delete_alias-body_item-detail">bbvbcvbvcb</div>
+          <i class="new-delete_alias-body_item-close"></i>
+        </div>
+      </div>
+      <div class="new-delete_alias-footer">
+        <div class="new-delete_alias-footer_close new-delete_alias-close">关闭</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

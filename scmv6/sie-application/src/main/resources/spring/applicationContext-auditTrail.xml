@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<description>auditTrail审计日志配置</description>
+
+	<!-- spring容器中那些配置@aspectJ切面的bean创建代理，织入切面。ServiceImpl中的@Audit -->
+    <aop:aspectj-autoproxy/>
+
+	<bean id="auditTrailManagementAspect" class="com.github.inspektr.audit.AuditTrailManagementAspect">
+		<constructor-arg index="0" value="sie-application" />
+		<!-- WHO -->
+		<constructor-arg index="1" ref="auditablePrincipalResolver" />
+		<constructor-arg index="2">
+			<list>
+				<ref bean="auditTrailManager" /><!--将审计信息输出到数据库中  -->
+			</list>
+		</constructor-arg>
+		<!-- Action -->
+		<constructor-arg index="3">
+			<map>
+				<entry key="AUDIT_ACTION_RESOLVER">
+					<ref bean ="objectCreationAuditActionResolver" />
+				</entry>
+			</map>
+		</constructor-arg>
+		<!-- WHAT -->
+		<constructor-arg index="4">
+			<map>
+				<entry key="RETURN_JSON">
+					<ref bean="returnValuesAsJSONRResourceResolver" /><!-- 解析返回值，日志记录返回值 -->
+				</entry>
+                <entry key="RETURN_LIST">
+                    <ref bean="returnValueAsStringResourceResolver" /><!-- 解析返回值，日志记录返回值 -->
+                </entry>
+                <entry key="PARAM_JSON">
+                    <ref bean="parametersAsJSONResourceResolver" /><!-- 解析参数值，日志记录参数值 -->
+                </entry>
+				<entry key="PARAM_LIST">
+					<ref bean="parametersAsStringResourceResolver" /><!-- 解析参数值，日志记录参数值 -->
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+    <!-- 获取人员ID -->
+	<bean id="auditablePrincipalResolver" class="com.smate.sie.web.logger.auditlog.resolver.IrisPrincipalResolver"></bean>
+
+	<bean id="saveServiceActionResolver" class="com.github.inspektr.audit.spi.support.DefaultAuditActionResolver">
+		<constructor-arg index="0" value="||SUCCEEDED" />
+		<constructor-arg index="1" value="||FAILED" />
+	</bean>
+
+	<bean id="objectCreationAuditActionResolver" class="com.github.inspektr.audit.spi.support.ObjectCreationAuditActionResolver">
+		<constructor-arg index="0" value="||SUCCEEDED" />
+		<constructor-arg index="1" value="||FAILED" />
+	</bean>
+
+    <bean id="returnValuesAsJSONRResourceResolver" class="com.smate.sie.web.logger.auditlog.resolver.IrisReturnValueAsJsonResourceResolver" />
+	<bean id="returnValueAsStringResourceResolver" class="com.smate.sie.web.logger.auditlog.resolver.IrisReturnValueAsStringResourceResolver" />
+	<bean id="parametersAsStringResourceResolver" class="com.smate.sie.web.logger.auditlog.resolver.IrisParametersAsStringResourceResolver" />
+	<bean id="parametersAsJSONResourceResolver" class="com.smate.sie.web.logger.auditlog.resolver.IrisParametersAsJsonResourceResolver" />
+
+	<bean id="auditTrailManager" class="com.smate.sie.web.logger.auditlog.IrisJdbcAuditTrailManager">
+		<constructor-arg index="0" ref="inspektrTransactionTemplate" />
+		<property name="dataSource" ref="sieDataSource" />
+		<property name="columnLength" value="800" />
+	</bean>
+	<bean id="inspektrTransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate" p:transactionManager-ref="transactionManager_audit" p:isolationLevelName="ISOLATION_READ_COMMITTED" p:propagationBehaviorName="PROPAGATION_REQUIRED" />
+	<bean id="transactionManager_audit" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" p:dataSource-ref="sieDataSource" />
+</beans>

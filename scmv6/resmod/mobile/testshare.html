@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Document</title>
+<style>
+button {
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/resmod/mobile/css/mobile.css" />
+<script type="text/javascript" src="/resmod/js/jquery.js"></script>
+<script type="text/javascript" src="/resmod/mobile/js/plugin/mobile.share.js"></script>
+<script>
+var config = {
+    shareUrl: "http://dev.scholarmate.com/resmod/mobile/testshare.html", // 分享的链接
+    shareTitle: "这个是分享的标题", // 分享的标题
+    shareImg: "http://dev.scholarmate.com/avatars/3c/62/fe/1000000727634.jpg", // 分享的图片url
+    defaultShareImg: "", // 若分享的图片url为空,则用这个默认的图片url
+    desc: "这个是描述信息", // 描述信息
+    summary: "这个是概要信息", // 概要信息
+    source: "www.scholarmate.com", // 来源，域名
+    appKey: "", // 微博那边有个appKey参数
+    type: "" //分享类型，分享到微信时用来判断是分享到朋友圈还是微信好友
+}
+function scmShareFun(type){
+    scmShare.share(config, type);
+}
+
+$(function(){
+	buildImgTipsDiv();
+})
+</script>
+</head>
+<body>
+  <div class="scan_addfriend" id="share_dialog_img" style="display: none;" onclick="hideShareDialog();"></div>
+  <button data-mshare="0" onclick="scmShareFun();">点击弹出原生分享面板</button>
+  <button data-mshare="1" onclick="scmShareFun('pengyouquan')">点击触发朋友圈分享</button>
+  <button data-mshare="2" onclick="scmShareFun('wechatfriend')">点击触发发送给微信朋友</button>
+  <button data-mshare="3" onclick="scmShareFun('linkedin')">点击触发分享到LinkedIn</button>
+  <button data-mshare="4" onclick="scmShareFun('weibo')">点击触发分享到微博</button>
+  <button data-mshare="5" onclick="scmShareFun('qzone')">点击触发分享到qq空间</button>
+  <button data-mshare="6" onclick="scmShareFun('douban')">点击触发分享到豆瓣</button>
+</body>
+</html>

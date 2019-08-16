@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+  <title>群组简介</title>
+  <link href="../../css_v5/css2016/header2016.css" rel="stylesheet" type="text/css" />
+  <link href="../../css_v5/css2016/footer2016.css" rel="stylesheet" type="text/css" />
+  <link href="../../css_v5/css2016/public2016.css" rel="stylesheet" type="text/css" />
+  <link href="../../css_v5/css2016/index.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="../js_v5/js2016/jquery-1.4.2.min.js"></script>
+  <script>
+      $(function(){
+          $(".text_login").focus(function(){
+              if($(this).val()=='用户名' || $(this).val()=='密码'){
+                  $(this).val('');
+                  $('#password2,#uname').css("color","#333");
+              }
+              if($(this).attr('id')=='password1'){
+                  $(this).hide();
+                  $('#password2').show();
+                  $('#password2').focus();
+              }
+          });
+          $(".text_login").blur(function(){
+              if($(this).attr('id')=='password2' && $(this).val()==''){
+                  $(this).hide();
+                  $('#password1').show();
+                  $('#password1').val('密码');
+                  $('#uname').css("color","#c1c1c1");
+              }
+              else if($(this).attr('id')=='uname' && $(this).val()=='' ){
+                  $(this).val('用户名');
+                  $('#uname').css("color","#c1c1c1");
+              }
+          });
+          $(".password_bg").focus(function(){
+              if($('#uname').val()=='用户名'){
+                  $('#uname').css("color","#c1c1c1");
+              }
+          });
+          
+          var list = document.getElementsByTagName("input");
+          for(var i = 0; i<list.length ;i++){
+  	        list[i].onkeydown = function(){
+  	        	if((this.value+"").length>=0){
+  	        		this.style.color="block";
+  	        	}
+  	        }
+          }
+      });
+  </script>
+</head>
+<body>
+  <div class="top-t">
+    <div class="header-t">
+      <div class="header_wrap-t">
+        <a href="#" class="logo fl"></a>
+        <div class="search fl">
+          <a href="#" class="tp_box"><i class="lt_icon"></i></a> <input type="text"> <a href="#" class="s_btn"></a>
+        </div>
+        <div class="logining">
+          <div class="logining_icon">
+            <a href="#"><i class="question_icon"></i></a>
+          </div>
+          <div class="version_en">
+            <a href="#">English</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-t">
+      <div class="nav_wrap-t">
+        <ul>
+          <li><a href="#">关于科研之友</a></li>
+          <li><a href="#">立即加入</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="content-1200">
+    <div class="login-box">
+      <div class="login_wrap">
+        <div class="login_slogan">
+          <img src="../img/banner_zh_CN.png" alt="">
+        </div>
+        <div class="login_cont checkbox-con">
+          <h2>
+            <a href="#">登录</a><a href="#" class="hover">注册</a>
+          </h2>
+          <ul>
+            <li><input type="text" value="邮箱" class="text_login email_bg" id="input_default01" /> <span
+              class="text_login-Required">*</span></li>
+            <li><input type="text" value="password" class="text_login password_bg" id="input_default02" /> <span
+              class="text_login-Required">*</span></li>
+            <li>
+              <div style="display: flex;">
+                <div>
+                  <input type="text" value="姓" class="text_login chinese_bg" id="input_default03" /> <span
+                    class="text_login-Required">*</span>
+                </div>
+                <input type="text" value="名" class="text_login chinese_bg" id="input_default05" />
+              </div>
+            </li>
+            <li>
+              <div style="display: flex;">
+                <div>
+                  <input type="text" value="LastName/拼音" class="text_login english_bg" id="input_default04" /> <span
+                    class="text_login-Required">*</span>
+                </div>
+                <input type="text" value="FirstName/拼音" class="text_login english_bg" id="input_default06" />
+              </div>
+            </li>
+            <li><input type="button" value="注&nbsp;&nbsp;&nbsp;&nbsp;册" class="login_btn">
+                <p class="other_l">
+                  <span class="check_fx"><input type="checkbox" class="ipt-hide"> <label class="checkbox"></label></span>
+                  我已阅读并同意遵守 <a href="#" class="blue">服务条款</a> 和 <a href="#" class="blue">隐私政策</a>
+                </p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer_wrap">
+      <div class="scholarmate-code">
+        <img src="../img/code.jpg" width="85" height="85"> <span>关注科研之友</span>
+      </div>
+      <div class="footer_cont">
+        <p>
+          <a href="#">关于我们</a>|<a href="#">隐私政策</a>|<a href="#">服务条款</a>|<a href="#">联系我们</a>|<a href="#">人才招聘</a>
+        </p>
+        <p>
+          © 2012 爱瑞思 粤ICP备11010329号<img src="../img/beian.png"> 粤公网安备 4403052000213
+        </p>
+      </div>
+    </div>
+  </div>
+  <script language="javascript">
+    var s1=document.getElementById("input_default01");
+    var s2=document.getElementById("input_default02");
+    var s3=document.getElementById("input_default03");
+    var s4=document.getElementById("input_default04");
+    var s5=document.getElementById("input_default05");
+    var s6=document.getElementById("input_default06");
+    s1.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s1.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s1.onkeydown=function(){this.style.color='#333'};
+    s2.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s2.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s2.onkeydown=function(){this.style.color='#333'};
+    s3.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s3.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s3.onkeydown=function(){this.style.color='#333'};
+    s4.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s4.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s5.onkeydown=function(){this.style.color='#333'};
+    s5.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s5.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s5.onkeydown=function(){this.style.color='#333'}; 
+    s6.onkeydown=function(){this.style.color='#333'};
+    s6.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s6.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s6.onkeydown=function(){this.style.color='#333'}; 
+</script>
+</body>
+</html>

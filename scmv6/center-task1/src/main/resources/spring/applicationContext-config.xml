@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+  default-lazy-init="true">
+  <!-- 用于生成站内消息Freemarker配置 -->
+  <bean id="msgFreemarkereConfiguration"
+    class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:template/msgtemplate" />
+  </bean>
+  <bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPaths">
+      <list>
+        <value>classpath:template/dyntemplate/v5/newversion</value>
+        <value>classpath:template/mailtemplate/sns</value>
+        <value>classpath:template/mailtemplate/rol</value>
+        <value>classpath:template/mailtemplate/bpo</value>
+        <value>classpath:template/mailtemplate/nsfc</value>
+        <value>classpath:template/mailtemplate/net</value>
+        <value>classpath:template/mailtemplate/common</value>
+        <value>classpath:template/mailtemplate/promote</value>
+        <value>classpath:template/mailtemplate/md</value>
+        <value>classpath:template/mailtemplate/inspg</value>
+        <value>classpath:template/scmhtml</value>
+        <value>classpath:template/scmhtml/project</value>
+        <value>classpath:template/scmhtml/researcher</value>
+        <value>classpath:template/scmhtml/publication</value>
+      </list>
+    </property>
+  </bean>
+  <!-- 用于生成成果显示消息的Freemarker配置_MJG_SCM-6129 -->
+  <bean id="pubFreemarkerConfiguration"
+    class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:template/publication" />
+  </bean>
+  <!-- 用于生成HTML动态消息内容的Freemarker配置 -->
+  <bean id="dynFreemarkerConfiguration"
+    class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:template/dyntemplate/v5/newversion" />
+  </bean>
+  <!-- 启动加载pdwh匹配词典 -->
+  <bean id="initPdwhInsPsnDic" class=" com.smate.center.task.quartz.pdwh.InitPdwhInsPsnDic" lazy-init="false">
+  </bean>
+</beans>

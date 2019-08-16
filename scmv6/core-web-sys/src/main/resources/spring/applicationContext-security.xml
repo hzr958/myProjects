@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:p="http://www.springframework.org/schema/p" xmlns:sec="http://www.springframework.org/schema/security"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+  <description>使用SpringSecurity的安全配置文件</description>
+  <!-- http安全配置 -->
+  <sec:http access-decision-manager-ref="accessDecisionManager" auto-config="true" use-expressions="false">
+    <sec:logout />
+    <sec:csrf disabled="true" />
+    <sec:custom-filter ref="autoLoginAuthFilter" position="FIRST" />
+    <sec:custom-filter ref="oauthsAuthenticationFilter" before="ANONYMOUS_FILTER" />
+    <!-- 暂时不用 tsz -->
+    <sec:custom-filter ref="accountUsabilityCheckFilter" after="ANONYMOUS_FILTER" />
+    <sec:custom-filter ref="sessionShareLoginFilter" after="EXCEPTION_TRANSLATION_FILTER" />
+    <sec:intercept-url pattern="/" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    
+    <sec:intercept-url pattern="/pub/details/sns" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/pub/details/pdwh" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!--站外项目详情 -->
+    <sec:intercept-url pattern="/prjweb/project/detailsshow"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/prjweb/detail/ajaxprjinfo"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/prjweb/detail/ajaxsaveview"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/prjweb/project/ajaxcommentshow"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!--站外成果详情 -->
+    <!-- 站外新闻 -->
+    <sec:intercept-url pattern="/dynweb/news/main"
+                       access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/dynweb/news/details"
+                       access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/dynweb/news/ajaxnewslist"
+                       access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/dynweb/mobile/news/details" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 站外新闻 end -->
+    <!--IOS客户端 -->
+    <sec:intercept-url pattern="/app/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/oauth/api/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/api/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 注册页面 start -->
+    <sec:intercept-url pattern="/psnweb/pinyin/ajaxparse*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+      <sec:intercept-url pattern="/psnweb/pinyin/ajaxregisterparse*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 注册页面 end -->
+    
+    <!-- 成果检索 -->
+    <sec:intercept-url pattern="/pub/search/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/pub/search/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    
+    <sec:intercept-url pattern="/psnweb/mobile/outhome*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/psnweb/mobile/morePersonKeywords*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 移动端动态生成 -->
+    <sec:intercept-url pattern="/dynamicprodece" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 移动端动态生成 -->
+    <!-- 移动端新闻消息 -->
+    <sec:intercept-url pattern="/dynweb/news/mobile/forshare"
+                       access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 群组动态 -->
+    <sec:intercept-url pattern="/groupdynamicprodece"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 机构主页权限 结束 -->
+    <sec:intercept-url pattern="/pubweb/forwardUrl*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/psnweb/ac/ajaxpdwhsearchpub" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" /> <!-- 检索下拉框提示 -->
+    <sec:intercept-url pattern="/psnweb/personsearch/**"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" /> <!-- 人员检索 -->
+    <sec:intercept-url pattern="/psnweb/search/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" /> <!-- 人员检索 -->
+    <!-- 移动端人员检索 -->
+    <sec:intercept-url pattern="/psnweb/mobile/search"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/psnweb/mobile/ajaxavatarurls"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/psnweb/mobile/ajaxlist"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+<!--     <sec:intercept-url pattern="/psnweb/mobile/improveInfo"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" /> -->
+    <!-- 站外文件下载 -->
+    <sec:intercept-url pattern="/fileweb/download/ajaxgeturl"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 移动端检索人员 -->
+    <sec:intercept-url pattern="/psnweb/mobile/frdsearch"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 移动端分享文件 -->
+    <sec:intercept-url pattern="/psnweb/mobile/emailsharefile"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- pc分享文件 -->
+    <sec:intercept-url pattern="/psnweb/fileshare/emailviewfiles"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 群组站外 -->
+    <sec:intercept-url pattern="/groupweb/grpinfo/outside/*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/dynweb/grpdyn/outside/*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/groupweb/grpfile/ajaxgetdes3archivefileid"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/grp/outside/**"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 主页站外 begin -->
+    <sec:intercept-url pattern="/psnweb/outside/**"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/prjweb/outside/**"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/prj/outside/**"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/pubweb/outside/**"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/inspg/outside/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/dynweb/outside/**"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 主页站外 end -->
+    <!-- v8pub begin -->
+    <sec:intercept-url pattern="/pub/outside/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/pub/details/outside/**"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/pub/viewfromfirstlevel/**"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/pub/viewfromSecondlevel/**"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 站外成果列表统计数 -->
+    <sec:intercept-url pattern="/pub/query/ajaxpsnpubcount*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/pub/query/ajaxgrppubcount*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 成果引用 -->
+    <sec:intercept-url pattern="/pub/ajaxpubquote*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/pub/ajaxpdwhpubquote*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/pub/opt/ajaxcommentlist*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/pub/opt/ajaxcommentnumber*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/pub/opt/ajaxview*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/pub/opt/ajaxstatistics"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/pub/details/ajaxview"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/pub/ajaxgetrelationpsn"
+       access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- v8pub end -->
+    <!-- 站外项目 -->
+    <sec:intercept-url pattern="/prjweb/remind/ajaxamount*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern=" /prjweb/show/ajaxprjlistcallback*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/prjweb/show/ajaxagencyname*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/prjweb/wechat/findprjs*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/prjweb/wechat/findprjxml*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/prjweb/wechat/prjcondition*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 成果详情 end -->
+    <!-- 邮件管理 -->
+    <sec:intercept-url pattern="/scmmanagement/mail/details"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+      <sec:intercept-url pattern="/scmmanagement/newirismail*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+      <sec:intercept-url pattern="/scmmanagement/irismail*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 短地址 -->
+    <sec:intercept-url pattern="/EL/*" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/G/*" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/P/*" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/PM/*" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/A/*" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/S/*" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/B/*" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/F/*" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/AI/*" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/BI/*" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/SI/*" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/ST/*" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/AT/*" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 站内下载地址临时放开权限，为了移动端能够跳浏览器下载 -->
+    <sec:intercept-url pattern="/fileweb/filedownload*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 基金 begin -->
+    <sec:intercept-url pattern="/prjweb/wechat/findfundsxml*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/prjweb/fundop/ajaxinit*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/prjweb/funddetails/show"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/prjweb/wechat/findfundsxml"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 基金 end -->
+    <!--邮件账户 begin -->
+    <sec:intercept-url pattern="/psnweb/accountvalidate/ajaxdovalidte"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!--邮件账户 end -->
+    <sec:intercept-url pattern="/data/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/dyndatate/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/dyndata/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/grpdata/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/psndata/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- <sec:intercept-url pattern="/prj/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" /> -->
+    <sec:intercept-url pattern="/prjdata/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/scmmanagement/psnInfo/main" access="ROLE_URL_SCMMANAGEMENT" />
+    <sec:intercept-url pattern="/scmmanagement/mailmanage/*" access="ROLE_MAIL_SCMMANAGEMENT" />
+    <sec:intercept-url pattern="/scmmanagement/fund/**" access="ROLE_FUND_SCMMANAGEMENT" />
+    <sec:intercept-url pattern="/scmmanagement/journal/**" access="ROLE_JNL_SCMMANAGEMENT" />
+    <sec:intercept-url pattern="/scmmanagement/news/**" access="ROLE_NEWS_SCMMANAGEMENT,ROLE_URL_SCMMANAGEMENT" />
+    <sec:intercept-url pattern="/scmmanagement/grpmanage/**" access="ROLE_URL_SCMMANAGEMENT,ROLE_GROUP_SCMANAGEMENT" />
+    <sec:intercept-url pattern="/scmmanagement/pubInfo/main" access="ROLE_PAPER_SCMMANAGEMENT" />
+    <sec:intercept-url pattern="/vipweb/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/psn/outside/**" access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 站外文件标签 start -->
+    <sec:intercept-url pattern="/groupweb/grplabel/ajaxgetallfilelabel"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 站外文件标签 end -->
+    <!--open接口调用，基准库导入到个人库 start -->
+    <sec:intercept-url pattern="/groupweb/grppub/ajaxacceptpubrcmd"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- open接口调用，基准库导入到个人库 end -->
+    <!-- 邮件退订 -->
+    <sec:intercept-url pattern="/psnweb/unsubscribe/mail*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/psnweb/unsubscribe/mail/continue*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/psnweb/cancle/middlepage*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/psnweb/cancle/success/logout"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <sec:intercept-url pattern="/psnweb/cancle/successs/login*"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 邮件退订 end -->
+    
+    <!-- 科研认证结果详情站外start -->
+    <sec:intercept-url pattern="/application/outside/**"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 科研认证结果详情站外end -->
+    
+     <!-- 移动端中间跳转页面start -->
+    <sec:intercept-url pattern="/m/midinfo/**"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 移动端中间跳转页面end -->
+    
+    <!-- 基准库成果状态为判断start -->
+    <sec:intercept-url pattern="/data/pub/ajaxpdwhisexists"
+      access="ROLE_ANONYMOUS,IS_AUTHENTICATED_REMEMBERED" />
+    <!-- 基准库成果状态为判断end -->
+    
+    
+    <sec:intercept-url pattern="/**" access="IS_AUTHENTICATED_REMEMBERED" />
+    <sec:headers>
+      <sec:frame-options policy="SAMEORIGIN" />
+    </sec:headers>
+    <sec:remember-me />
+    <!-- 关闭speing-security处理session固化 -->
+    <sec:session-management session-fixation-protection="none" />
+  </sec:http>
+  <!-- CAS客户端验证URL -->
+  <bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties"
+    p:service="${domainscm}/scmwebsns/v6url" p:sendRenew="false" />
+  <bean id="userDetailsService" class="com.smate.core.web.sys.security.user.UserDetailServiceImpl">
+  </bean>
+  <!-- 授权判断配置, 将授权名称的默认前缀由ROLE_改为A_. -->
+  <bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+    <constructor-arg>
+      <list>
+        <bean class="org.springframework.security.access.vote.RoleVoter">
+        </bean>
+        <bean class="org.springframework.security.access.vote.AuthenticatedVoter" />
+      </list>
+    </constructor-arg>
+  </bean>
+  <!-- 空实现 -->
+  <sec:authentication-manager alias="authenticationManager">
+  </sec:authentication-manager>
+  <!-- 权限共享拦截匹配 -->
+  <bean id="requiresAuthenticationRequestMatcher"
+    class="com.smate.core.web.sys.security.authority.RequiresAuthenticationRequestMatcher">
+  </bean>
+  <bean id="autoLoginOauthInfoService"
+    class="com.smate.core.base.utils.service.security.AutoLoginOauthInfoServiceImpl">
+  </bean>
+  <bean id="sysUserLoginService" class="com.smate.core.base.utils.service.security.SysUserLoginServiceImpl">
+  </bean>
+  <bean id="scmUserDetailsService" class="com.smate.core.web.sys.security.user.ScmUserDetailsServiceImpl">
+    <property name="userCacheService" ref="userCacheService"></property>
+  </bean>
+  <!-- 自动登录 -->
+  <bean id="autoLoginAuthFilter" class="com.smate.core.web.sys.security.authority.AutoLoginAuthFilter">
+    <property name="userCacheService" ref="userCacheService" />
+    <property name="accountEmailCheckLogDao" ref="accountEmailCheckLogDao" />
+    <property name="autoLoginOauthInfoService" ref="autoLoginOauthInfoService" />
+    <property name="sysUserLoginService" ref="sysUserLoginService" />
+  </bean>
+  <!-- 帐号可用性判断 -->
+  <bean id="accountUsabilityCheckFilter" class="com.smate.core.web.sys.security.authority.AccountUsabilityCheckFilter">
+    <property name="sysUserLoginService" ref="sysUserLoginService" />
+  </bean>
+  
+  <!-- 权限共享拦截 -->
+  <bean id="oauthsAuthenticationFilter"
+    class="com.smate.core.web.sys.security.authority.OauthsAuthenticationFilter">
+    <constructor-arg ref="requiresAuthenticationRequestMatcher"></constructor-arg>
+    <property name="authenticationManager" ref="authenticationManager" />
+    <property name="userCacheService" ref="userCacheService"></property>
+    <property name="autoLoginOauthInfoService" ref="autoLoginOauthInfoService" />
+    <property name="scmUserDetailsService" ref="scmUserDetailsService" />
+  </bean>
+  <!-- 拦截没有权限的请求，并重定向到 权限系统 -->
+  <bean id="sessionShareLoginFilter"
+    class="com.smate.core.web.sys.security.session.filter.NewSessionShareLoginFilter">
+  </bean>
+  <bean id="accountEmailCheckLogDao" class="com.smate.core.base.psn.dao.AccountEmailCheckLogDao" />
+  <context:component-scan base-package="com.smate.core.sys.security" scoped-proxy="interfaces" />
+  <!--登录权限相关扫描 -->
+  <context:component-scan base-package="com.smate.core.base.utils.dao.security" />
+  <context:component-scan base-package="com.smate.core.base.psn.service.profile" />
+  <context:component-scan base-package="com.smate.core.base.psn.service.psncnf" />
+  <context:component-scan base-package="com.smate.core.base.psn.dao.psncnf" />
+  <bean id="authorityManager" class="com.smate.core.base.utils.service.security.AuthorityManagerImpl" />
+</beans>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>二维码创建测试页面</title>
+<script type="text/javascript" src="/resmod/js/jquery.js"></script>
+<script type="text/javascript" src="/resmod/mobile/js/jquery-qrcode.min.js"></script>
+<script language="JavaScript">
+        $(function(){
+            var options = {
+                render: "canvas",
+                ecLevel: 'H',//识别度
+                fill: '#000',//二维码颜色
+                background: '#ffffff',//背景颜色
+                quiet: 2,//边距
+                width: 200,//宽度
+                height: 200,
+                text: "http://www.baidu.com",//二维码内容
+                //中间logo start
+                mode: 4,
+                mSize: 20 * 0.01,
+                mPosX: 50 * 0.01,
+                mPosY: 50 * 0.01,
+                image:$('#img-buffer')[0],//logo图片
+                //中间logo end
+                label: 'jQuery.qrcode',
+                fontname: 'Ubuntu',
+                fontcolor: '#ff9818',
+            };
+            $('#container').empty().qrcode(options);
+            var canvas=$('#container').find('canvas').get(0);
+            $('#new_img').attr('src',canvas.toDataURL('image/jpg'));
+        })
+    </script>
+</head>
+<body>
+  <div id="code"></div>
+  <div id="container">这里是二维码显示位置</div>
+  <img id="img-buffer" src="/resmod/mobile/images/c_logo04.jpg" hidden>
+  <img id="new_img" alt="" src="">
+</body>
+</html>

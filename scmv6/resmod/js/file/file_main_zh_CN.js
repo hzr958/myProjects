@@ -1,0 +1,15 @@
+var fileMain={
+		cancelShareSuccess:"取消成功",
+		delSuccessPre:"成功删除",
+    delSuccessFiles:"个文件",
+    delSuccessFile:"个文件",
+    delFail:"Deleted failed",
+		cancelShareFail:"取消失败",
+		uploadSuccess:"上传成功",
+		uploadFail:"上传失败",
+		uploadFile:"请选择要上传的文件",
+		delFileConfirm:"确认删除该文件吗？",
+		delScuess:"已删除",
+		delFail:"删除失败",
+		saveScuess:"已保存",
+}

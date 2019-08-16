@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+  default-lazy-init="true">
+  <description>缓存服务</description>
+  <bean id="memcacheClient" class="com.smate.core.base.utils.cache.IrisMemcachedClientFactoryBean">
+    <property name="memcachedSrvUrls" value="${memcache.common.url}" />
+  </bean>
+  <!-- <bean id="cacheService" class="com.smate.core.base.utils.cache.SpyMemCacheServiceImpl"> <property name="memcacheClient" 
+    ref="memcacheClient"></property> </bean> -->
+  <bean id="mailCacheService" class="com.smate.center.mail.cache.MailCacheServiceImpl">
+    <property name="memcacheClient" ref="memcacheClient"></property>
+  </bean>
+</beans>

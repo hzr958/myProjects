@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+
+
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+  default-lazy-init="true">
+
+  <description>Spring公共配置文件</description>
+
+  <context:property-placeholder location="classpath:config/system.development.properties"/>
+  <bean class="com.smate.center.job.framework.util.SpringUtil"/>
+
+  <import resource="applicationContext-dataSource-sns.xml"/>
+  <import resource="applicationContext-cache.xml"/>
+
+  <bean id="sessionFactoryMap" class="java.util.HashMap">
+    <constructor-arg>
+      <map>
+        <entry key="sns" value-ref="sessionFactory-sns"></entry>
+      </map>
+    </constructor-arg>
+  </bean>
+  <context:component-scan base-package="com.smate.center.job.framework.dao"/>
+  <context:component-scan base-package="com.smate.center.job.framework.service.**"/>
+  <context:component-scan base-package="com.smate.center.job.common.**" />
+  <context:component-scan base-package="com.smate.center.job.business" />
+  <context:component-scan base-package="com.smate.core.base.file" />
+  <context:component-scan base-package="com.smate.core.base.statistics.dao" />
+
+  <!--定义dozer mapper单例-->
+  <bean id="mapper" class="com.github.dozermapper.spring.DozerBeanMapperFactoryBean">
+    <property name="mappingFiles">
+      <list>
+        <value>classpath:dozer/*mapping.xml</value>
+      </list>
+    </property>
+  </bean>
+</beans>
+

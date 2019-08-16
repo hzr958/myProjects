@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>smate autoword demo</title>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/smate.autoword.js"></script>
+<script type="text/javascript" src="../js/jquery.complete.js"></script>
+<link href="../css/header.css" rel="stylesheet" type="text/css" />
+<link href="../css/common.css" rel="stylesheet" type="text/css" />
+<link href="../css/public.css" rel="stylesheet" type="text/css" />
+<link href="../css/smate.autoword.css" rel="stylesheet" type="text/css" />
+<link href="../css/jquery.complete.css" rel="stylesheet" type="text/css" />
+<script>
+
+	$(function(){
+		//创建testa，testb两个单词填充功能
+		var autowordArr = $("#testa,#testb").autoword();
+	 	var autowordTestC = $("#testc").autoword({"split_char":["q"],"words_max":6,"focus":false,"repeat":true});
+	 	var autowordTestD = $("#testd").autoword({"words_max":6,"focus":false,"onlyPsnId":true});
+
+		/***************************** 添加单词 start*********************************/
+		//方式1：批量添加单词
+		//demo1
+	    var testaWordsArr = [{'val':'testa_val1','text':'testa_text1'},{'val':'testa_val2','text':'testa_text2'}];
+		var testbWordsArr = [{'val':'testb_val1','text':'testb_text1'},{'val':'testb_val2','text':'testb_text2'}];
+		autowordArr["testa"].putAll(testaWordsArr);
+	    autowordArr["testb"].putAll(testbWordsArr);
+		
+		//方式2：添加单个单词
+		//demo1
+		autowordArr["testa"].put("testa_val3","testa_text3");//往testa添加单词
+		autowordArr["testa"].put("testa_val4","testa_text4");//往testa添加单词
+		autowordArr["testa"].put("testa_val5","testa_text5");//往testa添加单词
+		//demo2
+		autowordTestC.put("testc_val1","testc_text1");//往testc添加单词
+		//demo4
+		autowordTestD.put("1234","小明");
+		//方式3：键盘输入
+		/***************************** 添加单词 end*********************************/
+		
+		/***************************** 删除单词 start*********************************/
+		//方式1：批量删除单词
+		$("#demo1").click(function(){
+			autowordArr["testa"].clear();
+		});
+		
+		//方式2：删除单个单词，通过text内容匹配
+		$("#demo2").click(function(){
+			/* alert($("#demo2_text").val());
+			alert($("#demo2_val").val()); */
+			autowordArr["testb"].remove($("#demo2_text").val(),$("#demo2_val").val());
+		});	
+		
+		//方式3:鼠标点击单词关闭按钮
+		/***************************** 删除单词 end*********************************/
+		
+		/***************************** 改变单词完成符号 start*********************************/
+		//方式1：单词默认完成符号{"split_char":[",","，",";","；"]}
+		
+		//方式2：设置单词完成符号{"split_char":["q"]}，则输入q自动完成
+		/***************************** 改变单词完成符号 end*********************************/
+		
+		/***************************** 单词超出数量处理 start*********************************/
+		//方式1：认能够输入的单词为5个，如果是通过put或者putAll方式添加的允许超过5个
+		autowordArr["testa"].put("testa_val6","testa_text6");//往testa添加单词 
+		
+		//方式2：设置允许单词最大数量，如{"words_max":6}，则通过键盘可输入最多六个单词
+		/***************************** 单词超出数量处理 end*********************************/
+		
+		/***************************** 输入框焦点处理 start*********************************/
+		//方式1：单词文本框默认自动获取焦点，如果存在多个单词文本框，则焦点与单词加载的顺序有关（焦点在最后加载的后面）
+		autowordArr["testa"].put("testa_val6","testa_text6");//往testa添加单词 
+		
+		//方式2：设置不允许自动焦点{"focus":false}
+		/***************************** 输入框焦点处理 end*********************************/
+
+		/***************************** 重复单词处理 start*********************************/
+		//方式1：单词默认不允许重复，如{'val':'testb_val1','text':'testb_text1'}与前面添加的重复，不进行添加，并自动清空输入框
+		autowordArr["testb"].putAll([{'val':'testb_val1','text':'testb_text1'},{'val':'testb_val3','text':'testb_text3'}]);
+		
+		//方式2：单词设置允许重复｛"repeat":true｝
+		autowordTestC.put("testc_val1","testc_text1");
+		//方式3：单词id值相等，但是单词名称不同，不允许重复
+		autowordTestD.put("1234","xiaoming");
+		//添加值
+		$("#demo4").click(function(){
+			autowordTestD.put($("#demo4_val").val(),$("#demo4_text").val());
+		});	
+		
+		/***************************** 重复单词处理 end*********************************/
+		
+		/***************************** 全局操作 start*********************************/
+		$.smate.autoword["testc"].put("testc_val全局","全局操作");;
+		
+/* 		$("#testd").autoword({
+			"select": $.auto["degree"]
+		}); */
+		/***************************** 全局操作 end*********************************/
+	});
+</script>
+</head>
+<body>
+  <br />
+  <br />
+  <form action="D:\iriswork\smate6\resmod\demo\autoword_demo.html" method="post">
+    <input name="input" type="text" class="auto_word_input" size="1" maxlength="100" />
+    <fieldset>
+      <legend>demo1</legend>
+      <h4>输入","\"，"\";"\"；"结束或回车</h4>
+      <div id="testa" class="auto_word_outer_div"></div>
+      <input id="demo1_1" type="button" onclick="javascript:alert($.smate.autoword['testa'].vals());" value="获取Demo1中值" />
+      <input id="demo1" type="button" value="删除Demo1中所有words" />
+    </fieldset>
+    <br /> <br />
+    <fieldset>
+      <legend>demo2</legend>
+      <div id="testb" class="auto_word_outer_div"></div>
+      text:<input id="demo2_text" type="text" value="" />,val:<input id="demo2_val" type="text" value="" /><input
+        id="demo2" type="button" value="删除单个单词" />
+    </fieldset>
+    <br /> <br />
+    <fieldset>
+      <legend>demo3</legend>
+      <h4>输入q结束或回车</h4>
+      <div id="testc" class="auto_word_outer_div"></div>
+      <input type="submit" name="submit" value="submit" />
+    </fieldset>
+    <br /> <br />
+    <fieldset>
+      <legend>demo4</legend>
+      <h4>重复值的判断方式3；默认onlyPsnId为true, 默认repeat为false； 小明与xiaoming是同一个人，共有一个Id 1234；无法同时添加</h4>
+      <div id="testd" class="auto_word_outer_div"></div>
+      text:<input id="demo4_text" type="text" value="" />,id:<input id="demo4_val" type="text" value="" /><input
+        id="demo4" type="button" value="添加" />
+    </fieldset>
+    <br /> <br />
+    <!-- 
+	demo5 
+	<h4>自动单词集成下拉框功能:输入学位(degree)</h4>
+	<div id="testd" class="auto_word_outer_div"></div>
+
+	<br/>
+	<br/> -->
+</body>
+</html>

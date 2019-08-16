@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../mobile/css/mobile.css">
+	   <script type="text/javascript">
+        window.onload = function(){
+        var inputlist = document.getElementsByClassName("new-edit_psntitle-body_item-input");
+     for(var i = 0; i < inputlist.length; i++){
+          inputlist[i].onfocus = function(){
+            this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-detail").classList.add("new-edit_psntitle-body_item-detail_selected");
+              this.closest(".new-edit_psntitle-body_item-box").classList.add("new-edit_psntitle-body_item-box_selected");
+              if(this.classList.contains("region-select_btn")){
+                var  url = this.getAttribute("code-url");
+                getregionselect(url);
+              }
+          }
+          inputlist[i].onblur = function(){
+            if(this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-detail").classList.contains("new-edit_psntitle-body_item-detail_selected")){
+
+              this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-detail").classList.remove("new-edit_psntitle-body_item-detail_selected");
+              this.closest(".new-edit_psntitle-body_item-box").classList.remove("new-edit_psntitle-body_item-box_selected");
+              var gettext = this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-input").value.trim();
+              if(gettext != ""){
+                      this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-detail").classList.add("new-edit_psntitle-body_item-detail_inputed");
+                      this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-input").classList.add("new-edit_psntitle-body_item-input-show");
+              }else{
+                if(this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-detail").classList.contains("new-edit_psntitle-body_item-detail_inputed")){
+                         this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-detail").classList.remove("new-edit_psntitle-body_item-detail_inputed");
+                         this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-input").classList.remove("new-edit_psntitle-body_item-input-show");
+                }
+              }
+            }
+            
+          }
+      }
+
+        }
+
+    var getregionselect =  function(url){
+      if(!document.getElementsByClassName("region-select_container").length>0){
+        var contentele = document.createElement("div");
+        contentele.className = "region-select_container";
+        var innerele = '<div class="region-select_container-header">'
+                    +'<span class="region-select_container-header_cancle region-select_container-header_close">取消</span>'
+                    +'<span class="region-select_container-header_confirm region-select_container-header_close">确定</span>'
+                    +'</div>'
+                    +'<div class="region-select_container-body">'
+                    +'<div class="region-select_container-body_show">'
+                    +'<div class="region-select_container-body_show-item"></div>'
+                    +'<div class="region-select_container-body_show-item"></div>'
+                    +'<div class="region-select_container-body_show-item"></div>'
+                    +'</div>'
+                    +'<div  class="region-select_container-body_selecter">'
+                    +'<div class="region-select_item">'
+                    +'<div class="region-select_container-body_selecter-item 1">'
+                    +'<div class="region-select_item-list">中国1</div>'
+                    +'</div>'
+                    +'</div>'
+                    +'<div class="region-select_item">'
+                    +'<div class="region-select_container-body_selecter-item 2">'
+                    +'<div class="region-select_item-list">中国1</div>'
+                    +'</div>'
+                    +'</div>'
+                    +'<div class="region-select_item">'
+                    +'<div class="region-select_container-body_selecter-item 3">'
+                    +'<div class="region-select_item-list">中国1</div>'
+                    +'</div>'
+                    +'</div>'
+                    +'</div>'
+                    +'</div>'; 
+          contentele.innerHTML =  innerele;        
+      }
+      if(!document.getElementsByClassName("new-normal_background").length>0){
+        var layerbox =  document.createElement("div");
+        layerbox.className = "new-normal_background";
+        document.body.appendChild(layerbox); 
+        document.getElementsByClassName("new-normal_background")[0].appendChild(contentele);   
+        getregiondata(url);
+
+        var closelist = document.getElementsByClassName("region-select_container-header_close");
+        var showtarget = document.getElementsByClassName("region-select_container")[0];
+        for(var i = 0; i < closelist.length; i++){
+          closelist[i].onclick = function(){
+            showtarget.style.bottom = - 500 + "px";
+            document.getElementsByClassName("new-normal_background")[0].removeChild(showtarget);
+            document.body.removeChild( document.getElementsByClassName("new-normal_background")[0]);
+          }
+        }
+      }  
+    }
+    var getregiondata = function(dataurl, datacode){
+        if(dataurl == ""){
+          alert("数据请求的地址无效，无法获取有效数据");  
+        }else{
+      /*    $.ajax({
+              url : dataurl,
+              type : 'post',
+              dataType : 'json',
+              async:false,
+              success : function(data) {
+                 
+              }
+          })*/
+        }
+    } 
+    </script>
+</head>
+<body>
+<div class="new-edit_keword-header">
+            <i class="material-icons">keyboard_arrow_left</i>
+            <span class="new-edit_keword-header_title">编辑个人头衔</span> 
+            <i class="material-icons"></i>
+        </div>
+        <div class="new-edit_psntitle-body" style="position: relative; margin-top: 60px;">
+            
+            <div class="new-edit_psntitle-body_item">
+                <div class="new-edit_psntitle-body_item-box">
+                    <span class="new-edit_psntitle-body_item-detail">姓</span>
+                    <input type="text" class="new-edit_psntitle-body_item-input">
+                </div>
+            </div>
+
+            <div class="new-edit_psntitle-body_item">
+                <div class="new-edit_psntitle-body_item-box">
+                    <span class="new-edit_psntitle-body_item-detail">名</span>
+                    <input type="text" class="new-edit_psntitle-body_item-input">
+                </div>
+            </div>
+           ss
+            <div class="new-edit_psntitle-body_item">
+                <div class="new-edit_psntitle-body_item-box">
+                    <span class="new-edit_psntitle-body_item-detail">所在单位</span>
+                    <input type="text" class="new-edit_psntitle-body_item-input">
+                </div>
+            </div>
+
+            <div class="new-edit_psntitle-body_item">
+                <div class="new-edit_psntitle-body_item-box">
+                    <span class="new-edit_psntitle-body_item-detail">头衔</span>
+                    <input type="text" class="new-edit_psntitle-body_item-input">
+                </div>
+            </div>
+
+            <div class="new-edit_psntitle-body_item">
+                <div class="new-edit_psntitle-body_item-box">
+                    <span class="new-edit_psntitle-body_item-detail">所在地区</span>
+                    <input type="text" class="new-edit_psntitle-body_item-input region-select_btn" code-url="ccccc">
+                </div>
+            </div>
+        </div>
+        <div class="new-edit_page-normal_footer">保存</div>
+</body>
+</html>

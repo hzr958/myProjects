@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+  default-lazy-init="true">
+  <!-- 在<Beans>中不能够设置default-lazy-init="true",否则定时任务不触发，如果不明确指明default-lazy-init的值，默认是false。 -->
+  <bean id="startQuartz" lazy-init="true" autowire="no"
+    class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="triggers">
+      <list>
+        <ref bean="jobExecuteTrigger" />
+        <ref bean="batchQuartzBaseTrigger" />
+        <ref bean="weChatPreProcessPsnTaskTrigger" />
+        <ref bean="RePubAssignSendTaskTrigger" />
+        <ref bean="batchQuartzBaseTrigger14"/>
+        <ref bean="kGSubsetsByPubTaskTrigger"/> 
+        <ref bean="kGSubsetsByNsfcPrjTaskTrigger"/>
+        <ref bean="nsfcKwsFromHdfsTaskTrigger"/>
+        <ref bean="nsfcKwsFromHdfsMultiThreadTaskTrigger"/>
+        <ref bean="nsfcKwsTranslateBySeqTaskTrigger"/>      
+        <!--<ref bean="nsfcBaseKeywordsTaskTrigger"/>
+        <ref bean="nsfcPrjGroupTaskTrigger"/>  
+        <ref bean="nsfcApplicationAutoAssignTaskTrigger"/>      
+        <ref bean="jiangxiPrjKwsExtractTaskTrigger"/>
+        <ref bean="nsfcKwsGroupTaskTrigger"/>
+        <ref bean="highTechClassificationTaskTrigger"/>
+        <ref bean="PdwhFullTextDownloadToLocalTaskTrigger"/>
+         <ref bean="kGPubKwsExtractTaskTrigger"/>
+         <ref bean="kGPsnKwsExtractTaskTrigger" />
+         <ref bean="kGPrjKwsExtractTaskTrigger" />
+         <ref bean="cotfByNstfPrjTaskTrigger" />
+         <ref bean="batchQuartzBaseTrigger6"/> <ref bean="batchQuartzBaseTrigger7"/> <ref bean="batchQuartzBaseTrigger15"/> 
+          <ref bean="batchQuartzBaseTrigger16"/> <ref bean="batchQuartzBaseTrigger17"/> <ref bean="batchQuartzBaseTrigger18"/> <ref 
+          bean="batchQuartzBaseTrigger19"/> <ref bean="batchQuartzBaseTrigger20"/> <ref bean="batchQuartzBaseTrigger21"/> <ref bean="batchQuartzBaseTrigger22"/> 
+          <ref bean="batchQuartzBaseTrigger23"/> <ref bean="batchQuartzBaseTrigger24"/> <ref bean="batchQuartzBaseTrigger25"/> <ref 
+          bean="batchQuartzBaseTrigger26"/> <ref bean="batchQuartzBaseTrigger27"/> <ref bean="batchQuartzBaseTrigger1"/> <ref bean="batchQuartzBaseTrigger2"/> 
+          <ref bean="batchQuartzBaseTrigger4"/> <ref bean="batchQuartzBaseTrigger5"/> <ref bean="batchQuartzBaseTrigger6"/> <ref bean="batchQuartzBaseTrigger7"/> 
+          <ref bean="batchQuartzBaseTrigger8"/> <ref bean="batchQuartzBaseTrigger9"/> <ref bean="batchQuartzBaseTrigger10"/> <ref bean="batchQuartzBaseTrigger11"/> 
+          <ref bean="batchQuartzBaseTrigger12"/> <ref bean="batchQuartzBaseTrigger13"/> <ref 
+          bean="batchQuartzBaseTrigger3"/> <ref bean="nsfcPubOtherInfoRefreshTaskTrigger"/> <ref bean="isisPubStatTaskTrigger"/> <ref 
+          bean="pubFundInfoIsiTaskTrigger"/> <ref bean="pubFundInfoTaskTrigger"/> <ref bean="pdwhPubCleanForIndexingTaskTrigger"/> 
+          <ref bean="pdwhPubFullTextForIndexingTaskTrigger"/> <ref bean="relationAnalysisKeywordsSplitTaskTigger"/> <ref bean="pubAllIndexTaskTrigger"/> 
+          <ref bean="pubTFCalculateTaskTrigger"/> <ref bean="pubClassificationScmTaskTrigger"/> <ref bean="relationAnalysisKeywordsSplitTaskTigger"/> 
+          <ref bean="pubAllIndexTaskTrigger"/> <ref bean="pubTFCalculateTaskTrigger"/> <ref bean="pubClassificationScmTaskTrigger"/> 
+          <ref bean="generateOpenIdForInsTaskTrigger"/> <ref bean="updateRelevanceAndLabeledForAllGroupPubsTrigger"/> <ref bean="pubKwAbsTaskTrigger1"/> 
+          <ref bean="pubKwAbsTaskTrigger2"/> <ref bean="pubKwAbsTaskTrigger3"/> <ref bean="pubKwAbsTaskTrigger4"/> <ref bean="pubKwAbsTaskTrigger5"/> 
+          <ref bean="pubKwAbsTaskTrigger6"/> <ref bean="pubKwAbsTaskTrigger7"/> <ref bean="pubKwAbsTaskTrigger8"/> <ref bean="PdwhPubKeywordsTask1Trigger"/> 
+          <ref bean="PdwhPubKeywordsTask2Trigger"/> <ref bean="PdwhPubKeywordsTask3Trigger"/> <ref bean="PdwhPubKeywordsTask4Trigger"/> 
+          <ref bean="PdwhPubKeywordsTask5Trigger"/> <ref bean="ProjectDataFiveYearTaskTrigger"/> -->
+      </list>
+    </property>
+  </bean>
+  <!-- batch单线程调度任务，然后触发多线程执行任务,start -->
+  <bean id="jobExecute" class="com.smate.center.batch.joblaunch.JobExecute" />
+  <bean id="jobExecuteDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="jobExecute" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="jobExecuteTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="jobExecuteDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/1 * * * * ?" />
+  </bean>
+  <!-- batch单线程触发任务,然后触发多线程执行任务,end -->
+  <!-- WeChat个人消息预处理任务,WechatPreProcessPsnTaskLaunch,start -->
+  <bean id="wechatPreProcessPsnTaskLaunch" class="com.smate.center.batch.joblaunch.WechatPreProcessPsnTaskLaunch" />
+  <bean id="wechatPreProcessPsnTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="wechatPreProcessPsnTaskLaunch" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="weChatPreProcessPsnTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="wechatPreProcessPsnTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/30 * * * * ?" />
+  </bean>
+  <!-- WeChat个人消息预处理任务,WechatPreProcessPsnTaskLaunch,end -->
+  <bean id="batchQuartzBase" class="com.smate.center.batch.quartz.BatchQuartzBase" />
+  <bean id="batchQuartzBaseDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="batchQuartzBase" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="batchQuartzBaseDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask1" class="com.smate.center.batch.quartz.PubToPubsimpleTask1" />
+  <bean id="pubToPubsimpleTask1Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask1" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger1" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask1Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <!-- 统计成果相关信息，主要包含作者，期刊信息 start -->
+  <bean id="pubToPubsimpleTask2" class="com.smate.center.batch.quartz.PubToPubsimpleTask2" />
+  <bean id="pubToPubsimpleTask2Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask2" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger2" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask2Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <!-- 统计成果相关信息 end -->
+  <bean id="pubToPubsimpleTask3" class="com.smate.center.batch.quartz.PubToPubsimpleTask3" />
+  <bean id="pubToPubsimpleTask3Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask3" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger3" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask3Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/5 * * * * ?" />
+  </bean>
+  <!-- 成果其他信息刷新任务 start -->
+  <bean id="nsfcPubOtherInfoRefreshTask" class="com.smate.center.batch.quartz.NsfcPubOtherInfoRefreshTask" />
+  <bean id="nsfcPubOtherInfoRefreshTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="nsfcPubOtherInfoRefreshTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="nsfcPubOtherInfoRefreshTaskTrigger"
+    class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="nsfcPubOtherInfoRefreshTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/30 * * * * ?" />
+  </bean>
+  <!-- 成果其他信息刷新任务 end -->
+  <!-- <bean id="xmlPubMemberSeqNoModifyTask1" class="com.smate.center.batch.quartz.XmlPubMemberSeqNoModifyTask1" /> <bean 
+    id="xmlPubMemberSeqNoModifyTask1Detail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> 
+    调用的类 <property name="targetObject" ref="xmlPubMemberSeqNoModifyTask1" /> 调用类中的方法 <property name="targetMethod" value="run" 
+    /> <property name="concurrent" value="false" /> </bean> <bean id="xmlPubMemberSeqNoModifyTaskTrigger1" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"> 
+    <property name="jobDetail" ref="xmlPubMemberSeqNoModifyTask1Detail" /> cron表达式 <property name="cronExpression" value="0/30 
+    * * * * ?" /> </bean> -->
+  <bean id="isisPubStatTask" class="com.smate.center.batch.quartz.IsisPubStatTask" />
+  <bean id="isisPubStatTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="isisPubStatTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="isisPubStatTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="isisPubStatTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0 0 20 * * ?" />
+  </bean>
+  <!-- 临时拆分任务 -->
+  <bean id="relationAnalysisKeywordsSplitTask"
+    class="com.smate.center.batch.quartz.RelationAnalysisKeywordsSplitTask" />
+  <bean id="relationAnalysisKeywordsSplitTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="relationAnalysisKeywordsSplitTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="relationAnalysisKeywordsSplitTaskTigger"
+    class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="relationAnalysisKeywordsSplitTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/20 * * * * ?" />
+  </bean>
+  <bean id="pubFundInfoIsiTask" class="com.smate.center.batch.quartz.PubFundInfoIsiTask" />
+  <bean id="pubFundInfoIsiTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubFundInfoIsiTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pubFundInfoIsiTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubFundInfoIsiTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/20 * * * * ?" />
+  </bean>
+  <bean id="pubFundInfoTask" class="com.smate.center.batch.quartz.PubFundInfoTask" />
+  <bean id="pubFundInfoTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubFundInfoTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pubFundInfoTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubFundInfoTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/20 * * * * ?" />
+  </bean>
+  <bean id="pubAllIndexTask" class="com.smate.center.batch.quartz.PubAllIndexTask" />
+  <bean id="pubAllIndexTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubAllIndexTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pubAllIndexTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubAllIndexTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pdwhPubCleanForIndexingTask" class="com.smate.center.batch.quartz.PdwhPubCleanForIndexingTask" />
+  <bean id="pdwhPubCleanForIndexingTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pdwhPubCleanForIndexingTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pdwhPubCleanForIndexingTaskTrigger"
+    class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pdwhPubCleanForIndexingTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pdwhPubFullTextForIndexingTask" class="com.smate.center.batch.quartz.PdwhPubFullTextForIndexingTask" />
+  <bean id="pdwhPubFullTextForIndexingTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pdwhPubFullTextForIndexingTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="pdwhPubFullTextForIndexingTaskTrigger"
+    class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pdwhPubFullTextForIndexingTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <!-- <bean id="pubTFCalculateTask" class="com.smate.center.batch.quartz.PubTFCalculateTask" /> <bean id="pubTFCalculateTaskDetail" 
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> 调用的类 <property name="targetObject" ref="pubTFCalculateTask" 
+    /> 调用类中的方法 <property name="targetMethod" value="run" /> <property name="concurrent" value="false" /> </bean> <bean id="pubTFCalculateTaskTrigger" 
+    class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"> <property name="jobDetail" ref="pubTFCalculateTaskDetail" 
+    /> cron表达式 <property name="cronExpression" value="0/10 * * * * ?" /> </bean> -->
+  <!-- <bean id="pubClassificationScmTask" class="com.smate.center.batch.quartz.PubClassificationScmTask" /> <bean id="pubClassificationScmTaskDetail" 
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> 调用的类 <property name="targetObject" ref="pubClassificationScmTask" 
+    /> 调用类中的方法 <property name="targetMethod" value="run" /> <property name="concurrent" value="false" /> </bean> <bean id="pubClassificationScmTaskTrigger" 
+    class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"> <property name="jobDetail" ref="pubClassificationScmTaskDetail" 
+    /> cron表达式 <property name="cronExpression" value="0/10 * * * * ?" /> </bean> -->
+  <bean id="generateOpenIdForInsTask" class="com.smate.center.batch.quartz.GenerateOpenIdForInsTask" />
+  <bean id="generateOpenIdForInsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="generateOpenIdForInsTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="generateOpenIdForInsTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="generateOpenIdForInsTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="updateRelevanceAndLabeledForAllGroupPubsTask"
+    class="com.smate.center.batch.quartz.UpdateRelevanceAndLabeledForAllGroupPubs" />
+  <bean id="updateRelevanceAndLabeledForAllGroupPubsDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="updateRelevanceAndLabeledForAllGroupPubsTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="updateRelevanceAndLabeledForAllGroupPubsTrigger"
+    class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="updateRelevanceAndLabeledForAllGroupPubsDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/30 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask4" class="com.smate.center.batch.quartz.PubToPubsimpleTask4" />
+  <bean id="pubToPubsimpleTask4Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask4" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger4" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask4Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask5" class="com.smate.center.batch.quartz.PubToPubsimpleTask5" />
+  <bean id="pubToPubsimpleTask5Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask5" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger5" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask5Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask6" class="com.smate.center.batch.quartz.PubToPubsimpleTask6" />
+  <bean id="pubToPubsimpleTask6Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask6" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger6" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask6Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask7" class="com.smate.center.batch.quartz.PubToPubsimpleTask7" />
+  <bean id="pubToPubsimpleTask7Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask7" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger7" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask7Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask15" class="com.smate.center.batch.quartz.PubToPubsimpleTask15" />
+  <bean id="pubToPubsimpleTask15Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask15" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger15" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask15Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask16" class="com.smate.center.batch.quartz.PubToPubsimpleTask16" />
+  <bean id="pubToPubsimpleTask16Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask16" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger16" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask16Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask17" class="com.smate.center.batch.quartz.PubToPubsimpleTask17" />
+  <bean id="pubToPubsimpleTask17Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask17" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger17" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask17Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask18" class="com.smate.center.batch.quartz.PubToPubsimpleTask18" />
+  <bean id="pubToPubsimpleTask18Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask18" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger18" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask18Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask19" class="com.smate.center.batch.quartz.PubToPubsimpleTask19" />
+  <bean id="pubToPubsimpleTask19Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask19" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger19" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask19Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask20" class="com.smate.center.batch.quartz.PubToPubsimpleTask20" />
+  <bean id="pubToPubsimpleTask20Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask20" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger20" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask20Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask21" class="com.smate.center.batch.quartz.PubToPubsimpleTask21" />
+  <bean id="pubToPubsimpleTask21Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask21" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger21" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask21Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask22" class="com.smate.center.batch.quartz.PubToPubsimpleTask22" />
+  <bean id="pubToPubsimpleTask22Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask22" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger22" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask22Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask23" class="com.smate.center.batch.quartz.PubToPubsimpleTask23" />
+  <bean id="pubToPubsimpleTask23Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask23" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger23" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask23Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask8" class="com.smate.center.batch.quartz.PubToPubsimpleTask8" />
+  <bean id="pubToPubsimpleTask8Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask8" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger8" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask8Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask9" class="com.smate.center.batch.quartz.PubToPubsimpleTask9" />
+  <bean id="pubToPubsimpleTask9Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask9" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger9" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask9Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask10" class="com.smate.center.batch.quartz.PubToPubsimpleTask10" />
+  <bean id="pubToPubsimpleTask10Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask10" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger10" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask10Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask11" class="com.smate.center.batch.quartz.PubToPubsimpleTask11" />
+  <bean id="pubToPubsimpleTask11Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask11" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger11" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask11Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask12" class="com.smate.center.batch.quartz.PubToPubsimpleTask12" />
+  <bean id="pubToPubsimpleTask12Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask12" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger12" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask12Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask13" class="com.smate.center.batch.quartz.PubToPubsimpleTask13" />
+  <bean id="pubToPubsimpleTask13Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask13" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger13" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask13Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask14" class="com.smate.center.batch.quartz.PubToPubsimpleTask14" />
+  <bean id="pubToPubsimpleTask14Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask14" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger14" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask14Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="PdwhPubKeywordsTask1" class="com.smate.center.batch.quartz.PdwhPubKeywordsTask1" />
+  <bean id="PdwhPubKeywordsTask1Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="PdwhPubKeywordsTask1" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhPubKeywordsTask1Trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="PdwhPubKeywordsTask1Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="PdwhPubKeywordsTask2" class="com.smate.center.batch.quartz.PdwhPubKeywordsTask2" />
+  <bean id="PdwhPubKeywordsTask2Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="PdwhPubKeywordsTask2" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhPubKeywordsTask2Trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="PdwhPubKeywordsTask2Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="PdwhPubKeywordsTask3" class="com.smate.center.batch.quartz.PdwhPubKeywordsTask3" />
+  <bean id="PdwhPubKeywordsTask3Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="PdwhPubKeywordsTask3" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhPubKeywordsTask3Trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="PdwhPubKeywordsTask3Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="PdwhPubKeywordsTask4" class="com.smate.center.batch.quartz.PdwhPubKeywordsTask4" />
+  <bean id="PdwhPubKeywordsTask4Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="PdwhPubKeywordsTask4" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhPubKeywordsTask4Trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="PdwhPubKeywordsTask4Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="PdwhPubKeywordsTask5" class="com.smate.center.batch.quartz.PdwhPubKeywordsTask5" />
+  <bean id="PdwhPubKeywordsTask5Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="PdwhPubKeywordsTask5" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhPubKeywordsTask5Trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="PdwhPubKeywordsTask5Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="RePubAssignSendTask" class="com.smate.center.batch.quartz.RePubAssignSendTask" />
+  <bean id="RePubAssignSendTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="RePubAssignSendTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="RePubAssignSendTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="RePubAssignSendTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="ProjectDataFiveYearTask" class="com.smate.center.batch.quartz.ProjectDataFiveYearTask" />
+  <bean id="ProjectDataFiveYearTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="ProjectDataFiveYearTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="ProjectDataFiveYearTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="ProjectDataFiveYearTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask24" class="com.smate.center.batch.quartz.PubToPubsimpleTask24" />
+  <bean id="pubToPubsimpleTask24Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask24" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger24" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask24Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask25" class="com.smate.center.batch.quartz.PubToPubsimpleTask25" />
+  <bean id="pubToPubsimpleTask25Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask25" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger25" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask25Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask26" class="com.smate.center.batch.quartz.PubToPubsimpleTask26" />
+  <bean id="pubToPubsimpleTask26Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask26" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger26" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask26Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  <bean id="pubToPubsimpleTask27" class="com.smate.center.batch.quartz.PubToPubsimpleTask27" />
+  <bean id="pubToPubsimpleTask27Detail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="pubToPubsimpleTask27" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="batchQuartzBaseTrigger27" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="pubToPubsimpleTask27Detail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  
+  <bean id="kGPubKwsExtractTask" class="com.smate.center.batch.quartz.KGPubKwsExtractTask" />
+  <bean id="kGPubKwsExtractTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="kGPubKwsExtractTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="kGPubKwsExtractTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="kGPubKwsExtractTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>        
+  
+   <bean id="kGPsnKwsExtractTask" class="com.smate.center.batch.quartz.KGPsnKwsExtractTask" />
+  <bean id="kGPsnKwsExtractTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="kGPsnKwsExtractTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="kGPsnKwsExtractTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="kGPsnKwsExtractTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>        
+  
+   <bean id="kGPrjKwsExtractTask" class="com.smate.center.batch.quartz.KGPrjKwsExtractTask" />
+  <bean id="kGPrjKwsExtractTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="kGPrjKwsExtractTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="kGPrjKwsExtractTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="kGPrjKwsExtractTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean> 
+  
+     <bean id="cotfByNstfPrjTask" class="com.smate.center.batch.quartz.CotfByNstfPrjTask" />
+  <bean id="cotfByNstfPrjTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="cotfByNstfPrjTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="cotfByNstfPrjTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="cotfByNstfPrjTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  
+   <bean id="PdwhFullTextDownloadToLocalTask" class="com.smate.center.batch.quartz.PdwhFullTextDownloadToLocalTask" />
+  <bean id="PdwhFullTextDownloadToLocalTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="PdwhFullTextDownloadToLocalTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="PdwhFullTextDownloadToLocalTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="PdwhFullTextDownloadToLocalTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean> 
+   
+  <bean id="kGSubsetsByPubTask" class="com.smate.center.batch.quartz.KGSubsetsByPubTask" />
+  <bean id="kGSubsetsByPubTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="kGSubsetsByPubTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="kGSubsetsByPubTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="kGSubsetsByPubTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  
+  <bean id="highTechClassificationTask" class="com.smate.center.batch.quartz.HighTechClassificationTask" />
+  <bean id="highTechClassificationTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="highTechClassificationTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="highTechClassificationTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="highTechClassificationTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>       
+  
+    <bean id="jiangxiPrjKwsExtractTask" class="com.smate.center.batch.quartz.JiangxiPrjKwsExtractTask" />
+  <bean id="jiangxiPrjKwsExtractTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="jiangxiPrjKwsExtractTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="jiangxiPrjKwsExtractTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="jiangxiPrjKwsExtractTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  
+      <bean id="nsfcKwsGroupTask" class="com.smate.center.batch.quartz.NsfcKwsGroupTask" />
+  <bean id="nsfcKwsGroupTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="nsfcKwsGroupTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="nsfcKwsGroupTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="nsfcKwsGroupTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean> 
+                
+  <bean id="nsfcApplicationAutoAssignTask" class="com.smate.center.batch.quartz.NsfcApplicationAutoAssignTask" />
+  <bean id="nsfcApplicationAutoAssignTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="nsfcApplicationAutoAssignTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="nsfcApplicationAutoAssignTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="nsfcApplicationAutoAssignTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>    
+  
+  <bean id="nsfcPrjGroupTask" class="com.smate.center.batch.quartz.NsfcPrjGroupTask" />
+  <bean id="nsfcPrjGroupTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="nsfcPrjGroupTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="nsfcPrjGroupTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="nsfcPrjGroupTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  
+  <bean id="nsfcBaseKeywordsTask" class="com.smate.center.batch.quartz.NsfcBaseKeywordsTask" />
+  <bean id="nsfcBaseKeywordsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="nsfcBaseKeywordsTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="nsfcBaseKeywordsTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="nsfcBaseKeywordsTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>      
+  
+    <bean id="nsfcKwsFromHdfsTask" class="com.smate.center.batch.quartz.NsfcKwsFromHdfsTask" />
+  <bean id="nsfcKwsFromHdfsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="nsfcKwsFromHdfsTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="nsfcKwsFromHdfsTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="nsfcKwsFromHdfsTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>      
+  
+    <bean id="kGSubsetsByNsfcPrjTask" class="com.smate.center.batch.quartz.KGSubsetsByNsfcPrjTask" />
+  <bean id="kGSubsetsByNsfcPrjTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="kGSubsetsByNsfcPrjTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="kGSubsetsByNsfcPrjTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="kGSubsetsByNsfcPrjTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean>
+  
+ <bean id="nsfcKwsFromHdfsMultiThreadTask" class="com.smate.center.batch.quartz.NsfcKwsFromHdfsMultiThreadTask" />
+  <bean id="nsfcKwsFromHdfsMultiThreadTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="nsfcKwsFromHdfsMultiThreadTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="nsfcKwsFromHdfsMultiThreadTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="nsfcKwsFromHdfsMultiThreadTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean> 
+  
+   <bean id="nsfcKwsTranslateBySeqTask" class="com.smate.center.batch.quartz.NsfcKwsTranslateBySeqTask" />
+  <bean id="nsfcKwsTranslateBySeqTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="nsfcKwsTranslateBySeqTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="nsfcKwsTranslateBySeqTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="nsfcKwsTranslateBySeqTaskDetail" />
+    <!-- cron表达式 -->
+    <property name="cronExpression" value="0/10 * * * * ?" />
+  </bean> 
+</beans>

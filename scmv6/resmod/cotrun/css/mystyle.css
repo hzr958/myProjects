@@ -1,0 +1,153 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*��Ժ���� ��ʼ*/
+.tabox1 {
+  width: 1002px;
+  margin: 10px auto;
+}
+
+.tabox1 .hd {
+  overflow: hidden;
+  background-color: #fafafa;
+  border-left: 1px solid #e0dede;
+  border-right: 1px solid #e0dede;
+}
+
+.tabox1 .hd li {
+  position: relative;
+  margin-left: -1px;
+  height: 55px;
+  line-height: 50px;
+  text-align: center;
+  width: 250px;
+  float: left;
+  border-top: 1px solid #e91c35;
+  font-size: 20px;
+  font-family: "Microsoft YaHei";
+  font-weight: 0;
+  cursor: pointer;
+  color: #666666;
+}
+
+.tabox1 .hd li.on {
+  width: 250px;
+  background: #e91c35;
+  border: 2px solid #e91c35;
+  border-bottom: #fff;
+  color: #FFF;
+  font-size: 20px;
+  font-family: "Microsoft YaHei";
+  font-weight: bold;
+}
+
+.tabox1 .bd {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.tabox1 .lh {
+  overflow: hidden;
+  width: 1002px;
+}
+
+.tabox1 .lh li {
+  width: 100%;
+  padding: 0 10px;
+  float: left;
+}
+/*.tabox1 .lh li .p-img{width:100%;height:132px;padding:30px 13px 0 13px;margin:0 auto;text-align:center;}
+.tabox1 .lh li .p-name{height:36px;line-height:18px;word-break:break-all;word-wrap:break-word;overflow:hidden;}
+.tabox1 .lh li .p-price{color:#999;}
+.tabox1 .lh li .p-price strong{color:#c00;font-size:14px;font-family:verdana;}*/
+.tabox1 .bd .shenpan {
+  position: relative;
+  width: 1000px;
+  margin: 0 auto;
+  /*border: 1px solid blue;*/
+}
+
+.tabox1 .bd .shenpan-left, .shenpan-right {
+  position: relative;
+  overflow: hidden;
+  height: 380px;
+  padding: 5px 5px 5px 5px;
+}
+
+.tabox1 .bd .shenpan-left {
+  width: 490px;
+  float: left;
+}
+
+.tabox1 .bd .shenpan-right {
+  width: 490px;
+  float: right;
+}
+
+.tabox1 .bd .shenpan ul {
+  
+}
+
+.tabox1 .bd .shenpan ul li {;
+  position: relative;
+  width: 475px;
+  padding: 3px 5px 3px 5px;
+  height: 56px;
+  border-bottom: dashed 1px #e3e3e3;
+  background: url('../img/icon_01.png') no-repeat;
+  background-position: 0% 25%;
+}
+
+.tabox1 .bd .shenpan ul li.last {
+  border-bottom: #FFF;
+}
+
+.tabox1 .bd .shenpan ul li a {
+  display: block;
+  width: 100%;
+  height: 52px;
+  padding: 0px 5px 3px 5px;
+  color: #666666;
+  font-size: 16px;
+  font-family: microsoft YaHei;
+}
+
+.tabox1 .bd .shenpan ul li a:visited {
+  background-color: #f9f9f9;
+}
+
+.tabox1 .bd .shenpan ul li a:hover {
+  background-color: #f9f9f9;
+  color: #000000;
+}
+
+.tabox1 .bd .shenpan ul li a:active {
+  outline: none;
+}
+
+.tabox1 .bd .shenpan span {
+  width: 80px;
+  height: 22px;
+  position: absolute;
+  right: 0px;
+  bottom: 4px;
+}
+
+.tabox1 .bd .shenpan span.time {
+  font-size: 12px;
+  font-family: 'Arial,sans-serif' font-weight : bold;
+}
+
+.tabox1 .bd .shenpan span.badge {
+  width: 25px;
+  min-width: 10px;
+  padding: 0px 5px;
+  font-size: 12px;
+  font-family: 'Arial,sans-serif' font-weight : bold;
+  color: #fff;
+  text-align: center;
+  background-color: #5eb95e;
+}
+
+/*��Ժ���� ����*/

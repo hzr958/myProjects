@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:export="https://www.scholarmate.com/schema/remote-export"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+  https://www.scholarmate.com/schema/remote-export
+  https://www.scholarmate.com/schema/remote-export.xsd "
+  default-lazy-init="false">
+  <description>缓存、restful等服务</description>
+  <!-- 同步restful -->
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+  <!-- BatchJobs创建器 -->
+  <bean id="batchJobsContextFactory" class="com.smate.center.batch.connector.factory.BatchJobsContextFactory" />
+  <bean id="batchJobsNormalFactory" class="com.smate.center.batch.connector.factory.BatchJobsNormalFactory" />
+  <!-- 文件解析策略 -->
+  <bean id="fileNameParseService" class="com.smate.core.base.utils.file.HashFileNameParseService" />
+  <!-- 文件读写服务 -->
+  <bean id="fileService" class="com.smate.core.base.utils.file.FileServiceImpl" />
+  <bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:template/mailtemplate/sns" />
+  </bean>
+  <!-- 用于生成word信息内容的Freemarker配置 -->
+  <bean id="wordFreemarkerConfiguration"
+    class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:template/wordtemplate" />
+  </bean>
+  <!-- 人员列表服务入口 -->
+  <bean id="psnListViewService" class="com.smate.web.psn.service.profile.psnListView.PsnListViewServiceImpl">
+    <property name="serviceMap">
+      <map>
+        <entry key="kwIdentific" value-ref="kwIdentific" />
+        <entry key="saIdentific" value-ref="saIdentific" />
+        <entry key="common" value-ref="common" />
+      </map>
+    </property>
+  </bean>
+  <!-- 研究领域赞人员列表服务 -->
+  <bean id="kwIdentific" class="com.smate.web.psn.service.profile.psnListView.KeywordIdentificPsnListService" />
+  <!-- 科技领域赞人员列表服务 -->
+  <bean id="saIdentific" class="com.smate.web.psn.service.profile.psnListView.ScienceAreaIdentificPsnListService" />
+  <!-- 通用一点的人员列表构造服务 -->
+  <bean id="common" class="com.smate.web.psn.service.profile.psnListView.CommonPsnListViewService" />
+  <!-- 人员信息服务 -->
+  <bean id="personManager" class="com.smate.web.psn.service.profile.PersonManagerImpl">
+    <property name="rootFolder" value="${file.root}" />
+  </bean>
+  <!-- 简历信息服务工厂 begin -->
+  <bean id="psnResumeBuilder" class="com.smate.web.psn.service.resume.PsnResumeBuilderImpl">
+    <property name="serviceMap">
+      <map>
+        <entry key="normal" value-ref="normalResume" />
+        <entry key="nfsc" value-ref="nfscResume" />
+      </map>
+    </property>
+  </bean>
+  <!-- 研究领域赞人员列表服务 -->
+  <bean id="normalResume" class="com.smate.web.psn.service.resume.NormalResumeBuildServiceImpl" />
+  <!-- 科技领域赞人员列表服务 -->
+  <bean id="nfscResume" class="com.smate.web.psn.service.resume.NFSCResumeBuildServiceImpl" />
+  <!-- 简历信息服务工厂 end -->
+</beans>

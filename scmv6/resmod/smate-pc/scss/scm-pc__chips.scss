@@ -1,0 +1,141 @@
+//CHIP START
+.chip__box {
+	background-color: hsla(0,0%,87%,1.00);
+	color: $light-theme-monochrome1;
+	height: 32px;
+	margin: 4px;
+	box-sizing: border-box;
+	border-radius: 16px;
+	white-space: nowrap;
+	display: flex;
+	align-items: center;
+	@include font-normal;
+	&.white-style {
+		background-color: white;
+		border: $divider;
+	}
+	&.has-avatar {
+		.chip__avatar {
+			display: block;
+		}
+	}
+	&.no-icon {
+		.chip-icon {
+			display: none;
+		}
+	}
+	&.chip_selected {
+		background-color: steelblue;
+		color: white;
+		.chip__icon.icon_delete {
+			background-color: $light-theme-monochrome3;
+		}
+	}
+	.chip__avatar {
+		display: none;
+		flex-shrink: 0;
+		width: 32px;
+		height: 32px;
+		overflow: hidden;
+		border-radius: 50%;
+		margin-right: -4px;
+	}
+	.chip__text {
+		height: 32px;
+		line-height: 32px;
+		font-size: 14px;
+		font-weight: 400;
+		max-width: 320px;
+		margin: 0 12px;
+		@include single-line-text;
+	}
+	.chip__icon {
+		flex-shrink: 0;
+		width: 16px;
+		height: 16px;
+		margin: 0 4px 0 -8px;
+		@include flex-strictly-center;
+		border-radius: 50%;
+		border: 4px solid transparent;
+		cursor: pointer;
+		&.icon_delete {
+			background-color: hsla(0,0%,0%,0.54);
+			background-clip: content-box;
+			.material-icons {
+				font-size: 14px;
+				color: hsla(0,0%,100%,1.00);
+				pointer-events: none;
+			}
+		}
+		&.icon_add {
+			.material-icons {
+				font-size: 20px;
+				color: forestgreen;
+			}
+		}
+	}
+}
+.chip-panel__box {
+	border: $divider;
+	width: 100%;
+	min-height: 140px;
+	max-height: 264px;
+	display: flex;
+	align-content: flex-start;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	padding: 4px 4px 12px 4px;
+	margin: 8px 0;
+	position: relative;
+	overflow-y: auto;
+	overflow-x: hidden;
+	&.inline-style {
+		border-width: 0px !important;
+		min-height: 0px;
+		height: auto;
+		margin: 0;
+		padding: 4px;
+	}
+	&.count_exceed {
+		border-width: 1px;
+		border-color: $error-primary-color;
+		.chip-panel__stats {
+			color: $error-primary-color;
+		}
+	}
+	.chip-panel__manual-input {
+		color: $light-theme-monochrome1;
+		min-width: 200px;
+		max-width: 100%;
+		height: 40px;
+		/*line-height: 24px;*/
+        line-height: 19px;
+		box-sizing: border-box;
+		padding: 8px;
+		width: auto;
+		background-color: transparent;
+		font-size: 14px;
+		border: none;
+		outline: none;
+		word-wrap: break-word;
+        @include single-line-text;
+		&:empty:before {
+			content: attr(placeholder);
+			color: $light-theme-monochrome2;
+		}
+		&.input_hidden {
+			position: absolute;
+			top: -100%;
+		}
+	}
+	.chip-panel__stats {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		text-align: right;
+		width: calc(100% - 8px);
+		box-sizing: border-box;
+		color: $light-theme-monochrome2;
+	}
+}
+//CHIP END 

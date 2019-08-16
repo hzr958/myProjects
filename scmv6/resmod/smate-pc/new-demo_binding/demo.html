@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	    *{
+	    	padding: 0px;
+	    	margin: 0px; 
+	    }
+		.wechat_bindcontainer{
+		    width: 650px; 
+		    background-color: #fff; 
+		    height: 420px; 
+		    border: 1px solid #ddd; 
+		    margin: auto auto;
+		    display: block;
+		    position: absolute;
+		    margin: auto;
+		    left: 0;
+		    top: 0;
+		    bottom: 0;
+		    right: 0;
+		}
+		.wechat_bindcontainer-title{
+			border-bottom: 1px solid #ddd; width: 95%; margin: 0 auto; height: 48px; color:#333; font-size: 16px;
+		}
+		.wechat_bindcontainer-title_detail{
+			float: left; line-height: 48px;
+		}
+		.wechat_bindcontainer-title_close{
+			float: right; 
+			line-height: 48px; 
+			cursor: pointer;
+		}
+		.wechat_bindcontainer-body{
+			width: 95%; 
+			margin: 0 auto;
+		}
+		.wechat_bindcontainer-body_item{
+			width: 100%; 
+			line-height: 72px; 
+			text-align: left; 
+			color: #333;
+		}
+		.wechat_bindcontainer-body_code{
+			width: 100%; 
+			text-align: center; 
+			margin: 0 auto;
+		}
+		.wechat_bindcontainer-body_code-detail{
+			width: 160px; 
+			height: 160px; 
+			border: 1px solid #ddd; 
+			margin: 0 auto;
+		}
+        .wechat_bindcontainer-title_close{
+        	background: url(close.png); 
+        	width: 22px;
+        	height: 22px;
+        	background-repeat: no-repeat;
+        	background-position: 0px 0px;
+        	cursor: pointer;   
+        	margin-top: 12px;
+        }
+        .wechat_bindcontainer-title_close:hover{
+        	background-position: 0px -22px;
+        }
+	</style>
+
+</head>
+<body>
+
+    <div class="wechat_bindcontainer" id="bindwechat">
+     	<div class="wechat_bindcontainer-title">
+     		<span class="wechat_bindcontainer-title_detail">绑定科研之友</span>
+     		<i class="wechat_bindcontainer-title_close"></i>
+     	</div>
+     	<div class="wechat_bindcontainer-body">
+     		<div class="wechat_bindcontainer-body_item">
+     			1.扫描一下二维码,关注科研之友
+     		</div>
+     		<div class="wechat_bindcontainer-body_code">
+     			<div  class="wechat_bindcontainer-body_code-detail"></div>
+     		</div>
+     		<div class="wechat_bindcontainer-body_item">
+     			2.在微信公众号上完成绑定
+     		</div>
+     	</div>
+    </div>
+</body>
+</html>

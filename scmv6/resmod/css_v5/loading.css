@@ -1,0 +1,25 @@
+.loadding_div_box {
+  filter: Alpha(Opacity = 30);
+  opacity: 0.3;
+  background-color: #DDDDDD;
+  z-index: 900;
+  position: absolute;
+  display: none;
+}
+
+.loadding_div_main {
+  width: 25px;
+  height: px;
+  border: none;
+  float: left;
+  padding: 0;
+  position: absolute;
+  display: none;
+  z-index: 901;
+  background-image: url(../images/proceedingWin/loading.gif);
+  background-repeat: no-repeat;
+}
+
+.loadding_div_main table {
+  heidht: 60px;
+}

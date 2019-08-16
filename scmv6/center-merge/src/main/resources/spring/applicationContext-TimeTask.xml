@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+  default-lazy-init="false">
+  <!-- 在<Beans>中不能够设置default-lazy-init="true",否则定时任务不触发，如果不明确指明default-lazy-init的值，默认是false。 -->
+  <bean id="schedulerFactoryBean" lazy-init="true" autowire="no"
+    class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="triggers">
+      <list>
+        <ref bean="personMergeTaskTaskTriggers" />
+      </list>
+    </property>
+  </bean>
+  <!-- 定时器任务时间重置任务 -->
+  <bean id="personMergeTaskTaskDetaill"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject">
+      <ref bean="accountsMergeTask" />
+    </property>
+    <property name="targetMethod" value="run" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="personMergeTaskTaskTriggers" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="personMergeTaskTaskDetaill" />
+    <property name="cronExpression" value="0 0/1 * * * ?" />
+  </bean>
+  <!-- end定时器任务时间重置任务 -->
+</beans>

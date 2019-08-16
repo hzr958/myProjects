@@ -1,0 +1,769 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*我的成果--详细页面*/
+#mainbody {
+  background: url(../images_v5/bj_img2.gif) top center no-repeat;
+  margin: 0px auto;
+  background-color: #f3f3f3;
+}
+
+.container {
+  width: 806px;
+  margin: 0px auto;
+  background-color: #e8e8e8;
+  margin-top: 40px;
+  padding-bottom: 4px;
+  position: relative;
+}
+
+.cont01 {
+  width: 740px;
+  border-top: 2px solid #4469a1;
+  border-bottom: 1px solid #d6d6d6;
+  border-left: 1px solid #d6d6d6;
+  border-right: 1px solid #d6d6d6;
+  background: url(../images_v5/contant_bj.gif) left top no-repeat;
+  overflow: hidden;
+  padding: 30px 30px 20px 30px;
+  background-color: #FFF;
+}
+
+.cont01 table tr td {
+  padding: 3px;
+}
+
+.cont03 {
+  width: 740px;
+  border-top: 2px solid #4469a1;
+  border-bottom: 1px solid #d6d6d6;
+  border-left: 1px solid #d6d6d6;
+  border-right: 1px solid #d6d6d6;
+  background: url(../images_v5/contant_bj2.gif) left top no-repeat;
+  overflow: hidden;
+  padding: 60px 30px 20px 30px;
+  background-color: #FFF;
+}
+
+.cont03 table tr td {
+  padding: 3px;
+}
+
+.share_main {
+  border-top: 1px dashed #3399cc;
+  padding-top: 10px;
+  margin-top: 20px; /*text-align:right;*/
+}
+
+.share_leftbtn {
+  float: left;
+  width: 400px;
+}
+
+.share_rightbtn {
+  float: right;
+}
+
+.cont02 {
+  width: 740px;
+  border: 1px solid #d6d6d6;
+  overflow: hidden;
+  padding: 15px 30px 30px 30px;
+  background-color: #FFF;
+}
+
+.com_title {
+  border-bottom: 1px solid #f0eff1;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.icon_com {
+  background: url(../images_v5/sm_icon.png) -203px -138px no-repeat;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.icon_del {
+  background: url(../images_v5/sm_icon.png) 0px -12px no-repeat;
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.d_phone {
+  width: 32px;
+  height: 32px;
+  float: left;
+  margin-right: 10px;
+}
+
+.dis_contant {
+  float: left;
+  width: 665px;
+  line-height: 16px;
+}
+
+.dis_contant p {
+  margin-bottom: 3px;
+}
+
+.dis_contant2 {
+  float: left;
+  width: 650px;
+  line-height: 16px;
+}
+
+.dis_contant2 p {
+  margin-bottom: 3px;
+}
+
+.discuss_list ul li {
+  width: 100%;
+  border-bottom: 1px solid #f0eff1;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  float: left;
+}
+
+.dis_text {
+  float: left;
+  background-color: #f7f7f7;
+}
+
+.btn_float_zh_CN {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  margin-left: 398px;
+  width: 29px;
+  _top: expression(eval(document.documentElement.scrollTop) +100+"px");
+  _position: absolute;
+}
+
+.btn_float_zh_CN01 li {
+  background: url(../images_v5/right_scroll_bj.gif) no-repeat;
+  width: 22px;
+  height: 61px;
+  margin-bottom: 10px;
+  padding-left: 7px;
+  padding-top: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn_float_zh_CN01 li a, .btn_float_zh_CN01 li a:hover {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn_float_zh_CN02 li {
+  background: url(../images_v5/right_scroll_bj2.gif) no-repeat;
+  width: 22px;
+  height: 130px;
+  margin-bottom: 10px;
+  padding-left: 7px;
+  padding-top: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  line-height: 14px;
+}
+
+.btn_float_zh_CN02 li a, .btn_float_zh_CN02 li a:hover {
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn_float_en_US {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  margin-left: 398px;
+  width: 30px;
+  _top: expression(eval(document.documentElement.scrollTop) +100+"px");
+  _position: absolute;
+}
+
+.btn_float_en_US li {
+  width: 29px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.share_en_US a, .share_en_US a:hover {
+  background: url(../images_v5/share_en_US.gif) no-repeat;
+  width: 29px;
+  height: 73px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.edit_en_US a, .edit_en_US a:hover {
+  background: url(../images_v5/edit_en_US.gif) no-repeat;
+  width: 29px;
+  height: 65px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.pubication_en_US a, .pubication_en_US a:hover {
+  background: url(../images_v5/publication_en_US.gif) no-repeat;
+  width: 29px;
+  height: 146px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.reference_en_US a, .reference_en_US a:hover {
+  background: url(../images_v5/references_en_US.gif) no-repeat;
+  width: 29px;
+  height: 151px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.comment_en_US a, .comment_en_US a:hover {
+  background: url(../images_v5/comment_en_US.gif) no-repeat;
+  width: 29px;
+  height: 93px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*应用-期刊推荐-期刊详情*/
+.eva_table {
+  background-color: #fcfcfc;
+  border: 1px solid #dedede;
+  padding: 20px 35px;
+  overflow: hidden;
+  float: left;
+  width: 670px;
+  margin-top: 10px;
+}
+
+.eva_table table tr td {
+  padding: 5px 3px;
+}
+
+/*我的群组----群组主页*/
+.cont03 {
+  width: 800px;
+  border: 1px solid #d6d6d6;
+  background-color: #FFF;
+}
+
+.group_banner {
+  background: url(../images_v5/top_img.jpg) no-repeat;
+  width: 800px;
+  height: 121px;
+}
+
+.group_pic {
+  margin-right: 20px;
+  float: left;
+  width: 151px;
+}
+
+.group_pic img {
+  position: relative;
+  left: 15px;
+  top: -19px;
+}
+
+.img_bg {
+  background: url(../images_v5/header_img.png) no-repeat;
+  _background: url(../images_v5/header_img_ie6.gif) no-repeat;
+  width: 151px;
+  height: 146px;
+  position: absolute;
+  left: 0px;
+  top: -25px;
+}
+
+.group_data {
+  float: left;
+  color: #FFF;
+  padding-top: 12px;
+}
+
+.group_data h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  width: 370px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.group_data p {
+  width: 370px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+/*.g_content_box{padding:30px; overflow:hidden;}*/
+.g_content_box {
+  clear: both;
+  margin-top: 0px;
+  border-top: none;
+  padding: 15px 0px;
+  height: auto;
+  background-color: #FFF;
+  overflow: hidden;
+}
+
+.g_pro_title {
+  font-size: 14px;
+  font-weight: bold;
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 6px;
+}
+
+.g_pro_nr {
+  margin-top: 12px;
+}
+
+.g_pro_nr p {
+  line-height: 20px;
+  text-indent: 10px;
+}
+
+.g_member_list {
+  margin-left: 10px;
+}
+
+.g_member_list ul li {
+  width: 175px;
+  float: left;
+  margin-right: 10px;
+  margin-top: 12px;
+}
+
+.gro_pic {
+  width: 50px;
+  float: left;
+  margin-right: 10px;
+}
+
+.gro_info {
+  float: left;
+  width: 115px;
+}
+
+.gro_info p {
+  width: 115px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.project_content {
+  margin-top: 12px;
+  padding-left: 10px;
+}
+
+.page_nr {
+  text-align: center;
+}
+
+/*=======群已关闭提醒===========*/
+.close_group {
+  width: 700px;
+  height: 100px;
+  border: 1px solid #cbbb58;
+  background-color: #fefbe3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0 0 -350px;
+}
+
+.noto_img {
+  background: url(../images_v5/sm_pic.png) 0px -113px no-repeat;
+  width: 42px;
+  height: 40px;
+  float: left;
+}
+
+.N_contant {
+  float: left;
+  margin-left: 15px;
+}
+
+/*=====*/
+.worker_friend {
+  
+}
+
+.worker_friend h2 {
+  font-size: 14px;
+}
+
+.w_f_scroll {
+  margin-top: 12px;
+}
+
+.scroll_leftbg {
+  background: url(../images_v5/scroll_leftbg.gif) no-repeat;
+  width: 27px;
+  height: 77px;
+  float: left;
+  cursor: pointer;
+}
+
+.scroll_centerbg {
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  height: 75px;
+  width: 685px;
+  float: left;
+}
+
+.scroll_rightbg {
+  background: url(../images_v5/scroll_rightbg.gif) no-repeat;
+  width: 27px;
+  height: 77px;
+  float: left;
+  cursor: pointer;
+}
+
+.scroll_nr {
+  margin-left: 12px;
+  margin-top: 5px;
+}
+
+.scroll_nr li {
+  width: 165px;
+}
+
+.periodical {
+  margin-top: 15px;
+}
+
+.periodical h2 {
+  font-size: 14px;
+}
+
+.periodical_list {
+  
+}
+
+.periodical_list li {
+  border-top: 1px solid #f0eff1;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.periodical_list li p {
+  word-wrap: break-word;
+}
+
+.annex {
+  padding-left: 15px;
+  margin-top: 0px;
+}
+
+.annex ol li {
+  padding-bottom: 5px;
+}
+
+/*论文详情*/
+.annexe_pic {
+  margin-top: 15px;
+}
+
+.annexe_pic .annexe_img {
+  float: left;
+  width: 102px;
+  margin-right: 10px;
+}
+
+.annexe_pic .annexe_img img {
+  border: 1px solid #dbdbdb;
+  -webkit-box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.annexe_pic .annexe_operate {
+  float: left;
+  width: 110px;
+  padding-top: 15px;
+}
+
+.annexe_pic .annexe_operate p {
+  margin-bottom: 12px;
+  line-height: 22px;
+}
+
+.thesis_contante {
+  margin-bottom: 40px;
+}
+
+.thesis_contante .thesis_main {
+  
+}
+
+.thesis_contante .thesis_main h2 {
+  font-size: 18px;
+  color: #666666;
+  line-height: 30px;
+  padding-bottom: 5px;
+  font-weight: normal;
+}
+
+.thesis_contante .thesis_main h3 {
+  font-size: 22px;
+  color: #333333;
+  line-height: 30px;
+  padding-bottom: 5px;
+}
+
+.thesis_contante .thesis_main h4 {
+  font-size: 16px;
+  color: #333333;
+  line-height: 26px;
+  padding-bottom: 5px;
+  font-weight: normal;
+}
+
+.thesis_contante .thesis_main h5 {
+  font-size: 16px;
+  color: #333333;
+  line-height: 26px;
+  font-weight: normal;
+}
+
+.thesis_contante .thesis_main h6 {
+  color: #666666;
+  line-height: 24px;
+  font-weight: normal;
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.thesis_contante .thesis_main .detail_tit01 {
+  font-size: 22px;
+  color: #333333;
+  line-height: 30px;
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+.thesis_contante .thesis_main .detail_tit02 {
+  font-size: 18px;
+  color: #666666;
+  line-height: 30px;
+  padding-bottom: 5px;
+  font-weight: normal;
+}
+
+.thesis_contante .thesis_main .detail_tit03 {
+  font-size: 16px;
+  color: #333333;
+  line-height: 26px;
+  padding-bottom: 5px;
+  font-weight: normal;
+}
+
+.thesis_contante .thesis_main .detail_tit04 {
+  font-size: 16px;
+  color: #333333;
+  line-height: 26px;
+  font-weight: normal;
+}
+
+.thesis_contante .thesis_main .detail_tit05 {
+  color: #666666;
+  line-height: 24px;
+  font-weight: normal;
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.thesis_contante .thesis_main .abstract {
+  color: #666666;
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: normal;
+  margin-top: 30px;
+}
+
+.thesis_contante .thesis_main sup {
+  vertical-align: super;
+}
+
+.thesis_contante .thesis_main sub {
+  vertical-align: sub;
+}
+
+.thesis_btn {
+  background-color: #fafafa;
+  border: 1px dashed #cecece;
+  padding: 10px 10px 10px 20px;
+  margin-top: 30px;
+}
+
+.thesis_leftbtn {
+  float: left;
+  width: 345px;
+  padding-top: 5px;
+}
+
+.thesis_leftbtn2 {
+  
+}
+
+.thesis_rightbtn {
+  float: right;
+  width: 280px;
+  text-align: right;
+}
+
+.related_articles {
+  
+}
+
+.related_articles h2 {
+  font-size: 14px;
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 10px;
+}
+
+.related_articles ul li {
+  border-bottom: 1px dashed #e2e2e2;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.related_articles ul .ra_img {
+  float: left;
+  width: 82px;
+  margin-right: 20px;
+}
+
+.related_articles ul .ra_main {
+  float: left;
+  width: 595px;
+}
+
+.related_articles ul .ra_main2 {
+  float: left;
+  width: 520px;
+}
+
+.related_articles ul .headimg {
+  float: right;
+  width: 55px;
+}
+
+.related_articles ul .headimg p {
+  text-align: center;
+}
+
+.pape_evaluation {
+  padding-top: 20px;
+}
+
+/*查看附件-弹出框*/
+.annexe_pop {
+  position: absolute;
+  right: 120px;
+  bottom: -22px;
+  *bottom: -12px;
+  background-color: #eeeeee;
+  width: 420px;
+  padding: 5px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.annexe_pop_main {
+  border: 1px solid #395c93;
+  background-color: #FFF;
+  position: relative;
+}
+
+.annexe_pop_main .an_jt {
+  background: url(../images_v5/arrow_right2.gif) no-repeat;
+  width: 7px;
+  height: 11px;
+  position: absolute;
+  bottom: 20px;
+  right: -7px;
+}
+
+.annexe_pop_title {
+  background-color: #426cad;
+  border: 1px solid #395c93;
+  height: 32px;
+  line-height: 32px;
+  color: #FFF;
+  padding: 0px 10px;
+}
+
+.annexe_pop_title span {
+  font-size: 14px;
+  color: #FFF;
+  float: left;
+  font-weight: bold;
+}
+
+.annexe_pop_title a {
+  background: url(../images_v5/annexe_close.gif) no-repeat;
+  width: 16px;
+  height: 16px;
+  float: right;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.annexe_nrbox {
+  background-color: #FFF;
+  padding: 15px;
+}
+
+.annexe_nrbox ul li {
+  height: 35px;
+  line-height: 35px;
+  border-bottom: 1px dashed #cecece;
+}
+
+.annexe_nrbox .annexe_name {
+  width: 290px;
+  float: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.annexe_nrbox .an_download {
+  width: 65px;
+  float: right;
+  text-align: right;
+  padding-right: 5px;
+}
+
+.annexe_nrbox .an_download a {
+  background: url(../images_v5/download.gif) no-repeat;
+  padding-left: 20px;
+  color: #005EAC;
+  text-decoration: none;
+}

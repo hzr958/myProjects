@@ -1,0 +1,453 @@
+.top-t {
+  width: 100%;
+  height: 100px;
+  z-index: 40;
+  position: relative;
+}
+
+.header-t {
+  width: 100%;
+  height: 44px;
+  background: #fff;
+  position: fixed;
+  z-index: 45;
+}
+
+.header_wrap-t {
+  width: 1200px;
+  margin: 0 auto;
+  height: 44px;
+}
+
+.header_wrap-t .logo {
+  width: 280px;
+  height: 32px;
+  background: url("../../images_v5/images2016/logo.png") no-repeat;
+  display: inline-block;
+  margin-top: 6px;
+  margin-right: 60px;
+  cursor: pointer;
+}
+
+.header_wrap-t .search {
+  width: 377px;
+  height: 32px;
+  margin-top: 5px;
+  border: 1px solid #d9d9d9;
+}
+
+.header_wrap-t .search .tp_box {
+  width: 40px;
+  height: 32px;
+  border-right: 1px solid #d9d9d9;
+  background: #fafafa;
+  display: inline-block;
+  text-align: center;
+  float: left;
+}
+
+.tp_box i {
+  margin-top: 4px;
+}
+
+.lt_icon, .lw_icon, .zl_icon, .ry_icon {
+  width: 24px;
+  height: 24px;
+  background: url("../../images_v5/images2016/tp_icon.gif") no-repeat;
+  display: inline-block;
+  margin-top: 3px;
+}
+
+.lt_icon {
+  background-position: 0 0;
+}
+
+.lw_icon {
+  background-position: 0 -34px;
+}
+
+.zl_icon {
+  background-position: 0 -68px;
+}
+
+.ry_icon {
+  background-position: 0 -102px;
+}
+
+.search input[type="text"] {
+  width: 284px;
+  height: 32px;
+  padding: 0 10px;
+  margin: 0;
+  line-height: 32px;
+  border: 0;
+  float: left;
+  overflow: visible;
+}
+
+.search .s_btn {
+  width: 32px;
+  height: 32px;
+  background: url("../../images_v5/images2016/s_btn.gif") no-repeat 2px 2px;
+  display: inline-block;
+  float: left;
+}
+
+#sm_header .search_new .s_btn {
+  width: 36px;
+  height: 36px;
+  background: url("../../images_v5/images2016/s_btn.gif") no-repeat 5px 5px;
+  display: inline-block;
+  float: left;
+}
+
+.header_wrap-t .login {
+  width: 240px;
+  text-align: right;
+}
+
+.header_wrap-t .login a {
+  font-size: 14px;
+  color: #333;
+  margin-left: 40px;
+}
+
+.header_wrap-t .login p {
+  margin-top: 5px;
+}
+
+.nav-t {
+  width: 100%;
+  height: 36px;
+  border-bottom: 1px solid #345281;
+  background: #1e5bb2;
+  font-size: 14px;
+  position: fixed;
+  top: 44px;
+  z-index: 10;
+}
+
+.nav_wrap-t {
+  width: 1200px;
+  height: 36px;
+  margin: 0 auto;
+}
+
+.nav_wrap-t ul li {
+  height: 36px;
+  line-height: 36px;
+  float: left;
+  padding: 0 35px;
+  font-weight: bold;
+  position: relative;
+}
+
+.nav_wrap-t ul li.cur {
+  background: #09439b;
+}
+
+.nav_wrap-t ul li a, .nav_wrap-t ul li.cur a {
+  color: #fff !important;
+  z-index: 10;
+}
+
+.nav_wrap-t ul li a:hover {
+  text-decoration: none;
+}
+
+.nav_erji {
+  top: 36px;
+  left: 0;
+  position: absolute;
+  background: #fff;
+  behavior: url(../../js_v5/js2016/pie.htc);
+  border: 1px solid #dbdada;
+  border-bottom: none;
+  box-shadow: 0px 2px 5px #c8c8c8;
+  -moz-box-shadow: 0px 2px 5px #c8c8c8; /*兼容firefox*/
+  -webkit-box-shadow: 0px 2px 5px #c8c8c8; /*兼容safari或chrome*/
+  z-index: 9;
+  padding: 10px 0 15px 0;
+  text-align: left;
+}
+
+.nav_erji dl dd {
+  white-space: nowrap;
+  height: 34px;
+  line-height: 34px;
+  padding: 0 35px;
+}
+
+.nav_erji dl dd:hover {
+  background: #e5e5e5;
+  cursor: pointer;
+}
+
+.nav_wrap-t .nav_erji dl dd a {
+  color: #333 !important;
+  font-size: 14px;
+  display: block;
+}
+
+.top_slt {
+  width: 16px;
+  height: 16px;
+  background: url("../../images_v5/images2016/login_slt.png") no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.logining_icon {
+  width: 28px;
+  height: 28px;
+  position: relative;
+  float: left;
+  margin-left: 10px;
+}
+
+.logining_icon    .login_msg_count {
+  max-width: 22px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0 5px;
+  height: 16px;
+  text-align: center;
+  background: #bf3127;
+  border-radius: 12px;
+  line-height: 15px;
+  color: #fff !important;
+  position: absolute;
+  top: 0px;
+  left: 15px;
+}
+
+.version_en {
+  float: left;
+  line-height: 28px;
+  color: #666666;
+  margin-left: 10px;
+}
+
+.version_en a {
+  color: #666;
+  line-height: 28px;
+}
+
+.notice_icon, .question_icon {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  background: url("../../images_v5/images2016/logining_icon.gif") no-repeat;
+}
+
+.notice_icon {
+  background-position: 0 0;
+}
+
+.question_icon {
+  background-position: -38px 0;
+}
+
+.notice_icon:hover {
+  background-position: 0 -38px;
+}
+
+.question_icon:hover {
+  background-position: -38px -38px;
+}
+
+.logining {
+  float: right;
+  color: #666;
+  padding-top: 8px;
+  text-align: right;
+}
+/*=======登陆下拉选项======*/
+.mana_t {
+  font-size: 14px;
+  color: #333;
+  vertical-align: middle;
+  position: relative;
+  behavior: url(../../js_v5/js2016/pie.htc);
+}
+
+.mana_t img {
+  width: 28px;
+  height: 28px;
+  border-radius: 100%;
+}
+
+.mana_r {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  display: inline-block;
+  z-index: 11;
+}
+
+.mana_r {
+  *display: inline;
+  zoom: 1;
+}
+
+.mana_t {
+  display: block;
+  text-align: left;
+}
+
+.mana_p {
+  visibility: hidden;
+  position: fixed;
+  top: 36px;
+  border: 1px solid #e8e8e8;
+  border-bottom: none;
+  z-index: 10;
+  background: #fff;
+  color: #666;
+}
+
+.mana_p a {
+  min-width: 90px;
+  height: 32px;
+  line-height: 32px;
+  display: block;
+  margin: 0;
+  padding: 0 15px;
+  border-bottom: 1px solid #e8e8e8;
+  text-align: left;
+}
+
+.mana_p a:hover {
+  text-decoration: none;
+  background: #f5f5f5;
+}
+
+.mana_t:hover .mana_p, .mana_r:hover .mana_p {
+  visibility: visible;
+}
+/*new fund page start*/
+.dy-fund {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.dy-fund_item {
+  display: flex;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.clear {
+  clear: both;
+}
+
+.clear_h20 {
+  clear: both;
+  height: 20px;
+  overflow: hidden;
+}
+
+.dy-fund_title {
+  color: #999;
+  width: 295px;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-end;
+  line-height: 24px;
+}
+
+.dy-fund_inforcontent {
+  margin-left: 8px;
+  width: 650px;
+  color: #333;
+  line-height: 26px;
+  font-size: 14px;
+}
+
+.dy-fund_title-infor {
+  margin-left: 16px;
+  width: 650px;
+  color: #333;
+  line-height: 24px;
+  font-size: 14px;
+  padding-bottom: 2px;
+}
+
+.dy-fund_containner-title {
+  display: flex;
+  justify-content: center;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 28px;
+  margin: 10px 0px 0px 0px;
+  font-size: 24px;
+}
+
+.fund-detial__btnbox {
+  display: flex;
+  justify-content: flex-end;
+  margin: 24px 16px 0px 16px;
+}
+
+.dy-fund_item-content {
+  cursor: pointer;
+}
+
+.dy-fund_item-content, .manage-one {
+  color: #2882d8;
+}
+
+.dy-fund_containner-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dy-fund_item-func {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.dy-fund_item-func_list-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+}
+
+.apply-button {
+  border: 1px solid #2882d8;
+  width: 115px;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+  color: #2882d8;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0px 8px;
+}
+
+.applybtn-now {
+  color: #fff;
+  background: #2882d8;
+}
+
+.applybtn {
+  color: #218aed;
+  border-color: #218aed;
+  min-width: 115px;
+  width: auto;
+}
+
+.applybtn-now:hover {
+  background: #218aed;
+}
+
+.dy-fund_inforcontent {
+  width: 650px;
+}
+/*new fund page end*/

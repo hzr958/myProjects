@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<link href="../css/scm-newpagestyle.css" rel="stylesheet" type="text/css">
+<!-- 	<style type="text/css">
+		.getConfirmnum_container{
+			height: 320px; 
+			width: 560px; 
+			border: 1px solid #ccc; 
+			color:#333; 
+			display: flex; 
+			flex-direction: column; 
+			justify-content: space-between; 
+			padding: 0px 12px;
+		}
+		.getConfirmnum_container-header{
+			display: flex; 
+			height: 48px; 
+			font-size: 16px; 
+			color: #333;
+			border-bottom: 1px solid #ccc;
+			align-items: center; 
+			justify-content: flex-start; 
+		}
+		.getConfirmnum_container-body{
+			display: flex;
+			flex-direction: column;
+			align-items: baseline;
+			width: 560px;
+			height: 243px;
+		}
+		.getConfirmnum_container-body_title1{
+            padding:0px 32px; 
+            margin: 12px 0px;
+            font-size: 16px;
+		}
+		.getConfirmnum_container-body_title2{
+			padding:0px 32px; 
+			margin-bottom:16px;  
+			font-size: 16px; 
+			display: flex; 
+			align-items: center;
+			line-height: 24px;
+			display: inline-block;
+		}
+		.getConfirmnum_container-body_title2 span{
+			display: inline-block;
+		}
+		.getConfirmnum_container-body_title2  i{
+           display: inline-block;
+		}
+		.getConfirmnum_container-body_input{
+			display: flex; 
+			align-items: center; 
+			justify-content: center; 
+			text-align: center; 
+			width: 100%;  
+			font-size: 16px;
+		}
+		.getConfirmnum_container-body_input-area{
+            border: 1px solid #ccc; 
+            height: 24px; 
+            width: 200px; 
+            margin: 0px 8px;
+		}
+		.getConfirmnum_container-body_input-area_box{
+			width: 100%;
+			height: 100%;
+			padding-left: 4px; 
+			text-align: left;
+		}
+		.getConfirmnum_container-body_input-reset{
+            color: #288aed; 
+            cursor: pointer;
+		}
+		.getConfirmnum_container-body_input-reset:hover{
+			color: #1265cf;
+		}
+		.getConfirmnum_container-footer{
+			display: flex; 
+			align-items: center; 
+			justify-content: flex-end; 
+			height: 60px; 
+			border-top: 1px solid #ccc;
+		}
+		.getConfirmnum_container-footer_content{
+			display: flex; 
+			justify-content: center; 
+			align-items: center; 
+			height: 32px; 
+			width: 72px; 
+			background: #288aed; 
+			border: 1px solid #288aed; 
+			border-radius: 4px; 
+			color: #fff; 
+			cursor: pointer;
+		}
+		.getConfirmnum_container-footer_content:hover{
+			background: #1265cf;
+			border-color: #1265cf;
+		}
+		 .getConfirmnum_container-body__icon-edit{
+		 	display: flex; 
+		     justify-content: center; 
+		     align-items:center; 
+		     width: 24px; 
+		     height: 24px; 
+		     border-radius: 50%;
+		     color: rgba(0, 0, 0, 0.24);
+		     background-color: #f4f4f4; 
+		     cursor: pointer;
+		     align-items: center;
+		     background-image: url(edit2.png);
+		     background-repeat: no-repeat;
+		     background-position: 5px 3px;
+		     position: absolute;
+		 }
+		 .getConfirmnum_container-body__icon-edit:hover{
+		 	 background-image: url(edit3.png);
+		 }
+	</style> -->
+</head>
+<body>
+  <div class="getConfirmnum_container">
+    <div class="getConfirmnum_container-header">确认邮件地址</div>
+    <div class="getConfirmnum_container-body">
+      <div class="getConfirmnum_container-body_title1">请先确认您的邮件地址,获得完整的科研之友服务.</div>
+      <div class="getConfirmnum_container-body_title2">
+        确认代码已发送至 <span><span class="getConfirmnum_container-body_email">XXXXX@qq.com</span><i
+          class="getConfirmnum_container-body__icon-edit"></i></span> 中,请在下面输入邮件中的确认代码
+      </div>
+      <div class="getConfirmnum_container-body_input">
+        <span>验证码:</span>
+        <div class="getConfirmnum_container-body_input-area">
+          <div class="getConfirmnum_container-body_input-area_box" contenteditable="true"></div>
+        </div>
+        <div class="getConfirmnum_container-body_input-reset">重新发送验证码</div>
+      </div>
+    </div>
+    <div class="getConfirmnum_container-footer">
+      <div class="getConfirmnum_container-footer_content">确定</div>
+    </div>
+  </div>
+</body>
+</html>

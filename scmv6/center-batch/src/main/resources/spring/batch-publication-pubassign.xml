@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+  default-lazy-init="true">
+  <description>SCM成果指派功能</description>
+  <!-- ROL成果Xml控制 -->
+  <bean id="rolPublicationXmlManager" class="com.smate.center.batch.service.pub.RolPublicationXmlManagerImpl"
+    lazy-init="false">
+    <property name="rolXmlBackgroundImportProcess" ref="rolXmlBackgroundImportProcess"></property>
+    <property name="xmlValidatorFactory" ref="xmlValidatorFactory" />
+    <property name="briefDriverFactory" ref="briefDriverFactory" />
+  </bean>
+  <!-- ROL成果后台导入xml处理 -->
+  <bean id="rolXmlBackgroundImportProcess"
+    class="com.smate.center.batch.chain.pub.rol.ROLXmlBackgroundImportProcess" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pub.rol.ImportXmlMergeTask" />
+        <bean class="com.smate.center.batch.chain.pub.PublicationMetaTask" />
+        <bean class="com.smate.center.batch.chain.pub.rol.ImportFieldMappingTask" />
+        <bean class="com.smate.center.batch.chain.pub.rol.RolSplitImportAuthorNameTask" />
+        <bean class="com.smate.center.batch.chain.pub.PublicationTypeCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.DateAttributeCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.rol.JournalMatchTask" />
+        <bean class="com.smate.center.batch.chain.pub.rol.RolPubMemberCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.CountryCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.JournalEditorTitleTask" />
+        <bean class="com.smate.center.batch.chain.pub.PublicationTAKCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.XmlFieldCodePageCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.XmlFieldValidateTask" />
+        <bean class="com.smate.center.batch.chain.pub.PublicationBriefGenerateTask" />
+        <bean class="com.smate.center.batch.chain.pub.GeneratePublicationHashTask" />
+        <bean class="com.smate.center.batch.chain.pub.ACDataCollectTask" />
+        <bean class="com.smate.center.batch.chain.pub.rol.ExtractXmlToRolDbTask" />
+        <!-- <bean class="com.iris.scm.rolweb.pubxml.ROLPubXmlStoreTask"></bean> -->
+        <bean class="com.smate.center.batch.chain.pub.OperationLogTask" />
+        <bean class="com.smate.center.batch.chain.pub.rol.PubDupCheckTask" />
+        <bean class="com.smate.center.batch.chain.pub.rol.ExtractAssignDataToDbTask" />
+        <bean class="com.smate.center.batch.chain.pub.rol.PublicationAssignPersonTask" />
+        <!-- 成果html生成 -->
+        <bean class="com.smate.center.batch.chain.pub.rol.SaveOrUpdatePubHtmlTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- ****************************ISI库成果********************************************** -->
+  <bean id="pubAssignXmlService" class="com.smate.center.batch.service.rol.pubassign.PubAssignXmlServiceImpl">
+    <property name="isiPubAssignXmlProcess" ref="isiPubAssignXmlProcess"></property>
+  </bean>
+  <!-- ISI成果导入成果数据展开 -->
+  <bean id="isiPubAssignXmlProcess" class="com.smate.center.batch.chain.pubassign.process.IsiPubAssignXmlProcess"
+    lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractIsiAuthorNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractAuthorEmailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractAuthorDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractConferenceTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractJournalTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractKeywordsTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- ISI成果匹配 -->
+  <bean id="pubAssignMatchService" class="com.smate.center.batch.service.rol.pub.PubAssignMatchServiceImpl">
+    <property name="isiPubAssignMatchProcess" ref="isiPubAssignMatchProcess"></property>
+    <property name="isiPsnAssignMatchStep1Process" ref="isiPsnAssignMatchStep1Process"></property>
+  </bean>
+  <!-- ISI成果匹配人员 -->
+  <bean id="isiPubAssignMatchProcess"
+    class="com.smate.center.batch.chain.pubassign.process.IsiPubAssignMatchProcess" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPrefixNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchEmailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchInitNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchFullNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchKeyWordTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchJournalTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConfereceTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchCoemailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPubYearTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchScoreStoreTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- end ISI成果匹配人员 -->
+  <!-- 人员匹配ISI成果 -->
+  <bean id="isiPsnAssignMatchStep1Process"
+    class="com.smate.center.batch.chain.pubassign.process.IsiPsnAssignMatchStep1Process" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchPrefixNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchEmailTask" />
+      </list>
+    </property>
+    <property name="nextProcess" ref="isiPsnAssignMatchStep2Process"></property>
+  </bean>
+  <bean id="isiPsnAssignMatchStep2Process"
+    class="com.smate.center.batch.chain.pubassign.process.IsiPsnAssignMatchStep2Process" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchInitNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchFullNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchKeyWordTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchJournalTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConfereceTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchCoemailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPubYearTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchPsnScoreStoreTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- end人员匹配ISI成果 -->
+  <!-- ****************************END ISI库成果********************************************** -->
+  <!-- **************************** CNKI库成果********************************************** -->
+  <bean id="pubAssignCnkiXmlService"
+    class="com.smate.center.batch.service.rol.pubassign.PubAssignCnkiXmlServiceImpl">
+    <property name="cnkiPubAssignXmlProcess" ref="cnkiPubAssignXmlProcess"></property>
+  </bean>
+  <!-- Cnki成果导入成果数据展开 -->
+  <bean id="cnkiPubAssignXmlProcess" class="com.smate.center.batch.chain.pubassign.process.CnkiPubAssignXmlProcess"
+    lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractCnkiAuthorNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractAuthorDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractConferenceTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractJournalTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractKeywordsTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- CNKI成果匹配 -->
+  <bean id="pubAssignCnkiMatchService" class="com.smate.center.batch.service.rol.pub.PubAssignCnkiMatchServiceImpl">
+    <property name="cnkiPubAssignMatchProcess" ref="cnkiPubAssignMatchProcess"></property>
+    <property name="cnkiPsnAssignMatchStep1Process" ref="cnkiPsnAssignMatchStep1Process"></property>
+  </bean>
+  <!-- CNKI成果匹配人员 -->
+  <bean id="cnkiPubAssignMatchProcess"
+    class="com.smate.center.batch.chain.pubassign.process.CnkiPubAssignMatchProcess" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchCnkiAuthorTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchKeyWordTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchJournalTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConfereceTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPubYearTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchCnkiDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchScoreStoreTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- end CNKI成果匹配人员 -->
+  <!-- 人员匹配CNKI成果 -->
+  <bean id="cnkiPsnAssignMatchStep1Process"
+    class="com.smate.center.batch.chain.pubassign.process.CnkiPsnAssignMatchStep1Process" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchCnkiAuthorTask" />
+      </list>
+    </property>
+    <property name="nextProcess" ref="cnkiPsnAssignMatchStep2Process"></property>
+  </bean>
+  <bean id="cnkiPsnAssignMatchStep2Process"
+    class="com.smate.center.batch.chain.pubassign.process.CnkiPsnAssignMatchStep2Process" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchKeyWordTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchJournalTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConfereceTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPubYearTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchCnkiDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchPsnScoreStoreTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- end人员匹配CNKI成果 -->
+  <!-- ****************************END CNKI库成果********************************************** -->
+  <!-- **************************** SCOPUS库成果********************************************** -->
+  <bean id="pubAssignSpsXmlService" class="com.smate.center.batch.service.rol.pubassign.PubAssignSpsXmlServiceImpl">
+    <property name="spsPubAssignXmlProcess" ref="spsPubAssignXmlProcess"></property>
+  </bean>
+  <!-- Cnki成果导入成果数据展开 -->
+  <bean id="spsPubAssignXmlProcess" class="com.smate.center.batch.chain.pubassign.process.SpsPubAssignXmlProcess"
+    lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractSpsAuthorNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractAuthorEmailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractAuthorDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractConferenceTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractJournalTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractKeywordsTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- scopus成果匹配 -->
+  <bean id="pubAssignSpsMatchService" class="com.smate.center.batch.service.rol.pub.PubAssignSpsMatchServiceImpl">
+    <property name="spsPubAssignMatchProcess" ref="spsPubAssignMatchProcess"></property>
+    <property name="spsPsnAssignMatchStep1Process" ref="spsPsnAssignMatchStep1Process"></property>
+  </bean>
+  <!-- scopus成果匹配人员 -->
+  <bean id="spsPubAssignMatchProcess"
+    class="com.smate.center.batch.chain.pubassign.process.SpsPubAssignMatchProcess" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchSpsPrefixNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchEmailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchSpsInitNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchFullNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchKeyWordTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchJournalTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConfereceTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchSpsCoPreNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchCoemailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPubYearTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchSpsDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchScoreStoreTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- end scopus成果匹配人员 -->
+  <!-- 人员匹配scopus成果 -->
+  <bean id="spsPsnAssignMatchStep1Process"
+    class="com.smate.center.batch.chain.pubassign.process.SpsPsnAssignMatchStep1Process" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchSpsPrefixNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchEmailTask" />
+      </list>
+    </property>
+    <property name="nextProcess" ref="spsPsnAssignMatchStep2Process"></property>
+  </bean>
+  <bean id="spsPsnAssignMatchStep2Process"
+    class="com.smate.center.batch.chain.pubassign.process.SpsPsnAssignMatchStep2Process" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchSpsInitNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchFullNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchKeyWordTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchJournalTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConfereceTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchSpsCoPreNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchCoemailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPubYearTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchSpsDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchPsnScoreStoreTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- end人员匹配scopus成果 -->
+  <!-- **************************** SCOPUS库成果********************************************** -->
+  <!-- **************************** Cnipr库成果********************************************** -->
+  <bean id="pubAssignCniprXmlService"
+    class="com.smate.center.batch.service.rol.pubassign.PubAssignCniprXmlServiceImpl">
+    <property name="cniprPubAssignXmlProcess" ref="cniprPubAssignXmlProcess"></property>
+  </bean>
+  <!-- Cnipr成果导入成果数据展开 -->
+  <bean id="cniprPubAssignXmlProcess"
+    class="com.smate.center.batch.chain.pubassign.process.CniprPubAssignXmlProcess" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractCniprAuthorNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractAuthorDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractKeywordsTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- Cnipr成果匹配 -->
+  <bean id="pubAssignCniprMatchService"
+    class="com.smate.center.batch.service.rol.pub.PubAssignCniprMatchServiceImpl">
+    <property name="cniprPubAssignMatchProcess" ref="cniprPubAssignMatchProcess"></property>
+    <property name="cniprPsnAssignMatchStep1Process" ref="cniprPsnAssignMatchStep1Process"></property>
+  </bean>
+  <!-- Cnipr成果匹配人员 -->
+  <bean id="cniprPubAssignMatchProcess"
+    class="com.smate.center.batch.chain.pubassign.process.CniprPubAssignMatchProcess" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchCniprAuthorTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchKeyWordTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPubYearTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchCniprDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchScoreStoreTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- end Cnipr成果匹配人员 -->
+  <!-- 人员匹配Cnipr成果 -->
+  <bean id="cniprPsnAssignMatchStep1Process"
+    class="com.smate.center.batch.chain.pubassign.process.CniprPsnAssignMatchStep1Process" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchCniprAuthorTask" />
+      </list>
+    </property>
+    <property name="nextProcess" ref="cniprPsnAssignMatchStep2Process"></property>
+  </bean>
+  <bean id="cniprPsnAssignMatchStep2Process"
+    class="com.smate.center.batch.chain.pubassign.process.CniprPsnAssignMatchStep2Process" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchKeyWordTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPubYearTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchCniprDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchPsnScoreStoreTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- end人员匹配Cnipr成果 -->
+  <!-- ****************************END Cnipr库成果********************************************** -->
+  <!-- **************************** CnkiPat库成果********************************************** -->
+  <bean id="pubAssignCnkiPatXmlService"
+    class="com.smate.center.batch.service.rol.pubassign.PubAssignCnkiPatXmlServiceImpl">
+    <property name="cnkiPatPubAssignXmlProcess" ref="cnkiPatPubAssignXmlProcess"></property>
+  </bean>
+  <!-- CnkiPat成果导入成果数据展开 -->
+  <bean id="cnkiPatPubAssignXmlProcess"
+    class="com.smate.center.batch.chain.pubassign.process.CnkiPatPubAssignXmlProcess" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractCnkiPatAuthorNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractAuthorDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractKeywordsTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- CnkiPat成果匹配 -->
+  <bean id="pubAssignCnkiPatMatchService"
+    class="com.smate.center.batch.service.rol.pub.PubAssignCnkiPatMatchServiceImpl">
+    <property name="cnkiPatPubAssignMatchProcess" ref="cnkiPatPubAssignMatchProcess"></property>
+    <property name="cnkiPatPsnAssignMatchStep1Process" ref="cnkiPatPsnAssignMatchStep1Process"></property>
+  </bean>
+  <!-- CnkiPat成果匹配人员 -->
+  <bean id="cnkiPatPubAssignMatchProcess"
+    class="com.smate.center.batch.chain.pubassign.process.CnkiPatPubAssignMatchProcess" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchCnkiPatAuthorTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchKeyWordTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPubYearTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchCnkiPatDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchScoreStoreTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- end CnkiPat成果匹配人员 -->
+  <!-- 人员匹配CnkiPat成果 -->
+  <bean id="cnkiPatPsnAssignMatchStep1Process"
+    class="com.smate.center.batch.chain.pubassign.process.CnkiPatPsnAssignMatchStep1Process" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchCnkiPatAuthorTask" />
+      </list>
+    </property>
+    <property name="nextProcess" ref="cnkiPatPsnAssignMatchStep2Process"></property>
+  </bean>
+  <bean id="cnkiPatPsnAssignMatchStep2Process"
+    class="com.smate.center.batch.chain.pubassign.process.CnkiPatPsnAssignMatchStep2Process" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchKeyWordTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPubYearTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchCnkiPatDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchPsnScoreStoreTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- end人员匹配CnkiPat成果 -->
+  <!-- ****************************END CnkiPat库成果********************************************** -->
+  <!-- ****************************PUBMED库成果********************************************** -->
+  <bean id="pubAssignPubMedXmlService"
+    class="com.smate.center.batch.service.rol.pubassign.PubAssignPubMedXmlServiceImpl">
+    <property name="pubMedPubAssignXmlProcess" ref="pubMedPubAssignXmlProcess"></property>
+  </bean>
+  <!-- PUBMED成果导入成果数据展开 -->
+  <bean id="pubMedPubAssignXmlProcess"
+    class="com.smate.center.batch.chain.pubassign.process.PubMedPubAssignXmlProcess" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractPubMedAuthorNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractAuthorEmailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractAuthorDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractConferenceTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractJournalTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractKeywordsTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- PubMed成果匹配 -->
+  <bean id="pubAssignPubMedMatchService"
+    class="com.smate.center.batch.service.rol.pub.PubAssignPubMedMatchServiceImpl">
+    <property name="pubMedPubAssignMatchProcess" ref="pubMedPubAssignMatchProcess"></property>
+    <property name="pubMedPsnAssignMatchStep1Process" ref="pubMedPsnAssignMatchStep1Process"></property>
+  </bean>
+  <!-- PUBMED成果匹配人员 -->
+  <bean id="pubMedPubAssignMatchProcess"
+    class="com.smate.center.batch.chain.pubassign.process.PubMedPubAssignMatchProcess" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPrefixNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchEmailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchInitNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchFullNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchKeyWordTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchJournalTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConfereceTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchCoemailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPubYearTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchScoreStoreTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- end PUBMED成果匹配人员 -->
+  <!-- 人员匹配PUBMED成果 -->
+  <bean id="pubMedPsnAssignMatchStep1Process"
+    class="com.smate.center.batch.chain.pubassign.process.PubMedPsnAssignMatchStep1Process" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchPrefixNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchEmailTask" />
+      </list>
+    </property>
+    <property name="nextProcess" ref="pubMedPsnAssignMatchStep2Process"></property>
+  </bean>
+  <bean id="pubMedPsnAssignMatchStep2Process"
+    class="com.smate.center.batch.chain.pubassign.process.PubMedPsnAssignMatchStep2Process" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchInitNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchFullNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchKeyWordTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchJournalTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConfereceTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchCoemailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPubYearTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PsnAssignMatchPsnScoreStoreTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- end人员匹配PUBMED成果 -->
+  <!-- ****************************END PUBMED库成果********************************************** -->
+  <!-- EI成果导入成果数据展开 -->
+  <bean id="eiPubAssignXmlProcess" class="com.smate.center.batch.chain.pubassign.process.EiPubAssignXmlProcess"
+    lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractEiAuthorNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractAuthorEmailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractAuthorDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractConferenceTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractJournalTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.ExtractKeywordsTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- EI成果导入成果数据展开 -->
+  <bean id="pubAssignEiXmlService" class="com.smate.center.batch.service.rol.pubassign.PubAssignEiXmlServiceImpl">
+    <property name="eiPubAssignXmlProcess" ref="eiPubAssignXmlProcess"></property>
+  </bean>
+  <!-- EI成果匹配 -->
+  <bean id="pubAssignEiMatchService" class="com.smate.center.batch.service.rol.pub.PubAssignEiMatchServiceImpl">
+    <property name="eiPubAssignMatchProcess" ref="eiPubAssignMatchProcess"></property>
+    <property name="eiPsnAssignMatchStep1Process" ref="isiPsnAssignMatchStep1Process"></property> <!-- 先使用isi的按人分配成果的process -->
+  </bean>
+  <!-- EI成果匹配人员 -->
+  <bean id="eiPubAssignMatchProcess" class="com.smate.center.batch.chain.pubassign.process.EiPubAssignMatchProcess"
+    lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPrefixNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchEmailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchInitNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchFullNameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchKeyWordTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchJournalTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConfereceTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchConameTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssingMatchCoemailTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchPubYearTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchDeptTask" />
+        <bean class="com.smate.center.batch.chain.pubassign.task.PubAssignMatchScoreStoreTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- end EI成果匹配人员 -->
+</beans>

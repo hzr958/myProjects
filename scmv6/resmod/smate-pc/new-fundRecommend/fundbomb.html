@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="scmpcframe.css">
+<script type="text/javascript" src="scmpc_form.js"></script>
+<style type="text/css">
+.area__list {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.input__area-itemlist {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input__area-itemlist .select-icon {
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+.input__area-itemlist-title {
+  font-size: 14px;
+}
+
+.formtip-word {
+  position: absolute;
+  top: 22px;
+  width: 125px;
+  min-height: 24px;
+  height: auto;
+  border: 1px solid #ccc;
+  display: none;
+  opacity: 1;
+}
+
+.forminput-word {
+  border-bottom: 1px solid #ccc;
+  width: 125px;
+  position: relative;
+}
+</style>
+</head>
+<script type="text/javascript">
+		window.onload = function(){
+			var clicklist = document.getElementsByClassName("select-icon");
+			for(var i = 0; i < clicklist.length;i++){
+                clicklist[i].onclick = function(){
+                	console.log(1);
+                    if(this.classList.contains("iconselected")){
+                  	    this.classList.remove("iconselected");
+                  	    this.querySelector("i").innerHTML="check_box_outline_blank";
+                    }else{
+                        this.classList.add("iconselected");
+                        this.querySelector("i").innerHTML="check_box";
+                    }
+                }
+			}
+		}
+	</script>
+<body>
+  <div class="dialogs__box oldDiv"
+    style="width: 640px; height: auto; top: 8px; left: 631.5px; visibility: visible; opacity: 1;" dialog-id="psnInfoBox"
+    cover-event="hide" id="psnInfoBox">
+    <div class="dialogs__childbox_fixed">
+      <div class="dialogs__header">
+        <div class="dialogs__header_title">推荐条件设置</div>
+      </div>
+    </div>
+    <div class="dialogs__childbox_adapted">
+      <div class="dialogs__content" style="padding: 24px 24px 4px 24px !important;">
+        <form>
+          <div class="form__sxn_row" style="display: flex; flex-direction: column; margin-bottom: 64px;">
+            <div>关注区域</div>
+            <div style="display: flex; justify-content: space-between; margin-top: 24px;">
+              <div style="position: relative;">
+                <div class="forminput-word" contenteditable="true">区域1</div>
+                <div class="formtip-word"></div>
+              </div>
+              <div style="position: relative;">
+                <div class="forminput-word" contenteditable="true">区域2</div>
+                <div class="formtip-word"></div>
+              </div>
+              <div style="position: relative;">
+                <div class="forminput-word" contenteditable="true">区域3</div>
+                <div class="formtip-word"></div>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" name="psnRegionId" id="psnRegionId" value="440300">
+          <div class="form__sxn_row">
+            <div class="input__box input_not-null" style="margin: 0px !important;">
+              <div style="font-size: 14px !important; color: black;">申请资格</div>
+              <div class="input__area area__list" style="margin-top: 24px;">
+                <div class="input__area-itemlist">
+                  <div class="select-icon">
+                    <i class="material-icons">check_box_outline_blank</i>
+                  </div>
+                  <div class="input__area-itemlist-title">企业</div>
+                </div>
+                <div class="input__area-itemlist" style="margin-left: 176px;">
+                  <div class="select-icon">
+                    <i class="material-icons">check_box_outline_blank</i>
+                  </div>
+                  <div class="input__area-itemlist-title">科研机构</div>
+                </div>
+              </div>
+              <div class="input__helper"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="dialogs__childbox_fixed">
+      <div class="dialogs__footer">
+        <button class="button_main button_primary-reverse">保存</button>
+        <button class="button_main">取消</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

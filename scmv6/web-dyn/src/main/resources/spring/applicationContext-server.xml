@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:export="https://www.scholarmate.com/schema/remote-export"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+	https://www.scholarmate.com/schema/remote-export
+	https://www.scholarmate.com/schema/remote-export.xsd "
+  default-lazy-init="false">
+  <description>缓存、restful等服务</description>
+  <!-- memcache缓存服务 客户端 -->
+  <bean id="memcacheClient" class="com.smate.core.base.utils.cache.IrisMemcachedClientFactoryBean">
+    <property name="memcachedSrvUrls" value="${memcache.common.url}" />
+  </bean>
+  <!-- 同步restful -->
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+  <bean id="authorityManager" class="com.smate.core.base.utils.service.security.AuthorityManagerImpl">
+  </bean>
+  <bean id="insRoleService" class="com.smate.core.base.utils.service.security.InsRoleServiceImpl">
+  </bean>
+  <!-- 消息显示实现服务类 -->
+  <bean id="showMsgService" class="com.smate.web.dyn.service.msg.ShowMsgServiceImpl">
+    <!--0=系统消息、1=请求添加好友消息、2=成果认领、3=全文认领、4=成果推荐、5=好友推荐、6=基金推荐、7=站内信、8=请求加入群组消息、9=邀请加入群组消息、10=群组动向 , 11=请求全文消息 -->
+    <property name="buildMsgInfoServiceMap">
+      <map>
+        <entry key="1">
+          <bean class="com.smate.web.dyn.service.msg.BuildAddFriendMsgInfoServiceImpl" />
+        </entry>
+        <entry key="2">
+          <bean class="com.smate.web.dyn.service.msg.BuildPubComfirmMsgInfoServiceImpl" />
+        </entry>
+        <entry key="3">
+          <bean class="com.smate.web.dyn.service.msg.BuildPubFulltextComfirmMsgInfoServiceImpl" />
+        </entry>
+        <entry key="4">
+          <bean class="com.smate.web.dyn.service.msg.BuildPubRcmdMsgInfoServiceImpl" />
+        </entry>
+        <entry key="5">
+          <bean class="com.smate.web.dyn.service.msg.BuildFriendRcmdMsgInfoServiceImpl" />
+        </entry>
+        <entry key="7">
+          <bean class="com.smate.web.dyn.service.msg.BuildChatMsgInfoServiceImpl" />
+        </entry>
+        <entry key="8">
+          <bean class="com.smate.web.dyn.service.msg.BuildGrpRequestMsgInfoServiceImpl" />
+        </entry>
+        <entry key="9">
+          <bean class="com.smate.web.dyn.service.msg.BuildGrpInviteMsgInfoServiceImpl" />
+        </entry>
+        <entry key="11">
+          <bean class="com.smate.web.dyn.service.msg.BuildPubFulltextRequestMsgInfoServiceImpl" />
+        </entry>
+      </map>
+    </property>
+  </bean>
+  <bean id="dynamicPrepareService" class="com.smate.web.dyn.service.dynamic.DynamicPrepareServiceImpl">
+    <property name="dataDealMap">
+      <map>
+        <entry key="ATEMP">
+          <bean class="com.smate.web.dyn.service.dynamic.DynamicAtypeServiceImpl" /><!-- A类动态的数据检查和数据生成具体实现类........直接发动态 -->
+        </entry>
+        <entry key="B1TEMP">
+          <bean class="com.smate.web.dyn.service.dynamic.DynamicB1typeServiceImpl" /><!-- B1类动态的数据检查和数据生成具体实现类.......对A类动态操作 -->
+        </entry>
+        <entry key="B2TEMP">
+          <bean class="com.smate.web.dyn.service.dynamic.DynamicB2typeServiceImpl" /><!-- B2类动态的数据检查和数据生成具体实现类 .......纯成果的 -->
+        </entry>
+        <entry key="B3TEMP">
+          <bean class="com.smate.web.dyn.service.dynamic.DynamicB3typeServiceImpl" /><!-- B3类动态的数据检查和数据生成具体实现类.......导入成果 -->
+        </entry>
+      </map>
+    </property>
+  </bean>
+  <!-- 群组动态 -->
+  <bean id="groupDynamicRealtimeService"
+    class="com.smate.web.dyn.service.dynamic.group.GroupDynamicRealtimeServiceImpl">
+    <property name="resParametMap">
+      <map>
+        <entry key="file">
+          <bean class="com.smate.web.dyn.service.dynamic.group.BuildResFileParametServiceImpl" />
+        </entry>
+        <entry key="grpfile">
+          <bean class="com.smate.web.dyn.service.dynamic.group.BuildGrpResFileParametServiceImpl" />
+        </entry>
+        <entry key="pub">
+          <bean class="com.smate.web.dyn.service.dynamic.group.BuildResPubParametServiceImpl" />
+        </entry>
+        <entry key="pdwhpub">
+          <bean class="com.smate.web.dyn.service.dynamic.group.BuildGrpResPdwhPubParametServiceImpl" />
+        </entry>
+        <entry key="fund">
+          <bean class="com.smate.web.dyn.service.dynamic.group.BuildGrpResFundParametServiceImpl" />
+        </entry>
+        <entry key="prj">
+          <bean class="com.smate.web.dyn.service.dynamic.group.BuildGrpResPrjParametServiceImpl" />
+        </entry>
+        <entry key="agency">
+          <bean class="com.smate.web.dyn.service.dynamic.group.BuildGrpResAgencyParametServiceImpl" />
+        </entry>
+        <entry key="news">
+          <bean class="com.smate.web.dyn.service.dynamic.group.BuildGrpResNewsParametServiceImpl" />
+        </entry>
+      </map>
+    </property>
+  </bean>
+  <!-- 用于生成基金委成果列表的Freemaker配置 -->
+  <bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:dyntemplate" />
+  </bean>
+</beans>

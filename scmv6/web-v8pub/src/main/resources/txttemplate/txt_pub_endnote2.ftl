@@ -1,0 +1,17 @@
+%0 Book
+%A ${pubAuthors}
+%D ${year}
+%T ${pubTitle}
+%C ${country}
+%I ${publisher} 
+%& ${pages}
+%8 ${publishDate}
+%! ${pubTitle}
+%@ ${isbn}
+%R ${doi}
+%K ${keywords} 
+%X ${abstract}
+%Z ${remark}
+%U ${fullTextUrl}
+%G ${language}
+%P ${publicationStatus}

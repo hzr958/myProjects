@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>邮件设置</title>
+<meta charset="utf-8">
+<link href="../../css_v5/css2016/newfirstpage.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    window.onload = function(){
+        var clicklist = document.getElementsByClassName("set-email__select-btn");
+        var checklist = document.getElementsByClassName("selector-language__btn");
+        for(var i = 0; i<clicklist.length;i++){
+          clicklist[i].onclick = function(){
+            if(this.classList.contains("set-email__selector-tip")){
+              this.classList.remove("set-email__selector-tip");
+              this.classList.add("set-email__tip-selected");
+            }else{
+              this.classList.remove("set-email__tip-selected");
+              this.classList.add("set-email__selector-tip");
+            }
+          }
+        }
+        for(var i = 0; i < checklist.length; i++){
+          checklist[i].onclick = function(){
+            if(this.classList.contains("check_language")){
+              document.getElementsByClassName("check_language-selected")[0].classList.add("check_language");
+              document.getElementsByClassName("check_language-selected")[0].classList.remove("check_language-selected");
+              this.classList.add("check_language-selected");
+              this.classList.remove("check_language");
+            }
+        }
+      }
+    } 
+  </script>
+</head>
+<body>
+  <div class="page-box">
+    <div class="set-container">
+      <div class="set-container__left">
+        <div class="psn-Setup__title">个人设置</div>
+        <div class="psn-Setup__item">
+          <i class="psn-Setup__item-tip set-password__main-tip"></i>
+          <div class="psn-Setup__item-title">密码重置</div>
+        </div>
+        <div class="psn-Setup__item">
+          <i class="psn-Setup__item-tip set-privacy__main-tip"></i>
+          <div class="psn-Setup__item-title">隐私设置</div>
+        </div>
+        <div class="psn-Setup__item psn-Setup__item-selctor">
+          <i class="psn-Setup__item-tip set-attention__main-tip"></i>
+          <div class="psn-Setup__item-title">关注设置</div>
+        </div>
+        <div class="psn-Setup__item">
+          <i class="psn-Setup__item-tip set-email__main-tip"></i>
+          <div class="psn-Setup__item-title">邮件设置</div>
+        </div>
+        <div class="psn-Setup__item">
+          <i class="psn-Setup__item-tip merge-account__main-tip"></i>
+          <div class="psn-Setup__item-title">合并设置</div>
+        </div>
+      </div>
+      <div class="set-container__right">
+        <div class="set-email__main-title">
+          <span class="set-email__main-heading">邮件设置</span>
+        </div>
+        <div class="set-email__container">
+          <div class="set-email__container-subheading">邮件通知:</div>
+          <div class="set-email__slector-container">
+            <div class="set-email__slector-container__header">
+              <div class="set-email__slector-container__list">好友相关</div>
+              <div class="set-email__slector-container__list">群组相关</div>
+              <div class="set-email__slector-container__list">相关推荐</div>
+              <div class="set-email__slector-container__list">科研动态</div>
+              <div class="set-email__slector-container__list">网站功能</div>
+            </div>
+            <div class="set-email__slector-container__content">
+              <div class="set-email__selector-list" style="border-style: none;">
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__tip-selected set-email__select-btn"></i> <span class="set-email__tip-content">邀请加为好友</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">好友动态</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">好友推荐</span>
+                </div>
+              </div>
+              <div class="set-email__selector-list">
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__tip-selected set-email__select-btn"></i> <span class="set-email__tip-content">加入群组邀请</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">申请加入群组</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">群组通告</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">群组新增文件</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">群组文件邀请</span>
+                </div>
+              </div>
+              <div class="set-email__selector-list">
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__tip-selected set-email__select-btn"></i> <span class="set-email__tip-content">基金机会推荐</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">期刊推荐</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">论文推荐</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">领域推荐</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">合作者推荐</span>
+                </div>
+              </div>
+              <div class="set-email__selector-list">
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__tip-selected set-email__select-btn"></i> <span class="set-email__tip-content">科技影响力分析统计</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">上传全文推荐</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">引用更新</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">成果认领</span>
+                </div>
+              </div>
+              <div class="set-email__selector-list">
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__tip-selected set-email__select-btn"></i> <span class="set-email__tip-content">首要邮件设置</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">登录账号设置</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">邮件验证</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">资源分享</span>
+                </div>
+                <div class="set-email__selector-list__box">
+                  <i class="set-email__selector-tip set-email__select-btn"></i> <span class="set-email__tip-content">站内消息</span>
+                </div>
+              </div>
+            </div>
+            <div class="check-language">
+              <span>选择你要接收邮件的语言:</span>
+              <div class="check-language__list">
+                <i class="selector-language__btn check_language"></i><span>中文</span>
+              </div>
+              <div class="check-language__list">
+                <i class="selector-language__btn check_language-selected"></i><span>英文</span>
+              </div>
+            </div>
+            <div class="set-email__forsave">
+              <div class="set-email__savebtn savebtn_spcset">保存并修改</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

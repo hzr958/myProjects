@@ -1,0 +1,15 @@
+%0 Patent
+%A ${pubAuthors}
+%D ${year}
+%T ${pubTitle}
+%C ${country}
+%9 ${patentType}
+%! ${pubTitle}
+%@ ${patentNumber}
+%L ${patentApplier}
+%R ${doi}
+%K ${keywords}
+%X ${abstract}
+%Z ${remark}
+%U ${fullTextUrl}
+%P ${patentStatus}

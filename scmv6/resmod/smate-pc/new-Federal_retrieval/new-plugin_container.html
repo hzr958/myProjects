@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/scmpcframe.css">
+<script type="text/javascript">
+		window.onload = function(){
+    		if(document.getElementsByClassName("new-searchplugin_container").length>0){
+    			var pluginele = document.getElementsByClassName("new-searchplugin_container")[0];
+    			var pluginclose = document.getElementsByClassName("new-searchplugin_container-close");
+    			pluginele.style.left = (window.innerWidth - pluginele.offsetWidth)/2 + "px";
+                pluginele.style.bottom = (window.innerHeight - pluginele.offsetHeight)/2 + "px";
+                window.onresize = function(){
+                	pluginele.style.left = (window.innerWidth - pluginele.offsetWidth)/2 + "px";
+                    pluginele.style.bottom = (window.innerHeight - pluginele.offsetHeight)/2 + "px";
+                };
+                for(var i = 0; i < pluginclose.length; i++){
+                    pluginclose[i].onclick = function(){
+                    	this.closest(".new-searchplugin_container").style.bottom = -300 + 'px';
+                    	this.closest(".background-cover").style.display = "none";
+                    }
+                };
+    		}
+    	}
+	</script>
+</head>
+<body>
+  <div class="background-cover">
+    <div class="new-searchplugin_container">
+      <div class="new-searchplugin_container-header">
+        <span class="new-searchplugin_container-header_detaile">提示</span> <i
+          class="new-searchplugin_container-header_close new-searchplugin_container-close"></i>
+      </div>
+      <div class="new-searchplugin_container-body">
+        <div class="new-searchplugin_container-body_tip">
+          <i class="new-searchplugin_container-body_tipicon"></i> <span
+            class="new-searchplugin_container-body_tipcontent">您需要先安装跨文献库检索工具才能进行检索,点击<span
+            class="new-searchplugin_container-body_tipcontent-comfire  new-searchplugin_container-close">[确定]</span>开始安装
+          </span>
+        </div>
+      </div>
+      <div class="new-searchplugin_container-footer">
+        <div class="new-searchplugin_container-footer_cancel new-searchplugin_container-close">取消</div>
+        <div class="new-searchplugin_container-footer_comfire new-searchplugin_container-close">确定</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

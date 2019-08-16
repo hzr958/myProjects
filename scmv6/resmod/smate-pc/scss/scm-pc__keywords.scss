@@ -1,0 +1,203 @@
+//KEYWORDS START
+@mixin keyword-chip {
+	background-color: #ebf4ff;
+	text-align: center;
+	border-radius: 0px;
+	@include single-line-text;
+}
+.kw__box { //use for display read-only property of keywords or research area
+    display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+	color: $light-theme-monochrome2;
+    .kw-chip_small {
+            @include keyword-chip;
+            height: 22px;
+            padding: 0 6px;
+            font-size: 14px;
+            line-height: 21px;
+            margin: 4px 4px 4px 0;
+            .kw-chip_small-num{
+                min-width: 0px;
+            }
+            .normal-global_del-icon{
+                /* display: none;*/
+            }
+            .normal-global_del-icon_show{
+       	        visibility: hidden;
+            }
+            &:hover .normal-global_del-icon_show{
+       	        visibility: visible;
+            }
+            &:hover .normal-global_del-icon{
+                 display: flex;
+            }
+    }
+    .kw-chip_container{
+       display: flex; 
+       align-items: center;
+       margin: 0px 6px;
+       .kw-chip_small {
+            @include keyword-chip;
+            height: 22px;
+            padding: 0 6px;
+            font-size: 14px;
+            line-height: 21px;
+            margin: 4px 0px 4px 0;
+            display: flex;
+            .kw-chip_small-num{
+                min-width: 0px;
+            }
+	    }
+        .kw-chip_container-func{
+            visibility: hidden;
+        }
+        &:hover .kw-chip_container-func{
+             visibility: visible;
+        }
+        .normal-global_del-icon_show{
+       	    visibility: hidden;
+        }
+        &:hover .normal-global_del-icon_show{
+       	   visibility: visible;
+        }
+    }
+	.kw-chip_medium {
+		@include keyword-chip;
+		padding: 0 8px;
+		font-size: 16px;
+		line-height: 28px;
+        height: 28px;
+		margin: 6px 12px 6px 0;
+	}
+	.kw-stick {
+		overflow: hidden;
+		border-radius: 4px;
+		height: 32px;
+		border: $divider;
+		margin: 8px 16px 8px 0;
+		font-size: 14px;
+		color: $light-theme-monochrome1;
+		display: flex;
+		.kw-stick__stats {
+			flex-shrink: 0;
+			line-height: 32px;
+			background-color: rgba(0,0,0,0.12);
+			padding: 0 8px;
+			cursor: pointer;
+		}
+		.kw-stick__word {
+			line-height: 32px;
+			border-left: $divider;
+			padding: 0 8px;
+			@include single-line-text;
+		}
+        .kw-stick__word-normal_size{
+            max-width: 470px!important;
+        }
+		.kw-stick__endorse {
+			width: 32px;
+			border-left: $divider;
+			color: green;
+			cursor: pointer;
+			@include flex-strictly-center;
+		}
+	}
+    .kw-stick_box-add{
+        color: #333!important;
+        &:hover{
+           color: green!important;
+        }
+    }
+  
+}
+.drawer-batch__content{
+    .kw__box { //use for display read-only property of keywords or research area
+    display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+	color: $light-theme-monochrome2;
+    .kw-chip_small {
+            @include keyword-chip;
+            height: 22px;
+            padding: 0 6px;
+            font-size: 14px;
+            line-height: 21px;
+            margin: 4px 4px 4px 0;
+            .kw-chip_small-num{
+                min-width: 0px;
+            }
+            .normal-global_del-icon{
+                 display: none;
+            }
+            .normal-global_del-icon_show{
+       	        display: none;
+            }
+    }
+    .kw-chip_container{
+       display: flex; 
+       align-items: center;
+       .kw-chip_small {
+            @include keyword-chip;
+            height: 22px;
+            padding: 0 6px;
+            font-size: 14px;
+            line-height: 22px;
+            margin: 4px 4px 4px 0;
+            display: flex;
+            .kw-chip_small-num{
+                min-width: 0px;
+            }
+	    }
+        .kw-chip_container-func{
+            margin-right: 12px;
+            display: none;
+        }
+    }
+	.kw-chip_medium {
+		@include keyword-chip;
+		padding: 0 8px;
+		font-size: 16px;
+		line-height: 28px;
+		margin: 6px 12px 6px 0;
+	}
+	.kw-stick {
+		overflow: hidden;
+		border-radius: 4px;
+		height: 32px;
+		border: $divider;
+		margin: 8px 16px 8px 0;
+		font-size: 14px;
+		color: $light-theme-monochrome1;
+		display: flex;
+		.kw-stick__stats {
+			flex-shrink: 0;
+			line-height: 32px;
+			background-color: rgba(0,0,0,0.12);
+			padding: 0 8px;
+			cursor: pointer;
+		}
+		.kw-stick__word {
+			line-height: 32px;
+			border-left: $divider;
+			padding: 0 8px;
+			@include single-line-text;
+		}
+		.kw-stick__endorse {
+			width: 32px;
+			border-left: $divider;
+			color: green;
+			cursor: pointer;
+			@include flex-strictly-center;
+            .kw-stick_box-add:hover{
+                color: green!important;
+            }
+            .kw-stick__endorse:hover .kw-stick_box-add{
+                color: green!important;
+            }
+		}
+	}
+}
+}
+//KEYWORDS END
+

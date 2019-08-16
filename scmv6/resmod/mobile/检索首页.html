@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+  content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>科研之友-微信端</title>
+<link href="css/common.css" rel="stylesheet" type="text/css">
+<link href="css/mobile.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script type=text/javascript>
+        function setTab(name,cursel,n){
+            for(i=1;i<=n;i++){
+                var menu=document.getElementById(name+i);
+                var con=document.getElementById("con_"+name+"_"+i);
+                menu.className=i==cursel?"hover":"";
+                con.style.display=i==cursel?"block":"none";
+            }
+        }
+    </script>
+</head>
+<body class="retrieve_bg">
+  <div class="m-top">
+    <input required placeholder="输入关键词检索" class="top_input sl_box1 fl" /><a href="javascript:;" class="clear"><i
+      class="material-icons clear">clear_black</i></a> <input value="搜索" type="button" class="t-ensure-btn">
+  </div>
+  <div class="top_clear"></div>
+  <div class="content">
+    <div class="may_like">
+      <h1>我可能感兴趣的</h1>
+      <ul class="drop-shadow curved curved-hz-1">
+        <li class="paper_box"><a href="#"><i class="paper_icon"></i><span>论文</span></a></li>
+        <li class="patent_box"><a href="#"><i class="patent_icon"></i><span>专利</span></a></li>
+        <li class="person_box"><a href="#"><i class="person_icon"></i><span>人员</span></a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

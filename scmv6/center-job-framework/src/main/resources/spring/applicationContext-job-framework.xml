@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:task="http://www.springframework.org/schema/task"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+  default-lazy-init="false">
+
+  <task:executor id="executor" pool-size="10"/>
+  <task:scheduler id="scheduler" pool-size="10"/>
+  <task:annotation-driven executor="executor" scheduler="scheduler"/>
+
+  <bean class="com.smate.center.job.framework.util.SpringUtil"/>
+
+  <!--整合EhCache -->
+  <bean id="ehCacheManagerFactory"
+    class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+    <property name="configLocation" value="classpath:ehcache.xml"/>
+  </bean>
+  <!--获取EhCacheCacheManager实例 -->
+  <bean id="ehCacheCacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+    <property name="cacheManager" ref="ehCacheManagerFactory"/>
+  </bean>
+
+  <bean id="jobConf" class="com.smate.center.job.framework.support.JobConfig">
+    <property name="currentServerName" value="${SERVER_NAME}"/>
+    <property name="currentServerIP" value="${SERVER_IP}"/>
+  </bean>
+
+  <!-- 启动自动扫描指定包极其子包下的所有bean类，排除@Controller组件，该组件由SpringMVC配置文件扫描 -->
+  <context:component-scan base-package="com.smate.center.job.framework">
+    <context:exclude-filter type="annotation"
+      expression="org.springframework.stereotype.Controller"/>
+  </context:component-scan>
+
+  <!--定义dozer mapper单例-->
+  <bean id="mapper" class="com.github.dozermapper.spring.DozerBeanMapperFactoryBean">
+    <property name="mappingFiles">
+      <list>
+        <value>classpath:dozer/*mapping.xml</value>
+      </list>
+    </property>
+  </bean>
+</beans>

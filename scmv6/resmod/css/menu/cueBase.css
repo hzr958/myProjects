@@ -1,0 +1,116 @@
+html {
+  background: url(../../images/page_bg.gif) repeat-x #fff;
+}
+
+body {
+  color: #000;
+  font-size: 12px;
+  font-family: Arial, 宋体, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  margin: 0 auto;
+  width: 980px;
+}
+
+#footer {
+  margin-top: 10px;
+  bottom: 0;
+  padding-top: 5px;
+  width: 100%;
+  text-align: center;
+  background: url(../../images/menu/down-dw.gif) repeat-x;
+  height: 55px;
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+A {
+  COLOR: #fff;
+  BACKGROUND-COLOR: transparent;
+  TEXT-DECORATION: none
+}
+
+A:link {
+  BACKGROUND-COLOR: transparent
+}
+
+A:visited {
+  BACKGROUND-COLOR: transparent
+}
+
+A:active {
+  BACKGROUND-COLOR: transparent;
+  TEXT-DECORATION: none
+}
+
+A:hover {
+  TEXT-DECORATION: underline
+}
+
+.simple_table th a {
+  color: #114473;
+}
+
+hr {
+  margin-bottom: 8px;
+  border: none;
+  background: none;
+  clear: both;
+  border-top: #e6e6e6 1px dotted;
+}
+
+h1 {
+  font-size: 24px;
+  FONT-WEIGHT: bold;
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  font-size: 22px;
+  FONT-WEIGHT: bold;
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  font-size: 20px;
+  FONT-WEIGHT: bold;
+  padding: 0;
+  margin: 0;
+}
+
+h4 {
+  font-size: 18px;
+  FONT-WEIGHT: bold;
+  padding: 0;
+  margin: 0;
+}
+
+h5 {
+  FONT-SIZE: 16px;
+  FONT-WEIGHT: bold;
+  padding: 0;
+  margin: 0;
+}
+
+h6 {
+  FONT-SIZE: 14px;
+  FONT-WEIGHT: bold;
+  padding: 0;
+  margin: 0;
+}
+
+P {
+  LINE-HEIGHT: 1.4em
+}
+
+TD {
+  LINE-HEIGHT: 1.4em
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+	<link href="../../mobile/css/mobile.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+		window.onload = function(){
+            var target = document.getElementsByClassName("new-mible_downloadapp-top_tip")[0];
+            target.style.left = (window.innerWidth - 240)/2 + "px";
+            window.onresize = function(){
+            	target.style.left = (window.innerWidth - 240)/2 + "px";
+            }
+		}
+	</script>
+</head>
+<body>
+    <div class="new-mible_downloadapp-container">
+    	
+    	<div class="new-mible_downloadapp-top">
+    		<div class="new-mible_downloadapp-top_tip"></div>
+    	</div>
+    	<div class="new-mible_downloadapp-body">
+    		
+    		<div class="new-mible_downloadapp-body_code"></div>
+    		<div class="new-mible_downloadapp-body_btn">扫一扫,下载科研之友客户端</div>
+    		<div class="new-mible_downloadapp-body_tip">
+    			打造智慧科研平台,成就创新梦想。
+    		</div>
+    	</div>
+    </div>
+</body>
+</html>

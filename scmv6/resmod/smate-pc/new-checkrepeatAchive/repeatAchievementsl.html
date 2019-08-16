@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="scmpcframe.css">
+<script type="text/javascript" src="pub.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		document.getElementById("dd").onclick = function(){ 
+            var box = document.getElementsByClassName("repeat_achive-container")[0];
+	        positionfix({screentarget:box});
+		}
+	 
+	}
+    </script>
+</head>
+<body style="margin: 0 auto;">
+  <div id="dd">ddd</div>
+  <!-- 要用到的HTML代码 -->
+  <div class="bckground-cover" style="display: none;">
+    <div class="repeat_achive-container">
+      <div class="repeat_achive-container_header">
+        <span class="repeat_achive-container_header-title">重复成果</span> <i
+          class="material-icons repeat_achive-container_header-icon"></i>
+      </div>
+      <div class="repeat_achive-container_body">
+        <div class="repeat_achive-container_body-item">
+          <div class="repeat_achive-container_body-item_avator">
+            <img src="../img/file.png">
+          </div>
+          <div class="repeat_achive-container_body-item_infor">
+            <div class="repeat_achive-container_body-item_infor-title">Synthesis, characterization and catalytic
+              activity of a cobalt catalyst: Silica-supported, bis(1,5-diphenyl-1,3,5-pentanetrionato)dicobalt(II)
+              [Co-2(dba)(2)]</div>
+            <div class="repeat_achive-container_body-item_infor-author">Ranaweera, S. A.; Rowe, M. D.; Ranaweera,
+              S. A.; Rowe, M. D.; Ranaweera, S. A.; Rowe, M. D.; Ranaweera, S. A.; Rowe, M. D.; Ranaweera, S. A.; Rowe,
+              M. D.;</div>
+            <div class="repeat_achive-container_body-item_infor-time">Applied Catalysis A: General, 529, pp
+              108-117, 2017.1.5Applied Catalysis A: General, 529, pp 108-117, 2017.1.5</div>
+          </div>
+          <div class="repeat_achive-container_body-item_reflash">
+            <span class="repeat_achive-container_body-item_reflash-time">2018.5.1</span> <span
+              class="repeat_achive-container_body-item_reflash-content">最后更新</span>
+          </div>
+          <div class="repeat_achive-container_body-item_check">查看</div>
+        </div>
+      </div>
+      <div class="repeat_achive-container_footer">
+        <div class="repeat_achive-container_footer-continue positionfix-cancle">不重复,继续编辑</div>
+        <div class="repeat_achive-container_footer-cancle positionfix-cancle">重复,取消编辑</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

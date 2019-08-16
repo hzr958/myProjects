@@ -1,0 +1,115 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*=============检索步骤样式==============*/
+.procedure2 {
+  width: 100%;
+  height: 51px;
+  background-repeat: repeat-x;
+  background-position: 0px -156px;
+}
+
+.procedure2 ul li {
+  float: left;
+}
+
+.procedure2, .pro02_bj01, .pro02_bj001, .pro02_bj02, .pro03_bj03, .pro02_bj03 {
+  background-image: url(../../images/step.png);
+}
+
+.pro02_bj01 {
+  background-repeat: no-repeat;
+  width: 6px;
+  height: 51px;
+  float: left;
+}
+
+.pro02_bj001 {
+  background-repeat: no-repeat;
+  background-position: -10px -52px;
+  width: 21px;
+  height: 51px;
+  float: left;
+}
+
+.pro02_bj02 {
+  background-repeat: repeat-x;
+  height: 36px;
+  float: left;
+  padding: 0px 30px 0px 15px;
+  color: #FFF;
+  text-align: left;
+  padding-top: 15px;
+  font-size: 14px;
+  width: auto;
+  min-width: 100px;
+}
+
+.pro02_bj03 {
+  background-repeat: no-repeat;
+  background-position: 0px -104px;
+  width: 21px;
+  height: 51px;
+  float: left;
+}
+
+.pro03_bj02 {
+  padding: 0px 30px 0px 15px;
+  color: #333;
+  text-align: left;
+  padding-top: 15px;
+  font-size: 14px;
+  float: left;
+  min-width: 100px;
+  width: auto;
+}
+
+.pro03_bj03 {
+  background-repeat: no-repeat;
+  background-position: -25px -104px;
+  width: 21px;
+  height: 51px;
+  float: left;
+}
+
+/*=============成果导入结果页面==============*/
+.P_f_pic_imp { /*float:left;*/
+  width: 100%;
+  height: 200px;
+  overflow-y: auto;
+  padding-top: 10px;
+}
+/* .P_f_pic_imp ul li{ float:left; margin-left:10px; display:inline;} */
+.P_f_pic_imp ul li a {
+  background: none;
+  width: 147px;
+  height: 54px;
+  display: block;
+  padding-top: 4px;
+  padding-left: 4px;
+  color: #545454;
+  text-decoration: none;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+/* .P_f_pic_imp ul li a:hover{ background:url(../../images/icon_hover1_bj.gif) no-repeat; width:147px; height:54px; display:block; padding-top:4px; padding-left:4px; color:#545454; text-decoration:none; margin-bottom:8px; padding-bottom:0px; cursor:pointer;} */
+.P_f_pic_imp ul {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.P_f_pic_imp ul li {
+  display: inline;
+  height: 56px;
+  line-height: 56px;
+  margin: 8px;
+}
+
+.P_f_pic_imp ul li:hover {
+  border: 1px solid green;
+  padding: -2px;
+}
+
+.P_f_pic_imp ul li a {
+  display: flex;
+}

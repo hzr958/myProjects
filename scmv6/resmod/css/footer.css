@@ -1,0 +1,57 @@
+/* CSS Design by Semon */
+#footer_nav {
+  width: 980px;
+  margin: 0 auto;
+}
+
+#box_footer {
+  width: 980px;
+  margin: 10px 0px 10px 0px;
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  border-top: #105BAC 1px solid;
+  overflow: hidden;
+  float: left;
+}
+
+#box_footer a {
+  text-decoration: none;
+  font-size: 12px;
+}
+
+#box_footer a:hover {
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+#box_footer_left {
+  width: 60%;
+  color: #757575;
+  margin-top: 1px;
+  border-top: #D1D1D1 1px solid;
+  height: 35px;
+  line-height: 35px;
+  float: left;
+}
+
+#box_footer_right {
+  width: 40%;
+  color: #0000CC;
+  margin-top: 1px;
+  border-top: #D1D1D1 1px solid;
+  height: 35px;
+  line-height: 35px;
+  text-align: right;
+  float: left;
+}
+
+#box_footer_center {
+  width: 100%;
+  color: #0000CC;
+  margin-top: 1px;
+  border-top: #D1D1D1 1px solid;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  float: left;
+}

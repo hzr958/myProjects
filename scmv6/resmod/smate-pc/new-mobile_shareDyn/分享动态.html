@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../../mobile/css/mobile.css">
+    <script type="text/javascript">
+       window.onload = function(){
+           var containerele = document.getElementsByClassName("new-mobile_sharedyn-container")[0];
+           containerele.style.height = window.innerHeight - 56 + "px";
+           window.onresize = function(){
+               containerele.style.height = window.innerHeight - 56 + "px";
+           }
+       }
+    </script>
+</head>
+<body>  
+    <div class="message-page__header">
+    	<span class="new-mobile_sharedyn-item">取消</span>
+    	<span class="new-mobile_sharedyn-title">分享至动态</span>
+    	<span class="new-mobile_sharedyn-item">发布</span>
+    </div>
+    <div class="new-mobile_sharedyn-container">
+    	<div class="new-mobile_sharedyn-shareitem">
+    		<div class="new-mobile_sharedyn-shareitem_detail">分享留言</div>
+    		<i class="material-icons new-mobile_sharedyn-shareitem_close">close</i>
+    	</div>
+    	<div class="new-mobile_sharedyn-input">
+    		<textarea placeholder="分享留言" class="new-mobile_sharedyn-input_box"></textarea>
+    	</div>
+    </div>
+</body>  
+</html>

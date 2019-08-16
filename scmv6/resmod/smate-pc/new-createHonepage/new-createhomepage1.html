@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/scmpcframe.css">
+	<script type="text/javascript">
+		window.onload=function(){
+			var keylist = document.getElementsByClassName("create-InstitutionalGroups_header-item");
+			for(var i = 0;i < keylist.length;i++){
+                keylist[i].addEventListener("click",function(){
+                	if(!this.classList.contains("create-InstitutionalGroups_header-checked")){
+                        document.getElementsByClassName("create-InstitutionalGroups_header-checked")[0].classList.remove("create-InstitutionalGroups_header-checked");
+                        this.classList.add("create-InstitutionalGroups_header-checked");
+                        if(this.getAttribute("data-show") == "mine-focus"){
+                            document.getElementsByClassName("create-InstitutionalGroups_body")[0].style.display = "flex";
+                            document.getElementsByClassName("create-InstitutionalGroups_body")[1].style.display = "none";
+                        }else{
+                            document.getElementsByClassName("create-InstitutionalGroups_body")[1].style.display = "flex";
+                            document.getElementsByClassName("create-InstitutionalGroups_body")[0].style.display = "none";
+                        }
+                	}
+                })
+			}
+			
+		}
+	</script>
+</head>
+<body>
+
+    <div class="create-InstitutionalGroups_container">
+    	<div class="create-InstitutionalGroups_header">
+    		<div class="create-InstitutionalGroups_header-box">
+    			<span class="create-InstitutionalGroups_header-item create-InstitutionalGroups_header-checked" data-show="mine-focus">我的主页</span>
+    			<span class="create-InstitutionalGroups_header-item" data-show="Exten-item">我关注的</span>
+    		</div>
+    		<div class="create-InstitutionalGroups_header-btn">
+    			<div class="create-InstitutionalGroups_header-icon">+</div>
+    			<span class="create-InstitutionalGroups_header-detail">创建机构主页</span>
+    		</div>
+    	</div>
+    	<div class="create-InstitutionalGroups_body" >
+
+
+
+
+
+
+    		<div class="create-InstitutionalGroups_body-item">
+                <div class="create-InstitutionalGroups_item-avator">
+    				<img src="">
+    		    </div>
+                <div class="create-InstitutionalGroups_item-body">
+                	<div>
+                		<div class="create-InstitutionalGroups_item-title">
+                		 	React主要用于构建UI，很多人认为 React 是 MVC 中的 V（视图）
+                		</div>
+                		<div class="create-InstitutionalGroups_item-count">
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+						</div>
+                	</div>
+                	<div>
+                     	<div class="create-InstitutionalGroups_item-cancle">取消关注</div>
+    				    
+    			    </div>
+                </div>
+    		</div>
+
+
+
+
+
+
+
+
+
+            
+            <div class="create-InstitutionalGroups_body-item">
+                <div class="create-InstitutionalGroups_item-avator">
+    				<img src="">
+    		    </div>
+                <div class="create-InstitutionalGroups_item-body">
+                	<div>
+                		<div class="create-InstitutionalGroups_item-title">
+                		 	React主要用于构建UI，很多人认为 React 是 MVC 中的 V（视图）
+                		</div>
+                		<div class="create-InstitutionalGroups_item-count">
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		
+						</div>
+                	</div>
+                	<div>
+                     	<div class="create-InstitutionalGroups_item-cancle">
+    					    取消关注
+    				    </div>
+
+    			    </div>
+                </div>
+    		</div>
+
+
+    		    <div class="create-InstitutionalGroups_body-item">
+                <div class="create-InstitutionalGroups_item-avator">
+    				<img src="">
+    		    </div>
+                <div class="create-InstitutionalGroups_item-body">
+                	<div>
+                		<div class="create-InstitutionalGroups_item-title">
+                		 	React主要用于构建UI，很多人认为 React 是 MVC 中的 V（视图）
+                		</div>
+                		<div class="create-InstitutionalGroups_item-count">
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		
+						</div>
+                	</div>
+                	<div>
+                     	<div class="create-InstitutionalGroups_item-cancle">
+    					    取消关注
+    				    </div>
+    				    
+    			    </div>
+                </div>
+    		</div>    <div class="create-InstitutionalGroups_body-item">
+                <div class="create-InstitutionalGroups_item-avator">
+    				<img src="">
+    		    </div>
+                <div class="create-InstitutionalGroups_item-body">
+                	<div>
+                		<div class="create-InstitutionalGroups_item-title">
+                		 	React主要用于构建UI，很多人认为 React 是 MVC 中的 V（视图）
+                		</div>
+                		<div class="create-InstitutionalGroups_item-count">
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		
+						</div>
+                	</div>
+                	<div>
+                     	<div class="create-InstitutionalGroups_item-cancle">
+    					    取消关注
+    				    </div>
+    				    
+    			    </div>
+                </div>
+    		</div>
+    	</div>
+
+    	<div class="create-InstitutionalGroups_body"  style="display: none;">
+    		
+    		<div class="create-InstitutionalGroups_body-item">
+                <div class="create-InstitutionalGroups_item-avator">
+    				<img src="">
+    		    </div>
+                <div class="create-InstitutionalGroups_item-body">
+                	<div>
+                		<div class="create-InstitutionalGroups_item-title">
+                		 	React主要用于构建UI，很多人认为 React 是 MVC 中的 V（视图）
+                		</div>
+                		<div class="create-InstitutionalGroups_item-count">
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		
+						</div>
+                	</div>
+                	<div>
+                     	<div class="create-InstitutionalGroups_item-Admin">进入管理</div>
+    				    <div class="create-InstitutionalGroups_item-Exten">推广</div>
+    			    </div>
+                </div>
+    		</div>
+
+    		<div class="create-InstitutionalGroups_body-item">
+                <div class="create-InstitutionalGroups_item-avator">
+    				<img src="">
+    		    </div>
+                <div class="create-InstitutionalGroups_item-body">
+                	<div>
+                		<div class="create-InstitutionalGroups_item-title">
+                		 	React主要用于构建UI，很多人认为 React 是 MVC 中的 V（视图）
+                		</div>
+                		<div class="create-InstitutionalGroups_item-count">
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		
+						</div>
+                	</div>
+                	<div>
+                     	<div class="create-InstitutionalGroups_item-Admin">进入管理</div>
+    				    <div class="create-InstitutionalGroups_item-Exten">推广</div>
+    			    </div>
+                </div>
+    		</div>
+
+    		<div class="create-InstitutionalGroups_body-item">
+                <div class="create-InstitutionalGroups_item-avator">
+    				<img src="">
+    		    </div>
+                <div class="create-InstitutionalGroups_item-body">
+                	<div>
+                		<div class="create-InstitutionalGroups_item-title">
+                		 	React主要用于构建UI，很多人认为 React 是 MVC 中的 V（视图）
+                		</div>
+                		<div class="create-InstitutionalGroups_item-count">
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		<div class="create-InstitutionalGroups_countbox">
+				    			<span class="create-InstitutionalGroups_countbox-title">25666</span>
+				    			<span class="create-InstitutionalGroups_countbox-num">阅读</span>
+				    		</div>
+				    		
+						</div>
+                	</div>
+                	<div>
+                     	<div class="create-InstitutionalGroups_item-Admin">进入管理</div>
+    				    <div class="create-InstitutionalGroups_item-Exten">推广</div>
+    			    </div>
+                </div>
+    		</div>
+
+
+
+
+
+
+    	</div>
+    </div>
+</body>
+</html>

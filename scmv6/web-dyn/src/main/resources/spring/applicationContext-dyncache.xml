@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+  default-lazy-init="true">
+  <description>缓存服务</description>
+  <!-- mem缓存实现类 -->
+  <bean id="memCacheService" class="com.smate.web.dyn.cache.MemCacheServiceImpl">
+    <property name="memcacheClient" ref="memcacheClient"></property>
+  </bean>
+</beans>

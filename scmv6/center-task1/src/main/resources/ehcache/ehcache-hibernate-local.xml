@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../config/ehcache.xsd">
+  <diskStore path="java.io.tmpdir/hibernate/center-batch" />
+  <defaultCache maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="1200"
+    timeToLiveSeconds="1200" overflowToDisk="true" maxElementsOnDisk="1000000" diskPersistent="false"
+    diskExpiryThreadIntervalSeconds="1200" memoryStoreEvictionPolicy="LRU" />
+  <!-- 查询单位缓存 -->
+  <cache name="autoCompleteInsNameCache" maxElementsInMemory="1000" eternal="false" overflowToDisk="true"
+    timeToIdleSeconds="36000" timeToLiveSeconds="36000" diskPersistent="false" />
+  <cache name="publicationCache" maxElementsInMemory="500" eternal="false" diskPersistent="false"
+    overflowToDisk="true" timeToIdleSeconds="36000" timeToLiveSeconds="100000" />
+  <!-- 机构匹配缓存 -->
+  <cache name="pubMatchCache" maxElementsInMemory="100000" eternal="false" overflowToDisk="true"
+    timeToIdleSeconds="36000" timeToLiveSeconds="36000" diskPersistent="false" maxElementsOnDisk="500000" />
+</ehcache>

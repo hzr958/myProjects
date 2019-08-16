@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<import resource="classpath:spring/applicationContext-batchjobcontext.xml"/>
+<import resource="classpath:spring/applicationContext-batchjobquartz.xml"/>
+
+<job id = "testJobStep1" xmlns="http://www.springframework.org/schema/batch">
+	<step id="taskMsgPreProcess">
+		<tasklet>
+			<chunk reader="testMarkerReader" writer="testMarkerWriter" commit-interval="1" retry-limit="5">
+				<retryable-exception-classes>
+					<include class="java.sql.SQLException" />
+					<include class="java.lang.RuntimeException" />
+				</retryable-exception-classes>
+			</chunk>
+		</tasklet>
+	</step>
+</job>
+
+<job id = "testJobStep2" xmlns="http://www.springframework.org/schema/batch">
+	<step id="readStep" next="decision">
+		<tasklet>
+			<chunk reader="testReader" writer="testWriter" commit-interval="1" retry-limit="5">
+				<retryable-exception-classes>
+					<include class="java.sql.SQLException" />
+					<include class="java.lang.RuntimeException" />
+				</retryable-exception-classes>
+			</chunk>
+		</tasklet>
+	</step>
+	
+	<!--在"on="设置跳转中的task名称，开头统一小写  -->
+	<decision id="decision" decider="taskExecutionDecider">
+		<next on="testJob1Info" to="testJob1Info"/>
+		<next on="testJob2Info" to="testJob2Info"/>
+		<next on="testJob3Info" to="testJob3Info"/>
+		<next on="testJob4Info" to="testJob4Info"/>
+		<next on="testJob5Info" to="testJob5Info"/>
+		<next on="null" to="testJob3Info"/>
+	</decision>
+	
+	<step id="testJob1Info">
+		<tasklet>
+			<chunk reader="testJob1Reader" writer="testJob1Writer" commit-interval="1" retry-limit="5">
+				<retryable-exception-classes>
+					<include class="java.sql.SQLException" />
+					<include class="java.lang.RuntimeException" />
+				</retryable-exception-classes>
+			</chunk>
+		</tasklet>
+	</step>
+	
+	<step id="testJob2Info">
+		<tasklet>
+			<chunk reader="testJob2Reader" writer="testJob2Writer" commit-interval="1" retry-limit="5">
+				<retryable-exception-classes>
+					<include class="java.sql.SQLException" />
+					<include class="java.lang.RuntimeException" />
+				</retryable-exception-classes>
+			</chunk>
+		</tasklet>
+	</step>	
+	
+	<step id="testJob3Info">
+		<tasklet>
+			<chunk reader="testJob3Reader" writer="testJob3Writer" commit-interval="1" retry-limit="5">
+				<retryable-exception-classes>
+					<include class="java.sql.SQLException" />
+					<include class="java.lang.RuntimeException" />
+				</retryable-exception-classes>
+			</chunk>
+		</tasklet>
+	</step>	
+	
+	<step id="testJob4Info">
+		<tasklet>
+			<chunk reader="testJob4Reader" writer="testJob4Writer" commit-interval="1" retry-limit="5">
+				<retryable-exception-classes>
+					<include class="java.sql.SQLException" />
+					<include class="java.lang.RuntimeException" />
+				</retryable-exception-classes>
+			</chunk>
+		</tasklet>
+	</step>	
+	
+	<step id="testJob5Info">
+		<tasklet>
+			<chunk reader="testJob5Reader" writer="testJob5Writer" commit-interval="1" retry-limit="5">
+				<retryable-exception-classes>
+					<include class="java.sql.SQLException" />
+					<include class="java.lang.RuntimeException" />
+				</retryable-exception-classes>
+			</chunk>
+		</tasklet>
+	</step>		
+	
+</job>
+
+	<bean id = "testMarkerReader" class="com.smate.batchtask.test.jobdetail.TestMarkerReader" scope="step">
+	</bean>
+	<bean id = "testMarkerWriter" class="com.smate.batchtask.test.jobdetail.TestMarkerWriter" scope="step">
+	</bean>
+
+	<bean id = "taskExecutionDecider" class="com.smate.batchtask.test.jobdetail.TestDecider">
+	</bean>
+
+	<bean id = "testReader" class="com.smate.batchtask.test.jobdetail.TestReader" scope="step">
+	</bean>
+	<bean id = "testWriter" class="com.smate.batchtask.test.jobdetail.TestWriter" scope="step">
+	</bean>
+
+	<bean id = "testJob1Reader" class="com.smate.batchtask.test.jobdetail.TestJob1Reader" scope="step">
+	</bean>
+	<bean id = "testJob1Writer" class="com.smate.batchtask.test.jobdetail.TestJob1Writer" scope="step">
+	</bean>
+
+	<bean id = "testJob2Reader" class="com.smate.batchtask.test.jobdetail.TestJob2Reader" scope="step">
+	</bean>
+	<bean id = "testJob2Writer" class="com.smate.batchtask.test.jobdetail.TestJob2Writer" scope="step">
+	</bean>
+
+	<bean id = "testJob3Reader" class="com.smate.batchtask.test.jobdetail.TestJob3Reader" scope="step">
+	</bean>
+	<bean id = "testJob3Writer" class="com.smate.batchtask.test.jobdetail.TestJob3Writer" scope="step">
+	</bean>
+
+	<bean id = "testJob4Reader" class="com.smate.batchtask.test.jobdetail.TestJob4Reader" scope="step">
+	</bean>
+	<bean id = "testJob4Writer" class="com.smate.batchtask.test.jobdetail.TestJob4Writer" scope="step">
+	</bean>
+
+	<bean id = "testJob5Reader" class="com.smate.batchtask.test.jobdetail.TestJob5Reader" scope="step">
+	</bean>
+	<bean id = "testJob5Writer" class="com.smate.batchtask.test.jobdetail.TestJob5Writer" scope="step">
+	</bean>
+
+</beans>

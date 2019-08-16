@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+  default-lazy-init="true">
+  <description>Spring公共配置文件</description>
+  <context:component-scan base-package="com.smate.center.oauth.service*"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.center.oauth.dao*" scoped-proxy="targetClass" />
+  <!-- utils包扫描 -->
+  <context:component-scan base-package="com.smate.core.base.utils.cache"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.core.base.utils.file" scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.core.base.utils.dao" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.utils.service.consts"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.utils.service.security.*"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.core.base.utils.wechat"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.core.base.utils.service.msg"
+    scoped-proxy="interfaces" />
+  <!-- email包扫描 -->
+  <context:component-scan base-package="com.smate.core.base.email.dao" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.email.service"
+    scoped-proxy="targetClass" />
+  <!-- public -->
+  <context:component-scan base-package="com.smate.core.base.psn.dao" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.psn.service"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.core.base.app.dao" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.app.service"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.consts.dao"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.consts.service"
+    scoped-proxy="interfaces" />
+  <!-- SCM-14486-移动端地址跳转功能 -->
+  <context:component-scan base-package="com.smate.center.oauth.filter" scoped-proxy="targetClass" />
+  <!-- 各个库的权限服务 -->
+  <bean id="sieAuthorityManager" class="com.smate.core.base.utils.service.security.SieAuthorityManagerImpl"></bean>
+  <bean id="sie6AuthorityManager" class="com.smate.core.base.utils.service.security.Sie6AuthorityManagerImpl"></bean>
+  <bean id="snsAuthorityManager" class="com.smate.core.base.utils.service.security.AuthorityManagerImpl"></bean>
+  <bean id="bpoAuthorityManager" class="com.smate.core.base.utils.service.security.BpoAuthorityManagerImpl"></bean>
+  <bean id="gxrolAuthorityManager" class="com.smate.core.base.utils.service.security.GxRolAuthorityManagerImpl"></bean>
+  <bean id="zsrolAuthorityManager" class="com.smate.core.base.utils.service.security.ZsRolAuthorityManagerImpl"></bean>
+  <bean id="hnrolAuthorityManager" class="com.smate.core.base.utils.service.security.HnRolAuthorityManagerImpl"></bean>
+  <bean id="utoLoginOauthInfoService" class="com.smate.core.base.utils.service.security.AutoLoginOauthInfoServiceImpl"></bean>
+  
+  <bean id="egtExpertAuthorityManager"
+    class="com.smate.core.base.utils.service.security.EgtExpertAuthorityManagerImpl"></bean>
+  <!-- 隐私权限 -->
+  <context:component-scan base-package="com.smate.core.base.privacy.dao"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.privacy.service*"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.center.mail.connector.service"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.center.mail.connector.dao"
+    scoped-proxy="targetClass" />
+  <!-- 数据库查询session对象定义 -->
+  <bean id="sessionFactoryMap" class="java.util.HashMap">
+    <constructor-arg>
+      <map>
+        <entry key="cas" value-ref="sessionFactory-cas"></entry>
+        <entry key="sns" value-ref="sessionFactory-sns"></entry>
+        <entry key="emailsrv" value-ref="sessionFactory-email"></entry>
+        <entry key="rol" value-ref="sessionFactory-sie"></entry>
+        <entry key="sie" value-ref="sessionFactory-sie6"></entry>
+        <entry key="bpo" value-ref="sessionFactory-bpo"></entry>
+        <entry key="gxrol" value-ref="sessionFactory-gxrol"></entry>
+        <entry key="zsrol" value-ref="sessionFactory-zsrol"></entry>
+        <entry key="stdrolhn" value-ref="sessionFactory-stdrolhn"></entry>
+        <entry key="egtexpert" value-ref="sessionFactory-egtexpert"></entry>
+      </map>
+    </constructor-arg>
+  </bean>
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" >
+  </bean>
+  
+  <bean id="restTemplate3sTimeout" class="org.springframework.web.client.RestTemplate" >
+  <constructor-arg>
+        <bean class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+            <property name="readTimeout" value="3000" />
+            <property name="connectTimeout" value="3000" />
+        </bean>
+    </constructor-arg>
+  </bean>
+  
+</beans>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+  default-lazy-init="true">
+  <description>缓存服务</description>
+  <!-- 定义受环境影响易变的变量 -->
+  <bean id="propertyPlaceholderConfigurer" class="com.smate.core.base.utils.factory.config.DynamicServerConfig">
+    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+    <property name="ignoreResourceNotFound" value="true" />
+    <property name="locations">
+      <list>
+        <value>classpath:config/system.development.properties</value>
+        <value>classpath:config/system.test.properties</value>
+        <value>classpath:config/system.uat.properties</value>
+        <value>classpath:config/system.run.properties</value>
+        <value>classpath:config/system.alpha.properties</value>
+      </list>
+    </property>
+  </bean>
+  <bean id="memcacheClient" class="com.smate.core.base.utils.cache.IrisMemcachedClientFactoryBean">
+    <property name="memcachedSrvUrls" value="${memcache.common.url}" />
+  </bean>
+  <!-- 权限用的缓存 -->
+  <bean id="memcacheSessionClient" class="com.smate.core.base.utils.cache.IrisMemcachedClientFactoryBean">
+    <property name="memcachedSrvUrls" value="${memcache.session.url}" />
+  </bean>
+  <!-- mem缓存实现类 -->
+  <bean id="oauthCacheService" class="com.smate.center.oauth.cache.OauthCacheServiceImpl">
+    <property name="memcacheClient" ref="memcacheSessionClient"></property>
+  </bean>
+  <bean id="cacheService" class="com.smate.core.base.utils.cache.SpyMemCacheServiceImpl">
+    <property name="memcacheClient" ref="memcacheClient"></property>
+  </bean>
+</beans>

@@ -1,0 +1,269 @@
+.cut_pic {
+  padding: 0 8px;
+}
+
+.target {
+  background-color: rgba(0, 0, 0, 0.12);
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.cut_pic-box {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  min-width: 560px;
+  min-height: 495px;
+  opacity: 1;
+  background-color: #Fff;
+  top: 1200px;
+  transition: top 300ms;
+  box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
+}
+
+.cut_pic-select {
+  position: relative;
+  margin: 8px 0px;
+  width: 148px;
+  height: 36px;
+  line-height: 36px;
+}
+
+.cut_pic-select-btn {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  cursor: pointer;
+  width: 135px;
+  height: 32px;
+  opacity: 0;
+}
+
+.cut_pic-select_load {
+  cursor: pointer;
+  width: 148px;
+  text-align: center;
+  height: 24px;
+  line-height: 24px;
+  margin-bottom: 2px;
+  border: 1px solid #c7c7c7;
+  cursor: pointer;
+}
+
+.cut_pic-select:hover .cut_pic-select_load {
+  border: 1px solid #2882d8;
+  color: #218aed;
+}
+
+.dragmove {
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #c7c7c7;
+  position: relative;
+  margin: 36px;
+}
+
+.cutpic-box {
+  box-sizing: border-box;
+  border: 1px dashed black;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  opacity: 0.5;
+  background-color: #fff;
+  top: 20px;
+  left: 30px;
+}
+
+.cut_pic-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  min-width: 360px;
+  min-height: 360px;
+  border-right: 1px dashed #ccc;
+  margin: 8px 0px;
+}
+
+.cutpic-box_top {
+  display: flex;
+  flex: 0 0 20px;
+}
+
+.cutpic-box_top-left {
+  cursor: se-resize;
+  flex: 0 0 20px;
+  text-align: center;
+}
+
+.cutpic-box_top-center {
+  cursor: s-resize;
+  flex: 1 0 20px;
+  text-align: center;
+}
+
+.cutpic-box_top-right {
+  cursor: ne-resize;
+  flex: 0 0 20px;
+  text-align: center;
+}
+
+.cutpic-box_center {
+  display: flex;
+  flex: 1 0 20px;
+}
+
+.cutpic-box_center-left {
+  cursor: w-resize;
+  flex: 0 0 20px;
+  text-align: center;
+}
+
+.cutpic-box_center-center {
+  cursor: move;
+  flex: 1 0 20px;
+  text-align: center;
+}
+
+.cutpic-box_center-right {
+  cursor: w-resize;
+  flex: 0 0 20px;
+  text-align: center;
+}
+
+.cutpic-box-bottom {
+  display: flex;
+  flex: 0 0 20px;
+}
+
+.cutpic-box_bottom-left {
+  cursor: ne-resize;
+  flex: 0 0 20px;
+  text-align: center;
+}
+
+.cutpic-box_bottom-center {
+  cursor: s-resize;
+  flex: 1 0 20px;
+  text-align: center;
+}
+
+.cutpic-box_bottom-right {
+  cursor: se-resize;
+  flex: 0 0 20px;
+  text-align: center;
+}
+
+.preview_box {
+  display: flex;
+  width: auto;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview_box-title {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.preview_box-showpic {
+  margin: 16px;
+}
+
+.select-btn {
+  display: flex;
+  margin: 16px 16px 16px 0;
+  justify-content: flex-end;
+}
+
+.select-btn_upload {
+  cursor: pointer;
+  margin: 0px 8px;
+  height: 28px;
+  line-height: 28px;
+  width:79px;
+  border: 1px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.select-btn_upload:hover {
+  color: #218aed;
+}
+
+.select-btn_giveup {
+  cursor: pointer;
+  margin: 0px 8px;
+  border: 1px solid #2882d8;
+  color: #2882d8;
+  width: 79px;
+  text-align: center;
+  background-color: #2882d8;
+  color: #fff;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 3px;
+}
+
+.select-btn_giveup:hover {
+  background: #218aed;
+}
+
+.cutpic-box_footer-func {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cutpic-box_footer-func_list {
+  height: 28px;
+  line-height: 28px;
+  margin: 0 36px 16px 36px;
+  cursor: pointer;
+  width: 79px;
+  text-align: center;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.cutpic-box_footer-func_list:hover {
+  color: #218aed;
+  border: 1px solid #218aed;
+}
+
+#newscan {
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 38px;
+}
+
+.cut_pic-item {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  margin: 16px 0;
+}
+
+.cut_pic-header {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 16px;
+  padding-left: calc(100% -16px);
+}

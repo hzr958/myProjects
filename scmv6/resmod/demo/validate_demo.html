@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>smate validate demo</title>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/smate.validate.css" />
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script src="../js/jquery.validate.js" type="text/javascript"></script>
+<script type="text/javascript">
+$().ready(function() {
+	// validate signup form on keyup and submit
+	$("#signupForm").validate({
+		rules: {
+			username: {
+				required: true,
+				minlength: 2
+			},
+			password: {
+				required: true,
+				minlength: 2
+			},
+			confirm_password: {
+				required: true,
+				minlength: 2,
+				equalTo: "#password"
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			topic: {
+				required: "#newsletter:checked",
+				minlength: 2
+			},
+			agree: "required",
+			gender: "required",
+			spam: "required",
+			jungle: "required",
+			avatar: "required"
+		},
+		messages: {
+			firstname: "Please enter your firstname",
+			username: {
+				required: "Please enter a username",
+				minlength: "Your username must consist of at least 2 characters"
+			},
+			password: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 2 characters long"
+			},
+			confirm_password: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 2 characters long",
+				equalTo: "Please enter the same password as above"
+			},
+			email: {
+				required: "Please provide a email",
+				email:"Please enter a valid email address.",
+				maxlength:50
+			},
+			agree: "Please accept our policy",
+			gender: "Please accept our radio",
+			spam: "Please accept our checkbox",
+			jungle: "Please accept our select",
+			avatar: "Please accept our file avatar"
+		}
+	});
+	
+	
+	$(".cancel").click(function() {
+		validator.resetForm();
+	});
+	 
+});
+</script>
+</head>
+<body>
+  <div id="zhuce">
+    <form class="cmxform" id="signupForm">
+      <fieldset>
+        <p>
+          <label for="username">username</label> <input id="username" name="username" type="text" class="required" />
+        </p>
+        <p>
+          <label for="password">Password</label> <input id="password" name="password" type="password" />
+        </p>
+        <p>
+          <label for="confirm_password">Confirm password</label> <input id="confirm_password" name="confirm_password"
+            type="password" />
+        </p>
+        <p>
+          <label for="email">Email</label> <input id="email" type="email" name="email" />
+        </p>
+        <p>
+          <label for="agree">Please agree to our policy</label> <input type="checkbox" class="checkbox" id="agree"
+            name="agree" />
+        </p>
+        <fieldset>
+          <legend>Gender</legend>
+          <label for="gender_male"> <input type="radio" id="gender_male" value="m" name="gender" /> Male
+          </label> <label for="gender_female"> <input type="radio" id="gender_female" value="f" name="gender" /> Female
+          </label> <label for="gender" class="error">Please select your gender</label>
+        </fieldset>
+        <fieldset>
+          <legend>Spam</legend>
+          <label for="spam_email"> <input type="checkbox" class="checkbox" id="spam_email" value="email"
+            name="spam" /> Spam via E-Mail
+          </label> <label for="spam_phone"> <input type="checkbox" class="checkbox" id="spam_phone" value="phone"
+            name="spam" /> Spam via Phone
+          </label> <label for="spam_mail"> <input type="checkbox" class="checkbox" id="spam_mail" value="mail"
+            name="spam" /> Spam via Mail
+          </label> <label for="spam" class="error">Please select at least two types of spam.</label>
+        </fieldset>
+        <p>
+          <label for="jungle">Please select a jungle noun</label><br /> <select id="jungle" name="jungle">
+            <option value=""></option>
+            <option value="1">Buga</option>
+            <option value="2">Baga</option>
+            <option value="3">Oi</option>
+          </select>
+        </p>
+        <p>
+          <label for="avatar">Avatar</label> <input type="file" id="avatar" name="avatar" />
+        </p>
+        <br />
+        <p>
+          <input class="submit" type="submit" value="Submit" /> <input class="cancel" type="submit" value="Cancel" />
+        </p>
+      </fieldset>
+    </form>
+    <br />
+    <br />
+  </div>
+</body>
+</html>

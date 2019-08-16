@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/scmpcframe.css">
+	<script type="text/javascript">
+		window.onload = function(){
+			var targetele = document.getElementsByClassName("New-changeStyle_container")[0];
+			var selectlist = document.getElementsByClassName("New-changeStyle_btn");
+			targetele.style.left = (window.innerWidth - targetele.offsetWidth)/2 + "px";
+			targetele.style.top = (window.innerHeight - targetele.offsetHeight)/2 + "px";
+			window.onresize = function(){
+                targetele.style.left = (window.innerWidth - targetele.offsetWidth)/2 + "px";
+			    targetele.style.top = (window.innerHeight - targetele.offsetHeight)/2 + "px";
+			}
+			for(var i = 0; i < selectlist.length; i++){
+                selectlist[i].onclick = function(){
+                	if(document.getElementsByClassName("New-changeStyle_btnSelected").length>0){
+                        document.getElementsByClassName("New-changeStyle_btnSelected")[0].classList.remove("New-changeStyle_btnSelected");
+                        this.classList.add("New-changeStyle_btnSelected");
+                	}else{
+                		this.classList.add("New-changeStyle_btnSelected");
+                	}
+                }
+			}
+		}
+	</script>
+</head>
+<body>
+    <div class="New-changeStyle_container">
+    	<div class="New-changeStyle_container-header">
+    		<span>选择变更类型</span>
+    		<i class="list-results_close"></i>
+    	</div>
+    	<div class="New-changeStyle_container-body">
+    		<div class="New-changeStyle_container-bodyItem">
+    			<span class="New-changeStyle_contentCount">1</span>
+    			<span class="New-changeStyle_content">负责人变更</span>
+    		</div>
+    		<div class="New-changeStyle_container-bodyItem">
+    			<span class="New-changeStyle_contentCount">2</span>
+    			<span class="New-changeStyle_content">参与人变更</span>
+    		</div>
+    		<div class="New-changeStyle_container-bodyItem">
+    			<span class="New-changeStyle_contentCount">3</span>
+    			<span class="New-changeStyle_content">经费变更</span>
+    		</div>
+    		<div class="New-changeStyle_container-bodyItem">
+    			<span class="New-changeStyle_contentCount">4</span>
+    			<span class="New-changeStyle_content">周期变更</span>
+    		</div>
+    	</div>
+    </div>
+</body>
+</html>

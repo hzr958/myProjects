@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+  default-lazy-init="false">
+  <description>成果相关</description>
+  <!-- 成果保存控制器 -->
+  <bean id="scholarPublicationXmlManager"
+    class="com.smate.center.batch.service.pub.ScholarPublicationXmlManagerImpl" lazy-init="false">
+    <property name="scholarXmlSaveProcess" ref="scholarXmlSaveProcess" />
+    <property name="scholarXmlSaveComplementaryProcess" ref="scholarXmlSaveComplementaryProcess" />
+    <property name="importXmlTranslateProcess" ref="importXmlTranslateProcess" />
+    <property name="pubXmlImportProcess" ref="pubXmlImportProcess" />
+    <property name="xmlValidatorFactory" ref="xmlValidatorFactory" />
+    <property name="briefDriverFactory" ref="briefDriverFactory" />
+  </bean>
+  <!-- 成果认领控制器 -->
+  <bean id="pubConfirmXmlManager" class="com.smate.center.batch.service.pub.PubConfirmXmlManagerImpl"
+    lazy-init="false">
+    <property name="pubConfirmXmlProcess" ref="pubConfirmXmlProcess" />
+    <property name="xmlValidatorFactory" ref="xmlValidatorFactory" />
+    <property name="briefDriverFactory" ref="briefDriverFactory" />
+  </bean>
+  <!--成果新增保存&编辑&导入保存处理链 -HIGH -->
+  <bean id="pubConfirmXmlProcess" class="com.smate.center.batch.process.pub.PubConfirmXmlProcess" lazy-init="true">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pub.rol.ImportXmlMergeTask" />
+        <bean class="com.smate.center.batch.chain.pub.CountryCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.PublicationMetaTask" />
+        <bean class="com.smate.center.batch.chain.pub.PublicationTypeCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.DateAttributeCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.PsnOwnerMatchTask" />
+        <bean class="com.smate.center.batch.chain.pub.JournalSnsMatchEditTask" />
+        <bean class="com.smate.center.batch.chain.pub.SnsPubMemberCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.PublicationTAKCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.XmlFieldCodePageCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.XmlFieldValidateTask" />
+        <bean class="com.smate.center.batch.chain.pub.PublicationBriefGenerateTask" />
+        <bean class="com.smate.center.batch.chain.pub.GeneratePublicationHashTask" />
+        <bean class="com.smate.center.batch.chain.pub.ExtractXmlToDbTask" />
+        <bean class="com.smate.center.batch.chain.pub.PsnCnfPubTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- 成果保存控制器 -->
+  <bean id="dbcacheBfetchService" class="com.smate.center.batch.service.pdwh.pubimport.DbcacheBfetchServiceImpl"
+    lazy-init="false">
+    <property name="pdwhPubImportUpdateProcess" ref="pdwhPubImportUpdateProcess" />
+    <property name="pdwhPubImportSaveNewProcess" ref="pdwhPubImportSaveNewProcess" />
+    <property name="pdwhPubCitedTimesUpdateProcess" ref="pdwhPubCitedTimesUpdateProcess"></property>
+  </bean>
+  <!--成果新增保存&编辑&导入保存处理链 -HIGH -->
+  <bean id="scholarXmlSaveProcess" class="com.smate.center.batch.process.pub.ScholarXmlSaveProcess"
+    lazy-init="true">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pub.CountryCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.PublicationMetaTask" />
+        <bean class="com.smate.center.batch.chain.pub.PublicationTypeCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.DateAttributeCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.PsnOwnerMatchTask" />
+        <bean class="com.smate.center.batch.chain.pub.JournalSnsMatchEditTask" />
+        <bean class="com.smate.center.batch.chain.pub.JournalSnsMatchTask" />
+        <bean class="com.smate.center.batch.chain.pub.SnsPubMemberCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.PublicationTAKCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.XmlFieldCodePageCleanTask" />
+        <!-- 移至第一阶段 <bean class="com.smate.center.batch.chain.pub.XmlFieldValidateTask" /> -->
+        <bean class="com.smate.center.batch.chain.pub.PublicationBriefGenerateTask" />
+        <bean class="com.smate.center.batch.chain.pub.GeneratePublicationHashTask" />
+        <bean class="com.smate.center.batch.chain.pub.ExtractXmlToDbTask" />
+        <bean class="com.smate.center.batch.chain.pub.PsnCnfPubTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- 成果新增保存&编辑&导入保存处理链 -LOW -->
+  <bean id="scholarXmlSaveComplementaryProcess"
+    class="com.smate.center.batch.process.pub.ScholarXmlSaveComplementaryProcess" lazy-init="true">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pub.JournalEditorTitleTask" />
+        <bean class="com.smate.center.batch.chain.pub.PublicationPatentTask" />
+        <bean class="com.smate.center.batch.chain.pub.ACDataCollectTask" />
+        <bean class="com.smate.center.batch.chain.pub.JournalCitedCleanTask"></bean>
+        <bean class="com.smate.center.batch.chain.pub.PubXMLSourceUrlTask" />
+        <bean class="com.smate.center.batch.chain.pub.PubXmlCopyright" />
+        <!--清理老系统动态，先注释 <bean class="com.smate.center.batch.chain.pub.PublicationDynamicTask" /> -->
+        <bean class="com.smate.center.batch.chain.pub.SnsPubGetPdwhIdTask"></bean>
+        <bean class="com.smate.center.batch.chain.pub.OperationLogTask" />
+        <bean class="com.smate.center.batch.chain.pub.PubSyncOtherTask" />
+        <bean class="com.smate.center.batch.chain.pub.PubAutoConfirmDupTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- Scholar成果导入xml处理 -->
+  <bean id="importXmlTranslateProcess" class="com.smate.center.batch.process.pub.PubImportXmlTranslateProcess"
+    lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pub.PublicationMetaForPdwhPubToGroupTask" />
+        <bean class="com.smate.center.batch.chain.pub.rol.ImportFieldMappingTask" />
+        <bean class="com.smate.center.batch.chain.pub.DateAttributeCleanTask" />
+        <bean class="com.smate.center.batch.chain.pub.JournalCitedCleanTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- Scholar成果导入xml处理 -->
+  <bean id="pubXmlImportProcess" class="com.smate.center.batch.process.pub.PubXmlImportProcess" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pub.GenerateDbCacheFetchHashTask" />
+        <bean class="com.smate.center.batch.chain.pub.rol.ImportXmlMergeTask" />
+        <bean class="com.smate.center.batch.chain.pub.PublicationMetaForPdwhPubToGroupTask" />
+        <bean class="com.smate.center.batch.chain.pub.rol.ImportFieldMappingTask" />
+        <bean class="com.smate.center.batch.chain.pub.rol.SplitImportAuthorNameTask" />
+        <bean class="com.smate.center.batch.chain.pub.ImportMatchPsnName"></bean>
+        <bean class="com.smate.center.batch.chain.pub.DateAttributeCleanTask"></bean>
+        <bean class="com.smate.center.batch.chain.pub.PublicationTAKCleanTask"></bean>
+        <bean class="com.smate.center.batch.chain.pub.XmlFieldValidateTask"></bean>
+      </list>
+    </property>
+  </bean>
+  <!-- 成果xml校验工厂 -->
+  <bean id="xmlValidatorFactory" class="com.smate.center.batch.factory.pub.XmlValidatorFactory" lazy-init="true">
+    <property name="validators">
+      <list>
+        <bean class="com.smate.center.batch.service.pub.validator.PubAwardValidator" />
+        <bean class="com.smate.center.batch.service.pub.validator.PubBookChapterValidator" />
+        <bean class="com.smate.center.batch.service.pub.validator.PubBookValidator" />
+        <bean class="com.smate.center.batch.service.pub.validator.PubConfPaperValidator" />
+        <bean class="com.smate.center.batch.service.pub.validator.PubJournalEditorValiator" />
+        <bean class="com.smate.center.batch.service.pub.validator.PubJournalValidator" />
+        <bean class="com.smate.center.batch.service.pub.validator.PubOtherValidator" />
+        <bean class="com.smate.center.batch.service.pub.validator.PubPatentValidator" />
+        <bean class="com.smate.center.batch.service.pub.validator.PubThesisValidator" />
+      </list>
+    </property>
+  </bean>
+  <!-- 成果xml来源生成工厂 -->
+  <bean id="briefDriverFactory" class="com.smate.center.batch.factory.pub.BriefDriverFactory" lazy-init="true">
+    <property name="drivers">
+      <list>
+        <bean class="com.smate.center.batch.service.pub.brief.PubAwardBriefDriver" />
+        <bean class="com.smate.center.batch.service.pub.brief.PubBookBriefDriver" />
+        <bean class="com.smate.center.batch.service.pub.brief.PubBookChpaterDriver" />
+        <bean class="com.smate.center.batch.service.pub.brief.PubConfPaperBriefDriver" />
+        <bean class="com.smate.center.batch.service.pub.brief.PubJournalArticleBriefDriver" />
+        <bean class="com.smate.center.batch.service.pub.brief.PubJournalEditorBriefDriver" />
+        <bean class="com.smate.center.batch.service.pub.brief.PubOtherBriefDriver" />
+        <bean class="com.smate.center.batch.service.pub.brief.PubPatentBriefDriver" />
+        <bean class="com.smate.center.batch.service.pub.brief.PubTheisBriefDriver" />
+      </list>
+    </property>
+  </bean>
+  <!-- 成果输出Html表格内容生成器 -->
+  <bean id="scholarPubHtmlCellContentBuilder"
+    class="com.smate.center.batch.service.pub.ScholarPubHtmlCellContentBuilder" lazy-init="true">
+    <constructor-arg index="0">
+      <ref bean="scholarHtmlCellConfig" />
+    </constructor-arg>
+    <property name="webappContext" value="${webappContextSns}" />
+    <property name="resappContext" value="${resappContext}" />
+  </bean>
+  <!-- 成果输出Html表格控制配置 -->
+  <bean id="scholarHtmlCellConfig" class="com.smate.center.batch.model.sns.pub.HtmlCellConfig" lazy-init="true">
+    <property name="titleWithLink" value="true"></property>
+    <property name="showFulltextButton" value="true"></property>
+    <property name="showSourceUrlButton" value="true"></property>
+    <property name="showImpactFactors" value="true"></property>
+    <property name="showCitedTimes" value="true"></property>
+  </bean>
+  <bean id="pubInfoHtmlBuilder" class="com.smate.center.batch.service.rol.pub.PubInfoHtmlBuilder">
+    <property name="iFtlBuilderList">
+      <list>
+        <bean class="com.smate.center.batch.service.rol.pub.PubListHtmlBuilder" />
+        <bean class="com.smate.center.batch.service.rol.pub.PubOutsideHtmlBuilder" />
+      </list>
+    </property>
+  </bean>
+  <bean id="pdwhPubImportUpdateProcess" class="com.smate.center.batch.process.pub.PdwhPubImportUpdateProcess"
+    lazy-init="true">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pub.pdwh.PublicationUpdateTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.XmlUpdateTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.CitedInfoHandleTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.AuthorNameUpdateTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.PdwhOriginalPubxmlSaveTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.ExtractPubKeywordsTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.ExtractPubAddressTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.SolrIndexTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.PubAddrMatchTask" />
+      </list>
+    </property>
+  </bean>
+  <bean id="pdwhPubImportSaveNewProcess" class="com.smate.center.batch.process.pub.PdwhPubImportSaveNewProcess"
+    lazy-init="true">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pub.pdwh.NewPubSaveTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.CitedInfoHandleTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.AuthorNameUpdateTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.PdwhOriginalPubxmlSaveTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.ExtractPubKeywordsTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.ExtractPubAddressTask" />
+        <!--最后数据事务提交不成功，solr不创建索引 -->
+        <!-- <bean class="com.smate.center.batch.chain.pub.pdwh.SolrIndexTask" /> -->
+        <bean class="com.smate.center.batch.chain.pub.pdwh.PubAddrMatchTask" />
+      </list>
+    </property>
+  </bean>
+  <bean id="pdwhPubCitedTimesUpdateProcess"
+    class="com.smate.center.batch.process.pub.PdwhPubCitedTimesUpdateProcess" lazy-init="true">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pub.pdwh.NewPubSaveTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.CitedInfoHandleTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.AuthorNameUpdateTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.PdwhOriginalPubxmlSaveTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.ExtractPubKeywordsTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.ExtractPubAddressTask" />
+        <!--最后数据事务提交不成功，solr不创建索引 -->
+        <!-- <bean class="com.smate.center.batch.chain.pub.pdwh.SolrIndexTask" /> -->
+        <bean class="com.smate.center.batch.chain.pub.pdwh.PubCitedRelationTask" />
+      </list>
+    </property>
+  </bean>
+  <!-- 启动加载pdwh匹配词典 -->
+  <!-- <bean id="initPdwhInsPsnDic" class=" com.smate.center.batch.tasklet.pdwh.pubmatch.InitPdwhInsPsnDic"
+    lazy-init="false"> 
+  </bean> -->
+  <!-- 准库成果单位匹配和成果作者匹配任务控制器 -->
+  <bean id="pdwhPubAddrAuthorMatchService"
+    class="com.smate.center.batch.service.pdwh.pubimport.PdwhPubAddrAuthorMatchServiceImpl" lazy-init="false">
+    <property name="pdwhPubAddrAuthorMacthProcess" ref="pdwhPubAddrAuthorMacthProcess" />
+  </bean>
+  <!-- 基准库成果单位匹配和成果作者匹配任务链 -->
+  <bean id="pdwhPubAddrAuthorMacthProcess" class="com.smate.center.batch.process.pub.PdwhPubAddrAuthorMacthProcess"
+    lazy-init="true">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.center.batch.chain.pub.pdwh.match.PdwhPubAuthorDeptMatchTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.match.PdwhAddrMatchInsTask" />
+        <bean class="com.smate.center.batch.chain.pub.pdwh.match.PdwhAuthorMatchPersonTask" />
+      </list>
+    </property>
+  </bean>
+</beans>

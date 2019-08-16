@@ -1,0 +1,484 @@
+*{
+            padding: 0px;
+            margin: 0px; 
+        }
+        .new-normalpage_container{
+            width: 1200px; 
+            margin: 0 auto;
+        }
+        .new-paymentpage_Accountitem{
+            margin: 32px 0px;
+        }
+        .new-paymentpage_Accountitem-title{
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .new-paymentpage_Accountitem-item_check{
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            background: url(../images/radio_bg_02.png);
+            background-repeat: no-repeat;
+            background-position: 0px 0px;
+        }
+        .new-paymentpage_Accountitem-item_checked{
+            background: url(../images/radio_bg_01.png)!important;
+        }
+        .new-paymentpage_Accountitem-item_check:hover{
+            background: url(../images/radio_bg_01.png);
+        }
+        .new-paymentpage_Accountitem-item{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .new-paymentpage_Accountitem-item_detail{
+            font-size: 14px;
+            font-weight: normal;
+            margin-left: 12px;
+            color:#333;
+        }
+        .new-paymentpage_Accountitem-explain{
+            font-size: 14px;
+            line-height: 24px;
+            color: #666;
+            height: 36px;
+            width: 200px;
+            background: #fafafa;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; 
+            margin-left: 32px;
+        }
+        .new-paymentpage_Accountitem-explain_detail{
+            padding-left: 12px;
+        }
+        .new-paymentpage_Accountappy-item{
+            border: 1px dashed #ddd;
+            border-radius: 5px;
+            width: 128px;
+            height: 128px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .new-paymentpage_Accountappy-item_border{
+            border: 1px dashed #288aed!important;
+        }
+        .new-paymentpage_Accountappy-item:hover{
+            border: 1px dashed #288aed;
+        }
+        .new-paymentpage_Accountappy-unionpay{
+            background: url(../images/unionpay.png);
+            background-repeat: no-repeat;
+            background-position: 22px 22px;
+            width: 128px;
+            height: 128px;
+        }
+        .new-paymentpage_Accountappy-alipay{
+            background: url(../images/alipay.png);
+            background-repeat: no-repeat;
+            background-position: 22px 22px;
+            width: 128px;
+            height: 128px;
+        }
+        .new-paymentpage_Accountitem-Category{
+            display: flex; 
+            align-items: center; 
+            justify-content: flex-start; 
+            padding-left: 32px; 
+            margin: 20px 0px;
+        }
+        .new-paymentpage_Accountappy-wechatpay{
+        background: url(../images/wechatpay.png);
+            background-repeat: no-repeat;
+            background-position: 22px 22px;
+            width: 128px;
+            height: 128px;
+        }
+        .new-paymentpage_Accountappy-itembox{
+            width: auto;
+            height: auto;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .new-paymentpage_Accountappy-itembox_title{
+            color: #333;
+            font-size: 14px;
+            margin-top: 20px;
+            width: auto;
+            text-align: center;
+        }
+      .normal-background_cover{
+          background-color: rgba(0, 0, 0, 0.12);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 10000;
+          display: none;
+        }
+
+        .new-paymentpage_container{
+          width: 620px; 
+          height: 440px;
+          margin: 0 auto;
+          border: 1px solid #ddd;
+          padding: 0px 20px;
+          position: fixed;
+          background: #fff;
+          border-radius: 5px;
+        }
+        .new-paymentpage_header{
+          width: 100%; 
+          display: flex; 
+          justify-content: space-between; 
+          align-items: center; 
+          border-bottom: 1px solid #ddd; 
+          height: 55px; 
+          line-height: 55px;
+        }
+        .new-paymentpage_header-title{
+          font-size: 18px; 
+          color: #333;
+          display: flex; 
+          align-items: center;
+        }
+        .new-paymentpage_header-icon{
+          background: url(../images/pay_success@16x16.png);
+          background-repeat: no-repeat;
+          background-position: 0px 0px;
+          width: 16px;
+          height: 16px;
+        }
+        .new-paymentpage_paysuccess—icon{
+          background: url(../images/pay_success@56x56.png);
+          background-repeat: no-repeat;
+          background-position: 0px 0px;
+          width: 56px;
+          height: 56px;
+        }
+       .new-paymentpage_pay-second{
+            width: 100%; 
+            height: 380px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            flex-direction: column;
+         }
+        .new-paymentpage_paysuccess—tip{
+         width: 100%; 
+         text-align: center; 
+         line-height: 24px;
+          height: 24px; 
+          font-size: 20px; 
+          color:#333; 
+          margin-top: 20px;
+      }
+        .new-paymentpage_paysuccess—returnlart{
+          color: #999; 
+          font-size: 14px; 
+          width: 100%; 
+          text-align: center; 
+          margin-top: 20px;
+      }
+      .new-paymentpage_paysuccess—returnnow{
+            color:#fff; 
+            background: #02af02; 
+            font-size: 14px; 
+            height: 28px;
+            width: 78px; 
+            display: flex; 
+            justify-content: center;
+            align-items: center; 
+            border: 1px solid #02af02; 
+            border-radius: 3px; 
+            margin-top: 20px;
+      }
+      .new-paymentpage_header-paytitle{
+        margin:0px 8px 0px 4px;
+      }
+      .new-paymentpage_header-Cashier{
+         border-left: 1px solid #ddd; 
+         padding-left: 8px; 
+         line-height: 24px; 
+         height: 24px;
+      }
+      .new-paymentpage_pay-first{
+        width: 100%; 
+        height: 380px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        display: none;
+      }
+.new-paymentpage_pay-first_left{
+    width:48%; 
+    height: 380px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+}
+.new-paymentpage_pay-first_line{
+    height: 360px; 
+    border-left: 1px solid #ddd; 
+    width: 1px;
+}
+.new-paymentpage_pay-first_right{
+    width:48%; 
+    height: 380px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+}
+.new-paymentpage_pay-first_left-header{
+    width: 100%; 
+    height: 24px; 
+    line-height: 24px; 
+    text-align: center; 
+    font-size: 14px; 
+    color: #333;
+}
+.new-paymentpage_pay-first_left-body{
+    width: 215px;
+    height: 215px; 
+    margin: 24px 0px; 
+    border: 1px solid #ddd;
+}
+.new-paymentpage_pay-first_right-title{
+  width: 100%; 
+  font-size: 14px; 
+  line-height: 24px; 
+  color: #333;
+  margin-top: -24px;
+}
+.new-paymentpage_pay-first_right-num{
+   margin: 20px 0px 32px 0px;
+   height: 65px;
+   line-height: 65px;
+}
+.new-paymentpage_pay-first_right-num_tip{
+   font-size: 24px;
+}
+.new-paymentpage_pay-first_right-num_detail{
+   font-size: 56px;
+}
+.new-paymentpage_pay-first_left-footer{
+   width: 100%; 
+   height: 24px; 
+   line-height: 24px; 
+   text-align: center; 
+   font-size: 14px; 
+   color: #666;
+}
+.new-paymentpage_pay-first_right-item{
+   width: 300px; 
+   display: flex;
+   align-items: center;
+   line-height: 30px;
+   margin: 0px!important;
+}
+
+.new-paymentpage_pay-first_right-item_detail{
+   color: #333;
+   font-size: 14px;
+   line-height: 30px; 
+   width: 228px;
+}
+
+.new-paymentpage_paysuccess—returnnow{
+   color:#fff; 
+   background: #02af02; 
+   font-size: 14px; 
+   height: 28px;
+   width: 78px; 
+   display: flex; 
+   justify-content: center;
+   align-items: center; 
+   border: 1px solid #02af02; 
+   border-radius: 3px; 
+   margin-top: 20px;
+   cursor:pointer;
+}
+.new-paymentpage_paysuccess—returnnow:hover{
+   border: 1px solid #009200; 
+   background: #009200; 
+}
+.new-paymentpage_pay-first_right-item_title{
+   color: #999; 
+   width: 75px; 
+   display: block; 
+   font-size: 14px; 
+   line-height: 30px; 
+   text-align: right;  
+   margin-right: 8px;
+}
+.new-invoice_payitem{
+    display: flex; 
+    align-items: center; 
+    margin: 12px 0px; 
+    width: 460px;
+}
+.new-invoice_payitem-left{
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-end;
+    font-size: 14px; 
+    width: 120px;
+}
+.new-invoice_payitem-left_icon{
+    color: red;
+    line-height: 24px;
+    width: 12px;
+}
+.new-invoice_payitem-left_title{
+    color: #333;
+    font-size: 14px;
+    line-height: 24px;
+}
+.new-invoice_payitem-right{
+    width: 320px; 
+    line-height: 32px; 
+    height: 32px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-left: 12px;
+}
+.new-invoice_payitem-right_input{
+    border: 1px solid #ddd;
+    outline: none; 
+    height: 95%; 
+    width: 98%; 
+    padding-left: 4px;
+}
+.new-invoice_pay-title{
+    height: 32px; 
+    width: 640px; 
+    border-bottom: 1px solid #ddd; 
+    z-index: 99; 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start;
+}
+.new-invoice_pay-title_item{
+    width: 160px; 
+    line-height: 32px; 
+    height: 32px; 
+    text-align: center; 
+    z-index: 100; 
+    cursor: pointer;
+}
+.new-invoice_pay-title_item-selected{
+    border: 1px solid #ddd; 
+    text-align: center; 
+    border-bottom: 1px solid #fff; 
+    border-top:2px solid #288aed; 
+    width: 160px; 
+    line-height: 31px;
+    height: 31px; 
+    z-index: 100; 
+    cursor: pointer; 
+    color: #288aed;
+}
+.new-invoice_pay-func{
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start;
+    margin-top: 40px;
+}
+.new-invoice_pay-func_paynow{
+    width: 108px; 
+    height: 28px; 
+    border-radius: 3px; 
+    background: #02af02; 
+    border: 1px solid #02af02; 
+    color: #fff; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    cursor: pointer; 
+    font-size: 14px; 
+}
+.new-invoice_pay-func_paynow:hover{
+    background: #009200; 
+    border: 1px solid #009200; 
+}
+.new-invoice_pay-func_return{
+    line-height: 28px;
+    height: 28px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    margin-left: 20px;
+    border-radius: 3px;
+    width: 108px;
+}
+.new-invoice_pay-func_return:hover{
+    border: 1px solid #009200;
+    color: #009200;
+}
+#need_Invoices{
+    cursor: pointer;
+}
+.new-invoice_pay-func_return:hover{
+    color:#02af02;
+}
+.new-invoice_pay-body_item{
+    /* height: 265px; */
+}
+
+
+.error_message-prompt {
+    display: none;
+    position: absolute;
+    background: #fff;
+    border-radius: 3px;
+    top: 8px;
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.1);
+}
+.error_message-prompt_side {
+    border: 1px solid #ddd;
+    min-width: 30px;
+    width: 240px;
+    min-height: 28px;
+    line-height: 28px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #666;
+    position: relative;
+    word-break: break-all;
+    padding: 0px 8px;
+}
+.error_message-prompt_detail {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #999;
+}
+.error_message-prompt_icon-right {
+    position: absolute;
+    left: -5px;
+    top: calc(50% - 4px);
+    border: 1px solid #ddd;
+    width: 6px;
+    height: 6px;
+    background: red;
+    transform: rotate(45deg);
+    background: #fff;
+    border-right: none;
+    border-top: none;
+}
+
+.new-invoice_payitem-right_error{
+    border: 1px solid red!important;
+}

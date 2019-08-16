@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE, chrome=1">
+<meta http-equiv="content-style-type" content="text/css">
+<title>科研之友</title>
+<link href="css/scmpcframe.css" rel="stylesheet" type="text/css">
+<script src="js/browsercompatible.js" type="text/javascript"></script>
+<script src="js/scmpc_form.js" type="text/javascript"></script>
+<script src="js/scmpc_dialogs.js" type="text/javascript"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="width: 100%; height: 100%;">
+  <header>
+    <div class="header__2nd-nav">
+      <div class="header__2nd-nav_box">
+        <nav class="nav_horiz">
+          <ul class="nav__list">
+            <li class="nav__item item_selected">我的群组</li>
+            <li class="nav__item">群组推荐</li>
+          </ul>
+          <div class="nav__underline"></div>
+        </nav>
+        <button class="button_main button_primary-reverse" onClick="showDialog('creategrp')">创建群组</button>
+      </div>
+    </div>
+  </header>
+  <div class="container__horiz">
+    <div class="container__horiz_left width-3" style="padding: 0 24px;">
+      <div class="filter-list vert-style option_has-stats">
+        <div class="filter-list__section" choose-single>
+          <div class="filter-section__header">
+            <div class="filter-section__title">群组类别</div>
+            <i class="material-icons filter-section__toggle">expand_less</i>
+          </div>
+          <ul class="filter-value__list">
+            <li class="filter-value__item option_no-data">
+              <div class="input-custom-style">
+                <input type="checkbox"> <i class="material-icons custom-style"></i>
+              </div>
+              <div class="filter-value__option">兴趣群组</div>
+              <div class="filter-value__stats">(0)</div> <i class="material-icons filter-value__cancel">close</i>
+            </li>
+            <li class="filter-value__item option_selected">
+              <div class="input-custom-style">
+                <input type="checkbox"> <i class="material-icons custom-style"></i>
+              </div>
+              <div class="filter-value__option">项目群组</div>
+              <div class="filter-value__stats">(0)</div> <i class="material-icons filter-value__cancel">close</i>
+            </li>
+            <li class="filter-value__item">
+              <div class="input-custom-style">
+                <input type="checkbox"> <i class="material-icons custom-style"></i>
+              </div>
+              <div class="filter-value__option">课程群组</div>
+              <div class="filter-value__stats">(0)</div> <i class="material-icons filter-value__cancel">close</i>
+            </li>
+          </ul>
+        </div>
+        <div class="filter-list__section" choose-single>
+          <div class="filter-section__header">
+            <div class="filter-section__title">群组权限</div>
+            <i class="material-icons filter-section__toggle">expand_less</i>
+          </div>
+          <ul class="filter-value__list">
+            <li class="filter-value__item">
+              <div class="input-custom-style">
+                <input type="checkbox"> <i class="material-icons custom-style"></i>
+              </div>
+              <div class="filter-value__option">我管理的群组</div>
+              <div class="filter-value__stats">(0)</div> <i class="material-icons filter-value__cancel">close</i>
+            </li>
+            <li class="filter-value__item option_selected">
+              <div class="input-custom-style">
+                <input type="checkbox"> <i class="material-icons custom-style"></i>
+              </div>
+              <div class="filter-value__option">我加入的群组</div>
+              <div class="filter-value__stats">(0)</div> <i class="material-icons filter-value__cancel">close</i>
+            </li>
+            <li class="filter-value__item">
+              <div class="input-custom-style">
+                <input type="checkbox"> <i class="material-icons custom-style"></i>
+              </div>
+              <div class="filter-value__option">待批准的群组</div>
+              <div class="filter-value__stats">(0)</div> <i class="material-icons filter-value__cancel">close</i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container__horiz_right width-9" style="padding: 0 24px;">
+      <div class="main-list">
+        <div class="main-list__list item_no-border">
+          <div class="main-list__item">
+            <div class="main-list__item_content">
+              <div class="grp-idx_medium">
+                <div class="grp-idx__base-info">
+                  <div class="grp-idx__logo_box">
+                    <div class="grp-idx__logo_img">
+                      <img src="/img/avatar.jpg">
+                    </div>
+                    <div class="grp-idx__grp-type">项目群组</div>
+                  </div>
+                  <div class="grp-idx__main_box">
+                    <div class="grp-idx__main">
+                      <div class="grp-idx__main_name">
+                        <a>电针促进吗啡成瘾大鼠中脑DA能损伤神经元功能恢复及其机制研究</a><i class="material-icons grp-idx__main_icon">link</i>
+                      </div>
+                      <div class="grp-idx__main_kw">
+                        <div class="kw__box">
+                          <div class="kw-chip_small">recommendation system</div>
+                          <div class="kw-chip_small">社交网络</div>
+                          <div class="kw-chip_small">kernel analysis</div>
+                        </div>
+                      </div>
+                      <div class="grp-idx__main_stats">
+                        <span class="grp-idx__main_stats-item">成员数: 34</span><span class="grp-idx__main_stats-item">成果数:
+                          202</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="main-list__item_actions">
+              <a class="grp-list__action_pending has-pending">24未处理事项</a>
+            </div>
+            <div class="main-list__item_actions">
+              <div class="action-dropdown">
+                <button class="button_main button_icon">
+                  <i class="material-icons">more_vert</i>
+                </button>
+                <ul class="action-dropdown__list">
+                  <li class="action-dropdown__item item_hovered">置顶此群组</li>
+                  <li class="action-dropdown__item">复制群组</li>
+                  <li class="action-dropdown__item">退出群组</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="main-list__item">
+            <div class="main-list__item_content">
+              <div class="grp-idx_medium">
+                <div class="grp-idx__base-info">
+                  <div class="grp-idx__logo_box">
+                    <div class="grp-idx__logo_img">
+                      <img src="/img/avatar.jpg">
+                    </div>
+                    <div class="grp-idx__grp-type">项目群组</div>
+                  </div>
+                  <div class="grp-idx__main_box">
+                    <div class="grp-idx__main">
+                      <div class="grp-idx__main_name">
+                        <a>电针促进吗啡成瘾大鼠中脑DA能损伤神经元功能恢复及其机制研究</a><i class="material-icons grp-idx__main_icon">link</i>
+                      </div>
+                      <div class="grp-idx__main_kw">
+                        <div class="kw__box">
+                          <div class="kw-chip_small">recommendation system</div>
+                          <div class="kw-chip_small">社交网络</div>
+                          <div class="kw-chip_small">kernel analysis</div>
+                        </div>
+                      </div>
+                      <div class="grp-idx__main_stats">
+                        <span class="grp-idx__main_stats-item">成员数: 34</span><span class="grp-idx__main_stats-item">成果数:
+                          202</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="main-list__item_actions">
+              <a class="grp-list__action_pending has-pending">24未处理事项</a>
+            </div>
+            <div class="main-list__item_actions">
+              <div class="action-dropdown">
+                <button class="button_main button_icon">
+                  <i class="material-icons">more_vert</i>
+                </button>
+                <ul class="action-dropdown__list list_shown">
+                  <li class="action-dropdown__item item_hovered">置顶此群组</li>
+                  <li class="action-dropdown__item">复制群组</li>
+                  <li class="action-dropdown__item">退出群组</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main-list__footer global_no-border">
+          <div class="pagination__box">
+            <div class="pagination__per-page"></div>
+            <div class="pagination__main">
+              <div class="pagination__pages_box">
+                <div class="pagination__pages_prev">
+                  <i class="material-icons">chevron_left</i>
+                </div>
+                <ul class="pagination__pages_list">
+                  <li class="pagination__pages_item">1</li>
+                  <li class="pagination__pages_item item_ellipsis">...</li>
+                  <li class="pagination__pages_item">3</li>
+                  <li class="pagination__pages_item item_selected">4</li>
+                </ul>
+                <div class="pagination__pages_prev item_disabled">
+                  <i class="material-icons">chevron_right</i>
+                </div>
+              </div>
+              <div class="pagination__goto">
+                跳转：
+                <div class="input__box">
+                  <div class="input__area">
+                    <input>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dialogs__box" dialog-id="creategrp" flyin-direction="bottom" cover-event="hide" style="width: 800px;">
+    <div class="dialogs__childbox_fixed">
+      <div class="dialogs__header">
+        <div class="dialogs__header_title">创建一个群组</div>
+      </div>
+    </div>
+    <div class="dialogs__childbox_fixed">
+      <div class="dialogs__header">
+        <div class="create-grp__select-type_container">
+          <div class="create-grp__select-type_item item_selected" onClick="showDialog('copygrp')">项目群组</div>
+          <div class="create-grp__select-type_item">课程群组</div>
+        </div>
+      </div>
+    </div>
+    <div class="dialogs__childbox_adapted">
+      <div class="dialogs__content global__padding_24">
+        <form>
+          <div class="form__sxn_row">
+            <div class="input__box input_invalid">
+              <label class="input__title">项目标题</label>
+              <div class="input__area">
+                <input>
+              </div>
+              <div class="input__helper" helper-text="" invalid-message=""></div>
+            </div>
+          </div>
+          <div class="form__sxn_row">
+            <div class="input__box">
+              <label class="input__title">项目批准号</label>
+              <div class="input__area">
+                <input>
+              </div>
+              <div class="input__helper" helper-text="" invalid-message=""></div>
+            </div>
+          </div>
+          <div class="form__sxn_row">
+            <div class="input__box">
+              <label class="input__title">项目摘要</label>
+              <div class="input__area">
+                <textarea></textarea>
+                <div class="textarea-autoresize-div"></div>
+              </div>
+              <div class="input__helper" invalid-message=""></div>
+            </div>
+          </div>
+          <div class="form__sxn_row">
+            <div class="input__box no-flex input_not-null">
+              <label class="input__title">研究领域</label>
+              <div class="sel__box" selector-id="pri_major">
+                <div class="sel__value">
+                  <span class="sel__value_selected">信息科学</span> <i class="material-icons sel__dropdown-icon">arrow_drop_down</i>
+                </div>
+              </div>
+              <div class="input__helper" invalid-message=""></div>
+            </div>
+            <div class="input__box no-flex input_not-null">
+              <label class="input__title"></label>
+              <div class="sel__box">
+                <div class="sel__value">
+                  <span class="sel__value_selected sel__value_placeholder">选择二级学科</span> <i
+                    class="material-icons sel__dropdown-icon">arrow_drop_down</i>
+                </div>
+              </div>
+              <div class="input__helper" invalid-message=""></div>
+            </div>
+          </div>
+          <div class="form__sxn_row">
+            <div class="input__box no-input-area">
+              <label class="input__title">关键词</label>
+              <div class="chip-panel__box">
+                <div class="chip__box">
+                  <div class="chip__avatar">
+                    <img src="/img/avatar.jpg">
+                  </div>
+                  <div class="chip__text">科研之友</div>
+                  <div class="chip__icon icon_delete">
+                    <i class="material-icons">close</i>
+                  </div>
+                </div>
+                <div class="chip__box">
+                  <div class="chip__avatar">
+                    <img src="/img/avatar.jpg">
+                  </div>
+                  <div class="chip__text">创新城</div>
+                  <div class="chip__icon icon_delete">
+                    <i class="material-icons">close</i>
+                  </div>
+                </div>
+                <div class="chip-panel__manual-input" contenteditable>数据</div>
+              </div>
+              <div class="global__para_caption">输入最多10个代表群组的关键词，使用回车进行分割。</div>
+            </div>
+          </div>
+          <div class="form__sxn_row">
+            <div class="input__box no-input-area">
+              <label class="input__title">设置群组权限</label>
+              <div class="input-radio__box_vert">
+                <div class="input-radio__sxn">
+                  <div class="input-custom-style">
+                    <input type="radio" name="choose-authority"> <i class="material-icons custom-style"></i>
+                  </div>
+                  <div class="input-radio__label">公开</div>
+                  <div class="input-radio_grp-auth">任何人可以随意加入群组，群组成员可以随意添加成果及文件</div>
+                </div>
+                <div class="input-radio__sxn">
+                  <div class="input-custom-style">
+                    <input type="radio" name="choose-authority"> <i class="material-icons custom-style"></i>
+                  </div>
+                  <div class="input-radio__label">半公开</div>
+                  <div class="input-radio_grp-auth">群组成员需申请加入群组，并且上传成果及文件需管理员审核。</div>
+                </div>
+                <div class="input-radio__sxn">
+                  <div class="input-custom-style">
+                    <input type="radio" name="choose-authority"> <i class="material-icons custom-style"></i>
+                  </div>
+                  <div class="input-radio__label">隐私</div>
+                  <div class="input-radio_grp-auth">群组无法被检索到，并且群组成员必须邀请加入</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="dialogs__childbox_fixed">
+      <div class="dialogs__footer">
+        <button class="button_main button_primary-reverse">创建</button>
+        <button class="button_main">取消</button>
+      </div>
+    </div>
+  </div>
+  <div class="dialogs__box" dialog-id="copygrp" flyin-direction="bottom" cover-event="hide" style="width: 480px">
+    <div class="dialogs__childbox_fixed">
+      <div class="dialogs__header">
+        <div class="dialogs__header_title">复制群组</div>
+      </div>
+    </div>
+    <div class="dialogs__childbox_adapted">
+      <div class="dialogs__content global__padding_24">
+        <div class="global__para_body">复制群组将会创建一个新群组，并可以复制所选择群组的大部分信息，其中成员信息，作业及其他组员的文献不会被复制。</div>
+        <form>
+          <div class="form__sxn_row">
+            <div class="input__box no-input-area">
+              <label class="input__title">选择需要复制的模块</label>
+              <div class="input-radio__box_horiz">
+                <div class="input-radio__sxn">
+                  <div class="input-custom-style">
+                    <input type="checkbox" checked> <i class="material-icons custom-style"></i>
+                  </div>
+                  <div class="input-radio__label">基本信息</div>
+                </div>
+                <div class="input-radio__sxn">
+                  <div class="input-custom-style">
+                    <input type="checkbox" checked> <i class="material-icons custom-style"></i>
+                  </div>
+                  <div class="input-radio__label">文献</div>
+                </div>
+                <div class="input-radio__sxn">
+                  <div class="input-custom-style">
+                    <input type="checkbox" checked> <i class="material-icons custom-style"></i>
+                  </div>
+                  <div class="input-radio__label">课件</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form__sxn_row">
+            <div class="input__box input_focused">
+              <label class="input__title">新群组名称</label>
+              <div class="input__area">
+                <input value="课程群组IS2018">
+              </div>
+              <div class="input__helper" helper-text="" invalid-message=""></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="dialogs__childbox_fixed">
+      <div class="dialogs__footer">
+        <button class="button_main button_primary-reverse">复制</button>
+        <button class="button_main">取消</button>
+      </div>
+    </div>
+  </div>
+  <div class="background-cover" style="display: none;">
+    <div class="dialogs__box" style="width: auto;">
+      <div class="dialogs__modal_text">是否要退出群组？</div>
+      <div class="dialogs__modal_actions">
+        <button class="button_main button_dense button_primary">确认</button>
+        <button class="button_main button_dense">取消</button>
+      </div>
+    </div>
+  </div>
+  <div class="ac__box">
+    <ul class="ac__list">
+      <li class="ac__item item_hovered">数据分析</li>
+      <li class="ac__item">数据可视化</li>
+      <li class="ac__item">数据研究</li>
+    </ul>
+  </div>
+  <div class="sel-dropdown__box" selector-data="pri_major">
+    <div class="sel-dropdown__list">
+      <div class="sel-dropdown__item" sel-itemvalue="1">农学</div>
+      <div class="sel-dropdown__item" sel-itemvalue="2">信息科学</div>
+      <div class="sel-dropdown__item" sel-itemvalue="3">已结束</div>
+      <div class="sel-dropdown__item" sel-itemvalue="4">生命科学</div>
+      <div class="sel-dropdown__item" sel-itemvalue="5">理学</div>
+      <div class="sel-dropdown__item" sel-itemvalue="6">工程学</div>
+      <div class="sel-dropdown__item" sel-itemvalue="7">理论物理学</div>
+      <div class="sel-dropdown__item" sel-itemvalue="8">金融数学</div>
+      <div class="sel-dropdown__item" sel-itemvalue="9">法律与艺术</div>
+    </div>
+  </div>
+  <div class="sel-dropdown__box">
+    <div class="sel-dropdown__list">
+      <div class="sel-dropdown__item">电子通讯技术</div>
+      <div class="sel-dropdown__item">计算机科学</div>
+      <div class="sel-dropdown__item">情报学</div>
+    </div>
+  </div>
+  <div class="dialogs__box" style="width: 720px; visibility: hidden; height: 616px; opacity: 1;">
+    <div class="dialogs__childbox_fixed">
+      <div class="dialogs__header">
+        <div class="dialogs__header_title">群组邀请</div>
+        <button class="button_main button_primary-reverse">全部同意</button>
+        <button class="button_main button_icon">
+          <i class="material-icons">close</i>
+        </button>
+      </div>
+    </div>
+    <div class="dialogs__childbox_adapted">
+      <div class="main-list">
+        <div class="main-list__list">
+          <div class="main-list__item">
+            <div class="main-list__item_content">
+              <div class="grp-idx_medium">
+                <div class="grp__invite-confirm">马建邀请你加入群组:</div>
+                <div class="grp-idx__base-info">
+                  <div class="grp-idx__logo_box">
+                    <div class="grp-idx__logo_img">
+                      <img src="/img/avatar.jpg">
+                    </div>
+                    <div class="grp-idx__grp-type">项目群组</div>
+                  </div>
+                  <div class="grp-idx__main_box">
+                    <div class="grp-idx__main">
+                      <div class="grp-idx__main_name">
+                        <a>电针促进吗啡成瘾大鼠中脑DA能损伤神经元功能恢复及其机制研究</a><i class="material-icons grp-idx__main_icon">link</i>
+                      </div>
+                      <div class="grp-idx__main_kw">
+                        <div class="kw__box">
+                          <div class="kw-chip_small">recommendation system</div>
+                          <div class="kw-chip_small">社交网络</div>
+                          <div class="kw-chip_small">kernel analysis</div>
+                        </div>
+                      </div>
+                      <div class="grp-idx__main_stats">
+                        <span class="grp-idx__main_stats-item">成员数: 34</span><span class="grp-idx__main_stats-item">成果数:
+                          202</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="main-list__item_actions">
+              <button class="button_main button_dense button_grey">忽略</button>
+              <button class="button_main button_dense button_primary-reverse">同意</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

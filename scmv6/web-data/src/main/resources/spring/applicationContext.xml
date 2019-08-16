@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+  default-lazy-init="true">
+  <description>Spring公共配置文件</description>
+  <!-- 定义受环境影响易变的变量 -->
+  <bean id="propertyPlaceholderConfigurer" class="com.smate.core.base.utils.factory.config.DynamicServerConfig">
+    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+    <property name="ignoreResourceNotFound" value="true" />
+    <property name="locations">
+      <list>
+        <value>classpath:config/system.development.properties</value>
+        <value>classpath:config/system.test.properties</value>
+        <value>classpath:config/system.uat.properties</value>
+        <value>classpath:config/system.run.properties</value>
+        <value>classpath:config/system.testyali.properties</value>
+        <value>classpath:config/system.alpha.properties</value>
+      </list>
+    </property>
+  </bean>
+  <bean id="sessionFactoryMap" class="java.util.HashMap">
+    <constructor-arg>
+      <map>
+        <entry key="sns" value-ref="sessionFactory-sns"></entry>
+        <entry key="pdwh" value-ref="sessionFactory-pdwh"></entry>
+      </map>
+    </constructor-arg>
+  </bean>
+  <!-- 启动自动扫描指定包极其子包下的所有bean类，排除@Controller组件，该组件由SpringMVC配置文件扫描 -->
+  <context:component-scan base-package="com.smate.web.data">
+    <context:exclude-filter type="annotation"
+      expression="org.springframework.stereotype.Controller" />
+  </context:component-scan>
+  <!-- rest 接口调用 -->
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+  <!-- freemarker 配置 -->
+  <bean id="xmlFreemarkerConfiguration"
+    class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:template" />
+  </bean>
+</beans>

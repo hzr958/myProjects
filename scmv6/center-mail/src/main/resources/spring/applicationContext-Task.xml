@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+  default-lazy-init="false">
+  <!-- 定时任务管理 -->
+  <bean id="mailDiapatchScheduler" lazy-init="true"
+    class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="triggers">
+      <list>
+        <ref bean="mailClientMaintainTaskTrigger" />
+        <ref bean="mailSenderMaintainTaskTrigger" />
+        <ref bean="mailDispatchTaskTrigger" />
+        <ref bean="mailBuildInfoTaskTrigger" />
+        <ref bean="mailDispatchRecoveryTaskTrigger" />
+        <ref bean="mailRemovalStatisticsTaskTrigger" />
+        <ref bean="mailMonitoringTaskTrigger" />
+        <ref bean="mailSendFailedMonTaskTrigger" />
+      </list>
+    </property>
+  </bean>
+  <!-- 邮件超时未发送回收任务 start -->
+  <bean id="mailDispatchRecoveryTask" class="com.smate.center.mail.task.MailDispatchRecoveryTask" />
+  <bean id="mailDispatchRecoveryTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="mailDispatchRecoveryTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="execute" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="mailDispatchRecoveryTaskTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+    <property name="jobDetail" ref="mailDispatchRecoveryTaskDetail" />
+    <property name="repeatInterval" value="180000" />
+  </bean>
+  <!-- 邮件超时未发送回收任务 end -->
+  <!-- 邮件客户端维护任务 start -->
+  <bean id="mailClientMaintainTask" class="com.smate.center.mail.task.MailClientMaintainTask" />
+  <bean id="mailClientMaintainTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="mailClientMaintainTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="execute" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="mailClientMaintainTaskTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+    <property name="jobDetail" ref="mailClientMaintainTaskDetail" />
+    <property name="repeatInterval" value="2000" />
+  </bean>
+  <!-- 邮件客户端维护任务 end -->
+  <!-- 邮件发送账号维护任务 start -->
+  <bean id="mailSenderMaintainTask" class="com.smate.center.mail.task.MailSenderMaintainTask" />
+  <bean id="mailSenderMaintainTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="mailSenderMaintainTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="execute" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="mailSenderMaintainTaskTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+    <property name="jobDetail" ref="mailSenderMaintainTaskDetail" />
+    <property name="repeatInterval" value="2000" />
+  </bean>
+  <!-- 邮件发送账号维护任务 end -->
+  <!-- 邮件主调度任务 start -->
+  <bean id="mailDispatchTask" class="com.smate.center.mail.task.MailDispatchTask" />
+  <bean id="mailDispatchTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="mailDispatchTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="execute" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="mailDispatchTaskTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+    <property name="jobDetail" ref="mailDispatchTaskDetail" />
+    <property name="repeatInterval" value="3000" />
+  </bean>
+  <!-- 邮件主调度任务 end -->
+  <!-- 构造邮件信息任务 start -->
+  <bean id="mailBuildInfoTask" class="com.smate.center.mail.task.MailBuildInfoTask" />
+  <bean id="mailBuildInfoTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="mailBuildInfoTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="execute" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="mailBuildInfoTaskTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+    <property name="jobDetail" ref="mailBuildInfoTaskDetail" />
+    <property name="repeatInterval" value="3000" />
+  </bean>
+  <!-- 构造邮件信息任务 end -->
+  <!-- 邮件迁移log和统计任务 start -->
+  <bean id="mailRemovalStatisticsTask" class="com.smate.center.mail.task.MailRemovalStatisticsTask" />
+  <bean id="mailRemovalStatisticsTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="mailRemovalStatisticsTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="execute" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="mailRemovalStatisticsTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="mailRemovalStatisticsTaskDetail" />
+    <property name="cronExpression" value="00 00 00 * * ?" />
+  </bean>
+  <!-- 邮件迁移log和统计任务 end -->
+  <!-- 构造监控异常任务 start -->
+  <bean id="mailMonitoringTask" class="com.smate.center.mail.task.MailMonitoringTask" />
+  <bean id="mailMonitoringTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="mailMonitoringTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="execute" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="mailMonitoringTaskTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+    <property name="jobDetail" ref="mailMonitoringTaskDetail" />
+    <property name="repeatInterval" value="60000" />
+  </bean>
+  <!-- 构造监控异常任务 end -->
+  <!-- 邮件退信记录任务 start -->
+  <bean id="mailSendFailedMonTask" class="com.smate.center.mail.task.MailSendFailedMonTask" />
+  <bean id="mailSendFailedMonTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="mailSendFailedMonTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="execute" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="mailSendFailedMonTaskTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+    <property name="jobDetail" ref="mailSendFailedMonTaskDetail" />
+    <property name="repeatInterval" value="50000" />
+  </bean>
+  <!-- 邮件退信记录任务 end -->
+</beans>

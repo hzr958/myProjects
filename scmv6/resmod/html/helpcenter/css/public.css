@@ -1,0 +1,149 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*========全局样式=========*/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input,
+  textarea, select, th, td, div {
+  margin: 0;
+  padding: 0
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%
+}
+
+address, caption, cite, code, dfn, th, var, b, i, s {
+  font-style: normal;
+  font-weight: normal
+}
+
+code, kbd, pre, samp {
+  font-family: courier new, courier, monospace
+}
+
+small {
+  font-size: 12px
+}
+
+ul, ol, dl {
+  list-style: none
+}
+
+sup {
+  vertical-align: text-top
+}
+
+sub {
+  vertical-align: text-bottom
+}
+
+legend {
+  color: #000
+}
+
+fieldset, img {
+  border: 0
+}
+
+button, input, select, textarea {
+  font-size: 100%
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio,
+  video {
+  display: block;
+  margin: 0;
+  padding: 0
+}
+
+mark {
+  background: #ff0
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*=======*/
+body {
+  color: #333;
+  font-family: arial, Tahoma, Verdana, simsun, sans-serif;
+  font-size: 12px;
+  background-color: #FFF;
+  line-height: 150%;
+  background: url(../images/body_top_bj.gif) repeat-x;
+}
+
+input, textarea {
+  font-family: arial, Tahoma, Verdana, simsun, sans-serif;
+}
+
+input, button, select, textarea {
+  outline: none
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #005eac;
+  text-decoration: underline;
+}
+
+a.Blue, a.Blue:hover {
+  color: #005eac;
+} /* 蓝色链接 */
+.b {
+  font-weight: bold;
+} /* 字体加粗 */
+.u {
+  text-decoration: underline;
+}
+
+.f666 {
+  color: #666;
+}
+
+.f333 {
+  color: #333;
+}
+
+.clear {
+  clear: both;
+}
+
+.fleft {
+  float: left;
+}
+
+.fright {
+  float: right;
+}
+
+.mtop10 {
+  margin-top: 10px;
+}
+
+.mtop20 {
+  margin-top: 20px;
+}
+
+.mtop25 {
+  margin-top: 25px;
+}
+
+.mtop30 {
+  margin-top: 30px;
+}
+
+.mtop40 {
+  margin-top: 40px;
+}
+
+.ft14 {
+  font-size: 14px;
+}

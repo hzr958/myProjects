@@ -1,0 +1,990 @@
+<html>
+<head>
+<title>科研之友</title>
+<meta charset="utf-8">
+<meta name="viewport"
+  content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+<link href="/resmod/mobile/css/mobile.css" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="email=no">
+<link rel="stylesheet" type="text/css" href="/resmod/mobile/css/scmmobileframe.css">
+<link rel="stylesheet" type="text/css" href="/resmod/mobile/css/share.min.css">
+<link href="/resmod/css/scmjscollection.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/resmod/mobile/css/plugin/scm.pop.mobile.css">
+<script type="text/javascript" src="/resmod/js/jquery.js"></script>
+<script type="text/javascript" src="/resmod/js/baseutils/baseutils.js"></script>
+<script type="text/javascript" src="/resmod/js/weixin/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" src="/resmod/mobile/js/wechat.custom.js"></script>
+<script type="text/javascript" src="/resmod/js/common/smate.common.js"></script>
+<script type="text/javascript" src="/resmod/js/smate.toast.js"></script>
+<script type="text/javascript" src="/resmod/smate-pc/new-confirmbox/confirm.js"></script>
+<script type="text/javascript" src="/resmod/js/common/smate.common.js"></script>
+<script type="text/javascript" src="/resmod/mobile/js/plugin/scm.pop.mobile.js"></script>
+<script type="text/javascript">
+    $(function(){
+        if ($.trim($("#outHomePage").val()) != "true") {
+            mobile_bottom_setTag("psn");
+        };
+        showRepresentPub();
+        showRepresentPrj();
+        showPsnKeywords();
+        $("#qrcode_div").click(function(e){
+            $("#qrcode_div").hide();
+        });
+        $('#qrcode_show_div').click(function(e){
+            e.stopPropagation();
+        });
+        getQrImg("https://devm.scholarmate.com/psnweb/mobile/outhome?des3ViewPsnId=gdC9pv0cs%2BtFxfgIimt6bg%3D%3D");
+        //添加访问记录
+        if($("#outHomePage").val()){
+            SmateCommon.addVisitRecord($("#des3PsnId").val(),$("#des3PsnId").val(),6);
+        }
+        initWechatMenu();
+//        initSharePlugin();
+        if($("#hasLogin").val() == 0){
+            $("#addFrdBtn").attr("onclick", "showMobileTip();");
+        }
+    });
+    
+    //显示所有简介
+    function showAllBrief(){
+        $("#psn_brief_div").html($("#psn_brif_content").val());
+        $("#psn_brief_div").addClass("app_psn-main_page-body_psninfor-allbrief");
+        $("#psn_brief_div").removeClass("app_psn-main_page-body_psninfor-detail");
+        $("#more_psn_brief").html("隐藏部分");
+        $("#more_psn_brief").attr("onclick", "hideSomeBrief();");
+    }
+    
+    //隐藏部分简介
+    function hideSomeBrief(){
+        var psnBrief = $("#some_psn_brif_content").val();
+        if(psnBrief == null || typeof(psnBrief) == "undefined"){
+            psnBrief = $("#psn_brief_content").val();
+        }
+        if(psnBrief != null && typeof(psnBrief) != "undefined"){
+            $("#psn_brief_div").html(psnBrief.substring(0, 110)+"...");
+        }
+        $("#more_psn_brief").html("查看全部");
+        $("#more_psn_brief").attr("onclick", "showAllBrief();");
+        $("#psn_brief_div").addClass("app_psn-main_page-body_psninfor-detail");
+        $("#psn_brief_div").removeClass("app_psn-main_page-body_psninfor-allbrief");
+    }
+    
+    //显示代表性成果
+    function showRepresentPub(){
+        if($("#load_represent_pub").val() == 1){
+            $.ajax({
+                url: "/pubweb/outside/mobile/ajaxrepresentpub",
+                type: "post",
+                dataType: "html",
+                data: {
+                    "des3PsnId": $("#des3PsnId").val()
+                },
+                success: function(data){
+                    if(data != null){
+                        $("#mobile_represent_pub_div").html(data);
+                    }
+                },
+                error: function(){}
+            });
+        }else{
+            $("#mobile_represent_pub_div").hide();
+        }
+    }
+    //显示代表性项目
+    function showRepresentPrj(){
+        if($("#load_represent_prj").val() == 1){
+            $.ajax({
+                url: "/psnweb/outside/mobile/ajaxrepresentprj",
+                type: "post",
+                dataType: "html",
+                data: {
+                    "des3PsnId": $("#des3PsnId").val()
+                },
+                success: function(data){
+                    if(data != null){
+                        $("#mobile_represent_prj_div").html(data);
+                    }
+                },
+                error: function(){}
+            });
+        }else{
+            $("#mobile_represent_prj_div").hide();
+        }
+    }
+    
+    //跳转到项目列表
+    function showPrjs(){
+        var targetUrl = "/prjweb/wechat/findprjs";
+        if($("#outHomePage").val() == "true"){
+            targetUrl = "/prjweb/outside/mobileotherprjs?des3PsnId="+$("#des3PsnId").val();
+        }
+        document.location.href = targetUrl;
+    }
+    
+    //跳转到成果列表
+    function showPubs(){
+        var targetUrl = "/pubweb/wechat/findpubs?pubCount="+$("#pubSum").val();
+        if($("#outHomePage").val() == "true"){
+            targetUrl = "/pubweb/outside/mobileotherpubs?des3PsnId="+$("#des3PsnId").val();
+        }
+        document.location.href = targetUrl;
+    }
+    
+    //跳转好友列表
+    function showFriends(){
+        var targetUrl = "/psnweb/mobile/friendlist";
+        if($("#outHomePage").val() == "true"){
+            targetUrl = "/psnweb/outside/mobilefriendlist?des3PsnId="+$("#des3PsnId").val();
+        }
+        document.location.href = targetUrl;
+    }
+    
+    //添加好友请求发送成功
+    function addFriendSuccessFun(data){
+        if (data.result == "true") {
+            scmpublictoast("发送好友请求成功",1000);
+        }else{
+            scmpublictoast(data.msg,1000);
+        }
+    }
+    
+    //添加好友请求发送失败
+    function addFriendErrorFun(data){
+        scmpublictoast("系统繁忙",1000);
+    }
+    
+    //关注此人
+    function addAttention(reqPsnId){
+         $.ajax({
+             url : "/psnweb/psnsetting/ajaxSaveAttFrd",
+             type : 'post',
+             dataType:'json',
+             data:{'des3PsnIds' :reqPsnId},
+             success : function(data) {
+                if (data.action == "success" || data.action == "doNothing") {
+                    scmpublictoast("关注成功",1000);
+                    $(".attention_btn").removeAttr("onclick");
+                    $(".attention_btn").attr("onclick","cancelAttention('"+data.attPsnId + "','"+reqPsnId + "')");
+                    $(".attention_btn").text("取消关注");
+                 }else{
+                     scmpublictoast("关注失败",1000);
+                 }
+             },
+             error: function(){
+             }
+         });    
+    }
+    //取消关注
+    function cancelAttention(attentionId,reqPsnId){
+         var  param = {
+                 "userSettings.cancelId":attentionId
+         }
+         $.ajax({
+             url : "/psnweb/psnsetting/ajaxCancelAttPerson",
+             type : 'post',
+             dataType:'json',
+             data:param,
+             success : function(data) {
+                if (data.result == "success") {
+                    scmpublictoast("取消关注成功",1000);
+                    $(".attention_btn").removeAttr("onclick");
+                    $(".attention_btn").attr("onclick","addAttention('"+ reqPsnId + "')");
+                    $(".attention_btn").text("关注");
+                 }else{
+                     scmpublictoast("取消关注失败",1000);
+                 }
+                 
+             },
+             error: function(){
+             }
+         });    
+        
+    }
+    //取消好友
+    function cancelFriend(des3FriendId){
+        jConfirm(homepage.sureCancelFriend, homepage.tips, function(r) {
+            if (r) {
+                $.ajax({
+                    url:"/psnweb/friend/ajaxdel",
+                    type:"post",
+                    dataType:'json',
+                    data:{
+                        "friendPsnIds" : des3FriendId
+                    },
+                    success:function (data){
+                        if (data.result == "success") {
+                            scmpublictoast("删除好友成功",1000);
+                         }else{
+                             scmpublictoast("删除好友失败",1000);
+                         }
+                    },
+                    
+                });
+                
+            }
+        });
+    }
+    
+    //显示二维码
+    function showQrcode(){
+        $("#qrcode_div").show();
+    }
+    //生成二维码
+    function getQrImg(url) {
+        //计算logo大小
+        $("#qrCodeIco").height($("#psn_avatar_img").height());
+        $("#qrCodeIco").width($("#psn_avatar_img").width());
+        //控制Logo图标的位置
+        var margin = ($("#qrcode_img").height() - $("#qrCodeIco").height()) / 2; 
+        $("#qrCodeIco").css("margin", margin);
+        //生成二维码
+        var img_height = $("#qrcode_img").height();
+        var img_width = $("#qrcode_img").width();
+        if (navigator.userAgent.indexOf("MSIE") > 0) {
+            $("#qrcode_img").qrcode({
+                render : "table",
+                width : img_width,
+                height : img_height,
+                text : url
+            });
+        } else {
+            $("#qrcode_img").qrcode({
+                render : "canvas",
+                width : img_width,
+                height : img_height,
+                text : url
+            });
+        }
+    }
+    
+    //初始化微信菜单
+    function initWechatMenu(){
+        if("true" == "true"){
+            var shareImgUrl = "http://dev.scholarmate.com/avatars/3c/62/fe/1000000727634.jpg";
+            if(shareImgUrl == null || shareImgUrl == ""){
+                shareImgUrl = "https://devm.scholarmate.com/resmod/smate-pc/img/logo_psndefault.png";
+            }
+            smatewechat.customWeiXinShare(
+                    "wxa257d0f074303afb",
+                    "1521616059", 
+                    "0e28ea92-1d07-457c-af46-26d5839a7669",
+                    "71f876fc337af7fd43e9b01b32279ef6fb23e5eb",
+                    "夜殇的主页",
+                    "https://devm.scholarmate.com/psnweb/mobile/outhome?des3ViewPsnId=gdC9pv0cs%2BtFxfgIimt6bg%3D%3D",
+                    shareImgUrl,
+                    "这是夜殇的科研之友移动端主页");
+        }
+    }
+    
+    
+    //加载关键词信息
+    function showPsnKeywords(){
+        if($("#load_psn_keywords").val() == 1){
+            $.ajax({
+                url: "/psnweb/outside/mobile/ajaxkeywords",
+                type: "post",
+                dataType: "html",
+                data: {
+                    "des3PsnId": $("#des3PsnId").val()
+                },
+                success: function(data){
+                    if(data != null){
+                        $("#psn_keywords_div").html(data);
+                    }
+                },
+                error: function(){}
+            });
+        }
+    }
+    
+    function showMoreOperation(){
+        $("#more_operation_box").show();
+    }
+    
+    /* function initSharePlugin(){
+        var shareImgUrl = "http://dev.scholarmate.com/avatars/3c/62/fe/1000000727634.jpg";
+        if(shareImgUrl == null || shareImgUrl == ""){
+            shareImgUrl = "https://devm.scholarmate.com/resmod/smate-pc/img/logo_psndefault.png";
+        }
+        var $config = {
+                url : 'https://devm.scholarmate.com/psnweb/mobile/outhome?des3ViewPsnId=gdC9pv0cs%2BtFxfgIimt6bg%3D%3D', // 网址，默认使用 window.location.href
+                source : 'https://devm.scholarmate.com', // 来源（QQ空间会用到）, 默认读取head标签：<meta name="site" content="http://overtrue" />
+                title : '夜殇的主页', // 标题，默认读取 document.title 或者 <meta name="title" content="share.js" />
+                description : '少时诵诗书所所, 水电费,水电费, 我的头衔', // 描述, 默认读取head标签：<meta name="description" content="PHP弱类型的实现原理分析" />
+                image : "https://www.scholarmate.com/avatars/2c/0f/61/1000001620706.jpg", // 图片, 默认取网页中第一个img标签
+                sites: ['weibo', 'qq', 'qzone', 'douban', 'linkedin'],// 启用的站点
+                ralateUid : '2411599032',
+                weibokey : '1813949776'
+               };
+        socialShare('#share_div', $config);
+    } */
+    
+    
+    function showMobileTip(){
+        if($("#hasLogin").val() == 0){
+            Smate.confirm("提示", "系统超时或未登录，你要登录吗？", function(){
+                window.location.href= "/oauth/mobile/index?sys=wechat&service=" + encodeURIComponent($("#loginTargetUrl").val());  
+            },["确定", "取消"]);
+        }
+    }
+    
+    </script>
+</head>
+<body>
+  <input type="hidden" id="des3PsnId" value="gdC9pv0cs%2BtFxfgIimt6bg%3D%3D">
+  <input type="hidden" id="outHomePage" value="">
+  <input type="hidden" id="pubSum" value="332">
+  <input type="hidden" id="des3CurrentPsnId" value="gdC9pv0cs%2BtFxfgIimt6bg%3D%3D">
+  <input type="hidden" id="hasLogin" value="1">
+  <div class="app_psn-main_page">
+    <div class="app_psn-main_page-header">
+      <div class="app_psn-main_page-header_top">
+        <i class="material-icons" onclick="SmateCommon.goBack('/dynweb/mobile/dynshow');">keyboard_arrow_left</i>
+        <div class="app_psn-main_page-header_top-right">
+          <i class="app_psn-main_page-header_top-share" onclick="showQrcode();"></i> <i class="material-icons"
+            onclick="showMoreOperation();">more_horiz</i>
+          <div class="sig__out-box">
+            <em class="sig__out-header"></em>
+            <div class="sig__out-body" onclick="">关注</div>
+          </div>
+        </div>
+      </div>
+      <div class="app_psn-main_page-header_middle">
+        <div class="app_psn-main_page-header_middle-container">
+          <div class="app_psn-main_page-header_middle-container_avator">
+            <img alt="" src="http://dev.scholarmate.com/avatars/3c/62/fe/1000000727634.jpg"
+              onerror="this.src='/resmod/smate-pc/img/logo_psndefault.png'">
+          </div>
+          <input type="hidden" value="0">
+        </div>
+      </div>
+      <div class="app_psn-main_page-header_footer">
+        <div class="app_psn-main_page-header_footer-name">夜殇</div>
+        <div class="app_psn-main_page-header_footer-school">少时诵诗书所所, 水电费</div>
+        <div class="app_psn-main_page-header_footer-position">水电费, 我的头衔</div>
+      </div>
+    </div>
+    <div class="app_psn-main_page-neck">
+      <div class="app_psn-main_page-neck_item app_psn-main_page-neck_item-left" onclick="showPrjs();">
+        <div>0</div>
+        <div>项目</div>
+      </div>
+      <div class="app_psn-main_page-neck_item" onclick="showPubs();">
+        <div>332</div>
+        <div>成果</div>
+      </div>
+    </div>
+    <div class="app_psn-main_page-body">
+      <!-- 个人简介  begin -->
+      <input type="hidden" id="psn_brif_content"
+        value="Spring 设计的核心是 org.springframework.beans 包，它的设计目标是与 JavaBean 组件一起使用。这个包通常不是由用户直接使用，而是由服务器将其用作其他多数功能的底层中介。下一个最高级抽象是 BeanFactory 接口，它是工厂设计模式的实现，允许通过名称创建和检索对象。BeanFactory 也可以管理对象之间的关系。
+
+BeanFactory 支持两个对象模型。
+
+单态 模型提供了具有特定名称的对象的共享实例，可以在查询时对其进行检索。Singleton 是默认的也是最常用的对象模型。对于无状态服务对象很理想。
+原型 模型确保每次检索都会创建单独的对象。在每个用户都需要自己的对象时，原型模型最适合。
+bean 工厂的概念是 Spring 作为 IOC 容器的基础。IOC 将处理事情的责任从应用程序代码转移到框架。正如我将在下一个示例中演示的那样，Spring 框架使用 JavaBean 属性和配置数据来指出必须设置的依赖关系。">
+      <div class="app_psn-main_page-body_psninfor app_psn-main_page-body_item">
+        <div class="app_psn-main_page-body_item-title">
+          <span>个人简介</span> <i class="material-icons" style="display: none;">mode_edit</i>
+        </div>
+        <input type="hidden" id="some_psn_brif_content"
+          value="Spring 设计的核心是 org.springframework.beans 包，它的设计目标是与 JavaBean 组件一起使用。这个包通常不是由用户直接使用，而是由服务器将其用作其他多数功能的底层中介。下一个最高级...">
+        <div class="app_psn-main_page-body_psninfor-detail" id="psn_brief_div">Spring 设计的核心是
+          org.springframework.beans 包，它的设计目标是与 JavaBean 组件一起使用。这个包通常不是由用户直接使用，而是由服务器将其用作其他多数功能的底层中介。下一个最高级...</div>
+        <div class="app_psn-main_page-body_psninfor-checkall" id="more_psn_brief" onclick="showAllBrief();">查看全部</div>
+      </div>
+      <!-- 个人简介  end -->
+      <!-- 工作经历  begin -->
+      <div class="app_psn-main_page-body_psnwork app_psn-main_page-body_item">
+        <div class="app_psn-main_page-body_item-title">
+          <span>工作经历</span> <i class="material-icons" style="display: none;">mode_edit</i>
+        </div>
+        <div class="app_psn-main_page-body_work-detail">
+          <div class="app_psn-main_page-body_work-detail_item">
+            <img src="/resmod/smate-pc/img/logo_instdefault.png" class="app_psn-main_page-body_work-detail_item-avator"
+              onerror="src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_work-detail_item-content">
+              <div class="work-detail_item-name">Wageningen Universiteit</div>
+              <div class="work-detail_item-time">的, 水电费, 2007/3 - 至今</div>
+              <div class="work-detail_item-discrible">呵呵哒</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_work-detail">
+          <div class="app_psn-main_page-body_work-detail_item">
+            <img src="/resmod/smate-pc/img/logo_instdefault.png" class="app_psn-main_page-body_work-detail_item-avator"
+              onerror="src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_work-detail_item-content">
+              <div class="work-detail_item-name">水电费</div>
+              <div class="work-detail_item-time">水电费, 打的费, 2007/7 - 至今</div>
+              <div class="work-detail_item-discrible">水电费胜多负少的</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_work-detail">
+          <div class="app_psn-main_page-body_work-detail_item">
+            <img src="/resmod/smate-pc/img/logo_instdefault.png" class="app_psn-main_page-body_work-detail_item-avator"
+              onerror="src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_work-detail_item-content">
+              <div class="work-detail_item-name">少时诵诗书所</div>
+              <div class="work-detail_item-time">是v, 水电费, 2007 - 至今</div>
+              <div class="work-detail_item-discrible">水电费</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_work-detail">
+          <div class="app_psn-main_page-body_work-detail_item">
+            <img src="/resmod/smate-pc/img/logo_instdefault.png" class="app_psn-main_page-body_work-detail_item-avator"
+              onerror="src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_work-detail_item-content">
+              <div class="work-detail_item-name">fsdfdsf</div>
+              <div class="work-detail_item-time">dd, sdf, 2007 - 至今</div>
+              <div class="work-detail_item-discrible">sadfasasdf</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_work-detail">
+          <div class="app_psn-main_page-body_work-detail_item">
+            <img src="/resmod/smate-pc/img/logo_instdefault.png" class="app_psn-main_page-body_work-detail_item-avator"
+              onerror="src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_work-detail_item-content">
+              <div class="work-detail_item-name">asdf</div>
+              <div class="work-detail_item-time">dddddddddd, ffffffffffff, 2007 - 至今</div>
+              <div class="work-detail_item-discrible">sssssssssssss</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_work-detail">
+          <div class="app_psn-main_page-body_work-detail_item">
+            <img src="/resmod/smate-pc/img/logo_instdefault.png" class="app_psn-main_page-body_work-detail_item-avator"
+              onerror="src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_work-detail_item-content">
+              <div class="work-detail_item-name">首要单位</div>
+              <div class="work-detail_item-time">部门, 职称, 2007 - 2020/10</div>
+              <div class="work-detail_item-discrible">描述</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_work-detail">
+          <div class="app_psn-main_page-body_work-detail_item">
+            <img src="/resmod/smate-pc/img/logo_instdefault.png" class="app_psn-main_page-body_work-detail_item-avator"
+              onerror="src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_work-detail_item-content">
+              <div class="work-detail_item-name">很过分回复的股份大概</div>
+              <div class="work-detail_item-time">2009 - 至今</div>
+              <div class="work-detail_item-discrible"></div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_work-detail">
+          <div class="app_psn-main_page-body_work-detail_item">
+            <img src="http://dev.scholarmate.com/insLogo/563.jpg" class="app_psn-main_page-body_work-detail_item-avator"
+              onerror="src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_work-detail_item-content">
+              <div class="work-detail_item-name">长春工业大学</div>
+              <div class="work-detail_item-time">十五, 夜月如水, 2010 - 至今</div>
+              <div class="work-detail_item-discrible">米搜书</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_work-detail">
+          <div class="app_psn-main_page-body_work-detail_item">
+            <img src="/resmod/smate-pc/img/logo_instdefault.png" class="app_psn-main_page-body_work-detail_item-avator"
+              onerror="src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_work-detail_item-content">
+              <div class="work-detail_item-name">少时诵诗书所所</div>
+              <div class="work-detail_item-time">水电费, 水电费, 2010 - 至今</div>
+              <div class="work-detail_item-discrible">胜多负少的</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_work-detail">
+          <div class="app_psn-main_page-body_work-detail_item">
+            <img src="/resmod/smate-pc/img/logo_instdefault.png" class="app_psn-main_page-body_work-detail_item-avator"
+              onerror="src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_work-detail_item-content">
+              <div class="work-detail_item-name">我就测试下</div>
+              <div class="work-detail_item-time">部门, 职称, 2010 - 2026</div>
+              <div class="work-detail_item-discrible">描述</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_work-detail">
+          <div class="app_psn-main_page-body_work-detail_item">
+            <img src="/resmod/smate-pc/img/logo_instdefault.png" class="app_psn-main_page-body_work-detail_item-avator"
+              onerror="src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_work-detail_item-content">
+              <div class="work-detail_item-name">单位</div>
+              <div class="work-detail_item-time">部门, 职称, 2013/7 - 至今</div>
+              <div class="work-detail_item-discrible">描述下</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_work-detail">
+          <div class="app_psn-main_page-body_work-detail_item">
+            <img src="/resmod/smate-pc/img/logo_instdefault.png" class="app_psn-main_page-body_work-detail_item-avator"
+              onerror="src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_work-detail_item-content">
+              <div class="work-detail_item-name">iris</div>
+              <div class="work-detail_item-time">scholarmate, 码农, 2014 - 至今</div>
+              <div class="work-detail_item-discrible">描述</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_work-detail">
+          <div class="app_psn-main_page-body_work-detail_item">
+            <img src="/resmod/smate-pc/img/logo_instdefault.png" class="app_psn-main_page-body_work-detail_item-avator"
+              onerror="src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_work-detail_item-content">
+              <div class="work-detail_item-name">是登录附件</div>
+              <div class="work-detail_item-time">失落的房间, 了深刻的减肥, 2016 - 2023</div>
+              <div class="work-detail_item-discrible"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 工作经历  end -->
+      <!-- 教育经历  begin -->
+      <div class="app_psn-main_page-body_educate app_psn-main_page-body_item">
+        <div class="app_psn-main_page-body_item-title">
+          <span>教育经历</span> <i class="material-icons" style="display: none;">mode_edit</i>
+        </div>
+        <div class="app_psn-main_page-body_educate-detail">
+          <div class="app_psn-main_page-body_educate-detail_item">
+            <img class="app_psn-main_page-body_educate-detail_item-avator"
+              src="http://dev.scholarmate.com/insLogo/722.jpg"
+              onerror="this.src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_educate-detail_item-content">
+              <div class="educate-detail_item-name">湖南大学</div>
+              <div class="educate-detail_item-time">dsdf, 两, 2012 - 至今</div>
+              <div class="educate-detail_item-discrible"></div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_educate-detail">
+          <div class="app_psn-main_page-body_educate-detail_item">
+            <img class="app_psn-main_page-body_educate-detail_item-avator"
+              src="http://dev.scholarmate.com/insLogo/14548.jpg"
+              onerror="this.src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_educate-detail_item-content">
+              <div class="educate-detail_item-name">北华航天工业学院</div>
+              <div class="educate-detail_item-time">部门傻了点附近, 撒旦法, 2012/1</div>
+              <div class="educate-detail_item-discrible"></div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_educate-detail">
+          <div class="app_psn-main_page-body_educate-detail_item">
+            <img class="app_psn-main_page-body_educate-detail_item-avator"
+              src="http://dev.scholarmate.com/insLogo/5545.jpg"
+              onerror="this.src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_educate-detail_item-content">
+              <div class="educate-detail_item-name">香港城市大学</div>
+              <div class="educate-detail_item-time">部门的, 傻了点附近, 1920</div>
+              <div class="educate-detail_item-discrible"></div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_educate-detail">
+          <div class="app_psn-main_page-body_educate-detail_item">
+            <img class="app_psn-main_page-body_educate-detail_item-avator"
+              src="/resmod/smate-pc/img/logo_instdefault.png"
+              onerror="this.src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_educate-detail_item-content">
+              <div class="educate-detail_item-name">机构</div>
+              <div class="educate-detail_item-time">1902/2 - 1907/5</div>
+              <div class="educate-detail_item-discrible">描述</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_educate-detail">
+          <div class="app_psn-main_page-body_educate-detail_item">
+            <img class="app_psn-main_page-body_educate-detail_item-avator"
+              src="/resmod/smate-pc/img/logo_instdefault.png"
+              onerror="this.src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_educate-detail_item-content">
+              <div class="educate-detail_item-name">阿斯达</div>
+              <div class="educate-detail_item-time">阿斯达, 1901</div>
+              <div class="educate-detail_item-discrible"></div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_educate-detail">
+          <div class="app_psn-main_page-body_educate-detail_item">
+            <img class="app_psn-main_page-body_educate-detail_item-avator"
+              src="http://dev.scholarmate.com/insLogo/450.jpg"
+              onerror="this.src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_educate-detail_item-content">
+              <div class="educate-detail_item-name">北京大学</div>
+              <div class="educate-detail_item-time">第三方的, 头衔的, 1905/7 - 1914/5</div>
+              <div class="educate-detail_item-discrible">描述的</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_educate-detail">
+          <div class="app_psn-main_page-body_educate-detail_item">
+            <img class="app_psn-main_page-body_educate-detail_item-avator"
+              src="/resmod/smate-pc/img/logo_instdefault.png"
+              onerror="this.src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_educate-detail_item-content">
+              <div class="educate-detail_item-name">阿士大夫撒旦</div>
+              <div class="educate-detail_item-time">阿斯顿发送到, 1905/7 - 1910/9</div>
+              <div class="educate-detail_item-discrible">阿斯蒂芬</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_educate-detail">
+          <div class="app_psn-main_page-body_educate-detail_item">
+            <img class="app_psn-main_page-body_educate-detail_item-avator"
+              src="/resmod/smate-pc/img/logo_instdefault.png"
+              onerror="this.src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_educate-detail_item-content">
+              <div class="educate-detail_item-name">教育经历</div>
+              <div class="educate-detail_item-time">1902/2 - 1903/1</div>
+              <div class="educate-detail_item-discrible">描述</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_educate-detail">
+          <div class="app_psn-main_page-body_educate-detail_item">
+            <img class="app_psn-main_page-body_educate-detail_item-avator"
+              src="/resmod/smate-pc/img/logo_instdefault.png"
+              onerror="this.src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_educate-detail_item-content">
+              <div class="educate-detail_item-name">机构</div>
+              <div class="educate-detail_item-time">1908/6 - 1911/6</div>
+              <div class="educate-detail_item-discrible">描述</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_educate-detail">
+          <div class="app_psn-main_page-body_educate-detail_item">
+            <img class="app_psn-main_page-body_educate-detail_item-avator"
+              src="/resmod/smate-pc/img/logo_instdefault.png"
+              onerror="this.src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_educate-detail_item-content">
+              <div class="educate-detail_item-name">阿斯蒂芬2222</div>
+              <div class="educate-detail_item-time">阿萨德发生, 阿斯蒂芬, 1904 - 1908</div>
+              <div class="educate-detail_item-discrible">阿斯蒂芬</div>
+            </div>
+          </div>
+        </div>
+        <div class="app_psn-main_page-body_educate-detail">
+          <div class="app_psn-main_page-body_educate-detail_item">
+            <img class="app_psn-main_page-body_educate-detail_item-avator"
+              src="/resmod/smate-pc/img/logo_instdefault.png"
+              onerror="this.src='/resmod/smate-pc/img/logo_instdefault.png'">
+            <div class="app_psn-main_page-body_educate-detail_item-content">
+              <div class="educate-detail_item-name">单位</div>
+              <div class="educate-detail_item-time">头衔, 1902/6</div>
+              <div class="educate-detail_item-discrible"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 教育经历  end -->
+      <!-- 科技领域  begin -->
+      <input type="hidden" id="load_psn_keywords" value="1">
+      <div class="app_psn-main_page-body_search app_psn-main_page-body_item">
+        <div class="app_psn-main_page-body_item-title">
+          <span>研究领域</span> <i class="material-icons" style="display: none;">mode_edit</i>
+        </div>
+        <div class="app_psn-main_page-body_search-detail">
+          <div class="app_psn-main_page-body_search-detail_item">农学</div>
+        </div>
+        <div class="app_psn-main_page-body_search-detail">
+          <div class="app_psn-main_page-body_search-detail_item">林学</div>
+        </div>
+        <div class="app_psn-main_page-body_search-detail">
+          <div class="app_psn-main_page-body_search-detail_item">生物学</div>
+        </div>
+        <div class="app_psn-main_page-body_search-detail">
+          <div class="app_psn-main_page-body_search-detail_item">畜牧、兽医科学</div>
+        </div>
+        <div class="app_psn-main_page-body_search-detail">
+          <div class="app_psn-main_page-body_search-detail_item">矿山&amp;冶金</div>
+        </div>
+      </div>
+      <!-- 科技领域  end -->
+      <!-- 关键词  begin -->
+      <div class="app_psn-main_page-body_keyword app_psn-main_page-body_item" id="psn_keywords_div">
+        <script type="text/javascript">
+
+function showIdentifyPsnList(discId){
+    var isOthers = 1;
+    if(!"true"==$("#outHomePage").val()){
+        isOthers = 0;
+    }
+    document.location.href = "/psnweb/outside/mobile/identifypsn?des3PsnId="+$("#des3PsnId").val()+"&discId="+discId+"&serviceType=kwIdentific&isOthers="+isOthers;
+}
+
+</script>
+        <div class="app_psn-main_page-body_item-title">
+          <span>关键词</span> <i class="material-icons" style="display: none;">mode_edit</i>
+        </div>
+        <div class="app_psn-main_page-body_keyword-detail">
+          <div class="app_psn-main_page-body_keyword-detail_item">
+            <div class="app_psn-main_page-body_keyword-detail_item-left">
+              <div class="body_keyword-detail_item-left_num">0</div>
+              <div class="body_keyword-detail_item-left_name overflow_hidden">抗肿瘤</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 关键词  end -->
+      <!-- 代表性成果  begin -->
+      <input type="hidden" id="load_represent_pub" value="1">
+      <div class="app_psn-main_page-body_program app_psn-main_page-body_item" id="mobile_represent_pub_div">
+        <script type="text/javascript">
+function openMobilePubDetails(des3PubId){
+    location.href="/pubweb/wechat/findpubxmlnonext?des3PubId="+des3PubId;
+}
+
+</script>
+        <input type="hidden" id="represent_prj_size" value="5">
+        <div class="app_psn-main_page-body_item-title">
+          <span>代表成果</span> <i class="material-icons" style="display: none;">mode_edit</i>
+        </div>
+        <div class="app_psn-main_page-body_program-detail">
+          <div class="page-body_program-detail_item">
+            <img class="page-body_program-detail_item-avator"
+              src="http://alpha.scholarmate.com//pubFulltextImage/4a/54/18/adebb144d09347a5a85b5514ea7d4e9c_thumb.png">
+            <div class="page-body_program-detail_item-content"
+              onclick="openMobilePubDetails('Mu58Odp5Jnzjj3LxxevgFw%3D%3D');">
+              <div class="page-body_program-detail_item-title">没有选专利类别</div>
+              <div class="page-body_program-detail_item-author">
+                <strong>夜神月</strong>
+              </div>
+              <div class="page-body_program-detail_item-time">2012.2.2, 中国, 发证单位, sssssss.</div>
+            </div>
+          </div>
+          <div class="page-body_program-detail_item">
+            <img class="page-body_program-detail_item-avator" src="/resscmwebsns/images_v5/images2016/file_img1.jpg">
+            <div class="page-body_program-detail_item-content"
+              onclick="openMobilePubDetails('Mu58Odp5JnxmiFKDFxJ0jQ%3D%3D');">
+              <div class="page-body_program-detail_item-title">没有选专利类别2</div>
+              <div class="page-body_program-detail_item-author">
+                <strong>夜神月</strong>
+              </div>
+              <div class="page-body_program-detail_item-time">中国, 是是是是是是, 是但事实上.</div>
+            </div>
+          </div>
+          <div class="page-body_program-detail_item">
+            <img class="page-body_program-detail_item-avator" src="/resscmwebsns/images_v5/images2016/file_img.jpg">
+            <div class="page-body_program-detail_item-content"
+              onclick="openMobilePubDetails('Mu58Odp5JnyuUhKe%2FxMNsg%3D%3D');">
+              <div class="page-body_program-detail_item-title">全文附件好友可下载</div>
+              <div class="page-body_program-detail_item-author">李昌文李昌文李昌文李昌文李昌文李昌文李昌文李昌文李昌文李昌文李昌文李昌文李昌文李昌文李昌文李昌文李昌文李昌文李昌文李昌文李</div>
+              <div class="page-body_program-detail_item-time">2012.2, 中国, 中国专利局, 1122.</div>
+            </div>
+          </div>
+          <div class="page-body_program-detail_item">
+            <img class="page-body_program-detail_item-avator"
+              src="http://alpha.scholarmate.com//pubFulltextImage/4f/6e/f5/2fd46ce0f7eb43979e77012808d076f2_thumb.png">
+            <div class="page-body_program-detail_item-content"
+              onclick="openMobilePubDetails('Mu58Odp5JnwoB%2BAIQeqJZw%3D%3D');">
+              <div class="page-body_program-detail_item-title">工作</div>
+              <div class="page-body_program-detail_item-author">工作</div>
+              <div class="page-body_program-detail_item-time">测试科学与仪器(英文版), 2(2), p 3, 2015.3.3.</div>
+            </div>
+          </div>
+          <div class="page-body_program-detail_item">
+            <img class="page-body_program-detail_item-avator" src="/resscmwebsns/images_v5/images2016/file_img.jpg">
+            <div class="page-body_program-detail_item-content"
+              onclick="openMobilePubDetails('Mu58Odp5JnyIqJ%2FFKeFpkg%3D%3D');">
+              <div class="page-body_program-detail_item-title">12</div>
+              <div class="page-body_program-detail_item-author">
+                <strong>夜神月</strong>
+              </div>
+              <div class="page-body_program-detail_item-time">12, 1(2), 2012.1.2.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 代表性成果  end -->
+      <!-- 代表性项目  begin -->
+      <input type="hidden" id="load_represent_prj" value="1">
+      <div class="app_psn-main_page-body_program app_psn-main_page-body_item" id="mobile_represent_prj_div">
+        <script type="text/javascript">
+function openMobilePrjDetail(des3PrjId){
+    location.href="/prjweb/outside/mobileprjxml?des3PrjId="+des3PrjId;
+}
+
+</script>
+        <input type="hidden" id="represent_prj_size" value="1">
+        <div class="app_psn-main_page-body_item-title">
+          <span>代表项目</span> <i class="material-icons" style="display: none;">mode_edit</i>
+        </div>
+        <div class="app_psn-main_page-body_program-detail">
+          <div class="page-body_program-detail_item">
+            <img class="page-body_program-detail_item-avator" src="/resscmwebsns/images_v5/images2016/file_img1.jpg">
+            <div class="page-body_program-detail_item-content"
+              onclick="openMobilePrjDetail('JvUzHyT7%2BGLUQJxDTOPxpw%3D%3D');">
+              <div class="page-body_program-detail_item-title">'"测试项目'"'"</div>
+              <div class="page-body_program-detail_item-author">*夜神月; *小呆</div>
+              <div class="page-body_program-detail_item-time">中文资助机构 - 中文资助类别, RMB 22,222.00, 2012/1 - 2013.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 代表性项目  end -->
+    </div>
+    <!-- <div id="share_div" class="">
+            
+        </div> -->
+  </div>
+  <!-- 二维码  begin -->
+  <div class="scan_addfriend" style="display: flex;" id="qrcode_div">
+    <div class="scan_addfriend-container" id="qrcode_show_div">
+      <div class="scan_addfriend-container_title">
+        <img id="psn_avatar_img" src="http://dev.scholarmate.com/avatars/3c/62/fe/1000000727634.jpg"
+          onerror="this.src='/resmod/smate-pc/img/logo_psndefault.png'">
+        <div class="scan_addfriend-container_infor">
+          <div class="scan_addfriend-container_name">夜殇</div>
+          <div class="scan_addfriend-container_work">少时诵诗书所所, 水电费</div>
+          <div class="scan_addfriend-container_work">水电费, 我的头衔</div>
+        </div>
+      </div>
+      <div class="scan_addfriend-container_content" id="qrcode_img">
+        <img id="qrCodeIco" src="http://dev.scholarmate.com/avatars/3c/62/fe/1000000727634.jpg"
+          onerror="this.src='/resmod/smate-pc/img/logo_psndefault.png'"
+          style="position: absolute; height: 40px; width: 40px; margin: 92.5px;">
+      </div>
+      <div class="scan_addfriend-container_footer">扫描二维码，加我为联系人</div>
+    </div>
+  </div>
+  <!-- 二维码  end -->
+  <!-- 更多操作  begin -->
+  <!-- 更多操作  end -->
+  <link rel="stylesheet" type="text/css" href="/resmod/mobile/css/scmmobileframe.css">
+  <link href="/resmod/mobile/css/mobile.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="/resmod/mobile/js/msgbox/mobile.msgprompt.js"></script>
+  <script type="text/javascript">
+$(function(){
+    var desPsnId=$("#currentDes3PsnId").val();
+    if(desPsnId==null){
+        desPsnId=$("#des3PsnId").val();
+    }
+    if(desPsnId==""){ 
+        $.ajax({
+            url : "/psnweb/mobile/ajaxgetdes3psnid",
+            dataType : "json",
+            type : "post",
+            data : {},
+            async : false,
+            success : function(data){
+                desPsnId = data.result;
+                MsgPrompt.friendNumbers(desPsnId);
+            }
+        });
+    }
+    else{
+        MsgPrompt.friendNumbers(desPsnId); 
+    }
+    MsgPrompt.showTips();  
+});
+
+//动态
+function msg_menu_dyn(){
+    window.location.href = "/dynweb/mobile/dynshow";
+};
+//发现
+function msg_menu_find(){
+    window.location.href = "/pubweb/mobile/search/main";
+};
+//联系
+function msg_menu_link(){
+    window.location.href = "/psnweb/mobile/relationmain";
+};
+//消息
+function msg_menu_msg(){
+    window.location.href = "/psnweb/mobile/msgbox";
+};
+//我的
+function msg_menu_psn(){
+    var _obj = $("#my_select");
+/*  var  targetele = document.getElementById("my_functionblueball"); */
+    // 显示隐藏
+    if (_obj.is(":hidden")) {
+        _obj.show();
+/*      document.getElementById("my_functionblueball").classList.toggle("fun__ball-visible"); */
+    } else {
+        _obj.hide();
+        /* document.getElementById("my_functionblueball").classList.toggle("fun__ball-visible"); */
+        return;
+    } 
+};
+//个人主页
+function my_home_page(){
+    window.location.href = "/psnweb/mobile/myhome";
+};
+//切换站点
+function select_site(){
+    window.location.href = "/psnweb/mobile/sitelistview";
+};
+
+
+
+//选中菜单栏高亮显示
+function mobile_bottom_setTag(moduleName) {
+    $(".btn_navigation").find(".active").removeClass("active");
+    switch(moduleName) {
+    case 'find':$(".menu_find").addClass("active");break;
+    case 'link':$(".menu_link").addClass("active");break;
+    case 'msg':$(".menu_msg").addClass("active");break;
+    case 'psn':$(".menu_psn").addClass("active");break;
+    default:$(".menu_dyn").addClass("active");
+    }
+};
+
+
+
+
+</script>
+  <div style="height: 56px;"></div>
+  <input id="des3PsnId" name="des3PsnId" type="hidden" value="gdC9pv0cs%2BtFxfgIimt6bg%3D%3D">
+  <div class="btn_navigation" style="z-index: 99;">
+    <div class="btn_navigation_section menu_dyn" onclick="msg_menu_dyn();">
+      <div class="btn_navigation_icon">
+        <i class="material-icons">forum</i>
+      </div>
+      <div class="btn_navigation_text">动态</div>
+    </div>
+    <div class="btn_navigation_section menu_find" onclick="msg_menu_find();">
+      <div class="btn_navigation_icon">
+        <i class="material-icons">search</i>
+      </div>
+      <div class="btn_navigation_text">发现</div>
+    </div>
+    <div class="btn_navigation_section menu_link hasNew" onclick="msg_menu_link();">
+      <div class="btn_navigation_icon">
+        <i class="material-icons">group</i>
+      </div>
+      <div class="btn_navigation_text">好友</div>
+      <div class="btn_navigation_point"></div>
+    </div>
+    <div class="btn_navigation_section menu_msg hasNew" onclick="msg_menu_msg();">
+      <div class="btn_navigation_icon">
+        <i class="material-icons">notifications</i>
+      </div>
+      <div class="btn_navigation_text">消息</div>
+      <div class="btn_navigation_point"></div>
+    </div>
+    <div class="btn_navigation_section menu_psn active" onclick="my_home_page();">
+      <!-- <div class="btn_navigation_section menu_psn" onclick="msg_menu_psn();"> -->
+      <div class="btn_navigation_icon">
+        <i class="material-icons">person</i>
+      </div>
+      <div class="btn_navigation_text">我的</div>
+      <div id="my_select" class="psn__select-item" style="display: none">
+        <div class="psn__select-item__list psn__select-item__line" onclick="my_home_page();">我的主页</div>
+        <div class="psn__select-item__list" onclick="select_site();">切换站点</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

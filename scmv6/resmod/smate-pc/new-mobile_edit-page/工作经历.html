@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../mobile/css/mobile.css">
+	<script type="text/javascript">
+		window.onload = function(){
+            var inputlist = document.getElementsByClassName("new-edit_psntitle-body_item-input");
+            for(var i = 0; i < inputlist.length; i++){
+                inputlist[i].onfocus = function(){
+                	this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-detail").classList.add("new-edit_psntitle-body_item-detail_selected");
+                    this.closest(".new-edit_psntitle-body_item-box").classList.add("new-edit_psntitle-body_item-box_selected");
+                }
+                inputlist[i].onblur = function(){
+                	if(this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-detail").classList.contains("new-edit_psntitle-body_item-detail_selected")){
+
+                		this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-detail").classList.remove("new-edit_psntitle-body_item-detail_selected");
+                		this.closest(".new-edit_psntitle-body_item-box").classList.remove("new-edit_psntitle-body_item-box_selected");
+                		var gettext = this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-input").value.trim();
+                		if(gettext != ""){
+                            this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-detail").classList.add("new-edit_psntitle-body_item-detail_inputed");
+                            this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-input").classList.add("new-edit_psntitle-body_item-input-show");
+                		}else{
+                			if(this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-detail").classList.contains("new-edit_psntitle-body_item-detail_inputed")){
+                               this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-detail").classList.remove("new-edit_psntitle-body_item-detail_inputed");
+                               this.closest(".new-edit_psntitle-body_item-box").querySelector(".new-edit_psntitle-body_item-input").classList.remove("new-edit_psntitle-body_item-input-show");
+                			}
+                		}
+                	}
+                	
+                }
+            }
+		}
+	</script>
+</head>
+<body>
+        <div class="new-edit_keword-header">
+            <i class="material-icons">keyboard_arrow_left</i>
+            <span class="new-edit_keword-header_title">编辑教育经历</span> 
+            <i class="material-icons"></i>
+        </div>
+        <div class="new-edit_psntitle-body" style="position: relative; margin-top: 60px;">
+        	
+        	<div class="new-edit_psntitle-body_item">
+        		<div class="new-edit_psntitle-body_item-box">
+        			<span class="new-edit_psntitle-body_item-detail">机构名称</span>
+        		    <input type="text" class="new-edit_psntitle-body_item-input">
+        	    </div>
+        	</div>
+
+        	<div class="new-edit_psntitle-body_item">
+        		<div class="new-edit_psntitle-body_item-box">
+        			<span class="new-edit_psntitle-body_item-detail">部门</span>
+        		    <input type="text" class="new-edit_psntitle-body_item-input">
+        	    </div>
+        	</div>
+           
+            <div class="new-edit_psntitle-body_item">
+        		<div class="new-edit_psntitle-body_item-box">
+        			<span class="new-edit_psntitle-body_item-detail">职称</span>
+        		    <input type="text" class="new-edit_psntitle-body_item-input">
+        	    </div>
+        	</div>
+            
+            <div style="width: 100%; display: flex; align-items: center; justify-content: space-around;">
+	        	<div class="new-edit_psntitle-body_item" style="width: 45%;">
+	        		<div class="new-edit_psntitle-body_item-box">
+	        			<span class="new-edit_psntitle-body_item-detail">开始年份</span>
+	        		    <input type="text" class="new-edit_psntitle-body_item-input">
+	        	    </div>
+	        	</div>
+	            <div class="new-edit_psntitle-body_item" style="width: 45%;">
+	        		<div class="new-edit_psntitle-body_item-box">
+	        			<span class="new-edit_psntitle-body_item-detail">终止年份</span>
+	        		    <input type="text" class="new-edit_psntitle-body_item-input">
+	        	    </div>
+	        	</div>
+            </div>
+
+
+            <div class="new-edit_psntitle-body_item">
+        		<div class="new-edit_psntitle-body_item-box">
+        			<label class="new-edit_psntitle-body_item-detail">描述</label>
+        			<input type="text" class="new-edit_psntitle-body_item-input">
+        		    <!-- <textarea  class="new-edit_psntitle-body_item-input" style="height: auto; min-height: 20px; "></textarea> -->
+        	    </div>
+        	    <div style="font-size: 14px; color: #666; line-height: 24px; width: 90%; text-align: right;">
+        	    	描述所教课程或所主持的项目
+        	    </div>
+        	</div>
+
+        </div>
+        
+        <div class="new-edit_page-normal_footer">保存</div>
+</body>
+</html>

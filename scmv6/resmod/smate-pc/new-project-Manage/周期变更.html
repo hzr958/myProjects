@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/scmpcframe.css">
+	<script type="text/javascript">
+		window.onload = function(){
+			var mainEle = document.getElementsByClassName("New-ChangeNormal_Container")[0];
+			mainEle.style.left = (window.innerWidth - mainEle.offsetWidth)/2 + "px";
+			mainEle.style.top = (window.innerHeight - mainEle.offsetHeight)/2 + "px";
+			window.onresize = function(){
+                mainEle.style.left = (window.innerWidth - mainEle.offsetWidth)/2 + "px";
+			    mainEle.style.top = (window.innerHeight - mainEle.offsetHeight)/2 + "px";
+			}
+		    var inputlist = document.getElementsByClassName("New-ChangeNormal_Bodyitem-Input");
+		    for(var i = 0;i < inputlist.length;i++){
+                inputlist[i].onfocus = function(){
+                	this.closest(".New-ChangeNormal_Bodyitem-Box").querySelector(".New-ChangeNormal_Bodyitem-Title").classList.add("New-ChangeNormal_Bodyitem-TitleColor");
+                	this.closest(".New-ChangeNormal_Bodyitem-Box").classList.add("New-ChangeNormal_Bodyitem-Bottom");
+                	if(!this.closest(".New-ChangeNormal_Bodyitem-Box").querySelector(".New-ChangeNormal_Bodyitem-Title").classList.contains("New-ChangeNormal_Bodyitem-TitleInput")){
+                        this.closest(".New-ChangeNormal_Bodyitem-Box").querySelector(".New-ChangeNormal_Bodyitem-Title").classList.add("New-ChangeNormal_Bodyitem-TitleInput"); 
+                	}
+                }
+                inputlist[i].onblur = function(){
+                	var setText = this.value;
+                	this.closest(".New-ChangeNormal_Bodyitem-Box").classList.remove("New-ChangeNormal_Bodyitem-Bottom");
+                	this.closest(".New-ChangeNormal_Bodyitem-Box").querySelector(".New-ChangeNormal_Bodyitem-Title").classList.remove("New-ChangeNormal_Bodyitem-TitleColor");
+                	if(setText == ""){
+                		if(this.closest(".New-ChangeNormal_Bodyitem-Box").querySelector(".New-ChangeNormal_Bodyitem-Title").classList.contains("New-ChangeNormal_Bodyitem-TitleInput")){
+                            this.closest(".New-ChangeNormal_Bodyitem-Box").querySelector(".New-ChangeNormal_Bodyitem-Title").classList.remove("New-ChangeNormal_Bodyitem-TitleInput");
+                	    } 
+                	}
+                }
+		    }
+		}
+	</script>
+</head>
+<body>
+    <div class="New-ChangeNormal_Container">
+    	<div class="New-ChangeNormal_Header">
+    		<span>周期变更</span>
+    		<i class="list-results_close"></i>
+    	</div>
+    	<div class="New-ChangeNormal_Body">
+             <div class="New-ChangeNormal_Bodyitem">
+            	<div class="New-ChangeNormal_Bodyitem-mainTitle">变更前</div>
+            	<div class="New-ChangeNormal_Bodyitem-changTime">
+            		<div class="New-ChangeNormal_Bodyitem-changTime_item">
+            			<div class="New-ChangeNormal_Bodyitem-Box">
+							<span class="New-ChangeNormal_Bodyitem-Title">开始时间</span>
+							<input class="New-ChangeNormal_Bodyitem-Input" type="text">
+		                </div> 
+            		</div>
+            		<div class="New-ChangeNormal_Bodyitem-changTime_item">
+            			<div class="New-ChangeNormal_Bodyitem-Box">
+							<span class="New-ChangeNormal_Bodyitem-Title">结束时间</span>
+							<input class="New-ChangeNormal_Bodyitem-Input" type="text">
+		                </div> 
+            		</div>
+            	</div>
+            </div>
+
+            <div class="New-ChangeNormal_Bodyitem">
+            	<div class="New-ChangeNormal_Bodyitem-mainTitle">变更后</div>
+            	<div class="New-ChangeNormal_Bodyitem-changTime">
+            		<div class="New-ChangeNormal_Bodyitem-changTime_item">
+            			<div class="New-ChangeNormal_Bodyitem-Box">
+							<span class="New-ChangeNormal_Bodyitem-Title">开始时间</span>
+							<input class="New-ChangeNormal_Bodyitem-Input" type="text">
+		                </div> 
+            		</div>
+            		<div class="New-ChangeNormal_Bodyitem-changTime_item">
+            			<div class="New-ChangeNormal_Bodyitem-Box">
+							<span class="New-ChangeNormal_Bodyitem-Title">结束时间</span>
+							<input class="New-ChangeNormal_Bodyitem-Input" type="text">
+		                </div> 
+            		</div>
+            	</div>
+            </div>
+
+
+            <div class="New-ChangeNormal_Bodyitem">
+				<div class="New-ChangeNormal_Bodyitem-Box">
+					<span class="New-ChangeNormal_Bodyitem-Title">说明</span>
+					<input class="New-ChangeNormal_Bodyitem-Input" type="text">
+                </div> 
+    		</div>
+
+            <div class="New-ChangeNormal_Bodyitem">
+            	<div class="New-ChangeNormal_Bodyitem-mainTitle">相关附件</div>
+            	<div class="New-ChangeNormal_Bodyitem-Upload">
+            		<div class="New-ChangeNormal_Bodyitem-UploadIcon"></div>
+            	</div> 
+            	<div class="New-ChangeNormal_Bodyitem-Upload_Detail">
+            	  	<div class="New-ChangeNormal_Bodyitem-Upload_Detailitem">
+            	  		<div class="New-ChangeNormal_Bodyitem-Upload_Detailtext">
+            	  			傻的叫客户撒打火机阿肯定会撒即可接电话撒娇
+            	  		</div>
+            	  		<i class="material-icons New-ChangeNormal_Bodyitem-Upload_Detailclose">close</i>
+            	  	</div>
+
+            	  	<div class="New-ChangeNormal_Bodyitem-Upload_Detailitem">
+            	  		<div class="New-ChangeNormal_Bodyitem-Upload_Detailtext">
+            	  			傻的叫客户撒打火机阿肯定会撒即可接电话撒娇
+            	  		</div>
+            	  		<i class="material-icons New-ChangeNormal_Bodyitem-Upload_Detailclose">close</i>
+            	  	</div>
+
+
+            	  	<div class="New-ChangeNormal_Bodyitem-Upload_Detailitem">
+            	  		<div class="New-ChangeNormal_Bodyitem-Upload_Detailtext">
+            	  			傻的叫客户撒打火机阿肯定会撒即可接电话撒娇
+            	  		</div>
+            	  		<i class="material-icons New-ChangeNormal_Bodyitem-Upload_Detailclose">close</i>
+            	  	</div>
+
+            	  	<div class="New-ChangeNormal_Bodyitem-Upload_Detailitem">
+            	  		<div class="New-ChangeNormal_Bodyitem-Upload_Detailtext">
+            	  			傻的叫客户撒打火机阿肯定会撒即可接电话撒娇
+            	  		</div>
+            	  		<i class="material-icons New-ChangeNormal_Bodyitem-Upload_Detailclose">close</i>
+            	  	</div>
+            	</div>
+            </div>
+
+
+
+    	</div>
+    	<div class="New-ChangeNormal_Footer">
+    		<div class="New-ChangeNormal_Footer-Close">关闭</div>
+    		<div class="New-ChangeNormal_Footer-Next">保存</div>
+    	</div>
+    </div>
+</body>
+</html>

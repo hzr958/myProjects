@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jee="http://www.springframework.org/schema/jee" xmlns:task="http://www.springframework.org/schema/task"
+  xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	 http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+	 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	 http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd"
+  default-lazy-init="false">
+  <description>Spring SessionFactory配置文件</description>
+  <!-- 包扫描 -->
+  <context:component-scan base-package="com.smate.core.base.project.dao" />
+  <context:component-scan base-package="com.smate.center.batch.service*"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.center.batch.datasource"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.center.batch.dao*" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.center.batch.connector.dao*"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.center.batch.connector.service*"
+    scoped-proxy="interfaces" />
+  <!-- 事务管理器配置,单数据源事务 -->
+  <!-- <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager"> <property name="sessionFactory" 
+    ref="sessionFactory-sns" /> </bean> -->
+  <!-- 使用annotation定义事务 -->
+  <!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
+  <!-- <jee:jndi-lookup id="dbsns" jndi-name="java:comp/env/jdbc/sns" /> <jee:jndi-lookup id="dbsie" jndi-name="java:comp/env/jdbc/sie" 
+    /> <jee:jndi-lookup id="dbrcmd" jndi-name="java:comp/env/jdbc/rcmd" /> <bean id="dynamicDataSource" class="com.smate.core.base.utils.dynamicds.DynamicDataSource"> 
+    通过key-value的形式来关联数据源 <property name="targetDataSources"> <map> <entry key="dssns" value-ref="dbsns"/> <entry key="dssie" 
+    value-ref="dbsie"/> <entry key="dsrcmd" value-ref="dbrcmd"/> </map> </property> <property name="defaultTargetDataSource" 
+    ref="dbsns" /> </bean> model binder扫描 转至applicationContext-sessionfactory.xml Hibernate配置 <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> 
+    <property name="dataSource" ref="dynamicDataSource" /> <property name="namingStrategy"> <bean class="org.hibernate.cfg.ImprovedNamingStrategy" 
+    /> </property> <property name="hibernateProperties"> <props> <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop> 
+    <prop key="hibernate.show_sql">${hibernate.show_sql}</prop> <prop key="hibernate.format_sql">${hibernate.format_sql}</prop> 
+    <prop key="hibernate.cache.use_second_level_cache">true</prop> <prop key="hibernate.cache.use_query_cache">true</prop> <prop 
+    key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop> <prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop> 
+    <prop key="net.sf.ehcache.configurationResourceName">${hibernate.ehcache_config_file}</prop> <prop key="hibernate.jdbc.batch_size">50</prop> 
+    <prop key="hibernate.search.default.indexBase">${hibernate.search_index_direct}</prop> <prop key="hibernate.current_session_context_class">thread</prop> 
+    </props> </property> <property name="packagesToScan"> <list> <value>com.smate.center.batch.model</value> <value>com.smate.core.base.utils.model.security</value> 
+    <value>com.smate.core.base.utils.model</value> <value>com.smate.core.base.utils.dao.prj</value> </list> </property> </bean> -->
+</beans>

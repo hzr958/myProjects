@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/scmpcframe.css">
+	<script type="text/javascript">
+		window.onload = function(){
+			var changelist = document.getElementsByClassName("create-Homepage_Option-item");
+			for(var i = 0; i < changelist.length; i++){
+                changelist[i].addEventListener("click",function(){
+                	if(!this.classList.contains("create-Homepage_Option-item_checked")){
+                		if(document.getElementsByClassName("create-Homepage_Option-item_checked").length > 0){
+                			document.getElementsByClassName("create-Homepage_Option-item_checked")[0].classList.remove("create-Homepage_Option-item_checked");
+                		}
+                       this.classList.add("create-Homepage_Option-item_checked");
+                	}
+                })
+			}
+		}
+	</script>
+</head>
+<body>
+
+    <div class="create-Homepage_Container">
+    	<div  class="create-Homepage_Header">
+    		创建主页
+    	</div>
+    	<div  class="create-Homepage_Neck">
+    		与科研人员，创新人员及科研之友社区建立联系，请选择主页类型
+    	</div>
+    	<div  class="create-Homepage_Option">
+    		<div class="create-Homepage_Option-item create-Homepage_Option-item_checked">
+    			<span class="create-Homepage_Option-item_title">学校</span>
+    			<span class="create-Homepage_Option-item_detail">高等院校,成人教育等</span>
+    		</div>
+    		<div class="create-Homepage_Option-item">
+    			<span class="create-Homepage_Option-item_title">企业</span>
+    			<span class="create-Homepage_Option-item_detail">公司企业等</span>
+    		</div>
+    		<div class="create-Homepage_Option-item">
+    			<span class="create-Homepage_Option-item_title">其他组织</span>
+    		</div>
+    	</div>
+    	<div  class="create-Homepage_body">
+
+    		<div class="create-Homepage_body-item">
+    			<div class="create-Homepage_body-item_title">
+    				<span class="create-Homepage_body-item_tip">*</span>
+    				<span>机构名称</span>
+    			</div>
+    			<div class="create-Homepage_body-item_aditlarge">
+    				<input type="text">
+    			</div>
+    		</div>
+    		<div class="create-Homepage_body-item">
+    			<div class="create-Homepage_body-item_title">
+    				<span class="create-Homepage_body-item_tip">*</span>
+    				<span>科研之友公开网址</span>
+    			</div>
+    			<div class="create-Homepage_body-item_aditnormal">
+    				<input type="text">
+    			</div>
+    		</div>
+
+    		<div class="create-Homepage_body-item">
+    			<div class="create-Homepage_body-item_title">
+    				<span class="create-Homepage_body-item_tip">*</span>
+    				<span>机构网址</span>
+    			</div>
+    			<div class="create-Homepage_body-item_aditnormal">
+    				<input type="text">
+    			</div>
+    		</div>
+
+    		<div class="create-Homepage_body-item">
+    			<div class="create-Homepage_body-item_title">
+    				<span class="create-Homepage_body-item_tip">*</span>
+    				<span>所属行业</span>
+    			</div>
+    			<div class="create-Homepage_body-item_aditnormal">
+    				<input type="text">
+    			</div>
+    		</div>
+
+
+    		<div class="create-Homepage_body-item">
+    			<div class="create-Homepage_body-item_title">
+    				<span class="create-Homepage_body-item_tip">*</span>
+    				<span>新兴产业</span>
+    			</div>
+    			<div class="create-Homepage_body-item_aditnormal">
+    				<input type="text">
+    			</div>
+    		</div>
+
+
+
+    		<div class="create-Homepage_body-item">
+    			<div class="create-Homepage_body-item_title">
+    				<span class="create-Homepage_body-item_tip">*</span>
+    				<span>性质</span>
+    			</div>
+    			<div class="create-Homepage_body-item_aditnormal">
+    				<input type="text">
+    			</div>
+    		</div>
+
+    		<div class="create-Homepage_body-item">
+    			<div class="create-Homepage_body-item_title">
+    				<span  class="create-Homepage_body-item_tip">*</span>
+    				<span>所在地区</span>
+    			</div>
+    			<div class="create-Homepage_body-item_aditnormal">
+    				<input type="text">
+    			</div>
+    		</div>
+
+    		<div class="create-Homepage_body-item" style="align-items: flex-start;">
+    			<div class="create-Homepage_body-item_title">
+    				<span class="create-Homepage_body-item_tip">*</span>
+    				<span>关于我们</span>
+    			</div>
+    			<div class="create-Homepage_body-item_edit">
+    			    <textarea class="create-Homepage_body-item_editbox"></textarea>
+
+    				<div class="create-Homepage_body-item_edittip">
+    					<i class="material-icons create-Homepage_body-item_edittip-icon" >check_box</i>
+    					<div class="create-Homepage_body-item_edittext">我证明我是该组织的官方代表,且有权代表创建和管理改主页,该组织和我均同意遵守<span>《服务条款》</span></div>
+    				</div>
+
+    				<div class="create-Homepage_body-item_edit-now">立即创建</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</body>
+</html>

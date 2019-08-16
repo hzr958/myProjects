@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="scmpcframe.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+		window.onload = function(){
+			var hiddenlist = document.getElementsByClassName("filter-section__toggle");
+			for( var i = 0;i < hiddenlist.length; i++){
+                    hiddenlist[i].onclick = function(){
+                    	if(this.innerHTML == "expand_less"){
+                    		this.innerHTML = "expand_more";
+                    		this.closest(".filter-list__section").querySelector(".filter-value__list").style.display="none";
+                    	}else{
+                    		this.innerHTML = "expand_less";
+                    		this.closest(".filter-list__section").querySelector(".filter-value__list").style.display="block";
+                    	}
+                    }
+			}
+		}
+	</script>
+</head>
+<body>
+  <div class="pro-header headDiv">
+    <div class="pro-header__container">
+      <div class="pro-header__left-panel">
+        <div class="pro-header__base-info">
+          <div class="pro-header__avatar" style="position: relative;">
+            <img id="psn_avatar" src="1.jpg" onerror="this.src=&#39;/resmod/smate-pc/img/logo_psndefault.png&#39;">
+            <div class="pro-header__avator-tip">点击上传图像</div>
+          </div>
+          <div class="target" style="display: none;" id="cut_img"></div>
+          <div class="pro-header__main" id="psn_info_head">
+            <div class="pro-header__main_psn-name">唐微微</div>
+            <div class="pro-header__main_psn-inst">City University of Hong Kong,Shenzhen Research Institute, test
+              unit</div>
+            <div class="pro-header__main_psn-inst">教授 博士导师, 香港城市大学科研项目</div>
+            <div class="pro-header__main_psn-loc">中国, 广东省</div>
+          </div>
+        </div>
+      </div>
+      <div class="pro-header__right-panel" style="display: flex; justify-content: center; align-items: center;">
+        <div class="pro-header__right-panel-list">
+          <div class="pro-header__right-panel-item">导出到简历</div>
+          <div class="pro-header__right-panel-item">简体中文</div>
+        </div>
+      </div>
+    </div>
+    <div class="pro-header__nav">
+      <div class="pro-header__nav-box">
+        <nav class="nav_horiz">
+          <ul class="nav__list">
+            <li class="nav__item dev_module_homepage item_selected tabClass">基本信息</li>
+            <li class="nav__item tabClass">项目</li>
+            <li class="nav__item dev_module_pub tabClass">成果</li>
+          </ul>
+          <div class="nav__underline" style="transition: all 100ms ease-in; width: 112px; left: 0px;"></div>
+        </nav>
+        <div class="pro-header__url" scm-paren="span_paren">
+          <a><span id="span_shorturl" scm-oldurl="https://test.scholarmate.com/P/666" scm-id="span_id">https://test.scholarmate.com/P/666</span></a>
+          <i class="material-icons pro-header__url-share" scm-id="span_c_s">content_copy</i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: center;">
+    <div style="width: 320px; height: auto; margin-right: 16px;">
+      <div class="module-home__fixed-layer_filter">
+        <div class="searchbox__container main-list__searchbox" list-search="grplist">
+          <div class="searchbox__main">
+            <input placeholder="检索成果">
+            <div class="searchbox__icon material-icons">search</div>
+          </div>
+        </div>
+        <div class="filter-list vert-style option_has-stats" list-filter="grplist">
+          <div class="filter-list__section js_filtersection" filter-section="grpCategory" filter-method="single">
+            <div class="filter-section__header">
+              <div class="filter-section__title">成果类型</div>
+              <i class="material-icons filter-section__toggle">expand_less</i>
+            </div>
+            <ul class="filter-value__list">
+              <li class="filter-value__item js_filtervalue option_no-data" filter-value="12">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">期刊论文</div>
+                <div class="filter-value__stats js_filterstats">(0)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+              <li class="filter-value__item js_filtervalue" filter-value="11">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">会议论文</div>
+                <div class="filter-value__stats js_filterstats">(247)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+              <li class="filter-value__item js_filtervalue" filter-value="10">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">专利</div>
+                <div class="filter-value__stats js_filterstats">(132)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+              <li class="filter-value__item js_filtervalue" filter-value="10">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">奖励</div>
+                <div class="filter-value__stats js_filterstats">(132)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+              <li class="filter-value__item js_filtervalue" filter-value="10">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">书/著作</div>
+                <div class="filter-value__stats js_filterstats">(132)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+              <li class="filter-value__item js_filtervalue" filter-value="10">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">书籍/章节</div>
+                <div class="filter-value__stats js_filterstats">(132)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+              <li class="filter-value__item js_filtervalue" filter-value="10">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">学位论文</div>
+                <div class="filter-value__stats js_filterstats">(132)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+              <li class="filter-value__item js_filtervalue" filter-value="10">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">其他</div>
+                <div class="filter-value__stats js_filterstats">(132)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+            </ul>
+          </div>
+          <div class="filter-list__section js_filtersection" filter-section="searchByRole" filter-method="single">
+            <div class="filter-section__header">
+              <div class="filter-section__title">收录情况</div>
+              <i class="material-icons filter-section__toggle">expand_less</i>
+            </div>
+            <ul class="filter-value__list">
+              <li class="filter-value__item js_filtervalue" filter-value="2">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">SCIE</div>
+                <div class="filter-value__stats js_filterstats">(296)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+              <li class="filter-value__item js_filtervalue" filter-value="3">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">SSCI</div>
+                <div class="filter-value__stats js_filterstats">(68)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+              <li class="filter-value__item js_filtervalue" filter-value="4">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">ISTP</div>
+                <div class="filter-value__stats js_filterstats">(16)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+              <li class="filter-value__item js_filtervalue" filter-value="4">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">CSSCI</div>
+                <div class="filter-value__stats js_filterstats">(16)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+              <li class="filter-value__item js_filtervalue" filter-value="4">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">北大中文核心</div>
+                <div class="filter-value__stats js_filterstats">(16)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+            </ul>
+          </div>
+          <div class="filter-list__section js_filtersection" filter-section="searchByRole" filter-method="single">
+            <div class="filter-section__header">
+              <div class="filter-section__title">发表年份</div>
+              <i class="material-icons filter-section__toggle">expand_less</i>
+            </div>
+            <ul class="filter-value__list">
+              <li class="filter-value__item js_filtervalue" filter-value="2">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">近一年</div>
+                <div class="filter-value__stats js_filterstats">(296)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+              <li class="filter-value__item js_filtervalue" filter-value="3">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">近三年</div>
+                <div class="filter-value__stats js_filterstats">(68)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+              <li class="filter-value__item js_filtervalue" filter-value="4">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">近五年</div>
+                <div class="filter-value__stats js_filterstats">(16)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+              <li class="filter-value__item js_filtervalue" filter-value="4">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+                <div class="filter-value__option js_filteroption" title="">不限</div>
+                <div class="filter-value__stats js_filterstats">(16)</div> <i
+                class="material-icons filter-value__cancel js_filtercancel">close</i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="prjcooperation">
+        <div class="container__card">
+          <div class="module-card__box">
+            <div class="module-card__header">
+              <div class="module-card-header__title">合作者</div>
+              <button class="button_main button_link"
+                onclick="project.ajaxprjallcooperation('JvUzHyT7%2BGKK%2F%2BfZCPfJeQ%3D%3D')">查看全部</button>
+            </div>
+            <div class="main-list__list">
+              <div class="main-list__item">
+                <div class="main-list__item_content">
+                  <div class="psn-idx_small">
+                    <div class="psn-idx__base-info">
+                      <div class="psn-idx__avatar_box">
+                        <div class="psn-idx__avatar_img">
+                          <a
+                            href="https://test.scholarmate.com/psnweb/homepage/show?des3PsnId=%27JvUzHyT7%2BGJ7wMwmevugcw%3D%3D%27"><img
+                            src="2.png" onerror="this.src='/resmod/smate-pc/img/logo_psndefault.png'"></a>
+                        </div>
+                      </div>
+                      <div class="psn-idx__main_box">
+                        <div class="psn-idx__main">
+                          <div class="psn-idx__main_name">
+                            <a
+                              href="https://test.scholarmate.com/psnweb/homepage/show?des3PsnId=%27JvUzHyT7%2BGJ7wMwmevugcw%3D%3D%27">xk3351</a>
+                          </div>
+                          <div class="psn-idx__main_title">SCM测试研究中心</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="main-list__item_actions">
+                  <button class="button_main button_dense button_primary"
+                    onclick="project.addFriendCooper('JvUzHyT7%2BGJ7wMwmevugcw%3D%3D','1000000003987',false,this)">添加好友</button>
+                </div>
+              </div>
+            </div>
+            <div class="main-list__list">
+              <div class="main-list__item">
+                <div class="main-list__item_content">
+                  <div class="psn-idx_small">
+                    <div class="psn-idx__base-info">
+                      <div class="psn-idx__avatar_box">
+                        <input id="des3Id_1000000001464" value="JvUzHyT7%2BGJvNLgF69FA0Q%3D%3D" type="hidden">
+                        <div class="psn-idx__avatar_img">
+                          <a
+                            href="https://test.scholarmate.com/psnweb/homepage/show?des3PsnId=%27JvUzHyT7%2BGJvNLgF69FA0Q%3D%3D%27"><img
+                            src="2.png" onerror="this.src='/resmod/smate-pc/img/logo_psndefault.png'"></a>
+                        </div>
+                      </div>
+                      <div class="psn-idx__main_box">
+                        <div class="psn-idx__main">
+                          <div class="psn-idx__main_name">
+                            <a
+                              href="https://test.scholarmate.com/psnweb/homepage/show?des3PsnId=%27JvUzHyT7%2BGJvNLgF69FA0Q%3D%3D%27">幸柯70</a>
+                          </div>
+                          <div class="psn-idx__main_title">广东药学院</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="main-list__item_actions">
+                  <button class="button_main button_dense button_primary"
+                    onclick="project.addFriendCooper('JvUzHyT7%2BGJvNLgF69FA0Q%3D%3D','1000000001464',false,this)">添加好友</button>
+                </div>
+              </div>
+            </div>
+            <div class="main-list__list" id="Cooper_1000000003202">
+              <div class="main-list__item">
+                <div class="main-list__item_content">
+                  <div class="psn-idx_small">
+                    <div class="psn-idx__base-info">
+                      <div class="psn-idx__avatar_box">
+                        <input id="des3Id_1000000003202" value="JvUzHyT7%2BGKZMJQRflj4Ig%3D%3D" type="hidden">
+                        <div class="psn-idx__avatar_img">
+                          <a
+                            href="https://test.scholarmate.com/psnweb/homepage/show?des3PsnId=%27JvUzHyT7%2BGKZMJQRflj4Ig%3D%3D%27"><img
+                            src="2.png" onerror="this.src='/resmod/smate-pc/img/logo_psndefault.png'"></a>
+                        </div>
+                      </div>
+                      <div class="psn-idx__main_box">
+                        <div class="psn-idx__main">
+                          <div class="psn-idx__main_name">
+                            <a
+                              href="https://test.scholarmate.com/psnweb/homepage/show?des3PsnId=%27JvUzHyT7%2BGKZMJQRflj4Ig%3D%3D%27">xk2566</a>
+                          </div>
+                          <div class="psn-idx__main_title">SCM测试研究中心</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="main-list__item_actions">
+                  <button class="button_main button_dense button_primary"
+                    onclick="project.addFriendCooper('JvUzHyT7%2BGKZMJQRflj4Ig%3D%3D','1000000003202',false,this)">添加好友</button>
+                </div>
+              </div>
+            </div>
+            <div class="main-list__list">
+              <div class="main-list__item">
+                <div class="main-list__item_content">
+                  <div class="psn-idx_small">
+                    <div class="psn-idx__base-info">
+                      <div class="psn-idx__avatar_box">
+                        <input id="des3Id_1000000002936" value="JvUzHyT7%2BGJ4nL%2BpV6v9UQ%3D%3D" type="hidden">
+                        <div class="psn-idx__avatar_img">
+                          <a
+                            href="https://test.scholarmate.com/psnweb/homepage/show?des3PsnId=%27JvUzHyT7%2BGJ4nL%2BpV6v9UQ%3D%3D%27"><img
+                            src="2.png" onerror="this.src='/resmod/smate-pc/img/logo_psndefault.png'"></a>
+                        </div>
+                      </div>
+                      <div class="psn-idx__main_box">
+                        <div class="psn-idx__main">
+                          <div class="psn-idx__main_name">
+                            <a
+                              href="https://test.scholarmate.com/psnweb/homepage/show?des3PsnId=%27JvUzHyT7%2BGJ4nL%2BpV6v9UQ%3D%3D%27">xk2300</a>
+                          </div>
+                          <div class="psn-idx__main_title">SCM测试研究中心</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="main-list__item_actions">
+                  <button class="button_main button_dense button_primary"
+                    onclick="project.addFriendCooper('JvUzHyT7%2BGJ4nL%2BpV6v9UQ%3D%3D','1000000002936',false,this)">添加好友</button>
+                </div>
+              </div>
+            </div>
+            <div class="main-list__list">
+              <div class="main-list__item">
+                <div class="main-list__item_content">
+                  <div class="psn-idx_small">
+                    <div class="psn-idx__base-info">
+                      <div class="psn-idx__avatar_box">
+                        <input id="des3Id_1000000001669" value="JvUzHyT7%2BGL7RikhhRRzrg%3D%3D" type="hidden">
+                        <div class="psn-idx__avatar_img">
+                          <a
+                            href="https://test.scholarmate.com/psnweb/homepage/show?des3PsnId=%27JvUzHyT7%2BGL7RikhhRRzrg%3D%3D%27"><img
+                            src="2.png" onerror="this.src='/resmod/smate-pc/img/logo_psndefault.png'"></a>
+                        </div>
+                      </div>
+                      <div class="psn-idx__main_box">
+                        <div class="psn-idx__main">
+                          <div class="psn-idx__main_name">
+                            <a
+                              href="https://test.scholarmate.com/psnweb/homepage/show?des3PsnId=%27JvUzHyT7%2BGL7RikhhRRzrg%3D%3D%27">幸柯274</a>
+                          </div>
+                          <div class="psn-idx__main_title">广东药学院</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="main-list__item_actions">
+                  <button class="button_main button_dense button_primary"
+                    onclick="project.addFriendCooper('JvUzHyT7%2BGL7RikhhRRzrg%3D%3D','1000000001669',false,this)">添加好友</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dialogs__box" style="width: 720px;" dialog-id="prjCooperation" id="prjCooperationAll">
+          <div class="dialogs__childbox_fixed">
+            <div class="dialogs__header">
+              <div class="dialogs__header_title">合作者</div>
+              <button class="button_main button_icon" onclick="closePrjAllCooperationt()">
+                <i class="material-icons">close</i>
+              </button>
+            </div>
+          </div>
+          <div class="dialogs__childbox_adapted" style="height: 560px;">
+            <div class="main-list__list item_no-border" list-main="prjcooperationlist"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container__horiz_left width-8 pub_list_content" style="width: 48%;">
+      <div class="dev_nofulltext_count">
+        <div class="container__card dev_nofulltext_div">
+          <div class="promo__box" style="display: flex; flex-direction: column; margin-bottom: 16px;">
+            <div class="promo__box-header">
+              <div class="promo__box-title">你有未确认的成果</div>
+              <div class="promo__box-check_all">查看所有</div>
+            </div>
+            <div class="promo__box-container">
+              <div class="pub-idx_medium">
+                <div class="pub-idx__base-info">
+                  <div class="pub-idx__full-text_box">
+                    <div class="pub-idx__full-text_img">
+                      <img src="file_img.jpg" class="dev_pub_img"
+                        onerror="this.src=&#39;/resmod/images_v5/images2016/file_img.jpg&#39;">
+                    </div>
+                  </div>
+                  <div class="pub-idx__main_box">
+                    <div class="pub-idx__main">
+                      <div class="pub-idx__main_title dev_pub_title">
+                        <a href="https://test.scholarmate.com/A/QKMCzp" target="_Blank">
+                          DNA计算机:原理、进展及难点(Ⅱ)计算机"数据库"的形成--DNA分子的合成问题 </a>
+                      </div>
+                      <div class="pub-idx__main_author dev_pub_author"></div>
+                      <div class="pub-idx__main_src dev_pub_src">计算机学报， 28(10)， 2005</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="promo__box-check">
+                <div class="promo__box-comfirm">是我的成果</div>
+                <div class="promo__box-refuse">不是我的成果</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container__card">
+        <div class="main-list">
+          <div class="main-list__header">
+            <div class="main-list-header__title" style="display: flex;">
+              <div class="main-list-header__title-item">
+                成果数:<span class="main-list-header__title-item_num">12</span>
+              </div>
+              <div class="main-list-header__title-item" style="margin: 0px 8px 0px 16px;">
+                引用数:<span class="main-list-header__title-item_num">232</span>
+              </div>
+              <div class="main-list-header__title-item" style="margin: 0px 8px;">
+                阅读数:<span class="main-list-header__title-item_num">234</span>
+              </div>
+              <div class="main-list-header__title-item" style="margin: 0px 8px;">
+                下载数:<span class="main-list-header__title-item_num">2314</span>
+              </div>
+              <div class="main-list-header__title-item_tip">由于权限设置,部分数据未显示</div>
+            </div>
+            <button class="button_main button_primary-reverse" onclick="updateCite();">添加成果</button>
+            <button class="button_main button_primary-changestyle" onclick="Pub.addPub();">更新引用</button>
+          </div>
+          <div class="dialogs__box" style="width: auto;" dialog-id="dev_pub_add">
+            <div class="dialogs__childbox_fixed">
+              <div class="dialogs__header">
+                <div class="dialogs__header_title">选择导入方式</div>
+                <button class="button_main button_icon" onclick="Pub.hideSelectImportType();">
+                  <i class="material-icons">close</i>
+                </button>
+              </div>
+            </div>
+            <div class="dialogs__childbox_adapted">
+              <div class="import-methods__box">
+                <div class="import-methods__sxn">
+                  <div class="import-methods__sxn_logo online-search" onclick="Pub.searchPubImport();"></div>
+                  <div class="import-methods__sxn_name">成果检索</div>
+                  <div class="import-methods__sxn_explain">通过成果检索功能，在线检索并导入成果</div>
+                </div>
+                <div class="import-methods__sxn">
+                  <div class="import-methods__sxn_logo manual-entry" onclick="Pub.manualImportPub();"></div>
+                  <div class="import-methods__sxn_name">手工录入</div>
+                  <div class="import-methods__sxn_explain">通过手工录入功能增加成果</div>
+                </div>
+                <div class="import-methods__sxn">
+                  <div class="import-methods__sxn_logo file-import" onclick="Pub.fileImport();"></div>
+                  <div class="import-methods__sxn_name">文件导入</div>
+                  <div class="import-methods__sxn_explain">通过文件导入功能，导入文件中的成果记录</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main-list__list dev_pub_list" list-main="psnpub">
+            <div class="js_listinfo"></div>
+            <div class="main-list__item dev_pub_list_div">
+              <input type="hidden" name="des3PubId" value="VnvHdVd3e0K2203nh%2F4K5w%3D%3D">
+              <div class="main-list__item_checkbox">
+                <div class="input-custom-style">
+                  <input type="checkbox"> <i class="material-icons custom-style"></i>
+                </div>
+              </div>
+              <div class="main-list__item_content">
+                <div class="pub-idx_medium">
+                  <div class="pub-idx__base-info">
+                    <div class="pub-idx__full-text_box">
+                      <div class="pub-idx__full-text_img">
+                        <img src="file_img.jpg" class="dev_pub_img"
+                          onerror="this.src=&#39;/resmod/images_v5/images2016/file_img.jpg&#39;">
+                      </div>
+                    </div>
+                    <div class="pub-idx__main_box">
+                      <div class="pub-idx__main">
+                        <div class="pub-idx__main_title dev_pub_title">
+                          <a href="https://test.scholarmate.com/A/QKMCzp" target="_Blank">
+                            DNA计算机:原理、进展及难点(Ⅱ)计算机"数据库"的形成--DNA分子的合成问题 </a>
+                        </div>
+                        <div class="pub-idx__main_author dev_pub_author"></div>
+                        <div class="pub-idx__main_src dev_pub_src">计算机学报， 28(10)， 2005</div>
+                      </div>
+                      <ul class="idx-social__list">
+                        <li class="idx-social__item dev_pub_award_1000006573531"
+                          onclick="Pub.pubAward(1,1,1000006573531)">赞</li>
+                        <li class="idx-social__item dev_pub_share_1000006573531"
+                          onclick="SmateShare.getPsnPubListSareParam(this); initSharePlugin(this);"
+                          resid="VnvHdVd3e0K2203nh%2F4K5w%3D%3D" restype="1" pubid="1000006573531">分享</li>
+                        <li class="idx-social__item"><a class="thickbox"
+                          href="http://test.scholarmate.com/pubweb/publication/ajaxpubquote?pubId=1000006573531&amp;TB_iframe=true&amp;height=350&amp;width=750"
+                          title="引用" thickbox_bound="1"> 引用 </a></li>
+                        <li class="idx-social__item" onclick="Pub.pubEdit(&#39;VnvHdVd3e0IrBD5MkBMLpA%3D%3D&#39;,this);">编辑</li>
+                        <li class="idx-social__item"
+                          onclick="Pub.pubDel(&#39;VnvHdVd3e0IrBD5MkBMLpA%3D%3D&#39;,&#39;1000006574028&#39;);">删除</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="main-list__item_actions">
+                <div class="pro-stats__list pub-list-stats">
+                  <div class="pro-stats__item">
+                    <div class="pro-stats__item_number dev_pub_cite_num">0</div>
+                    <div class="pro-stats__item_title dev_pub_cite_name">引用数</div>
+                    <div class="preloader active" style="height: 28px; width: 28px; display: none;">
+                      <div class="preloader-ind-cir__box">
+                        <div class="preloader-ind-cir__fill">
+                          <div class="preloader-ind-cir__arc-box left-half">
+                            <div class="preloader-ind-cir__arc"></div>
+                          </div>
+                          <div class="preloader-ind-cir__gap">
+                            <div class="preloader-ind-cir__arc"></div>
+                          </div>
+                          <div class="preloader-ind-cir__arc-box right-half">
+                            <div class="preloader-ind-cir__arc"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pro-stats__item">
+                    <div class="pro-stats__item_number">0</div>
+                    <div class="pro-stats__item_title">阅读数</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,2 @@
+<#if (msgTitle?exists)  >来自${psnName}的好友推荐<#else> ${psnName}推荐您与 <#list psnFrds as frd><span id='spn${frd.psnId}'><a href="${frd.psnUrl}" class="Blue" target="_blank">${frd.frdName}</a><#if frd_has_next>、</#if></span></#list> 成为好友<br/></#if>
+<#if (msgContent?exists)  > 推荐内容：<br/><div style='margin:left;margin-left:10px'>${msgContent}</div></#if>

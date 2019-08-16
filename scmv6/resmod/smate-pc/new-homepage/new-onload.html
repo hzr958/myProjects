@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>新登录页面</title>
+<meta charset="utf-8">
+<link href="../../css_v5/css2016/public2016.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+      window.onload = function(){
+         var inputlist = document.getElementsByClassName("sign-in__num-input");
+         var changebtn = document.getElementsByClassName("sign-in__remember-change")[0];
+         for(var i = 0; i < inputlist.length; i++){
+            inputlist[i].onfocus = function(){
+               this.closest(".sign-in__num-box").style.borderColor = "#288aed";
+            }
+            inputlist[i].onblur = function(){
+               this.closest(".sign-in__num-box").style.borderColor = "#ddd";
+            }
+         }
+         changebtn.onclick = function(){
+            if(this.classList.contains("sign-in__remember-tip")){
+               this.classList.remove("sign-in__remember-tip");
+               this.classList.add("sign-in__remember-tip2");
+            }else{
+               this.classList.remove("sign-in__remember-tip2");
+               this.classList.add("sign-in__remember-tip");
+            }
+         }
+      }
+   </script>
+</head>
+<body>
+  <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+    /*start*/
+    <div class="sign-in__container">
+      <div style="height: 42px; background: #fff; font-size: 18px; text-align: center; line-height: 42px; width: 100%;">连接人与知识</div>
+      <div class="sign-in__header">
+        <div class="sign-in__header-container">
+          <div class="sign-in__header-title sign-in__header-title__selected">
+            <span>登录</span>
+          </div>
+          <div class="sign-in__header-title">
+            <span>注册</span>
+          </div>
+        </div>
+      </div>
+      <div class="sign-in__body">
+        <div class="sign-in__account sign-in__num-box">
+          <i class="sign-in__account-tip"></i> <input type="text" class="sign-in__num-input" placeholder="账号">
+        </div>
+        <div class="sign-in__password sign-in__num-box">
+          <i class="sign-in__password-tip"></i> <input type="text" class="sign-in__num-input" placeholder="密码">
+        </div>
+        <div class="sign-in__remember">
+          <div class="sign-in__remember-tip_box">
+            <i class="sign-in__remember-tip sign-in__remember-change"></i> <span class="sign-in__remember-content">记住密码</span>
+          </div>
+          <div class="sign-in__forget">忘记密码</div>
+        </div>
+        <div class="sign-in__btn">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</div>
+        <div class="sign-in__footer">
+          <div class="sign-in__footer-title">使用其他账号登录</div>
+          <div class="sign-in__footer-title__container">
+            <i class="change-load__tip1"></i> <i class="change-load__tip2"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    /*end*/
+  </div>
+</body>
+</html>

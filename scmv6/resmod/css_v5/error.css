@@ -1,0 +1,142 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*访问页面不存在*/
+.error_box {
+  width: 900px;
+  margin: 100px auto 0px;
+  overflow: hidden;
+}
+
+.error_pic {
+  float: left;
+  background: url(../images_v5/error/error_pic.gif) left center no-repeat;
+  padding-left: 250px;
+}
+
+.error_contant {
+  float: left;
+  margin-left: 50px;
+  margin-top: 35px;
+}
+
+.error_contant p {
+  margin-top: 20px;
+}
+
+.back_icon {
+  background: url(../images_v5/error/icon16.gif) 0px 0px no-repeat;
+  padding-left: 20px;
+  padding-bottom: 1px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.back_last {
+  background: url(../images_v5/error/icon16.gif) 0px -28px no-repeat;
+  padding-left: 20px;
+  padding-bottom: 1px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.error_pic_403 {
+  float: left;
+  background: url(../images_v5/error/access_pic.gif) left center no-repeat;
+  padding-left: 250px;
+}
+
+/*错误页面_提示*/
+.eror_main {
+  width: 918px;
+  border: 1px solid #cfe1f2;
+  margin: 0px auto 30px auto;
+  background-color: #f6fcff;
+  padding: 30px;
+  overflow: hidden;
+}
+
+.error_pic2 {
+  float: left;
+  background: url(../images_v5/error/service_img.gif) left center no-repeat;
+  padding-left: 200px;
+}
+
+.error_btn {
+  margin-top: 30px;
+}
+
+.error_btn a {
+  font-size: 14px;
+  color: #005eac;
+  text-decoration: none;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.error_btn a:hover {
+  font-size: 14px;
+  color: #005eac;
+  text-decoration: underline;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+/*域名不存在*/
+.error_pic3 {
+  float: left;
+  background: url(../images_v5/error/non_membe_imgrs.gif) left center no-repeat;
+  padding-left: 170px;
+}
+
+.nofind {
+  margin-bottom: 20px;
+  margin-left: 150px;
+  width: 650px;
+}
+
+.nofind_pic {
+  background: url(../images_v5/error/sorry_img.gif) no-repeat;
+  width: 60px;
+  height: 61px;
+  float: left;
+}
+
+.nofind_contant {
+  margin-left: 15px;
+  float: left;
+  width: 560px;
+  padding-top: 10px;
+}
+
+.nofind_contant p {
+  line-height: 22px;
+}
+
+.find_search {
+  margin-left: 150px;
+}
+
+.find_unit {
+  height: 27px;
+  line-height: 27px;
+  padding-left: 5px;
+  border-bottom: 1px solid #d5d5d5;
+  border-left: 1px solid #858585;
+  border-right: 1px solid #858585;
+  border-top: 1px solid #858585;
+  width: 400px;
+  font-size: 14px;
+}
+
+.search_table {
+  width: 980px;
+  margin: -10px auto 0px;
+}
+
+.not_pic {
+  background: url(../images_v5/img_error.gif) no-repeat;
+  width: 30px;
+  height: 30px;
+  float: left;
+}

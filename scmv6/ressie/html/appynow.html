@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>立即支付页面</title>
+	<meta charset="utf-8">
+    <style type="text/css">
+        *{
+        	padding: 0px;
+        	margin: 0px; 
+        }
+        .new-normalpage_container{
+        	width: 1200px; 
+        	margin: 0 auto;
+        }
+        .new-paymentpage_Accountitem{
+            margin: 32px 0px;
+        }
+        .new-paymentpage_Accountitem-title{
+            font-size: 16px;
+            font-weight: bold;
+        }
+    	.new-paymentpage_Accountitem-item_check{
+    		width: 16px;
+    		height: 16px;
+    		cursor: pointer;
+    		background: url(radio_bg_02.png);
+    		background-repeat: no-repeat;
+    		background-position: 0px 0px;
+    	}
+    	.new-paymentpage_Accountitem-item_checked{
+    		background: url(radio_bg_01.png)!important;
+    	}
+    	.new-paymentpage_Accountitem-item_check:hover{
+    		background: url(radio_bg_01.png);
+    	}
+    	.new-paymentpage_Accountitem-item{
+    		display: flex;
+    		align-items: center;
+    		justify-content: center;
+    	}
+    	.new-paymentpage_Accountitem-item_detail{
+    		font-size: 14px;
+    		font-weight: normal;
+    		margin-left: 12px;
+    		color:#333;
+    	}
+    	.new-paymentpage_Accountitem-explain{
+            font-size: 14px;
+            line-height: 24px;
+            color: #666;
+            height: 36px;
+            width: 480px;
+            background: #fafafa;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; 
+            margin-left: 32px;
+    	}
+    	.new-paymentpage_Accountitem-explain_detail{
+    		padding-left: 12px;
+    	}
+    	.new-paymentpage_Accountappy-item{
+    		border: 1px dashed #ddd;
+    		border-radius: 5px;
+    		width: 128px;
+    		height: 128px;
+    		cursor: pointer;
+    		flex-shrink: 0;
+    	}
+    	.new-paymentpage_Accountappy-item:hover{
+            border: 1px dashed #288aed;
+    	}
+    	.new-paymentpage_Accountappy-unionpay{
+    		background: url(unionpay.png);
+    		background-repeat: no-repeat;
+    		background-position: 22px 22px;
+    		width: 128px;
+    		height: 128px;
+    	}
+    	.new-paymentpage_Accountappy-alipay{
+            background: url(alipay.png);
+    		background-repeat: no-repeat;
+    		background-position: 22px 22px;
+    		width: 128px;
+    		height: 128px;
+    	}
+    	.new-paymentpage_Accountitem-Category{
+            display: flex; 
+            align-items: center; 
+            justify-content: flex-start; 
+            padding-left: 32px; 
+            margin: 20px 0px;
+    	}
+    	.new-paymentpage_Accountappy-wechatpay{
+        background: url(wechatpay.png);
+    		background-repeat: no-repeat;
+    		background-position: 22px 22px;
+    		width: 128px;
+    		height: 128px;
+    	}
+    	.new-paymentpage_Accountappy-itembox{
+    		width: auto;
+    		height: auto;
+    		flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+     	}
+    	.new-paymentpage_Accountappy-itembox_title{
+            color: #333;
+            font-size: 14px;
+            margin-top: 20px;
+            width: auto;
+            text-align: center;
+    	}
+      .normal-background_cover{
+          background-color: rgba(0, 0, 0, 0.12);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 10000;
+          display: none;
+        }
+
+        .new-paymentpage_container{
+          width: 620px; 
+          height: 440px;
+          margin: 0 auto;
+          border: 1px solid #ddd;
+          padding: 0px 20px;
+          position: fixed;
+          background: #fff;
+          border-radius: 5px;
+        }
+        .new-paymentpage_header{
+          width: 100%; 
+          display: flex; 
+          justify-content: space-between; 
+          align-items: center; 
+          border-bottom: 1px solid #ddd; 
+          height: 55px; 
+          line-height: 55px;
+        }
+        .new-paymentpage_header-title{
+          font-size: 18px; 
+          color: #333;
+          display: flex; 
+          align-items: center;
+        }
+        .new-paymentpage_header-icon{
+          background: url(pay_success@16x16.png);
+          background-repeat: no-repeat;
+          background-position: 0px 0px;
+          width: 16px;
+          height: 16px;
+        }
+        .new-paymentpage_paysuccess—icon{
+          background: url(pay_success@56x56.png);
+          background-repeat: no-repeat;
+          background-position: 0px 0px;
+          width: 56px;
+          height: 56px;
+        }
+       .new-paymentpage_pay-second{
+            width: 100%; 
+            height: 380px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            flex-direction: column;
+         }
+        .new-paymentpage_paysuccess—tip{
+         width: 100%; 
+         text-align: center; 
+         line-height: 24px;
+          height: 24px; 
+          font-size: 20px; 
+          color:#333; 
+          margin-top: 20px;
+      }
+        .new-paymentpage_paysuccess—returnlart{
+          color: #999; 
+          font-size: 14px; 
+          width: 100%; 
+          text-align: center; 
+          margin-top: 20px;
+      }
+      .new-paymentpage_paysuccess—returnnow{
+            color:#fff; 
+            background: #02af02; 
+            font-size: 14px; 
+            height: 28px;
+            width: 78px; 
+            display: flex; 
+            justify-content: center;
+            align-items: center; 
+            border: 1px solid #02af02; 
+            border-radius: 3px; 
+            margin-top: 20px;
+      }
+      .new-paymentpage_header-paytitle{
+        margin:0px 8px 0px 4px;
+      }
+      .new-paymentpage_header-Cashier{
+         border-left: 1px solid #ddd; 
+         padding-left: 8px; 
+         line-height: 24px; 
+         height: 24px;
+      }
+      .new-paymentpage_pay-first{
+        width: 100%; 
+        height: 380px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        display: none;
+      }
+      .new-paymentpage_pay-first_left{
+ width:48%; height: 380px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+.new-paymentpage_pay-first_line{
+height: 360px; border-left: 1px solid #ddd; width: 1px;
+}
+.new-paymentpage_pay-first_right{
+width:48%; height: 380px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+.new-paymentpage_pay-first_left-header{
+width: 100%; height: 24px; line-height: 24px; text-align: center; font-size: 14px; color: #333;
+}
+.new-paymentpage_pay-first_left-body{
+width: 215px; height: 215px; margin: 24px 0px; border: 1px solid #ddd;
+}
+.new-paymentpage_pay-first_right-title{
+  width: 100%; font-size: 14px; line-height: 24px; color: #333;
+}
+.new-paymentpage_pay-first_right-num{
+  margin: 20px 0px; 
+}
+.new-paymentpage_pay-first_right-num_tip{
+  font-size: 24px;
+}
+.new-paymentpage_pay-first_right-num_detail{
+  font-size: 56px;
+}
+.new-paymentpage_pay-first_left-footer{
+  width: 100%; height: 24px; line-height: 24px; text-align: center; font-size: 14px; color: #666;
+}
+.new-paymentpage_pay-first_right-item{
+  width: 270px; display: flex;align-items: center;
+}
+.new-paymentpage_pay-first_right-item_title{
+  color: #999; width: 72px; display: block; font-size: 14px; line-height: 24px; text-align: left;
+}
+.new-paymentpage_pay-first_right-item_detail{
+   color: #333;font-size: 14px;line-height: 24px; 
+}
+    </style>
+    <script type="text/javascript">
+    	window.onload = function(){
+    		var checklist = document.getElementsByClassName("new-paymentpage_Accountitem-item_check");
+        var showele = document.getElementsByClassName("new-paymentpage_Accountappy-wechatpay")[0];
+        var payele = document.getElementsByClassName("new-paymentpage_container")[0];
+        var closeele = document.getElementsByClassName("new-paymentpage_header-close")[0];
+        showele.onclick = function(){
+          document.getElementsByClassName("normal-background_cover")[0].style.display = "block";
+          payele.style.left = (window.innerWidth - payele.offsetWidth)/2 + "px";
+          payele.style.top = (window.innerHeight - payele.offsetHeight)/2 + "px";
+        }
+        window.onresize = function(){
+          payele.style.left = (window.innerWidth - payele.offsetWidth)/2 + "px";
+          payele.style.top = (window.innerHeight - payele.offsetHeight)/2 + "px";
+        }
+    		for(var i = 0; i < checklist.length; i++){
+            checklist[i].onclick = function(){
+            	if(document.getElementsByClassName("new-paymentpage_Accountitem-item_checked").length > 0){
+                    document.getElementsByClassName("new-paymentpage_Accountitem-item_checked")[0].classList.remove("new-paymentpage_Accountitem-item_checked");
+            	}
+            	if(this.classList.contains("new-paymentpage_Accountitem-item_checked")){
+                    this.classList.remove("new-paymentpage_Accountitem-item_checked")
+            	}else{
+                    this.classList.add("new-paymentpage_Accountitem-item_checked")
+            	}
+            }
+    		}
+    	}
+    </script>
+</head>
+<body>
+    <div class="new-normalpage_container">
+  	    <div class="new-paymentpage_Accountitem">
+  	    	<div class="new-paymentpage_Accountitem-title">账号类别</div>
+  	    	<div class="new-paymentpage_Accountitem-Category">
+  	    		<div class="new-paymentpage_Accountitem-item">
+  	    			<i class="new-paymentpage_Accountitem-item_check"></i>
+  	    			<span class="new-paymentpage_Accountitem-item_detail">单月 CNY 98元</span>
+  	    		</div>
+
+  	    		<div class="new-paymentpage_Accountitem-item" style="margin: 0px 148px;">
+  	    			<i class="new-paymentpage_Accountitem-item_check"></i>
+  	    			<span class="new-paymentpage_Accountitem-item_detail">半年 CNY 98元</span>
+  	    		</div>
+
+  	    		<div class="new-paymentpage_Accountitem-item">
+  	    			<i class="new-paymentpage_Accountitem-item_check"></i>
+  	    			<span class="new-paymentpage_Accountitem-item_detail">全年 CNY 98元</span>
+  	    		</div>
+
+  	    	</div>
+  	    	<div class="new-paymentpage_Accountitem-explain">
+  	    		<span class="new-paymentpage_Accountitem-explain_detail">
+  	    			高级账号的有限期至<span>2020.3.25</span>我们会在失效期的前7天邮件通知你
+  	    		</span>
+  	    	</div>
+  	    </div>
+  	    <div class="new-paymentpage_Accountitem">
+  	    	<div class="new-paymentpage_Accountitem-title">立即支付</div>
+  	    	<div class="new-paymentpage_Accountitem-Category">
+  	    		<div class="new-paymentpage_Accountappy-item new-paymentpage_Accountappy-alipay" style="margin: 0px 80px 0px 0px;"></div>
+  	    		<div class="new-paymentpage_Accountappy-item new-paymentpage_Accountappy-wechatpay"></div>
+  	    	</div>
+  	    	
+  	    </div>
+    </div>
+
+
+  <div class="normal-background_cover">
+    <div class="new-paymentpage_container">
+        <div class="new-paymentpage_header">
+          <div class="new-paymentpage_header-title"> 
+              <i class="new-paymentpage_header-icon"></i>
+              <span class="new-paymentpage_header-paytitle"> 微信支付</span> 
+              <span class="new-paymentpage_header-Cashier">收银台</span>
+          </div>
+          <i class="new-paymentpage_header-close list-results_close"></i>
+        </div>
+
+        <div class="new-paymentpage_pay-first">
+            <div class="new-paymentpage_pay-first_left">
+              <div class="new-paymentpage_pay-first_left-header">订单会在48分钟之后关闭，请及时支付</div>
+              <div class="new-paymentpage_pay-first_left-body"></div>
+              <div class="new-paymentpage_pay-first_left-footer">打开手机微信扫一扫</div>
+            </div>
+            <div class="new-paymentpage_pay-first_line"></div>
+            <div class="new-paymentpage_pay-first_right">
+              <div class="new-paymentpage_pay-first_right-title" >科研之友订单</div>
+              <div class="new-paymentpage_pay-first_right-num">
+                <span class="new-paymentpage_pay-first_right-num_tip" >$</span>
+                <span class="new-paymentpage_pay-first_right-num_detail">86</span>
+              </div>
+              <div class="new-paymentpage_pay-first_right-item" >
+                <span class="new-paymentpage_pay-first_right-item_title" >收款方</span>
+                <span class="new-paymentpage_pay-first_right-item_detail">深圳爱瑞思软件有限公司</span>
+              </div>
+              <div class="new-paymentpage_pay-first_right-item" >
+                <span class="new-paymentpage_pay-first_right-item_title">下单时间</span>
+                <span class="new-paymentpage_pay-first_right-item_detail">20190218-12:09:23</span>
+              </div>
+              <div class="new-paymentpage_pay-first_right-item"  style=" margin-bottom: 100px;"> 
+                <span class="new-paymentpage_pay-first_right-item_title">订单号</span>
+                <span class="new-paymentpage_pay-first_right-item_detail">32321455414341</span>
+              </div>
+            </div>
+        </div>
+
+        
+        <div class="new-paymentpage_pay-second">
+            <i class="new-paymentpage_paysuccess—icon"></i>
+            <div class="new-paymentpage_paysuccess—tip">
+              支付成功
+            </div>
+            <div class="new-paymentpage_paysuccess—returnlart">
+              两分钟后返回原页面
+            </div>
+            <div class="new-paymentpage_paysuccess—returnnow">
+              立即返回 
+            </div>
+        </div>
+
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>core-base-utils</artifactId>
+  <version>${core-base-utils.version}</version>
+  <packaging>jar</packaging>
+  <parent>
+    <groupId>com.smate</groupId>
+    <artifactId>smate-parent</artifactId>
+    <version>6.0.0</version>
+    <relativePath>../smate-parent/pom.xml</relativePath>
+  </parent>
+  <name>core-base-utils jar</name>
+  <url>https://www.scholarmate.com</url>
+  <description>工具jar</description>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.struts</groupId>
+      <artifactId>struts2-core</artifactId>
+    </dependency>
+    <!-- spring security -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-taglibs</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.octo.captcha</groupId>
+      <artifactId>jcaptcha</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.acegisecurity</groupId>
+      <artifactId>acegi-security</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-support</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <!--RSA https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on -->
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcprov-jdk15on</artifactId>
+      <version>1.54</version>
+    </dependency>
+    <!-- gdata -->
+    <dependency>
+      <groupId>com.google</groupId>
+      <artifactId>gdata-core</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.icepdf.os</groupId>
+      <artifactId>icepdf-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>itextpdf</artifactId>
+      <version>5.3.4</version>
+    </dependency>
+    <!-- url解析 -->
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.9.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.im4java</groupId>
+      <artifactId>im4java</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.sharneng</groupId>
+      <artifactId>gm4java</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.ant</groupId>
+      <artifactId>ant</artifactId>
+    </dependency>
+    <!-- pinyin -->
+    <dependency>
+      <groupId>net.sourceforge</groupId>
+      <artifactId>pinyin4j</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.dozermapper</groupId>
+      <artifactId>dozer-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.dozermapper</groupId>
+      <artifactId>dozer-spring4</artifactId>
+    </dependency>
+    <!-- 加密解密工具 start -->
+    <dependency>
+      <groupId>com.irissz</groupId>
+      <artifactId>iris-codec</artifactId>
+    </dependency>
+    <!-- 加密解密工具 end -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.47</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.5.7</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.github.stuxuhai/jpinyin -->
+    <dependency>
+        <groupId>com.github.stuxuhai</groupId>
+        <artifactId>jpinyin</artifactId>
+        <version>1.1.8</version>
+    </dependency>
+  </dependencies>
+</project>

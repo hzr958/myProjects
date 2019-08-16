@@ -1,0 +1,49 @@
+/*======底部样式=====*/
+.footer {
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #dddddd;
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.footer_wrap {
+  padding: 0 20px;
+  width: 940px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer_wrap .scholarmate-code {
+  width: 85px;
+  text-align: center;
+  float: left;
+  /*  margin-left: 240px; */
+}
+
+.footer_wrap .scholarmate-code span {
+  margin-top: 5px;
+  display: inline-block;
+  width: 170px;
+  margin-left: -45px;
+}
+
+.footer_cont {
+  width: 580px;
+  float: left;
+  margin-top: 30px;
+  overflow: hidden;
+  color: #666;
+}
+
+.footer_cont p {
+  font-size: 12px;
+  line-height: 26px;
+  color: #666;
+  text-align: center;
+}
+
+.footer_cont p a {
+  color: #666;
+  margin: 0 10px;
+}

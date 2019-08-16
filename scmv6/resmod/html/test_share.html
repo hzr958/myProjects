@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>完善科技领域</title>
+<meta name="viewport"
+  content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+<meta charset="UTF-8">
+<script type="text/javascript" src="/resmod/mobile/js/plugin/share/ShareSDK.js"></script>
+<script  type="text/javascript">
+if(navigator.userAgent.indexOf("smate-android") != -1){
+  alert("你正在用科研之友android版app");
+}
+
+function returnResult(result){
+  alert("我也收到回调了，返回值是" + result);
+}
+
+/*  
+Text ：分享的文字
+Title: 分享的标题
+TitleUrl ：标题的网络链接（QQ和QQ空间使用 ）
+SetImageUrl  ：iOS平台，本地以及网络图片都使用此方法
+image：android平台分享本地图片与网络图片都用此方法
+Url： 分享的链接（微信，微博，易信，Facebook等平台）
+ShareType：分享类型（微信，易信）
+FilePath：分享文件路径 （微信，易信）
+MusicUrl ：分享的音乐链接（微信，QQ，易信） 
+*/
+
+
+var params = {
+    "text" : "测试的文字",
+    "imageUrl" : "http://www.scholarmate.com/pubFulltextImage/ba/6c/a1/1000004888515_img_0.jpeg",
+    "title" : "测试的标题",
+    "titleUrl" : "http://www.scholarmate.com",
+    "description" : "测试的描述",
+    "site" : "科研之友",
+    "siteUrl" : "http://www.scholarmate.com",
+    "url": "http://dev.scholarmate.com/resmod/html/test_share.html",
+    "type" : $sharesdk.ContentType.Text
+};
+function init()
+{          
+    /* //android的平台配置信息跟ShareSDK.xml一致；
+    var sinaConf = 
+    {
+    "Id" : "1",
+    "SortId" : "1",
+    "AppKey" : "568898243",
+    "AppSecret" : "38a4f8204cc784f81f9f0daaf31e02e3",
+    "RedirectUrl" : "http://www.sharesdk.cn",
+    "ShareByAppClient" : "false",
+    "Enable" : "true"
+    };
+    //platformConfig平台配置信息可为null，此时用ShareSDK.xml
+    var platformConfig = {}; 
+    platformConfig[$sharesdk.PlatformID.SinaWeibo] = sinaConf; */
+//    $sharesdk.initSDKAndSetPlatfromConfig("smate-android", null);
+}
+
+function showMenu(){
+  $sharesdk.showShareMenu(null, params, 100, 100, function (reqId, platform, state, shareInfo, error) {
+    alert("state = " + state + "\n shareInfo = " + shareInfo + "\n error = " + error);
+  });
+}
+
+/* function showShareEditor(){
+  $sharesdk.showShareView($sharesdk.platformID.SinaWeibo, params, function (platform, state, shareInfo, error) {alert("state = " + state + "\nshareInfo = " + shareInfo + "\nerror = " + error);});
+} */
+
+
+function callAndroid(){
+  document.location = "smate://testJsCallNative?arg1=111&arg2=222";
+}
+
+function toIndex(){
+  document.location = "https://devm.scholarmate.com/oauth/mobile/index?locale=zh_CN";
+}
+
+function shareToWechat(wxShareType){
+  var shareWechatParams = {
+    "shareUrl":  "http://dev.scholarmate.com/resmod/html/test_share.html",
+    "shareImgUrl": "http://www.scholarmate.com/pubFulltextImage/ba/6c/a1/1000004888515_img_0.jpeg",
+    "title" : "测试的标题",
+    "description" : "测试的描述",
+    "wxShareType": wxShareType
+  };
+  if(typeof androidAppProxy !== "undefined"){
+    androidAppProxy.shareToWechat(ObjectToJsonString(shareWechatParams));
+  } else {
+    alert("Running outside Android app");
+  }
+}
+
+
+function shareToQQ(qqShareType){
+  var shareQQParams = {
+    "shareUrl":  "http://dev.scholarmate.com/resmod/html/test_share.html",
+    "shareImgUrl": "http://www.scholarmate.com/pubFulltextImage/ba/6c/a1/1000004888515_img_0.jpeg",
+    "title" : "测试的标题",
+    "description" : "测试的描述",
+    "qqShareType": qqShareType
+  };
+  if(typeof androidAppProxy !== "undefined"){
+    androidAppProxy.shareToQQ(ObjectToJsonString(shareQQParams));
+  } else {
+    alert("Running outside Android app");
+  }
+}
+
+
+function shareToSina(sinaShareType){
+  var shareQQParams = {
+    "shareUrl":  "http://dev.scholarmate.com/resmod/html/test_share.html",
+    "shareImgUrl": "http://www.scholarmate.com/pubFulltextImage/ba/6c/a1/1000004888515_img_0.jpeg",
+    "title" : "测试的标题",
+    "description" : "测试的描述",
+    "sinaShareType": sinaShareType
+  };
+  if(typeof androidAppProxy !== "undefined"){
+    androidAppProxy.shareToSina(ObjectToJsonString(shareQQParams));
+  } else {
+    alert("Running outside Android app");
+  }
+}
+
+
+
+function showShareMenu(){
+  var shareParams = {
+      "shareUrl":  "http://dev.scholarmate.com/resmod/html/test_share.html",
+      "shareImgUrl": "http://www.scholarmate.com/pubFulltextImage/ba/6c/a1/1000004888515_img_0.jpeg",
+      "title" : "测试的标题",
+      "description" : "测试的描述",
+    };
+    if(typeof androidAppProxy !== "undefined"){
+      androidAppProxy.showShareMenus(ObjectToJsonString(shareParams));
+    } else {
+      console.log("Running outside Android app");
+    }
+}
+
+
+/**
+ * 对象转JSON字符串
+ * @param obj           对象
+ * @returns {string}    JSON字符串
+ */
+var ObjectToJsonString = function (obj)
+{
+    var S = [];
+    var J = null;
+
+    var type = Object.prototype.toString.apply(obj);
+
+    if (type === '[object Array]')
+    {
+        for (var i = 0; i < obj.length; i++)
+        {
+            S.push(ObjectToJsonString(obj[i]));
+        }
+        J = '[' + S.join(',') + ']';
+    }
+    else if (type === '[object Date]')
+    {
+        J = "new Date(" + obj.getTime() + ")";
+    }
+    else if (type === '[object RegExp]'
+        || type === '[object Function]')
+    {
+        J = obj.toString();
+    }
+    else if (type === '[object Object]')
+    {
+        for (var key in obj)
+        {
+            var value = ObjectToJsonString(obj[key]);
+            if (value != null)
+            {
+                S.push('"' + key + '":' + value);
+            }
+        }
+        J = '{' + S.join(',') + '}';
+    }
+    else if (type === '[object String]')
+    {
+        J = '"' + obj.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '') + '"';
+    }
+    else if (type === '[object Number]')
+    {
+        J = obj;
+    }
+    else if (type === '[object Boolean]')
+    {
+        J = obj;
+    }
+
+    return J;
+};
+
+</script>
+<style>
+.btn_style{
+    text-align:center;
+    padding-bottom:20px;"
+}
+
+</style>
+</head>
+<body>
+<div class="btn_style"><input type="button" id="" name="shareBtn" value="刷新页面" onclick="window.location.reload();"/></div>
+<div class="btn_style"><input type="button" id="" name="shareBtn" value="分享吧" onclick="showMenu();"/></div>
+<div class="btn_style"><input type="button" id="" name="shareBtn" value="JsCallNative" onclick="callAndroid();"/></div>
+<div class="btn_style"><input type="button" id="" name="shareBtn" value="去首页" onclick="toIndex();"/></div>
+<div class="btn_style"><input type="button" id="" name="shareBtn" value="分享到微信好友" onclick="shareToWechat('0');"/></div>
+<div class="btn_style"><input type="button" id="" name="shareBtn" value="分享到微信朋友圈" onclick="shareToWechat('1');"/></div>
+<div class="btn_style"><input type="button" id="" name="shareBtn" value="分享到qq好友" onclick="shareToQQ('1');"/></div>
+<div class="btn_style"><input type="button" id="" name="shareBtn" value="分享到qq空间" onclick="shareToQQ('0');"/></div>
+<div class="btn_style"><input type="button" id="" name="shareBtn" value="分享到微博" onclick="shareToSina('1');"/></div>
+<div class="btn_style"><input type="button" id="" name="shareBtn" value="分享一下" onclick="showShareMenu();"/></div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>center-mail-client</artifactId>
+  <version>${center-mail-client.version}</version>
+  <packaging>war</packaging>
+  <name>center-mail-client</name>
+  <url>http://www.scholarmate.com</url>
+  <parent>
+    <groupId>com.smate</groupId>
+    <artifactId>smate-parent</artifactId>
+    <version>6.0.0</version>
+    <relativePath>../smate-parent/pom.xml</relativePath>
+  </parent>
+      <properties>
+     <maven.deploy.skip>true</maven.deploy.skip>
+        </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.quartz-scheduler</groupId>
+      <artifactId>quartz</artifactId>
+    </dependency>
+    <!-- email begin -->
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+    </dependency>
+    <!-- email end -->
+    <!-- 组装 -->
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-base-utils</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-base-public</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>center-mail-connector</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>center-mail-client</finalName>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <excludes>
+          <exclude>logback-test.xml</exclude>
+        </excludes>
+      </resource>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
+</project>

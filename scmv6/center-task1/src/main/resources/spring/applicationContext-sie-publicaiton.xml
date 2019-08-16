@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:export="https://www.scholarmate.com/schema/remote-export"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+    https://www.scholarmate.com/schema/remote-export
+    https://www.scholarmate.com/schema/remote-export.xsd "
+  default-lazy-init="false">
+  <description>同步基准库成果到sie库任务</description>
+  <!-- 成果xml校验工厂 -->
+  <bean id="pubXmlValidatorFactory" class="com.smate.sie.center.task.pdwh.validator.PubXmlValidatorFactory"
+    lazy-init="true">
+    <property name="validators">
+      <list>
+        <bean class="com.smate.sie.center.task.pdwh.validator.PubBookValidator" />
+        <bean class="com.smate.sie.center.task.pdwh.validator.PubConfPaperValidator" />
+        <bean class="com.smate.sie.center.task.pdwh.validator.PubJournalValidator" />
+        <bean class="com.smate.sie.center.task.pdwh.validator.PubPatentValidator" />
+        <bean class="com.smate.sie.center.task.pdwh.validator.PubOtherValidator" />
+        <bean class="com.smate.sie.center.task.pdwh.validator.PubThesisValidator" />
+        <bean class="com.smate.sie.center.task.pdwh.validator.PubBookChapterValidator" />
+        <bean class="com.smate.sie.center.task.pdwh.validator.PubAwardValidator" />
+      </list>
+    </property>
+  </bean>
+  <!-- ROL成果后台导入xml处理 -->
+  <bean id="rolXmlBackgroundImportProcess"
+    class="com.smate.sie.center.task.pdwh.task.ROLXmlBackgroundImportProcess" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.sie.center.task.pdwh.task.ImportXmlMergeTask" />
+        <bean class="com.smate.sie.center.task.pdwh.task.PublicationMetaTask" />
+        <bean class="com.smate.sie.center.task.pdwh.task.ImportFieldMappingTask" />
+        <bean class="com.smate.sie.center.task.pdwh.task.RolSplitImportAuthorNameTask" />
+        <bean class="com.smate.sie.center.task.pdwh.task.PublicationTypeCleanTask" />
+        <bean class="com.smate.sie.center.task.pdwh.task.DateAttributeCleanTask" />
+        <bean class="com.smate.sie.center.task.pdwh.task.JournalMatchTask" />
+        <bean class="com.smate.sie.center.task.pdwh.task.RolPubMemberCleanTask" />
+        <bean class="com.smate.sie.center.task.pdwh.task.CountryCleanTask" />
+        <bean class="com.smate.sie.center.task.pdwh.task.XmlFieldCodePageCleanTask" />
+        <bean class="com.smate.sie.center.task.pdwh.task.XmlFieldValidateTask" />
+        <!-- <bean class="com.smate.sie.center.task.pdwh.task.PublicationBriefGenerateTask" /> -->
+        <bean class="com.smate.sie.center.task.pdwh.task.GeneratePublicationHashTask" />
+        <bean class="com.smate.sie.center.task.pdwh.task.ExtractXmlToRolDbTask" />
+        <bean class="com.smate.sie.center.task.pdwh.task.OperationLogTask" />
+        <!-- <bean class="com.smate.sie.center.task.pdwh.task.PubDupCheckTask" /> -->
+      </list>
+    </property>
+  </bean>
+  <bean id="sieImportXmlTranslateProcess"
+    class="com.smate.sie.center.task.pdwh.task.SiePubImportXmlTranslateProcess" lazy-init="false">
+    <property name="tasks">
+      <list>
+        <bean class="com.smate.sie.center.task.pdwh.task.PublicationMetaTask" />
+        <bean class="com.smate.sie.center.task.pdwh.task.ImportFieldMappingTask" />
+        <bean class="com.smate.sie.center.task.pdwh.task.DateAttributeCleanTask" />
+      </list>
+    </property>
+  </bean>
+  
+  
+  
+  <!-- xml转json 开始-->
+  <bean id="pubTypeServiceFactory" class="com.smate.sie.center.task.pdwh.json.pubtype.factory.PubTypeServiceFactory" lazy-init="true">
+        <property name="pubTypeServices">
+            <list>
+<!--                <bean class="com.smate.sie.web.pub.json.service.pubtype.PubCommonInfoDealServiceImpl"/> -->
+                <bean class="com.smate.sie.center.task.pdwh.json.pubtype.service.PubAwardsInfoDealServiceImpl"/>
+                <bean class="com.smate.sie.center.task.pdwh.json.pubtype.service.PubBookInfoDealServiceImpl"/>
+                <bean class="com.smate.sie.center.task.pdwh.json.pubtype.service.PubConferencePaperDealServiceImpl"/>
+                <bean class="com.smate.sie.center.task.pdwh.json.pubtype.service.PubJournalInfoDealServiceImpl"/>
+                <bean class="com.smate.sie.center.task.pdwh.json.pubtype.service.PubOtherInfoDealServiceImpl"/>
+                <bean class="com.smate.sie.center.task.pdwh.json.pubtype.service.PubPatentInfoDealServiceImpl"/>
+                <bean class="com.smate.sie.center.task.pdwh.json.pubtype.service.PubThesisInfoDealServiceImpl"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- 成果xml来源生成配置 -->
+    <bean id="sieBriefDriverFactory" class="com.smate.sie.center.task.pdwh.brief.BriefDriverFactory" lazy-init="true">
+        <property name="drivers">
+            <list>
+                <bean class="com.smate.sie.center.task.pdwh.brief.PubBookBriefDriver" />
+                <bean class="com.smate.sie.center.task.pdwh.brief.PubBookChpaterDriver" />
+                <bean class="com.smate.sie.center.task.pdwh.brief.PubConfPaperBriefDriver" />
+                <bean class="com.smate.sie.center.task.pdwh.brief.PubJournalArticleBriefDriver" />
+                <bean class="com.smate.sie.center.task.pdwh.brief.PubPatentBriefDriver" />
+                <bean class="com.smate.sie.center.task.pdwh.brief.PubTheisBriefDriver" />
+                <bean class="com.smate.sie.center.task.pdwh.brief.PubAwardBriefDriver" />
+                <bean class="com.smate.sie.center.task.pdwh.brief.PubOtherBriefDriver" />
+            </list>
+        </property>
+    </bean>
+</beans>

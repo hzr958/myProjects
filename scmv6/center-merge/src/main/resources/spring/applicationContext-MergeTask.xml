@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+  default-lazy-init="true">
+  <description>合并任务配置</description>
+  <bean id="accountsMergeTask" class="com.smate.center.merge.quartz.task.AccountsMergeTask">
+    <!-- 注入帐号合并处理服务对象 顺序 要优先执行的 先放入 -->
+    <property name="mergeDealList">
+      <list>
+        <ref bean="mergeGrpServiceImpl" /> <!-- 群组合并 -->
+        <ref bean="mergePubServiceImpl" /> <!-- 成果合并 -->
+        <ref bean="mergeThirdPartyServiceImpl" /> <!-- 第三方关系合并 -->
+        <ref bean="mergePsnServiceImpl" />
+        <ref bean="mergeDelServiceImpl" /> <!-- 必要数据清理 -->
+      </list>
+    </property>
+  </bean>
+  <!-- 群组合并 start -->
+  <bean id="mergeGrpServiceImpl" class="com.smate.center.merge.service.task.grp.MergeGrpServiceImpl">
+    <!-- 注入群组合并要处理的服务对象 -->
+    <property name="mergeGrpDealList">
+      <list>
+        <ref bean="mergeGrpMemberServiceImpl" />
+        <ref bean="mergeGrpProposerServiceImpl"/>
+        <ref bean="mergeGrpBaseinfoServiceImpl" />
+        <ref bean="mergeGrpUnionServiceImpl" />
+        <ref bean="mergeGrpFileServiceImpl" />
+        <ref bean="mergeGrpPubsServiceImpl" />
+        <ref bean="mergeGrpDynamicServiceImpl" />
+        <ref bean="mergeGrpStatisticsServiceImpl" />
+      </list>
+    </property>
+  </bean>
+  <bean id="mergeGrpMemberServiceImpl" class="com.smate.center.merge.service.task.grp.MergeGrpMemberServiceImpl"></bean>
+  <bean id="mergeGrpProposerServiceImpl"
+    class="com.smate.center.merge.service.task.grp.MergeGrpProposerServiceImpl"></bean>
+  <bean id="mergeGrpBaseinfoServiceImpl"
+    class="com.smate.center.merge.service.task.grp.MergeGrpBaseinfoServiceImpl"></bean>
+  <bean id="mergeGrpUnionServiceImpl" class="com.smate.center.merge.service.task.grp.MergeGrpUnionServiceImpl"></bean>
+  <bean id="mergeGrpFileServiceImpl" class="com.smate.center.merge.service.task.grp.MergeGrpFileServiceImpl"></bean>
+  <bean id="mergeGrpPubsServiceImpl" class="com.smate.center.merge.service.task.grp.MergeGrpPubsServiceImpl"></bean>
+  <bean id="mergeGrpStatisticsServiceImpl"
+    class="com.smate.center.merge.service.task.grp.MergeGrpStatisticsServiceImpl"></bean>
+  <bean id="mergeGrpDynamicServiceImpl" class="com.smate.center.merge.service.task.grp.MergeGrpDynamicServiceImpl"></bean>
+  <!-- 群组合并 end -->
+  <!-- 成果合并 start -->
+  <bean id="mergePubServiceImpl" class="com.smate.center.merge.service.task.pub.MergePubServiceImpl">
+    <property name="mergePubDealList">
+      <list>
+        <ref bean="mergeGrpPubServiceImpl" />
+        <ref bean="mergePubConfigServiceImpl" />
+        <ref bean="mergePsnPubServiceImpl" />
+        <ref bean="mergePubSnsServiceImpl" />
+      </list>
+    </property>
+  </bean>
+  <bean id="mergeGrpPubServiceImpl" class="com.smate.center.merge.service.task.pub.MergeGrpPubServiceImpl"></bean>
+  <bean id="mergePubConfigServiceImpl" class="com.smate.center.merge.service.task.pub.MergePubConfigServiceImpl"></bean>
+  <bean id="mergePsnPubServiceImpl" class="com.smate.center.merge.service.task.pub.MergePsnPubServiceImpl"></bean>
+  <bean id="mergePubSnsServiceImpl" class="com.smate.center.merge.service.task.pub.MergePubSnsServiceImpl"></bean>
+  <!-- 成果合并 end -->
+  <!-- 第三方关联关系处理 start -->
+  <bean id="mergeThirdPartyServiceImpl"
+    class="com.smate.center.merge.service.task.thirdparty.MergeThirdPartyServiceImpl">
+    <property name="mergeThirdPartyDealList">
+      <list>
+        <ref bean="mergeMobileServiceImpl"/>
+        <ref bean="mergeQqRelationServiceImpl" />
+        <ref bean="mergeWechatServiceImpl" />
+        <ref bean="mergeConnectivityServiceImpl" />
+      </list>
+    </property>
+  </bean>
+  <bean id="mergeMobileServiceImpl" class="com.smate.center.merge.service.task.thirdparty.MergeMobileServiceImpl"></bean>
+  <bean id="mergeQqRelationServiceImpl"
+    class="com.smate.center.merge.service.task.thirdparty.MergeQqRelationServiceImpl"></bean>
+  <bean id="mergeWechatServiceImpl" class="com.smate.center.merge.service.task.thirdparty.MergeWechatServiceImpl"></bean>
+  <bean id="mergeConnectivityServiceImpl"
+    class="com.smate.center.merge.service.task.thirdparty.MergeConnectivityServiceImpl"></bean>
+  <!-- 第三方关联关系处理 end -->
+  <!-- 处理人员信息 start -->
+  <bean id="mergePsnServiceImpl" class="com.smate.center.merge.service.task.psn.MergePsnServiceImpl">
+    <property name="mergePsnDealList">
+      <list>
+        <ref bean="mergePsnStatisticsServiceImpl" />
+      </list>
+    </property>
+  </bean>
+  <bean id="mergePsnStatisticsServiceImpl"
+    class="com.smate.center.merge.service.task.psn.MergePsnStatisticsServiceImpl"></bean>
+  <!-- 处理人员信息 end -->
+  <!-- 必要数据清理 start -->
+  <bean id="mergeDelServiceImpl" class="com.smate.center.merge.service.task.del.MergeDelServiceImpl">
+    <property name="mergeDelDealList">
+      <list>
+        <ref bean="mergeDelAttPersonServiceImpl" />
+        <ref bean="mergeDelPsnFriendServiceImpl" />
+        <ref bean="mergeDelPsnEmailServiceImpl" />
+        <ref bean="mergeDelPsnCoPartnerServiceImpl"/>
+        <ref bean="mergeDelPersonServiceImpl" />
+        <ref bean="mergeDelUserRoleServiceImpl"/>
+        <ref bean="mergeDelAccountServiceImpl" />
+      </list>
+    </property>
+  </bean>
+  <bean id="mergeDelAttPersonServiceImpl" class="com.smate.center.merge.service.task.del.MergeDelAttPersonServiceImpl"></bean>
+  <bean id="mergeDelPsnFriendServiceImpl" class="com.smate.center.merge.service.task.del.MergeDelPsnFriendServiceImpl"></bean>
+  <bean id="mergeDelPsnEmailServiceImpl" class="com.smate.center.merge.service.task.del.MergeDelPsnEmailServiceImpl"></bean>
+  <bean id="mergeDelPsnCoPartnerServiceImpl" class="com.smate.center.merge.service.task.del.MergeDelPsnCoPartnerServiceImpl"></bean>
+  <bean id="mergeDelPersonServiceImpl" class="com.smate.center.merge.service.task.del.MergeDelPersonServiceImpl"></bean>
+  <bean id="mergeDelUserRoleServiceImpl" class="com.smate.center.merge.service.task.del.MergeDelUserRoleServiceImpl"></bean>
+  <bean id="mergeDelAccountServiceImpl" class="com.smate.center.merge.service.task.del.MergeDelAccountServiceImpl"></bean>
+  <!-- 必要数据清理 end -->
+</beans>

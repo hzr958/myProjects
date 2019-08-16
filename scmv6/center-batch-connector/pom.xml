@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.smate</groupId>
+    <artifactId>smate-parent</artifactId>
+    <version>6.0.0</version>
+    <relativePath>../smate-parent/pom.xml</relativePath>
+  </parent>
+  	   <properties>
+     <maven.deploy.skip>true</maven.deploy.skip>
+        </properties>
+  <artifactId>center-batch-connector</artifactId>
+  <version>${center-batch-connector.version}</version>
+  <packaging>jar</packaging>
+  <name>center-batch-connector Maven WebApp</name>
+  <description>SpringBatch  action for T table</description>
+  <dependencies>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-base-utils</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-base-public</artifactId>
+    </dependency>
+  </dependencies>
+</project>

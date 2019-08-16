@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>立即支付页面</title>
+	<meta charset="utf-8">
+    <link href="../css/scmpcframe.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+    	window.onload = function(){
+    	var pageclose = document.getElementsByClassName("new-paymentpage_header-close")[0]    
+        var payele = document.getElementsByClassName("new-paymentpage_container")[0];
+        payele.style.left = (document.body.innerWidth - payele.offsetWidth)/2 + "px";
+        payele.style.top = (document.body.innerHeight - payele.offsetHeight)/2 + "px";
+        window.onresize = function(){
+          payele.style.left = (document.body.innerWidth - payele.offsetWidth)/2 + "px";
+          payele.style.top = (document.body.innerHeight - payele.offsetHeight)/2 + "px";
+        }
+        pageclose.onclick = function(){
+            document.getElementsByClassName("normal-background_cover")[0].style.display = "none";
+        }
+        var showele = document.getElementsByClassName("new-paymentpage_Accountappy-wechatpay")[0];
+        var hidele = document.getElementsByClassName("new-paymentpage_Accountappy-close")[0];
+    		var checklist = document.getElementsByClassName("new-paymentpage_Accountitem-item_check");
+        showele.onclick = function(e){
+            e.stopPropagation();
+            this.querySelector(".new-paymentpage_Accountappy-wechatpay_paybox").classList.add("setting-list_page-item_show");
+        }
+        hidele.onclick = function(e){
+            e.stopPropagation();
+           this.closest(".new-paymentpage_Accountappy-wechatpay_paybox").classList.remove("setting-list_page-item_show");
+        }
+    		for(var i = 0; i < checklist.length; i++){
+                checklist[i].onclick = function(){
+                	if(document.getElementsByClassName("new-paymentpage_Accountitem-item_checked").length > 0){
+                        document.getElementsByClassName("new-paymentpage_Accountitem-item_checked")[0].classList.remove("new-paymentpage_Accountitem-item_checked");
+                	}
+                	if(this.classList.contains("new-paymentpage_Accountitem-item_checked")){
+                    this.classList.remove("new-paymentpage_Accountitem-item_checked")
+                	}else{
+                    this.classList.add("new-paymentpage_Accountitem-item_checked")
+                	}
+                }
+    		}
+    	}
+    </script>
+</head>
+<body>
+  <div class="normal-background_cover">
+    <div class="new-paymentpage_container">
+        <div class="new-paymentpage_header">
+          <span class="new-paymentpage_header-title">成为会员</span>
+          <i class="new-paymentpage_header-close list-results_close"></i>
+        </div>
+  	    <div class="new-paymentpage_Accountitem">
+  	    	<div class="new-paymentpage_Accountitem-title">账号类别</div>
+  	    	<div class="new-paymentpage_Accountitem-Category">
+  	    		<div class="new-paymentpage_Accountitem-item">
+  	    			<i class="new-paymentpage_Accountitem-item_check"></i>
+  	    			<span class="new-paymentpage_Accountitem-item_detail">单月 CNY 98元</span>
+  	    		</div>
+  	    		<div class="new-paymentpage_Accountitem-item" style="margin: 0px 80px;">
+  	    			<i class="new-paymentpage_Accountitem-item_check"></i>
+  	    			<span class="new-paymentpage_Accountitem-item_detail">半年 CNY 98元</span>
+  	    		</div>
+  	    		<div class="new-paymentpage_Accountitem-item">
+  	    			<i class="new-paymentpage_Accountitem-item_check"></i>
+  	    			<span class="new-paymentpage_Accountitem-item_detail">全年 CNY 98元</span>
+  	    		</div>
+  	    	</div>
+  	    	<div class="new-paymentpage_Accountitem-explain">
+  	    		<span class="new-paymentpage_Accountitem-explain_detail">
+  	    			高级账号的有限期至<span>2020.3.25</span>我们会在失效期的前7天邮件通知你
+  	    		</span>
+  	    	</div>
+  	    </div>
+  	    <div class="new-paymentpage_Accountitem">
+  	    	<div class="new-paymentpage_Accountitem-title">立即支付</div>
+  	    	<div class="new-paymentpage_Accountitem-Category">
+
+  	    		<div class="new-paymentpage_Accountappy-item new-paymentpage_Accountappy-alipay" style="margin: 0px 80px 0px 0px;"></div>
+
+  	    		<div class="new-paymentpage_Accountappy-item new-paymentpage_Accountappy-wechatpay">
+              <div class="new-paymentpage_Accountappy-wechatpay_paybox">
+                <div class="new-paymentpage_Accountappy-wechatpay_paybox-title">
+                  <span>打开微信,扫一扫二维码完成支付</span> 
+                  <i class="material-icons new-paymentpage_Accountappy-close">close</i> 
+                </div>
+                <div class="new-paymentpage_Accountappy-wechatpay_paybox-img">
+                     <div class="new-paymentpage_Accountappy-wechatpay_paybox-success">
+                          <div class="new-paymentpage_Accountappy-wechatpay_paybox-success_text">支付成功</div>
+                     </div>
+                </div>
+              </div>   
+            </div>
+          </div>
+  	    </div>
+    </div>
+  </div>
+</body>
+</html>

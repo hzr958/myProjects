@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/scmpcframe.css">
+<!-- 	<style type="text/css">
+		.confirm-fulltext{
+			width: 520px;
+			height: 350px;
+			border: 1px solid #ddd;
+			background: #fff;
+            position: absolute;
+            transition: all 500ms;
+		}
+        .confirm-fulltext_header{
+        	height: 56px;
+        	line-height: 56px;
+        	border-bottom: 1px solid #ddd;
+        	padding: 0px 20px;
+        	display: flex;
+        	align-items: center;
+        	justify-content: space-between;
+        }
+        .confirm-fulltext_header span{
+        	font-size: 18px;
+        	font-weight: bold;
+            padding: 0px;
+            margin: 0px;
+        }
+        .confirm-fulltext_header i{
+        	cursor: pointer;
+            padding: 0px;
+            margin: 0px;
+        }
+        .confirm-fulltext_header i:hover{
+        	color: green;
+        }
+        .confirm-fulltext_body{
+            padding: 0px 20px;
+        }
+        .confirm-fulltext_body-title{
+            color: #333;
+            font-size: 14px;
+            line-height: 24px;
+            margin: 12px 0px;
+        }
+        .confirm-fulltext_body-title_check{
+        	color: #288aed;
+        	cursor: pointer;
+        }
+        .confirm-fulltext_body-title_check:hover{
+        	color: #1265cf;
+        }
+        .confirm-fulltext_body-content{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .confirm-fulltext_body-content_avator{
+            width: 72px;
+            height: 92px;
+            margin-top: 6px;
+        }
+        .confirm-fulltext_body-content_avator img{
+        	width: 100%;
+        	height: 100%;
+        }
+        .confirm-fulltext_body-content_infor{
+        	width: 380px;
+            padding: 0px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .confirm-fulltext_body-content_infor-title{
+        	color: #333;
+        	font-size: 14px;
+        	font-weight: bold;
+            line-height: 24px;
+            cursor: pointer;
+        }
+        .confirm-fulltext_body-content_infor-author{
+            line-height: 24px;
+            font-size: 14px; 
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .confirm-fulltext_body-content_infor-time{
+            line-height: 24px;
+            color: #ccc;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .confirm-fulltext_body-content_infor-btn{
+        	display: flex;
+        	align-items: center;
+        	justify-content: space-around;
+        	margin: 8px 0px; 
+        }
+        .confirm-fulltext_body-content_infor-btn_cancle{
+            cursor: pointer;
+            height: 32px;
+        	padding: 0px 8px;
+        	background: #fff;
+        	color: #666;
+        	border: 1px solid #fff;
+        	display: flex;
+        	justify-content: center;
+        	align-items: center;
+        	border-radius: 3px;
+        	font-size: 14px;
+        }
+        .confirm-fulltext_body-content_infor-btn_cancle:hover{
+            color: #1265cf;
+            border: 1px solid #1265cf;
+        }
+        .confirm-fulltext_body-content_infor-btn_confirm{
+        	cursor: pointer;
+        	height: 32px;
+        	padding: 0px 8px;
+        	background: #288aed;
+        	border: 1px solid #288aed;
+        	color: #fff;
+        	display: flex;
+        	justify-content: center;
+        	align-items: center;
+        	border-radius: 3px;
+        	font-size: 14px; 
+        }
+        .confirm-fulltext_body-content_infor-btn_confirm:hover{
+        	background: #1265cf;
+        	border: 1px solid #1265cf;
+        }
+        .bckground-cover {
+            position: fixed;
+            top: 0px;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.24);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .toast_load-container{
+            display: block; 
+            border:1px solid #ccc; 
+            position: fixed;
+            transition: all 300ms;
+            bottom: -600px;
+            background: #fff;
+        }
+        .toast_load-container_title{
+            height:62px;
+            background:#f8f8f8;
+            cursor:pointer;
+            font-size: 18px;
+            text-align: center;
+            line-height: 62px;
+            width: 100%;
+            position: relative;
+        }
+        .toast_load-container_close{
+            position: absolute;
+            top: 5px;
+            right: 7px;
+        }
+        .toast_load-container_close:hover{
+            color: green;
+        }
+	</style> -->
+<script type="text/javascript" src="newload.js"></script>
+<script type="text/javascript">
+		window.onload = function(){
+            var goheight = document.getElementsByClassName("bckground-cover")[0].offsetHeight;
+            var gowidth = document.getElementsByClassName("bckground-cover")[0].offsetWidth;
+            var setheight = document.getElementsByClassName("confirm-fulltext")[0].offsetHeight;
+            var setwidth = document.getElementsByClassName("confirm-fulltext")[0].offsetWidth;
+            document.getElementsByClassName("confirm-fulltext")[0].style.bottom = (goheight - setheight)/2 + "px"; 
+            document.getElementsByClassName("confirm-fulltext")[0].style.left = (gowidth - setwidth)/2 + "px";
+            window.onresize = function(){
+                document.getElementsByClassName("confirm-fulltext")[0].style.bottom = (goheight - setheight)/2 + "px"; 
+                document.getElementsByClassName("confirm-fulltext")[0].style.left = (gowidth - setwidth)/2 + "px";
+            } 
+            document.getElementsByClassName("confirm-fulltext_header-close")[0].onclick = function(){
+                document.getElementsByClassName("confirm-fulltext")[0].style.bottom = - setheight + "px";
+                setTimeout(function(){
+                    document.getElementsByClassName("bckground-cover")[0].removeChild(document.getElementsByClassName("confirm-fulltext")[0]);
+                    document.body.removeChild(document.getElementsByClassName("bckground-cover")[0]);
+                }, 500);
+            }
+        }
+	</script>
+</head>
+<body>
+  <div class="bckground-cover">
+    <div class="confirm-fulltext">
+      <div class="confirm-fulltext_header">
+        <span>确认成果全文</span> <i class="material-icons confirm-fulltext_header-close">close</i>
+      </div>
+      <div class="confirm-fulltext_body">
+        <div class="confirm-fulltext_body-title">
+          我们为你找到了可能是这条成果的全文,请<span class="confirm-fulltext_body-title_check">查看</span>确认
+        </div>
+        <div class="confirm-fulltext_body-content">
+          <div class="confirm-fulltext_body-content_avator">
+            <img src="file.png">
+          </div>
+          <div class="confirm-fulltext_body-content_infor">
+            <div class="confirm-fulltext_body-content_infor-box">
+              <div class="confirm-fulltext_body-content_infor-title">Letter in Response to Kim M, Torrie I,
+                Poisson R, Withers N, Bjarnason S, DaLuz LT, Pannell D, Beckett A, Tien HC. The Value of Live Tissue
+                Training for Combat Casualty Care: A Survey of Canadian Combat Medics with Battlefield Experience in
+                Afghanistan.</div>
+              <div class="confirm-fulltext_body-content_infor-author">Gala, Shalin G; Balsam, Marion J</div>
+              <div class="confirm-fulltext_body-content_infor-time">Mil Med, 2018.3.2</div>
+            </div>
+            <div class="confirm-fulltext_body-content_infor-btn">
+              <div class="confirm-fulltext_body-content_infor-btn_cancle">不是这个成果的全文</div>
+              <div class="confirm-fulltext_body-content_infor-btn_confirm">是这个成果的全文</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

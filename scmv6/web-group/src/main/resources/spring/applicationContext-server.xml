@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:export="https://www.scholarmate.com/schema/remote-export"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+	https://www.scholarmate.com/schema/remote-export
+	https://www.scholarmate.com/schema/remote-export.xsd "
+  default-lazy-init="false">
+  <description>缓存、restful等服务</description>
+  <!-- BatchJobs创建器 -->
+  <bean id="batchJobsContextFactory" class="com.smate.center.batch.connector.factory.BatchJobsContextFactory" />
+  <bean id="batchJobsNormalFactory" class="com.smate.center.batch.connector.factory.BatchJobsNormalFactory" />
+  <bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:template/mailtemplate/sns" />
+  </bean>
+</beans>

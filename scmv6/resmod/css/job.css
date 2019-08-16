@@ -1,0 +1,45 @@
+@charset "utf-8";
+/* CSS Document */
+.hr_box {
+  width: 100%;
+  background: url(../images/hr_img.jpg) center right no-repeat;
+}
+
+.hr_box ul {
+  margin-top: 5px;
+}
+
+.hr_box ul li {
+  padding-left: 13px;
+  background: url(../images/ico_3d3.gif) 1px 8px no-repeat;
+}
+
+/*contant US*/
+.contact {
+  padding-right: 10px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  clear: both;
+}
+
+.contact h2 {
+  color: #005ca4;
+  border-bottom: 1px #eeeeee solid;
+  height: 25px;
+  padding-top: 5px;
+  margin-bottom: 20px;
+}
+
+.ico_customer {
+  padding-left: 30px;
+}
+
+.ico_contact {
+  padding-left: 30px;
+}
+
+.contact p {
+  float: left;
+  width: 340px;
+  padding-left: 30px;
+}

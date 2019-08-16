@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+  <title>免费开通2</title>
+  <link href="../../css_v5/css2016/header2016.css" rel="stylesheet" type="text/css" />
+  <link href="../../css_v5/css2016/scmjscollection.css" rel="stylesheet" type="text/css" />
+  <link href="../../css_v5/css2016/public2016.css" rel="stylesheet" type="text/css" />
+  <link href="../../css_v5/css2016/footer2016.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+        window.onload = function () {
+            var selectlist = document.getElementsByClassName("checkbox-select");
+            var selecteditem1 = document.getElementsByClassName("check-item_selected1")[0];
+            var selecteditem2 = document.getElementsByClassName("check-item_selected2")[0];
+            for(let i = 0 ; i < selectlist.length; i++){
+                selectlist[i].onclick = function(){
+                    if(!this.classList.contains("checked")){
+                        var selectedlist = document.getElementsByClassName("checked")[0];
+                        selectedlist.classList.remove("checked");
+                        selectedlist.classList.add("unchecked");
+                        this.classList.remove("unchecked");
+                        this.classList.add("checked");
+                        if(i===0){
+                            selecteditem2.style.display="none";
+                            selecteditem1.style.display="block";
+                        }else if(i===1){
+                            selecteditem1.style.display="none";
+                            selecteditem2.style.display="block";
+                        }else{
+                            selecteditem1.style.display="none";
+                            selecteditem2.style.display="none";
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+  <div class="header-t__n">
+    <div class="header_wrap-t">
+      <a href="#" class="logo fl"></a>
+      <div class="logining">
+        <div class="logining_icon">
+          <a href="#"><i class="question_icon"></i></a>
+        </div>
+        <div class="version_en">
+          <a href="#">English</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="reg-banner"></div>
+  <div class="content-1200">
+    <div class="clear_h20"></div>
+    <div class="fillin-left">
+      <h1>免费开通科研之友账号</h1>
+      <div class="fillin__eidt--tab checkbox-con mt20">
+        <div style="padding-left: 22px;">
+          <div style="display: flex; margin-bottom: 12px;">
+            <div align="right" width="14%">目前身份：</div>
+            <div>
+              <span class='checked checkbox-select' name='typeSpan' checked='false'>在职</span> <span
+                class='unchecked checkbox-select' name='typeSpan' checked='false'>就读</span> <span
+                class='unchecked checkbox-select' name='typeSpan' checked='false'>其他</span>
+            </div>
+          </div>
+          <div class="check-item_selected1" style="display: flex; flex-direction: column;">
+            <div style="display: flex; margin: 8px 0px;">
+              <div style="width: 72px; text-align: right;">机构名称：</div>
+              <input type="text" class="input w300 input_default" value="当前工作的单位" id="input_default01">
+            </div>
+            <div style="display: flex; margin: 8px 0px;">
+              <div style="width: 72px; text-align: right;">部门：</div>
+              <input type="text" class="input w300 input_default" value="当前工作的部门" id="input_default02">
+            </div>
+            <div style="display: flex; margin: 8px 0px;">
+              <div style="width: 72px; text-align: right;">职称：</div>
+              <input type="text" class="input w300">
+            </div>
+            <div style="display: flex; margin: 8px 0px;">
+              <div style="width: 72px; text-align: right;">时间：</div>
+              <div>
+                <input type="text" class="input w100 input_default" value="开始年月" id="input_default03">&nbsp;<span
+                  class="fccc">—</span>&nbsp;<input type="text" class="input w100 input_default" value="结束年月"
+                  id="input_default04"><span class="check_fx ml10"><input type="checkbox"
+                      class="ipt-hide"> <label class="checkbox"></label></span>至今 
+              </div>
+            </div>
+          </div>
+          <div class="check-item_selected2" style="display: flex; flex-direction: column; display: none;">
+            <div style="display: flex; margin: 8px 0px;">
+              <div style="width: 72px; text-align: right;">大学名称：</div>
+              <input type="text" class="input w300 input_default" value="当前学校" id="input_default05">
+            </div>
+            <div style="display: flex; margin: 8px 0px;">
+              <div style="width: 72px; text-align: right;">学院：</div>
+              <input type="text" class="input w300 input_default" value="当前院系" id="input_default06">
+            </div>
+            <div style="display: flex; margin: 8px 0px;">
+              <div style="width: 72px; text-align: right;">时间：</div>
+              <div>
+                <input type="text" class="input w100 input_default" value="开始年月" id="input_default07">&nbsp;<span
+                  class="fccc">—</span>&nbsp;<input type="text" class="input w100 input_default" value="结束年月"
+                  id="input_default08"><span class="check_fx ml10"><input type="checkbox"
+                      class="ipt-hide"> <label class="checkbox"></label></span>至今 
+              </div>
+            </div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <div class="fillin-right">
+      <h2>加入科研之友</h2>
+      <ul>
+        <li><a href="#"><i class="icon-join-related01"></i>与合作者保持联系</a></li>
+        <li><a href="#"><i class="icon-join-related02"></i>推广科研成果</a></li>
+        <li><a href="#"><i class="icon-join-related03"></i>获取相关机会推荐</a></li>
+      </ul>
+    </div>
+    <div class="clear_h20"></div>
+  </div>
+  <div class="footer">
+    <div class="footer_wrap">
+      <div class="scholarmate-code">
+        <img src="code.jpg" width="85" height="85"> <span>关注科研之友</span>
+      </div>
+      <div class="footer_cont">
+        <p>
+          <a href="#">关于我们</a>|<a href="#">隐私政策</a>|<a href="#">服务条款</a>|<a href="#">联系我们</a>|<a href="#">人才招聘</a>
+        </p>
+        <p>
+          © 2012 爱瑞思 粤ICP备11010329号<img src="beian.png"> 粤公网安备 4403052000213
+        </p>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../js_v5/js2016/jquery-2.1.1.min.js.js"></script>
+  <script language="javascript">
+    var s1=document.getElementById("input_default01");
+    var s2=document.getElementById("input_default02");
+    var s3=document.getElementById("input_default03");
+    var s4=document.getElementById("input_default04");
+    var s5=document.getElementById("input_default05");
+    var s6=document.getElementById("input_default06");
+    var s7=document.getElementById("input_default07");
+    var s8=document.getElementById("input_default08");
+
+    s1.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s1.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s1.onkeydown=function(){this.style.color='#333'};
+    s2.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s2.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s2.onkeydown=function(){this.style.color='#333'};
+    s3.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s3.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s3.onkeydown=function(){this.style.color='#333'};
+    s4.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s4.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s4.onkeydown=function(){this.style.color='#333'};
+
+    s5.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s5.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s5.onkeydown=function(){this.style.color='#333'};
+    s6.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s6.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s6.onkeydown=function(){this.style.color='#333'};
+    s7.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s7.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s7.onkeydown=function(){this.style.color='#333'};
+    s8.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s8.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s8.onkeydown=function(){this.style.color='#333'};
+</script>
+</body>
+</html>

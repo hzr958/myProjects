@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+       default-lazy-init="false">
+  <description>缓存</description>
+  <!-- memcache缓存服务 客户端 -->
+  <bean id="memcacheClient" class="com.smate.core.base.utils.cache.IrisMemcachedClientFactoryBean">
+    <property name="memcachedSrvUrls" value="${memcache.common.url}" />
+  </bean>
+  <bean id="openCacheService" class="com.smate.center.open.cache.OpenCacheServiceImpl">
+    <property name="memcacheClient" ref="memcacheClient"></property>
+  </bean>
+  <bean id="snsCacheService" class="com.smate.core.base.utils.cache.SnsCacheServiceImpl">
+    <property name="memcacheClient" ref="memcacheClient"></property>
+  </bean> 
+    <!-- 权限用的缓存 -->
+  <bean id="memcacheSessionClient" class="com.smate.core.base.utils.cache.IrisMemcachedClientFactoryBean">
+    <property name="memcachedSrvUrls" value="${memcache.session.url}" />
+  </bean>
+    <!-- mem缓存实现类 -->
+  <bean id="oauthCacheService" class="com.smate.center.open.cache.OauthCacheServiceImpl">
+    <property name="memcacheClient" ref="memcacheSessionClient"></property>
+  </bean>
+  <!-- 同步restful -->
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+  <!-- 3djd2x9s 人员注册 人员同步 -->
+  <bean id="registerPersonNsfcIsisServiceImpl"
+        class="com.smate.center.open.service.register.RegisterPersonNsfcIsisServiceImpl"></bean>
+  <!-- szz00jb0 返回人员列表的记录. 按照人名+单位组合或者邮件地址检索系统中的所有人员 -->
+  <bean id="openSearchPsnList" class="com.smate.center.open.service.data.OpenSearchPsnList"></bean>
+  <!-- wi258ki7 Open系统 获取申请联盟机构信息 -->
+  <bean id="openGetUnionInspglist" class="com.smate.center.open.service.data.inspg.OpenGetUnionInspglist"></bean>
+  <!-- 5h6jjk9b 系统解除关联 -->
+  <bean id="thridUnbindOpenUserImpl" class="com.smate.center.open.service.data.ThridUnbindOpenUserImpl"></bean>
+  <!-- 965eb72c 取个人基本数据 -->
+  <bean id="thirdPsnBaseInfoImpl" class="com.smate.center.open.service.data.psnbaseinfo.ThirdPsnBaseInfoImpl">
+    <property name="serviceMap">
+      <map>
+        <entry key="GX">
+          <bean class="com.smate.center.open.service.data.psnbaseinfo.ThirdPsnBaseInfoExtendServiceGXImpl" />
+        </entry>
+        <entry key="CXC">
+          <bean class="com.smate.center.open.service.data.psnbaseinfo.ThirdPsnBaseInfoExtendServiceCXCImpl" />
+        </entry>
+        <entry key="ISIS">
+          <bean class="com.smate.center.open.service.data.psnbaseinfo.ThirdPsnBaseInfoExtendServiceISISImpl" />
+        </entry>
+        <entry key="SIE">
+          <bean class="com.smate.center.open.service.data.psnbaseinfo.ThirdPsnBaseInfoExtendServiceSIEImpl" />
+        </entry>
+        <entry key="YJS">
+          <bean class="com.smate.center.open.service.data.psnbaseinfo.ThirdPsnBaseInfoExtendServiceYJSImpl" />
+        </entry>
+        <entry key="KCY">
+          <bean class="com.smate.center.open.service.data.psnbaseinfo.ThirdPsnBaseInfoExtendServiceKCYImpl" />
+        </entry>
+        <entry key="DX">
+          <bean class="com.smate.center.open.service.data.psnbaseinfo.ThirdPsnBaseInfoExtendServiceDXImpl" />
+        </entry>
+        <entry key="egrant">
+          <bean class="com.smate.center.open.service.data.psnbaseinfo.ThirdPsnBaseInfoExtendServiceEgrantImpl" />
+        </entry>
+      </map>
+    </property>
+  </bean>
+  <!-- d0e80eb2 保存个人微信消息 -->
+  <bean id="thirdWeChatPsnMsgImpl" class="com.smate.center.open.service.data.wechat.ThirdWeChatPsnMsgImpl"></bean>
+  <!-- b7303c9f 保存群发微信消息 -->
+  <bean id="thirdWeChatPublicMsgImpl" class="com.smate.center.open.service.data.wechat.ThirdWeChatPublicMsgImpl"></bean>
+  <!-- 80e6e33e Open-项目接收 -->
+  <bean id="thirdPushProjectInfoImpl" class="com.smate.center.open.service.data.prj.ThirdPushProjectInfoImpl"></bean>
+  <!-- 7c630c84 获取微信授权码 -->
+  <bean id="weChatAccessTokenImpl" class="com.smate.center.open.service.data.wechat.WeChatAccessTokenImpl"></bean>
+  <!-- xc410fnd 获取微信jspai票据 -->
+  <bean id="weChatJsApiTicketImpl" class="com.smate.center.open.service.data.wechat.WeChatJsApiTicketImpl"></bean>
+  <!-- 5fc82b4c 获取 结题项目成果数据 -->
+  <bean id="isisStatDataImpl" class="com.smate.center.open.service.data.isis.IsisStatDataImpl"></bean>
+  <!-- ae72a069 结题报告数据同步 sns to sie -->
+  <bean id="syncPrjFinal2SieDataImpl" class="com.smate.center.open.service.data.isis.SyncPrjFinal2SieDataImpl"></bean>
+  <!-- 获取 结题项目成果统计数据 -->
+  <bean id="isisStatDataImpl2" class="com.smate.center.open.service.data.isis.IsisStatDataImpl2"></bean>
+  <!-- 获取 结题项目成果统计数据 -->
+  <bean id="isisStatDataImpl3" class="com.smate.center.open.service.data.isis.IsisStatDataImpl3"></bean>
+  <!-- 获取 结题项目成果统计数据 -->
+  <bean id="isisStatDataImpl4" class="com.smate.center.open.service.data.isis.IsisStatDataImpl4"></bean>
+  <!-- 获取 结题项目成果统计数据 -->
+  <bean id="isisStatDataImpl5" class="com.smate.center.open.service.data.isis.IsisStatDataImpl5"></bean>
+  <!-- 结题数据按单位统计成果数 -->
+  <bean id="isisPubStatImpl" class="com.smate.center.open.service.data.isis.IsisPubStatImpl"></bean>
+  <!-- 改接口已经废弃****** fd92cdfa 根据人员ID返回该人员公开的成果记录总数 -->
+  <bean id="wSSearchPubsCoutByPsnImpl" class="com.smate.center.open.service.data.psnInfo.WSSearchPubsCoutByPsnImpl"></bean>
+  <!-- pd3ir4di 根据人员ID返回人员的记录 -->
+  <bean id="syncPsnServiceImpl" class="com.smate.center.open.service.data.psnInfo.SyncPsnServiceImpl"></bean>
+  <!-- 改接口已经废弃****** 3c39cb82 根据人员ID返回该人员公开的成果 -->
+  <bean id="wSSearchPubsListByPsnImpl" class="com.smate.center.open.service.data.common.WSSearchPubsListByPsnImpl"></bean>
+  <!-- 改接口已经废弃****** a5c9df5a 未关联账号，根据成果ID返回成果详情 -->
+  <bean id="wSSearchPubDetailImpl" class="com.smate.center.open.service.data.common.WSSearchPubDetailImpl"></bean>
+  <!-- 改接口已经废弃****** 2cdfac1a 返回该人员个人成果库中所有的成果记录总数 -->
+  <bean id="wSSearchPubsCountByConnectedPsnImpl"
+        class="com.smate.center.open.service.data.common.WSSearchPubsCountByConnectedPsnImpl"></bean>
+  <!-- 2de4pka8 发送帐号关联验证码邮件 -->
+  <bean id="syncPsnConnectServiceImpl" class="com.smate.center.open.service.data.psnInfo.SyncPsnConnectServiceImpl"></bean>
+  <!-- 改接口已经废弃****** c9110ee7 根据已关联的人员ID返回该人员所有的成果。返回该人员个人成果库中的成果记录,默认排序和科研之友个人成果库一致 -->
+  <bean id="wSSearchPubsListByConnectedPsnImpl"
+        class="com.smate.center.open.service.data.common.WSSearchPubsListByConnectedPsnImpl"></bean>
+  <!-- 3hst8glw 直接设置帐号关联 -->
+  <bean id="psnConnectSetServiceImpl" class="com.smate.center.open.service.data.psnInfo.PsnConnectSetServiceImpl"></bean>
+  <!-- 检查业务系统人员已验证的邮件是否和科研之友人员邮件相同 -->
+  <bean id="checkPsnByConfirmEmail" class="com.smate.center.open.service.data.psnInfo.CheckPsnByConfirmEmail"></bean>
+  <!-- 改接口已经废弃****** b6494ddb 已关联账号，根据成果ID返回成果详情 -->
+  <bean id="wSSearchPubDetailByConnectedPsnImpl"
+        class="com.smate.center.open.service.data.common.WSSearchPubDetailByConnectedPsnImpl"></bean>
+  <!-- xl2uw03d nsfc成果在线数据处理入口 -->
+  <bean id="isisNsfcDataAccessImpl" class="com.smate.center.open.service.data.nsfc.IsisNsfcDataAccessImpl">
+    <property name="serviceMap">
+      <map>
+        <!-- 具体服务定义在 applicationContext-server-isis.xml中 -->
+        <entry key="synchroProposal" value-ref="synchroProposal" /><!-- 同步申请书 -->
+        <entry key="syncProject" value-ref="synchroProject" /><!-- 同步进展/结题报告 -->
+        <entry key="synchroReschProject" value-ref="synchroReschProject" /><!-- 同步研究成果报告 -->
+        <entry key="getProjectReportFinalPubs" value-ref="getProjectReportFinalPubs" />  <!-- 获取研究成果报告成果信息 -->
+        <entry key="getReportPubs" value-ref="getReportPubs" /> <!-- 获取进展/结题报告成果 -->
+        <entry key="getPrpPubsByGuid" value-ref="getPrpPubs" />  <!-- 获取申请书成果 -->
+        <entry key="getConPrjRptPubComponent" value-ref="getConPrjRptPubComponent" />   <!--获取延续报告成果信息 -->
+        <entry key="syncProjectReportComponent" value-ref="syncProjectReportComponent" />  <!--同步延续报告 -->
+        <entry key="getExpertPubsByGuid" value-ref="getExpertPubsByGuid" /> <!-- 获取获取专家成果 -->
+        <entry key="searchPubsCountByPsnGoogle" value-ref="searchPubsCountByPsnGoogle" />  <!--根据人员ID返回该人员公开的成果记录总数 -->
+        <entry key="searchPubsListByPsn" value-ref="searchPubsListByPsn" /><!-- 更具人员查询公开成果列表 -->
+        <entry key="searchPubDetailGoogle" value-ref="searchPubDetailGoogle" />  <!--根据成果ID返回成果详情 -->
+        <entry key="searchPsnList" value-ref="searchPsnList" />  <!--根据人员信息查询人员列表的记录 -->
+        <entry key="searchPsnByPsnIDGoogle" value-ref="searchPsnByPsnIDGoogle" />  <!--根据成果ID返回成果详情 -->
+      </map>
+    </property>
+  </bean>
+  <!-- isis人员同步 -->
+  <bean id="isisRegisterPersonNsfcIsisService"
+        class="com.smate.center.open.service.register.RegisterPersonNsfcIsisServiceImpl"></bean>
+  <!-- 3djd2x9s 人员注册 公用 open系统实现 -->
+  <bean id="registerPersonServiceImpl"
+        class="com.smate.center.open.service.data.register.RegisterPersonServiceImpl">
+    <property name="nsfcServiceMap">
+      <map>
+        <entry key="ISIS" value-ref="isisRegisterPersonNsfcIsisService" />
+      </map>
+    </property>
+  </bean>
+  <!-- end 3djd2x9s 人员注册 公用 open系统实现 end -->
+  <!-- isis 人员同步 -->
+  <bean id="synchronousIsisPersonNsfcService"
+        class="com.smate.center.open.service.psnSynch.SynchronousIsisPersonNsfcService"></bean>
+  <!-- 3djd2x2x 人员同步 -->
+  <bean id="psnSynchronousService" class="com.smate.center.open.service.data.psnSynch.PsnSynchronousServiceImpl">
+    <property name="nsfcServiceMap">
+      <map>
+        <entry key="ISIS" value-ref="synchronousIsisPersonNsfcService"></entry>
+      </map>
+    </property>
+  </bean>
+  <!-- lhd25dhl 群组创建 -->
+  <bean id="createGroupServiceImpl" class="com.smate.center.open.service.data.group.CreateGroupServiceImpl">
+  </bean>
+  <!-- msg77msg 消息产生服务实现 -->
+  <bean id="produceMsgServiceImpl" class="com.smate.center.open.service.data.msg.ProduceMsgServiceImpl">
+    <property name="createMsgServiceMap">
+      <map>
+        <!--0=系统消息、1=请求添加好友消息、2=成果认领、3=全文认领、4=成果推荐、5=好友推荐、6=基金推荐、7=站内信、8=请求加入群组消息、9=邀请加入群组消息、10=群组动向 , 11=请求全文消息 -->
+        <entry key="1">
+          <bean class="com.smate.center.open.service.msg.CreateAddFriendMsgServiceImpl" />
+        </entry>
+        <entry key="2">
+          <bean class="com.smate.center.open.service.msg.CreatePubComfirmMsgServiceImpl" />
+        </entry>
+        <entry key="3">
+          <bean class="com.smate.center.open.service.msg.CreatePubFulltextComfirmMsgServiceImpl" />
+        </entry>
+        <entry key="4">
+          <bean class="com.smate.center.open.service.msg.CreatePubRcmdMsgServiceImpl" />
+        </entry>
+        <entry key="5">
+          <bean class="com.smate.center.open.service.msg.CreateFriendRcmdMsgServiceImpl" />
+        </entry>
+        <entry key="7">
+          <bean class="com.smate.center.open.service.msg.CreateSmateInsideLetterMsgServiceImpl" />
+        </entry>
+        <entry key="8">
+          <bean class="com.smate.center.open.service.msg.CreateGrpRequestMsgServiceImpl" />
+        </entry>
+        <entry key="9">
+          <bean class="com.smate.center.open.service.msg.CreateGrpInviteMsgServiceImpl" />
+        </entry>
+        <entry key="11">
+          <bean class="com.smate.center.open.service.msg.CreatePubfulltextRequestMsgServiceImpl" />
+        </entry>
+      </map>
+    </property>
+  </bean>
+  <!-- 群组编辑 -->
+  <bean id="editGroupServiceImpl" class="com.smate.center.open.service.data.group.EditGroupServiceImpl"></bean>
+  <!-- ime82dt2 获取自动登录 加密串 服务 -->
+  <bean id="oauthLoginSecurityIDImpl" class="com.smate.center.open.service.data.autologin.AutoLoginSecurityIDImpl"></bean>
+  <!-- ime82dt3第三方系统获取自动登录链接 -->
+  <bean id="threeSysAutoLoginImpl" class="com.smate.center.open.service.data.autologin.ThreeSysAutoLoginImpl"></bean>
+  <!-- 合肥工业大学获取成果WS服务 begin -->
+  <bean id="hfutGetPubsImpl" class="com.smate.center.open.service.data.iris.HfutGetPubsImpl"></bean>
+  <!-- 合肥工业大学获取成果WS服务 end -->
+  <!-- 合肥工业大学获取期刊、会议论文收录统计WS服务 begin -->
+  <bean id="hfutGetPubListStatsImpl" class="com.smate.center.open.service.data.iris.HfutGetPubListStatsImpl"></bean>
+  <!-- 合肥工业大学获取期刊、会议论文收录统计WS服务 end -->
+  <!-- u83nu2n0 互联互通接口总入口 -->
+  <bean id="openUnionTypeImpl" class="com.smate.center.open.service.data.OpenUnionTypeImpl">
+    <property name="serviceMap">
+      <map>
+        <!-- 具体服务定义在 applicationContext-server-union.xml中 -->
+        <entry key="getOpenUnionPageUrl" value-ref="getOpenUnionPageUrl" /> <!-- 获取 互联互通url -->
+        <entry key="getPubInfo" value-ref="getPubInfo" /> <!-- 获取 互联互通 成果信息 -->
+        <entry key="getPubInfoByPubId" value-ref="getPubInfoByPubId" /> <!-- 获取 互联互通 成果信息 -->
+        <entry key="getPsnInfo" value-ref="getPsnInfo" /> <!-- 获取 互联互通 人员信息 -->
+        <entry key="getGroupInfo" value-ref="getInterconnectionGroupInfo" /> <!-- 获取 互联互通 群组信息 -->
+        <entry key="getGroupPub" value-ref="getInterconnectionGroupPub" /> <!-- 互联互通 群组 获取群组成果 -->
+        <entry key="getProjectGroup" value-ref="getInterconnectionProjectGroup" /> <!-- 互联互通 群组 获取 项目群组 -->
+        <entry key="unionGroup" value-ref="interconnectionUnionGroup" /> <!-- 互联互通 群组 关联群组 -->
+      </map>
+    </property>
+  </bean>
+  <!-- oek2u43d 业务系统成果导入 日志记录 begin -->
+  <bean id="interconnectionImportPubLogServiceImpl"
+        class="com.smate.center.open.service.data.interconnection.pub.log.InterconnectionImportPubLogServiceImpl"></bean>
+  <!-- oek2u43d 业务系统成果导入 日志记录 end -->
+  <!-- sxol209x 获取动态token begin -->
+  <bean id="dynamicTokenServiceImpl" class="com.smate.center.open.service.data.third.login.DynamicTokenServiceImpl"></bean>
+  <!-- sxol209x 获取动态token end -->
+  <!-- 处理关联历史表数据 start -->
+  <!-- xouj2zoa 获取人员合并后关联历史表数据 start -->
+  <bean id="getPersonMergeDataServiceImpl"
+        class="com.smate.center.open.service.data.dealdirtydata.GetPersonMergeDataServiceImpl"></bean>
+  <!-- xouj2zoa 获取人员合并后关联历史表数据 start -->
+  <!-- ncwpx93k 获取群组删除后 需要处理的群组数据 start -->
+  <bean id="getDelGroupUnionHisServiceImpl"
+        class="com.smate.center.open.service.data.dealdirtydata.GetDelGroupUnionHisServiceImpl"></bean>
+  <!-- ncwpx93k 获取群组删除后 需要处理的群组数据 start -->
+  <!-- 处理关联历史表数据 end -->
+  <!-- jsu32x2s 创新城 获取专利数据接口 start -->
+  <bean id="cXCGetPatentServiceImpl" class="com.smate.center.open.service.data.pub.CXCGetPatentServiceImpl"></bean>
+  <!-- jsu32x2s 创新城 获取专利数据接口 end -->
+  <!-- xin329xz 根据成果id 取成果详情 start -->
+  <bean id="getPubDetailInfoServiceImpl" class="com.smate.center.open.service.data.pub.GetPubDetailInfoServiceImpl"></bean>
+  <!-- xin329xz 根据成果id 取成果详情 end -->
+  <!-- sisjuxy2 分页获取openid对应的成果 start -->
+  <bean id="getShowPubInfoServiceImpl" class="com.smate.center.open.service.data.pub.GetShowPubInfoServiceImpl"></bean>
+  <!-- sisjuxy2 分页获取openid对应的成果 end -->
+  <!-- kxjwui3s 2017-10-23 分页获取openid，对应的 群组的成果 start -->
+  <bean id="getShowGroupPubInfoServiceImpl"
+        class="com.smate.center.open.service.data.pub.GetShowGroupPubInfoServiceImpl"></bean>
+  <!-- kxjwui3s 分页获取openid，对应的 群组的成果 end -->
+  <!-- unn22ggi 获取互联互通 群组信息 start -->
+  <bean id="getUnionGroupInfoServiceImpl"
+        class="com.smate.center.open.service.data.group.InterconnetcionRefactorGetGroupInfoServiceImpl"></bean>
+  <!-- 获取互联互通 群组信息 end -->
+  <!-- unn22gpg 获取互联互通 项目群组 start -->
+  <bean id="getProjectGroupServiceImpl"
+        class="com.smate.center.open.service.data.group.InterconnetcionRefactorGetProjectGroupServiceImpl"></bean>
+  <!-- 获取互联互通 项目群组 end -->
+  <!-- unn22ung 获取互联互通 项目群组 start -->
+  <bean id="unionGroupServiceImpl"
+        class="com.smate.center.open.service.data.group.InterconnetcionRefactorUnionGroupServiceImpl"></bean>
+  <!-- 获取互联互通 项目群组 end -->
+  <!-- unn22url 获取互联互通 获取url start -->
+  <bean id="unionGetUrlServiceImpl"
+        class="com.smate.center.open.service.data.url.InterconnectionRefactorGetPageUrlServiceImpl"></bean>
+  <!-- 获取互联互通 获取url end -->
+  <!-- oxui3en2 检查邮箱是否有账号 start -->
+  <bean id="checkEmailServiceImpl" class="com.smate.center.open.service.data.checkemail.CheckEmailServiceImpl"></bean>
+  <!-- oxui3en2 检查邮箱是否有账号 end -->
+  <!-- start sht22url 取短地址的实现类 -->
+  <bean id="getShortUrlServiceImpl" class="com.smate.center.open.service.data.shorturl.GetShortUrlServiceImpl">
+    <property name="shortUrlServiceMap">
+      <map>
+        <entry key="G">
+          <bean class="com.smate.center.open.service.shorturl.GBuildShortUrlServiceImpl" />
+        </entry>
+        <entry key="P">
+          <bean class="com.smate.center.open.service.shorturl.PBuildShortUrlServiceImpl" />
+        </entry>
+        <entry key="A">
+          <bean class="com.smate.center.open.service.shorturl.ABuildShortUrlServiceImpl" />
+        </entry>
+        <entry key="AT">
+          <bean class="com.smate.center.open.service.shorturl.ATBuildShortUrlServiceImpl" />
+        </entry>
+        <entry key="S">
+          <bean class="com.smate.center.open.service.shorturl.SBuildShortUrlServiceImpl" />
+        </entry>
+        <entry key="B">
+          <bean class="com.smate.center.open.service.shorturl.BBuildShortUrlServiceImpl" />
+        </entry>
+        <entry key="F">
+          <bean class="com.smate.center.open.service.shorturl.FBuildShortUrlServiceImpl" />
+        </entry>
+      </map>
+    </property>
+  </bean>
+  <!-- end sht22url 取短地址的实现类 -->
+  <!-- start 2017-08-15 demo接口改造 v字符开头的实现类 -->
+  <!-- v663ttyy 根据人名+邮件 或者 psnid 拉取个人成果编目信息 start -->
+  <bean id="v_getShowPubInfoServiceImpl" class="com.smate.center.open.service.data.pub.V_GetShowPubInfoServiceImpl"></bean>
+  <!-- v663ttyy 根据人名+邮件 或者 psnid 拉取个人成果编目信息 end -->
+  <!-- cfm55pub 根据人 拉取个人未认领成果编目信息 start -->
+  <bean id="v_getRcmdConfirmPubInfoServiceImpl"
+        class="com.smate.center.open.service.data.pub.V_GetRcmdConfirmPubInfoServiceImpl"></bean>
+  <!-- cfm55pub 根据人 拉取个人未认领成果编目信息 end -->
+  <!-- sh66info 检索科研之友的信息 start -->
+  <bean id="v_searchSmateDataInfoServiceImpl"
+        class="com.smate.center.open.service.data.pub.V_SearchSmateDataInfoServiceImpl">
+  </bean>
+  <!-- sh66info 检索科研之友的信息 end -->
+  <!-- v5detail 获取成果详情信息 个人成果，基准库成果 start -->
+  <bean id="v_getPubDetailInfoServiceImpl"
+        class="com.smate.center.open.service.data.pub.V_GetPubDetailInfoServiceImpl"></bean>
+  <!-- v5detail 获取成果详情信息 个人成果，基准库成果 end -->
+  <!-- psn2solr solr索引更新人员信息 start -->
+  <bean id="modifySolrPsnInfoImpl" class="com.smate.center.open.service.data.solr.ModifySolrPsnInfoImpl"></bean>
+  <!-- psn2solr solr索引更新人员信息 end -->
+  <!-- psn2solr solr索引删除人员信息 start -->
+  <bean id="deleteSolrPsnInfoImpl" class="com.smate.center.open.service.data.solr.DeleteSolrPsnInfoImpl"></bean>
+  <!-- psn2solr solr索引删除人员信息 end -->
+  <!-- psn2solr solr索引更新基金信息 start -->
+  <bean id="modifySolrFundInfoImpl" class="com.smate.center.open.service.data.solr.ModifySolrFundInfoImpl"></bean>
+  <!-- psn2solr solr索引更新人员信息 end -->
+  <!-- psn2solr solr索引删除基金信息 start -->
+  <bean id="deleteSolrFundInfoImpl" class="com.smate.center.open.service.data.solr.DeleteSolrFundInfoImpl"></bean>
+  <!-- psn2solr solr索引删除人员信息 end -->
+  <!-- open22id 检查openid是否被合并 start -->
+  <bean id="checkOpenidServiceImpl" class="com.smate.center.open.service.data.checkopenid.CheckOpenidServiceImpl"></bean>
+  <!-- open22id 检查openid是否被合并 end -->
+  <!-- dsjio30q 判断成果是非最新的 start -->
+  <bean id="checkPubIsNewestServiceImpl" class="com.smate.center.open.service.data.pub.CheckPubIsNewestServiceImpl"></bean>
+  <!-- dsjio30q 判断成果是非最新的 end -->
+  <!-- lhd007xs 获取成果关键词出现次数 -->
+  <bean id="hPubKeywordsServiceImpl" class="com.smate.center.open.service.data.hadoop.HPubKeywordsServiceImpl"></bean>
+  <!-- lhd008xs 成果关键词推荐服务 -->
+  <bean id="hPubKeywordsRcmdServiceImpl"
+        class="com.smate.center.open.service.data.hadoop.HPubKeywordsRcmdServiceImpl"></bean>
+  <!-- kwsplit1 查找成果内容中的关键词 -->
+  <bean id="KeywordSplitServiceImpl" class="com.smate.center.open.service.data.keywords.KeywordSplitServiceImpl"></bean>
+  <!-- kwsios01根据关键词计算投入产出趋势取数据 -->
+  <bean id="KeywordsInputOutputServiceImpl"
+        class="com.smate.center.open.service.data.keywords.KeywordsInputOutputServiceImpl"></bean>
+  <!-- kwsios01根据关键词计算省份投入产出趋势取数据 -->
+  <bean id="KeywordsInputOutput2ServiceImpl"
+        class="com.smate.center.open.service.data.keywords.KeywordsInputOutput2ServiceImpl"></bean>
+  <!-- 根据关键词计算科研趋势取数据 -->
+  <bean id="KeywordsResearchServiceImpl"
+        class="com.smate.center.open.service.data.keywords.KeywordsResearchServiceImpl"></bean>
+  <!-- 根据关键词检索机构 -->
+  <bean id="SearchInsByKeywordsServiceImpl"
+        class="com.smate.center.open.service.data.keywords.SearchInsByKeywordsServiceImpl"></bean>
+  <!-- 根据关键词检索论文 -->
+  <bean id="SearchPaperBykeywordsServiceImpl"
+        class="com.smate.center.open.service.data.keywords.SearchPaperBykeywordsServiceImpl"></bean>
+  <!-- 根据关键词检索专利 -->
+  <bean id="SearchPatentByKeywordsServiceImpl"
+        class="com.smate.center.open.service.data.keywords.SearchPatentByKeywordsServiceImpl"></bean>
+  <!-- 根据关键词检索专家 -->
+  <bean id="SearchPersonsByKeywordsServiceImpl"
+        class="com.smate.center.open.service.data.keywords.SearchPersonsByKeywordsServiceImpl"></bean>
+  <!-- 根据关键词检索项目 -->
+  <bean id="SearchProjectByKeywordsServiceImpl"
+        class="com.smate.center.open.service.data.keywords.SearchProjectByKeywordsServiceImpl"></bean>
+  <!-- 根据过滤条件检索专家 -->
+  <bean id="SearchPersonsServiceImpl" class="com.smate.center.open.service.data.keywords.SearchPersonsServiceImpl"></bean>
+  <!-- usn22pwd 检查username 和 password 是否正确 start -->
+  <bean id="checkUsernamePwdServiceImpl"
+        class="com.smate.center.open.service.data.checknamepwd.CheckUsernamePwdServiceImpl"></bean>
+  <!-- usn22pwd 检查username 和 password 是否正确 end -->
+  <!-- 4kxiw2p0 根据psnId获取openId start -->
+  <bean id="getOpenIdServiceImpl" class="com.smate.center.open.service.data.openid.GetOpenIdServiceImpl"></bean>
+  <!-- 4kxiw2p0 根据psnId获取openId end -->
+  <!-- end 2017-08-15 demo接口改造 -->
+  <!-- pdh22jid issn获取 期刊 ID start -->
+  <bean id="getPdwhJournalServiceImpl" class="com.smate.center.open.service.data.sie.GetPdwhJournalServiceImpl"></bean>
+  <!-- pdh22jid issn获取 期刊 ID end -->
+  <!-- pdw83pkd 获取基准库成果的关键词 start -->
+  <bean id="getPdwhPubKeywordsService"
+        class="com.smate.center.open.service.data.keywords.GetPdwhPubKeywordsServiceImpl"></bean>
+  <!-- pdw83pkd 获取基准库成果的关键词 end -->
+  <!-- tsl83pkd 翻译基准库成果的关键词 start -->
+  <bean id="translatePdwhPubKeywordsServiceImpl"
+        class="com.smate.center.open.service.data.keywords.TranslatePdwhPubKeywordsServiceImpl"></bean>
+  <!-- tsl83pkd 翻译基准库成果的关键词 end -->
+  <!-- obt63pub 获取成果编目信息，需要判断insId权限 start -->
+  <bean id="obtainShowPubInfoServiceImpl"
+        class="com.smate.center.open.service.data.pub.insid.ObtainShowPubInfoServiceImpl"></bean>
+  <!-- obt63pub 获取成果编目信息，需要判断insId权限 end -->
+  <!-- obc18pub 获取成果编目信息 不需要insId start -->
+  <bean id="publicObtainShowPubInfoServiceImpl"
+        class="com.smate.center.open.service.data.pub.insid.PublicObtainShowPubInfoServiceImpl"></bean>
+  <!-- obc18pub 获取成果编目信息， 不需要insId end -->
+  <!-- obt75rcf 获取待认领成果信息，需要判断insId权限 start -->
+  <bean id="obtainRcmdConfirmPubInfoServiceImpl"
+        class="com.smate.center.open.service.data.pub.insid.ObtainRcmdConfirmPubInfoServiceImpl"></bean>
+  <!-- obt75rcf 获取待认领成果信息，需要判断insId权限 end -->
+  <!-- obtrcf6p 确认个人待认领的成果，需要insid权限判断 start -->
+  <bean id="confirmRcmdPubServiceImpl"
+        class="com.smate.center.open.service.data.pub.insid.ConfirmRcmdPubServiceImpl"></bean>
+  <!-- obtrcf6p 确认个人待认领的成果，需要insid权限判断 end -->
+  <!-- gpin9reg 人员匹配以及同步接口 start -->
+  <bean id="getPsnInfoRegisterServiceImpl"
+        class="com.smate.center.open.service.data.psnInfo.GetPsnInfoRegisterServiceImpl">
+    <property name="thirdDataTypeService" ref="thirdPsnBaseInfoImpl"></property>
+  </bean>
+  <!-- gpin9reg 人员匹配以及同步接口 end -->
+  <!-- end 2017-08-15 demo接口改造 -->
+  <!-- yung90kk 获取token start -->
+  <bean id="getTokenByInsIdServiceImpl" class="com.smate.center.open.service.data.sie.GetTokenByInsIdServiceImpl">
+  </bean>
+  <!-- yung90kk 获取token end -->
+  <!-- sc97pd40 查询基准库成果 服务 start -->
+  <bean id="searchPdwhPubServiceImp" class="com.smate.center.open.service.data.pub.SearchPdwhPubServiceImpl">
+  </bean>
+  <!-- sc97pd40 查询基准库成果 服务 end -->
+  <!-- sc74gg25 查询人员信息服务 start -->
+  <bean id="searchPersonServiceImpl" class="com.smate.center.open.service.data.pub.SearchPersonServiceImpl">
+  </bean>
+  <!-- sc74gg25 查询人员信息服务 end -->
+  <!-- che5gg25 检查psnId和email start -->
+  <bean id="checkPsnIdByEmailServiceImpl"
+        class="com.smate.center.open.service.data.checkemail.CheckPsnIdByEmailServiceImpl">
+  </bean>
+  <!-- che5gg25 检查psnId和email end -->
+  <!-- srv00pub 返回个人成果数据 start -->
+  <bean id="searchPubListServiceImpl" class="com.smate.center.open.service.data.pub.SearchPubListServiceImpl"></bean>
+  <!-- srv00pub 返回个人成果数据 end -->
+  <!-- nkwsrcmd 基于nsfc关键词的推荐 -->
+  <bean id="kwsRcmdBasedOnNsfcPrjServiceImpl"
+        class="com.smate.center.open.service.data.keywords.KwsRcmdBasedOnNsfcPrjServiceImpl"></bean>
+  <!-- hkwsrcmd 基于nsfc关键词的推荐 by hashvalue -->
+  <bean id="kwsRcmdBasedOnNsfcPrjByHashServiceImpl"
+        class="com.smate.center.open.service.data.keywords.KwsRcmdBasedOnNsfcPrjByHashServiceImpl"></bean>
+  <!-- grp45rcd 2018-10-24 分页获取群组推荐成果 start -->
+  <bean id="getGrpRcmdPubInfoServiceImpl"
+        class="com.smate.center.open.service.data.pub.V_GetGrpRcmdPubInfoServiceImpl"></bean>
+  <!-- rp45rcd 2018-10-24 分页获取群组推荐成果 end -->
+  <!-- lxj3219s 2018-11-13 论文验证 start -->
+  <bean id="paperVerifyServiceImpl" class="com.smate.center.open.service.data.pub.verify.PaperVerifyServiceImpl"></bean>
+  <!-- lxj3219s 2018-11-13 论文验证 end -->
+  <!-- jyh99kls 2018-11-13 个人主页成果验证 start -->
+  <bean id="psnPubVerifyServiceImpl" class="com.smate.center.open.service.data.pub.verify.PsnPubVerifyServiceImpl"></bean>
+  <!-- jyh99kls 2018-11-13 个人主页成果验证 start -->
+
+  <!-- hguu65op   2018-11-27  查询期刊   start-->
+  <bean id="queryBaseJournalServiceImpl" class="com.smate.center.open.service.data.sie.QueryBaseJournalServiceImpl"></bean>
+  <!-- hguu65op   2018-11-27  查询期刊   end-->
+
+  <!-- fgg34oiu   2018-11-27  匹配期刊   start-->
+  <bean id="matchBaseJournalServiceImpl" class="com.smate.center.open.service.data.sie.MatchBaseJournalServiceImpl"></bean>
+  <bean id="importPsnAgencyServiceImpl" class="com.smate.center.open.service.data.prj.ImportPsnAgencyServiceImpl"></bean>
+  <!-- fgg34oiu   2018-11-27  匹配期刊   start-->
+  <!-- nju12lib  从标题，自填关键词，摘要中提取关键词  start-->
+  <bean id="keywordsExtractServiceImpl" class="com.smate.center.open.service.data.keywords.KeywordsExtractServiceImpl"></bean>
+  <!-- nju12lib  从标题，自填关键词，摘要中提取关键词  end-->
+
+
+  <!-- yjhiu8rr  微信关联检查 start-->
+  <bean id="weChatRelationCheckImpl" class="com.smate.center.open.service.data.wechat.WeChatRelationCheckImpl"></bean>
+  <!-- yjhiu8rr  微信关联检查  end-->
+  
+  <!-- seap1rid  根据地区检索基准库成果 start-->
+  <bean id="searchPdwhPaperByRegionIdServiceImpl" class="com.smate.center.open.service.data.pub.SearchPdwhPaperByRegionIdServiceImpl"></bean>
+  <!-- seap1rid  根据地区检索基准库成果 end-->
+ 
+
+  <!-- 所有open系统对外服务 start --> 
+  <bean id="thirdDataService" class="com.smate.center.open.service.data.ThirdDataServiceImpl">
+    <property name="typeMap">
+      <map>
+        <entry key="965eb72c" value-ref="thirdPsnBaseInfoImpl" />
+        <entry key="d0e80eb2" value-ref="thirdWeChatPsnMsgImpl" />
+        <entry key="b7303c9f" value-ref="thirdWeChatPublicMsgImpl" />
+        <entry key="80e6e33e" value-ref="thirdPushProjectInfoImpl" /><!-- 项目接收 -->
+        <entry key="7c630c84" value-ref="weChatAccessTokenImpl" />
+        <entry key="xc410fnd" value-ref="weChatJsApiTicketImpl" />
+        <entry key="u83nu2n0" value-ref="openUnionTypeImpl" /><!-- 获取互联互通 -->
+        <entry key="5fc82b4c" value-ref="isisStatDataImpl" /><!-- 结题项目成果数据 -->
+        <entry key="ae72a069" value-ref="syncPrjFinal2SieDataImpl" /><!-- 结题报告数据同步 sns to sie -->
+        <entry key="d9ff82cb" value-ref="isisStatDataImpl2" /><!-- 结题项目成果数据2 -->
+        <entry key="b71c6408" value-ref="isisStatDataImpl3" /><!-- 结题项目成果数据3 -->
+        <entry key="d485987e" value-ref="isisStatDataImpl4" /><!-- 结题项目成果数据4 -->
+        <entry key="3c9b459c" value-ref="isisStatDataImpl5" /><!-- 结题项目成果数据5 -->
+        <entry key="c461ac42" value-ref="isisPubStatImpl" /><!-- 结题项目按单位统计成果数 -->
+        <entry key="xl2uw03d" value-ref="isisNsfcDataAccessImpl" />
+        <entry key="3djd2x9s" value-ref="registerPersonServiceImpl" />
+        <entry key="3djd2x2x" value-ref="psnSynchronousService" /><!-- 人员同步 -->
+        <entry key="5h6jjk9b" value-ref="thridUnbindOpenUserImpl" />  <!-- 系统解除关联 -->
+        <entry key="fd92cdfa" value-ref="wSSearchPubsCoutByPsnImpl" />
+        <entry key="pd3ir4di" value-ref="syncPsnServiceImpl" />
+        <entry key="3c39cb82" value-ref="wSSearchPubsListByPsnImpl" />
+        <entry key="a5c9df5a" value-ref="wSSearchPubDetailImpl" />
+        <entry key="2cdfac1a" value-ref="wSSearchPubsCountByConnectedPsnImpl" />
+        <entry key="2de4pka8" value-ref="syncPsnConnectServiceImpl" />
+        <entry key="c9110ee7" value-ref="wSSearchPubsListByConnectedPsnImpl" />
+        <entry key="3hst8glw" value-ref="psnConnectSetServiceImpl" />
+        <entry key="b6494ddb" value-ref="wSSearchPubDetailByConnectedPsnImpl" />
+        <entry key="a5392039" value-ref="checkPsnByConfirmEmail" />
+        <entry key="szz00jb0" value-ref="openSearchPsnList" /><!-- 返回人员列表的记录. 按照人名+单位组合或者邮件地址检索系统中的所有人员 -->
+        <entry key="ime82dt2" value-ref="oauthLoginSecurityIDImpl" />
+        <entry key="ime82dt3" value-ref="threeSysAutoLoginImpl" /> <!-- 第三方系统获取自动登录链接 -->
+        <entry key="wi258ki7" value-ref="openGetUnionInspglist" /><!-- 系统 获取申请联盟机构信息 -->
+        <entry key="qq908ufd" value-ref="hfutGetPubsImpl" /><!-- 合肥工业大学获取成果WS服务 -->
+        <entry key="qh232qtj" value-ref="hfutGetPubListStatsImpl" /><!-- 合肥工业大学获取期刊、会议论文收录统计WS服务 -->
+        <entry key="lhd25dhl" value-ref="createGroupServiceImpl"></entry><!-- 群组创建 -->
+        <entry key="lhd007xs" value-ref="hPubKeywordsServiceImpl"></entry><!-- 获取成果关键词出现次数 -->
+        <entry key="lhd008xs" value-ref="hPubKeywordsRcmdServiceImpl"></entry><!-- 成果关键词推荐服务 -->
+        <entry key="csg53dfk" value-ref="editGroupServiceImpl" /><!-- 编辑群组 -->
+        <entry key="oek2u43d" value-ref="interconnectionImportPubLogServiceImpl" /><!-- 业务系统成果导入 日志记录 -->
+        <entry key="sxol209x" value-ref="dynamicTokenServiceImpl" /><!-- 获取动态token -->
+        <entry key="ncwpx93k" value-ref="getDelGroupUnionHisServiceImpl" /><!-- 获取群组删除后 需要处理的群组数据 -->
+        <entry key="xouj2zoa" value-ref="getPersonMergeDataServiceImpl" /><!-- 获取人员合并后关联历史表数据 -->
+        <entry key="jsu32x2s" value-ref="cXCGetPatentServiceImpl" /><!-- 创新城 获取专利数据接口 以后会统一改造 -->
+        <entry key="unn22ggi" value-ref="getUnionGroupInfoServiceImpl" /><!-- 获取互联互通 群组信息 -->
+        <entry key="unn22gpg" value-ref="getProjectGroupServiceImpl" /><!-- 获取互联互通 群组信息 -->
+        <entry key="unn22ung" value-ref="unionGroupServiceImpl" /><!-- 获取互联互通 关联群组 -->
+        <entry key="unn22url" value-ref="unionGetUrlServiceImpl" /><!-- 获取互联互通 获取url -->
+        <entry key="xin329xz" value-ref="getPubDetailInfoServiceImpl" />  <!-- xin329xz 根据成果id 取成果详情 -->
+        <entry key="sisjuxy2" value-ref="getShowPubInfoServiceImpl" /><!--分页获取openid对应的成果 -->
+        <entry key="kxjwui3s" value-ref="getShowGroupPubInfoServiceImpl" /><!-- 分页获取openid，对应的 群组的成果 -->
+        <entry key="oxui3en2" value-ref="checkEmailServiceImpl" /><!-- 检查邮箱是否有账号 -->
+        <entry key="sht22url" value-ref="getShortUrlServiceImpl" /><!-- open接口，获取短地址 -->
+        <entry key="msg77msg" value-ref="produceMsgServiceImpl" /><!-- open接口，产生消息 -->
+        <entry key="v663ttyy" value-ref="v_getShowPubInfoServiceImpl" /><!-- 2017-08 demo系统 -->
+        <entry key="cfm55pub" value-ref="v_getRcmdConfirmPubInfoServiceImpl" /><!-- 2017-08 demo系统 -->
+        <entry key="sh66info" value-ref="v_searchSmateDataInfoServiceImpl" /><!-- 2017-08 demo系统 -->
+        <entry key="v5detail" value-ref="v_getPubDetailInfoServiceImpl" /><!-- 2017-08 demo系统 -->
+        <entry key="psn2solr" value-ref="modifySolrPsnInfoImpl" /><!-- solr更新人员信息 -->
+        <entry key="psndsolr" value-ref="deleteSolrPsnInfoImpl" /><!-- solr删除人员信息 -->
+        <entry key="fun2solr" value-ref="modifySolrFundInfoImpl" /><!-- solr更新基金信息 -->
+        <entry key="fundsolr" value-ref="deleteSolrFundInfoImpl" /><!-- solr删除基金信息 -->
+        <entry key="open22id" value-ref="checkOpenidServiceImpl" /><!-- 检查openid是否被合并 -->
+        <entry key="dsjio30q" value-ref="checkPubIsNewestServiceImpl" /><!-- 判断成果是非最新的 -->
+        <entry key="kwsplit1" value-ref="KeywordSplitServiceImpl" /><!-- 拆分关键词 -->
+        <entry key="kwsios02" value-ref="KeywordsInputOutput2ServiceImpl" /><!--根据关键词计算省份投入产出趋势取数据 -->
+        <entry key="kwsios01" value-ref="KeywordsInputOutputServiceImpl" /><!-- 根据关键词计算投入产出趋势取数据 -->
+        <entry key="kwsres02" value-ref="KeywordsResearchServiceImpl" /><!-- 根据关键词计算科研趋势取数据 -->
+        <entry key="seaibkw3" value-ref="SearchInsByKeywordsServiceImpl" /><!-- 根据关键词检索机构 -->
+        <entry key="seapbkw4" value-ref="SearchPaperBykeywordsServiceImpl" /><!-- 根据关键词检索论文 -->
+        <entry key="seap1bkw" value-ref="SearchPatentByKeywordsServiceImpl" /><!-- 根据关键词检索专利 -->
+        <entry key="seap2bkw" value-ref="SearchPersonsByKeywordsServiceImpl" /><!-- 根据关键词检索专家 -->
+        <entry key="seap3bkw" value-ref="SearchProjectByKeywordsServiceImpl" /><!-- 根据关键词检索项目 -->
+        <entry key="seacpsn1" value-ref="SearchPersonsServiceImpl" /><!-- 根据过滤条件检索专家 -->
+        <entry key="usn22pwd" value-ref="checkUsernamePwdServiceImpl" /><!-- 检查username 和 password 是否正确 -->
+        <entry key="4kxiw2p0" value-ref="getOpenIdServiceImpl" /><!-- 4kxiw2p0 根据psnId获取openId start -->
+        <entry key="pdh22jid" value-ref="getPdwhJournalServiceImpl" /> <!-- pdh22jid issn获取 期刊 ID start -->
+        <entry key="siedept1" value-ref="getDeptDataNumServiceImpl" /><!-- 根据org_guid获取单位论文数、单位专利数、单位项目数、单位人员数、单位部门数
+          start -->
+        <entry key="siedept3" value-ref="getPatentInfoServiceImpl" /><!-- 获取单位专利数据 start -->
+        <entry key="siedept4" value-ref="getPublicationInfoServiceImpl" /><!-- 获取单位成果数据 start -->
+        <entry key="siedept5" value-ref="getProjectInfoServiceImpl" /><!-- 获取单位项目数据 start -->
+        <entry key="sieyusfs" value-ref="getIncPatentInfoServiceImpl" /><!-- 增量获取按单位专利接口 start -->
+        <entry key="sieopvda" value-ref="getIncPublicationInfoServiceImpl" /><!-- 增量获取按单位成果接口 start -->
+        <entry key="sieptatn" value-ref="getPatentInfoByInsServiceImpl" /><!-- 获取机构专利数据 -->
+        <entry key="siesync1" value-ref="sieSyncPsnServiceImpl" /><!-- sie同步人员信息 start -->
+        <entry key="siesync2" value-ref="sieSyncUnitServiceImpl" /><!-- sie同步单位信息 start -->
+        <entry key="siesync3" value-ref="getInsPsnInfoServiceImpl" /><!-- 获取单位人员数据 -->
+        <entry key="siesync4" value-ref="importPsnAgencyServiceImpl" /><!-- 获取单位人员数据 -->
+        <entry key="sieobtjy" value-ref="sieSyncSNSPsnServiceImpl" /><!-- sie同步科研之友个人版信息 -->
+        <entry key="sief5eli" value-ref="sieGenFilePathServiceImpl" /><!-- 文件下载地址接口 -->
+        <entry key="pdw83pkd" value-ref="getPdwhPubKeywordsService" /><!--获取基准库成果的关键词 start -->
+        <entry key="tsl83pkd" value-ref="translatePdwhPubKeywordsServiceImpl" /><!--翻译基准库成果的关键词 start -->
+        <entry key="syncusn1" value-ref="sieSyncUserInfoServiceImpl" /><!-- 更新用户账号信息 start -->
+        <entry key="syncpsn1" value-ref="sieSyncPsnInfoServiceImpl" /><!-- 更新人员email start -->
+        <entry key="obt63pub" value-ref="obtainShowPubInfoServiceImpl" /> <!--获取成果编目信息，需要判断insId权限 -->
+        <entry key="obt75rcf" value-ref="obtainRcmdConfirmPubInfoServiceImpl" /> <!--获取待认领成果信息，需要判断insId权限 -->
+        <entry key="obtrcf6p" value-ref="confirmRcmdPubServiceImpl" /> <!-- obtrcf6p 确认个人待认领的成果，需要insid权限判断 -->
+        <entry key="obt28loe" value-ref="sieGetUserByIdServiceImpl" /><!-- 获取账号信息 start -->
+        <entry key="up28uton" value-ref="sieResetUserTokenServiceImpl" /><!-- 重置用户账号标志位 start -->
+        <entry key="sieregi1" value-ref="sieInsRegByOtherSysServiceImpl" /><!-- 单位注册接口 start -->
+        <entry key="obtuslgn" value-ref="getUserIsLoginServiceImpl" /><!-- 获取用户是否登陆 start -->
+        <entry key="gpin9reg" value-ref="getPsnInfoRegisterServiceImpl" /> <!--人员匹配以及同步接口 start -->
+        <entry key="obc18pub" value-ref="publicObtainShowPubInfoServiceImpl" /> <!--获取成果编目信息 不需要insIdstart -->
+        <entry key="yung90kk" value-ref="getTokenByInsIdServiceImpl" /> <!-- yung90kk 获取token -->
+        <entry key="syncfsie" value-ref="syncPsnFromSieServiceImpl" /> <!-- syncfsie 根据sie传递的人员信息更新SNS人员信息 -->
+        <entry key="sc97pd40" value-ref="searchPdwhPubServiceImp" /> <!-- sc97pd40 查询基准库成果 服务 -->
+        <entry key="sc74gg25" value-ref="searchPersonServiceImpl" /> <!-- sc74gg25 查询人员信息服务 end -->
+        <entry key="srv00pub" value-ref="searchPubListServiceImpl" /><!-- 返回个人成果数据 -->
+        <entry key="che5gg25" value-ref="checkPsnIdByEmailServiceImpl" /> <!-- che5gg25 检查psnId和email end -->
+        <entry key="nkwsrcmd" value-ref="kwsRcmdBasedOnNsfcPrjServiceImpl" /><!-- 关键词推荐 -->
+        <entry key="hkwsrcmd" value-ref="kwsRcmdBasedOnNsfcPrjByHashServiceImpl" /><!-- 关键词推荐 通过hash值 -->
+        <entry key="syncfsie" value-ref="syncPsnFromSieServiceImpl" /> <!-- syncfsie 根据sie传递的人员信息更新SNS人员信息 -->
+        <entry key="seaibpkw" value-ref="searchInsByPaperKeywordsServiceImpl" /> <!-- 相关单位 -->
+        <entry key="seapbpkw" value-ref="searchPersonsByPsnKeywordsServiceImpl" /> <!-- 根据关键词查找相关学者 开题分析用 -->
+        <entry key="grp45rcd" value-ref="getGrpRcmdPubInfoServiceImpl" /> <!-- grp45rcd 2018-10-24 分页获取群组推荐成果 -->
+        <entry key="lxj3219s" value-ref="paperVerifyServiceImpl" /> <!-- lxj3219s 2018-11-13 论文验证 start -->
+        <entry key="jyh99kls" value-ref="psnPubVerifyServiceImpl" /> <!-- jyh99kls 2018-11-13 个人主页成果验证 start -->
+        <entry key="siescirv" value-ref="sciResearchVerifyServiceImpl" /> <!-- scirever 科研验证受理接口 start -->
+        <entry key="siescget" value-ref="sciVerificationGainServiceImpl" /> <!-- scirever 科研验证受理接口 start, 以前的接口名: valiget1-->
+        <entry key="kpipayv1" value-ref="kpiPaymentVarificationServiceImpl" /> <!-- scirever 科研验证受理接口 start -->
+        <entry key="hguu65op" value-ref="queryBaseJournalServiceImpl" /> <!-- hguu65op 查询期刊   start-->
+        <entry key="fgg34oiu" value-ref="matchBaseJournalServiceImpl" /> <!-- fgg34oiu  匹配期刊   start-->
+        <entry key="nju12lib" value-ref="keywordsExtractServiceImpl" /> <!-- nju12lib  从标题，自填关键词，摘要中提取关键词-->
+        <entry key="yjhiu8rr" value-ref="weChatRelationCheckImpl" /> <!-- yjhiu8rr  微信关联检查  end-->
+        <entry key="seap1rid" value-ref="searchPdwhPaperByRegionIdServiceImpl"/><!-- seap1rid 根据地区检索基准库成果  end-->
+      </map>
+    </property>
+  </bean>
+  <!-- 所有open系统对外服务 end -->
+  <bean id="irisPubXmlBuildFactory" class="com.smate.center.open.service.publication.IrisPubXmlBuildFactory">
+    <property name="map">
+      <map>
+        <entry key="1">
+          <bean class="com.smate.center.open.service.publication.IrisAwardPubXmlBuildServiceImpl" />
+        </entry>
+        <entry key="2">
+          <bean class="com.smate.center.open.service.publication.IrisBookPubXmlBuildServiceImpl" />
+        </entry>
+        <entry key="3">
+          <bean class="com.smate.center.open.service.publication.IrisPaperPubXmlBuildServiceImpl" />
+        </entry>
+        <entry key="4">
+          <bean class="com.smate.center.open.service.publication.IrisJnlPubXmlBuildServiceImpl" />
+        </entry>
+        <entry key="5">
+          <bean class="com.smate.center.open.service.publication.IrisPatentPubXmlBuildServiceImpl" />
+        </entry>
+        <entry key="7">
+          <bean class="com.smate.center.open.service.publication.IrisOtherPubXmlBuildServiceImpl" />
+        </entry>
+        <entry key="8">
+          <bean class="com.smate.center.open.service.publication.IrisThesisPubXmlBuildServiceImpl" />
+        </entry>
+        <entry key="10">
+          <bean class="com.smate.center.open.service.publication.IrisChapterPubXmlBuildServiceImpl" />
+        </entry>
+      </map>
+    </property>
+  </bean>
+  <!-- BatchJobs创建器 -->
+  <bean id="batchJobsContextFactory" class="com.smate.center.batch.connector.factory.BatchJobsContextFactory" />
+  <bean id="batchJobsNormalFactory" class="com.smate.center.batch.connector.factory.BatchJobsNormalFactory" />
+</beans>

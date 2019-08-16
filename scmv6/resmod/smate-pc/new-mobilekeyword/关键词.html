@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+  content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="../../mobile/css/mobile.css">
+<script type="text/javascript">
+        window.onload = function(){
+            document.getElementsByClassName("new-edit_keword-neck_input-box")[0].onfocus = function(){
+                document.getElementsByClassName("new-edit_keword-neck_btn")[0].style.background="#1265cf";
+            }
+            document.getElementsByClassName("new-edit_keword-neck_btn")[0].onclick = function(){
+                if(document.getElementsByClassName("new-edit_keword-neck_input-box")[0].value.trim().length!=0){
+                    this.style.background="#288aed";
+                    var newtext  =  document.getElementsByClassName("new-edit_keword-neck_input-box")[0].value;
+                    document.getElementsByClassName("new-edit_keword-neck_input-box")[0].value="";
+                    var newele = '<span class="new-edit_keword-content_list-content">'
+                                 +'</span>'
+                                 +'<i class="new-edit_keword-content_list-close">'
+                                 +'</i>';
+                    var addele = document.createElement("div");
+                    addele.className="new-edit_keword-content_list";
+                    addele.innerHTML = newele;
+                    addele.querySelector(".new-edit_keword-content_list-content").innerHTML = newtext;
+                    document.getElementsByClassName("new-edit_keword-body_item")[0].append(addele);
+
+                }
+            } 
+            var closelist = document.getElementsByClassName("new-edit_keword-content_list-close");
+            for(var i = 0; i < closelist.length; i++){
+               closelist[i].onclick = function(){
+                    this.classList.add("new-edit_keword-content_list-change");
+                    this.closest(".new-edit_keword-body_item").removeChild(this.closest(".new-edit_keword-body_item").querySelector(".new-edit_keword-content_list"));
+               }
+            }
+        }
+    </script>
+</head>
+<body>
+  <div class="new-edit_keword-container">
+    <div class="new-edit_keword-header">
+      <i class="material-icons">keyboard_arrow_left</i> <span class="new-edit_keword-header_title">编辑关键词</span> <i
+        class="material-icons"></i>
+    </div>
+    <div class="new-edit_keword-neck">
+      <div class="new-edit_keword-neck_input">
+        <input type="text" placeholder="输入新增的关键词">
+      </div>
+      <div class="new-edit_keword-neck_btn">新增</div>
+    </div>
+    <div class="new-edit_keword-body">
+      <div class="new-edit_keword-body_title">当前关键词列表</div>
+      <div class="new-edit_keword-body_item">
+        <div class="new-edit_keword-content_list">
+          <span class="new-edit_keword-content_list-content">选择撒多 </span> <i class="new-edit_keword-content_list-close"></i>
+        </div>
+        <div class="new-edit_keword-content_list">
+          <span class="new-edit_keword-content_list-content"> 选择性是的撒撒多 </span> <i
+            class="new-edit_keword-content_list-close"></i>
+        </div>
+        <div class="new-edit_keword-content_list">
+          <span class="new-edit_keword-content_list-content">选择是的撒多 </span> <i
+            class="new-edit_keword-content_list-close"></i>
+        </div>
+      </div>
+    </div>
+    <div class="new-edit_keword-footer">
+      <div class="new-edit_keword-footer_item new-edit_keword-footer_save">保存</div>
+      <div class="new-edit_keword-footer_item">跳过</div>
+    </div>
+  </div>
+</body>
+</html>

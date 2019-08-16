@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+  default-lazy-init="true">
+  <description>附件管理</description>
+  <bean id="archiveFilesService" class="com.smate.web.management.service.institution.ArchiveFilesServiceImpl">
+  </bean>
+  <bean id="rolArchiveFilesService" class="com.smate.web.management.service.institution.ArchiveFilesServiceImpl">
+    <property name="fileRoot" value="${rol.file.root}" /><!-- 文件保存根目录 -->
+  </bean>
+</beans>

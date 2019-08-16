@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:export="https://www.scholarmate.com/schema/remote-export"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+	https://www.scholarmate.com/schema/remote-export
+	https://www.scholarmate.com/schema/remote-export.xsd "
+  default-lazy-init="false">
+  <!-- 同步申请书 -->
+  <bean id="synchroProposal"
+    class="com.smate.center.open.service.data.nsfc.impl.IsisNsfcSynchroProposalServiceImpl"></bean>
+  <!-- 获取申请书成果 ajb -->
+  <bean id="getPrpPubs" class="com.smate.center.open.service.data.nsfc.impl.IrisNsfcGetPrpPubsServiceImpl"></bean>
+  <!-- 同步研究成果报告 ajb -->
+  <bean id="synchroReschProject"
+    class="com.smate.center.open.service.data.nsfc.impl.IrisNsfcSynchroReschProjectServiceImpl"></bean>
+  <!--同步进展/结题报告 ajb -->
+  <bean id="synchroProject" class="com.smate.center.open.service.data.nsfc.impl.IrisNsfcSynchroProjectServiceImpl"></bean>
+  <!-- 获取研究成果报告成果信息 -->
+  <bean id="getProjectReportFinalPubs"
+    class="com.smate.center.open.service.data.nsfc.impl.GetProjectReportFinalPubs"></bean>
+  <!-- 获取获取专家成果 -->
+  <bean id="getExpertPubsByGuid" class="com.smate.center.open.service.data.nsfc.impl.GetExpertPubsByGuid"></bean>
+  <!--获取进展/结题报告成果 ajb -->
+  <bean id="getReportPubs" class="com.smate.center.open.service.data.nsfc.impl.IrisNsfcGetReportPubServiceImpl"></bean>
+  <!--获取延续报告成果信息 -->
+  <bean id="getConPrjRptPubComponent"
+    class="com.smate.center.open.service.data.nsfc.impl.NsfcGetConPrjRptPubComponentServiceImpl"></bean>
+  <!--同步延续报告 -->
+  <bean id="syncProjectReportComponent"
+    class="com.smate.center.open.service.data.nsfc.impl.NsfcSyncProjectReportComponentServiceImpl"></bean>
+  <!--根据人员ID返回该人员公开的成果记录总数 ajb -->
+  <bean id="searchPubsCountByPsnGoogle"
+    class="com.smate.center.open.service.data.nsfc.impl.NsfcSearchPubsCountByPsnGoogle"></bean>
+  <!-- 根据成果ID返回成果详情： ajb -->
+  <bean id="searchPubDetailGoogle" class="com.smate.center.open.service.data.nsfc.impl.NsfcSearchPubDetailGoogle"></bean>
+  <!--根据人员ID返回该人员公开的成果记录总数 -->
+  <bean id="searchPubsListByPsn"
+    class="com.smate.center.open.service.data.nsfc.impl.NsfcSearchPubsListByPsnServiceImpl"></bean>
+  <!--根据人员信息查询人员列表的记录 -->
+  <bean id="searchPsnList" class="com.smate.center.open.service.data.nsfc.impl.SearchPsnList"></bean>
+  <!--根据人员ID返回人员的记录： ajb -->
+  <bean id="searchPsnByPsnIDGoogle"
+    class="com.smate.center.open.service.data.nsfc.impl.NsfcSearchPsnByPsnIDGoogleServiceImpl"></bean>
+</beans>

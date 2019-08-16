@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>关注设置</title>
+<meta charset="utf-8">
+<link href="../../css_v5/css2016/newfirstpage.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    window.onload = function(){
+      var titlelist = document.getElementsByClassName("set-attention__psninfor");
+      var targetele = document.getElementsByClassName("set-attention__findfriend")[0];
+      for(var i = 0; i < titlelist.length;i++){
+         titlelist[i].onmouseover = function(){
+          this.title = this.innerHTML;
+         }
+      }
+      targetele.onfocus = function(){
+        this.style.borderColor = "#288aed";
+      }
+      targetele.onblur = function(){
+        this.style.borderColor = "#ddd";
+      }
+    } 
+  </script>
+</head>
+<body>
+  <div class="page-box">
+    <div class="set-container">
+      <div class="set-container__left">
+        <div class="psn-Setup__title">个人设置</div>
+        <div class="psn-Setup__item">
+          <i class="psn-Setup__item-tip set-password__main-tip"></i>
+          <div class="psn-Setup__item-title">密码重置</div>
+        </div>
+        <div class="psn-Setup__item">
+          <i class="psn-Setup__item-tip set-privacy__main-tip"></i>
+          <div class="psn-Setup__item-title">隐私设置</div>
+        </div>
+        <div class="psn-Setup__item psn-Setup__item-selctor">
+          <i class="psn-Setup__item-tip set-attention__main-tip"></i>
+          <div class="psn-Setup__item-title">关注设置</div>
+        </div>
+        <div class="psn-Setup__item">
+          <i class="psn-Setup__item-tip set-email__main-tip"></i>
+          <div class="psn-Setup__item-title">邮件设置</div>
+        </div>
+        <div class="psn-Setup__item">
+          <i class="psn-Setup__item-tip merge-account__main-tip"></i>
+          <div class="psn-Setup__item-title">合并设置</div>
+        </div>
+      </div>
+      <div class="set-container__right">
+        <div class="set-email__main-title">
+          <span class="set-email__main-heading">关注设置</span>
+        </div>
+        <div class="set-email__container">
+          <div class="set-attention__subheading">
+            <div class="set-attention__subtitle">
+              <span>我关注的人:</span> <span>(23位)</span>
+            </div>
+            <div>
+              <div class="set-attention__container">
+                <div class="set-attention__per-box">
+                  <img src="1.jpg" class="set-attention__avator">
+                  <div class="set-attention__infor">
+                    <div class="set-attention__name set-attention__psninfor">马建</div>
+                    <div class="set-attention__work set-attention__psninfor">爱瑞思软件科技</div>
+                  </div>
+                  <i class="attention-clear"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="set-attention__footer">
+          <div class="set-attention__footer-container">
+            <div>我要关注的:</div>
+            <div>
+              <div class="set-attention__footer-content">
+                <div>
+                  <input type="text" placeholder="请输入" class="set-attention__findfriend">
+                  <div class="set-attention__findfriend-tip">直接输入好友姓名,或者点击"选择好友"按钮</div>
+                  <div class="set-attention__addsave">添加</div>
+                </div>
+                <div class="set-attention__choicefriend">选择好友</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

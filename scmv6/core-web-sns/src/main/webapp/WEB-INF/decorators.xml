@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/skins">
+  <!-- 排除不需要装潢的目录或文件 -->
+  <excludes>
+    <!-- 根目录或子目录的ajax都排除 -->
+    <pattern>/ac/**</pattern>
+    <pattern>/*ajax*.action*</pattern>
+    <pattern>/**/*ajax*.action*</pattern>
+    <pattern>/*ajax*</pattern>
+    <pattern>/**/*ajax*</pattern>
+    <!-- 附件 -->
+    <pattern>/archiveFiles/*</pattern>
+    <pattern>/pubweb/publication/wait*</pattern>
+    <!-- 发布新闻弹出框 -->
+    <pattern>/inspg/inspgnews/showshareinspgnews*</pattern>
+    <pattern>/inspg/noaccesspermission*</pattern>
+    <pattern>/inspg/noresource*</pattern>
+    <!-- 微信 成果 -->
+    <pattern>/pubweb/wechat*</pattern>
+    <!-- 成果保存提示框 -->
+    <!-- 成果接口 -->
+    <pattern>/pubweb/publication/savesuccesstip*</pattern>
+    <!-- 成果全文上传 -->
+    <pattern>/pubweb/publication/uploadfullltext*</pattern>
+    <!-- 成果检索 -->
+    <pattern>/pubweb/publication/import/showPubListFrm*</pattern>
+    <pattern>/pubweb/publication/import/savePubFrm*</pattern>
+    <!-- 成果查重 -->
+    <pattern>/pubweb/publication/pdwh/showdup*</pattern>
+    <!-- 结题报告 -->
+    <pattern>/ronline/prjfinal/viewmyrptpublist*</pattern>
+    <!-- 基金委申请书-查看申请书成果 -->
+    <pattern>/ronline/proposal/viewmyprppublist*</pattern>
+    <!-- 基金委研究报告成果-查看已收录成果信息 -->
+    <pattern>/ronline/prjresearch/viewmyrptpublist*</pattern>
+    <!-- 基金委研究报告成果-查看延续报告成果信息 -->
+    <pattern>/ronline/continueProject/viewReportPubList*</pattern>
+    <!-- 我的成果页面左边栏菜单 -->
+    <pattern>/pubweb/publication/showLeftMenu*</pattern>
+    <pattern>/pubweb/mobile*</pattern>
+    <pattern>/pubweb/resume/buildpubinfo*</pattern>
+    <pattern>/scmmanagement/institution/manage/sendResetPwdMain*</pattern>
+    <pattern>/scmmanagement/institution/manage/openInsEditRemarkPage*</pattern>
+    <pattern>/scmmanagement/setting/enterAddMerge</pattern>
+    <pattern>/scmmanagement/psnInfo/email*</pattern>
+    <pattern>/pubweb/pubdetails/comment*</pattern>
+    <!-- 移动端 -->
+    <pattern>/dynweb/dynamic/show*</pattern>
+    <!-- SCM-20140，修改此处配置的通配符，解决查找成果时关键字中包含mobile和wechat出现样式问题syl -->
+    <pattern>/*wechat/*</pattern>
+    <pattern>/**/*wechat/*</pattern>
+    <pattern>/*mobile/*</pattern>
+    <pattern>/**/*mobile/*</pattern>
+    <pattern>/dynweb/dynamic/publish*</pattern>
+    <pattern>/dynweb/dynamic/detail*</pattern>
+    <pattern>/pubweb/publication/search</pattern>
+    <pattern>/pubweb/publication/viewSimple*</pattern>
+    <pattern>/pubweb/publication/viewPdwhSimple*</pattern>
+    <!-- 邮件站外文件列表 -->
+    <pattern>/psnweb/fileshare/emailviewfiles*</pattern>
+    <pattern>/pubweb/publication/repeatpub*</pattern>
+    <!-- 成果导入 -->
+    <pattern>/pubweb/publication/import/savePub*</pattern>
+    <!-- 资助机构 -->
+    <pattern>/prjweb/fundAgency/main*</pattern>
+    <pattern>/prjweb/outside/mobile*</pattern>
+    <!-- 邮件管理 -->
+    <pattern>/scmmanagement/mailmanage*</pattern>
+    <pattern>/scmmanagement/grpmanage*</pattern>
+    <pattern>/scmmanagement/mail/*</pattern>
+    <pattern>/data/*</pattern>
+    <pattern>/pub/viewfromSecondlevel*</pattern>
+    <!-- 科研验证站外界面 -->
+    <pattern>/application/outside/validate/*</pattern>
+  </excludes>
+  <!-- 站内信 -->
+  <decorator name="noFoot" page="/skins_v6/skins_main_no_foot.jsp">
+    <pattern>/dynweb/showmsg/msgmain*</pattern>
+    <pattern>/pubweb/pubrecommendmain*</pattern>
+    <pattern>/pubweb/publication/papermain*</pattern>
+    <pattern>/psnweb/friend/main*</pattern>
+    <pattern>/prjweb/fund/main*</pattern>
+    <pattern>/prjweb/project/prjmain*</pattern>
+    <pattern>/groupweb/mygrp/main*</pattern>
+    <pattern>/psnweb/myfile/filemain*</pattern>
+    <pattern>/psnweb/myfile/filemain*</pattern>
+  </decorator>
+  <decorator name="noFoot_mvc" page="/skins_mvc/skins_main_no_foot.jsp">
+    <pattern>/pub/applypapermain*</pattern>
+  </decorator>
+  <decorator name="main_mvc" page="/skins_mvc/skins_main.jsp">
+    <pattern>/pub/*</pattern>
+  </decorator>
+  <decorator name="main" page="/skins_v6/skins_main.jsp">
+    <pattern>/application/problem/*</pattern>
+    <pattern>/application/validate/*</pattern>
+    <pattern>/psnweb/*</pattern>
+    <pattern>/dynweb/*</pattern>
+    <pattern>/pubweb/*</pattern>
+    <pattern>/groupweb/*</pattern>
+    <pattern>/prjweb/*</pattern>
+    <pattern>/inspg/*</pattern>
+    <pattern>/scmmanagement/news/*</pattern>
+    <!-- <pattern>/AI/*</pattern> <pattern>/BI/*</pattern> <pattern>/SI/*</pattern> -->
+    <!-- <pattern>/scmmanagement/*</pattern> -->
+  </decorator>
+  <decorator name="outside_mvc" page="/skins_mvc/skins_outside_main_nomenu.jsp">
+    <pattern>/A/*</pattern>
+    <pattern>/B/*</pattern>
+    <pattern>/S/*</pattern>
+    <pattern>/AI/*</pattern>
+    <pattern>/BI/*</pattern>
+    <pattern>/SI/*</pattern>
+    <pattern>/pub/outside/*</pattern>
+    <pattern>/pub/search/psnsearch*</pattern>
+    <pattern>/pub/details/*</pattern>
+    <!-- <pattern>/inspg/outside/searchins*</pattern> -->
+  </decorator>
+  <decorator name="outside_nofoot_mvc" page="/skins_mvc/skins_outside_main_nomenu_nofoot.jsp">
+    <pattern>/pub/search/pdwh*</pattern>
+  </decorator>
+  <decorator name="outside" page="/skins_v6/skins_outside_main_nomenu.jsp">
+    <pattern>/inspg/search/*</pattern>
+    <pattern>/**/outside/*</pattern>
+    <pattern>/pubweb/details/show*</pattern>
+    <pattern>/pubweb/details/showpdwh*</pattern>
+    <pattern>/P/*</pattern>
+    <pattern>/G/*</pattern>
+    <pattern>/prjweb/project/detailsshow*</pattern>
+    <pattern>/psnweb/unsubscribe/mail*</pattern>
+    <pattern>/dynweb/news/**</pattern>
+  </decorator>
+  <decorator name="scm_management" page="skins_scm_management.jsp">
+    <pattern>/scmmanagement*</pattern>
+  </decorator>
+</decorators>

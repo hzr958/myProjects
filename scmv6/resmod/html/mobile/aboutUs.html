@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport"
+  content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+<meta charset="utf-8">
+<title></title>
+<link href="/resmod/mobile/css/mobile.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+        window.onload=function(){
+             document.getElementsByClassName("Setcontent_container—body")[0].style.height = window.innerHeight - 48 + "px"; 
+        }
+    </script>
+</head>
+<body>
+     <div class="provision_container-title">
+            <i class="material-icons" onclick="window.history.back()">keyboard_arrow_left</i>
+            <span>关于我们</span>
+            <i></i>
+        </div>
+    <div class="Setcontent_container—body">
+    
+       <div class="Setcontent_container—body_tip">
+            <div class="Setcontent_container—body_icon"></div>
+            <div class="Setcontent_container—body_text">科研之友 ScholarMate</div>
+       </div>
+    
+        <div class="Setcontent_container—body_content">
+          <div  class="Setcontent_container—content_item" onclick="showSecurityTerm();">
+               <span class="Setcontent_container—content_item-left">隐私政策</span>
+               <span class="Setcontent_container—content_item-right"><i class="material-icons">keyboard_arrow_right</i></span>
+          </div>
+          <div class="Setcontent_container—content_item"  onclick="showServiceTerm();">
+               <span class="Setcontent_container—content_item-left" style="border: none;">用户协议</span>
+               <span class="Setcontent_container—content_item-right" style="border: none;"><i class="material-icons">keyboard_arrow_right</i></span>
+          </div>
+        </div> 
+        <div class="Setcontent_container—footer_tip" >
+            <div class="Setcontent_container—footer_top"><!-- <span onclick="showSecurityTerm();">《科研之友隐私政策》</span>|<span style="color:#2882d8; font-size: 14px; line-height: 20px;" onclick="showServiceTerm();">《科研之友服务条款》</span> --></div>
+            <div class="Setcontent_container—footer_bottom">@2019深圳市科研之友网络服务有限公司</div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+  function showSecurityTerm(){
+    window.location.href = "term_of_security.html";
+  }
+
+  function showServiceTerm(){
+    window.location.href = "term_of_service.html";
+  }
+</script>
+</html>

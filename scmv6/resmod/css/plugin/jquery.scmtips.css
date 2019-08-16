@@ -1,0 +1,56 @@
+﻿.scmtips_window {
+  background: #FEFBE3;
+  border: #CAC6A3 1px solid;
+}
+
+#scmtip_overlay {
+  background: #FEFBE3;
+}
+
+.scmtips_window ul {
+  padding: 0;
+  margin: 0;
+}
+
+.scmtips_window ul li {
+  list-style: none;
+}
+
+.scmtips_window ul li.text_yes {
+  font-size: 12px;
+  color: #333;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  line-height: 18px;
+  word-break: normal;
+  overflow: hidden;
+  margin: 20px;
+  padding-left: 22px;
+  font-weight: bold;
+  background: url(../../images/plugin/tips_yes.gif) 1px 1px no-repeat;
+}
+
+.scmtips_window ul li.text_wrong {
+  font-size: 12px;
+  color: #ff0000;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  line-height: 18px;
+  word-break: normal;
+  overflow: hidden;
+  margin: 20px;
+  padding-left: 22px;
+  font-weight: bold;
+  background: url(../../images/plugin/tips_wrong.gif) 1px 1px no-repeat;
+}
+
+.scmtips_window ul li.text_ts {
+  font-size: 12px;
+  color: #333;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  line-height: 18px;
+  word-break: normal;
+  overflow: hidden;
+  margin: 20px;
+  padding-left: 22px;
+  background: url(../../images/plugin/tips_error.gif) 1px 1px no-repeat;
+}

@@ -1,0 +1,195 @@
+@charset "UTF-8";
+/* 1.ios 长按时不触发系统的菜单 2.禁止长按时下载图片 */
+input, select, textarea {
+  outline: none;
+}
+
+/* 去除android4.0以下 a/button/input标签被点击时产生的边框 因为边框引起了不少bug */
+a, button, input, label {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+/* Android4.0下不识别选择器-webkit-transform-3d 使用它可做Android4.0下版本兼容 */
+@media all and (-webkit-transform-3d) {
+  /* android4.0+ ios4+ 恢复按钮被点击时产生的效果 */
+  a, button, input, label {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    outline: none;
+  }
+}
+
+html, body {
+  height: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.hide {
+  display: none !important;
+}
+
+/*遮罩*/
+.mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+}
+
+/* 错误提示弹层 */
+.wrap-content {
+  text-align: center;
+  background-color: #FAFAFC;
+}
+
+.wrap-content .title {
+  padding: 20px 10px 10px 10px;
+  color: #fff
+}
+
+.wrap-content .btns {
+  width: 100%;
+  margin: 0 auto;
+  clear: both;
+}
+
+.wrap-content button {
+  padding: 6px 9px 6px 9px;
+  color: #949494;
+  border: 0;
+}
+
+.pop {
+  /* transition-duration: 300ms;
+  transition-timing-function: linear; */
+  
+}
+
+.pop-wrap {
+  position: fixed;
+  z-index: 999;
+  overflow: hidden;
+  width: 85%;
+}
+
+.pop-wrap .wrap-content {
+  /* position: fixed;
+	z-index: 1000; */
+  overflow: hidden;
+  border-radius: 6px;
+  /* width: 85%; */
+}
+
+.pop-wrap .wrap-content .title {
+  padding: 0.8em 0 0.8em;
+  font-size: 15px;
+  color: #333;
+}
+
+.pop-wrap .wrap-content .content {
+  padding: 0 20px;
+  font-size: 14px;
+  color: #555;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: left;
+}
+
+.pop-wrap .wrap-content .btns {
+  width: 100%;
+  margin-top: 15px;
+  position: relative;
+}
+
+.pop-wrap .wrap-content .btns:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid #D5D5D6;
+  color: #D5D5D6;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.pop-wrap .wrap-content button {
+  background-color: #FAFAFC;
+  width: 50%;
+  height: 42px;
+  line-height: 42px;
+  color: #444;
+  font-size: 17px;
+  border: 0;
+  padding: 0;
+}
+
+.pop-wrap .wrap-content button.ok {
+  position: relative;
+  color: #288AED;
+  float: right;
+  cursor: pointer;
+}
+
+.pop-wrap .wrap-content button.cancel {
+  position: relative;
+  float: left;
+  cursor: pointer;
+}
+
+.pop-wrap .wrap-content button.cancel:after {
+  content: " ";
+  position: absolute;
+  right: -1px;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  border-left: 1px solid #D5D5D6;
+  color: #D5D5D6;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+}
+
+.pop-wrap.hide {
+  display: none;
+  -webkit-box-shadow: none
+}
+
+.pop-wrap.msg .wrap-content .content, .pop-wrap.msg .wrap-content .btns {
+  display: none
+}
+
+.pop-wrap.alert .wrap-content .btns .cancel {
+  display: none
+}
+
+.pop-wrap.confirm .wrap-content .content, .pop-wrap.confirm .wrap-content .btns {
+  display: block
+}
+
+.pop-wrap.confirm .wrap-content button.cancel {
+  border-bottom-left-radius: 6px;
+}
+
+.pop-wrap.confirm .wrap-content button.ok {
+  border-bottom-right-radius: 6px;
+}
+
+.mask-transparent {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+}

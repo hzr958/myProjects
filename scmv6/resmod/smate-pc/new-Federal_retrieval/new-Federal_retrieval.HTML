@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<link href="../css/scmpcframe.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+       window.onload = function(){
+           var selectall = document.getElementsByClassName("selected-author_all")[0];
+           selectall.onclick = function(){
+               if(this.classList.contains("selected-author_confirm")){
+                   this.classList.remove("selected-author_confirm");
+                   var songllist = this.closest(".Federal-retrieval_content-right").querySelectorAll(".selected-author_single");
+                   for(var i = 0; i < songllist.length; i++){
+                       if(songllist[i].classList.contains("selected-author_confirm")){
+                           songllist[i].classList.remove("selected-author_confirm");
+                       }
+                   }
+                   console.log(songllist.length);
+               }else{
+                   this.classList.add("selected-author_confirm");
+                   var songllist = this.closest(".Federal-retrieval_content-right").querySelectorAll(".selected-author_single");
+                   for(var i = 0; i < songllist.length; i++){
+                       if(!songllist[i].classList.contains("selected-author_confirm")){
+                           songllist[i].classList.add("selected-author_confirm");
+                       }
+                   }
+               }
+           }
+           var searchlist = document.getElementsByClassName("selected-oneself");
+           for(var i = 0; i < searchlist.length; i++){
+               searchlist[i].onclick = function(){
+ 
+                   if(this.classList.contains("selected-oneself_confirm")){
+                       this.classList.remove("selected-oneself_confirm");
+                   }else{
+                       if(document.getElementsByClassName("selected-oneself_confirm").length>0){
+                           document.getElementsByClassName("selected-oneself_confirm")[0].classList.remove("selected-oneself_confirm");
+                       }
+                       this.classList.add("selected-oneself_confirm");
+                   }
+               }
+           }
+          var onkey = document.getElementsByClassName("Federal-retrieval_infor-right_key")[0];
+          onkey.onclick = function(event){
+            event.stopPropagation();
+            event.preventDefault();
+            if(this.innerHTML == "arrow_drop_down"){
+              this.innerHTML = "arrow_drop_up";
+              this.closest(".Federal-retrieval_infor-right").querySelector(".Federal-retrieval_infor-right_sub").style.display = "block";
+            }else{
+              this.innerHTML = "arrow_drop_down";
+              this.closest(".Federal-retrieval_infor-right").querySelector(".Federal-retrieval_infor-right_sub").style.display = "none";
+            }
+          }
+          var contentkey = document.getElementsByClassName("Federal-retrieval_infor-right_input")[0];
+          contentkey.onclick = function(event){
+            event.stopPropagation();
+            event.preventDefault();
+            if(this.closest(".Federal-retrieval_infor-right").querySelector(".Federal-retrieval_infor-right_key").innerHTML == "arrow_drop_down"){
+              this.closest(".Federal-retrieval_infor-right").querySelector(".Federal-retrieval_infor-right_key").innerHTML = "arrow_drop_up";
+              this.closest(".Federal-retrieval_infor-right").querySelector(".Federal-retrieval_infor-right_sub").style.display = "block";
+            }else{
+              this.closest(".Federal-retrieval_infor-right").querySelector(".Federal-retrieval_infor-right_key").innerHTML = "arrow_drop_down";
+              this.closest(".Federal-retrieval_infor-right").querySelector(".Federal-retrieval_infor-right_sub").style.display = "none";
+            }
+          }
+          var sublist = document.getElementsByClassName("Federal-retrieval_infor-right_sub-item");
+          for(var i = 0; i < sublist.length; i++){
+              sublist[i].onclick = function(event){
+                event.stopPropagation();
+                event.preventDefault();
+                this.closest(".Federal-retrieval_infor-right").querySelector("input").value = this.querySelector(".Federal-retrieval_infor-right_sub-detail").innerHTML;
+                this.closest(".Federal-retrieval_infor-right_sub").style.display = "none";
+                this.closest(".Federal-retrieval_infor-right").querySelector(".Federal-retrieval_infor-right_key").innerHTML = "arrow_drop_down";
+              }
+          }
+          document.onclick = function(){
+            if(onkey.innerHTML ==  "arrow_drop_up"){
+              onkey.innerHTML ="arrow_drop_down";
+              onkey.closest(".Federal-retrieval_infor-right").querySelector(".Federal-retrieval_infor-right_sub").style.display = "none";
+            }
+          }
+       }
+    </script>
+</head>
+<body>
+  <div class="Federal-retrieval_container">
+    <div class="Federal-retrieval_header">
+      <div class="Federal-retrieval_header-item">
+        <div class="Federal-retrieval_header-avator Federal-retrieval_header-item_first">
+          <span class="Federal-retrieval_header-avator_infor">1</span>
+        </div>
+        <span class="Federal-retrieval_header-line"></span>
+        <div class="Federal-retrieval_header-avator Federal-retrieval_header-item_second">
+          <span class="Federal-retrieval_header-avator_infor">2</span>
+        </div>
+        <span class="Federal-retrieval_header-line2"></span>
+        <div class="Federal-retrieval_header-avator Federal-retrieval_header-item_third">
+          <span class="Federal-retrieval_header-avator_infor">3</span>
+        </div>
+      </div>
+      <div class="Federal-retrieval_header-tip_box">
+        <span class="Federal-retrieval_header-item_detail" style="color: #2882d8;">输入检索条件</span> <span
+          class="Federal-retrieval_header-item_detail">选择成果</span> <span class="Federal-retrieval_header-item_detail">导入成果</span>
+      </div>
+    </div>
+    <div class="Federal-retrieval_content">
+      <div class="Federal-retrieval_content-title">
+        <span>文献库:</span>
+      </div>
+      <div class="Federal-retrieval_content-right">
+        <div class="Federal-retrieval_content-right_container">
+          <div class="Federal-retrieval_content-right_item">
+            <i class="selected-author selected-author_single"></i> <span
+              class="Federal-retrieval_content-right_item-detaile">中国知网(期刊文章、会议论文、学位论文)</span>
+          </div>
+          <div class="Federal-retrieval_content-right_item">
+            <i class="selected-author selected-author_single"></i> <span
+              class="Federal-retrieval_content-right_item-detaile">万方(期刊文章、会议论文、学位论文)</span>
+          </div>
+          <div class="Federal-retrieval_content-right_item">
+            <i class="selected-author selected-author_single"></i> <span
+              class="Federal-retrieval_content-right_item-detaile">Science Citation Index Expanded (SCIE)</span>
+          </div>
+          <div class="Federal-retrieval_content-right_item">
+            <i class="selected-author selected-author_single"></i> <span
+              class="Federal-retrieval_content-right_item-detaile">Social Sciences Citation Index (SSCI)</span>
+          </div>
+          <div class="Federal-retrieval_content-right_item">
+            <i class="selected-author selected-author_single"></i> <span
+              class="Federal-retrieval_content-right_item-detaile">Index to Scientific & Technical Proceedings
+              (ISTP)</span>
+          </div>
+          <div class="Federal-retrieval_content-right_item">
+            <i class="selected-author selected-author_single"></i> <span
+              class="Federal-retrieval_content-right_item-detaile">Engineering Village (EI Compendex)</span>
+          </div>
+          <div class="Federal-retrieval_content-right_item">
+            <i class="selected-author selected-author_single"></i> <span
+              class="Federal-retrieval_content-right_item-detaile">Scopus</span>
+          </div>
+          <div class="Federal-retrieval_content-right_item">
+            <i class="selected-author selected-author_single"></i> <span
+              class="Federal-retrieval_content-right_item-detaile">ScienceDirect</span>
+          </div>
+          <div class="Federal-retrieval_content-right_item">
+            <i class="selected-author selected-author_single"></i> <span
+              class="Federal-retrieval_content-right_item-detaile">PubMed</span>
+          </div>
+        </div>
+        <div class="Federal-retrieval_content-right_footer">
+          <div style="display: flex;">
+            <i class="selected-author selected-author_all"></i> <span
+              class="Federal-retrieval_content-right_footer-detail">全选</span>
+          </div>
+          <div>
+            <span class="Federal-retrieval_content-right_footer-search">检索指南</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Federal-retrieval_infor-item">
+      <div class="Federal-retrieval_infor-left">
+        <span>标题:</span>
+      </div>
+      <div class="Federal-retrieval_infor-right">
+        <input type="text">
+      </div>
+    </div>
+    <div class="Federal-retrieval_infor-item">
+      <div class="Federal-retrieval_infor-left">
+        <span>DOI:</span>
+      </div>
+      <div class="Federal-retrieval_infor-right">
+        <input type="text">
+      </div>
+    </div>
+    <div class="Federal-retrieval_content-search">
+      <div class="Federal-retrieval_psninfor-left">
+        <span>作者:</span>
+      </div>
+      <div class="Federal-retrieval_psninfor-right">
+        <div class="Federal-retrieval_psninfor-right_title">
+          <div class="Federal-retrieval_psninfor-right_title-item">
+            <i class="selected-oneself"></i> <span class="Federal-retrieval_psninfor-right_title-content">按人员姓名检索</span>
+            <i class="find-nothing_tip"></i>
+          </div>
+          <div class="Federal-retrieval_psninfor-right_title-item" style="margin-left: 32px;">
+            <i class="selected-oneself"></i> <span class="Federal-retrieval_psninfor-right_title-content">按人员姓名检索</span>
+            <i class="find-nothing_tip"></i>
+          </div>
+        </div>
+        <div class="Federal-retrieval_psninfor-right_content">
+          <div class="Federal-retrieval_psninfor-right_content-item">
+            <span class="Federal-retrieval_psninfor-right_content-item_title">中文姓名:</span> <input
+              class="Federal-retrieval_psninfor-right_content-item_input" type="text">
+          </div>
+          <div class="Federal-retrieval_psninfor-right_content-item" style="margin: 0px 32px;">
+            <span class="Federal-retrieval_psninfor-right_content-item_title">姓(Last Name):</span> <input
+              class="Federal-retrieval_psninfor-right_content-item_input">
+          </div>
+          <div class="Federal-retrieval_psninfor-right_content-item">
+            <span class="Federal-retrieval_psninfor-right_content-item_title">名(First Name):</span> <input
+              class="Federal-retrieval_psninfor-right_content-item_input" type="text">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Federal-retrieval_infor-item">
+      <div class="Federal-retrieval_infor-left">
+        <span>作者单位:</span>
+      </div>
+      <div class="Federal-retrieval_infor-right">
+        <input type="text" class="Federal-retrieval_infor-right_input"> <i
+          class="material-icons Federal-retrieval_infor-right_key">arrow_drop_down</i>
+        <div class="Federal-retrieval_infor-right_sub">
+          <div class="Federal-retrieval_infor-right_sub-item">
+            <span class="Federal-retrieval_infor-right_sub-detail"> 阴雨以及为何 </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Federal-retrieval_infor-item">
+      <div class="Federal-retrieval_infor-left">
+        <span>发表年份:</span>
+      </div>
+      <div class="Federal-retrieval_infor-right">
+        <input type="text">
+      </div>
+    </div>
+    <div class="Federal-retrieval_infor-footer">
+      <div class="Federal-retrieval_infor-left"></div>
+      <div class="Federal-retrieval_infor-footer_fuc">
+        <div class="Federal-retrieval_infor-footer_search">检索</div>
+        <div class="Federal-retrieval_infor-footer_clear">清除</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

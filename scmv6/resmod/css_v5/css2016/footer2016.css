@@ -1,0 +1,78 @@
+/*======底部样式=====*/
+body {
+  position: relative;
+}
+
+.footer {
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #dddddd;
+  padding: 20px 0;
+  overflow: hidden;
+  bottom: 0px;
+  z-index: 50;
+  height: 108px;
+  margin-bottom: 12px;
+}
+
+.footer_wrap {
+  padding: 0 20px;
+  width: 940px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.footer_wrap .scholarmate-code {
+  width: 185px;
+  text-align: center;
+  float: left;
+  height: 115px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer_wrap .scholarmate-code span {
+  margin-top: 5px;
+  display: inline-block;
+  width: 185px;
+  margin-left: 0px!important;
+}
+
+.footer_cont {
+  /* width: 580px; */
+  width: 550px;
+  float: left;
+  margin-top: 30px;
+  overflow: hidden;
+  color: #666;
+  font-size: 12px;
+}
+
+.footer_cont p {
+  font-size: inherit;
+  line-height: 26px;
+  color: #666;
+  text-align: center;
+}
+
+.footer_cont p img {
+  margin: 0px -10px;
+}
+
+.footer_cont p a {
+  color: #666;
+  margin: 0 10px;
+  font-size: inherit;
+}
+.letter-responsibility_icon{
+   width: 24px;
+   height: 24px;
+   background:url(../../smate-pc/img/govIcon.gif);
+   background-position: 0px 0px;
+   background-repeat: no-repeat;
+   background-size: 24px 24px;
+}

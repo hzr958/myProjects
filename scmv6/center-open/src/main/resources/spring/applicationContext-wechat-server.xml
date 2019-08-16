@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:export="https://www.scholarmate.com/schema/remote-export"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+	https://www.scholarmate.com/schema/remote-export
+	https://www.scholarmate.com/schema/remote-export.xsd "
+  default-lazy-init="false">
+  <description>wechat</description>
+  <bean id="accessTokenService" class="com.smate.center.open.service.wechat.AccessTokenServiceImpl">
+    <property name="appid" value="${wechat.appid}" />
+    <property name="secret" value="${wechat.secret}" />
+  </bean>
+  <bean id="myPrjCustomService" class="com.smate.center.open.service.wechat.custom.MyPrjCustomServiceImpl">
+    <property name="viewUrl" value="${wechat.viewurl.myprj}" />
+  </bean>
+  <bean id="myPubCustomService" class="com.smate.center.open.service.wechat.custom.MyPubCustomServiceImpl">
+    <property name="viewUrl" value="${wechat.viewurl.mypub}" />
+  </bean>
+  <bean id="fundingSchemeCustomService"
+    class="com.smate.center.open.service.wechat.custom.FundingSchemeCustomServiceImpl">
+    <property name="viewUrl" value="${wechat.viewurl.fundingscheme}" />
+  </bean>
+  <bean id="paperConfirmationCustomService"
+    class="com.smate.center.open.service.wechat.custom.PaperConfirmationCustomServiceImpl">
+    <property name="viewUrl" value="${wechat.viewurl.paperconfirmation}" />
+  </bean>
+  <bean id="clickEventService" class="com.smate.center.open.service.wechat.event.ClickEventServiceImpl">
+    <property name="customServiceMap">
+      <map>
+        <entry key="my_prj_0_0" value-ref="myPrjCustomService" />
+        <entry key="my_pub_0_1" value-ref="myPubCustomService" />
+        <entry key="funding_scheme_1_0" value-ref="fundingSchemeCustomService" />
+        <entry key="paper_confirmation_1_1" value-ref="paperConfirmationCustomService" />
+      </map>
+    </property>
+  </bean>
+  <bean id="subscribeEventService" class="com.smate.center.open.service.wechat.event.SubscribeEventServiceImpl"></bean>
+  <bean id="unsubscribeEventService" class="com.smate.center.open.service.wechat.event.UnsubscribeEventServiceImpl"></bean>
+  <bean id="messageHandlerService" class="com.smate.center.open.service.wechat.MessageHandlerServiceImpl">
+    <property name="bindUrl" value="${wechat.bindUrl}" />
+    <property name="eventServiceMap">
+      <map>
+        <entry key="CLICK" value-ref="clickEventService" />
+        <entry key="subscribe" value-ref="subscribeEventService" />
+        <entry key="unsubscribe" value-ref="unsubscribeEventService" />
+      </map>
+    </property>
+  </bean>
+</beans>

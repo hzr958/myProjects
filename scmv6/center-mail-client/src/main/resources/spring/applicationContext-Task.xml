@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+  default-lazy-init="false">
+  <!-- 定时任务管理 -->
+  <bean id="mailDiapatchScheduler" lazy-init="true"
+    class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="triggers">
+      <list>
+        <ref bean="mailClientUpdateRegTaskTrigger" />
+        <ref bean="mailSendTaskTrigger" />
+      </list>
+    </property>
+  </bean>
+  <bean id="mailClientUpdateRegTask" class="com.smate.center.mail.client.task.MailClientUpdateRegTask" />
+  <bean id="mailClientUpdateRegTaskDetail"
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="mailClientUpdateRegTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="execute" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="mailClientUpdateRegTaskTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+    <property name="jobDetail" ref="mailClientUpdateRegTaskDetail" />
+    <property name="repeatInterval" value="5000" />
+  </bean>
+  <bean id="mailSendTask" class="com.smate.center.mail.client.task.MailSendTask" />
+  <bean id="mailSendTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!-- 调用的类 -->
+    <property name="targetObject" ref="mailSendTask" />
+    <!-- 调用类中的方法 -->
+    <property name="targetMethod" value="execute" />
+    <property name="concurrent" value="false" />
+  </bean>
+  <bean id="mailSendTaskTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+    <property name="jobDetail" ref="mailSendTaskDetail" />
+    <property name="repeatInterval" value="5000" />
+  </bean>
+</beans>

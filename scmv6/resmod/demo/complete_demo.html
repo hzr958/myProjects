@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>smate complete demo</title>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery.complete.js"></script>
+<link href="../css/header.css" rel="stylesheet" type="text/css" />
+<link href="../css/common.css" rel="stylesheet" type="text/css" />
+<link href="../css/public.css" rel="stylesheet" type="text/css" />
+<link href="../css/jquery.complete.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/smate.autoword.js"></script>
+<link href="../css/smate.autoword.css" rel="stylesheet" type="text/css" />
+<script>
+
+	$(function(){
+		
+		//demo1 普通文本框
+		/***************************** 文本框增加自动下拉框 start*********************************/
+		//"key":"ins_name" 指单位下拉框列表，ins_name属于预设置的常用属性。如果属性非预设置属性，可以传入url或json数据
+		//"bind":{...} 
+		//方式1、绑定带value属性的标签，如下拉框选中内容的code值自动绑定insId文本框、enName自动绑定enName文本框
+		//方式2、bind值域中，如果任意key=函数，则选中内容后，通过data传递数据，供特殊需求处理数据（回调函数）
+		var objCompleate = $("#enName").complete({"key":"degree","bind":{"code":"degreeCode","name":"degreeName","callback":function(data){
+			$("#callback_result").html(data.code);
+		}}});
+		
+		//备注：
+		//complete默认属性：｛"key": null,"bind":null,"ctx":"/scmwebsns","width":null｝
+		//a) key属性必须覆盖
+		//b) bind可选
+		//c) ctx可选
+		//d) width可选，默认与文本框等宽，特殊文本框默认设置下拉框宽度（如：自动单词输入框）
+		/***************************** 文本框增加自动下拉框 end*********************************/
+		
+		/***************************** 获取下拉框选中内容的数据 start*********************************/
+		//通过点击的方式：获取下拉框选中内容的数据
+		$("#fetchId").click(function(){
+			var result = objCompleate.result();
+			//获取自动下拉框选中内容的相关数据
+			$("#textInsName").html(result["name"]);
+			$("#textInsId").html(result["code"]);
+		});
+		/***************************** 获取下拉框选中内容的数据 start*********************************/
+		
+		//demo2 自动单词集成下拉框功能
+		$("#testa").autoword({
+			"select": $.auto["degree"]
+		});
+		
+	});
+</script>
+</head>
+<body>
+  <form action="file:///D:/iriswork/smate6/resmod/demo/complete_demo.html" method="post">
+    <h4>demo1:</h4>
+    <table>
+      <tr>
+        <td width="150px">DegreeName:</td>
+        <td><input type="text" id="enName" name="enName" value="" /></td>
+      </tr>
+      <tr>
+        <td colspan="2">//下拉框选中内容的code值自动绑定degreeId文本框、name自动绑定degreeName文本框:</td>
+      </tr>
+      <tr>
+        <td colspan="2">var objCompleate =
+          $("#enName").complete({"key":"degree","bind":{"code":"degreeCode","name":"degreeName","callback":function(data){
+          $("#callback_result").html(data.code);}}});</td>
+      </tr>
+      <tr>
+        <td>degreeId:</td>
+        <td><input type="text" id="degreeCode" name="degree_code" value="" />
+      </tr>
+      <tr>
+        <td>degreeName:</td>
+        <td><input type="text" id="degreeName" name="degree_name" value="" />
+      </tr>
+      <tr>
+        <td colspan="2">//通过点击的方式：获取下拉框选中内容的数据</td>
+      </tr>
+      <tr>
+        <td colspan="2">$("#fetchId").click(function(){</td>
+      </tr>
+      <tr>
+        <td colspan="2">var result = objCompleate.result();</td>
+      </tr>
+      <tr>
+        <td colspan="2">$("#textInsName").html(result["name"]);</td>
+      </tr>
+      <tr>
+        <td colspan="2">$("#textInsId").html(result["code"]);</td>
+      </tr>
+      <tr>
+        <td colspan="2">});</td>
+      </tr>
+      <tr>
+        <td>degressName 和 degreeId:</td>
+        <td><span id="textInsName"></span>,<span id="textInsId"></span></td>
+      </tr>
+      <tr>
+        <td colspan="2">//下拉框选择后，进行回调函数操作</td>
+      </tr>
+      <tr>
+        <td>callback:</td>
+        <td><span id="callback_result"></span></td>
+      </tr>
+    </table>
+    <input type="button" value="获取insName 和 insId" id="fetchId"> <br />
+    <br /> //“自动单词插件”集成“输入自动下拉框提示插件”
+    <h4>demo2:</h4>
+    <div id="testa" class="auto_word_outer_div"></div>
+    <br /> <input type="submit" name="submit" value="submit" />
+  </form>
+</body>
+</html>

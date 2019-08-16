@@ -1,0 +1,339 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE, chrome=1">
+<meta http-equiv="content-style-type" content="text/css">
+<title>科研之友: 科研社交网络服务 (SMate.com)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../css/scmpcframe.css" rel="stylesheet" type="text/css">
+<link href="../css/scm-newpagestyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+var snsctx='/scmwebsns';
+var resmod ='/resmod';
+var ressns ='/ressns';
+var resscmsns='/resscmwebsns';
+var locale='zh_CN';
+</script>
+<script type="text/javascript" src="../../js/jquery-1.11.3.js"></script>
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE, chrome=1">
+<meta http-equiv="content-style-type" content="text/css">
+<style type="text/css">
+.dynamic-post__linelimit-icon {
+  width: 64px;
+  height: 95px;
+  background-image: url(../img/add-Achievements2.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  line-height: 64px;
+  background-color: #f4f4f4;
+}
+</style>
+</head>
+<body>
+  <header>
+    <div class="header__box depth4">
+      <div class="header__main">
+        <div class="header-main__box">
+          <script>
+ $(document).ready(function(){
+     document.getElementById("skin_psn_auatars").onclick=function(event){
+         event.stopPropagation();
+         event.preventDefault();
+         if(document.getElementById("skin_psn_setting").style.display == "none"){
+             document.getElementById("skin_psn_setting").style.display = "block";
+         }else{
+             document.getElementById("skin_psn_setting").style.display ="none";
+         }
+     }
+     $(document).on('click',function(e){
+         var _target = $(e.target);
+         if (_target.closest("#skin_psn_setting").length == 0) {
+             $('#skin_psn_setting').hide();
+         }
+     })
+ var targetlist = document.getElementsByClassName("searchbox__main");
+ for(var i = 0; i< targetlist.length; i++){
+    var placetext = "";
+    targetlist[i].querySelector("input").onmousedown = function(){
+        placetext = this.placeholder;
+    }
+    targetlist[i].querySelector("input").onfocus = function(){
+        if(this.placeholder.trim() === ""){
+            return ;
+        }
+        this.title = this.placeholder;
+        this.placeholder="";
+        this.closest(".searchbox__main").style.cssText = "border:1px solid #3faffa;";
+    }
+    targetlist[i].querySelector("input").onblur = function(){
+         var text = this.value.trim() + "";
+         if(this.title.trim() === ""){
+            return ;
+        }
+         this.placeholder =this.title;
+         this.closest(".searchbox__main").style.cssText = "border:1px solid #ccc;";
+    }
+ }
+ })
+ </script>
+          <div class="header-main__logo" onclick="window.location.href=&#39;/&#39;">
+            <img src="../img/smatelogo_transparent.png">
+          </div>
+          <div class="header-main__search">
+            <div class="searchbox__container searchbox__container-limit"
+              style="max-width: 65% !important; width: 520px !important;">
+              <div class="searchbox__main">
+                <form id="search_some_one_form" action="https://uat.scholarmate.com/pubweb/search/pdwhpaper"
+                  method="get">
+                  <input id="search_some_one" maxlength="100" name="searchString" placeholder="检索论文、专利、专家..."
+                    autocomplete="off" value="" style="color: rgb(153, 153, 153);">
+                </form>
+                <div class="searchbox__icon material-icons" onclick="ScmMaint.searchSomeOne()">search</div>
+              </div>
+            </div>
+          </div>
+          <style type="text/css">
+.dev_material-icons {
+  direction: ltr;
+  display: inline-block;
+  font-family: "Material Icons";
+  font-feature-settings: "liga";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1;
+  overflow-wrap: normal;
+  text-rendering: optimizelegibility;
+  text-transform: none !important;
+  white-space: nowrap;
+}
+
+.header-nav__item:hover .application_bomb {
+  display: flex;
+}
+</style>
+          <div class="header-main__actions">
+            <div class="header-main__actions_link"
+              onclick="javascript:window.open(&#39;http://crm2.qq.com/page/portalpage/wpa.php?uin=800018382&amp;cref=http://node-web6/node-web6/dynweb/main&amp;ref=&amp;pt=scholarmate kefu&amp;f=1&amp;ty=1&amp;ap=&amp;as=&amp;aty=&amp;a=&#39;, &#39;_blank&#39;, &#39;height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no&#39;);">
+              在线客服</div>
+            <div class="header-main__actions_item"
+              onclick="window.location.href=&#39;/dynweb/showmsg/msgmain?model=reqFullTextMsg&#39;">
+              <div id="full_text_request_msg_count" class="header-main__action_unread">1</div>
+              <div class="header-main__actions_icon fulltext-request"></div>
+            </div>
+            <div class="header-main__actions_item"
+              onclick="window.location.href=&#39;/dynweb/showmsg/msgmain?model=chatMsg&#39;">
+              <div id="chat_msg_count" class="header-main__action_unread">8</div>
+              <div class="header-main__actions_icon inbox-messages"></div>
+            </div>
+            <div class="header-main__actions_item"
+              onclick="window.location.href=&#39;/dynweb/showmsg/msgmain?model=centerMsg&#39;">
+              <div id="other_msg_count" class=""></div>
+              <div class="header-main__actions_icon system-notifications"></div>
+            </div>
+            <div class="header-main__psn">
+              <div class="header-main__psn-avatar" id="skin_psn_auatars">
+                <img src="../img/avatar.jpg">
+              </div>
+              <div class="header-main__dropdown_psn" id="skin_psn_setting" style="display: none">
+                <div class="chevron-icon_up">
+                  <div class="chevron-icon__div1"></div>
+                  <div class="chevron-icon__div2"></div>
+                </div>
+                <ul class="menu__list">
+                  <li class="menu__item">
+                    <div class="menu-item__content">
+                      <div class="menu-item__content_main">个人设置</div>
+                      <div class="menu-item__content_icon"></div>
+                    </div>
+                  </li>
+                  <li class="menu__item">
+                    <div class="menu-item__content">
+                      <div class="menu-item__content_main">切换站点</div>
+                      <div class="menu-item__content_icon"></div>
+                    </div>
+                  </li>
+                  <li class="menu__item">
+                    <div class="menu-item__content">
+                      <div class="menu-item__content_main">English</div>
+                      <div class="menu-item__content_icon"></div>
+                    </div>
+                  </li>
+                  <li class="menu__item">
+                    <div class="menu-item__content">
+                      <div class="menu-item__content_main">退出</div>
+                      <div class="menu-item__content_icon"></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <i class="dev_material-icons" style="margin-left: -10px; cursor: pointer;">expand_more</i>
+          </div>
+        </div>
+      </div>
+      <div class="header__nav">
+        <nav class="header__nav_box">
+          <ul class="header-nav__list">
+            <li class="header-nav__item  item_selected"><a href="https://uat.scholarmate.com/dynweb/main">首页</a></li>
+            <li class="header-nav__item "><a href="https://uat.scholarmate.com/psnweb/homepage/show">我的</a></li>
+            <li class="header-nav__item "><a href="https://uat.scholarmate.com/psnweb/friend/main">好友</a>
+              <div class="header-nav__item-redball"></div></li>
+            <li class="header-nav__item "><a href="https://uat.scholarmate.com/groupweb/mygrp/main">群组</a>
+              <div class="header-nav__item-redball"></div></li>
+            <li class="header-nav__item" onmouseover="showAppMenu(this);" onmouseout="hiddenAppMenu(this);"><a>应用</a>
+              <div class="application_bomb">
+                <div class="application_bomb-body">
+                  <div class="application_bomb-body_content">
+                    <div class="application_bomb-body_content-title">个人服务</div>
+                    <div class="application_bomb-body_content-container">
+                      <div class="application_bomb-body_content-list">
+                        <a href="https://uat.scholarmate.com/prjweb/fund/main">
+                          <div class="application_bomb-body_content-list_img application_bomb-body_content-fund"></div>
+                          <div class="application_bomb-body_content-list_detail">基金</div>
+                        </a>
+                      </div>
+                      <div class="application_bomb-body_content-list">
+                        <a href="https://uat.scholarmate.com/groupweb/mygrp/main?model=myGrp">
+                          <div class="application_bomb-body_content-list_img application_bomb-body_content-project"></div>
+                          <div class="application_bomb-body_content-list_detail">项目</div>
+                        </a>
+                      </div>
+                      <div class="application_bomb-body_content-list">
+                        <a href="https://uat.scholarmate.com/pubweb/pubrecommendmain">
+                          <div class="application_bomb-body_content-list_img application_bomb-body_content-paper"></div>
+                          <div class="application_bomb-body_content-list_detail">论文</div>
+                        </a>
+                      </div>
+                      <div class="application_bomb-body_content-list">
+                        <a href="https://uat.scholarmate.com/psnweb/login/tocxc" target="_black">
+                          <div class="application_bomb-body_content-list_img application_bomb-body_content-patent"></div>
+                          <div class="application_bomb-body_content-list_detail">专利</div>
+                        </a>
+                      </div>
+                      <div class="application_bomb-body_content-list">
+                        <a href="https://uat.scholarmate.com/psnweb/myfile/filemain" target="_black">
+                          <div class="application_bomb-body_content-list_img application_bomb-body_content-file"></div>
+                          <div class="application_bomb-body_content-list_detail">文件</div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="application_bomb-body_content">
+                    <div class="application_bomb-body_content-title">机构服务</div>
+                    <div class="application_bomb-body_content-serverse">
+                      <div class="application_bomb-body_content-serverse_list border-bottom_style-dashed">
+                        <a href="http://irisaas.smate.com/egrantweb/" target="_black">
+                          <div class="application_bomb-body_content-serverse_list-title" style="margin-top: 12px;">
+                            科创云</div>
+                          <div class="application_bomb-body_content-serverse_list-detail" style="margin: 12px 0px;">智慧科技信息系统即服务</div>
+                        </a>
+                      </div>
+                      <div class="application_bomb-body_content-serverse_list">
+                        <a href="https://uat.scholarmate.com/resmod/cotrun/html/sie_index.html" target="_black">
+                          <div class="application_bomb-body_content-serverse_list-title" style="margin: 12px 0px;">机构版</div>
+                          <div class="application_bomb-body_content-serverse_list-detail" style="margin-bottom: 20px;">社会化机构知识库云服务</div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="application_bomb-footer">
+                  <div class="application_bomb-footer_content">
+                    <i class="application_bomb-footer_tip"></i>
+                    <div class="application_bomb-footer_content-detail">
+                      <a href="http://sie.scholarmate.com/" target="_blank">创建机构版</a>
+                    </div>
+                  </div>
+                </div>
+              </div></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="header__placeholder_inside1"></div>
+  </header>
+  <div class="funding-agencies_container" style="margin: 0 auto;">
+    <div class="funding-agencies_container-left">
+      <div class="funding-agencies_container-left_item">
+        <div class="funding-agencies_container-left_title">
+          <span class="funding-agencies_container-left_title-detaile">所在区域</span> <i
+            class="funding-agencies_container-left_title-flag material-icons">expand_more</i>
+        </div>
+        <div class="funding-agencies_container-left_area">
+          <ul>
+            <li class="funding-agencies_container-left_area-item"><span
+              class="funding-agencies_container-left_area-detaile">香港</span> <i
+              class="material-icons funding-agencies_container-left_area-flag">close</i></li>
+            <li class="funding-agencies_container-left_area-item"><span
+              class="funding-agencies_container-left_area-detaile">香港</span> <i
+              class="material-icons funding-agencies_container-left_area-flag">close</i></li>
+            <li class="funding-agencies_container-left_area-item"><span
+              class="funding-agencies_container-left_area-detaile">香港</span> <i
+              class="material-icons funding-agencies_container-left_area-flag">close</i></li>
+            <li class="funding-agencies_container-left_area-item"><span
+              class="funding-agencies_container-left_area-detaile">香港</span> <i
+              class="material-icons funding-agencies_container-left_area-flag">close</i></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="funding-agencies_container-right">
+      <div class="funding-agencies_container-right_item">
+        <img src="1.png" class="funding-agencies_container-right_item-avator">
+        <div class="funding-agencies_container-right_item-infor">
+          <div class="funding-agencies_container-right_item-detaile">
+            <a href="Funding-agencies_detaile.html">北京市自然科学基金委员会北京市自然科学基金委员会北京市自然科学基金委员会北京市自然科学基金委员会</a>
+          </div>
+          <div class="funding-agencies_container-right_item-city">中国 北京市</div>
+        </div>
+        <div class="funding-agencies_container-right_item-Opportunity">
+          <div class="funding-agencies_container-right_item-Opportunity_num">99999</div>
+          <div class="funding-agencies_container-right_item-Opportunity_title">基金机会</div>
+        </div>
+      </div>
+      <div class="funding-agencies_container-right_item">
+        <img src="1.png" class="funding-agencies_container-right_item-avator">
+        <div class="funding-agencies_container-right_item-infor">
+          <div class="funding-agencies_container-right_item-detaile">
+            <a href="Funding-agencies_detaile.html">北京市自然科学基金委员会北京市自然科学基金委员会北京市自然科学基金委员会北京市自然科学基金委员会</a>
+          </div>
+          <div class="funding-agencies_container-right_item-city">中国 北京市</div>
+        </div>
+        <div class="funding-agencies_container-right_item-Opportunity">
+          <div class="funding-agencies_container-right_item-Opportunity_num">99999</div>
+          <div class="funding-agencies_container-right_item-Opportunity_title">基金机会</div>
+        </div>
+      </div>
+      <div class="funding-agencies_container-right_item">
+        <img src="1.png" class="funding-agencies_container-right_item-avator">
+        <div class="funding-agencies_container-right_item-infor">
+          <div class="funding-agencies_container-right_item-detaile">
+            <a href="Funding-agencies_detaile.html">北京市自然科学基金委员会北京市自然科学基金委员会北京市自然科学基金委员会北京市自然科学基金委员会</a>
+          </div>
+          <div class="funding-agencies_container-right_item-city">中国 北京市</div>
+        </div>
+        <div class="funding-agencies_container-right_item-Opportunity">
+          <div class="funding-agencies_container-right_item-Opportunity_num">99999</div>
+          <div class="funding-agencies_container-right_item-Opportunity_title">基金机会</div>
+        </div>
+      </div>
+      <div class="funding-agencies_container-right_item">
+        <img src="1.png" class="funding-agencies_container-right_item-avator">
+        <div class="funding-agencies_container-right_item-infor">
+          <div class="funding-agencies_container-right_item-detaile">
+            <a href="Funding-agencies_detaile.html">北京市自然科学基金委员会北京市自然科学基金委员会北京市自然科学基金委员会北京市自然科学基金委员会</a>
+          </div>
+          <div class="funding-agencies_container-right_item-city">中国 北京市</div>
+        </div>
+        <div class="funding-agencies_container-right_item-Opportunity">
+          <div class="funding-agencies_container-right_item-Opportunity_num">99999</div>
+          <div class="funding-agencies_container-right_item-Opportunity_title">基金机会</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

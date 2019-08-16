@@ -1,0 +1,164 @@
+﻿/* ------------------------------------------------------------------
+
+ Name: cueIE6.css
+ Function: Overrides for IE6
+ Last update: 1/18/08
+
+---------------------------------------------------------------------*/
+
+/*********************************************************************
+ BODY & PAGE
+**********************************************************************/
+
+/*********************************************************************
+ LINKS
+**********************************************************************/
+
+/*********************************************************************
+ HTML ELEMENTS
+**********************************************************************/
+
+/*********************************************************************
+ PAGE CLASSES
+**********************************************************************/
+.cueBotline {
+  margin-top: -10px;
+}
+
+/*********************************************************************
+ COMPONENT CLASSES
+**********************************************************************/
+.cueLogoType .fit_img {
+  margin-top: 0px;
+}
+
+/*********************************************************************
+ CSP OVERRIDE
+**********************************************************************/
+
+/* CSP STO Menu Component -------------------------------------------- */
+.shm_StoParent {
+  height: 57px;
+}
+
+a.shm_link001, a.shm_link001:visited {
+  /*	margin-right:-3px;*/
+  padding: 4px 24px; /* Nav Buttons wider in IE 6 & 7 */
+  color: #1D67B1;
+}
+
+li.shm_Selected a.shm_link001:hover, li.shm_Selected .shm_link001 {
+  padding: 5px 22px; /* Nav Buttons wider in IE 6 & 7 */
+}
+
+/*.shm_link002:hover,.shm_link002:focus,
+.shm_link002:active,.shm_selectedLi .shm_link002 {	
+    padding: 2px 11px 3px 11px;
+    color: #000;
+    margin-top: 3px;
+    }*/
+a.shm_link002:link, a.shm_link002:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.shm_List2 .shm_LiHasChild {
+  background-image: url('http://demo.scholarmate.com/scholar/styles/menusres/nav_list2_arrow.gif');
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.shm_List2 ul {
+  border: 1px solid #8B91A0;
+}
+
+.shm_highLight_2Tier {
+  /*    padding: 2px 11px 3px 11px !important;
+	margin-top: 3px !important;
+*/
+  color: #fff;
+  text-decoration: underline;
+}
+
+.shm_highLight_hasClild_2Tier {
+  background-image: url('http://demo.scholarmate.com/scholar/styles/menusres/nav_list2_selected_bgc.gif');
+  background-position: right center;
+  background-repeat: no-repeat;
+  padding-right: 17px !important;
+}
+
+.shm_highLight_2Tier:hover, .shm_highLight_2Tier:focus, .shm_highLight_2Tier:visited, .shm_highLight_2Tier:active,
+  .shm_highLight_2Tier:link {
+  text-decoration: underline;
+  display: inline;
+}
+
+.shm_List3 {
+  position: absolute;
+  z-index: 100;
+  background: #F3F3F9;
+  border: 1px solid #C5D5E8 !important;
+  left: 0;
+  top: 24px;
+  list-style-type: none;
+  margin: 7px;
+  padding: 7px 8px 12px 8px;
+  text-align: left;
+}
+
+.shm_List3 ul {
+  position: absolute;
+  z-index: 100;
+  left: 100%;
+  top: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.shm_List3 li {
+  position: relative;
+  z-index: 100;
+  padding: 0px;
+  top: 0;
+}
+
+.shm_List3 a, .shm_List3 a:visited {
+  position: relative;
+  z-index: 100;
+  padding: 2px 5px 5px 7px;
+  display: block;
+  width: 150px;
+  text-decoration: none;
+}
+
+.shm_List3 a:hover, .shm_List3 a:active {
+  color: #fff;
+  background: #00248c;
+}
+
+.shm_List3 a:after {
+  display: inline;
+}
+
+.shm_List3 a:hover, .shm_List3 a:focus, .shm_List3 a:active {
+  text-decoration: none;
+}
+
+.shm_List2 .shm_LiHasChild .shm_link002:hover {
+  PADDING-BOTTOM: 2px;
+  PADDING-LEFT: 18px;
+  PADDING-RIGHT: 15px;
+  PADDING-TOP: 2px;
+  text-decoration: underline;
+}
+
+.shm_List1 {
+  width: 95%;
+}
+
+a.shm_link002:hover {
+  color: #fff;
+  text-decoration: underline;
+}

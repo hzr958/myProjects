@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:export="https://www.scholarmate.com/schema/remote-export"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+	https://www.scholarmate.com/schema/remote-export
+	https://www.scholarmate.com/schema/remote-export.xsd "
+  default-lazy-init="false">
+  <!-- memcache缓存服务 客户端 -->
+  <bean id="memcacheClient" class="com.smate.core.base.utils.cache.IrisMemcachedClientFactoryBean">
+    <property name="memcachedSrvUrls" value="${memcache.common.url}" />
+  </bean>
+  <bean id="snsCacheService" class="com.smate.core.base.utils.cache.SnsCacheServiceImpl">
+    <property name="memcacheClient" ref="memcacheClient"></property>
+  </bean>
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="basename" value="resource.snsmenuResource" />
+  </bean>
+  <bean id="menuService" class="com.smate.core.web.sns.menu.service.MenuServiceImpl">
+  </bean>
+  <bean id="insPortalManager" class="com.smate.core.web.sns.menu.service.InsPortalManagerImpl">
+  </bean>
+  <bean id="mainInitialService" class="com.smate.core.web.sns.menu.service.MainInitialServiceImpl">
+  </bean>
+  <bean id="personQueryService" class="com.smate.core.web.sns.menu.service.PersonQueryServiceImpl">
+  </bean>
+  <bean id="authorityManager" class="com.smate.core.base.utils.service.security.AuthorityManagerImpl">
+  </bean>
+  <bean id="insRoleService" class="com.smate.core.base.utils.service.security.InsRoleServiceImpl">
+  </bean>
+  <!-- 科研之友菜单客户端业务逻辑实现服务 -->
+  <bean id="menuClientService" class="com.smate.core.web.sns.menu.service.SnsMenuClientServiceImpl">
+    <property name="menuService" ref="menuService"></property>
+  </bean>
+  <bean id="sysUserLocaleService" class="com.smate.core.base.utils.locale.service.SysUserLocaleServiceImpl">
+  </bean>
+</beans>

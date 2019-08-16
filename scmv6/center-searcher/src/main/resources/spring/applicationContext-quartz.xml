@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+	default-lazy-init="true">
+	<!-- 在<Beans>中不能够设置default-lazy-init="true",否则定时任务不触发，如果不明确指明default-lazy-init的值，默认是false。 -->
+	<bean id="startQuartz" lazy-init="true" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list> 
+				<!-- <ref bean="solrTaskTrigger"/> -->
+			</list>
+		</property>
+	</bean>
+	
+	<!-- solr维护定时器  -->
+	<bean id="solrTask" class="com.smate.center.searcher.quartz.SolrTask" />
+	<bean id="solrTaskDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="solrTask" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="run" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="solrTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="solrTaskDetail" />
+		<!-- cron表达式 -->
+		<property name="cronExpression" value="0 0 20 * * ?" />
+	</bean>
+</beans>

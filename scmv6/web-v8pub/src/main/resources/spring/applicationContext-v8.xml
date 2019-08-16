@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+  <description>Spring公共配置文件</description>
+  <bean id="pubDataService" class="com.smate.web.v8pub.service.handler.PubDataServiceImpl" lazy-init="false" />
+  <context:component-scan base-package="com.smate.web.v8pub.service*" scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.web.v8pub.service.sns*"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.web.v8pub.service.region"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.web.v8pub.service.sns.*"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.web.v8pub.service.pdwh*"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.web.v8pub.service.handler*"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.web.v8pub.service.query"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.web.v8pub.dao*" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.web.v8pub.dao.sns.*" scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.web.v8pub.dao.pdwh.*"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.core.base.v8pub.restTemp.service*"
+    scoped-proxy="interfaces" />
+  <context:component-scan base-package="com.smate.core.base.utils.dao.security"
+    scoped-proxy="targetClass" />
+  <context:component-scan base-package="com.smate.web.v8pub.service.oauth*"
+    scoped-proxy="interfaces" />
+  <!-- 成果查询服务bean start -->
+  <bean id="pubListQueryServiceImpl" class="com.smate.web.v8pub.service.pubquery.PubListQueryServiceImpl"></bean>
+  <bean id="pubCollectedPubServiceImpl" class="com.smate.web.v8pub.service.pubquery.PubCollectedPubServiceImpl"></bean>
+  <bean id="pubRecommendQueryInSolrServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.PubRecommendQueryInSolrServiceImpl"></bean>
+  <bean id="pubPaperQueryInSolrServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.PubPaperQueryInSolrServiceImpl"></bean>
+  <bean id="pubPaperQueryInSolrServiceBySuggestImpl"
+    class="com.smate.web.v8pub.service.pubquery.PubPaperQueryInSolrServiceBySuggestImpl"></bean>
+  <bean id="pubPatentQueryInSolrServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.PubPatentQueryInSolrServiceImpl"></bean>
+  <bean id="pubFindQueryInSolrServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.PubFindQueryInSolrServiceImpl"></bean>
+  <bean id="grpPubListQueryServiceImpl" class="com.smate.web.v8pub.service.pubquery.GrpPubListQueryServiceImpl"></bean>
+  <bean id="pubConfirmListQueryServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.PubConfirmListQueryServiceImpl"></bean>
+  <bean id="pubConfirmListQueryIgnoreStatusServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.PubConfirmListQueryIgnoreStatusServiceImpl"></bean>
+  
+  <bean id="dynMyPubQueryServiceImpl" class="com.smate.web.v8pub.service.pubquery.DynMyPubQueryServiceImpl"></bean>
+  <bean id="openPubListQueryServiceImpl" class="com.smate.web.v8pub.service.pubquery.OpenPubListQueryServiceImpl"></bean>
+  <bean id="grpHomepagePubQueryServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.GrpHomepagePubQueryServiceImpl"></bean>
+  <bean id="importMemberPubListQueryServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.ImportMemberPubListQueryServiceImpl"></bean>
+  <bean id="pubQueryByPubIdServiceImpl" class="com.smate.web.v8pub.service.pubquery.PubQueryByPubIdServiceImpl"></bean>
+  <bean id="grpPubQueryByPubIdServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.GrpPubQueryByPubIdServiceImpl" />
+  <bean id="pdwhPubQueryByPubIdServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.PdwhPubQueryByPubIdServiceImpl" />
+  <bean id="pubFulltextQueryByPubIdServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.PubFulltextQueryByPubIdServiceImpl" />
+  <bean id="centerOpenPubListQueryServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.CenterOpenPubListQueryServiceImpl" />
+  <bean id="centerOpenGrpPubListQueryServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.CenterOpenGrpPubListQueryServiceImpl" />
+  <bean id="pubSituationListQueryServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.PubSituationListQueryServiceImpl" />
+  <bean id="centerOpenPubAssignLogListQueryServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.CenterOpenPubAssignLogListQueryServiceImpl" />
+  <bean id="pubListQueryByPubIdsServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.PubListQueryByPubIdsServiceImpl" />
+  <bean id="openPsnPublicPubQueryServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.OpenPsnPublicPubQueryServiceImpl" />
+  <bean id="psnRepresentQueryServiceImpl" class="com.smate.web.v8pub.service.pubquery.PsnRepresentQueryServiceImpl" />
+  <bean id="queryLastUpdatePubServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.QueryLastUpdatePubServiceImpl"></bean>
+  <bean id="QueryLastUpdatePubByPubIdsServiceImpl"
+    class="com.smate.web.v8pub.service.pubquery.QueryLastUpdatePubByPubIdsServiceImpl"></bean>
+  <bean id="ZSPubListQuery" class="com.smate.web.v8pub.service.pubquery.ZSPubListQueryServiceImpl"></bean>
+  <bean id="ZSPublishYearsQuery" class="com.smate.web.v8pub.service.pubquery.ZSPublishYearsQueryServiceImpl"></bean>
+  <bean id="IsisPubListQuery" class="com.smate.web.v8pub.service.pubquery.IsisPubListQueryServiceImpl"></bean>
+  <bean id="IsisPubAssignLogListQuery"
+    class="com.smate.web.v8pub.service.pubquery.IsisPubAssignLogListQueryServiceImpl"></bean>
+  <bean id="IsisGrpPubListQuery" class="com.smate.web.v8pub.service.pubquery.IsisGrpPubListQueryServiceImpl"></bean>
+  <bean id="IsisGrpRcmdPubListQuery"
+    class="com.smate.web.v8pub.service.pubquery.IsisGrpRcmdPubListQueryServiceImpl"></bean>
+  <bean id="prjDetailPubServiceImpl" class="com.smate.web.v8pub.service.pubquery.PrjDetailPubServiceImpl"></bean>
+  <bean id="prjPubConfirmListQueryServiceImpl" class="com.smate.web.v8pub.service.pubquery.PrjPubConfirmListQueryServiceImpl"></bean>
+  <bean id="pubQueryhandlerService" class="com.smate.web.v8pub.service.query.PubQueryhandlerServiceImpl">
+    <property name="serviceMap">
+      <map>
+        <entry key="pubList" value-ref="pubListQueryServiceImpl"></entry>
+        <entry key="pubCollectedList" value-ref="pubCollectedPubServiceImpl" />
+        <entry key="recommendListInSolr" value-ref="pubRecommendQueryInSolrServiceImpl"></entry>
+        <entry key="paperListInSolr" value-ref="pubPaperQueryInSolrServiceImpl"></entry>
+        <entry key="paperListBySuggestInSolr" value-ref="pubPaperQueryInSolrServiceBySuggestImpl"></entry>
+        <entry key="patentListInSolr" value-ref="pubPatentQueryInSolrServiceImpl"></entry>
+        <entry key="findListInSolr" value-ref="pubFindQueryInSolrServiceImpl"></entry>
+        <entry key="grpPubList" value-ref="grpPubListQueryServiceImpl"></entry>
+        <entry key="pubConfirmList" value-ref="pubConfirmListQueryServiceImpl"></entry>
+        <entry key="pubConfirmListIgnoreStatus" value-ref="pubConfirmListQueryIgnoreStatusServiceImpl"></entry>
+        <entry key="dynMyPub" value-ref="dynMyPubQueryServiceImpl"></entry>
+        <entry key="openPubList" value-ref="openPubListQueryServiceImpl"></entry>
+        <entry key="grpHomepagePub" value-ref="grpHomepagePubQueryServiceImpl"></entry>
+        <entry key="importMemberPubList" value-ref="importMemberPubListQueryServiceImpl"></entry>
+        <entry key="pubQueryByPubId" value-ref="pubQueryByPubIdServiceImpl"></entry><!-- 通过pubId 查询成果 -->
+        <entry key="grpPubQueryByPubId" value-ref="grpPubQueryByPubIdServiceImpl"></entry>
+        <entry key="pdwhPubQueryByPubId" value-ref="pdwhPubQueryByPubIdServiceImpl"></entry>
+        <entry key="pubFulltextQueryByPubId" value-ref="pubFulltextQueryByPubIdServiceImpl"></entry>
+        <entry key="centerOpenPubList" value-ref="centerOpenPubListQueryServiceImpl"></entry>
+        <entry key="centerOpenGrpPubList" value-ref="centerOpenGrpPubListQueryServiceImpl"></entry>
+        <entry key="pubSituationList" value-ref="pubSituationListQueryServiceImpl"></entry>
+        <entry key="centerOpenPubAssignLogList" value-ref="centerOpenPubAssignLogListQueryServiceImpl"></entry>
+        <entry key="pubListQueryByPubIds" value-ref="pubListQueryByPubIdsServiceImpl"></entry>
+        <entry key="openPsnPublicPub" value-ref="openPsnPublicPubQueryServiceImpl"></entry><!-- 查询所有的成果 -->
+        <entry key="psnRepresentPubList" value-ref="psnRepresentQueryServiceImpl"></entry>
+        <entry key="queryLastUpdatePub" value-ref="queryLastUpdatePubServiceImpl"></entry><!-- 通过psnId查询最新的更新成果 -->
+        <entry key="queryLastUpdatePubByPubIds" value-ref="QueryLastUpdatePubByPubIdsServiceImpl"></entry><!-- 通过pubIds查询最新的更新成果 -->
+        <entry key="ZSPubList" value-ref="ZSPubListQuery"></entry>
+        <entry key="ZSPublishYears" value-ref="ZSPublishYearsQuery"></entry>
+        <entry key="IsisPubList" value-ref="IsisPubListQuery"></entry>
+        <entry key="IsisPubAssignLogList" value-ref="IsisPubAssignLogListQuery"></entry>
+        <entry key="IsisGrpPubList" value-ref="IsisGrpPubListQuery"></entry>
+        <entry key="IsisGrpRcmdPubList" value-ref="IsisGrpRcmdPubListQuery"></entry>
+        <entry key="prjDetailPubList" value-ref="prjDetailPubServiceImpl"></entry>
+        <entry key="prjPubConfirmList" value-ref="prjPubConfirmListQueryServiceImpl"></entry>
+      </map>
+    </property>
+  </bean>
+  <!-- 成果查询服务bean end -->
+  <!-- 文件导入服务 start -->
+  <bean id="fileImportService" class="com.smate.web.v8pub.service.fileimport.FileImportServiceImpl">
+    <property name="fileExtractService">
+      <map>
+        <entry key="ENDNOTE">
+          <bean class="com.smate.web.v8pub.service.fileimport.extract.EndNoteFileExtractService"></bean>
+        </entry>
+        <entry key="SCMEXCEL">
+          <bean class="com.smate.web.v8pub.service.fileimport.extract.SCMExcelFileExtractService"></bean>
+        </entry>
+        <entry key="BIBTEX">
+          <bean class="com.smate.web.v8pub.service.fileimport.extract.BibFileExtractService"></bean>
+        </entry>
+        <entry key="REFWORK">
+          <bean class="com.smate.web.v8pub.service.fileimport.extract.RefWorksFileExtractService"></bean>
+        </entry>
+        <entry key="CSA">
+          <bean class="com.smate.web.v8pub.service.fileimport.extract.CSAFileExtractService"></bean>
+        </entry>
+        <entry key="ISI">
+          <bean class="com.smate.web.v8pub.service.fileimport.extract.ISIFileExtractService"></bean>
+        </entry>
+      </map>
+    </property>
+  </bean>
+  <!-- 文件导入服务 end -->
+  <!-- 成果详情服务 start -->
+  <bean id ="openPdwhPub" name="openPdwhPub" class="com.smate.web.v8pub.service.pubdetailquery.OpenPdwhPubDetailQueryService" />
+  <bean id="pubDetailHandleService" class="com.smate.web.v8pub.service.pubdetailquery.PubDetailHandleServiceImpl">
+    <property name="serviceMap">
+      <map>
+        <entry key="snsEditPub">
+          <bean class="com.smate.web.v8pub.service.pubdetailquery.SnsEditPubDetailQueryService" />
+        </entry>
+        <entry key="snsPub">
+          <bean class="com.smate.web.v8pub.service.pubdetailquery.SnsPubDetailQueryService" />
+        </entry>
+        <entry key="pdwhPub">
+          <bean class="com.smate.web.v8pub.service.pubdetailquery.PdwhPubDetailQueryService" />
+        </entry>
+        <!-- 仅仅 open 系统调用， -->
+        <entry key="pdwhPubByPubConfirmId">
+          <bean class="com.smate.web.v8pub.service.pubdetailquery.PdwhPubDetailByPubConfirmIdQueryService" />
+        </entry>
+        <!-- 仅仅 open 系统调用， -->
+        <entry key="openSnsPub">
+          <bean class="com.smate.web.v8pub.service.pubdetailquery.OpenSnsPubDetailQueryService" />
+        </entry>
+        <!-- 仅仅 open 系统调用， -->
+        <entry key="openGrpPub">
+          <bean class="com.smate.web.v8pub.service.pubdetailquery.OpenGrpPubDetailQueryService" />
+        </entry>
+        <!-- 仅仅 open 系统调用， -->
+        <entry key="sieOpenSnsPub">
+          <bean class="com.smate.web.v8pub.service.pubdetailquery.SieOpenSnsPubDetailQueryService" >
+            <property name="pubDetailQueryService"  ref="openPdwhPub" />
+          </bean>
+        </entry>
+        <!-- 仅仅 open 系统调用， -->
+        <entry key="openPdwhPub">
+          <bean class="com.smate.web.v8pub.service.pubdetailquery.OpenPdwhPubDetailQueryService" />
+        </entry>
+        <!-- 仅仅 open 系统调用， -->
+        <entry key="openPdwhPub" value-ref="openPdwhPub"/>
+        <!-- 仅仅 open 系统调用，验证成果 -->
+        <entry key="openVerifyPdwhPub">
+          <bean class="com.smate.web.v8pub.service.pubdetailquery.OpenVerifyPdwhPubDetailQueryService" />
+        </entry>
+      </map>
+    </property>
+  </bean>
+  <!-- 成果详情服务 end -->
+  <!-- 查重接口对象的注入start -->
+  <bean id="pubDuplicateCheckService"
+    class="com.smate.web.v8pub.service.findduplicate.PubDuplicateCheckServiceImpl">
+    <property name="dupMap">
+      <map>
+        <entry key="1">
+          <bean class="com.smate.web.v8pub.service.findduplicate.pub.PsnPubDuplicateHandler" />
+        </entry>
+        <entry key="2">
+          <bean class="com.smate.web.v8pub.service.findduplicate.pub.GroupPubDuplicateHandler" />
+        </entry>
+        <entry key="3">
+          <bean class="com.smate.web.v8pub.service.findduplicate.pub.PdwhPubDuplicateHandler" />
+        </entry>
+        <entry key="4">
+          <bean class="com.smate.web.v8pub.service.findduplicate.pub.VerifyPdwhPubDuplicateHandler" />
+        </entry>
+      </map>
+    </property>
+  </bean>
+  <!-- 查重接口对象的注入end -->
+  <!-- 成果和项目引用功能 begin -->
+  <bean id="quoteFreemarkerConfiguration"
+    class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPaths">
+      <list>
+        <value>classpath:quotetemplate/award</value>
+        <value>classpath:quotetemplate/book</value>
+        <value>classpath:quotetemplate/conference</value>
+        <value>classpath:quotetemplate/journal</value>
+        <value>classpath:quotetemplate/patent</value>
+        <value>classpath:quotetemplate/thesis</value>
+        <value>classpath:quotetemplate/chapter</value>
+        <value>classpath:quotetemplate/project</value>
+        <value>classpath:quotetemplate/other</value>
+      </list>
+    </property>
+  </bean>
+  <!-- 用于生成成果显示消息的Freemarker配置_MJG_SCM-6129 -->
+  <bean id="pubFreemarkerConfiguration"
+    class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:template/publication" />
+  </bean>
+  <!-- BatchJobs创建器 -->
+  <bean id="batchJobsContextFactory" class="com.smate.center.batch.connector.factory.BatchJobsContextFactory" />
+  <!-- 用于生成txt信息内容的Freemarker配置start -->
+  <bean id="txtFreemarkerConfiguration"
+    class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:txttemplate" />
+  </bean>
+  <!-- 用于生成txt信息内容的Freemarker配置end -->
+  <bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+    <property name="templateLoaderPath" value="classpath:template/mailtemplate/sns" />
+  </bean>
+  <!-- 启动加载nsfc人名与机构名称词典 -->
+  <bean id="pdwhLoadNsfcDic" class=" com.smate.web.v8pub.service.query.PdwhLoadNsfcDic" lazy-init="false">
+    <property name="psnInsDicPath" value="${extpdwh.custom.dicpath}" />
+  </bean>
+</beans>

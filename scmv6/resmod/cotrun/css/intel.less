@@ -1,0 +1,64 @@
+@import "bootstrap.less"; //导入Bootstrap定义的样式
+
+/***英特尔项目自定义的样式***/
+body {
+  margin-top: @navbar-height;
+}
+.my-main {
+  background: #0062a9;
+  color: #fff;
+  a {
+    color: #fff;
+  }
+}
+.my-logo {
+  display: inline-block;
+  width: 63px;
+  height: 42px;
+  background: url("../img/hdr-spr.png") 0 -512px no-repeat;
+  margin-top: -10px;
+}
+@media screen and (min-width: 768px) {
+  .my-big {
+    position: relative;
+  }
+  .my-caption {
+    position: absolute;
+    bottom: 0;
+    padding: 1em;
+  }
+}
+/*小1*/
+.my-sm1 {
+  position: relative;
+  overflow: hidden;
+}
+.my-mask {
+  position: absolute;
+  top: 68%;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.6);
+  padding: 0.8em;
+  transition: top .3s linear;
+}
+.my-mask:hover {
+  top: 0;
+}
+/*小2的高度在不同屏幕下要随着小1而改变*/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .my-sm2 {
+    padding: 1.3em;
+  }
+  .my-sm2 .list-unstyled li {
+    line-height: 2em;
+  }
+}
+@media screen and (min-width: 992px){
+  .my-sm2 {
+    padding: 1.3em;
+  }
+  .my-sm2 .list-unstyled li {
+    line-height: 1.8em;
+  }
+}

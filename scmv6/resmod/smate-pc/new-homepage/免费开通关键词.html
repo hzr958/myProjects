@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+  <title>群组成员</title>
+  <link href="../../css_v5/css2016/header2016.css" rel="stylesheet" type="text/css" />
+  <link href="../../css_v5/css2016/scmjscollection.css" rel="stylesheet" type="text/css" />
+  <link href="../../css_v5/css2016/public2016.css" rel="stylesheet" type="text/css" />
+  <link href="../../css_v5/css2016/footer2016.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="../js_v5/js2016/action.js"></script>
+  <script src="../js_v5/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript">
+        //模拟单选按钮
+        var obj={
+            typeSpan:"",
+            holderSpan:"",
+        };
+        function change(span)
+        {
+            $('span[name="'+$(span).attr('name')+'"]').each(function(){
+                if(this.checked&&this!=span)
+                {
+                    this.className="unchecked";
+                    this.checked=false;
+                }
+            });
+            obj[$(span).attr('name')]=span.innerHTML;
+            span.className="checked";
+            span.checked=true;
+            select();
+        }
+    </script>
+  <script src="../js_v5/js2016/jquery-1.9.1.min.js"></script>
+  <script>
+        //模拟复选框
+        $(function () {
+            $('.checkbox').on('click',function(){
+                if($(this).siblings("input[type='checkbox']").attr('checked')){
+                    $(this).removeClass('cur');
+                    $(this).siblings("input[type='checkbox']").removeAttr('checked')
+                }
+                else{
+                    $(this).addClass('cur');
+                    $(this).siblings("input[type='checkbox']").attr('checked','checked')
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+  <div class="header-t">
+    <div class="header_wrap-t">
+      <a href="#" class="logo fl"></a>
+      <div class="logining">
+        <div class="logining_icon">
+          <a href="#"><i class="question_icon"></i></a>
+        </div>
+        <div class="version_en">
+          <a href="#">English</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-t-clear"></div>
+  <div class="reg-banner"></div>
+  <div class="content-1200">
+    <div class="clear_h20"></div>
+    <div class="fillin-left">
+      <h1>免费开通科研之友账号</h1>
+      <h2 class="mt20">选择关键词</h2>
+      <h3>输入最多10个能代表你的关键词</h3>
+      <div class="enter_name">
+        <ul class="key_word">
+          <li>A010101*解析数论<a href="#" class="delect"></a></li>
+          <li>A010102*代数数论<a href="#" class="delect"></a></li>
+          <li>A010103*微积分<a href="#" class="delect"></a></li>
+          <li>陈晓明<a href="#" class="delect"></a></li>
+          <li>数据挖掘<a href="#" class="delect"></a></li>
+          <li>陈晓明<a href="#" class="delect"></a></li>
+          <li>数据挖掘<a href="#" class="delect"></a></li>
+          <li>陈晓明<a href="#" class="delect"></a></li>
+          <li>数据挖掘<a href="#" class="delect"></a></li>
+          <li>陈晓明<a href="#" class="delect"></a></li>
+        </ul>
+        <input type="text" value="输入关键词" class="key_input">
+      </div>
+      <h3 class="mt20">可以从以下推荐关键词中选择</h3>
+      <div class="recommend_kw">
+        <ul class="key_word_st">
+          <li>A010101*解析数论</li>
+          <li>A010102*代数数论</li>
+          <li>A010103*微积分</li>
+          <li>陈晓明</li>
+          <li>数据挖掘</li>
+          <li>陈晓明</li>
+          <li>数据挖掘</li>
+          <li>陈晓明</li>
+          <li>数据挖掘</li>
+          <li>陈晓明</li>
+        </ul>
+      </div>
+      <div class="ml20 mt20">
+        <input type="button" class="blue_btn mw100" value="下一步"><input type="button"
+          class="border_btn mw100 ml10" value="取消">
+      </div>
+    </div>
+    <div class="fillin-right">
+      <h2>加入科研之友</h2>
+      <ul>
+        <li><a href="#"><i class="icon-join-related01"></i>与合作者保持联系</a></li>
+        <li><a href="#"><i class="icon-join-related02"></i>推广科研成果</a></li>
+        <li><a href="#"><i class="icon-join-related03"></i>获取相关机会推荐</a></li>
+      </ul>
+    </div>
+    <div class="clear_h20"></div>
+  </div>
+  <div class="footer">
+    <div class="footer_wrap">
+      <div class="scholarmate-code">
+        <img src="../img/code.jpg" width="85" height="85"> <span>关注科研之友</span>
+      </div>
+      <div class="footer_cont">
+        <p>
+          <a href="#">关于我们</a>|<a href="#">隐私政策</a>|<a href="#">服务条款</a>|<a href="#">联系我们</a>|<a href="#">人才招聘</a>
+        </p>
+        <p>
+          © 2012 爱瑞思 粤ICP备11010329号<img src="../img/beian.png"> 粤公网安备 4403052000213
+        </p>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../js_v5/js2016/jquery-2.1.1.min.js.js"></script>
+  <script language="javascript">
+    var s1=document.getElementById("input_default01");
+    var s2=document.getElementById("input_default02");
+    var s3=document.getElementById("input_default03");
+    var s4=document.getElementById("input_default04");
+    s1.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s1.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s1.onkeydown=function(){this.style.color='#333'};
+    s2.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s2.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s2.onkeydown=function(){this.style.color='#333'};
+    s3.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s3.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s3.onkeydown=function(){this.style.color='#333'};
+    s4.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s4.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s4.onkeydown=function(){this.style.color='#333'};
+</script>
+</body>
+</html>

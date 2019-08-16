@@ -1,0 +1,122 @@
+.sie_lsit_a2{
+    /* display: inline-block; */
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 0px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* 2018.9.12 主要用于人员列表 */
+.sie_lsit_p2 {
+  display: inline-block;
+  max-width: 650px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 0px;
+  font-size: 14px;
+  color: #333;
+}
+.sie_lsit_p2:before {
+  content: "";
+  float: left;
+  width: 2px;
+  height: 100%;
+}
+.sie_lsit_p2:after {
+    content: "...";
+  color: #1265cf;
+  box-sizing: content-box;
+  float: right;
+  position: relative;
+  top: -24px;
+  height: 20px;
+  left: 100%;
+  width: 80px;
+  margin-left: -80px;
+  padding-right: 2px;
+  text-align: right;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+  font-size: 32px;
+  line-height: 2px;
+}
+.multipleline-ellipsis__content-box {
+  float: right;
+  width: 100%;
+  margin-left: -2px;
+  white-space: pre-wrap;
+}
+.ellipsis_divv{
+  max-width: 600px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 2018.9.12 主要用于站内站外的三大功能：专利、成果和项目的列表 */
+.sie_lsit_p3 {
+  display: inline-block;
+  max-width: 650px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 0px;
+  font-size: 14px;
+  color: #333;
+}
+.sie_lsit_p3:before {
+  content: "";
+  float: left;
+  width: 2px;
+  height: 100%;
+}
+.sie_lsit_p3:after {
+    content: "...";
+  color: #1265cf;
+  box-sizing: content-box;
+  float: right;
+  position: relative;
+  top: -25px;
+  height: 20px;
+  left: 100%;
+  width: 80px;
+  margin-left: -80px;
+  padding-right: 2px;
+  text-align: right;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+  font-size: 32px;
+  line-height: 2px;
+  cursor: pointer;
+}
+
+.sie_lsit_p4 {
+  display: inline-block;
+  max-width: 650px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 0px;
+  font-size: 14px;
+  color: #333;
+}
+.sie_lsit_p4:after {
+    content: "...";
+  color: #1265cf;
+  box-sizing: content-box;
+  float: right;
+  position: relative;
+  top: -10px;
+  height: 20px;
+  left: 100%;
+  width: 80px;
+  margin-left: -80px;
+  padding-right: 2px;
+  text-align: right;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+  font-size: 32px;
+  line-height: 2px;
+  cursor: pointer;
+}

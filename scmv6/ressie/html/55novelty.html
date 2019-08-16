@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/plugin/jquery.validate.css">
+<link rel="stylesheet" href="../css/administrator.css">
+<link rel="stylesheet" href="../css/common.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/ion.checkRadio.min.js"></script>
+<script src="../js/action.js"></script>
+</head>
+<body>
+  <div class="message">
+    <div class="message_conter">
+      <div class="sie_kingmaster_conter ">
+        <div class="seek sie_management_seek">
+          <p class="headline_1">
+            科研查新<span>（通过大数据技术，了解未来趋势，有针对性投入）</span>
+          </p>
+          <div class="clear"></div>
+        </div>
+        <div class="inspection_data pt14">
+          <div class="SIE_psninfor-item">
+            <div class="SIE_psninfor-item_left">
+              <span>标题：</span>
+            </div>
+            <div class="SIE_psninfor-item_right">
+              <div class="SIE_psninfor-item_right-content sie_service_top">
+                <input type="text" class="SIE_psninfor-item_right-content_input" value="面向产业链协同SaaS平台多源信息动态集成安全技术研究">
+              </div>
+            </div>
+          </div>
+          <div class="SIE_psninfor-item">
+            <div class="SIE_psninfor-item_left">
+              <span>摘要：</span>
+            </div>
+            <div class="SIE_psninfor-item_right">
+              <div class="SIE_psninfor-item_right-content">
+                <textarea name="" id="" cols="30" rows="10" class="textarea_original w715">针对产业链协同SaaS平台企业群以盟主企业为核心的业务流定制过程中的流程规则编排、存储/访问以及执行控制3个环节可能存在的安全隐患,建立了基于数字签名及业务实例关联的业务流程安全控制模型,对XML数字签名和验证模式、存储策略及模型执行策略进行   了研究,提出了基于用户身份认证和业务实例关联的安全签名、存储和执行算法。</textarea>
+                <!--<input type="text" class="SIE_psninfor-item_right-content_input">-->
+              </div>
+            </div>
+          </div>
+          <div class="SIE_psninfor-item">
+            <div class="SIE_psninfor-item_left">
+              <span>选择关键词：</span>
+            </div>
+            <div class="SIE_psninfor-item_right">
+              <div class="w1042 dj_s">
+                <div class="key_word-member ds_c">
+                  <a href="#">混合动力<b></b></a> <a href="#">地面供电<b></b></a> <a href="#">无线充电<b></b></a> <a href="#">定位技术<b></b></a>
+                  <a href="#">测速技术<b></b></a>
+                </div>
+                <a href="#" class="btn_refresh ml10"><i class="icon_common icon-refresh mr4"></i>重新抽取</a>
+                <div class="key_word-member ml20">
+                  <input type="text" placeholder="请输入关键词" id="keyword"> <a href="#" class="increased"
+                    id="key_increased" onclick="str();"><span></span>添加关键词</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul id="sie_join" class="sie_join sie_join_novelty bt mt12">
+          <li id="four1" onclick="setTab('four',1,5)" class="hover"><a>科研趋势</a>
+          <p></p></li>
+          <li id="four2" onclick="setTab('four',2,5)" class=""><a>关联研究</a>
+          <p></p></li>
+          <li id="four3" onclick="setTab('four',3,5)" class=""><a>相关学科</a>
+          <p></p></li>
+          <li id="four4" onclick="setTab('four',4,5)" class=""><a>科研人员</a>
+          <p></p></li>
+          <li id="four5" onclick="setTab('four',5,5)" class=""><a>科研单位</a>
+          <p></p></li>
+        </ul>
+        <div>
+          <div id="con_four_1" style="display: block;">
+            <img src="../images/sie_field.png" alt="" class="mt30">
+          </div>
+          <div id="con_four_2" style="display: none;"></div>
+          <div id="con_four_3" style="display: none;"></div>
+          <div id="con_four_4" style="display: none;"></div>
+          <div id="con_four_5" style="display: none;"></div>
+        </div>
+      </div>
+      <!--<div class="message_conter_right">-->
+      <!--<div class="seek2">文档要求：</div>-->
+      <!--<div class="seek_1">-->
+      <!--<p>单个文档不超过100MB</p>-->
+      <!--<p>单个文档不超过400页</p>-->
+      <!--<p>文档内至少包含20个词</p>-->
+      <!--<p>支持格式：Word、PDF</p>-->
+      <!--</div>-->
+      <!--</div>-->
+    </div>
+  </div>
+  <script>
+    function str(){
+        var st=document.getElementById("key_increased");
+        st.style.display="none";
+        var s=document.getElementById("keyword");
+        s.style.display="block";
+    }
+</script>
+</body>
+</html>

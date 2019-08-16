@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+  <description>memcached缓存服务</description>
+
+  <!--Spring memcached 客户端工厂-->
+  <!--
+  <bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
+    <property name="servers" value="${memcached.url}"/>
+    &lt;!&ndash; 指定要使用的协议(BINARY,TEXT),默认是TEXT &ndash;&gt;
+    <property name="protocol" value="BINARY"/>
+    &lt;!&ndash; 设置默认的转码器(默认以net.spy.memcached.transcoders.SerializingTranscoder) &ndash;&gt;
+    <property name="transcoder">
+      <bean class="net.spy.memcached.transcoders.SerializingTranscoder">
+        <property name="compressionThreshold" value="1024"/>
+      </bean>
+    </property>
+    &lt;!&ndash; 以毫秒为单位设置默认的操作超时时间 &ndash;&gt;
+    <property name="opTimeout" value="${memcached.opTimeout}"/>
+    <property name="timeoutExceptionThreshold" value="1998"/>
+    &lt;!&ndash; 设置哈希算法 &ndash;&gt;
+    <property name="hashAlg">
+      <value type="net.spy.memcached.DefaultHashAlgorithm">KETAMA_HASH</value>
+    </property>
+    &lt;!&ndash; 设置定位器类型(ARRAY_MOD,CONSISTENT),默认是ARRAY_MOD &ndash;&gt;
+    <property name="locatorType" value="CONSISTENT"/>
+    &lt;!&ndash; 设置故障模式(取消，重新分配，重试)，默认是重新分配 &ndash;&gt;
+    <property name="failureMode" value="Redistribute"/>
+    &lt;!&ndash; 若使用Nagle算法，设置为true &ndash;&gt;
+    <property name="useNagleAlgorithm" value="false"/>
+  </bean>
+  -->
+  <!--
+  <bean id="jobCacheService" class="com.smate.center.job.framework.service.impl.SimpleJobCacheServiceImpl">
+    <property name="memcachedClient" ref="memcachedClient"></property>
+  </bean>
+  -->
+</beans>

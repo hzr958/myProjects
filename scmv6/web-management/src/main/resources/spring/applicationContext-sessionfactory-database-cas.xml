@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jee="http://www.springframework.org/schema/jee" xmlns:task="http://www.springframework.org/schema/task"
+  xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd 
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd"
+  default-lazy-init="false">
+  <description>Spring数据源配置文件</description>
+  <!-- 数据源配置,使用应用服务器的数据库连接池 -->
+  <jee:jndi-lookup id="casDataSource" jndi-name="java:comp/env/jdbc/cas" />
+  <!-- 使用annotation 自动注册bean,并保证@Required,@Autowired的属性被注入 -->
+  <!-- Hibernate配置 -->
+  <bean id="sessionFactory-cas" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <property name="dataSource" ref="casDataSource" />
+    <!-- <property name="namingStrategy"> <bean class="org.hibernate.cfg.ImprovedNamingStrategy" /> </property> -->
+    <property name="hibernateProperties">
+      <props>
+        <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+        <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+        <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+        <prop key="hibernate.cache.use_second_level_cache">true</prop>
+        <prop key="hibernate.cache.use_query_cache">true</prop>
+        <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory
+        </prop>
+        <prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop>
+        <prop key="net.sf.ehcache.configurationResourceName">${hibernate.ehcache_config_file_cas}</prop>
+        <prop key="hibernate.jdbc.batch_size">50</prop>
+        <prop key="hibernate.search.default.indexBase">${hibernate.search_index_direct}</prop>
+      </props>
+    </property>
+    <property name="packagesToScan">
+      <list>
+        <value>com.smate.core.base.utils.model.cas.security</value>
+        <value>com.smate.core.base.utils.model.local</value>
+      </list>
+    </property>
+  </bean>
+  <!-- 事务管理器配置,单数据源事务 -->
+  <bean id="transactionManager-cas" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    <property name="sessionFactory" ref="sessionFactory-cas" />
+  </bean>
+  <!-- 使用annotation定义事务 -->
+  <tx:annotation-driven transaction-manager="transactionManager-cas" />
+</beans>

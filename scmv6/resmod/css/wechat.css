@@ -1,0 +1,647 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/resmod/fonts/MaterialIcons-Regular.woff2) format('woff2'), url(/resmod/fonts/MaterialIcons-Regular.woff)
+    format('woff'), url(/resmod/fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address,
+  big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, b, u, i, center, dl, dt,
+  dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+  details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark,
+  audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: Helvetica;
+}
+
+input, textarea {
+  border: 0;
+  outline: 0;
+  text-indent: 10px;
+  -webkit-appearance: none;
+  margin: 0;
+  padding: 0
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul, li {
+  list-style: none
+}
+
+blockquote, q {
+  quotes: none
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+body {
+  font-size: 1em;
+  background-color: #e7ecf7;
+}
+
+body, html {
+  height: 100%;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: none;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
+}
+
+img {
+  border: 0
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+}
+
+select, input {
+  vertical-align: middle
+}
+
+.spacer {
+  clear: both;
+  font-size: 0;
+  height: 0
+}
+
+a {
+  color: #aaaaaa;
+  text-decoration: none
+}
+
+a:hover {
+  color: #aaaaaa;
+}
+/* nav_bar */
+.nav_bar {
+  width: 100%;
+  height: 38px;
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #d3d3d3; /* position: fixed; */
+  top: 0;
+}
+
+.nav_bar li {
+  width: 33%;
+  height: 38px;
+  float: left;
+  line-height: 38px;
+  text-align: center;
+  color: #2a2a2a;
+}
+
+.nav_bar li a {
+  width: 100%;
+  height: 38px;
+  display: inline-block;
+}
+
+.nav_bar li+li {
+  border-left: 1px solid #d3d3d3;
+}
+
+.nav_bar li i {
+  width: 16px;
+  height: 16px;
+  background-image: url(../images/wechat/sm_icon.png);
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-size: cover;
+  vertical-align: middle;
+  margin-left: 8px;
+  margin-bottom: 3px;
+}
+
+.nav_bar li i.filter {
+  background-position: 0 0;
+}
+
+.nav_bar li i.filter_down {
+  background-position: -20px 0;
+}
+
+.nav_bar li i.time_up {
+  background-position: -40px 0;
+}
+
+.nav_bar li i.time_down {
+  background-position: -60px 0;
+}
+
+.nav_bar span {
+  line-height: 38px;
+}
+/*.nav_bar span.cur{ background:#3963ab; color:#fff;}*/
+.nav_bar input[type="checkbox"] {
+  -webkit-appearance: checkbox;
+  vertical-align: middle;
+  margin: -2px 5px 0 15px;
+}
+/*.nav_bar li.on { border-bottom: 2px solid #39639f }*/
+.wrap_com {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  border-top: 1px solid #e4e4e4;
+  padding-top: 52px;
+}
+
+.wrap_com dl {
+  height: auto;
+  border-bottom: 1px solid #e4e4e4;
+  padding: 15px;
+  line-height: 150%;
+}
+
+.wrap_com dt {
+  color: #39639f;
+  font: normal 1.16rem "Microsoft Yahei";
+}
+
+.wrap_com dd {
+  color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: normal 1.16rem "Microsoft Yahei";
+}
+
+.wrap_com dd span {
+  color: #999999;
+  font: normal 1.16rem "Microsoft Yahei";
+}
+
+.dz_icon, .fx_icon, .pl_icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url("../images/mobile/icon.png") no-repeat;
+  display: inline-block;
+  background-size: 12.5rem 12.5rem;
+  -o-background-size: 12.5rem 12.5rem;
+  -webkit-background-size: 12.5rem 12.5rem;
+  -moz-background-size: 12.5rem 12.5rem;
+  vertical-align: middle;
+  margin-right: 0.21rem;
+}
+
+.dz_icon {
+  background-position: 0 -5.87rem;
+}
+
+.fx_icon {
+  background-position: -1.917rem -5.87rem;
+}
+
+.pl_icon {
+  background-position: -3.83rem -5.87rem;
+}
+
+.wrap_com dd.qst {
+  margin-top: 5px;
+}
+
+.btn {
+  padding: 0 10px;
+  height: 28px;
+  line-height: 28px;
+  display: inline-block;
+  border: 1px solid #c2cbe1;
+  background: #edf2f9;
+  border-radius: 3px;
+  color: #525151;
+}
+
+.btn1 {
+  padding: 0 10px;
+  height: 28px;
+  line-height: 28px;
+  display: inline-block;
+  border: 1px solid #c9cdd1;
+  background: #f9f9f9;
+  border-radius: 3px;
+  color: #666666;
+}
+
+.wrap_com dd a+a {
+  margin-left: 10px;
+}
+
+.detail {
+  line-height: 150%;
+  background: #FFF;
+  padding: 15px;
+  height: auto;
+}
+
+.detail dl {
+  
+}
+
+.detail dl h2 {
+  font-size: 1.3em;
+  line-height: 1.3em;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.detail dl dt {
+  margin-top: 5px;
+}
+
+.detail dl dd {
+  color: #999999;
+  margin-top: 5px;
+}
+
+.detail h3 {
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 20px 0 5px;
+}
+
+.detail p {
+  
+}
+/* body背景 */
+.bdbg {
+  height: 100%;
+  background: url(../images/wechat/bg.png) no-repeat center bottom;
+  background-size: 100% auto;
+}
+/* logo */
+.logo {
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  background: url(../images/wechat/logo.png) no-repeat center #eaedf3;
+  background-size: cover;
+}
+/*登陆*/
+.content {
+  padding: 0 20px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.content p {
+  text-align: center;
+  color: #ff5757;
+  margin-top: 20px;
+}
+
+input::-webkit-input-placeholder {
+  color: #999 !important;
+}
+
+input:-moz-placeholder {
+  color: #999 !important;
+}
+
+input::-moz-placeholder {
+  color: #999 !important;
+}
+
+input:-ms-input-placeholder {
+  color: #999 !important;
+}
+
+.l_input {
+  height: 35px;
+  line-height: 35px;
+  border: 1px solid #b3bfd7;
+  background: #f3f5fb;
+  border-radius: 30px;
+  color: #666666;
+  margin-top: 20px;
+  position: relative;
+}
+
+.ui_input {
+  width: 100%;
+  height: 35px;
+  font-size: 1em;
+  background: none;
+  display: block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+[class*=icon_]+.ui_input {
+  padding-left: 30px
+}
+
+[class*=icon_] {
+  display: block;
+  background: url(../images/wechat/sm_icon.png) no-repeat;
+  background-size: cover;
+}
+
+.icon_user {
+  background-position: -100px 0;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 12px;
+  top: 7px
+}
+
+.icon_pw {
+  background-position: -126px 0;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 12px;
+  top: 7px
+}
+
+.yzm_pic {
+  width: 100px;
+  height: 35px;
+  float: right;
+  margin-top: 20px;
+}
+
+.yzm_input {
+  margin-right: 110px;
+}
+
+.log_btn {
+  width: 100%;
+  height: 42px;
+  border-radius: 30px;
+  background: #2e4b89;
+  border: 1px solid #082258;
+  margin-top: 20px;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/*---类型选择---*/
+#type {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  z-index: 999;
+  display: none;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+#type dl {
+  width: 100%;
+  position: absolute;
+  z-index: 1000;
+}
+
+#type dd {
+  height: 39px;
+  line-height: 39px;
+  margin: 0 0;
+  padding-left: 35px;
+  cursor: pointer;
+  color: #3f3f3f;
+  background: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#type dd a {
+  width: 100%;
+  color: #3f3f3f;
+  border-bottom: 1px solid #e8e8e8;
+  display: inline-block;
+  text-align: left;
+}
+
+#type dd:last-child a {
+  border-bottom: none;
+}
+
+#type dd a:hover, #type dd.cur a {
+  color: #2b72d4;
+}
+
+#type dd:hover, #type dd.cur {
+  background: url(../images/wechat/sel_icon.png) no-repeat 10px 10px #fff;
+  background-size: 16px 16px;
+}
+
+/*---类型选择---*/
+#tags {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  z-index: 999;
+  display: none;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+#tags dl {
+  width: 100%;
+  position: absolute;
+  z-index: 1000;
+}
+
+#tags dd {
+  height: 39px;
+  line-height: 39px;
+  margin: 0 0;
+  padding-left: 35px;
+  cursor: pointer;
+  color: #3f3f3f;
+  background: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#tags dd a {
+  width: 100%;
+  color: #3f3f3f;
+  border-bottom: 1px solid #e8e8e8;
+  display: inline-block;
+  text-align: left;
+}
+
+#tags dd:last-child a {
+  border-bottom: none;
+}
+
+#tags dd a:hover, #tags dd.cur a {
+  color: #2b72d4;
+}
+
+#tags dd:hover, #tags dd.cur {
+  background: url(../images/wechat/sel_icon.png) no-repeat 10px 10px #fff;
+  background-size: 16px 16px;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0 !important;
+  position: absolute;
+  top: 40px;
+}
+
+.wrap_com dd.cz a {
+  color: #aaaaaa;
+}
+
+.fund-details_infortitle {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  color: #333;
+}
+
+.fund-details_infor-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.fund-details_Main-title {
+  color: #333333;
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.fund-details_Sub-title {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #999999;
+}
+
+.fund-details_infor-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.fund-details_infor-item_title {
+  font-size: 14px;
+  padding: 10px 0 5px;
+  color: #333333;
+  font-weight: bold;
+}
+
+.fund-container_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 8px 0px;
+  padding: 4px 4px 4px 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.fund-container_list-name {
+  color: #333;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 22px;
+}
+
+.fund-container_list-agency {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #666;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.fund-container_list-date {
+  max-width: calc(100% - 70px);
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.fund__page-header {
+  position: fixed !important;
+  top: 0px;
+  overflow: hidden;
+  width: 100%;
+  height: 48px;
+  text-align: center;
+  line-height: 48px;
+  color: #fff;
+  font-size: 18px;
+  background: url(../smate-pc/img/topbackground.png);
+  display: flex;
+  justify-content: space-between;
+  z-index: 999;
+}
+
+.fund__page-icon {
+  width: 10%;
+  justify-content: center;
+  align-items: center;
+  line-height: 65px;
+}
+
+.fund__page-icon i {
+  font-size: 30px;
+}
+
+.fund__page-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin-right: 20px;
+}

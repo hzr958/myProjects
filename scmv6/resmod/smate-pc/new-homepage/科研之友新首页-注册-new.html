@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+  <title>科研之友注册</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../../css_v5/css2016/newfirstpage.css" rel="stylesheet" type="text/css" />
+  <!--   <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+  <script src="jquery-1.9.1.min.js"></script> -->
+  <script>
+  $(function () {
+    $('.checkbox').on('click',function(){
+      if($(this).siblings("input[type='checkbox']").attr('checked')){
+        $(this).removeClass('cur');
+        $(this).siblings("input[type='checkbox']").removeAttr('checked')
+      }else{
+        $(this).addClass('cur');
+        $(this).siblings("input[type='checkbox']").attr('checked','checked')
+      }
+    });
+    var foculist = document.getElementsByClassName("text_login");
+    for(var i = 0; i<foculist.length;i++ ){
+      foculist[i].onfocus = function(obj){
+        $(this).closest(".tip__container-flag").find(".text_login-tip")[0].style.border="1px solid #288aed";
+          $(this).closest(".tip__container-flag").find(".text_login-tip")[0].style.borderRightStyle="none";
+      }
+      foculist[i].onblur = function(){
+        $(this).closest(".tip__container-flag").find(".text_login-tip")[0].style.border="1px solid #ddd";
+        $(this).closest(".tip__container-flag").find(".text_login-tip")[0].style.borderRightStyle="none";
+      }
+    }
+  });
+</script>
+  <body>
+    <div class="header">
+      <div class="hd_wrap">
+        <a href="#" class="logo"><img src="logo.png"></a>
+        <div class="logining" style="display: flex;">
+          <input type="text" class="top_login_input input_default" value="用户名" id="input_default05"><input
+            type="text" value="密码" class="top_login_input input_default" id="input_default06"><input
+              type="button" class="top_login_btn" value="登陆">
+                <div class="other_load-method" style="display: flex;">
+                  <div class="other_load-icon"></div>
+                  <div class="other_load-title" style="font-size: 14px; color: #ccc;">使用其他的账号登录</div>
+                </div>
+                <div class="logining_icon">
+                  <a href="#"><i class="question_icon"></i></a>
+                </div>
+                <div class="version_en">
+                  <a href="#">English</a>
+                </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="register">
+        <div class="register_wrap">
+          <div class="register_slogan"></div>
+          <div class="login_cont checkbox-con">
+            <h2 class="tc">
+              连接人与知识
+              <p>立即注册</p>
+            </h2>
+            <ul>
+              <li class="targetloca tip__container-flag" style="display: flex; flex-direction: column;">
+                <div style="display: flex; align-items: center;">
+                  <div class="email_bg text_login-tip"
+                    style="width: 45px; height: 44px; border-width: 1px; border-style: solid none solid solid; border-color: rgb(221, 221, 221); border-image: initial;"></div>
+                  <input type="text" placeholder="邮箱" class="text_login" id="input_default01"
+                    style="border-left-style: none; width: 290px; padding-left: 4px; color: rgb(51, 51, 51);" />
+                </div>
+              </li>
+              <li class="targetloca tip__container-flag" style="display: flex; flex-direction: column;">
+                <div style="display: flex; align-items: center;">
+                  <div class="password_bg text_login-tip"
+                    style="width: 45px; height: 44px; border-width: 1px; border-style: solid none solid solid; border-color: rgb(221, 221, 221); border-image: initial;"></div>
+                  <input type="text" placeholder="密码" class="text_login" id="input_default02"
+                    style="border-left-style: none; width: 290px; padding-left: 4px; color: rgb(51, 51, 51);" />
+                </div>
+              </li>
+              <li class="targetloca tip__container-flag" style="display: flex; flex-direction: column;">
+                <div style="display: flex; align-items: center;">
+                  <div class="chinese_bg text_login-tip"
+                    style="width: 45px; height: 44px; border-width: 1px; border-style: solid none solid solid; border-color: rgb(221, 221, 221); border-image: initial;"></div>
+                  <input type="text" placeholder="姓" class="text_login" id="input_default03"
+                    style="border-left-style: none; width: 290px; padding-left: 4px; color: rgb(51, 51, 51);" />
+                </div>
+              </li>
+              <li class="targetloca tip__container-flag" style="display: flex; flex-direction: column;">
+                <div style="display: flex; align-items: center;">
+                  <div class="chinese_bg text_login-tip"
+                    style="width: 45px; height: 44px; border-width: 1px; border-style: solid none solid solid; border-color: rgb(221, 221, 221); border-image: initial;"></div>
+                  <input type="text" placeholder="名" class="text_login" id="input_default04"
+                    style="border-left-style: none; width: 290px; padding-left: 4px; color: rgb(51, 51, 51);" />
+                </div>
+              </li>
+              <li><input type="button" value="注&nbsp;&nbsp;&nbsp;&nbsp;册" class="login_btn">
+                  <p class="other_l f666">
+                    <span class="check_fx"><input type="checkbox" class="ipt-hide"> <label
+                        class="checkbox"></label></span> 我已阅读并同意遵守 <a href="#" class="blue">服务条款</a> 和 <a href="#" class="blue">隐私政策</a>
+                  </p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer__cont">
+        <div class="footer__cont--code">
+          <img src="ky-code.jpg">
+            <p>扫码关注科研之友</p>
+        </div>
+        <div class="footer__cont--solution">
+          <h3>解决方案</h3>
+          <ul>
+            <li><a href="#">科技管理</a></li>
+            <li><a href="#">成果推广</a></li>
+            <li><a href="#">技术转移</a></li>
+          </ul>
+        </div>
+        <div class="footer__cont--search">
+          <div class="search">
+            <a href="#" class="tp_box"><i class="lt_icon"></i></a> <input type="text"> <a href="#" class="s_btn"></a>
+          </div>
+          <ul>
+            <li><a href="#">机构</a></li>
+            <li><a href="#">群组</a></li>
+            <li><a href="#">基金</a></li>
+            <li><a href="#">项目</a></li>
+            <li><a href="#">论文</a></li>
+            <li><a href="#">专利</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © 2016 深圳市科研之友网络服务有限公司 粤ICP备16046710号-1 &nbsp;&nbsp;&nbsp;&nbsp;<img src="security_icon.png"> 粤公网安备
+          44030502000213号 
+      </div>
+    </div>
+    <script language="javascript">
+    var s1=document.getElementById("input_default01");
+    var s2=document.getElementById("input_default02");
+    var s3=document.getElementById("input_default03");
+    var s4=document.getElementById("input_default04");
+	var s5=document.getElementById("input_default05");
+    var s6=document.getElementById("input_default06");
+    s1.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s1.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s1.onkeydown=function(){this.style.color='#333'};
+    s2.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s2.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s2.onkeydown=function(){this.style.color='#333'};
+    s3.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s3.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s3.onkeydown=function(){this.style.color='#333'};
+    s4.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s4.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s4.onkeydown=function(){this.style.color='#333'};
+	s5.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s5.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s5.onkeydown=function(){this.style.color='#333'};
+    s6.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s6.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s6.onkeydown=function(){this.style.color='#333'};
+</script>
+  </body>
+</html>

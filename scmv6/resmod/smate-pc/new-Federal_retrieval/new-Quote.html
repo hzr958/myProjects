@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<link href="../css/scmpcframe.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+        window.onload = function(){
+            
+            var closeele = document.getElementsByClassName("new-quote_container-closetip")[0];
+            var boxele = document.getElementsByClassName("new-quote_container")[0];
+            boxele.style.left = (window.innerWidth - boxele.offsetWidth)/2 + "px";
+            boxele.style.bottom = (window.innerHeight - boxele.offsetHeight)/2 + "px";
+            window.onresize = function(){
+                boxele.style.left = (window.innerWidth - boxele.offsetWidth)/2 + "px";
+                boxele.style.bottom = (window.innerHeight - boxele.offsetHeight)/2 + "px";
+            }
+            closeele.onclick = function(){
+                this.closest(".new-quote_container").style.bottom = -600 + "px";
+                this.closest(".background-cover").style.display = "none";
+            }
+
+        }
+
+        function showquote(){   //每一个引用需绑定的方法
+            var boxele = document.getElementsByClassName("new-quote_container")[0];
+            document.getElementsByClassName("background-cover")[0].style.display = "block";
+            boxele.style.left = (window.innerWidth - boxele.offsetWidth)/2 + "px";
+            boxele.style.bottom = (window.innerHeight - boxele.offsetHeight)/2 + "px";            
+        }
+    </script>
+<style type="text/css">
+.new-quote_container {
+  position: fixed;
+  bottom: -600px;
+}
+
+.new-quote_container-closetip {
+  cursor: pointer;
+}
+
+.new-quote_container-closetip:hover {
+  color: green;
+}
+</style>
+</head>
+<body>
+  <div
+    style="width: 120px; height: 32px; border: 1px solid #ddd; text-align: center; line-height: 32px; cursor: pointer;"
+    id="click" onclick="showquote()">引用</div>
+  <div class="background-cover" style="display: none;">
+    <div class="new-quote_container">
+      <div class="new-quote_container-header">
+        <span class="new-quote_container-header_title">引用</span> <i class="material-icons new-quote_container-closetip">close</i>
+      </div>
+      <div class="new-quote_container-body">
+        <div class="new-quote_container-body_title">复制并黏贴已排好的格式引文.</div>
+        <div class="new-quote_container-body_item">
+          <span class="new-quote_container-body_item-title">MLA</span> <span
+            class="new-quote_container-body_item-content">Shou, B M, Tan, Q, Sun, B W, …& Xie, W Z. (2018).
+            [Experience of wound treatment on extremely severe mass burn patients involved in August 2nd Kunshan factory
+            aluminum dust explosion accident].. Zhonghua Shao Shang Za Zhi, 34(6), 339-342.</span>
+        </div>
+        <div class="new-quote_container-body_item">
+          <span class="new-quote_container-body_item-title">APA</span> <span
+            class="new-quote_container-body_item-content">Shou, B M, Tan, Q, Sun, B W, …& Xie, W Z. (2018).
+            [Experience of wound treatment on extremely severe mass burn patients involved in August 2nd Kunshan factory
+            aluminum dust explosion accident].. Zhonghua Shao Shang Za Zhi, 34(6), 339-342.</span>
+        </div>
+        <div class="new-quote_container-body_item">
+          <span class="new-quote_container-body_item-title">Chicago</span> <span
+            class="new-quote_container-body_item-content">Shou, B M, Tan, Q, Sun, B W, …& Xie, W Z. (2018).
+            [Experience of wound treatment on extremely severe mass burn patients involved in August 2nd Kunshan factory
+            aluminum dust explosion accident].. Zhonghua Shao Shang Za Zhi, 34(6), 339-342.</span>
+        </div>
+        <div class="new-quote_container-body_item">
+          <span class="new-quote_container-body_item-title">科研之友</span> <span
+            class="new-quote_container-body_item-content">Shou, B M, Tan, Q, Sun, B W, …& Xie, W Z. (2018).
+            [Experience of wound treatment on extremely severe mass burn patients involved in August 2nd Kunshan factory
+            aluminum dust explosion accident].. Zhonghua Shao Shang Za Zhi, 34(6), 339-342.</span>
+        </div>
+        <div class="new-quote_container-body_item">
+          <span class="new-quote_container-body_item-title">GTB7714-2015</span> <span
+            class="new-quote_container-body_item-content">Shou, B M, Tan, Q, Sun, B W, …& Xie, W Z. (2018).
+            [Experience of wound treatment on extremely severe mass burn patients involved in August 2nd Kunshan factory
+            aluminum dust explosion accident].. Zhonghua Shao Shang Za Zhi, 34(6), 339-342.</span>
+        </div>
+      </div>
+      <div class="new-quote_container-footer">
+        <div class="new-quote_container-footer_close">关闭</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

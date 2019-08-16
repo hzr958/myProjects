@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>二次确认框</title>
+<link rel="stylesheet" type="text/css" href="confirm.css">
+<script type="text/javascript" src="confirm.js"></script>
+<script type="text/javascript">
+		window.onload = function(){
+			var target = document.getElementsByClassName("confirm-container")[0];
+			document.getElementById("btn").onclick = function(){
+				target.style.display = "block";
+				popconfirmbox({"screenbox":target});
+			}
+		}
+	</script>
+</head>
+<body>
+  <button id="btn">点击弹窗</button>
+  <div class="confirm-container" style="display: none;"></div>
+</body>
+</html>

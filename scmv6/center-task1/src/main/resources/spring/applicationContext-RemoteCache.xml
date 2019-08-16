@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+  default-lazy-init="true">
+  <description>远程中集缓存服务</description>
+  <bean id="memcacheClient" class="com.smate.core.base.utils.cache.IrisMemcachedClientFactoryBean">
+    <property name="memcachedSrvUrls" value="${memcache.common.url}" />
+  </bean>
+  <bean id="cacheService" class="com.smate.core.base.utils.cache.SpyMemCacheServiceImpl">
+    <property name="memcacheClient" ref="memcacheClient"></property>
+  </bean>
+  <!-- publication Ecache缓存服务 -->
+  <bean id="publicationCacheService" class="com.smate.center.task.single.service.pub.PublicationCacheServiceImpl">
+    <property name="enabled" value="${publication.cache}"></property>
+    <property name="cache" ref="pubCacheFactory" />
+  </bean>
+  <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+    <property name="shared" value="true" />
+    <property name="configLocation" value="classpath:${hibernate.ehcache_config_file}" />
+  </bean>
+  <bean id="pubCacheFactory" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+    <property name="cacheManager" ref="cacheManager" />
+    <property name="cacheName" value="publicationCache" />
+  </bean>
+</beans>

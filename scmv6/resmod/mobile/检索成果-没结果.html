@@ -1,0 +1,240 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+  content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>科研之友-微信端</title>
+<link href="css/common.css" rel="stylesheet" type="text/css">
+<link href="css/mobile.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script type=text/javascript>
+        function setTab(name,cursel,n){
+            for(i=1;i<=n;i++){
+                var menu=document.getElementById(name+i);
+                var con=document.getElementById("con_"+name+"_"+i);
+                menu.className=i==cursel?"hover":"";
+                con.style.display=i==cursel?"block":"none";
+            }
+        }
+    </script>
+</head>
+<body>
+  <div class="m-top">
+    <a href="javascript:history.go(-1)" class="fl"><i class="material-icons navigate_before">&#xe408;</i></a> <input
+      required placeholder="输入关键词检索" class="top_input sl_box fl" /><a href="javascript:;" class="clear"><i
+      class="material-icons clear">clear_black</i></a> <input value="搜索" type="button" class="t-ensure-btn">
+  </div>
+  <div class="top_clear"></div>
+  <div id="Tab_1">
+    <div class="Menubox_1">
+      <ul>
+        <li id="one1" onclick="setTab('one',1,3)" class="hover">论文</li>
+        <li id="one2" onclick="setTab('one',2,3)">专利</li>
+        <li id="one3" onclick="setTab('one',3,3)">人员</li>
+      </ul>
+    </div>
+    <div class="Contentbox_1">
+      <div id="con_one_1" class="hover">
+        <div class="content">
+          <div class="no_effort">
+            <h2 class="tl">Sorry, no results matching all your search terms were found.</h2>
+            <div class="no_effort_tip">
+              <span>Suggestions</span>
+              <p>Make sure that all words are spelled correctly.</p>
+              <p>Try synonyms or more general keywords.</p>
+              <p>Search in other categories or clear filters.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="con_one_2" style="display: none">
+        <div class="content">
+          <div class="no_effort">
+            <h2 class="tc">很抱歉，未找到与检索条件相关结果</h2>
+            <div class="no_effort_tip pl27">
+              <span>温馨提示： </span>
+              <p>检查输入条件是否正确.</p>
+              <p>尝试同义词或更通用关键词</p>
+              <p>更换检索类别或过滤条件</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="con_one_3" style="display: none">
+        <div class="content">
+          <div class="retrieve_member">
+            <dl>
+              <dd>
+                <a href="#"><img src="images/tx01.jpg">
+                <h3>Chen YudanChen YudanChen YudanChen YudanChen YudanChen YudanChen YudanChen Yudan</h3>
+                  <p>深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx02.jpg">
+                <h3>Deng, Karrie Ruch</h3>
+                  <p>深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx03.jpg">
+                <h3>部荷花</h3>
+                  <p>深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx04.jpg">
+                <h3>都敏俊</h3>
+                  <p>深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx01.jpg">
+                <h3>Chen Yudan</h3>
+                  <p>深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx02.jpg">
+                <h3>Deng, Karrie Ruch</h3>
+                  <p>深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx03.jpg">
+                <h3>部荷花</h3>
+                  <p>深圳大学特别研究助理 教授</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx04.jpg">
+                <h3>都敏俊</h3>
+                  <p>OSS Project Manager (Integrated</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx01.jpg">
+                <h3>Chen YudanChen YudanChen YudanChen YudanChen YudanChen YudanChen YudanChen Yudan</h3>
+                  <p>深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx01.jpg">
+                <h3>Chen YudanChen YudanChen YudanChen YudanChen YudanChen YudanChen YudanChen Yudan</h3>
+                  <p>深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx01.jpg">
+                <h3>Chen YudanChen YudanChen YudanChen YudanChen YudanChen YudanChen YudanChen Yudan</h3>
+                  <p>深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx02.jpg">
+                <h3>Deng, Karrie Ruch</h3>
+                  <p>深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx03.jpg">
+                <h3>部荷花</h3>
+                  <p>深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx04.jpg">
+                <h3>都敏俊</h3>
+                  <p>深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx01.jpg">
+                <h3>Chen Yudan</h3>
+                  <p>深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx02.jpg">
+                <h3>Deng, Karrie Ruch</h3>
+                  <p>深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx03.jpg">
+                <h3>部荷花</h3>
+                  <p>深圳大学特别研究助理 教授</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx04.jpg">
+                <h3>都敏俊</h3>
+                  <p>OSS Project Manager (Integrated</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx01.jpg">
+                <h3>Chen YudanChen YudanChen YudanChen YudanChen YudanChen YudanChen YudanChen Yudan</h3>
+                  <p>深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+              <dd>
+                <a href="#"><img src="images/tx01.jpg">
+                <h3>Chen YudanChen YudanChen YudanChen YudanChen YudanChen YudanChen YudanChen Yudan</h3>
+                  <p>深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理深圳大学特别研究助理</p>
+                  <p class="num_stat">
+                    <span>H指数(5)</span><span>成果数(115)</span><span>引用数(39)</span>
+                  </p></a>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="add_dmic">
+    <i class="material-icons">&#xe152;</i>
+  </div>
+</body>
+</html>

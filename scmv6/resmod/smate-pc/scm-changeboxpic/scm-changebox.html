@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="scm-changebox.css">
+<script type="text/javascript" src="scm-changebox_zh_CN.js"></script>
+<script type="text/javascript" src="scm-changebox.js"></script>
+<script type="text/javascript">
+        window.onload=function(){
+            var str = document.getElementsByClassName("dd2")[0];
+
+            str.addEventListener("click",function(){
+                var parnode = document.getElementsByClassName("target")[0];
+                parnode.style.display="block";
+               var cutpicinfor = function(imf){
+                    console.log(imf);
+                }
+                publicPicclipupload({"parelement":parnode,"scanwidth" : 120,"scanheight" : 120,"filecallback":cutpicinfor});
+            });    
+        }
+    </script>
+</head>
+<body>
+  <div class="dd2" style="cursor: pointer; z-index: 12;">点击我</div>
+  <div class="target" style="display: none;"></div>
+</body>
+</html>

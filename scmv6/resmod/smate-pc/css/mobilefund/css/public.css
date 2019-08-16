@@ -1,0 +1,520 @@
+@font-face {
+  font-family: myFirstFont;
+  /* src: url('../font/冬青黑体简体中文W3.otf') */
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address,
+  big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, b, u, i, center, dl, dt,
+  dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+  details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark,
+  audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: myFirstFont;
+}
+
+input, textarea {
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  margin: 0;
+  padding: 0
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block
+}
+
+body {
+  line-height: 1;
+}
+
+input::-webkit-input-placeholder {
+  color: #999;
+}
+
+input:-moz-placeholder {
+  color: #999;
+}
+
+input::-moz-placeholder {
+  color: #999;
+}
+
+input:-ms-input-placeholder {
+  color: #999;
+}
+
+ol, ul, li {
+  list-style: none
+}
+
+blockquote, q {
+  quotes: none
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+body, html {
+  height: 100%;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+  -webkit-user-select: none
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+}
+
+select, input {
+  vertical-align: middle
+}
+
+.spacer {
+  clear: both;
+  font-size: 0;
+  height: 0
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.f333 {
+  color: #333;
+}
+
+.f666 {
+  color: #666;
+}
+
+.f999 {
+  color: #999;
+}
+/*内容左边距中，左对齐不换行*/
+.ds_c {
+  display: flex;
+  align-items: center;
+}
+/*内容左开始，两边对齐，不换行*/
+.dj_s {
+  display: flex;
+  justify-content: space-between;
+}
+/*内容左居中开始，两边对齐,不换行*/
+.dj_sa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/*内容左边换行，居中对齐*/
+.dfw {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+/*内容中间对齐*/
+.ds_jc {
+  display: flex;
+  justify-content: center;
+}
+/*内容右边开始不换行，左对齐*/
+.d_fd {
+  display: flex;
+  flex-direction: row-reverse;
+}
+/*内容右边开始，两端对齐，不换行*/
+.dj_f {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+/*内容右边居中开始，两端对齐，不换行*/
+.dj_c {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+/*内容右边居中开始，两端对齐，换行*/
+.dj_w {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+/*内容两端居中对齐，不换行*/
+.df {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  color: #1265cf;
+  text-decoration: none;
+}
+
+.clear {
+  clear: both;
+}
+
+/*选择地区样式 开始*/
+.top {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.top__clear {
+  height: 3.167rem;
+}
+
+.top__mn {
+  height: 3.167rem;
+  background: -moz-linear-gradient(left, #1e5cb3, #2882d8);
+  background: -o-linear-gradient(left, #1e5cb3, #2882d8);
+  background: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#1e5cb3), to(#2882d8));
+  overflow: hidden;
+}
+
+.top__mn h1 {
+  width: calc(100% - 6.333rem);
+  height: 3.167rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  /*font-family: myFirstFont;*/
+  line-height: 3.167rem;
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  float: left;
+}
+
+.rtn__icon, .rtn__icon:active {
+  width: 3.167rem;
+  height: 3.167rem;
+  background: url("../images/return.png") no-repeat;
+  display: inline-block;
+  float: left;
+  background-size: 6.333rem 3.167rem;
+  -o-background-size: 6.333rem 3.167rem;
+  -webkit-background-size: 6.333rem 3.167rem;
+  -moz-background-size: 6.333rem 3.167rem;
+  cursor: pointer;
+}
+
+.rtn__icon {
+  background-position: 0 0;
+}
+
+.rtn__icon:active {
+  background-position: -3.167rem 0;
+}
+
+.delete__icon {
+  width: 3.167rem;
+  height: 3.167rem;
+  display: inline-block;
+  float: left;
+  background: url("../images/icon-delete_n.png") no-repeat;
+  background-size: 100%;
+  -o-background-size: 100%;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+}
+
+.delete__icon:active {
+  background: url("../images/icon-delete_h.png") no-repeat;
+  background-size: 100%;
+  -o-background-size: 100%;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+}
+
+.top__search--box {
+  margin: 0.625rem 0.833rem;
+  padding: 0 0.417rem;
+  height: 2.0rem;
+  border-radius: 0.25rem;
+  background: #fff;
+  overflow: hidden;
+  font-size: 0.833rem;
+  color: #ccc;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top__search--input {
+  width: calc(100% - 2.333rem);
+  font-family: myFirstFont;
+  font-size: 1.0rem;
+}
+
+.top__search--btn {
+  margin-top: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url(../images/icon-search.png) no-repeat;
+  background-size: 100%;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+}
+
+.region__list {
+  margin-left: 0.833rem;
+}
+
+.region__list ul li {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 0.833rem;
+  height: 2.833rem;
+  line-height: 2.833rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.region__list ul li a {
+  font-size: 1.083rem;
+  color: #333;
+}
+
+.region__list ul li:active, .region__list ul li a:active {
+  color: #1265cf;
+}
+
+.region__list ul li .icon__region--slt {
+  margin-top: 0.75rem;
+}
+
+.icon__region--slt {
+  width: 1.167rem;
+  height: 1.167rem;
+  display: inline-block;
+  float: right;
+  background: url(../images/icon-slt.png) no-repeat;
+  background-size: 1.167rem 1.167rem;
+  -o-background-size: 1.167rem 1.167rem;
+  -webkit-background-size: 1.167rem 1.167rem;
+  -moz-background-size: 1.167rem 1.167rem;
+}
+
+.top__input {
+  margin-top: 0.583rem;
+  margin-left: 0.833rem;
+  width: calc(100% - 1.667rem);
+  height: 2.0rem;
+  line-height: 2.0rem;
+  border-radius: 0.5rem;
+  padding-left: 1.667rem;
+  font-size: 1.083rem;
+  font-family: myFirstFont;
+  background: url(../images/search_icon.png) no-repeat #fff 0.208rem 0.375rem;
+  background-size: 1.25rem 1.25rem;
+  -moz-background-size: 1.25rem 1.25rem;
+  -webkit-background-size: 1.25rem 1.25rem;
+  -o-background-size: 1.25rem 1.25rem;
+}
+
+.top__ensure--btn {
+  margin: 0.583rem 0.833rem;
+  height: 2.0rem;
+  line-height: 2.0rem;
+  font-family: myFirstFont;
+  border: none;
+  background: none;
+  text-align: center;
+  color: #fff;
+  font-weight: normal;
+  font-size: 1.167rem;
+}
+
+.input__clear {
+  position: absolute;
+  margin-top: 1.167rem;
+  right: 4.583rem;
+  width: 0.833rem;
+  height: 0.833rem;
+  display: inline-block;
+  background: url(../images/close_icon.png) no-repeat;
+  background-size: 0.833rem 0.833rem;
+  -webkit-background-size: 0.833rem 0.833rem;
+  -moz-background-size: 0.833rem 0.833rem;
+  -o-background-size: 0.833rem 0.833rem;
+}
+
+.input__clear:active {
+  background: url(../images/close_icon-active.png) no-repeat;
+  background-size: 0.833rem 0.833rem;
+  -webkit-background-size: 0.833rem 0.833rem;
+  -moz-background-size: 0.833rem 0.833rem;
+  -o-background-size: 0.833rem 0.833rem;
+}
+
+.slt__region {
+  margin: 1.25rem 0 0.833rem;
+  padding: 0 0.833rem;
+  font-size: 1rem;
+  line-height: 1.0rem;
+  color: #666;
+  font-family: myFirstFont;
+}
+
+.focus__region {
+  padding: 0 0.833rem;
+}
+
+.focus__region a {
+  position: relative;
+  margin-right: 0.417rem;
+  display: inline-block;
+  padding: 0 0.833rem;
+  height: 2.333rem;
+  line-height: 2.333rem;
+  background: #f9f9f9;
+  border-radius: 0.208rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.focus__region a:active {
+  background: #f2f2f2;
+}
+
+.focus__region--delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.833rem;
+  height: 0.833rem;
+  display: inline-block;
+  background: url(../images/close_icon.png) no-repeat;
+  background-size: 0.833rem 0.833rem;
+  -webkit-background-size: 0.833rem 0.833rem;
+  -moz-background-size: 0.833rem 0.833rem;
+  -o-background-size: 0.833rem 0.833rem;
+}
+
+.focus__region--delete:active {
+  background: url(../images/close_icon-active.png) no-repeat;
+  background-size: 0.833rem 0.833rem;
+  -webkit-background-size: 0.833rem 0.833rem;
+  -moz-background-size: 0.833rem 0.833rem;
+  -o-background-size: 0.833rem 0.833rem;
+}
+
+.region__list--slt {
+  margin-left: 0.833rem;
+}
+
+.region__list--slt ul li {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 0.833rem;
+  height: 2.833rem;
+  line-height: 2.833rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.region__list--slt ul li a {
+  font-size: 1.0rem;
+  color: #666;
+}
+
+.region__list--slt ul li a:active {
+  color: #1265cf;
+}
+
+.region__list--slt ul li .icon__right--select {
+  margin-top: 0.75rem;
+}
+
+.icon__right--select {
+  width: 1.167rem;
+  height: 1.167rem;
+  display: inline-block;
+  float: right;
+  background: url(../images/icon-right-select_n.png) no-repeat;
+  background-size: 1.167rem 1.167rem;
+  -o-background-size: 1.167rem 1.167rem;
+  -webkit-background-size: 1.167rem 1.167rem;
+  -moz-background-size: 1.167rem 1.167rem;
+}
+
+.icon__right--select:active {
+  background: url(../images/icon-right-select_h.png) no-repeat;
+  background-size: 1.167rem 1.167rem;
+  -o-background-size: 1.167rem 1.167rem;
+  -webkit-background-size: 1.167rem 1.167rem;
+  -moz-background-size: 1.167rem 1.167rem;
+}
+
+/*选择地区样式 结束*/
+@media screen and (min-width:320px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+@media screen and (min-width:360px) {
+  html {
+    font-size: 85%;
+  }
+}
+
+@media screen and (min-width:375px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+@media screen and (min-width:414px) {
+  html {
+    font-size: 96%;
+  }
+}
+
+@media screen and (min-width:480px) {
+  html {
+    font-size: 110.5%;
+  }
+}
+
+@media screen and (min-width:568px) {
+  html {
+    font-size: 129%;
+  }
+}
+
+@media screen and (min-width:639px) {
+  html {
+    font-size: 150%;
+  }
+}

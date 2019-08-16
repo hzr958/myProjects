@@ -1,0 +1,25 @@
+/*! jQuery Mobile custiom 1.4.5 | Git HEADhash: 68e55e7 <> 2014-10-31T17:33:30Z | (c) 2010, 2014 jQuery Foundation, Inc. | jquery.org/license */
+body.ui-mobile-viewport, div.ui-mobile-viewport {
+  overflow-x: hidden;
+}
+
+/* .ui-loader .ui-icon-loading {
+	background-color: #000;
+	display: block;
+	margin: 0;
+	width: 2.75em;
+	height: 2.75em;
+	padding: .0625em;
+	-webkit-border-radius: 2.25em;
+	border-radius: 2.25em
+}
+ */
+.ui-corner-all {
+  -webkit-border-radius: .3125em;
+  border-radius: .3125em;
+  display: none;
+}
+
+.ui-corner-all>h1 {
+  text-color: #FFF;
+}

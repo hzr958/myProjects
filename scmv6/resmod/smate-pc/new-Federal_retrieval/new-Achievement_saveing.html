@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link href="../css/scmpcframe.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+    	window.onload = function(){
+    		var fixedele = document.getElementsByClassName("new-Achievement_saveing")[0];
+    		fixedele.style.left = (window.innerWidth - fixedele.offsetWidth)/2 + "px";
+    		fixedele.style.bottom = (window.innerHeight - fixedele.offsetHeight)/2 + "px";
+    		window.onresize = function(){
+    			fixedele.style.left = (window.innerWidth - fixedele.offsetWidth)/2 + "px";
+    		    fixedele.style.bottom = (window.innerHeight - fixedele.offsetHeight)/2 + "px";
+    		}
+    	}
+    </script>
+</head>
+<body>
+  <div class="bckground-cover">
+    <div class="new-Achievement_saveing">
+      <div class="new-Achievement_saveing-icon">
+        <img src="../img/icon_schedule.gif">
+      </div>
+      <div class="new-Achievement_saveing-tip">成果保存中,请稍后...</div>
+    </div>
+  </div>
+</body>
+</html>

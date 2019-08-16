@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/scmpcframe.css">
+	<style type="text/css">
+	    .New-proManage_RecordHeader-write input{
+            width: 100%; 
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            opacity: 0;
+            cursor: pointer;
+	    }
+	    .New-proManage_BodyTip-Content{
+            margin-top:10px; 
+	    }
+		.New-proManage_BodyTip-Detail{
+			line-height: 24px;
+			min-height: 24px;
+			color: #333;
+			font-size: 14px;
+			margin: 10px 0px;
+		}
+		.New-proManage_BodyTip-Download{
+			color: #2882d8;
+			cursor: pointer;
+		}
+		.New-proManage_BodyTip-Download:hover{
+			color: #288aed;
+		}
+	</style>
+</head>
+<body>
+    <div style="width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+    	<div class="New-proManage_BodyTip" style="width: 480px; height: 120px;">
+    		<div class="New-proManage_RecordHeader-write">
+    			<i class="material-icons">add</i>
+    			<span>上传项目文件</span>
+                <input type="file">
+    		</div>
+    		<div class="New-proManage_BodyTip-Content">
+    			<div class="New-proManage_BodyTip-Detail">1.从<span class="New-proManage_BodyTip-Download">资助机构</span>的科技信息系统中下载项目编目文件，在此上传</div>
+    			<div class="New-proManage_BodyTip-Detail">2.下载<span class="New-proManage_BodyTip-Download">项目编目文件模板</span>，编辑好后在此上传</div>
+    		</div>
+    	</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,225 @@
+package com.smate.web.v8pub.service.pubquery;
+
+import com.smate.core.base.file.enums.FileTypeEnum;
+import com.smate.core.base.file.service.FileDownloadUrlService;
+import com.smate.core.base.pub.vo.PubDetailVO;
+import com.smate.core.base.pub.vo.PubInfo;
+import com.smate.core.base.utils.constant.ShortUrlConst;
+import com.smate.web.v8pub.consts.V8pubConst;
+import com.smate.web.v8pub.dao.pdwh.PdwhPubIndexUrlDao;
+import com.smate.web.v8pub.dao.sns.group.GrpPubRcmdDao;
+import com.smate.web.v8pub.dao.sns.pubtype.ConstPubTypeDao;
+import com.smate.web.v8pub.dom.pdwh.PubPdwhDetailDOM;
+import com.smate.web.v8pub.po.pdwh.PdwhPubFullTextPO;
+import com.smate.web.v8pub.po.pdwh.PdwhPubIndexUrl;
+import com.smate.web.v8pub.po.pdwh.PubPdwhPO;
+import com.smate.web.v8pub.po.pubType.ConstPubType;
+import com.smate.web.v8pub.po.sns.PubAssignLogPO;
+import com.smate.web.v8pub.po.sns.group.GrpPubRcmd;
+import com.smate.web.v8pub.service.pdwh.PdwhPubFullTextService;
+import com.smate.web.v8pub.service.pdwh.PubAssignLogService;
+import com.smate.web.v8pub.service.pdwh.PubPdwhDetailService;
+import com.smate.web.v8pub.service.pdwh.PubPdwhService;
+import com.smate.web.v8pub.service.query.PubQueryDTO;
+import com.smate.web.v8pub.vo.PubListResult;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * center-open 系统查询群组推荐成果列表
+ * 
+ * 删除的成果 默认也要返回****************************别忘记
+ * 
+ * 获取基本信息
+ * 
+ *
+ * 
+ * @author aijiangbin
+ * @date 2018年8月15日
+ */
+
+@Transactional(rollbackFor = Exception.class)
+public class IsisGrpRcmdPubListQueryServiceImpl extends AbstractPubQueryService {
+  @Resource
+  private PubAssignLogService pubAssignLogService;
+  @Resource
+  private PdwhPubFullTextService pdwhPubFullTextService;
+  @Autowired
+  private FileDownloadUrlService fileDownUrlService;
+  @Autowired
+  private PdwhPubIndexUrlDao pdwhPubIndexUrlDao;
+  @Autowired
+  private PubPdwhDetailService pubPdwhDetailService;
+  @Autowired
+  private PubPdwhService pubPdwhService;
+  @Autowired
+  private ConstPubTypeDao constPubTypeDao;
+  @Autowired
+  private GrpPubRcmdDao grpPubRcmdDao;
+
+  @Override
+  public Map<String, Object> checkData(PubQueryDTO pubQueryDTO) {
+    Map<String, Object> map = new HashMap<>();
+    if (pubQueryDTO.getSearchGrpId() == null || pubQueryDTO.getSearchGrpId() == 0L) {
+      map.put(V8pubConst.RESULT, V8pubConst.ERROR);
+      map.put(V8pubConst.ERROR_MSG, "查询的群组grpId不能为空");
+      return map;
+    }
+    return null;
+  }
+
+  @Override
+  public void queryPubs(PubQueryDTO pubQueryDTO) {}
+
+  @Override
+  public PubListResult assembleData(PubQueryDTO pubQueryDTO) {
+    Long totalCount = grpPubRcmdDao.getAllGrpPubRcmdCount(pubQueryDTO.getSearchGrpId(), pubQueryDTO.getPubUpdateDate());
+    List<GrpPubRcmd> grpPubRcmdList = grpPubRcmdDao.getAllGrpPubRcmd(pubQueryDTO.getSearchGrpId(),
+        pubQueryDTO.getPageNo(), pubQueryDTO.getPageSize(), pubQueryDTO.getPubUpdateDate());
+    PubListResult listResult = new PubListResult();
+    if (grpPubRcmdList != null && grpPubRcmdList.size() > 0) {
+      List<PubDetailVO> list = new ArrayList<>();
+      for (GrpPubRcmd grpPubRcmd : grpPubRcmdList) {
+        PubPdwhDetailDOM detailDOM = pubPdwhDetailService.getByPubId(grpPubRcmd.getPubId());
+        if (detailDOM == null) {
+          return null;
+        }
+        PubDetailVO pubDetailVO = buildPubTypeInfo(detailDOM);
+        pubDetailVO.setPubId(grpPubRcmd.getPubId());
+        pubDetailVO.setPubType(detailDOM.getPubType());
+        ConstPubType constPubType = constPubTypeDao.get(detailDOM.getPubType());
+        pubDetailVO.setTypeName(constPubType != null ? constPubType.getZhName() : "");
+        pubDetailVO.setTitle(detailDOM.getTitle());
+        pubDetailVO.setSummary(detailDOM.getSummary());
+        pubDetailVO.setBriefDesc(detailDOM.getBriefDesc());
+        pubDetailVO.setSourceDbId(detailDOM.getSrcDbId());
+        String key = detailDOM.getKeywords();
+        PubPdwhPO pubPdwhPO = pubPdwhService.get(detailDOM.getPubId());
+        pubDetailVO.setUpdateMark(pubPdwhPO.getUpdateMark());
+        pubDetailVO.setGmtCreate(pubPdwhPO.getGmtCreate());
+        pubDetailVO.setGmtModified(pubPdwhPO.getGmtModified());
+        pubDetailVO.setKeywords(key);
+        pubDetailVO.setPublishDate(detailDOM.getPublishDate());
+        pubDetailVO.setCountryId(detailDOM.getCountryId());
+        pubDetailVO.setCitations(detailDOM.getCitations());
+        pubDetailVO.setAuthorNames(detailDOM.getAuthorNames());
+        pubDetailVO.setDoi(detailDOM.getDoi());
+        pubDetailVO.setFundInfo(detailDOM.getFundInfo());
+        pubDetailVO.setSrcFulltextUrl(detailDOM.getSrcFulltextUrl());
+        pubDetailVO.setOrganization(detailDOM.getOrganization());
+        buildPubMembersInfo(pubDetailVO, detailDOM);
+        pubDetailVO.setCountryId(detailDOM.getCountryId());
+        pubDetailVO.setSourceDbId(detailDOM.getSrcDbId());
+        pubDetailVO.setAuthorName(detailDOM.getAuthorNames());
+        pubDetailVO.setPublishYear(pubPdwhPO.getPublishYear());
+        pubDetailVO.setPublishMonth(pubPdwhPO.getPublishMonth());
+        pubDetailVO.setPublishDay(pubPdwhPO.getPublishDay());
+        buildCountryRegionId(pubDetailVO);
+
+        buildPubFulltext(pubDetailVO, detailDOM);
+
+        buildPubSituation(pubDetailVO, detailDOM);
+
+        buildPdwhPubIndex(pubDetailVO, detailDOM);
+        pubDetailVO.setPubConfirmId(grpPubRcmd.getId());
+        if (grpPubRcmd.getStatus() == 0) {
+          pubDetailVO.setStatus(0);
+        } else {
+          pubDetailVO.setStatus(1);
+        }
+        list.add(pubDetailVO);
+      }
+
+      listResult.setPubDetailVOList(list);
+    }
+    listResult.setTotalCount(totalCount != null ? Integer.parseInt(totalCount.toString()) : 0);
+
+    return listResult;
+  }
+
+  private void buildpubConfirmInfo(List<PubDetailVO> list, PubQueryDTO pubQueryDTO) {
+    List<PubAssignLogPO> pubAssignList = pubAssignLogService.queryPubAssignLogByIds(pubQueryDTO);
+    if (pubAssignList != null && pubAssignList.size() > 0) {
+      for (PubDetailVO info : list) {
+        for (PubAssignLogPO pubAssign : pubAssignList) {
+          if (pubAssign.getPdwhPubId().longValue() == info.getPubId().longValue()) {
+            info.setPubConfirmId(pubAssign.getId());
+            Integer confirmResult = pubAssign.getConfirmResult();
+            if (confirmResult != null && confirmResult != 0) {
+              info.setStatus(1);// 已经确认
+              // ，或者拒绝的成果直接返回，正常结果不存在该字段
+            } else {
+              info.setStatus(0);
+            }
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  public void buildPdwhfulltext(List<PubInfo> list, PubQueryDTO pubQueryDTO) {
+    List<PdwhPubFullTextPO> fulltextList = pdwhPubFullTextService.queryPdwhFullTextByIds(pubQueryDTO);
+    if (fulltextList != null && fulltextList.size() > 0) {
+      for (PubInfo info : list) {
+        for (PdwhPubFullTextPO pdwhPubFullTextPO : fulltextList) {
+          if (info.getPubId().longValue() == pdwhPubFullTextPO.getPdwhPubId().longValue()) {
+            // 不是短地址链接
+            String fullTextDownloadUrl = fileDownUrlService.getDownloadUrl(FileTypeEnum.PDWH_FULLTEXT, info.getPubId());
+            info.setFullTextDownloadUrl(fullTextDownloadUrl);
+            info.setFullTextFieId(pdwhPubFullTextPO.getFileId());
+            String fullTextImgUrl =
+                StringUtils.isNotBlank(pdwhPubFullTextPO.getThumbnailPath()) ? pdwhPubFullTextPO.getThumbnailPath()
+                    : pdwhPubFullTextPO.getSourceFulltextUrl();
+            info.setFullTextImgUrl(fullTextImgUrl);
+            info.setHasFulltext(1);
+            break;
+          }
+        }
+        // 设置默认图片
+        if (info.getHasFulltext().intValue() == 0) {
+          info.setFullTextImgUrl(V8pubConst.PUB_DEFAULT_NOT_FULLTEXT_IMG_NEW);
+        }
+
+      }
+    }
+  }
+
+  /**
+   * 构建个基准库成果的短地址
+   *
+   * @param list
+   * @param pubIdList
+   */
+  public void buildPdwhPubIndexUrl(List<PubInfo> list, List<Long> pubIdList) {
+    List<PdwhPubIndexUrl> urlList = pdwhPubIndexUrlDao.getByIds(pubIdList);
+    if (urlList != null && list != null) {
+      for (PubInfo info : list) {
+        for (PdwhPubIndexUrl pubIndexUrl : urlList) {
+          if (pubIndexUrl.getPubId().longValue() == info.getPubId().longValue()
+              && StringUtils.isNotBlank(pubIndexUrl.getPubIndexUrl())) {
+            String indexUrl = this.domainscm + "/" + ShortUrlConst.S_TYPE + "/" + pubIndexUrl.getPubIndexUrl();
+            info.setPubIndexUrl(indexUrl);
+            break;
+          }
+        }
+        // 默认的url
+        /*
+         * if (StringUtils.isBlank(info.getPubIndexUrl())) { String url = this.domainscm +
+         * "/pubweb/details/showpdwh?des3Id=" + Des3Utils.encodeToDes3(info.getPubId().toString());
+         * info.setPubIndexUrl(url); }
+         */
+
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,885 @@
+/*4unit页面、5institution、6role、13matter、15finish、17step、19personnel页面、*/
+/*unit页面开始*/
+/*内容部分*/
+.Menubox-index {
+  width: 100%;
+  height: 40px;
+  border-top: 2px solid #2d66b7;
+  background: #f2f2f2;
+}
+
+.Menubox-index ul {
+  width: 1200px;
+  margin: auto;
+}
+
+.Menubox-index li {
+  display: block;
+  cursor: pointer;
+  width: 95px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 2px solid transparent;
+  font-size: 14px;
+}
+
+.Menubox-index li:hover {
+  font-size: 16px;
+}
+
+.Menubox-index li.hover, .Menubox-index li:active {
+  border-bottom: 2px solid #2196F3;
+  font-size: 14px;
+  font-weight: bold;
+  color: #1265cf;
+}
+/*科研概况*/
+.Contentbox-index {
+  width: 1200px;
+  margin: auto;
+}
+
+.content_statistics {
+  border: 1px solid #eee;
+}
+
+.content_header {
+  margin-top: 25px;
+  height: 40px;
+  line-height: 40px;
+  background: #F8F8F8;
+  padding: 0 12px;
+}
+
+.content_tendency {
+  padding: 0px 0px 0px 12px;
+}
+
+.page_lt {
+  padding-right: 8px;
+}
+
+.Contentbox-item {
+  margin-top: 12px;
+  margin-bottom: 30px;
+}
+
+.Contentbox-item li {
+  float: left;
+  width: 190px;
+  padding: 12px;
+  height: 95px;
+  margin-right: 12px;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.Contentbox-item li.mr0 {
+  margin-right: 0px;
+}
+
+.item_1 span {
+  font-size: 36px;
+  color: #1265cf;
+  font-family: "Arial";
+}
+
+.Contentbox-item  p {
+  color: #666;
+}
+
+.item_2 {
+  color: #999;
+}
+
+.item_3 {
+  margin-top: 5px;
+  color: #666;
+}
+
+.content_tendency_right li {
+  float: left;
+  margin-right: 10px;
+}
+/*unit.css结束*/
+/*==========================================5institution.css开始*/
+/*内容部分*/
+div.conter_role {
+  width: 100%;
+  height: 908px;
+}
+
+.conter_organization {
+  width: 1200px;
+  margin: auto;
+}
+
+.organization_lt {
+  width: 100%;
+  height: 48px;
+  margin-top: 40px;
+  text-align: center;
+  background: url(../images/icon_conter_lt.jpg) no-repeat 0px 17px;
+}
+
+.organization_lt span {
+  color: #333333;
+  font-size: 24px;
+  padding: 0px 24px;
+  background: #fff;
+}
+
+.organization a {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 364px;
+  padding: 0px 16px;
+  height: 88px;
+  line-height: 72px;
+  font-size: 18px;
+  border: 2px solid #eee;
+  background: #fafafa;
+  border-radius: 4px;
+  margin: 20px auto;
+  behavior: url(../js/PIE.htc);
+  box-sizing: border-box;
+  margin: 16px;
+  align-items: center;
+}
+
+.organization a span {
+  width: 262px;
+  color: #2882d8;
+  display: inline-block;
+  padding-left: 60px;
+  overflow: hidden;
+  /* margin-left: 18px; */
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: url(../images/fixation.png) no-repeat 0px 12px;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+.organization a b {
+  font-size: 16px;
+  font-weight: 100;
+  color: #2882d8;
+  /*margin-left:46px;*/
+}
+
+.organization a b.entrance_1, .organization a.hover b.present_1 {
+  /*margin-left:84px;*/
+  
+}
+
+.organization a.organization_1   b {
+  font-size: 16px;
+  font-weight: 100;
+  color: #349800;
+  /*margin-left:58px;*/
+}
+
+.organization a b.present {
+  display: none;
+}
+
+.organization a:hover {
+  border: 2px solid #349800;
+}
+
+.organization a b.entrance {
+  color: #1265cf;
+}
+
+.organization a:hover b.entrance {
+  text-decoration: underline;
+}
+
+.organization a:active, .organization a.hover {
+  border: 2px solid #349800;
+  background: #fafafa;
+  color: #1265cf;
+}
+
+.organization a.hover  b.present {
+  display: inline-block;
+}
+
+.organization a.hover  b.entrance {
+  display: none;
+}
+
+.organization-change_btn-entrance {
+  border: 1px solid #fafafa;
+  height: 30px;
+  line-height: 30px;
+  width: 79px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  font-size: 14px !important;
+}
+
+.organization-change_btn-entrance:hover {
+  color: #fff !important;
+  background: #349800;
+}
+
+.organization-change_btn-content {
+  color: #005cac !important;
+}
+
+.hover .organization-change_btn-entrance {
+  color: #349800;
+}
+
+.conter_part a {
+  display: inline-block;
+  width: 85px;
+  height: 120px;
+  float: left;
+  margin: 0px 18px;
+  text-align: center;
+}
+
+.conter_part span {
+  position: relative;
+  display: inline-block;
+  width: 72px;
+  height: 72px;
+  border: 1px solid #2882d8;
+  background: #fff;
+  border-radius: 100%;
+  behavior: url(../js/PIE.htc);
+}
+
+.conter_part a:hover span {
+  background: #2882d8;
+}
+
+.conter_part a:active span {
+  background: #1265cf;
+}
+
+.conter_part p {
+  line-height: 38px;
+}
+
+.conter_part i {
+  display: inline-block;
+  position: absolute;
+  height: 36px;
+  top: 17px;
+  z-index: 5000;
+}
+
+.conter_part .conter_part_1 i {
+  width: 37px;
+  left: 18px;
+  background: url(../images/icon_role_1.png) no-repeat;
+}
+
+.conter_part .conter_part_1:hover i {
+  background: url(../images/icon_role_1.png) no-repeat 0px -56px;
+}
+
+.conter_part .conter_part_2 i {
+  width: 37px;
+  left: 18px;
+  background: url(../images/icon_role_2.png) no-repeat;
+}
+
+.conter_part .conter_part_2:hover i {
+  background: url(../images/icon_role_2.png) no-repeat 0px -56px;
+}
+
+.conter_part .conter_part_3 i {
+  width: 31px;
+  left: 20px;
+  background: url(../images/icon_role_3.png) no-repeat;
+}
+
+.conter_part .conter_part_3:hover i {
+  background: url(../images/icon_role_3.png) no-repeat 0px -58px;
+}
+
+.conter_part .conter_part_4 i {
+  width: 31px;
+  left: 21px;
+  background: url(../images/icon_role_4.png) no-repeat;
+}
+
+.conter_part .conter_part_4:hover i {
+  background: url(../images/icon_role_4.png) no-repeat 0px -58px;
+}
+
+.conter_part .conter_part_5 i {
+  width: 53px;
+  left: 10px;
+  background: url(../images/icon_role_5.png) no-repeat;
+}
+
+.conter_part .conter_part_5:hover i {
+  background: url(../images/icon_role_5.png) no-repeat 0px -58px;
+}
+
+.conter_part .conter_part_6 i {
+  width: 31px;
+  left: 21px;
+  background: url(../images/icon_role_6.png) no-repeat;
+}
+
+.conter_part .conter_part_6:hover i {
+  background: url(../images/icon_role_6.png) no-repeat 0px -58px;
+}
+
+.conter_part .conter_part_7 i {
+  width: 40px;
+  height: 42px;
+  left: 17px;
+  background: url(../images/icon_role_7.png) no-repeat;
+}
+
+.conter_part .conter_part_7:hover i {
+  background: url(../images/icon_role_7.png) no-repeat 0px -62px;
+}
+
+/*institution.css结束*/
+/*=======================================================================role.css开始*/
+/*内容部分*/
+div.role_conter {
+  width: 100%;
+}
+
+div.sie_role_conter {
+  width: 100%;
+  min-height: 908px;
+}
+
+.conter_reset {
+  width: 1200px;
+  margin: auto;
+}
+
+.conter_lt {
+  width: 100%;
+  height: 48px;
+  margin-top: 40px;
+  text-align: center;
+  background: url(../images/icon_conter_lt.jpg) no-repeat 0px 17px;
+}
+
+.conter_lt span {
+  font-size: 24px;
+  padding: 0px 24px;
+  background: #fff;
+}
+
+.conter_part {
+  width: 485px;
+  margin: 40px auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+.conter_part .conter_part_1002 i {
+  width: 37px;
+  left: 18px;
+  background: url(../images/icon_role_1.png) no-repeat;
+}
+
+.conter_part .conter_part_1002:hover i {
+  background: url(../images/icon_role_1.png) no-repeat 0px -56px;
+}
+
+.conter_part .conter_part_1003 i {
+  width: 37px;
+  left: 18px;
+  background: url(../images/icon_role_2.png) no-repeat;
+}
+
+.conter_part .conter_part_1003:hover i {
+  background: url(../images/icon_role_2.png) no-repeat 0px -56px;
+}
+
+.conter_part .conter_part_10099 i {
+  width: 53px;
+  left: 10px;
+  background: url(../images/icon_role_5.png) no-repeat;
+}
+
+.conter_part .conter_part_10099:hover i {
+  background: url(../images/icon_role_5.png) no-repeat 0px -58px;
+}
+
+.conter_part .conter_part_10011 i {
+  width: 40px;
+  height: 42px;
+  left: 17px;
+  background: url(../images/icon_role_7.png) no-repeat;
+}
+
+.conter_part .conter_part_10011:hover i {
+  background: url(../images/icon_role_7.png) no-repeat 0px -62px;
+}
+/*role.css结束*/
+
+/*===============================================13matter文件导入页面*/
+/*内容部分开始*/
+.matter_file_conter {
+  width: 860px;
+  margin: 0 auto;
+}
+/*标题开始*/
+.matter_file_top {
+  border-bottom: 1px dashed #ddd;
+  line-height: 40px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/*标题结束*/
+.martter_file_data li {
+  display: flex;
+  margin-top: 20px;
+}
+
+.martter_file_data div {
+  width: 760px;
+}
+
+.martter_file_data_source {
+  display: block;
+  width: 81px;
+  font-weight: 600;
+  color: #333;
+  line-height: 30px;
+  margin-right: 4px;
+  /*text-align: right;*/
+}
+
+.martter_file_demo_paper {
+  width: 500px;
+  height: 30px;
+  /*background:#f8f8f8;*/
+  box-sizing: border-box;
+  margin-right: 4px;
+  border: 1px solid #ddd;
+  line-height: 30px;
+  padding-left: 8px;
+  background: #fff;
+}
+
+.martter_file_demo_paper:focus {
+  border: 1px solid #1265CF;
+}
+
+.martter_file_data_browse {
+  align-content: center;
+}
+/*=====================================15channel完成页面开始*/
+.sie_database_fx {
+  position: fixed;
+  top: 156px;
+  left: 0;
+  width: 100%;
+}
+
+.sie_database_martt {
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.sie_message_ask_left {
+  display: inline-block;
+  width: 550px;
+  margin-right: 120px;
+}
+
+.sie_message_ask_thesis {
+  display: inline-block;
+  width: 200px;
+}
+
+.finish {
+  width: 200px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.finish li {
+  float: none;
+  margin-top: 38px;
+  padding: 0px;
+  border: none;
+  background: #fff;
+}
+
+.finish_catalog {
+  /*margin-bottom: 8px;*/
+  line-height: 32px;
+  font-size: 20px;
+}
+/*完成页面结束*/
+/*====================================17step步骤页面开始*/
+.step_file_conter {
+  padding: 40px 0px 80px;
+}
+
+.step_file_left {
+  height: 60px;
+}
+
+.step_file_left li {
+  margin: 0px;
+}
+
+li.step_section_top {
+  border: 1px dashed #ddd;
+  display: flex;
+  width: 100%;
+  padding: 40px 0px;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+
+.step_section_option {
+  width: 550px;
+  margin-left: 40px;
+}
+
+.step_section_option p {
+  display: flex;
+  align-items: center;
+}
+
+.step_section_option_descend {
+  font-weight: 600;
+}
+
+.step_section_option_descend i {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url(../images/icon-new.png) no-repeat 0px -83px;
+  margin-right: 2px;
+}
+
+.step_section_conter {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0px;
+  cursor: default;
+}
+
+.step_section_conter img {
+  width: 14px;
+  height: 19px;
+}
+
+.step_file_demo_paper {
+  width: 350px;
+}
+
+.step_file_select_input {
+  width: 90px;
+  height: 32px;
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-size: 0px;
+}
+
+.step_file_select_conter {
+  width: 90px;
+  height: 32px;
+  position: relative;
+  line-height: 32px;
+  cursor: pointer;
+  float: right;
+  top: -34px;
+  z-index: 99999;
+}
+/*步骤页面结束*/
+/*数据分析页面开始*/
+.analyze {
+  width: 948px;
+  margin: auto;
+  margin-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.analyze-information {
+  width: 442px;
+  display: flex;
+  justify-content: center;
+  padding: 32px 32px 32px 44px;
+  border-radius: 3px;
+  background: #fff;
+  behavior: url(../js/PIE.htc);
+  position: relative;
+  box-shadow: 0px 0px 10px #ddd;
+  -moz-box-shadow: 0px 0px 10px #ddd;
+  -webkit-box-shadow: 0px 0px 10px #ddd;
+  box-sizing: border-box;
+}
+/*图片*/
+.analyze-information img {
+  width: 66px;
+  height: 68px;
+  margin-right: 42px;
+  box-sizing: border-box;
+}
+/*右侧内容*/
+.analyze-information div:last-child {
+  width: 258px;
+  box-sizing: border-box;
+}
+
+.analyze-information h2 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.analyze-information p {
+  line-height: 24px;
+}
+
+.analyze-ml {
+  margin-left: 58px;
+}
+
+.analyze-mb {
+  margin-bottom: 58px;
+}
+
+.analyze-information a {
+  margin-top: 24px;
+}
+
+.SIE-chioce_station-item_content {
+  height: 70px !important;
+  line-height: 70px !important;
+  font-size: 16px !important;
+  border: 1px solid #fafafa !important;
+  color: #2882d8 !important;
+  padding: 0px !important;
+  display: block !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+
+.SIE-chioce_station {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.organization-change_font-famliy {
+  font-family: Noto Sans SC, Hiragino Sans GB W3, Heiti SC, Microsoft Yahei, Segoe UI;
+}
+
+.message_neck-tip {
+  width: 100%;
+  height: 32px;
+  background: #d9ffb3;
+  color: #333;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*数据分析页面结束*/
+.pub-idx__full-text_img {
+  cursor: pointer;
+  width: 70px;
+  height: 92px;
+  /*     border: 1px solid #eeeeee; */
+  margin: 2px 0px;
+  position: relative;
+}
+
+.new-tip_container-content {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: inherit;
+  height: inherit;
+  background: #f4f4f4;
+  z-index: 0;
+  border: 1px solid #ddd;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+  opacity: 0.35;
+  display: none;
+}
+
+.new-tip_container-content_tip1 {
+  width: 32px !important;
+  height: 32px !important;
+  transform: rotate(180deg);
+}
+
+.new-tip_container-content_tip2 {
+  width: 32px;
+  height: 32px;
+  transform: rotate(180deg);
+  display: none;
+}
+
+.dev_Achieve-Claim_content-infor_avatar:hover .new-tip_container-content {
+  display: flex;
+}
+
+.pub-idx__full-text_img:hover .new-tip_container-content {
+  display: flex !important;
+}
+
+.pub-idx__full-text__tip {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 92px;
+  font-size: 14px;
+  opacity: 1;
+  width: 70px;
+  line-height: 22px;
+  background: #f4f4f4;
+  opacity: 0.5;
+}
+
+.fileupload__box {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px dashed rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fileupload__core {
+  width: calc(100% - 16px);
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fileupload__initial {
+  display: block;
+}
+
+.request-add__tip1_avator {
+  width: 32px !important;
+  height: 32px !important;
+  vertical-align: middle;
+}
+
+.request-add__tip2_avator {
+  width: 32px !important;
+  height: 32px !important;
+  display: none;
+  vertical-align: middle;
+}
+
+.pub-idx__full-text__tip:hover .request-add__tip1_avator {
+  display: none;
+}
+
+.pub-idx__full-text__tip:hover .request-add__tip2_avator {
+  display: inline-block;
+}
+
+.upload_ready {
+  border: 1px solid #288aed;
+}
+
+.fileupload__progress {
+  display: none;
+}
+/*54页面*/
+.sie_fulfill {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 16px;
+  margin-left: 8px;
+}
+
+.login_error-tip_container {
+  position: relative;
+  top: -10px;
+  left: 0px;
+  border: 1px solid #ddd;
+  width: 360px;
+  height: 44px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 12px 0px;
+  margin: 24px 0px -13px 0px;
+  background: #fffdd6 !important;
+}
+
+.login_error-tip_container span {
+  padding-left: 0px !important;
+}
+
+progress {
+  width: 160px;
+  border: 1px solid #0064B4;
+  background-color: #e6e6e6;
+  color: #0064B4; /*IE10*/
+}
+
+progress::-moz-progress-bar {
+  background: #0064B4;
+}
+
+progress::-webkit-progress-bar {
+  background: #e6e6e6;
+}
+
+progress::-webkit-progress-value {
+  background: #0064B4;
+}
+
+.new-Progress_bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 202px;
+  justify-content: space-between;
+  background-color: #fff;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.new-Progress_bar {
+  width: 37px;
+  height: 8px;
+  border: 1px solid #288aed;
+}

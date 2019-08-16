@@ -1,0 +1,17 @@
+var msgBase = {
+  noRecord : "未找到符合条件的记录",
+  delSuccess : "已删除",
+  noMsg : "你没有任何消息",
+  markSuccess : "已标记",
+  timeout : '系统超时或未登录，你要登录吗？',
+  tips : "提示",
+  downloadDisabledTip : "对不起，你没有权限下载该全文",
+  uploadTips : "请选择您要上传的文件",
+  sentSuccess : '请求已发送',
+  saveSuccess : '收藏成功',
+  saveFail : "收藏失败",
+  uploadFail : "上传失败",
+  uploadFile : "请选择要上传的文件",
+  pleaseSelectSender : "请选择有效发送对象",
+  i18n_noSearchFriend : "没有查询到任何联系人",
+}

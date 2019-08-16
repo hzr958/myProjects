@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>center-data-subset</artifactId>
+  <version>6.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <parent>
+    <groupId>com.smate</groupId>
+    <artifactId>smate-parent</artifactId>
+    <version>6.0.0</version>
+    <relativePath>../smate-parent/pom.xml</relativePath>
+  </parent>
+  <name>pub-subset</name>
+  <url>https://www.scholarmate.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <hadoop.version>2.5.1</hadoop.version>
+    <hbase.version>0.98.7-hadoop2</hbase.version>
+    <zookeeper.version>3.4.6</zookeeper.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-client</artifactId>
+      <version>${hadoop.version}</version>
+    </dependency>
+     <dependency>
+        <groupId>org.apache.hbase</groupId>
+        <artifactId>hbase-client</artifactId>
+        <version>${hbase.version}</version>
+     </dependency>
+     <dependency>
+        <groupId>org.apache.hbase</groupId>
+        <artifactId>hbase-server</artifactId>
+        <version>${hbase.version}</version>
+      </dependency>
+       <dependency>
+        <groupId>org.apache.zookeeper</groupId>
+        <artifactId>zookeeper</artifactId>
+        <version>${zookeeper.version}</version>
+       </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.7</version>
+      </dependency>
+      <dependency>
+    <groupId>com.janeluo</groupId>
+    <artifactId>ikanalyzer</artifactId>
+    <version>2012_u6</version>
+</dependency>
+  </dependencies>
+  
+ <build>  
+    <plugins>
+            <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.3.2</version>
+          <configuration>
+            <compilerVersion>${maven.compiler.source}</compilerVersion>
+            <source>${maven.compiler.source}</source>
+            <target>${maven.compiler.target}</target>
+            <encoding>UTF-8</encoding>
+            <showWarnings>false</showWarnings>
+            <compilerArguments>
+              <verbose />
+              <bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>
+            </compilerArguments>
+          </configuration>
+        </plugin>  
+        <plugin>  
+            <groupId>org.apache.maven.plugins</groupId>  
+            <artifactId>maven-assembly-plugin</artifactId>  
+            <version>2.2-beta-5</version>  
+            <configuration>  
+                <!-- <archive>  
+                    <manifest>  
+                        <mainClass>com.smate.center.data.subset.KeywordSubsetCotf</mainClass>  
+                    </manifest>  
+                </archive>  --> 
+                <descriptorRefs>  
+                    <descriptorRef>jar-with-dependencies</descriptorRef>  
+                </descriptorRefs>  
+            </configuration>
+            <executions>
+                        <execution>
+                             <id>make-assembly</id>
+                             <phase>package</phase>
+                             <goals>
+                                  <goal>single</goal>
+                             </goals>
+                        </execution>
+                   </executions>  
+        </plugin>  
+    </plugins>  
+</build>  
+</project>

@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>web-psn</artifactId>
+  <version>${web-psn.version}</version>
+  <packaging>war</packaging>
+  <parent>
+    <groupId>com.smate</groupId>
+    <artifactId>smate-parent</artifactId>
+    <version>6.0.0</version>
+    <relativePath>../smate-parent/pom.xml</relativePath>
+  </parent>
+  	    <properties>
+     <maven.deploy.skip>true</maven.deploy.skip>
+        </properties>
+  <dependencies>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-mod-web</artifactId>
+      <type>pom</type>
+    </dependency>
+    <!-- json -->
+    <dependency>
+      <groupId>net.sf.json-lib</groupId>
+      <artifactId>json-lib</artifactId>
+      <classifier>jdk15</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- QQ第三方登录 -->
+    <dependency>
+      <groupId>com.qq</groupId>
+      <artifactId>connect</artifactId>
+      <version>2.0</version>
+    </dependency>
+    <!-- QQ第三方登录 -->
+    <dependency>
+      <groupId>jaxen</groupId>
+      <artifactId>jaxen</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>center-mail-connector</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.ansj</groupId>
+      <artifactId>ansj_seg</artifactId>
+      <version>5.1.2</version>
+    </dependency>
+    
+  <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-base-utils</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-base-public</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>center-batch-connector</artifactId>
+    </dependency>
+    <!-- 组装 -->
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-web-sys</artifactId>
+      <version>${core-web-sys.version}</version>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-web-sns</artifactId>
+      <version>${core-web-sns.version}</version>
+      <type>war</type>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>web-psn</finalName>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <excludes>
+          <exclude>logback-test.xml</exclude>
+        </excludes>
+      </resource>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
+</project>

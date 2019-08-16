@@ -1,0 +1,440 @@
+clusterchart=function(target,passdata){
+	var targetelement = target;
+  var data = passdata;
+    var myChart = echarts.init(document.getElementById(targetelement));
+    option = {
+       title:{
+	        text: "香港城市大学",
+	        subtext: "各学院关系-Acring",
+	        top: "top",
+	        left: "center"
+       },
+      /*tooltip: {},*/
+        legend: [{  //图例组件
+            tooltip: { //图例的 tooltip 配置
+                show: true //是否显示提示框组件
+            },
+            selectedMode: 'false', //图例选择的模式，控制是否可以通过点击图例改变系列的显示状态。默认开启图例选择，可以设成 false 关闭
+            bottom: 20, // 距底部的距离
+            data: ['地理科学学院', '机械与电气工程学院', '经济与统计学院', '数学与信息科学学院', '法学院', '环境科学与工程学院', '化学化工学院', '物理与电子工程学院']
+        }],
+        animationDuration: 3000,  //本组件的动画时长
+        animationEasingUpdate: 'quinticInOut', //动画的缓动效果
+        series: [{      //系列列表
+            name: '香港城市大学',
+            type: 'graph',
+            layout: 'force',  //力引导布局
+            force: {  //力引导布局相关配置
+                repulsion: 50  // 节点排斥因子范围
+            },
+            data:[{
+                "name": "香港城市大学",
+                "symbolSize": 20,   //节点的宽高
+                "draggable": "true",
+                "value": 27
+            }, {
+                "name": "地理科学学院",
+                "value": 6,
+                "symbolSize": 18,
+                "category": "地理科学学院",
+                "draggable": "true"
+            },{
+                "name": "地理科学",
+                "symbolSize": 3,
+                "category": "地理科学学院",
+                "draggable": "true",
+                "value": 2
+            },{
+              "name": "地理信息科学",
+              "symbolSize": 3,
+              "category": "地理科学学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "人文地理与城乡规划",
+              "symbolSize": 3,
+              "category": "地理科学学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "人文地理与城乡规划(区域物流)",
+              "symbolSize": 3,
+              "category": "地理科学学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "人文地理与城乡规划(不动产)",
+              "symbolSize": 3,
+              "category": "地理科学学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "自然地理与资源环境",
+              "symbolSize": 3,
+              "category": "地理科学学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "机械与电气工程学院",
+              "value": 8,
+              "symbolSize": 15,
+              "category": "机械与电气工程学院",
+              "draggable": "true"
+          }, {
+              "name": "电气工程及其自动化",
+              "symbolSize": 3,
+              "category": "机械与电气工程学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "机械设计制造及其自动化",
+              "symbolSize": 3,
+              "category": "机械与电气工程学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "电子信息工程",
+              "symbolSize": 3,
+              "category": "机械与电气工程学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "工业设计",
+              "symbolSize": 3,
+              "category": "机械与电气工程学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "通信工程",
+              "symbolSize": 3,
+              "category": "机械与电气工程学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "经济与统计学院",
+              "value": 12,
+              "symbolSize": 18,
+              "category": "经济与统计学院",
+              "draggable": "true"
+          }, {
+              "name": "统计学",
+              "symbolSize": 3,
+              "category": "经济与统计学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "金融工程",
+              "symbolSize": 3,
+              "category": "经济与统计学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "经济学",
+              "symbolSize": 3,
+              "category": "经济与统计学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "国际经济与贸易",
+              "symbolSize": 3,
+              "category": "经济与统计学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "金融学",
+              "symbolSize": 3,
+              "category": "经济与统计学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "会计学",
+              "symbolSize": 3,
+              "category": "经济与统计学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "数学与信息科学学院",
+              "value": 12,
+              "symbolSize": 18,
+              "category": "数学与信息科学学院",
+              "draggable": "true"
+          }, {
+              "name": "信息安全",
+              "symbolSize": 3,
+              "category": "数学与信息科学学院", //所属种类
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "数学与应用数学(金融数学)",
+              "symbolSize": 3,
+              "category": "数学与信息科学学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "信息与计算科学",
+              "symbolSize": 3,
+              "category": "数学与信息科学学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "数学与应用数学(教师教育)",
+              "symbolSize": 3,
+              "category": "数学与信息科学学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "数学与应用数学(精算学)",
+              "symbolSize": 3,
+              "category": "数学与信息科学学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "数学与应用数学(基础数学)",
+              "symbolSize": 3,
+              "category": "数学与信息科学学院",
+              "draggable": "true",
+              "value": 2
+          },{
+              "name": "环境科学与工程学院",
+              "value": 4,
+              "symbolSize": 12,
+              "category": "环境科学与工程学院",
+              "draggable": "true"
+          }, {
+              "name": "环境工程",
+              "symbolSize": 3,
+              "category": "环境科学与工程学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "环境科学",
+              "symbolSize": 3,
+              "category": "环境科学与工程学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "化学化工学院",
+              "value": 10,
+              "symbolSize": 15,
+              "category": "化学化工学院",
+              "draggable": "true"
+          }, {
+              "name": "化学工程与工艺",
+              "symbolSize": 3,
+              "category": "化学化工学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "化学(教师教育)",
+              "symbolSize": 3,
+              "category": "化学化工学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "化学(精细化学品化学与技术)",
+              "symbolSize": 3,
+              "category": "化学化工学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "化学",
+              "symbolSize": 3,
+              "category": "化学化工学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "食品科学与工程",
+              "symbolSize": 3,
+              "category": "化学化工学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "物理与电子工程学院",
+              "value": 8,
+              "symbolSize": 12,
+              "category": "物理与电子工程学院",
+              "draggable": "true"
+          }, {
+              "name": "光电信息科学与工程",
+              "symbolSize": 3,
+              "category": "物理与电子工程学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "物联网工程",
+              "symbolSize": 3,
+              "category": "物理与电子工程学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "物理学",
+              "symbolSize": 3,
+              "category": "物理与电子工程学院",
+              "draggable": "true",
+              "value": 2
+          }, {
+              "name": "电子信息科学与技术",
+              "symbolSize": 3,
+              "category": "物理与电子工程学院",
+              "draggable": "true",
+              "value": 2
+          }],
+          links:[ {
+              "source": "香港城市大学",
+              "target": "地理科学学院"
+          }, {
+              "source": "地理科学学院",
+              "target": "地理科学"
+          }, {
+              "source": "地理科学学院",
+              "target": "地理信息科学"
+          }, {
+              "source": "地理科学学院",
+              "target": "人文地理与城乡规划"
+          }, {
+              "source": "地理科学学院",
+              "target": "人文地理与城乡规划(区域物流)"
+          }, {
+              "source": "地理科学学院",
+              "target": "人文地理与城乡规划(不动产)"
+          }, {
+              "source": "地理科学学院",
+              "target": "自然地理与资源环境"
+          }, {
+              "source": "香港城市大学",
+              "target": "机械与电气工程学院"
+          }, {
+              "source": "机械与电气工程学院",
+              "target": "电气工程及其自动化"
+          }, {
+              "source": "机械与电气工程学院",
+              "target": "机械设计制造及其自动化"
+          }, {
+              "source": "机械与电气工程学院",
+              "target": "电子信息工程"
+          }, {
+              "source": "机械与电气工程学院",
+              "target": "工业设计"
+          }, {
+              "source": "机械与电气工程学院",
+              "target": "通信工程"
+          }, {
+              "source": "香港城市大学",
+              "target": "经济与统计学院"
+          }, {
+              "source": "经济与统计学院",
+              "target": "统计学"
+          }, {
+              "source": "经济与统计学院",
+              "target": "金融工程"
+          }, {
+              "source": "经济与统计学院",
+              "target": "经济学"
+          }, {
+              "source": "经济与统计学院",
+              "target": "国际经济与贸易"
+          }, {
+              "source": "经济与统计学院",
+              "target": "金融学"
+          }, {
+              "source": "经济与统计学院",
+              "target": "会计学"
+          }, {
+              "source": "香港城市大学",
+              "target": "数学与信息科学学院"
+          }, {
+              "source": "数学与信息科学学院",
+              "target": "信息安全"
+          }, {
+              "source": "数学与信息科学学院",
+              "target": "数学与应用数学(金融数学)"
+          }, {
+              "source": "数学与信息科学学院",
+              "target": "信息与计算科学"
+          }, {
+              "source": "数学与信息科学学院",
+              "target": "数学与应用数学(教师教育)"
+          }, {
+              "source": "数学与信息科学学院",
+              "target": "数学与应用数学(精算学)"
+          }, {
+              "source": "数学与信息科学学院",
+              "target": "数学与应用数学(基础数学)"
+          }, {
+              "source": "香港城市大学",
+              "target": "环境科学与工程学院"
+          }, {
+              "source": "环境科学与工程学院",
+              "target": "环境工程"
+          }, {
+              "source": "环境科学与工程学院",
+              "target": "环境科学"
+          }, {
+              "source": "香港城市大学",
+              "target": "化学化工学院"
+          }, {
+              "source": "化学化工学院",
+              "target": "化学工程与工艺"
+          }, {
+              "source": "化学化工学院",
+              "target": "化学(教师教育)"
+          }, {
+              "source": "化学化工学院",
+              "target": "化学(精细化学品化学与技术)"
+          }, {
+              "source": "化学化工学院",
+              "target": "化学"
+          }, {
+              "source": "化学化工学院",
+              "target": "食品科学与工程"
+          }, {
+              "source": "香港城市大学",
+              "target": "物理与电子工程学院"
+          }, {
+              "source": "物理与电子工程学院",
+              "target": "光电信息科学与工程"
+          }, {
+              "source": "物理与电子工程学院",
+              "target": "物联网工程"
+          }, {
+              "source": "物理与电子工程学院",
+              "target": "物理学"
+          }, {
+              "source": "物理与电子工程学院",
+              "target": "电子信息科学与技术"
+          }],
+          categories: [  //用于表示离散型数据（或可以称为类别型数据、枚举型数据）的全集。
+            {
+              'name': '地理科学学院'
+          }, {
+              'name': '机械与电气工程学院'
+          }, {
+              'name': '经济与统计学院'
+          },{
+              'name': '数学与信息科学学院'
+          }, {
+              'name': '环境科学与工程学院'
+          }, {
+              'name': '化学化工学院'
+          }, {
+              'name': '物理与电子工程学院'
+          }],
+
+          roam: true,
+          label: {
+              normal: {
+                  show: true,
+                  position: 'top',
+              }
+          },
+          lineStyle: {
+              normal: {
+                  color: 'source',
+                  curveness: 0,
+                  type: "solid"
+              }
+          }
+      }]
+  };
+  myChart.setOption(option);
+}

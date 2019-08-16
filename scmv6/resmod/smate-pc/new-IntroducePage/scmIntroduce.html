@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>科研之友|App下载</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/animation.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+    <script type="text/javascript" src="../../js/jquery.js"></script>
+    <style type="text/css">
+            html, body {
+        position: relative;
+        height: 100%;
+    }
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    </style>
+ 	<script type="text/javascript">
+		window.onload = function(){
+            var upmovelist = document.getElementsByClassName("group-item");
+            for(let i = 0; i < upmovelist.length; i++){
+                upmovelist[i].addEventListener("click",function(){
+                	if(!this.classList.contains("list-btn_selected")){
+                		var moveClass = this.getAttribute("data-code");
+                		var setClass = $(this).closest(".container").find(".list-btn_selected").attr("data-code");
+                		$(this).closest(".container").find(".list-btn_selected").removeClass("list-btn_selected");
+                        this.classList.add("list-btn_selected");
+                        if(document.getElementsByClassName(setClass)[0].classList.contains("bounceInDown")){
+                            document.getElementsByClassName(setClass)[0].classList.remove("bounceInDown");
+                        }
+                        document.getElementsByClassName(setClass)[0].classList.add("bounceOutDown");
+
+                        setTimeout(function(){
+                        	document.getElementsByClassName(setClass)[0].classList.remove("bounceOutDown");
+                        	document.getElementsByClassName(setClass)[0].classList.remove("item-to_block");
+                            document.getElementsByClassName(moveClass)[0].classList.add("item-to_block");
+                            document.getElementsByClassName(moveClass)[0].classList.add("bounceInDown");
+                        },600);
+                	}
+                })
+            }
+            var movelist = document.getElementsByClassName("list-btn");
+            for(let i = 0; i < movelist.length; i++){
+            	movelist[i].addEventListener("click",function(){
+            		if(!this.classList.contains("list-btn_selected")){
+            			var moveClass = this.getAttribute("data-code");
+                        var setClass = $(this).closest(".container").find(".list-btn_selected").attr("data-code");
+                        $(this).closest(".container").find(".list-btn_selected").removeClass("list-btn_selected");
+                        this.classList.add("list-btn_selected");
+                        if(document.getElementsByClassName(setClass)[0].classList.contains("bounceInLeft")){
+                            document.getElementsByClassName(setClass)[0].classList.remove("bounceInLeft");
+                        }
+                        document.getElementsByClassName(setClass)[0].classList.add("bounceOutRight");
+                        setTimeout(function(){
+                        	document.getElementsByClassName(setClass)[0].classList.remove("item-to_block");
+                        	document.getElementsByClassName(setClass)[0].classList.remove("bounceOutRight");
+                            document.getElementsByClassName(moveClass)[0].classList.add("item-to_block");
+                            document.getElementsByClassName(moveClass)[0].classList.add("bounceInLeft");
+                        },400);
+            		}
+            	})
+            }
+		
+    }
+	</script> 
+</head>
+<body>
+    <div class="swiper-container swiper-container-initialized swiper-container-vertical">
+    <div class="swiper-wrapper"  style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+    	<div class="swiper-slide swiper-slide-active app-introduce_item-first" style="flex-direction: row;">
+            <div style="width: 80%;  display: flex;   align-items: center;  justify-content: center;">
+                <div class="app-introduce_item-left">
+                	<div class="app-introduce_topitem-title">
+                        <div class="app-loadpage_headericon"></div>
+                	    <div class="app-introduce_topitem-text">科研之友 1.2.6 - 与知识连接</div>
+                	</div>
+                    <div class="app-download_code"></div>
+                	<div class="app-introduce_footeritem-text">扫描二维码下载科研之友客户端</div>
+                </div>
+                <div class="app-introduce_item-right">
+                    <div class="app-loadpage_headerleft-icon"></div>
+                </div>
+            </div>
+    	</div>
+        <div class="swiper-slide swiper-slide-next app-introduce_item-second">
+            <div style="width: 80%;">
+               
+                 <div class="app-introduce_item-title">
+                    <div class="app-introduce_item-maintitle">群组</div>
+                    <div class="app-introduce_item-subtitle">与志同道合的人分享科研心得与发现</div>
+                </div>
+                <div class="app-introduce_item-body">
+                    <div class="app-introduce_item-body_sleft"></div>
+                    <div class="app-introduce_item-body_scenter">
+                        <div class="connectpgroup connectpgroup-1 animated item-to_block"></div>
+                        <div class="connectpgroup connectpgroup-2 animated"></div>
+                        <div class="connectpgroup connectpgroup-9 animated"></div>
+                        <div class="connectpgroup connectpgroup-3 animated"></div>
+                        <div class="connectpgroup connectpgroup-4 animated"></div>
+                        <div class="connectpgroup connectpgroup-5 animated"></div>
+                        <div class="connectpgroup connectpgroup-6 animated"></div>
+                        <div class="connectpgroup connectpgroup-7 animated"></div>
+                        <div class="connectpgroup connectpgroup-8 animated"></div>
+                        
+                    </div>
+                    <div class="app-introduce_item-body_sright">
+                        <div class="container app-introduce_item-body_srightsubbox">
+                            <div class="group-item list-btn_selected" data-code="connectpgroup-1">发现群组</div>
+                            <div class="group-item" data-code="connectpgroup-2">我的群组</div>
+                            <div class="group-item" data-code="connectpgroup-9">首页</div>
+                            <div class="group-item" data-code="connectpgroup-3">成员</div>
+                            <div class="group-item" data-code="connectpgroup-4">成果</div>
+                            <div class="group-item" data-code="connectpgroup-5">文献</div>
+                            <div class="group-item" data-code="connectpgroup-6">文件</div>
+                            <div class="group-item" data-code="connectpgroup-7">课件</div>
+                            <div class="group-item" data-code="connectpgroup-8">作业</div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    	<div class="swiper-slide app-introduce_item-third">
+            <div style=" width: 80%;">
+                
+        		<div class="app-introduce_item-title">
+        		    <div  class="app-introduce_item-maintitle">基金</div>
+        	        <div  class="app-introduce_item-subtitle">获取更多基金推荐机会&发现更多基金申报与资助机会</div>
+        	    </div>
+                <div class="container app-introduce_item-body_fundcenter">
+                    <div class="list-btn list-btn_selected" data-code="connectfund-1">基金推荐</div>
+                    <div class="list-btn" data-code="connectfund-2">基金收藏</div>
+                    <div class="list-btn" data-code="connectfund-3">基金发现</div>
+                    <div class="list-btn" data-code="connectfund-4">资助机构</div>
+                </div>
+        	    <div  class="app-introduce_item-body_fundright">
+        	    	<div class="connectfund connectfund-1 item-to_block animated"></div>
+        	    	<div class="connectfund connectfund-2 animated"></div>
+        	    	<div class="connectfund connectfund-3 animated"></div>
+        	    	<div class="connectfund connectfund-4 animated"></div>
+        	    </div> 
+            </div>
+    	</div>
+
+        <div class="swiper-slide app-introduce_item-forth">
+            <div style=" width: 80%;">
+               <div class="app-introduce_item-title">
+                    <div class="app-introduce_item-maintitle">论文</div>
+                    <div class="app-introduce_item-subtitle">获取发现更多的优质论文提升竞争力</div>
+                </div>
+                <div class="app-introduce_item-body">
+                    <div class="app-introduce_item-body_sleft"></div>
+                    <div class="app-introduce_item-body_scenter">
+                        <div class="connectpgroup connectppaper-1 animated item-to_block"></div>
+                        <div class="connectpgroup connectppaper-2 animated"></div>
+                        <div class="connectpgroup connectppaper-3 animated"></div>
+                    </div>
+                    <div class="app-introduce_item-body_sright">
+                        <div class="container app-introduce_item-body_srightsubbox">
+                            <div class="group-item list-btn_selected" data-code="connectppaper-1">论文发现</div>
+                            <div class="group-item" data-code="connectppaper-2">论文推荐</div>
+                            <div class="group-item" data-code="connectppaper-3">论文收藏</div>
+                        </div>
+                    </div>
+                </div> 
+              
+            </div>
+        </div>
+
+        <div class="swiper-slide app-introduce_item-fifth" style="flex-direction: row;">
+            <div style="display: flex; align-items: flex-end;  justify-content: space-around;  width: 80%;">
+               <div class="app-introduce_footeritem-left">
+                    <div class="connectpsn"></div>
+                </div>
+                <div class="app-introduce_footeritem-right">
+                   <div class="app-introduce_footeritem-maintitle">联系人</div>
+                   <div class="app-introduce_footeritem-subtitle">发现相同领域的研究者</div>
+                   <div class="app-introduce_footeritem-subsectitle">添加关注或接受扩大科研社交圈为新的发现提供可能</div> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+            <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span>
+            <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span>
+            <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span>
+            <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span>
+            <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span>
+            <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6"></span>
+            <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 7"></span>
+            <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 8"></span>
+            <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 9"></span>
+            <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 10"></span>
+        </div>
+       <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+</div>
+    <script src="../js/swiper.min.js"></script>
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        direction: 'vertical',
+        slidesPerView: 1,
+        spaceBetween: 30,
+        mousewheel: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="../css/scmpcframe.css">
+		<script type="text/javascript">
+			window.onload = function(){
+
+
+				var checklist = document.getElementsByClassName("check-item_attribute");
+				var checkstyle = document.getElementsByClassName("arrow-selected_icon")[0];
+				var selectlist = document.getElementsByClassName("arrow-selected_container-item");
+				var confirmlist = document.getElementsByClassName("handin_import-content_container-right_author-body_oneself");
+				var comunitlist = document.getElementsByClassName("handin_import-content_container-right_author-body_Communication");
+				for(var i = 0; i < checklist.length; i++){
+                    checklist[i].onclick = function(){
+                    	if(this.parentNode.parentNode.querySelector(".selected-oneself_confirm")){
+                            this.parentNode.parentNode.querySelector(".selected-oneself_confirm").classList.remove("selected-oneself_confirm");
+                            this.classList.add("selected-oneself_confirm");
+                    	}else{
+                    		this.classList.add("selected-oneself_confirm");
+                    	}
+                    }
+				};
+				checkstyle.onclick = function(e){
+					e.stopPropagation();
+                    if(this.innerHTML == "arrow_drop_down"){
+                    	this.innerHTML = "arrow_drop_up";
+                    	this.parentNode.querySelector(".arrow-selected_container").style.display = "block";
+                    }else{
+                    	this.innerHTML = "arrow_drop_down";
+                    	this.parentNode.querySelector(".arrow-selected_container").style.display = "none";
+                    }
+				};
+				for(var i = 0; i <selectlist.length; i++ ){
+                    selectlist[i].onclick = function(){
+                    	this.parentNode.parentNode.querySelector("input").setAttribute("value", this.innerHTML);
+                    	this.parentNode.style.display = "none";
+                    	this.parentNode.parentNode.querySelector("i").innerHTML = "arrow_drop_down";
+                    }
+				};
+				for(var i = 0; i < confirmlist.length; i++){
+                   confirmlist[i].querySelector(".selected-oneself").onclick = function(){
+                   	   if(this.classList.contains("selected-oneself_confirm")){
+                            this.classList.remove("selected-oneself_confirm");
+                   	   }else{
+                            this.classList.add("selected-oneself_confirm");
+                   	   }
+                   }
+				};
+
+                for(var i = 0; i < comunitlist.length; i++){
+                    comunitlist[i].querySelector(".selected-author").onclick = function(){
+                    	if(this.classList.contains("selected-author_confirm")){
+                            this.classList.remove("selected-author_confirm");
+                    	}else{
+                    		this.classList.add("selected-author_confirm");
+                    	}
+                    }
+                }
+
+				document.onclick = function(){
+					if(checkstyle.innerHTML == "arrow_drop_up"){
+                        checkstyle.innerHTML = "arrow_drop_down";
+                        checkstyle.parentNode.querySelector(".arrow-selected_container").style.display = "none";
+					}
+				}
+                
+
+
+
+
+
+
+
+			}
+		</script>
+	</head>
+	<body>
+	    <div class="handin_import-container">
+	   	    <div class="handin_import-container_title">
+	   	   	    <div class="handin_import-container_title-left">
+	   	   	    	<span class="handin_import-container_title-left_content">项目编辑</span>
+	   	   	        (<span class="handin_import-container_title-left_tip">带<span class="handin_import-content_container-tip">*</span> 号的为必填</span>) 
+	   	   	        <i class="selected-func_close " title="仅自己可以查看"></i>
+	   	   	    </div>
+	   	   	    <div class="handin_import-container_title-right">
+	   	   	    	<div style="font-size: 14px; color: #999;">
+	                    <span>最近保存:</span> 
+	                    <span>2019/01/09 13:46:31</span>
+	                </div>
+	   	   	    </div>
+	   	    </div>
+	   	    <div class="handin_import-content_container">
+	   	    	<div class="project-edit_item-center" style="margin: 32px 0px auto; display: flex; align-items: center; ">
+	   	    		<div class="project-edit_item-title">
+	   	    		    <span class="handin_import-content_container-tip">*</span>
+	   	    		    <span>隐私设置:</span>
+	   	    		</div>
+ 
+	   	    		<div class="arrow-selected_box">
+	   	    			<div class="arrow-selected_box-detail"><input type="text"></div>
+	   	    			<i class="material-icons arrow-selected_icon">arrow_drop_down</i>
+	   	    			<div class="arrow-selected_container">
+	   	    				<div class="arrow-selected_container-item">公开</div>
+	   	    				<div class="arrow-selected_container-item">非公开</div>
+	   	    			</div>
+	   	    		</div>
+	   	    	</div>
+            
+                 <div class="project-edit_item-start">
+                    <div class="project-edit_item-title">
+                        <span>全文:</span>
+                    </div>
+                    
+                    <div class="project-edit_item-uploadfile">
+                          <div class="fileupload__upload-logo"></div>
+                          <div class="project-edit_item-uploadfile-tip">点击或拖拽选取文件</div>
+                    </div>
+  
+                    <div class="project-edit_item-uploadfile_list">
+                        <div class="handin_import-content_container-right_upload-item">
+                            <span class="handin_import-content_container-right_upload-item_detaile">SMate_Output_zh.xls</span>
+                            <i class="material-icons handin_import-content_upload-item_icon">close</i>
+                            <i class="selected-func_close selected-func_close-open" title="所有人都可以查看"></i>
+                            <div class="handin_import-content_container-upload_again">重新上传</div>
+                        </div>
+                    </div>
+                    
+                </div>
+            
+            
+            
+                <div class="project-edit_item-center">
+	   	    		<div class="project-edit_item-title">
+	   	    		    <span class="handin_import-content_container-tip">*</span>
+	   	    		    <span>项目名称:</span>
+	   	    		</div>
+	   	    		<div class="project-edit_item-displaybox_normal">
+	   	    			<input type="text">
+	   	    		</div>
+	   	    	</div>
+             
+
+
+	   	    	<div class="project-edit_item-center">
+	   	    		<div class="project-edit_item-title">
+	   	    			<span>项目类型:</span>
+	   	    		</div>
+	   	    		<div class="item_attribute-container" style="justify-content: flex-start;">
+	   	    			<div class="handin_import-content_container-right_collect-item" style="margin: 0px 12px 0px 0px;">
+                             <i class="selected-oneself  check-item_attribute"></i>
+                             <span class="selected-author_confirm-detaile">内部项目</span>
+                        </div>
+                        
+                        <div class="handin_import-content_container-right_collect-item" style="margin: 0px 12px;">
+                             <i class="selected-oneself  check-item_attribute"></i>
+                             <span class="selected-author_confirm-detaile">外部项目</span>
+                        </div>
+	   	    		</div>
+	   	    	</div>
+                <div class="project-edit_item-center">
+	   	    		<div class="project-edit_item-title">
+	   	    			<span>项目状态:</span>
+	   	    		</div>
+	   	    		<div class="item_attribute-container" style="justify-content: flex-start;">
+	   	    			<div class="handin_import-content_container-right_collect-item" style="margin: 0px 12px 0px 0px;">
+                             <i class="selected-oneself check-item_attribute"></i>
+                             <span class="selected-author_confirm-detaile">进行中</span>
+                        </div>
+                        
+                        <div class="handin_import-content_container-right_collect-item" style="margin: 0px 12px;">
+                             <i class="selected-oneself check-item_attribute"></i>
+                             <span class="selected-author_confirm-detaile">完成</span>
+                        </div>
+
+                        <div class="handin_import-content_container-right_collect-item" style="margin: 0px 12px;">
+                             <i class="selected-oneself check-item_attribute"></i>
+                             <span class="selected-author_confirm-detaile">其他</span>
+                        </div>
+
+	   	    		</div>
+	   	    	</div>
+
+	   	    	<div class="project-edit_item-start">
+	   	    		<div class="project-edit_item-title">
+	   	    			<span>摘要:</span>
+	   	    		</div>
+	   	    		<div class="project-edit_item-displaybox_normal" style="height: auto;">
+	   	    			<textarea maxlength="20000"></textarea>
+	   	    		</div>
+	   	    	</div>
+
+	   	    	<div class="project-edit_item-center">
+              <div class="project-edit_item-title">
+                <span class="handin_import-content_container-tip">*</span>
+                <span>依托单位:</span>
+              </div>
+              <div class="project-edit_item-displaybox_normal" >
+                <input type="text">
+              </div>
+            </div>
+
+
+              <div class="project-edit_item-center">
+                <div class="project-edit_item-title">
+                  <span class="handin_import-content_container-tip">*</span>
+                  <span>资助机构 -- 类别:</span>
+                </div>
+                <div class="project-edit_item-displaybox_normal"  style="border: none; display: flex; align-items: center; justify-content: space-between;">
+                  <div class="project-edit_item-displaybox_fund-category" style="width: 400px; height: 28px; border: 1px solid #ddd; position: relative; ">
+                    <input type="text" style="border: none; outline: none; width: 98%; height: 98%;">
+                    <div class="project-edit_item-displaybox_fund-category_tip" style="display: none; position: absolute; top: 28px; left: -1px; width: 100%; height: 240px; background:#fff; overflow-x: hidden; overflow-y: auto; border:1px solid #ddd;">
+
+                    </div>
+                  </div>
+                  <span style="margin: 0px 12px;">-</span>
+                  <div class="project-edit_item-displaybox_fund-category" style="width: 400px; height: 28px; border: 1px solid #ddd; position: relative; ">
+                    <input type="text" style="border: none; outline: none; width: 98%; height: 98%;">
+                    <div class="project-edit_item-displaybox_fund-category_tip"  style="display: none; position: absolute; top: 28px; left: -1px; width: 100%; height: 240px; background:#fff; overflow-x: hidden; overflow-y: auto; border: 1px solid #ddd;">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+	   	    	<div class="project-edit_item-center">
+	   	    		<div class="project-edit_item-title">
+	   	    			<span>项目批准号:</span>
+	   	    		</div>
+	   	    		<div class="project-edit_item-displaybox_normal">
+	   	    			<input type="text">
+	   	    		</div>
+	   	    	</div>
+               
+               <div class="project-edit_item-center">
+	   	    		<div class="project-edit_item-title">
+	   	    			<span>申报年度:</span>
+	   	    		</div>
+	   	    		<div class="project-edit_item-displaybox_small">
+	   	    			<input type="text">
+	   	    		</div>
+	   	    	</div>
+               
+                <div class="project-edit_item-center">
+                    <div class="project-edit_item-title">
+                        <span>项目日期:</span>
+                    </div>
+                    <div class="project-edit_item-displaybox_small">
+                        <input type="text">
+                    </div>
+                </div>
+
+
+              <div class="project-edit_item-center">
+                <div class="project-edit_item-title">
+                  <span>项目日期:</span>
+                </div>
+                <div class="project-edit_item-displaybox_normal"  style="border: none; display: flex; align-items: center; justify-content: flex-start;">
+                  <div class="project-edit_item-displaybox_normal-itemdata" style="width: 315px; height: 28px; border: 1px solid #ddd;">
+                     <input type="text" style="border: none; outline: none; width: 96%; height: 98%;">
+                  </div>
+                  <span style="font-size: 14px; line-height: 24px; margin: 0px 12px;">至</span>
+                  <div class="project-edit_item-displaybox_normal-itemdata"  style="width: 315px; height: 28px; border: 1px solid #ddd;">
+                    <input type="text" style="border: none; outline: none; width: 96%; height: 98%;">
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="project-edit_item-center">
+	   	    		<div class="project-edit_item-title">
+	   	    			<span>学科代码:</span>
+	   	    		</div>
+	   	    		<div class="project-edit_item-displaybox_small">
+	   	    			<input type="text">
+	   	    			<i class="selected-func_field"></i>
+	   	    		</div>
+	   	    	</div>
+
+
+
+              <div class="project-edit_item-center">
+	   	    		<div class="project-edit_item-title">
+	   	    			<span>关键词:</span>
+	   	    		</div>
+	   	    		<div class="new-importantkey_container project-edit_item-displaybox_normal" >
+	   	    			<input type="text">
+	   	    		</div>
+	   	    	</div>
+                 
+
+	   	    	<div class="project-edit_item-center">
+	   	    		<div class="project-edit_item-title">
+	   	    			<span>备注:</span>
+	   	    		</div>
+	   	    		<div class="project-edit_item-displaybox_normal" >
+	   	    			<input type="text">
+	   	    		</div>
+	   	    	</div>
+            
+               <div class="project-edit_item-center">
+                    <div class="project-edit_item-title">
+                        <span>全文链接:</span>
+                    </div>
+                    <div class="project-edit_item-displaybox_normal" >
+                        <input type="text">
+                    </div>
+                </div>
+
+
+              <div class="project-edit_item-center">
+                <div class="project-edit_item-title">
+                  <span>全文链接:</span>
+                </div>
+                <div class="project-edit_item-displaybox_normal" >
+                  <input type="text">
+                </div>
+              </div>
+                
+	   	    </div>
+	   	    <div class="project-edit_item-footer">
+	   	    	<div class="project-edit_item-footer_header">
+	   	    		<div class="project-edit_item-footer_header-left">项目成员</div>
+	   	    		<div class="project-edit_item-footer_header-right">
+	   	    		    <div class="handin_import-content_container-right_author-addbtn"><i class="handin_import-content_container-right_author-add"></i>添加</div>
+	   	    		</div>
+	   	    	</div>
+	   	    	<div class="project-edit_item-footer_body">
+		   	        <div class="project-edit_item-footer_body-left"></div>
+		   	    	<div class="project-edit_item-footer_body-right">
+	                    <div class="handin_import-content_container-right_author-title" style="width: 100%;">
+					        <div class="handin_import-content_container-right_author-oneself">
+					          是否本人</div>
+					        <div class="handin_import-content_container-right_author-name">
+					          姓名</div>
+					        <div class="handin_import-content_container-right_author-work">
+					          单位</div>
+					        <div class="handin_import-content_container-right_author-email">
+					          邮件地址</div>
+					        <div class="handin_import-content_container-right_author-Communication">
+					          是否是项目负责人</div>
+					        <div class="handin_import-content_container-right_author-edit">
+					          操作</div>
+	                    </div>  
+	                    <div class="handin_import-content_container-right_author-body"  style="width: 100%;">
+					          <div class="handin_import-content_container-right_author-body_oneself">
+					            <i class="selected-oneself"></i>
+					          </div>
+					          <div class="handin_import-content_container-right_author-body_name">
+					            <span class="handin_import-content_container-right_author-body_item error_import-tip_border"> 
+					            	<input type="text" style="width: 85% !important;" maxlength="61" autocomplete="off" class="dev-detailinput_container full_width json_member_name js_autocompletebox" >
+					            </span>
+					          </div>
+					          <div class="handin_import-content_container-right_author-body_work">
+					            <span class="handin_import-content_container-right_author-body_item"> 
+					            	<input type="text" autocomplete="off" maxlength="100" class="dev-detailinput_container full_width json_member_insNames js_autocompletebox">
+					            </span>
+					          </div>
+					          <div class="handin_import-content_container-right_author-body_email ">
+					            <span class="handin_import-content_container-right_author-body_item error_import-tip_border">
+					            	<input type="text" maxlength="50" class="dev-detailinput_container full_width json_member_email">
+					            </span>
+					          </div>
+					          <div class="handin_import-content_container-right_author-body_Communication">
+					            <i class="selected-author dev_communicale"></i>
+					            <input type="hidden" class="json_member_communicable" name="communicable" value="false">
+					          </div>
+					          <div class="handin_import-content_container-right_author-body_edit">
+					            <i class="selected-func_delete"></i> 
+					            <i class="selected-func_down"></i> 
+					            <i class="selected-func_up selected-func_up-none"></i>
+					          </div>
+	                    </div>
+		   	    	</div>
+	   	        </div>
+	   	    </div>
+            
+
+
+               <div class="project-edit_item-footer">
+	   	    	<div class="project-edit_item-footer_header">
+	   	    		<div class="project-edit_item-footer_header-left">其他附件</div>
+	   	    		<div class="project-edit_item-footer_header-right">
+	   	    		    <div class="handin_import-content_container-right_author-addbtn"><i class="handin_import-content_container-right_author-add"></i>添加</div>
+	   	    		</div>
+	   	    	</div>
+	   	    	<div class="project-edit_item-footer_body">
+		   	        <div  class="project-edit_item-footer_body-left"></div>
+		   	    	<div  class="project-edit_item-footer_body-right">
+	                    <div class="handin_import-content_container-right_author-title" style="width: 100%;">
+					        <div class="handin_import-content_container-right_author-oneself">
+					          选择</div>
+					        <div class="handin_import-content_container-right_author-name">
+					          文件名称</div>
+					        <div class="handin_import-content_container-right_author-work">
+					          文件描述</div>
+					        <div class="handin_import-content_container-right_author-email">
+					          上传日期</div>
+					        <div class="handin_import-content_container-right_author-Communication">
+					          许可</div>
+					        <div class="handin_import-content_container-right_author-edit">
+					          操作</div>
+	                    </div>  
+	                    <div class="handin_import-content_container-right_author-body"  style="width: 100%;">
+					          <div class="handin_import-content_container-right_author-body_oneself">
+					            <i class="selected-oneself"></i>
+					          </div>
+					          <div class="handin_import-content_container-right_author-body_name">
+					            <span class="handin_import-content_container-right_author-body_item error_import-tip_border"> 
+					            	<input type="text" style="width: 85% !important;" maxlength="61" autocomplete="off" class="dev-detailinput_container full_width json_member_name js_autocompletebox" >
+					            </span>
+					          </div>
+					          <div class="handin_import-content_container-right_author-body_work">
+					            <span class="handin_import-content_container-right_author-body_item"> 
+					            	<input type="text" autocomplete="off" maxlength="100" class="dev-detailinput_container full_width json_member_insNames js_autocompletebox">
+					            </span>
+					          </div>
+					          <div class="handin_import-content_container-right_author-body_email ">
+					            <span class="handin_import-content_container-right_author-body_item error_import-tip_border">
+					            	<input type="text" maxlength="50" class="dev-detailinput_container full_width json_member_email">
+					            </span>
+					          </div>
+					          <div class="handin_import-content_container-right_author-body_Communication">
+                                 <select style="height: 28px; border-radius: 3px; border-color: #ddd; color: #333; font-weight: 350;">
+                                     <option>本人可下载</option>
+                                     <option>所有人可下载</option>
+                                 </select>
+					            <input type="hidden" class="json_member_communicable" name="communicable" value="false">
+					          </div>
+					          <div class="handin_import-content_container-right_author-body_edit">
+					            <i class="selected-func_delete"></i> 
+					            <i class="selected-func_down"></i> 
+					            <i class="selected-func_up selected-func_up-none"></i>
+                                <i class="selected-func_download"></i>
+					          </div>
+	                    </div>
+		   	    	</div>
+	   	        </div>
+	   	    </div>
+
+
+	   	    <div class="handin_import-content_container-center" style="margin: 32px 0px;">
+  <div class="handin_import-content_container-left">
+    <span></span>
+  </div>
+  <div class="handin_import-content_container-right" style="display: flex; align-items: center; margin-right: 24px;">
+    <div class="handin_import-content_container-save" onclick="PubEdit.formValid();PubEdit.checkRepeat(this);">
+      保存</div>
+    <div class="handin_import-content_container-cancle" onclick="PubEdit.viewPubs();">
+      返回</div>
+  </div>
+</div>
+	    </div>
+	</body>
+</htm28

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>科研之友移动端</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../../mobile/css/mobile.css">
+    <script type="text/javascript">
+    	window.onload = function(){
+    		document.getElementsByClassName("new-register_page-body_item-experience")[0].onclick = function(){
+    			document.getElementsByClassName("new-register_page-experience_background")[0].style.display = "block";
+    		}
+
+    		var keylist = document.getElementsByClassName("new-register_page-experience_header-item");
+    		for(var i = 0; i < keylist.length; i++){
+                keylist[i].onclick = function(){
+                	this.closest(".new-register_page-experience_background").style.display = "none";
+                }
+    		}
+    	}
+    </script>
+</head>
+<body>
+    <div class="message-page__header" style="position: fixed; top: 0px; z-index: 55; display: flex; justify-content: space-between;">
+        <i class="material-icons" style="margin-left: 15px; width: 10vw;">keyboard_arrow_left</i>
+        <span style="width: 80vw; display: flex; justify-content: center; align-items: center;">注册</span> <i style="width: 10vw; margin-right: 15px"></i>
+    </div>
+    <div class="new-register_page-neck"></div>
+    <div  class="new-register_page-body">
+   	    
+   	    <div class="new-register_page-body_item">
+   	  	    <span class="new-register_page-body_item-title">我的经历</span>
+   	  		<input type="text" class="new-register_page-body_item-input new-register_page-body_item-experience" placeholder="请选择当前的经历">
+   	  		<i class="material-icons new-register_page-body_item-icon">keyboard_arrow_right</i>
+   	    </div>
+        
+        <div class="new-register_page-body_item">
+   	  	    <span class="new-register_page-body_item-title">单位</span>
+   	  		<input type="text" class="new-register_page-body_item-input" placeholder="请输入当前单位">
+   	  	
+   	    </div>
+
+   	    <div class="new-register_page-body_item">
+   	  	    <span class="new-register_page-body_item-title">入职时间</span>
+   	  		<input type="text" class="new-register_page-body_item-input" placeholder="当前单位入职时间">
+   	  		<i class="material-icons new-register_page-body_item-icon">keyboard_arrow_right</i>
+   	    </div>
+
+   	    <div class="new-register_page-body_item">
+   	  	    <span class="new-register_page-body_item-title">职称</span>
+   	  		<input type="text" class="new-register_page-body_item-input" placeholder="请输入当前职称">
+   	    </div>
+
+        <div class="new-register_page-body_item-button">保存</div>
+    </div>
+    <div class="new-register_page-experience_background">
+    	<div class="new-register_page-experience_selectbox">
+    		<div class="new-register_page-experience_header">
+    			<span class="new-register_page-experience_header-item">取消</span>
+    			<span class="new-register_page-experience_header-item">完成</span>
+    		</div>
+    		<div class="new-register_page-experience_item">我在工作</div>
+    		<div class="new-register_page-experience_item">我是学生</div>
+    	</div>
+    </div>
+</body>
+</html>

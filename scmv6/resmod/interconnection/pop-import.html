@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<!-- saved from url=(0138) -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>国家自然科学基金委员会</title>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<!--[if lt IE 10]>
+    <script type="text/javascript" src="js/PIE.js"></script>
+    <![endif]-->
+<script type="text/javascript" src="js/action.js"></script>
+<!-- 收缩展开效果 -->
+<script type="text/javascript" src="js/jquery-1.5.1.js"></script>
+<script type="text/javascript">
+        $(document).ready(function() {
+            var menuParent = $('.menu > .ListTitlePanel > div');//获取menu下的父层的DIV
+            var menuList = $('.menuList');
+            var name =document.getElementById("iconQh");
+            $('.menu > .menuParent > .ListTitlePanel > .ListTitle').each(function(i) {//获取列表的大标题并遍历
+                $(this).click(function(){
+                    if($(menuList[i]).css('display') == 'none'){
+                        $(menuList[i]).slideDown(300);
+                        name.className = "keyboard_arrow_up";
+                    }
+                    else{
+                        $(menuList[i]).slideUp(300);
+                        name.className = "keyboard_arrow_down";
+                    }
+                });
+            });
+        });
+    </script>
+<script src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+        //模拟单选按钮
+        var obj={
+            typeSpan:"",
+            holderSpan:"",
+        };
+        function change(span)
+        {
+            $('span[name="'+$(span).attr('name')+'"]').each(function(){
+                if(this.checked&&this!=span)
+                {
+                    this.className="unchecked";
+                    this.checked=false;
+                }
+            });
+            obj[$(span).attr('name')]=span.innerHTML;
+            span.className="checked";
+            span.checked=true;
+            select();
+        }
+    </script>
+<script src="js/scrollBar.js" type="text/javascript"></script>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+        //模拟复选框
+        $(function () {
+            $('.checkbox').on('click',function(){
+                if($(this).siblings("input[type='checkbox']").attr('checked')){
+                    $(this).removeClass('cur');
+                    $(this).siblings("input[type='checkbox']").removeAttr('checked')
+                }
+                else{
+                    $(this).addClass('cur');
+                    $(this).siblings("input[type='checkbox']").attr('checked','checked')
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+  <div class="pop_box">
+    <div class="pop_bg"></div>
+    <div class="pop" style="width: 980px; margin-left: -490px; margin-top: -341px;">
+      <div class="pop_top">
+        <a href="#" class="close"><i class="close_icon"></i></a><span class="ml20">从科研之友中导入成果</span>
+      </div>
+      <div class="pop_tx">
+        <div class="pop_shelter">
+          <div class="pop_slt_tit">
+            <a href="#" class="close_btn"></a>
+          </div>
+          <div class="pop_slt_cont">
+            <span>已加载成果数：10/200</span>
+          </div>
+        </div>
+        <div class="pop_shelter_bg"></div>
+        <div class="import_mn">
+          <a href="#" class="import_btn01 &lt;!--import_btn01_hover--&gt;">从项目组导入</a><a href="#"
+            class="import_btn02 import_btn02_hover">从我的成果库中导入</a>
+          <div class="query_box">
+            <input type="text" class="input_default" value="输入成果相关关键词检索" id="input_default01"><input
+              type="button" class="query_btn">
+          </div>
+          <a href="#" class="rush"><i class="rush_icon"></i>刷新</a><a href="#" class="rounded_btn">导入</a>
+        </div>
+        <div class="pro_effort">
+          <a href="#" class="pro_effort_ple"><img src="images/tx_img.png"><span>赵晓燕</span>
+          <p>香港城市大学；新闻与传播学院；教授</p></a><a href="#" class="pro_btn"><i class="sm_logo"></i>维护成果列表</a>
+        </div>
+        <div class="import_mn">
+          <div class="cont_l">
+            <div class="l_menu_tit">所有成果( 100 )</div>
+            <div class="menu">
+              <div class="menuParent">
+                <div class="ListTitlePanel">
+                  <div class="ListTitle">
+                    <strong>成果类别</strong>
+                    <div class="leftbgbt">
+                      <i class="keyboard_arrow_up" id="iconQh"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="menuList">
+                  <div class="cur">
+                    <a href="#"><span>期刊论文</span><em>(11)</em></a>
+                  </div>
+                  <div>
+                    <a href="#"><span>会议论文</span><em>(11)</em></a>
+                  </div>
+                  <div>
+                    <a href="#"><span>其他</span><em>(11)</em></a>
+                  </div>
+                  <div>
+                    <a href="#"><span>奖励</span><em>(11)</em></a>
+                  </div>
+                  <div>
+                    <a href="#"><span>其他</span><em>(11)</em></a>
+                  </div>
+                </div>
+              </div>
+              <div class="menuParent">
+                <div class="ListTitlePanel">
+                  <div class="ListTitle">
+                    <strong>出版年份</strong>
+                    <div class="leftbgbt">
+                      <i class="keyboard_arrow_up" id="iconQh"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="menuList">
+                  <div class="cur">
+                    <a href="#"><span>2016年</span><em>(11)</em></a>
+                  </div>
+                  <div>
+                    <a href="#"><span>2015年</span><em>(11)</em></a>
+                  </div>
+                  <div>
+                    <a href="#"><span>2014年</span><em>(11)</em></a>
+                  </div>
+                  <div>
+                    <a href="#"><span>2013年</span><em>(11)</em></a>
+                  </div>
+                  <div>
+                    <a href="#"><span>2012年</span><em>(11)</em></a>
+                  </div>
+                  <div class="menuList_sc">
+                    <a href="#" class="fl">上五年</a><a href="#" class="hover fr">下五年</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cont_r">
+            <div class="sorting_box">
+              <div class="ord fr">
+                <a href="#" class="import_but">导入</a>
+                <div class="ord_box">
+                  <a href="#" class="relevance_but"><i class="sl_icon"></i>相关性高低</a>
+                  <div class="sl_box">
+                    <ul>
+                      <li><a href="#">由高至低</a></li>
+                      <li><a href="#">由低至高</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <span class="fr">排序：</span>
+              </div>
+              <span class="unchecked" name="typeSpan" checked="false" onclick="change(this);">已导入<span
+                class="f999">（23）</span></span><span class="unchecked" name="typeSpan" checked="false" onclick="change(this);">未导入<span
+                class="f999">（23）</span></span>
+            </div>
+            <table border="0" cellpadding="0" cellspacing="0" class="tab_style">
+              <tr>
+                <th align="left">标题 / 认证 / 作者 / 来源 / 出版年份/收录</th>
+                <th width="100">相关度 / 标注</th>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_style checkbox-con"
+              id="scrollTest">
+              <tr>
+                <td width="25" align="center"><span class="check_fx"><input type="checkbox" class="ipt-hide">
+                    <label class="checkbox"></label></span></td>
+                <td width="70" valign="top" align="left"><a href="#" class="file_bg"><img
+                    src="images/file_img1.jpg"></a></td>
+                <td align="left" valign="top">
+                  <div class="screen_result">
+                    <p class="blue">
+                      Blocking autocrine VEGF signaling by sunitinib, an anti-cancer drug, promotes embryonic stem cells
+                      self-renewal and somatic<i class="included01"></i>
+                    </p>
+                    <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking Haifeng Gu,
+                      ...</p>
+                    <p class="f999">Journal of Pharmacology and Experimental Therapeutics.2016 Jun;349(3):437-43.</p>
+                  </div>
+                </td>
+                <td width="100" align="center"><i class="relevance_icon01"></i><i class="mark_icon01"></i></td>
+              </tr>
+              <tr>
+                <td width="25" align="center"><span class="check_fx"><input type="checkbox" class="ipt-hide">
+                    <label class="checkbox"></label></span></td>
+                <td width="70" valign="top" align="left"><a href="#" class="file_bg"><img
+                    src="images/file_img.jpg"></a></td>
+                <td align="left" valign="top">
+                  <div class="screen_result">
+                    <p class="blue">
+                      Blocking autocrine VEGF signaling by sunitinib, an anti-cancer drug, promotes embryonic stem cells
+                      self-renewal and somatic<i class="included02"></i>
+                    </p>
+                    <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking Haifeng Gu,
+                      ...</p>
+                    <p class="f999">Journal of Pharmacology and Experimental Therapeutics.2016 Jun;349(3):437-43.</p>
+                  </div>
+                </td>
+                <td width="100" align="center"><i class="relevance_icon02"></i><i class="mark_icon02"></i></td>
+              </tr>
+              <tr>
+                <td width="25" align="center"><span class="check_fx"><input type="checkbox" class="ipt-hide">
+                    <label class="checkbox"></label></span></td>
+                <td width="70" valign="top" align="left"><a href="#" class="file_bg"><img
+                    src="images/file_img.jpg"></a></td>
+                <td align="left" valign="top">
+                  <div class="screen_result">
+                    <p class="blue">
+                      Blocking autocrine VEGF signaling by sunitinib, an anti-cancer drug, promotes embryonic stem cells
+                      self-renewal and somatic<i class="included02"></i>
+                    </p>
+                    <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking Haifeng Gu,
+                      ...</p>
+                    <p class="f999">Journal of Pharmacology and Experimental Therapeutics.2016 Jun;349(3):437-43.</p>
+                  </div>
+                </td>
+                <td width="100" align="center"><i class="relevance_icon03"></i><i class="mark_icon02"></i></td>
+              </tr>
+              <tr>
+                <td width="25" align="center"><span class="check_fx"><input type="checkbox" class="ipt-hide">
+                    <label class="checkbox"></label></span></td>
+                <td width="70" valign="top" align="left"><a href="#" class="file_bg"><img
+                    src="images/file_img.jpg"></a></td>
+                <td align="left" valign="top">
+                  <div class="screen_result">
+                    <p class="blue">
+                      Blocking autocrine VEGF signaling by sunitinib, an anti-cancer drug, promotes embryonic stem cells
+                      self-renewal and somatic<i class="included02"></i>
+                    </p>
+                    <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking Haifeng Gu,
+                      ...</p>
+                    <p class="f999">Journal of Pharmacology and Experimental Therapeutics.2016 Jun;349(3):437-43.</p>
+                  </div>
+                </td>
+                <td width="100" align="center"><i class="relevance_icon04"></i><i class="mark_icon02"></i></td>
+              </tr>
+              <tr>
+                <td width="25" align="center"><span class="check_fx"><input type="checkbox" class="ipt-hide">
+                    <label class="checkbox"></label></span></td>
+                <td width="70" valign="top" align="left"><a href="#" class="file_bg"><img
+                    src="images/file_img1.jpg"></a></td>
+                <td align="left" valign="top">
+                  <div class="screen_result">
+                    <p class="blue">
+                      Blocking autocrine VEGF signaling by sunitinib, an anti-cancer drug, promotes embryonic stem cells
+                      self-renewal and somatic<i class="included01"></i>
+                    </p>
+                    <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking Haifeng Gu,
+                      ...</p>
+                    <p class="f999">Journal of Pharmacology and Experimental Therapeutics.2016 Jun;349(3):437-43.</p>
+                  </div>
+                </td>
+                <td width="100" align="center"><i class="relevance_icon01"></i><i class="mark_icon01"></i></td>
+              </tr>
+              <tr>
+                <td width="25" align="center"><span class="check_fx"><input type="checkbox" class="ipt-hide">
+                    <label class="checkbox"></label></span></td>
+                <td width="70" valign="top" align="left"><a href="#" class="file_bg"><img
+                    src="images/file_img.jpg"></a></td>
+                <td align="left" valign="top">
+                  <div class="screen_result">
+                    <p class="blue">
+                      Blocking autocrine VEGF signaling by sunitinib, an anti-cancer drug, promotes embryonic stem cells
+                      self-renewal and somatic<i class="included02"></i>
+                    </p>
+                    <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking Haifeng Gu,
+                      ...</p>
+                    <p class="f999">Journal of Pharmacology and Experimental Therapeutics.2016 Jun;349(3):437-43.</p>
+                  </div>
+                </td>
+                <td width="100" align="center"><i class="relevance_icon02"></i><i class="mark_icon02"></i></td>
+              </tr>
+              <tr>
+                <td width="25" align="center"><span class="check_fx"><input type="checkbox" class="ipt-hide">
+                    <label class="checkbox"></label></span></td>
+                <td width="70" valign="top" align="left"><a href="#" class="file_bg"><img
+                    src="images/file_img.jpg"></a></td>
+                <td align="left" valign="top">
+                  <div class="screen_result">
+                    <p class="blue">
+                      Blocking autocrine VEGF signaling by sunitinib, an anti-cancer drug, promotes embryonic stem cells
+                      self-renewal and somatic<i class="included02"></i>
+                    </p>
+                    <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking Haifeng Gu,
+                      ...</p>
+                    <p class="f999">Journal of Pharmacology and Experimental Therapeutics.2016 Jun;349(3):437-43.</p>
+                  </div>
+                </td>
+                <td width="100" align="center"><i class="relevance_icon03"></i><i class="mark_icon02"></i></td>
+              </tr>
+              <tr>
+                <td width="25" align="center"><span class="check_fx"><input type="checkbox" class="ipt-hide">
+                    <label class="checkbox"></label></span></td>
+                <td width="70" valign="top" align="left"><a href="#" class="file_bg"><img
+                    src="images/file_img.jpg"></a></td>
+                <td align="left" valign="top">
+                  <div class="screen_result">
+                    <p class="blue">
+                      Blocking autocrine VEGF signaling by sunitinib, an anti-cancer drug, promotes embryonic stem cells
+                      self-renewal and somatic<i class="included02"></i>
+                    </p>
+                    <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking Haifeng Gu,
+                      ...</p>
+                    <p class="f999">Journal of Pharmacology and Experimental Therapeutics.2016
+                      Jun;349(3):437-43.Journal of Pharmacology and Experimental Therapeutics.2016 Jun;349(3):437-43.</p>
+                  </div>
+                </td>
+                <td width="100" align="center"><i class="relevance_icon04"></i><i class="mark_icon02"></i></td>
+              </tr>
+            </table>
+            <div class="page">
+              <div class="f999 fl">
+                <span class="mr20">共13/130条记录</span>每页显示 <select name="" class="page_lt">
+                  <option value="">10</option>
+                  <option value="">20</option>
+                  <option value="">30</option>
+                </select>条
+              </div>
+              <div class="f999 fr">
+                <span class="fl">共13页</span><span class="ml20 fl">到第</span> <select name="" class="page_lt">
+                  <option value="">1</option>
+                  <option value="">2</option>
+                  <option value="">3</option>
+                </select>页
+              </div>
+              <div class="page_cont fr">
+                <a href="#">上一页</a> <a href="#" class="hover">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a>
+                <a href="#">5</a> <a href="#">6</a> <a href="#">7</a> <a href="#">8</a> <a href="#">9</a> <span>…</span>
+                <a href="#">下一页</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script language="javascript">
+    var s1=document.getElementById("input_default01");
+    s1.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s1.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s1.onkeydown=function(){this.style.color='#333'};
+</script>
+  <script>
+    var a = skyScroll({
+        target:'scrollTest'
+    });
+</script>
+</body>
+</html>

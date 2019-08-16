@@ -1,0 +1,232 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*header*/
+#sm_header {
+  width: 980px;
+  margin: 0px auto;
+  padding-top: 20px;
+  height: 40px;
+}
+
+#sm_header .sm_logo {
+  float: left;
+  width: 290px;
+}
+
+#sm_header .sm_top_menu {
+  float: right;
+  color: #666;
+}
+
+#sm_header .sm_top_menu span {
+  color: #cccccc;
+  padding: 0px 3px;
+}
+
+#sm_header .sm_top_menu .red {
+  color: #F00;
+  font-weight: bold;
+}
+
+#sm_header .sm_top_menu b {
+  font-weight: normal;
+}
+
+.top_useimg {
+  background: url(../images_v5/nav/top_useimg.gif) no-repeat;
+  width: 7px;
+  height: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 3px;
+}
+
+/*切换站点*/
+.switching_station {
+  float: left;
+  padding-top: 3px;
+  position: relative;
+}
+
+.switching_box {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  border: 1px solid #dedede;
+  background-color: #FFF;
+}
+
+.switching_box ul li {
+  list-style-type: none;
+  margin: 2px 0px;
+}
+
+.switching_box ul li a {
+  padding: 5px 10px;
+  background-color: #FFF;
+  text-decoration: none;
+  width: 150px;
+  display: inline-block;
+}
+
+.switching_box ul li a:hover {
+  padding: 5px 10px;
+  background-color: #ecf0f5;
+  text-decoration: none;
+  width: 150px;
+  display: inline-block;
+}
+
+/*=====鼠标点击去掉外部虚线样式======*/
+a {
+  outline: none;
+}
+
+a:active {
+  star: expression(this.onFocus = this.blur ());
+}
+
+/*一级菜单hover背景无限制*/
+.headerMenu {
+  min-width: 980px;
+  width: 100%;
+  background: url(../images_v5/nav/nav_bg.gif) repeat-x;
+  height: 40px;
+}
+
+.headerNav {
+  height: 40px;
+  background: url(../images_v5/nav/nav_hoverbg.gif) 0px -40px repeat-x;
+  overflow: hidden;
+  width: 980px;
+  margin: 0 auto;
+}
+
+.headerNav ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  width: 700px;
+  float: left;
+}
+
+.headerNav ul li {
+  float: left;
+  margin-right: 8px;
+}
+
+.headerNav ul a {
+  display: block;
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  background: url(../images_v5/nav/nav_hoverbg.gif) right -40px no-repeat;
+  padding-right: 30px;
+  text-decoration: none;
+}
+
+.headerNav ul a span {
+  display: block;
+  padding-left: 30px;
+}
+
+.headerNav ul a:hover {
+  color: #d0dbeb;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.headerNav ul .header_nav_on a {
+  background: url(../images_v5/nav/nav_hoverbg.gif) right 0 no-repeat;
+  font-weight: bold;
+  color: #395d95;
+}
+
+.headerNav ul .header_nav_on a span {
+  background: url(../images_v5/nav/nav_hoverbg.gif) left top no-repeat;
+  color: #395d95;
+  font-weight: bold;
+}
+/*二级菜单*/
+.pull_downnav {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #dedede;
+  height: 36px;
+  line-height: 36px;
+  min-width: 980px;
+}
+
+.pull_downnav .two_menu {
+  width: 980px;
+  margin: 0px auto;
+}
+
+.pull_downnav .two_menu ul {
+  padding-top: 11px;
+}
+
+.pull_downnav .two_menu ul li {
+  border-right: 1px solid #cccccc;
+  list-style: none;
+  float: left;
+  height: 14px;
+  line-height: 14px;
+}
+
+.pull_downnav .two_menu a {
+  color: #333333;
+  text-decoration: none;
+  border-bottom: 2px solid none;
+  padding: 0px 30px 10px 30px;
+  *padding: 2px 30px 8px 30px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.pull_downnav .two_menu a:hover, #two_nav {
+  color: #395d94;
+  text-decoration: none;
+  border-bottom: 2px solid #395d94;
+  padding: 0px 30px 10px 30px;
+  *padding: 2px 30px 8px 30px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+/*search*/
+.top_search {
+  float: right;
+  width: 250px;
+  background-color: #fdfefe;
+  border: 1px solid #2e4f80;
+  height: 24px;
+  line-height: 24px;
+  margin-top: 6px;
+}
+
+.top_search input {
+  height: 24px;
+  line-height: 24px;
+  *height: 22px;
+  *line-height: 22px;
+  border: 0;
+  width: 210px;
+  float: left;
+  background-color: #fdfefe;
+  padding-left: 3px;
+}
+
+.top_search_btn {
+  background: url(../images_v5/nav/top_searchimg.gif) no-repeat;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  float: right;
+  padding-right: 5px;
+}

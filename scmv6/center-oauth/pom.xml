@@ -1,0 +1,88 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>center-oauth</groupId>
+  <artifactId>center-oauth</artifactId>
+  <version>${center-oauth.version}</version>
+  <packaging>war</packaging>
+  <parent>
+    <groupId>com.smate</groupId>
+    <artifactId>smate-parent</artifactId>
+    <version>6.0.0</version>
+    <relativePath>../smate-parent/pom.xml</relativePath>
+  </parent>
+      <properties>
+     <maven.deploy.skip>true</maven.deploy.skip>
+        </properties>
+  <dependencies>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-mod-web</artifactId>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-base-utils</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>core-base-public</artifactId>
+    </dependency>
+    <!-- 其它项目引用这个jar包有问题 把它放在这里 -->
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache-core</artifactId>
+      <version>2.6.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.pdfbox</groupId>
+      <artifactId>pdfbox</artifactId>
+      <version>2.0.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.smate</groupId>
+      <artifactId>center-mail-connector</artifactId>
+    </dependency>
+    <!-- QQ第三方登录 -->
+    <dependency>
+      <groupId>com.qq</groupId>
+      <artifactId>connect</artifactId>
+      <version>2.0</version>
+    </dependency>
+    <!-- QQ第三方登录 -->
+    
+    <!-- 新浪微博第三方登录 -->
+    <dependency>
+      <groupId>com.iris</groupId>
+      <artifactId>weibo4j-oauth2</artifactId>
+      <version>3.1.1-releases</version>
+      <classifier>releases</classifier>
+    </dependency>
+    <!-- 新浪微博第三方登录 -->
+    
+    <!-- ip判断读取 -->
+    <dependency>
+        <groupId>net.ipip</groupId>
+        <artifactId>ipdb</artifactId>
+        <version>1.1.1</version>
+    </dependency>
+    
+  </dependencies>
+  <build>
+    <finalName>center-oauth</finalName>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <excludes>
+          <exclude>logback-test.xml</exclude>
+        </excludes>
+      </resource>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
+</project>

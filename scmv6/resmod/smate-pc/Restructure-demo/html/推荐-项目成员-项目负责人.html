@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/scmpdemostyle.css">
+<script type="text/javascript" src="../js/action.js"></script>
+<script type="text/javascript" src="../js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../js/jsScroll.js"></script>
+<script type="text/javascript" src="../js/scmdemoaction.js"></script>
+</head>
+<body>
+  <div class="pop__bg"></div>
+  <div class="pop-cover">
+    <div class="pop__box" style="width: 980px; height: 610px; margin-left: -490px; margin-top: -305px;">
+      <div class="pop__box--top">
+        <a href="#" class="pop-close"><i class="icon-pop-close"></i></a><span class="ml10">从科研之友中导入成果</span>
+      </div>
+      <div class="pop__box--tx">
+        <div class="menubox">
+          <ul>
+            <li class="hover" id="one1" onclick="setTab('one',1,3)"><i class="menubox-icon01"></i>推荐成果
+              <div class="triangle">
+                <em></em><span></span>
+              </div></li>
+            <li id="one2" onclick="setTab('one',2,3)" name="one2"><i class="menubox-icon02"></i>检索成果
+              <div class="triangle">
+                <em></em><span></span>
+              </div></li>
+            <li id="one3" onclick="setTab('one',3,3)"><i class="menubox-icon03"></i>手工录入
+              <div class="triangle">
+                <em></em><span></span>
+              </div></li>
+          </ul>
+          <a href="#" class="scm-logo"><img src="../images/scm-logo.png"></a>
+        </div>
+        <div class="contentbox">
+          <div id="con_one_1" class="hover">
+            <div class="associated-tip">
+              关联科研之友帐号，获取更准确、完整的成果推荐。<a href="#" class="blue1">点此关联</a>
+            </div>
+            <div class="contentbox__wrap">
+              <div class="leftBar">
+                <div class="leftBar__tit">
+                  <i class="leftBar-icon01"></i>所有成果(100)
+                </div>
+                <div class="leftBar__box">
+                  <div class="leftBar__box--parent">
+                    <div class="leftBar__box--panel">
+                      <div class="leftBar__box--listTitle">
+                        <strong><i class="leftBar-icon02"></i>项目成员</strong>
+                        <div class="leftBar__box--leftbgbt">
+                          <i class="keyboard_arrow_up" id="iconQh"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="leftBar__box--menuList" id="leftmenlistitem">
+                      <div class="box--menuList-select">
+                        <a href="#"><span>张珊珊</span><em>(11)</em></a>
+                      </div>
+                      <div>
+                        <a href="#"><span>刘毅</span><em>(11)</em></a>
+                      </div>
+                      <div>
+                        <a href="#"><span>张晓琪</span><em>(11)</em></a>
+                      </div>
+                      <div>
+                        <a href="#"><span>方圆</span><em>(11)</em></a>
+                      </div>
+                      <div>
+                        <a href="#"><span>周曦</span><em>(11)</em></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="leftBar__box--parent">
+                    <div class="leftBar__box--panel">
+                      <div class="leftBar__box--listTitle">
+                        <strong><i class="leftBar-icon03"></i>关联群组</strong>
+                      </div>
+                    </div>
+                    <div class="leftBar__box--menuList">
+                      <div class="box--menuList-select">
+                        <a href="#"><span>关于进一步深化科技体制改革的</span><em>(268)</em></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="leftBar__mn">
+                  <a href="#" class="switch"><i class="icon-switch"></i>切换</a>
+                </div>
+              </div>
+              <div class="cont-right">
+                <div class="sorting-box">
+                  <h2>
+                    <strong>陈文</strong>个人成果库有<strong>198</strong>条成果待导 <a href="#" class="border-btn ml10">编辑个人成果</a>
+                  </h2>
+                  <div class="ord demo_float-right">
+                    排序： <select name="" id="" class="select">
+                      <option value="">相关性高低</option>
+                      <option value="">从高至低</option>
+                      <option value="">从高至低</option>
+                    </select> <a href="#" class="blue-btn">导入成果至申请书</a>
+                  </div>
+                </div>
+                <table border="0" cellpadding="0" cellspacing="0" class="tab-style checkbox-con">
+                  <tr>
+                    <th width="25"><span class="check_fx"> <input type="checkbox"
+                        class="check_fx-select-total">
+                    </span></th>
+                    <th align="left">标题 / 作者 / 来源</th>
+                    <th width="100">&nbsp;</th>
+                    <th width="100">相关度 / 标注</th>
+                  </tr>
+                </table>
+                <div id="divScrollBar1" style="width: auto; overflow: hidden; height: 389px;">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab-style checkbox-con">
+                    <tr>
+                      <td width="25" align="center" valign="middle"><span class="check_fx"> <input
+                          type="checkbox">
+                      </span></td>
+                      <td align="left" valign="top">
+                        <div class="screen_result">
+                          <p class="blue">
+                            Blocking autocrine VEGF signaling by sunitinib<i class="included01"></i>
+                          </p>
+                          <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking
+                            Haifeng Gu, ...</p>
+                          <p class="f999">
+                            Journal of Pharmacology and Experimental Therapeutics.2016 Jun;349(3):437-43. <em
+                              class="screen_result-doi">DOI</em>
+                          </p>
+                        </div>
+                      </td>
+                      <td width="100" align="center"><a href="#" class="blue">上传全文</a></td>
+                      <td width="100" align="center"><i class="relevance_icon01"></i><i class="mark_icon01"></i></td>
+                    </tr>
+                    <tr>
+                      <td width="25" align="center" valign="middle"><span class="check_fx"> <input
+                          type="checkbox">
+                      </span></td>
+                      <td align="left" valign="top">
+                        <div class="screen_result">
+                          <p class="blue">
+                            an anti-cancer drug, promotes embryonic stem cells self-renewal and somatic<i
+                              class="included02"></i>
+                          </p>
+                          <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking
+                            Haifeng Gu, ...</p>
+                          <p class="f999">
+                            Journal of Pharmacology and Experimental Therapeutics.2016 Jun;349(3):437-43.<em
+                              class="screen_result-doi">DOI</em>
+                          </p>
+                        </div>
+                      </td>
+                      <td width="100" align="center"><a href="#" class="blue">上传全文</a></td>
+                      <td width="100" align="center"><i class="relevance_icon02"></i><i class="mark_icon02"></i></td>
+                    </tr>
+                    <tr>
+                      <td width="25" align="center" valign="middle"><span class="check_fx"> <input
+                          type="checkbox">
+                      </span></td>
+                      <td align="left" valign="top">
+                        <div class="screen_result">
+                          <p class="blue">
+                            Blocking autocrine VEGF signaling by sunitinib<i class="included01"></i>
+                          </p>
+                          <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking
+                            Haifeng Gu, ...</p>
+                          <p class="f999">
+                            Journal of Pharmacology and Experimental Therapeutics.2016 Jun;349(3):437-43.<em
+                              class="screen_result-doi">DOI</em>
+                          </p>
+                        </div>
+                      </td>
+                      <td width="100" align="center"><a href="#" class="blue">上传全文</a></td>
+                      <td width="100" align="center"><i class="relevance_icon03"></i><i class="mark_icon01"></i></td>
+                    </tr>
+                    <tr>
+                      <td width="25" align="center" valign="middle"><span class="check_fx"> <input
+                          type="checkbox">
+                      </span></td>
+                      <td align="left" valign="top">
+                        <div class="screen_result">
+                          <p class="blue">
+                            an anti-cancer drug, promotes embryonic stem cells self-renewal and somatic<i
+                              class="included02"></i>
+                          </p>
+                          <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking
+                            Haifeng Gu, ...</p>
+                          <p class="f999">
+                            Journal of Pharmacology and Experimental Therapeutics.2016 Jun;349(3):437-43.<em
+                              class="screen_result-doi">DOI</em>
+                          </p>
+                        </div>
+                      </td>
+                      <td width="100" align="center"><a href="#" class="blue">上传全文</a></td>
+                      <td width="100" align="center"><i class="relevance_icon04"></i><i class="mark_icon02"></i></td>
+                    </tr>
+                    <tr>
+                      <td width="25" align="center" valign="middle"><span class="check_fx"> <input
+                          type="checkbox">
+                      </span></td>
+                      <td align="left" valign="top">
+                        <div class="screen_result">
+                          <p class="blue">
+                            Blocking autocrine VEGF signaling by sunitinib<i class="included01"></i>
+                          </p>
+                          <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking
+                            Haifeng Gu, ...</p>
+                          <p class="f999">Journal of Pharmacology and Experimental Therapeutics.2016
+                            Jun;349(3):437-43.</p>
+                        </div>
+                      </td>
+                      <td width="100" align="center"><a href="#" class="blue">上传全文</a></td>
+                      <td width="100" align="center"><i class="relevance_icon05"></i><i class="mark_icon01"></i></td>
+                    </tr>
+                    <tr>
+                      <td width="25" align="center" valign="middle"><span class="check_fx"> <input
+                          type="checkbox">
+                      </span></td>
+                      <td align="left" valign="top">
+                        <div class="screen_result">
+                          <p class="blue">
+                            an anti-cancer drug, promotes embryonic stem cells self-renewal and somatic<i
+                              class="included02"></i>
+                          </p>
+                          <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking
+                            Haifeng Gu, ...</p>
+                          <p class="f999">Journal of Pharmacology and Experimental Therapeutics.2016
+                            Jun;349(3):437-43.</p>
+                        </div>
+                      </td>
+                      <td width="100" align="center"><a href="#" class="blue">上传全文</a></td>
+                      <td width="100" align="center"><i class="relevance_icon02"></i><i class="mark_icon01"></i></td>
+                    </tr>
+                    <tr>
+                      <td width="25" align="center" valign="middle"><span class="check_fx"> <input
+                          type="checkbox">
+                      </span></td>
+                      <td align="left" valign="top">
+                        <div class="screen_result">
+                          <p class="blue">
+                            Blocking autocrine VEGF signaling by sunitinib<i class="included01"></i>
+                          </p>
+                          <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking
+                            Haifeng Gu, ...</p>
+                          <p class="f999">Journal of Pharmacology and Experimental Therapeutics.2016
+                            Jun;349(3):437-43.</p>
+                        </div>
+                      </td>
+                      <td width="100" align="center"><a href="#" class="blue">上传全文</a></td>
+                      <td width="100" align="center"><i class="relevance_icon01"></i><i class="mark_icon01"></i></td>
+                    </tr>
+                    <tr>
+                      <td width="25" align="center" valign="middle"><span class="check_fx"> <input
+                          type="checkbox">
+                      </span></td>
+                      <td align="left" valign="top">
+                        <div class="screen_result">
+                          <p class="blue">
+                            an anti-cancer drug, promotes embryonic stem cells self-renewal and somatic<i
+                              class="included02"></i>
+                          </p>
+                          <p class="f333">Guofang Chen, Xinxiu Xu, Lihong Zhang, Yanbin Fu, Min Wang, Blocking
+                            Haifeng Gu, ...</p>
+                          <p class="f999">Journal of Pharmacology and Experimental Therapeutics.2016
+                            Jun;349(3):437-43.</p>
+                        </div>
+                      </td>
+                      <td width="100" align="center"><a href="#" class="blue">上传全文</a></td>
+                      <td width="100" align="center"><i class="relevance_icon02"></i><i class="mark_icon01"></i></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="page">
+                  <div class="f999 demo_float-left">
+                    <span class="mr20">共13/130条记录</span>每页显示 <select name="" class="page__select">
+                      <option value="">10</option>
+                      <option value="">20</option>
+                      <option value="">30</option>
+                    </select>条
+                  </div>
+                  <div class="f999 demo_float-right">
+                    <span class=" demo_float-left">共13页</span> <span class="ml20  demo_float-left">到第</span> <select
+                      name="" class="page__select">
+                      <option value="">1</option>
+                      <option value="">2</option>
+                      <option value="">3</option>
+                    </select>页
+                  </div>
+                  <div class="page__cont  demo_float-right">
+                    <a href="#">上一页</a> <a href="#" class="hover">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a>
+                    <a href="#">5</a> <a href="#">6</a> <a href="#">7</a> <a href="#">8</a> <a href="#">9</a> <span>…</span>
+                    <a href="#">下一页</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="con_one_2" style="display: none">222</div>
+          <div id="con_one_3" style="display: none">333</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    jsScroll(document.getElementById('divScrollBar1'));
+</script>
+</body>
+</html>

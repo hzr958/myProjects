@@ -1,0 +1,27 @@
+.treeSelect {
+  height: 200px;
+  width: 300px;
+  float: left;
+  margin: 0;
+  border: 1px solid gray;
+  font-family: Verdana;
+  font-size: 12px;
+  background: white;
+  overflow: auto;
+  z-index: 99999;
+  position: absolute;
+}
+
+.treeSelect_bg {
+  margin: 0;
+  height: 200px;
+  width: 300px;
+  border: none;
+  background: red;
+  z-index: 99998;
+  position: absolute;
+}
+
+.jq_treesct_container {
+  z-index: 999;
+}

@@ -1,0 +1,108 @@
+.disciplineext_list_div {
+  width: 100%;
+  height: 210px;
+  margin: 20px 0px 0px 0px;
+}
+
+.disciplineext_box {
+  
+}
+
+/*
+ 页眉
+ */
+.disciplineext_header {
+  height: 28px;
+  padding-left: 10px;
+  display: inline;
+  line-height: 28px;
+  /*width: 100%;*/
+}
+
+.disciplineext_header span {
+  display: block;
+  margin: 1px;
+  text-align: center;
+}
+
+.disciplineext_body {
+  background: #ffffff;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.disciplineext_body ol li {
+  line-height: 23px;
+  padding-left: 5px;
+}
+
+.disciplineext_body ol li a {
+  color: #000000;
+  display: block;
+  cursor: pointer;
+  outline: none;
+}
+
+.disciplineext_body ol li:hover {
+  background-color: #D5E1F2;
+}
+
+.disciplineext_body_li_select {
+  background: url(../../images_v5/plugin/discipline/delete_disc.gif) no-repeat 100% 50%;
+  background-color: #BDCCE0;
+  padding-right: 10px;
+}
+
+.disciplineext_body ol li a:hover {
+  text-decoration: none;
+}
+
+.disciplineext_footer {
+  
+}
+
+.disciplineext_tips_text {
+  display: inline-block;
+  *display: inline; *
+  zoom: 1;
+  height: 35px;
+  width: 701px;
+  line-height: 35px;
+  margin: 1px;
+  background-color: #FDFDF3;
+  font-size: 14px;
+}
+
+.disciplineext_tips_text .disciplineext_name {
+  color: #ff0000;
+  font-weight: bolder;
+}
+
+.disciplineext_tips_text div {
+  padding-left: 35px;
+}
+
+.disciplineext_recommend {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.disciplineext_recommend_text {
+  background-color: #eeeeee;
+  height: 32px;
+  line-height: 35px;
+  margin: 20px 0px 0px 0px;
+}
+
+.disciplineext_recommend_text_span {
+  color: #333333;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.disciplineext_select_other {
+  padding-left: 5px;
+  font-size: 18px;
+  line-height: 35px;
+}

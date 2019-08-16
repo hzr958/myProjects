@@ -1,0 +1,9 @@
+%0 Other
+%A ${pubAuthors}
+%D ${year}
+%T ${pubTitle}
+%R ${doi}
+%K ${keywords}
+%X ${abstract}
+%Z ${remark}
+%U ${fullTextUrl}

@@ -1,0 +1,120 @@
+/*search*/
+/*.top_search{ float:right; width:250px; background-color:#fdfefe; border:1px solid #2e4f80; height:24px; line-height:24px; margin-top:6px;}
+.top_search input{height:24px; line-height:24px; *height:22px; *line-height:22px; border:0; width:210px; float:left; background-color:#fdfefe; padding-left:3px;}
+.top_search_btn{ background:url(../images_v5/nav/top_searchimg.gif) no-repeat; width:22px; height:22px; cursor:pointer; float:right; padding-right:5px;}*/
+#sm_header .search {
+  width: 308px;
+  height: 36px;
+  border: 1px solid #d9d9d9;
+  display: inline-block;
+  position: absolute;
+  top: 15px;
+  margin-left: 10px;
+}
+
+#sm_header .search .tp_box {
+  width: 40px;
+  height: 36px;
+  border-right: 1px solid #d9d9d9;
+  background: #fafafa;
+  display: inline-block;
+  text-align: center;
+  float: left;
+}
+
+.lt_icon, .lw_icon, .zl_icon, .ry_icon {
+  width: 24px;
+  height: 24px;
+  background: url("../../images_v5/images2016/tp_icon.gif") no-repeat;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+.lt_icon {
+  background-position: 0 0;
+}
+
+.lw_icon {
+  background-position: 0 -36px;
+}
+
+.zl_icon {
+  background-position: 0 -72px;
+}
+
+.ry_icon {
+  background-position: 0 -110px;
+}
+
+#sm_header .search input[type="text"] {
+  width: 208px;
+  height: 36px;
+  padding: 0 10px;
+  line-height: 36px;
+  border: 0;
+  float: left;
+  overflow: visible;
+}
+
+#sm_header .search .s_btn {
+  width: 36px;
+  height: 36px;
+  background: url("../../images_v5/images2016/s_btn.gif") no-repeat 5px 5px;
+  display: inline-block;
+  float: left;
+}
+
+#divselect1 {
+  width: 40px;
+  height: 36px;
+  position: relative;
+  z-index: 5;
+  float: left;
+}
+
+#divselect1 span {
+  width: 40px;
+  height: 36px;
+  border-right: 1px solid #d9d9d9;
+  background: #fafafa;
+  display: inline-block;
+  text-align: center;
+  float: left;
+  z-index: 10;
+}
+
+#divselect1 ul {
+  width: 132px;
+  border: 1px solid #dfdfdf;
+  background-color: #fff;
+  position: absolute;
+  z-index: 6;
+  top: 36px;
+  left: -1px;
+  list-style: none;
+}
+
+#divselect1 ul li {
+  height: 30px;
+  line-height: 30px;
+}
+
+#divselect1 ul li a {
+  display: block;
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  color: #333;
+  text-decoration: none;
+  padding: 0 10px;
+  vertical-align: middle;
+}
+
+#divselect1 ul li a i {
+  float: left;
+  margin-right: 10px;
+}
+
+#divselect1 ul li a:hover {
+  background-color: #e5e5e5;
+}

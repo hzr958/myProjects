@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>隐私设置</title>
+<meta charset="utf-8">
+<link href="../../css_v5/css2016/newfirstpage.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    window.onload = function(){
+      var checklist = document.getElementsByClassName("set-privacy__list-item");
+      var checbtn = document.getElementsByClassName("set-privacy__list-flag"); 
+      var parlist = document.getElementsByClassName("set-privacy__list-content"); 
+      for(var i=0; i < parlist.length;i++){
+        parlist[i].onclick = function(e){
+          if( this.querySelector(".set-privacy__selector-container").style.display=="block"){
+            this.querySelector(".set-privacy__selector-container").style.display="none"
+          }else{
+            this.querySelector(".set-privacy__selector-container").style.display="block";
+            if(e.currentTarget){
+                if(e.stopPropagation){
+                  e.stopPropagation();
+                }else{
+                  e.cancelBubble=true;
+                }
+              }
+
+          }
+        }
+      }
+      
+     /*  for(var i = 0 ;i < checbtn.length; i++){
+        checbtn[i].onclick = function(e){
+          if(this.closest(".set-privacy__list-content").querySelector(".set-privacy__selector-container").style.display == "block"){
+            this.closest(".set-privacy__list-content").querySelector(".set-privacy__selector-container").style.display == "none";
+          }else{
+            this.closest(".set-privacy__list-content").querySelector(".set-privacy__selector-container").style.display == "block";
+            if(e.currentTarget){
+                if(e.stopPropagation){
+                  e.stopPropagation();
+                }else{
+                  e.cancelBubble=true;
+                }
+            }
+          }
+        }
+      } */
+      for(var i = 0;i < checklist.length; i++){
+          checklist[i].onmousedown = function(){
+            this.closest(".set-privacy__list-content").querySelector(".set-privacy__list-inner").innerHTML = this.innerHTML;
+            this.closest(".set-privacy__list-content").querySelector(".set-privacy__list-inner").style.color = "#333";
+            this.closest(".set-privacy__list-content").querySelector(".set-privacy__selector-container").style.display = "none";
+          }
+      } 
+
+      document.onclick = function(){
+        for(var i =0;i < document.getElementsByClassName("set-privacy__selector-container").length;i++){
+          document.getElementsByClassName("set-privacy__selector-container")[i].style.display = "none";
+        }
+      }
+
+}
+  </script>
+</head>
+<body>
+  <div class="page-box">
+    <div class="set-container">
+      <div class="set-container__left">
+        <div class="psn-Setup__title">个人设置</div>
+        <div class="psn-Setup__item">
+          <i class="psn-Setup__item-tip set-password__main-tip"></i>
+          <div class="psn-Setup__item-title">密码重置</div>
+        </div>
+        <div class="psn-Setup__item">
+          <i class="psn-Setup__item-tip set-privacy__main-tip"></i>
+          <div class="psn-Setup__item-title">隐私设置</div>
+        </div>
+        <div class="psn-Setup__item psn-Setup__item-selctor">
+          <i class="psn-Setup__item-tip set-attention__main-tip"></i>
+          <div class="psn-Setup__item-title">关注设置</div>
+        </div>
+        <div class="psn-Setup__item">
+          <i class="psn-Setup__item-tip set-email__main-tip"></i>
+          <div class="psn-Setup__item-title">邮件设置</div>
+        </div>
+        <div class="psn-Setup__item">
+          <i class="psn-Setup__item-tip merge-account__main-tip"></i>
+          <div class="psn-Setup__item-title">合并设置</div>
+        </div>
+      </div>
+      <div class="set-container__right">
+        <div class="set-email__main-title">
+          <span class="set-email__main-heading">隐私设置<span class="set-privacy__tip">(点击个人<span
+              class="set-privacy__setfunc">公开信息设置</span>,可重新设置希望公开的个人信息)
+          </span></span>
+        </div>
+        <div>
+          <div class="set-privacy__list">
+            <span class="set-privacy__list-title">谁能向我发送信息:</span>
+            <div class="set-privacy__list-content">
+              <span class="set-privacy__list-inner">我的好友</span> <i class="set-privacy__list-flag"></i>
+              <div class="set-privacy__selector-container">
+                <div class="set-privacy__list-item">我的好友</div>
+                <div class="set-privacy__list-item">任何人</div>
+              </div>
+            </div>
+          </div>
+          <div class="set-privacy__list">
+            <span class="set-privacy__list-title">谁能看到我的好友:</span>
+            <div class="set-privacy__list-content">
+              <span class="set-privacy__list-inner">我的好友</span> <i class="set-privacy__list-flag"></i>
+              <div class="set-privacy__selector-container">
+                <div class="set-privacy__list-item">我的好友</div>
+                <div class="set-privacy__list-item">任何人</div>
+              </div>
+            </div>
+          </div>
+          <div class="set-privacy__list">
+            <span class="set-privacy__list-title">谁能看到我的群组动态:</span>
+            <div class="set-privacy__list-content">
+              <span class="set-privacy__list-inner">我的好友</span> <i class="set-privacy__list-flag"></i>
+              <div class="set-privacy__selector-container">
+                <div class="set-privacy__list-item">我的好友</div>
+                <div class="set-privacy__list-item">任何人</div>
+              </div>
+            </div>
+          </div>
+          <div class="set-privacy__list">
+            <span class="set-privacy__list-title">谁能看到我添加好友动态:</span>
+            <div class="set-privacy__list-content">
+              <span class="set-privacy__list-inner">我的好友</span> <i class="set-privacy__list-flag"></i>
+              <div class="set-privacy__selector-container">
+                <div class="set-privacy__list-item">我的好友</div>
+                <div class="set-privacy__list-item">任何人</div>
+              </div>
+            </div>
+          </div>
+          <div class="set-privacy__list">
+            <span class="set-privacy__list-title">谁能看到我添加文献动态:</span>
+            <div class="set-privacy__list-content">
+              <span class="set-privacy__list-inner">我的好友</span> <i class="set-privacy__list-flag"></i>
+              <div class="set-privacy__selector-container">
+                <div class="set-privacy__list-item">我的好友</div>
+                <div class="set-privacy__list-item">任何人</div>
+              </div>
+            </div>
+          </div>
+          <div class="set-privacy__btn">保存修改</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

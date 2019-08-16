@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+  <constant name="struts.ui.theme" value="simple" />
+  <!-- 对于scm3的action默认用的 package配置为 default -->
+  <constant name="struts.convention.default.parent.package" value="crud-default" />
+  <!-- action包路径在struts2下面 -->
+  <constant name="struts.convention.package.locators" value="action" />
+  <constant name="struts.convention.result.path" value="/WEB-INF/jsp/" />
+  <!-- 一些公共的资源文件 -->
+  <constant name="struts.custom.i18n.resources"
+    value="resource.commonResource,resource.pubGridHeadResource,resource.dynmoodResource,resource.dynshareResource,resource.snsmenuResource" />
+  <!-- ognl静态方法访问 -->
+  <constant value="true" name="struts.ognl.allowStaticMethodAccess" />
+  <!-- 系统最大上传30M, 拦截器设1000M，后台判断文件实际大小(scm-6606由原来的拦截100M改成拦截1000M) -->
+  <constant name="struts.multipart.maxSize" value="1048576000" />
+  <!-- 用于SCM3 Action的parent package -->
+  <package name="crud-default" extends="convention-default">
+    <interceptors>
+      <!-- 使用自定义国际化拦截 -->
+      <interceptor name="iris-i18n" class="com.smate.core.web.sys.action.interceptor.IrisI18nInterceptor" />
+      <!-- 定义异常处理拦截器 iris开发 -->
+      <interceptor name="exceptionLog"
+        class="com.smate.core.web.sys.action.interceptor.ExceptionLogInterceptor" />
+      <!-- XSS过滤 -->
+      <interceptor name="xssInterceptor" class="com.smate.core.web.sys.security.xss.XssInterceptor"></interceptor>
+      <!-- 系统访问日志记录 -->
+      <interceptor name="accessLogInterceptor"
+        class="com.smate.core.base.utils.access.log.AccessLogInterceptor"></interceptor>
+      <!-- userinfo过滤 -->
+      <interceptor name="userdataInterceptor"
+        class="com.smate.core.web.sns.userdata.intercepter.UserDataIntercepter"></interceptor>
+      <!-- RequestMethod注解拦截器 -->
+      <interceptor name="requestMethodInterceptor"
+        class="com.smate.core.web.sys.interceptor.RequestMethodInterceptor"></interceptor>
+      <interceptor-stack name="iris-paramsPrepareParamsStack">
+        <interceptor-ref name="exception" />
+        <interceptor-ref name="alias" />
+        <interceptor-ref name="iris-i18n" />
+        <interceptor-ref name="checkbox" />
+        <interceptor-ref name="multiselect" />
+        <interceptor-ref name="params">
+          <param name="excludeParams">dojo\..*,^struts\..*</param>
+        </interceptor-ref>
+        <interceptor-ref name="servletConfig" />
+        <interceptor-ref name="prepare" />
+        <interceptor-ref name="chain" />
+        <interceptor-ref name="modelDriven" />
+        <interceptor-ref name="fileUpload" />
+        <interceptor-ref name="staticParams" />
+        <interceptor-ref name="actionMappingParams" />
+        <interceptor-ref name="params">
+          <param name="excludeParams">dojo\..*,^struts\..*</param>
+        </interceptor-ref>
+        <interceptor-ref name="conversionError" />
+        <interceptor-ref name="validation">
+          <param name="excludeMethods">input,back,cancel,browse</param>
+        </interceptor-ref>
+        <interceptor-ref name="workflow">
+          <param name="excludeMethods">input,back,cancel,browse</param>
+        </interceptor-ref>
+        <interceptor-ref name="requestMethodInterceptor" />
+      </interceptor-stack>
+      <interceptor-stack name="iris-defaultStack">
+        <interceptor-ref name="exception" />
+        <interceptor-ref name="alias" />
+        <interceptor-ref name="servletConfig" />
+        <interceptor-ref name="iris-i18n" />
+        <interceptor-ref name="prepare" />
+        <interceptor-ref name="chain" />
+        <interceptor-ref name="debugging" />
+        <interceptor-ref name="scopedModelDriven" />
+        <interceptor-ref name="modelDriven" />
+        <interceptor-ref name="fileUpload" />
+        <interceptor-ref name="checkbox" />
+        <interceptor-ref name="multiselect" />
+        <interceptor-ref name="staticParams" />
+        <interceptor-ref name="actionMappingParams" />
+        <interceptor-ref name="params">
+          <param name="excludeParams">dojo\..*,^struts\..*</param>
+        </interceptor-ref>
+        <interceptor-ref name="conversionError" />
+        <interceptor-ref name="validation">
+          <param name="excludeMethods">input,back,cancel,browse</param>
+        </interceptor-ref>
+        <interceptor-ref name="workflow">
+          <param name="excludeMethods">input,back,cancel,browse</param>
+        </interceptor-ref>
+        <!-- 截取异常日志信息方便跟踪 -->
+        <interceptor-ref name="exceptionLog" />
+        <interceptor-ref name="requestMethodInterceptor" />
+      </interceptor-stack>
+      <!-- 基于paramsPrepareParamsStack, 增加store interceptor保证actionMessage在redirect后不会丢失 -->
+      <interceptor-stack name="crudStack">
+        <!-- 系统访问日志 -->
+        <interceptor-ref name="accessLogInterceptor"></interceptor-ref>
+        <!-- xss拦截 -->
+        <interceptor-ref name="xssInterceptor"></interceptor-ref>
+        <!-- 用户信息拦截 -->
+        <interceptor-ref name="userdataInterceptor"></interceptor-ref>
+        <interceptor-ref name="store">
+          <param name="operationMode">AUTOMATIC</param>
+        </interceptor-ref>
+        <interceptor-ref name="iris-paramsPrepareParamsStack" />
+        <interceptor-ref name="iris-defaultStack" />
+        <!-- 截取异常日志信息方便跟踪 -->
+        <interceptor-ref name="exceptionLog" />
+        <interceptor-ref name="requestMethodInterceptor" />
+      </interceptor-stack>
+      <!-- scm-6708 -->
+      <!-- <interceptor name="myToken" class="com.iris.scm.scmweb.web.interceptor.MyTokenInterceptor"/> -->
+    </interceptors>
+    <default-interceptor-ref name="crudStack" />
+    <!-- 系统异常跳转页面 -->
+    <global-results>
+      <result name="exception">/common/500.jsp</result>
+      <result name="invalid.token">/common/token-error.jsp</result>
+      <result name="not.exists.inspg">/inspg/inspgnotexists/inspg_not_exist.jsp</result>
+      <result name="no_access_permission">/common/no_access_permission.jsp</result>
+      <result name="no_resource">/common/no_resource.jsp</result>
+    </global-results>
+    <!-- 系统异常处理错误影射 -->
+    <global-exception-mappings>
+      <exception-mapping result="exception" exception="java.lang.Exception"></exception-mapping>
+      <exception-mapping result="not.exists.inspg"
+        exception="com.smate.web.inspg.exception.InspgNotExistsException"></exception-mapping>
+    </global-exception-mappings>
+  </package>
+</struts>

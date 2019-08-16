@@ -1,0 +1,1263 @@
+/**科研验证查看页面*/
+@charset "utf-8";
+/* CSS Document */
+html {
+  color: #333;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  font-size: 14px;
+}
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p,
+  blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft YaHei", arial, Tahoma, Verdana, simsun;
+}
+
+body, button, input, select, textarea {
+  font-family: Arial, Microsoft YaHei, Tahoma, Verdana, simsun;
+}
+
+input, textarea {
+  overflow: visible;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset, img {
+  border: 0;
+}
+
+del, ins {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+/** { font-family:"Microsoft YaHei", arial, Tahoma, Verdana,  simsun !important; }*/
+q:before, q:after {
+  content: '';
+}
+
+abbr, acronym {
+  border: 0;
+  font-variant: normal;
+}
+
+sup {
+  vertical-align: baseline;
+}
+
+sub {
+  vertical-align: baseline;
+}
+/* IE bug fixed: th 不继承 text-align*/
+table, th, td, tr {
+  margin: 0px;
+  padding: 0px;
+}
+
+input, button, textarea, select, optgroup, option {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  outline: none;
+}
+
+input[type="button"] {
+  cursor: pointer;
+}
+
+input {
+  background: #fff;
+}
+/*input,button,textarea,select{*font-size:100%;}*/
+input, select {
+  vertical-align: middle;
+}
+
+table {
+  font-size: inherit;
+  border-collapse: collapse;
+}
+
+pre, code, kbd, samp, tt {
+  font-family: monospace;
+}
+
+address, cite, dfn, em, var {
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #2882d8;
+}
+
+a:active {
+  color: #1265cf;
+}
+/* 去除默认边框 */
+fieldset, img, a img {
+  border: 0;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.detail_img {
+  height: 100%;
+  width: 100%;
+}
+
+.dev_list_img {
+  height: 100%;
+  width: 100%;
+}
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe {
+  display: block;
+}
+
+address, caption, cite, code, dfn, th, var {
+  font-style: normal;
+  font-weight: 500;
+}
+/* 去掉列表前的标识, li 会继承 */
+ul, ol, li {
+  list-style: none;
+}
+
+ul li {
+  cursor: auto;
+}
+
+ul:after {
+  display: none !important;
+}
+
+q:before, q:after {
+  content: '';
+}
+/* 清理浮动 */
+.clear:after {
+  content: ".";
+  display: block;
+  height: 0px;
+  visibility: hidden;
+  clear: both;
+}
+
+.clear {
+  clear: both;
+}
+
+.ttl {
+  text-align: left;
+}
+
+.ttr {
+  text-align: right;
+}
+
+.ttc {
+  text-align: center;
+}
+
+.fl, .fr {
+  display: inline;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tc {
+  text-align: center;
+}
+
+.tr {
+  text-align: right;
+}
+
+.ti {
+  text-indent: 2em;
+}
+/*=====字体======*/
+.ft14 {
+  font-size: 14px;
+}
+
+.ft12 {
+  font-size: 12px;
+}
+
+.ft16 {
+  font-size: 16px;
+}
+
+.ft18 {
+  font-size: 18px;
+}
+
+.ft20 {
+  font-size: 20px;
+}
+
+.ft24 {
+  font-size: 24px;
+}
+
+.ftbold {
+  font-weight: bold;
+}
+
+.ftnm {
+  font-weight: normal;
+}
+
+.ftdn {
+  text-decoration: none;
+}
+
+.ffff {
+  color: #fff;
+}
+
+.fccc {
+  color: #ccc;
+}
+
+.f333 {
+  color: #333;
+}
+
+.f666 {
+  color: #666;
+}
+
+.f999 {
+  color: #999;
+}
+
+.orange {
+  color: #ff6600;
+}
+
+.blue {
+  color: #2882d8;
+}
+
+.left-wrap {
+  background: #fff;
+  z-index: 100;
+}
+
+.cfe {
+  color: #2c97fe !important;
+}
+
+.blue_xhx {
+  color: #005bac;
+  text-decoration: underline;
+}
+
+.blue1 {
+  color: #3a92d8;
+}
+
+.red {
+  color: #bf3127;
+  font-weight: bold;
+}
+
+.bf3 {
+  color: #bf3127;
+}
+
+.fc8 {
+  color: #c8001b;
+}
+
+.f660 {
+  color: #ff6600;
+}
+
+.red1 {
+  color: #e74c3c;
+}
+
+.hint {
+  color: #e74c3c;
+}
+/*========外边距========*/
+.display {
+  display: inline-block;
+}
+
+.mat {
+  margin: auto;
+}
+
+.mt-1 {
+  margin-top: -1px;
+}
+
+.mt-4 {
+  margin-top: -4px;
+}
+
+.mt-12 {
+  margin-top: -12px;
+}
+
+.mt3 {
+  margin-top: 3px;
+}
+
+.mt4 {
+  margin-top: 4px;
+}
+
+.mt5 {
+  margin-top: 5px;
+}
+
+.mt8 {
+  margin-top: 8px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.mt11 {
+  margin-top: 11px;
+}
+
+.mt12 {
+  margin-top: 12px;
+}
+
+.mt14 {
+  margin-top: 14px;
+}
+
+.mt16 {
+  margin-top: 16px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mt22 {
+  margin-top: 22px;
+}
+
+.mt24 {
+  margin-top: 24px;
+}
+
+.mt26 {
+  margin-top: 26px;
+}
+
+.mt28 {
+  margin-top: 28px;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+.mt32 {
+  margin-top: 32px;
+}
+
+.mt34 {
+  margin-top: 34px;
+}
+
+.mt38 {
+  margin-top: 38px;
+}
+
+.mt40 {
+  margin-top: 40px;
+}
+
+.mt50 {
+  margin-top: 50px;
+}
+
+.mt48 {
+  margin-top: 48px;
+}
+
+.mt64 {
+  margin-top: 64px !important;
+}
+
+.mt80 {
+  margin-top: 80px;
+}
+
+.mt70 {
+  margin-top: 70px;
+}
+
+.mt_13 {
+  margin-top: -13px;
+}
+
+.mt102 {
+  margin-top: 102px;
+}
+
+.mr42 {
+  margin-right: 42px;
+}
+
+.ml5 {
+  margin-left: 5px;
+}
+
+.ml4 {
+  margin-left: 4px;
+}
+
+.ml8 {
+  margin-left: 8px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.ml12 {
+  margin-left: 12px;
+}
+
+.ml15 {
+  margin-left: 15px;
+}
+
+.ml16 {
+  margin-left: 16px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.ml60 {
+  margin-left: 60px;
+}
+
+.ml85 {
+  margin-left: 85px;
+}
+
+.ml112 {
+  margin-left: 112px;
+}
+
+.ml150 {
+  margin-left: 150px;
+}
+
+.mr4 {
+  margin-right: 4px;
+}
+
+.mr8 {
+  margin-right: 8px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.mr12 {
+  margin-right: 12px;
+}
+
+.mr16 {
+  margin-right: 16px;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
+.mr22 {
+  margin-right: 22px;
+}
+
+.mr28 {
+  margin-right: 28px;
+}
+
+.mr32 {
+  margin-right: 32px;
+}
+
+.mr40 {
+  margin-right: 40px;
+}
+
+.mr42 {
+  margin-right: 42px;
+}
+
+.mr60 {
+  margin-right: 60px;
+}
+
+.mr70 {
+  margin-right: 70px;
+}
+
+.mr120 {
+  margin-right: 120px;
+}
+
+.mr46 {
+  margin-right: 46px;
+}
+
+.mb4 {
+  margin-bottom: 4px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb12 {
+  margin-bottom: 12px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.mb15 {
+  margin-bottom: 15px;
+}
+
+.mb16 {
+  margin-bottom: 16px;
+}
+
+.mb28 {
+  margin-bottom: 28px;
+}
+
+.mb40 {
+  margin-bottom: 40px;
+}
+
+.clear12 {
+  width: 100%;
+  clear: both;
+  height: 12px;
+  overflow: hidden;
+}
+
+.clear15 {
+  width: 100%;
+  clear: both;
+  height: 15px;
+  overflow: hidden;
+}
+
+.clear20 {
+  width: 100%;
+  clear: both;
+  height: 20px;
+  overflow: hidden;
+}
+
+.clear40 {
+  width: 100%;
+  clear: both;
+  height: 40px;
+  overflow: hidden;
+}
+
+.clear30 {
+  width: 100%;
+  clear: both;
+  height: 0px;
+  overflow: hidden;
+}
+
+.w50 {
+  width: 50px;
+}
+
+.w60 {
+  width: 60px;
+}
+
+.w68 {
+  width: 68px;
+}
+
+.w132 {
+  width: 132px;
+}
+
+.w135 {
+  width: 135px;
+}
+
+.w150 {
+  width: 150px;
+}
+
+.w171 {
+  width: 171px;
+}
+
+.w183 {
+  width: 183px;
+}
+
+.w195 {
+  width: 195px;
+}
+
+.w200 {
+  width: 200px;
+}
+
+.w243 {
+  width: 243px;
+}
+
+.w236 {
+  width: 236px;
+}
+
+.w300 {
+  width: 300px;
+}
+
+.w332 {
+  width: 332px;
+}
+
+.w336 {
+  width: 336px;
+}
+
+.w348 {
+  width: 348px;
+}
+
+.w352 {
+  width: 352px;
+}
+
+.w360 {
+  width: 360px;
+}
+
+.w400 {
+  width: 400px;
+}
+
+.w425 {
+  width: 425px;
+}
+
+.w500 {
+  width: 500px;
+}
+
+.w530 {
+  width: 530px;
+}
+
+.w550 {
+  width: 550px;
+}
+
+.w600 {
+  width: 600px;
+}
+
+.wmi618 {
+  min-width: 618px;
+}
+
+.w630 {
+  width: 630px;
+}
+
+.w690 {
+  width: 690px;
+  margin-right: 24px;
+}
+
+.w730 {
+  width: 730px;
+  margin-right: 24px;
+}
+
+.w635 {
+  width: 635px;
+}
+
+.w712 {
+  width: 712px;
+}
+
+.w715 {
+  width: 715px;
+}
+
+.w892 {
+  width: 892px;
+}
+
+.w938 {
+  width: 938px;
+}
+
+.w940 {
+  width: 940px;
+}
+
+.w960 {
+  width: 960px;
+}
+
+.w1050 {
+  width: 1042px;
+}
+
+.w1200 {
+  width: 1200px;
+  margin: auto;
+}
+
+.mw410 {
+  max-width: 410px;
+}
+
+.mw600 {
+  max-width: 600px;
+}
+
+.h40 {
+  height: 40px;
+}
+
+.h50 {
+  height: 50px;
+}
+
+.h70 {
+  height: 70px;
+}
+
+.h100 {
+  height: 100px;
+}
+
+.h120 {
+  height: 120px;
+}
+
+.lh24 {
+  line-height: 24px;
+}
+
+.lh45 {
+  line-height: 45px;
+}
+
+.pd20 {
+  padding: 20px;
+}
+
+.pt4 {
+  padding-top: 4px;
+}
+
+.pt6 {
+  padding-top: 6px;
+}
+
+.pl8 {
+  padding-left: 8px;
+}
+
+.pt10 {
+  padding-top: 10px;
+}
+
+.pt12 {
+  padding-top: 12px;
+}
+
+.pt14 {
+  padding-top: 14px;
+}
+
+.pt15 {
+  padding-top: 15px;
+}
+
+.pt18 {
+  padding-top: 18px;
+}
+
+.pl15 {
+  padding-left: 15px;
+}
+
+.pt20 {
+  padding-top: 20px;
+}
+
+.pd014 {
+  padding: 14px 0;
+}
+
+.pd15 {
+  padding: 15px;
+}
+
+.pd016 {
+  padding: 16px 0;
+}
+
+.pd20 {
+  padding: 20px;
+}
+
+.pl10 {
+  padding-left: 10px;
+}
+
+.pl20 {
+  padding-left: 20px;
+}
+
+.pl24 {
+  padding-left: 24px;
+}
+
+.pl68 {
+  padding-left: 68px;
+}
+
+.pl72 {
+  padding-left: 72px;
+}
+
+.pl78 {
+  padding-left: 78px;
+}
+
+.pt8 {
+  padding-bottom: 8px;
+}
+
+.pb8 {
+  padding-bottom: 8px;
+}
+
+.pb20 {
+  padding-bottom: 20px;
+}
+
+.pb24 {
+  padding-bottom: 24px;
+}
+
+.pb30 {
+  padding-bottom: 30px;
+}
+
+.pb32 {
+  padding-bottom: 32px;
+}
+
+.ri0 {
+  right: 0px;
+}
+
+.ri16 {
+  right: 16px;
+}
+/*边框*/
+.bd {
+  border: 1px solid #ddd;
+}
+
+.br0 {
+  border-right: none;
+}
+
+.br1 {
+  border-right: 1px solid #ddd;
+}
+
+.bt {
+  border-bottom: 1px solid #ddd;
+}
+
+.btd {
+  border-bottom: 1px dashed #ddd;
+}
+
+.btpds {
+  border-top: 1px dashed #ddd;
+}
+
+.btop {
+  border-top: 1px solid #ddd;
+}
+
+.bt2d {
+  border-bottom: 2px solid #2d66b7;
+}
+/*======================================================内容垂直居中开始*/
+.version-tip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/*====================================内容溢出======================*/
+/*一行内容出现省略号*/
+.ofw {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/*超出两行出现省略号*/
+.ofw2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.header_submenu-position {
+  justify-content: flex-end;
+}
+
+.ofw3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+/*==============================定位========*/
+.po_r {
+  position: relative;
+}
+
+.po_a {
+  position: absolute;
+}
+
+.po_f {
+  position: fixed;
+}
+
+.po_fe {
+  display: flex;
+  align-items: flex-end;
+}
+/*左边不换行对齐*/
+.ds_f {
+  display: flex;
+}
+/*内容左边距中，左对齐不换行*/
+.ds_c, .martter-demo-2 {
+  display: flex;
+  align-items: center;
+}
+/*内容左开始，两边对齐，不换行*/
+.dj_s {
+  display: flex;
+  justify-content: space-between;
+}
+/*内容左居中开始，两边对齐,不换行*/
+.dj_sa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/*内容左开始，第一行基线对齐*/
+.ds_bl {
+  display: flex;
+  align-items: baseline;
+}
+/*内容左开始，每个项目两侧的间隔相等*/
+.dj_sac {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+/*内容左边换行，居中对齐*/
+.dfw {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+/*内容左边换行，居中对齐*/
+.df_fe {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+/*内容中间对齐*/
+.ds_jc {
+  display: flex;
+  justify-content: center;
+}
+
+.ds_jcc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*内容右边开始不换行，左对齐*/
+.d_fd {
+  display: flex;
+  flex-direction: row-reverse;
+}
+/*内容右边开始，两端对齐，不换行*/
+.dj_f {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+/*内容右边居中开始，两端对齐，不换行*/
+.dj_c {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+/*内容右边居中开始，两端对齐，换行*/
+.dj_w {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+/*内容两端居中对齐，不换行*/
+.df {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/*--------定位结束*/
+.write_headline {
+  padding: 10px 0px 8px 0px;
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed #ddd;
+  margin-bottom: 18px;
+}
+
+.sie_annuciate_head {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 27px;
+  margin-bottom: 8px;
+}
+
+.achievement_achievement {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+}
+
+.achievement_achievement p {
+  font-size: 20px;
+}
+
+.achievement_achievement p span {
+  font-size: 14px;
+}
+
+.derive {
+  position: relative;
+  display: inline-block;
+  height: 30px;
+  line-height: 28px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 0px 24px;
+  text-align: center;
+  margin-left: 5px;
+  box-sizing: border-box;
+}
+
+.derive:hover {
+  color: #2882d8;
+  border: 1px solid #2882d8;
+  background: #fff;
+}
+
+.derive:active {
+  color: #fff;
+  border: 1px solid #1E5CB3;
+  background: #1E5CB3;
+}
+
+.schedule {
+  line-height: 28px;
+  background: #f8f8f8;
+  color: #999;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+/*列表*/
+.wb70 {
+  width: 70%;
+  padding-left: 10px;
+}
+
+.wb72 {
+  width: 72%;
+  padding-left: 10px;
+}
+
+.wb73 {
+  width: 73%;
+  padding-left: 10px;
+}
+
+.wb75 {
+  width: 75%;
+  padding-left: 10px;
+}
+
+.wb85 {
+  width: 85%;
+  padding-left: 10px;
+}
+
+.wb90 {
+  width: 90%;
+  padding-left: 10px;
+}
+
+.wb92 {
+  width: 92%;
+  padding-left: 10px;
+}
+
+.wb95 {
+  width: 95%;
+  padding-left: 10px;
+}
+
+.wb5 {
+  width: 5%;
+  text-align: center;
+}
+
+.wb6 {
+  width: 6%;
+  text-align: center;
+}
+
+.wb8 {
+  width: 8%;
+  text-align: center;
+}
+
+.wb10 {
+  width: 10%;
+  text-align: center;
+}
+
+.wb15 {
+  width: 15%;
+  text-align: center;
+}
+
+.list_head {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 28px;
+  max-width: 92%;
+}
+
+.SIE-handin_hottip {
+    background: url(../../images/hint.png);
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+}
+.view_span{
+  font-size: 14px;
+  color: #333333 !important;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+}
+
+.icon_via {
+    background: url(/ressie/images/icon_via.png);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    cursor:pointer;
+}
+.icon_mistake {
+    background: url(/ressie/images/icon_mistake.png);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    cursor:pointer;
+}

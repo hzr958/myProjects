@@ -1,0 +1,206 @@
+/* @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src:   url(/resmod/fonts/Roboto-Regular.woff2) format('woff2'),
+           url(/resmod/fonts/Roboto-Regular.woff) format('woff'),
+           url(/resmod/fonts/Roboto-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    src:   url(/resmod/fonts/Roboto-Medium.woff2) format('woff2'),
+           url(/resmod/fonts/Roboto-Medium.woff) format('woff'),
+           url(/resmod/fonts/Roboto-Medium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto Sans SC';
+    font-style: normal;
+    font-weight: 300;
+    src:   url(/resmod/fonts/NotoSansSC-Light.woff2) format('woff2'),
+           url(/resmod/fonts/NotoSansSC-Light.woff) format('woff'),
+           url(/resmod/fonts/NotoSansSC-Light.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Sans SC';
+    font-style: normal;
+    font-weight: 400;
+    src:  url(/resmod/fonts/NotoSansSC-Regular.woff2) format('woff2'),
+           url(/resmod/fonts/NotoSansSC-Regular.woff) format('woff'),
+           url(/resmod/fonts/NotoSansSC-Regular.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Sans SC';
+    font-style: normal;
+    font-weight: 500;
+    src:   url(/resmod/fonts/NotoSansSC-Medium.woff2) format('woff2'),
+           url(/resmod/fonts/NotoSansSC-Medium.woff) format('woff'),
+           url(/resmod/fonts/NotoSansSC-Medium.otf) format('opentype');
+} */
+
+/* Helper Documents */
+* {
+  margin: 0;
+  font-family: "Roboto", "Noto Sans SC", "Microsoft Yahei", Verdana, Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.body_content {
+  width: 100%;
+  max-width: 640px;
+  min-height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.hepler_background {
+  background-color: #fff;
+  width: 100%;
+  min-heigt: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.helper_homepage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  align-items: center;
+}
+
+.helper_homepage .helper_institution_logo_container {
+  width: 60%;
+  margin: 40px 0;
+}
+
+.helper_institution_logo_container .helper_institution_logo {
+  width: 100%;
+}
+
+.helper_homepage_section {
+  border: 1px solid #3458a9;
+  width: 100%;
+  max-width: 240px;
+  height: 48px;
+  text-align: center;
+  line-height: 48px;
+  border-radius: 2px;
+  margin: 0 0 32px 0;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #1e5bb2;
+  color: #ffffff;
+}
+
+.helper_content_title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 48px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.helper_content_section {
+  display: flex;
+  flex-direction: column;
+}
+
+.helper_content_subtitle {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.helper_content_text {
+  font-size: 14px;
+  line-height: 22px;
+  color: rgba(0, 0, 0, 0.87);;
+}
+
+.helper_content_img {
+  width: 100%;
+  margin: 0 0 8px 0;
+}
+
+.footer_weixin {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 0.54);
+  margin-top: 48px;
+}
+
+.footer_weixin_qrcode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  line-height: 22px;
+  color: #007aaa;
+}
+
+.footer_weixin_qrcode .qrcode_container {
+  width: 25%;
+}
+
+.qrcode_container .qrcode_image {
+  width: 100%;
+}
+/*newadd*/
+.help_message_box_section {
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.help_message_box_subtitle {
+  text-align: center;
+  font-size: 14px;
+  line-height: 22px;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.help_message_box_text {
+  font-size: 12px;
+  line-height: 16px;
+  margin: 8px 4px;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  align-items: center;
+}
+
+.short_line {
+  border-bottom: 1px solid #ff9c40;
+  margin: 0 4px;
+  width: 40px;
+}
+
+.help_message_box_text_pic {
+  width: 24px;
+  height: 24px;
+  margin: 0 4px;
+}
+
+.helper_color {
+  color: red;
+}
+
+.help_text_box {
+  display: flex;
+}

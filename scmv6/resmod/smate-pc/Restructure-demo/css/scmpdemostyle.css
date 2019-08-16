@@ -1,0 +1,1623 @@
+@charset "utf-8";
+/* CSS Document */
+html {
+  color: #333;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p,
+  blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav,
+  section {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft YaHei", arial, Tahoma, Verdana, simsun;
+  font-size: 12px;
+}
+
+body, button, input, select, textarea {
+  font-family: "Microsoft YaHei", arial, Tahoma, Verdana, simsun;
+}
+
+input {
+  overflow: visible;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset, img {
+  border: 0;
+}
+
+del, ins {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+q:before, q:after {
+  content: '';
+}
+
+abbr, acronym {
+  border: 0;
+  font-variant: normal;
+}
+
+sup {
+  vertical-align: baseline;
+}
+
+sub {
+  vertical-align: baseline;
+}
+/* IE bug fixed: th 不继承 text-align*/
+table, th, td, tr {
+  margin: 0px;
+  padding: 0px;
+}
+
+input, button, textarea, select, optgroup, option {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  outline: none;
+}
+
+input[type="button"] {
+  cursor: pointer;
+}
+
+input, button, textarea, select {
+  *font-size: 100%;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+table {
+  font-size: inherit;
+  font: 100%;
+  border-collapse: collapse;
+}
+
+pre, code, kbd, samp, tt {
+  font-family: monospace;
+  *font-size: 108%;
+  line-height: 100%;
+}
+
+address, cite, dfn, em, var {
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #005bac;
+}
+
+* {
+  margin: 0 auto;
+}
+/* 去除默认边框 */
+fieldset, img, a img {
+  border: 0;
+}
+
+img {
+  vertical-align: middle;
+}
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe {
+  display: block;
+}
+
+address, caption, cite, code, dfn, th, var {
+  font-style: normal;
+  font-weight: 500;
+}
+/* 去掉列表前的标识, li 会继承 */
+ul, ol, li {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+}
+
+q:before, q:after {
+  content: '';
+}
+/* 清理浮动 */
+.clear:after {
+  content: ".";
+  display: block;
+  height: 0px;
+  visibility: hidden;
+  clear: both;
+}
+
+.clear {
+  clear: both;
+}
+
+.ttl {
+  text-align: left;
+}
+
+.ttr {
+  text-align: right;
+}
+
+.ttc {
+  text-align: center;
+}
+
+.demo_float-left, .demo_float-right {
+  display: inline;
+}
+
+.demo_float-left {
+  float: left;
+}
+
+.demo_float-right {
+  float: right;
+}
+
+.tr {
+  text-align: right;
+}
+/*=====字体======*/
+.ft12 {
+  font-size: 12px;
+}
+
+.ftnm {
+  font-weight: normal;
+}
+
+.ftdn {
+  text-decoration: none;
+}
+
+.ffff {
+  color: #fff;
+}
+
+.fccc {
+  color: #ccc;
+}
+
+.f333 {
+  color: #333;
+}
+
+.f666 {
+  color: #666;
+}
+
+.f999 {
+  color: #999;
+}
+
+.orange {
+  color: #ff6600;
+}
+
+.blue {
+  color: #005bac;
+}
+
+.blue1 {
+  color: #186fbe;
+}
+
+.red {
+  color: #bf3127;
+  font-weight: bold;
+}
+
+.red1 {
+  color: #e74c3c;
+}
+
+.hint {
+  color: #e74c3c;
+}
+/*========定位========*/
+.po_r {
+  position: relative;
+}
+
+.po_a {
+  position: absolute;
+}
+
+.po_f {
+  position: fixed;
+}
+
+.display {
+  display: inline-block;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mt40 {
+  margin-top: 40px;
+}
+
+.ml5 {
+  margin-left: 5px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.ml60 {
+  margin-left: 60px;
+}
+
+.ml70 {
+  margin-left: 70px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.mr20 {
+  margin-right: 20px
+}
+
+.mr40 {
+  margin-right: 40px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb15 {
+  margin-bottom: 15px;
+}
+
+.clear12 {
+  width: 100%;
+  clear: both;
+  height: 12px;
+  overflow: hidden;
+}
+
+.clear15 {
+  width: 100%;
+  clear: both;
+  height: 15px;
+  overflow: hidden;
+}
+
+.clear20 {
+  width: 100%;
+  clear: both;
+  height: 20px;
+  overflow: hidden;
+}
+
+.clear40 {
+  width: 100%;
+  clear: both;
+  height: 40px;
+  overflow: hidden;
+}
+
+.clear30 {
+  width: 100%;
+  clear: both;
+  height: 0px;
+  overflow: hidden;
+}
+
+.demo_width-50 {
+  width: 50px;
+}
+
+.w135 {
+  width: 135px;
+}
+
+.w183 {
+  width: 183px;
+}
+
+.w195 {
+  width: 195px;
+}
+
+.w243 {
+  width: 243px;
+}
+
+.w348 {
+  width: 348px;
+}
+
+.w360 {
+  width: 360px;
+}
+
+.w400 {
+  width: 400px;
+}
+
+.w425 {
+  width: 425px;
+}
+
+.w500 {
+  width: 500px;
+}
+
+.w715 {
+  width: 715px;
+}
+
+.h70 {
+  height: 70px;
+}
+
+.h100 {
+  height: 100px;
+}
+
+.h120 {
+  height: 120px;
+}
+
+.hanggao24 {
+  line-height: 24px;
+}
+
+.pd20 {
+  padding: 20px;
+}
+
+.pop-cover {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  font-family: "Microsoft Yahei";
+}
+
+.pop__bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  /*background-color: rgba(0,0,0,0.2); IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+  filter: alpha(opacity = 20);
+  -moz-opacity: 0.2;
+  -khtml-opacity: 0.2;
+  opacity: 0.2;
+  background: #000;
+}
+
+.pop__box {
+  margin: 20px auto;
+  background: #fff;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -455px;
+}
+
+.pop__box--top {
+  width: 100%;
+  height: 30px;
+  background: #106abc;
+  line-height: 30px;
+  border-bottom: 1px solid #ddd;
+}
+
+.pop__box--top span {
+  font-size: 14px;
+  color: #fff;
+}
+
+.pop__box--top .pop-close {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  float: right;
+}
+
+.pop__box--top .pop-close .icon-pop-close {
+  width: 16px;
+  height: 16px;
+  background: url("../images/icon.png") no-repeat;
+  display: inline-block;
+  margin: 7px 0 0 7px;
+}
+
+.pop__box--top .pop-close:hover {
+  background: #c81623;
+}
+
+.pop__box--top .pop-close:active {
+  background: #c81623;
+}
+
+.pop__box--top .pop-close:active .icon-pop-close {
+  margin: 8px 0 0 8px;
+}
+
+.pop__box--tx {
+  max-height: 558px;
+  position: relative;
+}
+
+/*tab切换 开始*/
+.menubox {
+  width: 100%;
+  height: 56px;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.scm-logo {
+  position: absolute;
+  right: 21px;
+  top: 14px;
+}
+/*气泡小箭头*/
+.triangle {
+  position: absolute;
+  width: 14px;
+  height: 8px;
+  bottom: -14px;
+  left: 50%;
+  margin-left: -13px;
+}
+
+.triangle em {
+  position: absolute;
+  font-size: 0;
+  line-height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+}
+
+.triangle span {
+  position: absolute;
+  font-size: 0;
+  line-height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 7px solid #fff;
+  left: 1px;
+  top: 1px;
+}
+
+.menubox li .triangle em, .menubox li .triangle span {
+  display: none;
+}
+
+.menubox li.hover .triangle em, .menubox li.hover .triangle span {
+  display: block;
+}
+/*气泡小箭头*/
+.menubox li {
+  padding: 4px 45px;
+  display: inline-block;
+  cursor: pointer;
+  color: #333;
+  height: 24px;
+  margin: 12px 0;
+  position: relative;
+  font-size: 16px;
+  color: #333;
+  border-right: 1px solid #ccc;
+}
+
+.menubox-icon01, .menubox-icon02, .menubox-icon03 {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background: url("../images/scm-icon.png") no-repeat;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.menubox-icon01 {
+  background-position: -249px -107px;
+}
+
+.menubox-icon02 {
+  background-position: -278px -107px;
+}
+
+.menubox-icon03 {
+  background-position: -307px -107px;
+}
+
+.menubox li.hover {
+  font-weight: bold;
+  color: #1077d5;
+}
+
+.menubox li:hover {
+  color: #1077d5;
+}
+
+.menubox li.hover .menubox-icon01, .menubox li:hover .menubox-icon01 {
+  background-position: -249px -141px;
+}
+
+.menubox li.hover .menubox-icon02, .menubox li:hover .menubox-icon02 {
+  background-position: -278px -141px;
+}
+
+.menubox li.hover .menubox-icon03, .menubox li:hover .menubox-icon03 {
+  background-position: -307px -141px;
+}
+
+.associated-tip {
+  height: 24px;
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+  line-height: 24px;
+  background: #fffdd6;
+}
+/*tab切换 结束*/
+.contentbox__wrap {
+  padding: 10px 20px;
+}
+
+.leftBar {
+  padding: 10px 0;
+  width: 150px;
+  height: 428px;
+  float: left;
+  background: #f8f8f8;
+}
+
+.leftBar-icon01, .leftBar-icon02, .leftBar-icon03 {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 2px;
+  margin-right: 3px;
+  background: url("../images/scm-icon.png") no-repeat;
+}
+
+.leftBar-icon01 {
+  background-position: -8px -613px;
+}
+
+.leftBar-icon02 {
+  background-position: -33px -613px;
+}
+
+.leftBar-icon03 {
+  background-position: -58px -613px;
+}
+
+.leftBar__tit {
+  padding: 0 10px;
+  margin-bottom: 8px;
+  height: 22px;
+  line-height: 22px;
+  font-size: 12px;
+  color: #333;
+  cursor: pointer;
+}
+
+.leftBar__box--parent {
+  padding: 0px 0 10px;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.leftBar__box .leftBar__box--listTitle {
+  padding: 8px 10px 0;
+  border-top: 1px #dddddd solid;
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  color: #333;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.keyboard_arrow_up, .keyboard_arrow_down {
+  margin-top: 4px;
+  width: 16px;
+  height: 16px;
+  background: url("../images/icon.png") no-repeat;
+  display: inline-block;
+}
+
+.keyboard_arrow_up {
+  background-position: -78px 0;
+}
+
+.keyboard_arrow_down {
+  background-position: -78px -26px;
+}
+
+.leftBar__box .leftBar__box--listTitle strong {
+  width: 84px;
+  height: 24px;
+  line-height: 24px;
+  float: left;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  float: left;
+  font-weight: normal;
+}
+
+.leftBar__box--panel {
+  position: relative;
+}
+
+.leftBar__box--panel .leftBar__box--leftbgbt {
+  width: 24px;
+  height: 24px;
+  float: right;
+  text-align: center;
+}
+
+.leftBar__box--menuList {
+  display: block;
+  height: auto;
+  position: relative;
+}
+
+.leftBar__box--menuList em {
+  font-style: normal;
+  font-size: 12px;
+  color: #999;
+}
+
+.leftBar__box--menuList div {
+  padding: 6px 33px;
+  text-align: left;
+  font-size: 12px;
+}
+
+.leftBar__box--menuList div.box--menuList-select {
+  /* background: #dddddd;*/
+  
+}
+
+.leftBar__box--menuList div:hover {
+  background: #ddd;
+}
+
+.leftBar__box--menuList div.menuList_st:hover {
+  background: none;
+}
+
+.leftBar__box--menuList div a {
+  display: block;
+  text-decoration: none;
+}
+
+.leftBar__box--menuList div a span {
+  height: 24px;
+  color: #333;
+}
+
+.leftBar__mn {
+  width: 100%;
+  text-align: center;
+}
+
+.switch {
+  color: #005bac;
+}
+
+.icon-switch {
+  margin-right: 5px;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url("../images/scm-icon.png") no-repeat;
+  background-position: -218px -182px;
+  vertical-align: middle;
+}
+
+.cont-right {
+  width: 768px;
+  float: right;
+  height: 474px;
+  position: relative;
+}
+
+.sorting-box {
+  width: 100%;
+  height: auto;
+  padding: 0 0 6px;
+  font-size: 12px;
+  height: 28px;
+  line-height: 28px;
+}
+
+.sorting-box h1 {
+  font-size: 14px;
+  display: inline;
+  float: left;
+  font-family: "Microsoft yahei", Arial;
+}
+
+.sorting-box h2 {
+  font-size: 12px;
+  font-weight: normal;
+  display: inline;
+  float: left;
+  font-family: "Microsoft yahei", Arial;
+}
+
+.sorting-box h2 strong {
+  font-size: 12px;
+  color: #005bac;
+}
+
+.query-box {
+  width: 360px;
+  height: 26px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  position: relative;
+  behavior: url(../js/pie.htc);
+  float: left;
+}
+
+.input_default {
+  width: 322px;
+  padding: 0 5px;
+  float: left;
+  height: 26px;
+  line-height: 26px;
+  border: 0;
+  font-size: 12px;
+  color: #999;
+}
+
+.query-btn {
+  width: 28px;
+  height: 28px;
+  background: url("../images/icon.png") no-repeat;
+  background-position: -98px 5px;
+  cursor: pointer;
+  border: none;
+  float: right;
+}
+
+/*主要使用按钮 开始*/
+.blue-btn {
+  display: inline-block;
+  padding: 0 10px;
+  height: 24px;
+  line-height: 24px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  background: #2882d8;
+  border: 1px solid #106abc;
+  border-radius: 4px;
+  vertical-align: middle;
+  font-family: "Microsoft YaHei", Arial;
+  position: relative;
+  behavior: url(../js/PIE.htc);
+}
+
+input.blue-btn {
+  height: 26px;
+  line-height: 26px;
+}
+
+.blue-btn:hover {
+  color: #fff;
+  background: #3373d2;
+}
+
+.blue-btn:active {
+  color: #fff;
+  background: #106abc;
+}
+
+.grey-btn {
+  display: inline-block;
+  padding: 0 10px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  background: #fafafa;
+  text-decoration: none;
+  text-align: center;
+  color: #333;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  vertical-align: middle;
+  font-family: "Microsoft YaHei", Arial;
+  position: relative;
+  behavior: url(../js/PIE.htc);
+}
+
+input.grey-btn {
+  height: 26px;
+  line-height: 26px;
+}
+
+.grey-btn:hover {
+  border: 1px solid #2882d8;
+  text-decoration: none;
+  background: #fafafa;
+  color: #2882d8;
+}
+
+.grey-btn:active {
+  background: #fafafa;
+  text-decoration: none;
+  color: #106abc;
+  border: 1px solid #106abc;
+}
+
+.border-btn {
+  display: inline-block;
+  padding: 0 10px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  background: #fff;
+  text-decoration: none;
+  text-align: center;
+  color: #2882d8;
+  border: 1px solid #2882d8;
+  border-radius: 4px;
+  position: relative;
+  behavior: url(../js/PIE.htc);
+}
+
+input.border-btn {
+  height: 26px;
+  line-height: 26px;
+}
+
+.border-btn:hover {
+  text-decoration: none;
+  background: #2882d8;
+  color: #fff;
+  border: 1px solid #2882d8;
+}
+
+.border-btn:active {
+  text-decoration: none;
+  background: #106abc;
+  color: #fff;
+  border: 1px solid #106abc;
+}
+/*主要使用按钮 结束*/
+.select {
+  height: 26px;
+  color: #666;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  position: relative;
+  behavior: url(../js/pie.htc);
+}
+
+.ord {
+  font-size: 12px;
+}
+/*表格样式 开始*/
+.tab-style {
+  width: 100%;
+}
+
+.tab-style th {
+  color: #999;
+  padding: 3px 0;
+  background: #f4f4f4;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.tab-style td {
+  color: #999;
+  padding: 5px 0;
+  border-bottom: 1px dashed #dddddd;
+}
+
+.tab-style tr:hover {
+  background: #f6fbff;
+}
+
+.screen_result {
+  
+}
+
+.screen_result p {
+  line-height: 18px;
+  font-size: 12px;
+}
+
+.screen_result-doi {
+  padding: 0 5px;
+  height: 14px;
+  font-size: 12px;
+  color: #999;
+  line-height: 14px;
+  background: #ddd;
+  border-radius: 9px;
+  position: relative;
+  behavior: url(../js/pie.htc);
+}
+/*表格样式 结束*/
+/*复选框 开始*/
+.check_fx-checkbox, .check_fx-checkbox-tal {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  background: url("../images/check_fx.jpg") no-repeat;
+  background-position: 0 0;
+  display: inline-block;
+  /* position: relative;*/
+  /* padding-left: 10px;*/
+  top: -12px;
+}
+
+.check_fx-checkboxed, .check_fx-checkbox-taled {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  background: url("../images/checked_fx.jpg") no-repeat;
+  background-position: 0 0;
+  display: inline-block;
+  /*margin-top: 4px;*/
+}
+
+.checkbox-con .box--menuList-select {
+  border: none;
+  width: 12px;
+  height: 12px;
+  background: url("../images/checked_fx.jpg") no-repeat;
+}
+
+.checkbox-con span.check_fx {
+  display: inline-block;
+  position: relative;
+  padding-left: 10px;
+  margin-right: 10px;
+}
+
+.checkbox-con .ipt-hide {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: none;
+  left: 0;
+}
+
+.checkbox-con .fx_box span.check_fx {
+  display: inline-block;
+  position: relative;
+  padding-left: 10px;
+  margin-right: 10px;
+  top: 3px;
+}
+/*复选框 结束*/
+.relevance_icon01, .relevance_icon02, .relevance_icon03, .relevance_icon04, .relevance_icon05, .mark_icon01,
+  .mark_icon02 {
+  width: 16px;
+  height: 16px;
+  background: url("../images/scm-icon.png") no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+.relevance_icon01 {
+  background-position: -71px -182px;
+}
+
+.relevance_icon02 {
+  background-position: -92px -182px;
+}
+
+.relevance_icon03 {
+  background-position: -113px -182px;
+}
+
+.relevance_icon04 {
+  background-position: -134px -182px;
+}
+
+.relevance_icon05 {
+  background-position: -155px -182px;
+}
+
+.mark_icon01 {
+  background-position: -176px -182px;
+}
+
+.mark_icon02 {
+  background-position: -197px -182px;
+}
+
+/*模拟滚动条 开始*/
+.divScrollBar {
+  background-color: #ddd;
+  position: absolute;
+  opacity: 0.5;
+  filter: Alpha(opacity = 50);
+  z-index: 100000;
+}
+
+.divScrollBar:hover {
+  opacity: 0.8;
+  filter: Alpha(opacity = 80);
+}
+
+.divScrollBar div {
+  background-color: #aaa;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+/*模拟滚动条 结束*/
+/*---翻页 开始---*/
+.page {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  color: #999;
+  font-size: 12px;
+  border-top: 1px solid #ddd;
+}
+
+.page__cont {
+  vertical-align: middle;
+}
+
+.page__cont a {
+  padding: 0 8px;
+  float: left;
+  display: inline-block;
+  background: #fff;
+  font-size: 12px;
+  color: #106abc;
+}
+
+.page__cont span {
+  line-height: 24px;
+  float: left;
+  margin-right: 3px;
+}
+
+.page__cont a.hover, .page__cont a:hover {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.page__select {
+  margin: 0 3px;
+  height: 20px;
+  line-height: 20px;
+  border: 1px solid #ddd;
+  color: #666;
+}
+/*翻页 结束*/
+
+/*账户登陆注册 开始*/
+.account {
+  width: 870px;
+  margin: 40px auto 0;
+}
+
+#tab1 {
+  width: 390px;
+  height: 435px;
+  margin: 0 auto;
+}
+
+.menubox-1 {
+  height: 35px;
+  line-height: 35px;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.menubox-1 ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+.menubox-1 li {
+  float: left;
+  display: block;
+  cursor: pointer;
+  padding: 0px 20px;
+  text-align: center;
+  color: #333;
+  height: 35px;
+  line-height: 35px;
+  font-size: 16px;
+}
+
+.menubox-1 li.hover {
+  border: 1px solid #e6e6e6;
+  border-top: 2px solid #106abc;
+  height: 34px;
+  line-height: 34px;
+  color: #106abc;
+  font-size: 16px;
+  position: relative;
+  border-bottom: 0px solid #fff;
+  background: #fff;
+}
+
+.login-box {
+  margin: 15px 20px;
+  min-height: 250px;
+}
+
+.login-box p {
+  font-size: 14px;
+  padding: 10px 0;
+  color: #999;
+  overflow: hidden;
+}
+
+.login-box p a {
+  text-decoration: underline;
+}
+
+.login-box__input {
+  width: 348px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.reg-box {
+  width: 350px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.reg-box span {
+  width: 70px;
+  display: block;
+  float: left;
+  font-size: 14px;
+  color: #666;
+  height: 40px;
+  line-height: 40px;
+  text-align: right;
+}
+
+.reg-box a {
+  padding: 0 5px;
+  height: 40px;
+  line-height: 40px;
+  color: #999;
+  float: left;
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+}
+
+.reg-box input {
+  width: 220px;
+  padding: 0 10px;
+  height: 38px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  float: left;
+}
+
+.reg-box input.ipt_grey {
+  background: #f1f1f1;
+}
+
+.icon-admin, .icon-password {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background: url("../images/login_icon.png") no-repeat;
+  margin: 8px 10px;
+  float: left;
+}
+
+.icon-admin {
+  background-position: 0 0;
+}
+
+.icon-password {
+  background-position: 0 -24px;
+}
+
+.login-box__input input {
+  width: 275px;
+  height: 24px;
+  margin: 8px 8px 8px 0;
+  padding: 0 10px;
+  border: none;
+  border-left: 1px solid #ddd;
+  float: left;
+  outline: none;
+}
+
+.contact-btn, .contact-btn--grey {
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  border-radius: 3px;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+  font-family: "Microsoft Yahei";
+}
+
+.contact-btn1, .contact-btn--grey1 {
+  width: 242px;
+  height: 44px;
+  line-height: 44px;
+  margin-left: 70px;
+  text-align: center;
+  border-radius: 3px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+  font-family: "Microsoft Yahei";
+}
+
+.contact-btn, .contact-btn1 {
+  background: #106abc;
+}
+
+.contact-btn:hover, .contact-btn1:hover {
+  background: #1981df;
+}
+
+.contact-btn:active, .contact-btn1:active {
+  background: #0f5ba0;
+}
+
+.contact_btn_grey, .contact-btn--grey1 {
+  background: #ccc;
+}
+
+.agreement {
+  width: 350px;
+  padding: 15px 20px;
+  overflow: hidden;
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+  color: #999;
+}
+
+.agreement a {
+  color: #666;
+}
+
+.tip_icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url("../images/icon.png") no-repeat;
+  background-position: 0 -26px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.login-modified {
+  float: right;
+  width: 389px;
+  height: 415px;
+  background: url("../images/login_bg.jpg") bottom left no-repeat;
+  padding-left: 45px;
+  margin-left: 45px;
+  border-left: 1px solid #ddd;
+}
+
+.login-ad {
+  width: 280px;
+  margin: 15px auto;
+  font-size: 16px;
+  color: #666;
+  line-height: 30px;
+}
+
+.login-ad img {
+  width: 280px;
+  height: 24px;
+  margin-bottom: 20px;
+}
+/*账户登陆注册 结束*/
+
+/*table-group*/
+.table-group {
+  width: 100%;
+}
+
+.table-group tr:hover {
+  background: #f6fbff;
+}
+
+.table-group td {
+  padding: 12px 0;
+  border-bottom: 1px dashed #bfbfbf;
+}
+
+.table-group tr .border-btn {
+  visibility: hidden;
+}
+
+.table-group tr:hover .border-btn {
+  visibility: visible;
+}
+
+.table-group .border-btn {
+  border-radius: 0;
+}
+
+.group-bg {
+  margin-left: 15px;
+  float: left;
+  display: block;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 100%;
+  behavior: url(../js/pie.htc);
+}
+
+.group-bg img {
+  width: 50px;
+  height: 50px; /*
+    position: relative;
+    border-radius: 100%;
+    behavior: url(../js/pie.htc);*/
+}
+
+.group-right {
+  margin-left: 75px;
+}
+
+.group-right a h2 {
+  font-size: 12px;
+  color: #333;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.group-right a h2 span {
+  font-size: 12px;
+  color: #999;
+  font-weight: normal;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.group-right p.p1 {
+  font-size: 12px;
+  color: #999;
+  line-height: 28px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.group-right p.p2 {
+  font-size: 12px;
+  color: #666;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+/*table-group*/
+.search-box {
+  width: 100%;
+  margin: 10px auto;
+  position: relative;
+}
+
+.radio-box {
+  position: absolute;
+  top: 10px;
+  left: 65px;
+}
+
+.radio-box .radio-box_unchecked, .radio-box .radio-box_checked {
+  margin-right: 15px;
+}
+
+.search-effort {
+  margin: 0 auto;
+  width: 377px;
+  height: 32px;
+  border: 1px solid #d9d9d9;
+}
+
+.search-effort .tp_box {
+  width: 40px;
+  height: 32px;
+  border-right: 1px solid #d9d9d9;
+  background: #fafafa;
+  display: inline-block;
+  text-align: center;
+  float: left;
+}
+
+.search-effort input[type="text"] {
+  width: 284px;
+  height: 32px;
+  padding: 0 10px;
+  margin: 0;
+  line-height: 32px;
+  border: 0;
+  float: left;
+  overflow: visible;
+}
+
+.search-effort .search-effort__btn {
+  width: 32px;
+  height: 32px;
+  background: url("../images/s_btn.gif") no-repeat 2px 2px;
+  display: inline-block;
+  float: left;
+}
+/*模拟下拉框1 开始*/
+#divselect1 {
+  width: 40px;
+  height: 32px;
+  position: relative;
+  z-index: 1000;
+}
+
+#divselect1 span {
+  width: 40px;
+  height: 32px;
+  border-right: 1px solid #d9d9d9;
+  background: #fafafa;
+  display: inline-block;
+  text-align: center;
+  float: left;
+  z-index: 10;
+}
+
+#divselect1 ul {
+  width: 102px;
+  border: 1px solid #dfdfdf;
+  background-color: #fff;
+  position: absolute;
+  z-index: 6;
+  top: 32px;
+  left: -1px;
+}
+
+#divselect1 ul li {
+  height: 30px;
+  line-height: 30px;
+}
+
+#divselect1 ul li a {
+  display: block;
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  color: #333;
+  text-decoration: none;
+  padding: 0 10px;
+  vertical-align: middle;
+}
+
+#divselect1 ul li a:hover {
+  color: #1e5bb2;
+}
+
+#divselect1 ul li a i {
+  float: left;
+  margin-right: 10px;
+}
+
+#divselect1 ul li a:hover {
+  background-color: #e5e5e5;
+}
+
+/*模拟下拉框1 结束*/
+
+/*单选按钮 开始*/
+.radio-box_unchecked {
+  padding-left: 20px;
+  background: url("../images/radio_bg_02.png") no-repeat left center;
+  cursor: pointer;
+}
+
+.radio-box_checked {
+  padding-left: 20px;
+  background: url("../images/radio_bg_01.png") no-repeat left center;
+  cursor: pointer;
+}
+
+.disabled_check {
+  padding-left: 20px;
+  background: url("../images/radio_bg_02.png") no-repeat left center;
+  cursor: auto;
+}
+/*单选按钮 结束*/
+.dt_icon {
+  width: 24px;
+  height: 24px;
+  background: url("../images/tp_icon.gif") no-repeat;
+  background-position: 0 0;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.icon-personnel {
+  width: 24px;
+  height: 24px;
+  background: url("../images/icon-personnel.png") no-repeat;
+  background-position: 0 0;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.ry_icon {
+  width: 24px;
+  height: 24px;
+  background: url("../images/scm-icon.png") no-repeat;
+  display: inline-block;
+  margin-top: 3px;
+}
+
+.ry_icon {
+  background-position: -120px -515px;
+}

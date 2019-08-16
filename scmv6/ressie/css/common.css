@@ -1,0 +1,823 @@
+/*操作图标 开始*/
+.icon_common-box {
+  margin-top: 15px;
+}
+
+.icon_common-box a+a {
+  margin-left: 20px;
+  line-height: 18px;
+}
+
+.icon_common-text i {
+  margin-right: 5px;
+}
+
+.icon_common-text {
+  margin-right: 5px;
+}
+
+.icon_common {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url("../images/icon_operation.png");
+  vertical-align: middle;
+}
+/*编辑图标*/
+.icon-edit {
+  background-position: 0 0;
+}
+
+.icon-edit:hover, .icon_common-text:hover .icon-edit {
+  background-position: 0 -28px;
+}
+
+.icon-edit:active, .icon_common-text:active .icon-edit {
+  background-position: 0 -56px;
+}
+/*删除图标*/
+.icon-delete {
+  background-position: -28px 0;
+  cursor: pointer;
+}
+
+.icon-delete:hover, .icon_common-text:hover .icon-delete {
+  background-position: -28px -28px;
+}
+
+.icon-delete:active, .icon_common-text:active .icon-delete {
+  background-position: -28px -56px;
+}
+/*上传图标*/
+.icon-upload {
+  background-position: -84px 0;
+}
+
+.icon-upload:hover, .icon_common-text:hover .icon-upload {
+  background-position: -84px -28px;
+}
+
+.icon-upload:active, .icon_common-text:active .icon-upload {
+  background-position: -84px -56px;
+}
+/*下载图标*/
+.icon-download {
+  background-position: -56px 0;
+}
+
+.icon-download:hover, .icon_common-text:hover .icon-download {
+  background-position: -56px -28px;
+}
+
+.icon-download:active, .icon_common-text:active .icon-download {
+  background-position: -56px -56px;
+}
+/*刷新、换一换图标*/
+.icon-refresh {
+  background-position: 0 -85px;
+}
+
+.icon-refresh:hover, .icon_common-text:hover .icon-refresh {
+  background-position: 0 -112px;
+}
+
+.icon-refresh:active, .icon_common-text:active .icon-refresh {
+  background-position: 0 -140px;
+}
+/*上移图标*/
+.icon-move_up {
+  background-position: -56px -84px;
+}
+
+.icon-move_up:hover, .icon_common-text:hover .icon-move_up {
+  background-position: -56px -112px;
+}
+
+.icon-move_up:active, .icon_common-text:active .icon-move_up {
+  background-position: -56px -140px;
+}
+
+.icon-move_up-limited {
+  background-position: -56px -168px;
+} /*上移置顶*/
+/*下移图标*/
+.icon-move_down {
+  background-position: -28px -84px;
+}
+
+.icon-move_down:hover, .icon_common-text:hover .icon-move_down {
+  background-position: -28px -112px;
+}
+
+.icon-move_down:active, .icon_common-text:active .icon-move_down {
+  background-position: -28px -140px;
+}
+
+.icon-move_down-limited {
+  background-position: -28px -168px;
+} /*下移置底*/
+/*导入图标*/
+.icon-import {
+  background-position: -112px 0;
+}
+
+.icon-import:hover, .icon_common-text:hover .icon-import {
+  background-position: -112px -28px;
+}
+
+.icon-import:active, .icon_common-text:active .icon-import {
+  background-position: -112px -56px;
+}
+/*导出图标*/
+.icon-export {
+  background-position: -140px 0;
+}
+
+.icon-export:hover, .icon_common-text:hover .icon-export {
+  background-position: -140px -28px;
+}
+
+.icon-export:active, .icon_common-text:active .icon-export {
+  background-position: -140px -56px;
+}
+/*复制图标*/
+.icon-copy {
+  background-position: -84px -84px;
+}
+
+.icon-copy:hover, .icon_common-text:hover .icon-copy {
+  background-position: -84px -112px;
+}
+
+.icon-copy:active, .icon_common-text:active .icon-copy {
+  background-position: -84px -140px;
+}
+/*申请图标*/
+.icon-apply {
+  background-position: -112px -84px;
+}
+
+.icon-apply:hover, .icon_common-text:hover .icon-apply {
+  background-position: -112px -112px;
+}
+
+.icon-apply:active, .icon_common-text:active .icon-apply {
+  background-position: -112px -140px;
+}
+/*操作图标 结束*/
+
+/*统计图表 开始*/
+.icon_statistical_common {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url("../images/icon_statistical.png");
+  vertical-align: top;
+}
+/*点赞图标*/
+.icon-appreciates {
+  background-position: 0 0;
+}
+
+.icon-appreciates:hover, .icon_common-text:hover .icon-appreciates {
+  background-position: 0 -28px;
+}
+
+.icon-appreciates:active, .icon_common-text:active .icon-appreciates {
+  background-position: 0 -56px;
+}
+
+.icon-appreciates-limited {
+  background-position: 0 -84px;
+} /*禁止点赞*/
+.icon-appreciates-light {
+  background-position: 0 -112px;
+} /*已点赞*/
+/*评论图标*/
+.icon-comments {
+  background-position: -28px 0;
+}
+
+.icon-comments:hover, .icon_common-text:hover .icon-comments {
+  background-position: -28px -28px;
+}
+
+.icon-comments:active, .icon_common-text:active .icon-comments {
+  background-position: -28px -56px;
+}
+/*分享图标*/
+.icon-share {
+  background-position: -56px 0;
+}
+
+.icon-share:hover, .icon_common-text:hover .icon-share {
+  background-position: -56px -28px;
+}
+
+.icon-share:active, .icon_common-text:active .icon-share {
+  background-position: -56px -56px;
+}
+/*收藏图标*/
+.icon-collec {
+  background-position: -84px 0;
+}
+
+.icon-collec:hover, .icon_common-text:hover .icon-collec {
+  background-position: -84px -28px;
+}
+
+.icon-collec:active, .icon_common-text:active .icon-collec {
+  background-position: -84px -56px;
+}
+
+.icon-collec-limited {
+  background-position: -84px -84px;
+} /*禁止收藏*/
+.icon-collec-light {
+  background-position: -84px -112px;
+} /*已收藏*/
+/*引用图标*/
+.icon-reference {
+  background-position: -112px 0;
+}
+
+.icon-reference:hover, .icon_common-text:hover .icon-reference {
+  background-position: -112px -28px;
+}
+
+.icon-reference:active, .icon_common-text:active .icon-reference {
+  background-position: -112px -56px;
+}
+/*阅读、查看图标*/
+.icon-read {
+  background-position: -140px 0;
+}
+
+.icon-read:hover, .icon_common-text:hover .icon-read {
+  background-position: -140px -28px;
+}
+
+.icon-read:active, .icon_common-text:active .icon-read {
+  background-position: -140px -56px;
+}
+/*加关注图标*/
+.icon-focus {
+  background-position: -178px 0;
+}
+
+.icon-focus:hover, .icon_common-text:hover .icon-focus {
+  background-position: -178px -28px;
+}
+
+.icon-focus:active, .icon_common-text:active .icon-focus {
+  background-position: -178px -56px;
+}
+
+.icon-focus-limited {
+  background-position: -178px -84px;
+} /*禁止关注*/
+.icon-focus-light {
+  background-position: -178px -112px;
+} /*已关注*/
+/*统计图表 结束*/
+/*小控制图标 开始*/
+.icon_keyboard {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("../images/icon_keyboard.png") no-repeat;
+  vertical-align: middle;
+}
+
+.btn-border .icon_keyboard-add {
+  margin-right: 3px;
+  background-position: -52px -26px;
+}
+
+.btn-border:hover .icon_keyboard-add, .btn-border:active .icon_keyboard-add {
+  background-position: -52px -78px;
+}
+/*小控制图标 结束*/
+/*用户图标 开始*/
+.icon_user-box {
+  
+}
+
+.icon_user-box span+span {
+  margin-left: 20px;
+}
+
+.icon_user-box span i {
+  margin-right: 5px;
+}
+
+.icon_user {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url("../images/icon_user.png");
+  vertical-align: top;
+}
+
+.icon_user-admin {
+  background-position: -84px 0;
+}
+
+.icon_user-phone {
+  background-position: 0 0;
+}
+
+.icon_user-handset {
+  background-position: -112px 0;
+}
+
+.icon_user-mailbox {
+  background-position: -28px 0;
+}
+/*用户图标 结束*/
+
+/*文件图标 开始*/
+.icon_files {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url("../images/icon_files.png");
+  vertical-align: middle;
+}
+
+.icon_files-pdf {
+  background-position: 0 0;
+}
+
+.icon_files-pdf:hover, .list_file ul li:hover .icon_files-pdf {
+  background-position: 0 -28px;
+}
+
+.icon_files-pdf:active, .list_file ul li:active .icon_files-pdf {
+  background-position: 0 -56px;
+}
+
+.icon_files-word {
+  background-position: -28px 0;
+}
+
+.icon_files-word:hover, .list_file ul li:hover .icon_files-word {
+  background-position: -28px -28px;
+}
+
+.icon_files-word:active, .list_file ul li:active .icon_files-word {
+  background-position: -28px -56px;
+}
+
+.icon_files-exl {
+  background-position: -56px 0;
+}
+
+.icon_files-exl:hover, .list_file ul li:hover .icon_files-exl {
+  background-position: -56px -28px;
+}
+
+.icon_files-exl:active, .list_file ul li:active .icon_files-exl {
+  background-position: -56px -56px;
+}
+
+.list_file ul li .icon_files {
+  margin-right: 5px;
+}
+/*文件图标 开始*/
+/*以上为公共可用图标------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*按钮 开始*/
+.btn-blue, .btn-grey, .btn-normal, .btn-border {
+  display: inline-block;
+  height: 28px;
+  line-height: 26px;
+  border-radius: 3px;
+  padding: 0px 20px;
+  text-align: center;
+  box-sizing: border-box;
+  behavior: url(../js/PIE.htc);
+}
+
+.btn-blue {
+  color: #fff;
+  border: 1px solid #2882d8;
+  background: #2882d8;
+}
+
+.btn-blue:hover {
+  color: #fff;
+  border: 1px solid #218aed;
+  background: #218aed;
+}
+
+.btn-blue:active {
+  color: #fff;
+  border: 1px solid #1265cf;
+  background: #1265cf;
+}
+
+.btn-grey {
+  border: 1px solid #ddd;
+  background: #f8f8f8;
+}
+
+.btn-normal {
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.btn-grey:hover, .btn-normal:hover {
+  color: #2882d8;
+  border: 1px solid #2882d8;
+}
+
+.btn-grey:active, .btn-normal:active {
+  color: #fff;
+  border: 1px solid #1265cf;
+  background: #1265cf;
+}
+
+.btn-border {
+  color: #2882d8;
+  border: 1px solid #2882d8;
+}
+
+.btn-border:hover {
+  color: #fff;
+  border: 1px solid #2882d8;
+  background: #2882d8;
+}
+
+.btn-border:active {
+  color: #fff;
+  background: #1265cf;
+  border: 1px solid #1265cf;
+}
+/*按钮 结束*/
+/*以上为公共可用按钮------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*表格 开始*/
+
+/*单行表格（特性上下padding：10px，表格无上边边框）*/
+.table_css-01 {
+  
+}
+
+.table_css-01 th {
+  padding: 10px 10px;
+  color: #999;
+  line-height: 16px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #eee;
+}
+
+.table_css-01 td {
+  padding: 10px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.table_css-01 tr:hover {
+  background: #f9f9f9;
+}
+
+.table_css-01 span.check_fx {
+  margin-right: 0;
+}
+
+.table_css-01 .checkbox {
+  top: -12px;
+  left: -6px;
+}
+/*填写表单表格*/
+.user_css {
+  background: #fff;
+}
+
+.user_css th, .user_css td {
+  padding: 10px 5px;
+}
+
+.user_css td span {
+  line-height: 28px;
+}
+
+.user_css label.checkbox1 {
+  top: -12px;
+}
+/*表格 结束*/
+/*以上为公共可用表格------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+.input_original {
+  height: 30px;
+  padding-left: 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input_original:focus {
+  color: #333;
+  border: 1px solid #1265CF;
+}
+
+.select_original {
+  height: 30px;
+  padding-left: 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.select_original:focus {
+  color: #333;
+  border: 1px solid #1265CF;
+}
+
+.textarea_original {
+  height: 72px;
+  padding: 8px;
+  line-height: 24px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.textarea_original:focus {
+  color: #333;
+  border: 1px solid #1265CF;
+}
+
+.red_mandatory {
+  color: #c8001b;
+}
+/*日期*/
+.write_item2 {
+  width: 150px;
+  padding-right: 32px;
+  background: url(../images/write_date.png) no-repeat 120px center;
+  box-sizing: border-box;
+}
+/*以上为输入框和下拉框通用样式------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*关键词输入框 开始*/
+.key_word {
+  border: 1px solid #ddd;
+  height: 82px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px 0px 8px 0;
+  box-sizing: border-box;
+}
+
+.key_word-oneline {
+  border: 1px solid #ddd;
+  height: 46px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px 0px 8px 0;
+  box-sizing: border-box;
+}
+
+.key_word a, .key_word-oneline a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 28px;
+  line-height: 28px;
+  margin-left: 8px;
+  margin-top: 8px;
+  border-radius: 4px;
+  padding: 0px 12px;
+  border: none;
+  background: #F2F2F2;
+  behavior: url(../js/PIE.htc);
+  box-sizing: border-box;
+}
+
+.sie_antistop2 {
+  border: none;
+  margin-left: 8px;
+  height: 28px;
+  line-height: 28px;
+  margin-top: 8px;
+}
+
+.key_word a b, .key_word-oneline a b, .key_word-member b {
+  padding: 6.5px;
+  margin-left: 8px;
+  cursor: pointer;
+  display: inline-block;
+  background: url(../images/close.png) no-repeat;
+}
+
+.key_word a b:hover, .key_word-oneline a b:hover, .key_word-member b:hover {
+  background: url(../images/close_lt.png) no-repeat;
+}
+
+.key_word a b:active, .key_word-oneline a b:active, .key_word-member b:active {
+  background: url(../images/close_bt.png) no-repeat;
+}
+
+.key_word a.increased:hover, .key_word-oneline a.increased:hover {
+  height: 28px;
+}
+
+.key_word-member a {
+  display: inline-block;
+  height: 28px;
+  line-height: 26px;
+  margin-right: 5px;
+  margin-top: 8px;
+  border-radius: 4px;
+  padding: 0px 12px;
+  border: none;
+  background: #F2F2F2;
+  behavior: url(../js/PIE.htc);
+  box-sizing: border-box;
+}
+
+.btn_refresh {
+  margin-top: 8px;
+  height: 28px;
+  line-height: 28px;
+}
+
+.btn_refresh:hover {
+  color: #2882d8;
+}
+
+.btn_refresh:active {
+  color: #1265cf;
+}
+
+.btn_refresh:hover .icon-refresh {
+  background-position: 0 -112px;
+}
+
+.btn_refresh:active .icon-refresh {
+  background-position: 0 -140px;
+}
+/*关键词输入框 结束*/
+.icon_files-jpg {
+  background: url(../images/jpg-jpeg.png);
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  width: 20px;
+  height: 20px;
+}
+
+.icon_files-pdf {
+  background: url(../images/pdf.png);
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  width: 20px;
+  height: 20px;
+}
+
+.icon_files-doc {
+  background: url(../images/word-doc-docx.png);
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  width: 20px;
+  height: 20px;
+}
+
+.icon_files-png {
+  background: url(../images/png.png);
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  width: 20px;
+  height: 20px;
+}
+
+.icon_files-rar {
+  background: url(../images/zip-rar.png);
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  width: 20px;
+  height: 20px;
+}
+/* 提示框*/
+.p_del_midd {
+  background-color: #FFF;
+  padding: 20px 32px;
+  overflow: hidden;
+}
+
+.pop_su_icon {
+  line-height: 20px;
+  width: 360px;
+  font-size: 14px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.pop_su_icon_img {
+  width: 48px;
+  height: 48px;
+  box-sizing: border-box;
+  margin-right: 10px;
+}
+
+.pop_su_icon {
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.p_d_bottom_tip {
+  width: 100%;
+  height: 22px;
+  line-height: 22px;
+  text-align: right;
+  padding: 5px 0px;
+  margin-top: 20px;
+}
+
+.continueEdit {
+  width: 80px;
+  height: 30px;
+  border: 1px solid #2882d8;
+  background: #2882d8;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 6px 12px;
+}
+
+.backlist {
+  width: 80px;
+  height: 30px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 6px 12px;
+}
+
+.pop_su_icon p {
+  font-size: 20px;
+  /*     font-weight: bold; */
+}
+
+.icon_common-text .icon-delete {
+  margin-bottom: 12px !important;
+}
+
+/**开题分析开发新加样式开始*/
+.analysis-importantkey_container-item-border {
+  border: 1px #2882d8 solid !important;
+  background: #fff !important;
+  color: #2882d8 !important;
+}
+
+.norecord {
+  width: 938px;
+  border: 1px solid #cbbb58;
+  background-color: #fefbe3;
+  padding: 10px 20px;
+  overflow: hidden;
+}
+
+.no_effort h2 {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  color: #999;
+  font-weight: normal;
+}
+
+.no_effort {
+  width: 582px;
+  padding: 88px 0 130px 130px;
+  background: url("/ressie/images/no_effort_bg.jpg") no-repeat left top;
+  margin: 60px auto;
+  text-align: left;
+  background-size: 120px;
+}
+
+.no_effort_tip {
+  width: 100%;
+  font-size: 14px;
+  color: #999;
+  line-height: 150%;
+}
+
+.no_effort_tip span {
+  float: left;
+  display: inline-block;
+  height: 100px;
+}
+
+.tc {
+  text-align: center;
+}

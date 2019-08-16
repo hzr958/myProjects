@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>科研之友机构版</title>
+<link rel="stylesheet" href="../css/intel.css" type="text/css">
+<link href="../css/newadd.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../js/action.js"></script>
+<script src="../js/jquery-1.11.3.js"></script>
+<script src="../js/bootstrap.js"></script>
+</head>
+<body>
+  <!--头部导航条-->
+  <div class="nav">
+    <div class="log">
+      <img class="logo" src="../images/logo_bt.png" alt=""> <a class="select"> <!--存放选择的值--> <span
+        class="selectVal" onselectstart="return false">科研之友机构版</span>
+        <div class="clear"></div>
+      </a>
+    </div>
+    <ul class="nav-side">
+      <ul class="nav-bar-right">
+        <li class="phone">400-675-1236</li>
+      </ul>
+      <!--左侧的菜单-->
+      <ul class="nav-bar" id="join">
+        <li><a href="sie_index.html">首页</a></li>
+        <li><a href="product.html">产品服务</a></li>
+        <li class="active"><a href="egrantweb.html">解决方案</a></li>
+        <li><a href="relation.html">联系我们</a></li>
+      </ul>
+    </ul>
+    <div class="clear"></div>
+    <div class="ciear"></div>
+  </div>
+  <div class="clear"></div>
+  <div class="product_banner product_cloud">
+    <div class="product-caption">
+      <h1>
+        连接人与人、人与知识、人与服务<br> 让创新更高效
+      </h1>
+      <input type="submit" class="btn btn-primary" onclick="doRegist()" value="立即注册">
+    </div>
+  </div>
+  <!--内容-->
+  <div class="relation__container">
+    <ul class="relation__header">
+      <li class="hover" id="two1" onClick="setTab('two',1,2)"><span class="relation__header__item">高校</span></li>
+      <li class="" id="two2" onClick="setTab('two',2,2)"><span href="#">企业</span></li>
+      <!--<div class="relation__item relation__item-right"><a href="#">企业</a></div>-->
+    </ul>
+    <div class="relation_container_conter">
+      <div id="con_two_1" class="hover">
+        <div class="relation__body-item">
+          <div class="fr">
+            <img src="../images/egrantweb/tech-manag.png">
+          </div>
+          <div class="relation__body-item__infor">
+            <div class="relation__body-item__infor-title">发现资金机会、精准推荐服务</div>
+            <div class="relation__body-item__infor-content">利用大数据分析技术，发现更多基金机会，通过订阅服务进行精准推荐</div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="product_achievement">
+          <div class="relation__body-item">
+            <div class="relation__body-item__infor fr">
+              <div class="relation__body-item__infor-title">支持项目管理、科研诚信要求</div>
+              <div class="relation__body-item__infor-content">一站式项目管理，获取第三方可信数据，提升管理效率，保证科研诚信</div>
+            </div>
+            <div>
+              <img src="../images/egrantweb/Ach-prom1.png">
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="relation__body-item">
+          <div class="fr">
+            <img src="../images/egrantweb/Colla-inno1.png">
+          </div>
+          <div class="relation__body-item__infor">
+            <div class="relation__body-item__infor-title">展示专家形象</div>
+            <div class="relation__body-item__infor-content">建立专家主页，构建单位知识库，展示单位科研实力，促进产学研合作</div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="product_achievement">
+          <div class="relation__body-item">
+            <div class="relation__body-item__infor fr">
+              <div class="relation__body-item__infor-title">展示科技成果、专利技术</div>
+              <div class="relation__body-item__infor-content">基于开放存取标准，公开单位最新科技成果，专利技术，提升单位影响力</div>
+            </div>
+            <div>
+              <img src="../images/egrantweb/Data-analysis1.png">
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="relation__body-item">
+          <div class="fr">
+            <img src="../images/egrantweb/tech-manag.png">
+          </div>
+          <div class="relation__body-item__infor">
+            <div class="relation__body-item__infor-title">支持科研管理报告</div>
+            <div class="relation__body-item__infor-content">通过海量大数据，精确匹配单位找专家需求，找到合适的专家，促进产学研合作</div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div id="con_two_2">
+        <div class="relation__body-item">
+          <div class="fr">
+            <img src="../images/egrantweb/tech-manag.png">
+          </div>
+          <div class="relation__body-item__infor">
+            <div class="relation__body-item__infor-title">发现资金机会、精准推荐服务</div>
+            <div class="relation__body-item__infor-content">利用大数据分析技术，发现更多基金机会，通过订阅服务进行精准推荐</div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="product_achievement">
+          <div class="relation__body-item">
+            <div class="relation__body-item__infor fr">
+              <div class="relation__body-item__infor-title">支持项目管理、科研诚信要求</div>
+              <div class="relation__body-item__infor-content">一站式项目管理，获取第三方可信数据，提升管理效率，保证科研诚信</div>
+            </div>
+            <div>
+              <img src="../images/egrantweb/Ach-prom1.png">
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="relation__body-item">
+          <div class="fr">
+            <img src="../images/egrantweb/Colla-inno1.png">
+          </div>
+          <div class="relation__body-item__infor">
+            <div class="relation__body-item__infor-title">发现被动的科技专家</div>
+            <div class="relation__body-item__infor-content">通过海量大数据，精确匹配单位找专家需求，找到合适的专家，促进产学研合作</div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="product_achievement">
+          <div class="relation__body-item">
+            <div class="relation__body-item__infor fr">
+              <div class="relation__body-item__infor-title">发现专利技术、发现知识</div>
+              <div class="relation__body-item__infor-content">通过知识图谱为知识画像，精确匹配知识，发现更多知识</div>
+            </div>
+            <div>
+              <img src="../images/egrantweb/Data-analysis1.png">
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="relation__body-item">
+          <div class="fr">
+            <img src="../images/egrantweb/tech-manag.png">
+          </div>
+          <div class="relation__body-item__infor">
+            <div class="relation__body-item__infor-title">支持科研管理报告</div>
+            <div class="relation__body-item__infor-content">满足资助机构及政府要求，数据自查，一键提交，提高管理工作效率</div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--</div>-->
+  <div class="relation__footer" id="cpdj" style="width: 100%;">
+    <div style="width: 890px; margin: auto; padding-top: 50px;">
+      <div class="relation__footer-header">
+        <div class="relation__footer-title">寻找最合适的产品</div>
+        <div class="relation__footer-content">不同的高校，企业，针对服务对象的规模和数据量不同，充分考虑不同单位的实际情况，我们都有能够满足贵单位需求的版本。</div>
+      </div>
+      <div class="relation__footer-container">
+        <div class="relation__footer-container__item">
+          <div class="relation__footer-item__title">免费版</div>
+          <div class="relation__footer-item__content">一站式的知识管理，适用于任何科研</div>
+          <div class="relation__footer-item__content">机构</div>
+          <div class="relation__footer-item__fuc">免费</div>
+          <div class="relation__footer-item__usenow" onclick="doRegist()">立即注册</div>
+          <div style="width: 250px; padding-left: 30px; text-align: left;">
+            <div class="relation__footer-list__box">
+              <div class="relation__footer-list__title">社会化知识库</div>
+              <div class="relation__footer-list__sub">联邦检索</div>
+              <div class="relation__footer-list__sub">成果认领</div>
+              <div class="relation__footer-list__sub">知识管理</div>
+              <div class="relation__footer-list__sub">机构主页</div>
+              <div class="relation__footer-list__sub">人员管理</div>
+              <div class="relation__footer-list__sub">部门管理</div>
+            </div>
+            <div class="relation__footer-list__box">
+              <div class="relation__footer-list__title">协同创新</div>
+              <div class="relation__footer-list__sub">个人主页</div>
+              <div class="relation__footer-list__sub">合作关系</div>
+              <div class="relation__footer-list__sub">项目群组</div>
+              <div class="relation__footer-list__sub">分享全文</div>
+            </div>
+            <div class="relation__footer-list__box">
+              <div class="relation__footer-list__title">其他</div>
+              <div class="relation__footer-list__sub">单位存储空间（5GB）</div>
+            </div>
+          </div>
+        </div>
+        <div class="relation__footer-container__item">
+          <div class="relation__footer-item__title">基本版</div>
+          <div class="relation__footer-item__content">更全面的基础版功能，以及额外的功</div>
+          <div class="relation__footer-item__content">能</div>
+          <div class="relation__footer-item__fuc relation__footer-item__touch">联系我们</div>
+          <div style="margin-bottom: 32px;">
+            <div>
+              <div class="phone"
+                style="text-align: left; padding-left: 37px; height: 32px; margin-left: 62px; padding-top: 7px;">400-675-1236</div>
+            </div>
+            <div class="online-excuse">
+              <div class="refer" style="height: 32px; margin-left: 62px; padding-top: 7px; text-align: left;">
+                <a
+                  onclick="javascript:window.open('http://crm2.qq.com/page/portalpage/wpa.php?uin=800018382&cref=http://node-web6/node-web6/dynweb/main&ref=&pt=scholarmate kefu&f=1&ty=1&ap=&as=&aty=&a=', '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"
+                  class="logining" target="_blank"><div>在线咨询</div></a>
+              </div>
+            </div>
+          </div>
+          <div class="relation__footer-getall">获得基本版功能，以及</div>
+          <div style="width: 250px; padding-left: 30px; text-align: left;">
+            <div class="relation__footer-list__box">
+              <div class="relation__footer-list__title">智慧科技</div>
+              <div class="relation__footer-list__sub">开放存取</div>
+              <div class="relation__footer-list__sub">查新服务</div>
+              <div class="relation__footer-list__sub">专利许可</div>
+              <div class="relation__footer-list__sub">订阅服务</div>
+            </div>
+            <div class="relation__footer-list__box">
+              <div class="relation__footer-list__title">单位推广</div>
+              <div class="relation__footer-list__sub">影响力分析</div>
+              <div class="relation__footer-list__sub">行为分析</div>
+            </div>
+            <div class="relation__footer-list__box">
+              <div class="relation__footer-list__title">其他</div>
+              <div class="relation__footer-list__sub">技术支持</div>
+              <div class="relation__footer-list__sub">单位存储空间（200GB）</div>
+            </div>
+          </div>
+        </div>
+        <div class="relation__footer-container__item relation__footer-container_tem">
+          <div class="relation__footer-item__title">高级版</div>
+          <div class="relation__footer-item__content relation__footer-item__total">更全面的专业功能，以及额外的功能</div>
+          <div class="relation__footer-item__fuc relation__footer-item__touch">联系我们</div>
+          <div style="margin-bottom: 32px;">
+            <div>
+              <div class="phone"
+                style="text-align: left; padding-left: 37px; height: 32px; margin-left: 62px; padding-top: 7px;">400-675-1236</div>
+            </div>
+            <div class="online-excuse">
+              <div class="refer" style="height: 32px; margin-left: 62px; padding-top: 7px; text-align: left;">
+                <a
+                  onclick="javascript:window.open('http://crm2.qq.com/page/portalpage/wpa.php?uin=800018382&cref=http://node-web6/node-web6/dynweb/main&ref=&pt=scholarmate kefu&f=1&ty=1&ap=&as=&aty=&a=', '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"
+                  class="logining" target="_blank"><div>在线咨询</div></a>
+              </div>
+            </div>
+          </div>
+          <div class="relation__footer-getall">获得进阶版功能，以及</div>
+          <div style="width: 250px; padding-left: 30px; text-align: left;">
+            <div class="relation__footer-list__box">
+              <div class="relation__footer-list__title">数据分析</div>
+              <div class="relation__footer-list__sub">统计分析（本单位）</div>
+              <div class="relation__footer-list__sub">对比分析（本单位）</div>
+              <div class="relation__footer-list__sub">合作分析</div>
+              <div class="relation__footer-list__sub">趋势分析</div>
+            </div>
+            <div class="relation__footer-list__box">
+              <div class="relation__footer-list__title">其他</div>
+              <div class="relation__footer-list__sub">技术支持</div>
+              <div class="relation__footer-list__sub">培训服务</div>
+              <div class="relation__footer-list__sub">单位存储空间（2T）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <!--底部-->
+  <div class="sective">
+    <div class="sective_main">
+      <ul class="service_logo">
+        <li><img src="../images/logo_bt.png" alt=""><a class="select"> <!--存放选择的值--> <span
+            class="selectVal" onselectstart="return false">科研之友机构版</span>
+            <div class="clear"></div>
+        </a></li>
+        <li class="refer"><a
+          onclick="javascript:window.open('http://crm2.qq.com/page/portalpage/wpa.php?uin=800018382&cref=http://node-web6/node-web6/dynweb/main&ref=&pt=scholarmate kefu&f=1&ty=1&ap=&as=&aty=&a=', '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');">在线销售咨询</a></li>
+        <li class="phone">400-675-1236</li>
+      </ul>
+      <ul class="service_content">
+        <li class="service_regard"><a
+          onclick="javascript:window.open('http://crm2.qq.com/page/portalpage/wpa.php?uin=800018382&cref=http://node-web6/node-web6/dynweb/main&ref=&pt=scholarmate kefu&f=1&ty=1&ap=&as=&aty=&a=', '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');">在线销售咨询</a></li>
+        <li><a href="#">产品定价</a></li>
+      </ul>
+      <ul class="service_content">
+        <li class="service_regard"><a href="#">关于科研之友机构版</a></li>
+        <li><a href="http://sie.scholarmate.com/help" target="_blank">什么是科研之友机构版</a></li>
+        <li><a href="#">什么是云服务 </a></li>
+        <li><a href="http://sie.scholarmate.com/resscmwebrol/html/info_safe_zh_CN.html" target="_blank">信息安全</a></li>
+        <li><a href="http://sie.scholarmate.com/resscmwebrol/html/rol_condition_zh_CN.html" target="_blank">服务条款</a></li>
+      </ul>
+      <ul class="service_right">
+        <li class="service_regard"><a href="#">常用链接</a></li>
+        <li><a href="https://www.scholarmate.com" target="_blank">科研之友</a></li>
+        <li><a href="https://www.innocity.com/onlineweb/" target="_blank">创新城</a></li>
+        <li><a href="http://www.egrant.cn/egrantweb/" target="_blank">科创云</a></li>
+      </ul>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <!--页尾-->
+  <div class="footer">
+    <div class="footer_conter">
+      <div class="footer_left">
+        <img src="../images/code.png" alt="">
+        <p>扫码关注科研之友</p>
+      </div>
+      <div class="footer_right">
+        <p class="footer_link">连接人与知识，让创新更高效</p>
+        <p class="footer_copy">© Copyright 2012 - 2017 | 爱瑞思软件（深圳）有限公司&nbsp;&nbsp; &nbsp;&nbsp; 联系我们</p>
+      </div>
+      <img class="footer_badge" src="../images/govIcon.gif" alt="">
+      <div class="clear"></div>
+    </div>
+  </div>
+  <script>
+    $(function(){
+        {
+            var $a=$('#join li');
+            $a.click(function(){
+                var $this=$(this);
+                var $t=$this.index();
+                $a.removeClass();
+                $this.addClass('active');
+            })
+        }
+    });
+</script>
+</body>
+</html>

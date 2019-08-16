@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/scmpdemostyle.css">
+<script type="text/javascript" src="../js/action.js"></script>
+<script type="text/javascript" src="../js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../js/jsScroll.js"></script>
+<script type="text/javascript" src="../js/scmdemoaction.js"></script>
+</head>
+<body>
+  <div class="pop__bg"></div>
+  <div class="pop-cover">
+    <div class="pop__box" style="width: 980px; height: 610px; margin-left: -490px; margin-top: -305px;">
+      <div class="pop__box--top">
+        <a href="#" class="pop-close"><i class="icon-pop-close"></i></a><span class="ml10">从科研之友中导入成果</span>
+      </div>
+      <div class="pop__box--tx">
+        <div class="menubox">
+          <ul>
+            <li class="hover" id="one1" onclick="setTab('one',1,3)"><i class="menubox-icon01"></i>推荐成果
+              <div class="triangle">
+                <em></em><span></span>
+              </div></li>
+            <li id="one2" onclick="setTab('one',2,3)" name="one2"><i class="menubox-icon02"></i>检索成果
+              <div class="triangle">
+                <em></em><span></span>
+              </div></li>
+            <li id="one3" onclick="setTab('one',3,3)"><i class="menubox-icon03"></i>手工录入
+              <div class="triangle">
+                <em></em><span></span>
+              </div></li>
+          </ul>
+          <a href="#" class="scm-logo"><img src="../images/scm-logo.png"></a>
+        </div>
+        <div class="contentbox">
+          <div id="con_one_1" class="hover">
+            <div class="associated-tip">温馨提示：群组关联只能关联你创建的项目群组！</div>
+            <div class="contentbox__wrap">
+              <div class="leftBar">
+                <div class="leftBar__tit">
+                  <i class="leftBar-icon01"></i>所有成果(100)
+                </div>
+                <div class="leftBar__box">
+                  <div class="leftBar__box--parent">
+                    <div class="leftBar__box--panel">
+                      <div class="leftBar__box--listTitle">
+                        <strong><i class="leftBar-icon02"></i>项目成员</strong>
+                        <div class="leftBar__box--leftbgbt">
+                          <i class="keyboard_arrow_up" id="iconQh"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="leftBar__box--menuList" id="leftmenlistitem">
+                      <div class="box--menuList-select">
+                        <a href="#"><span>张珊珊</span><em>(11)</em></a>
+                      </div>
+                      <div>
+                        <a href="#"><span>刘毅</span><em>(11)</em></a>
+                      </div>
+                      <div>
+                        <a href="#"><span>张晓琪</span><em>(11)</em></a>
+                      </div>
+                      <div>
+                        <a href="#"><span>方圆</span><em>(11)</em></a>
+                      </div>
+                      <div>
+                        <a href="#"><span>周曦</span><em>(11)</em></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="leftBar__box--parent">
+                    <div class="leftBar__box--panel">
+                      <div class="leftBar__box--listTitle">
+                        <strong><i class="leftBar-icon03"></i>关联群组</strong>
+                      </div>
+                    </div>
+                    <div class="leftBar__box--menuList">
+                      <div class="box--menuList-select">
+                        <a href="#"><span>关联</span></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cont-right">
+                <div class="sorting-box">
+                  <div class="query-box">
+                    <input type="text" class="input_default" value="输入群组关键词检索" id="input_default01"><input
+                      type="button" class="query-btn">
+                  </div>
+                  <a href="#" class="grey-btn  demo_float-right demo_width-50">取消</a>
+                </div>
+                <div id="divScrollBar2"
+                  style="width: auto; overflow: hidden; height: 382px; border-top: 1px solid #bfbfbf; border-bottom: 1px solid #bfbfbf;">
+                  <table width="100%" cellspacing="0" cellpadding="0" class="table-group">
+                    <tr>
+                      <td><a href="#" class="group-bg"><img src="../images/default-group.png"></a>
+                        <div class="group-right">
+                          <a href="#"><h2>国基交流与资源共享</h2></a>
+                          <p class="p1">成果数: 13&nbsp;&nbsp;&nbsp;&nbsp;文献数: 203</p>
+                        </div></td>
+                      <td align="right"><a href="#" class="border-btn mr40">关联群组</a></td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" class="group-bg"><img src="../images/default-group.png"></a>
+                        <div class="group-right">
+                          <a href="#"><h2>国基交流与资源共享</h2></a>
+                          <p class="p1">成果数: 13&nbsp;&nbsp;&nbsp;&nbsp;文献数: 203</p>
+                        </div></td>
+                      <td align="right"><a href="#" class="border-btn mr40">关联群组</a></td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" class="group-bg"><img src="../images/default-group.png"></a>
+                        <div class="group-right">
+                          <a href="#"><h2>国基交流与资源共享</h2></a>
+                          <p class="p1">成果数: 13&nbsp;&nbsp;&nbsp;&nbsp;文献数: 203</p>
+                        </div></td>
+                      <td align="right"><a href="#" class="border-btn mr40">关联群组</a></td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" class="group-bg"><img src="../images/default-group.png"></a>
+                        <div class="group-right">
+                          <a href="#"><h2>国基交流与资源共享</h2></a>
+                          <p class="p1">成果数: 13&nbsp;&nbsp;&nbsp;&nbsp;文献数: 203</p>
+                        </div></td>
+                      <td align="right"><a href="#" class="border-btn mr40">关联群组</a></td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" class="group-bg"><img src="../images/default-group.png"></a>
+                        <div class="group-right">
+                          <a href="#"><h2>国基交流与资源共享</h2></a>
+                          <p class="p1">成果数: 13&nbsp;&nbsp;&nbsp;&nbsp;文献数: 203</p>
+                        </div></td>
+                      <td align="right"><a href="#" class="border-btn mr40">关联群组</a></td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" class="group-bg"><img src="../images/default-group.png"></a>
+                        <div class="group-right">
+                          <a href="#"><h2>国基交流与资源共享</h2></a>
+                          <p class="p1">成果数: 13&nbsp;&nbsp;&nbsp;&nbsp;文献数: 203</p>
+                        </div></td>
+                      <td align="right"><a href="#" class="border-btn mr40">关联群组</a></td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" class="group-bg"><img src="../images/default-group.png"></a>
+                        <div class="group-right">
+                          <a href="#"><h2>国基交流与资源共享</h2></a>
+                          <p class="p1">成果数: 13&nbsp;&nbsp;&nbsp;&nbsp;文献数: 203</p>
+                        </div></td>
+                      <td align="right"><a href="#" class="border-btn mr40">关联群组</a></td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" class="group-bg"><img src="../images/default-group.png"></a>
+                        <div class="group-right">
+                          <a href="#"><h2>国基交流与资源共享</h2></a>
+                          <p class="p1">成果数: 13&nbsp;&nbsp;&nbsp;&nbsp;文献数: 203</p>
+                        </div></td>
+                      <td align="right"><a href="#" class="border-btn mr40">关联群组</a></td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" class="group-bg"><img src="../images/default-group.png"></a>
+                        <div class="group-right">
+                          <a href="#"><h2>国基交流与资源共享</h2></a>
+                          <p class="p1">成果数: 13&nbsp;&nbsp;&nbsp;&nbsp;文献数: 203</p>
+                        </div></td>
+                      <td align="right"><a href="#" class="border-btn mr40">关联群组</a></td>
+                    </tr>
+                    <tr>
+                      <td><a href="#" class="group-bg"><img src="../images/default-group.png"></a>
+                        <div class="group-right">
+                          <a href="#"><h2>国基交流与资源共享</h2></a>
+                          <p class="p1">成果数: 13&nbsp;&nbsp;&nbsp;&nbsp;文献数: 203</p>
+                        </div></td>
+                      <td align="right"><a href="#" class="border-btn mr40">关联群组</a></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="clear mt10">
+                  <a href="#" class="f666">快速创建群组并关联</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="con_one_2" style="display: none">222</div>
+          <div id="con_one_3" style="display: none">333</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script language="javascript">
+    var s1=document.getElementById("input_default01");
+    s1.onfocus=function(){if(this.value==this.defaultValue)this.value=''};
+    s1.onblur=function (){if(/^\s*$/.test(this.value)){this.value=this.defaultValue;this.style.color='#ccc'}}
+    s1.onkeydown=function(){this.style.color='#333'};
+</script>
+  <script type="text/javascript">
+    jsScroll(document.getElementById('divScrollBar2'));
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+var msgBase = {
+  noRecord : "No matched record has been found",
+  delSuccess : "deleted successfully",
+  noMsg : "There is no message received",
+  markSuccess : "Marked successfully",
+  timeout : 'You are not logged in or session time out, please log in again',
+  tips : "Reminder",
+  downloadDisabledTip : "Sorry,you have no permission to download this Full-text",
+  uploadTips : "Please choose files to upload",
+  sentSuccess : 'Request has been sent successfully',
+  saveSuccess : 'Saved successfully',
+  saveFail : "Saved failed",
+  uploadFail : "Uploaded failed",
+  uploadFile : "Please select files to upload",
+  pleaseSelectSender : "Please select valid sender",
+  i18n_noSearchFriend : "Don't find any contacts",
+}

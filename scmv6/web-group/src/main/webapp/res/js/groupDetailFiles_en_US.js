@@ -1,0 +1,22 @@
+﻿var groupDetailFiles = {
+  selectFoler : "Please select a folder",
+  prompt : "Reminder",
+  noRemove : "Sorry, you cannot remove file added by other member",
+  noRemoveToFolder : "Sorry, you can not move the files that others add to the group",
+  selectFile : "Please select a file",
+  comfirm : "Are you sure to remove the selected file from folder?",
+  deleteComfirm : "Are you sure to remove the selected file from group?",
+  noComment : "You cannot make comment to multiple files at the same time ",
+  selectUploadFile : "Please select a file to upload",
+  selectEdit : "Please select one of the items to edit",
+  fileMaxSize : "File description should not be more than 200 characters",
+  noUpdate : "Sorry, You are not allowed to modify this file",
+  opSuccess : "Operated successfully",
+  opFaild : "Operated failed",
+  noRating : "No ratings",
+  all : "total",
+  comment : "comment,",
+  rate : "Rate.<br/>",
+  loginTime : "System timeout, please login again",
+  recommendLabel : "Recommends"
+};

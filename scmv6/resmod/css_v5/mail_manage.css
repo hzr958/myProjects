@@ -1,0 +1,218 @@
+body {
+  min-width: 1200px;
+}
+
+.text_overflow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.box_mail_manage {
+  padding-top: 20px;
+  width: 85%;
+  min-width: 1250px;
+  min-height: 500px;
+  margin: 45px auto;
+  border: 1px solid #333;
+}
+
+.item_checked {
+  border: 1px solid #80ffff;
+  background-color: #999;
+}
+
+.h1_mail_manage {
+  min-width: 1200px;
+  height: 50px;
+  border: 1px solid #333;
+  margin: 10px 20px 15px 20px;
+}
+
+.h1_mail_manage .item1_mail_manage {
+  width: 100px;
+  float: left;
+  text-align: center;
+  margin: 13px;
+}
+
+.h1_mail_manage .item2_mail_manage {
+  min-width: 100px;
+  float: left;
+  text-align: left;
+  margin: 13px;
+}
+
+.search_mail_manage {
+  min-width: 1200px;
+  height: 150px;
+  border: 1px solid #333;
+  margin: 10px 20px 0 20px;
+}
+
+.search_mail_manage .item1 {
+  height: 130px;
+  min-width: 300px;
+  margin: 10px 20px 10px 20px;
+  float: left;
+}
+
+.search_mail_manage .item2 {
+  height: 130px;
+  min-width: 300px;
+  margin: 10px 20px 10px 20px;
+  float: left;
+}
+
+.search_mail_manage .item3 {
+  min-width: 100px;
+  height: 130px;
+  margin: 10px 20px 10px 20px;
+  float: left;
+}
+
+.search_mail_manage .item2_mail_manage {
+  min-height: 40px;
+  width: : 300px;
+  margin: 10px 20px 0 20px;
+  text-align: left;
+}
+
+.search_mail_manage .item1_mail_manage input {
+  width: 130px;
+}
+
+.search_mail_manage_input {
+  width: 90px;
+}
+
+.listbox_mail_manage {
+  min-height: 350px;
+  min-width: 1200px;
+  border: 1px solid #333;
+  margin: 10px 20px 0 20px;
+  /* max-height: 400px; */
+}
+
+.listbox_mail_manage table {
+  min-width: 1200px;
+  margin: auto;
+  border-collapse: collapse;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.listbox_mail_manage table tr {
+  min-width: 1200px;
+}
+
+.listbox_mail_manage table th {
+  min-width: 50px;
+  border: 1px solid #333;
+  padding: 5px;
+}
+
+.listbox_mail_manage table td {
+  min-width: 50px;
+  border: 1px solid #333;
+}
+
+.mail_manage_page {
+  margin: 15px auto;
+  text-align: center;
+}
+
+.mail_manage_page input {
+  width: 50px;
+}
+
+.center {
+  width: 1100px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.content {
+  min-height: 300px;
+  min-width: 1250px;
+  border: 1px solid #333;
+}
+
+.supernatant_box {
+  border: 1px solid #333;
+  height: 90%;
+  width: 90%;
+  margin: 0px 3%;
+}
+
+.supernatant_box table {
+  margin: 0px auto;
+  width: 90%;
+}
+
+.supernatant_box table tr {
+  min-height: 50px;
+}
+
+.supernatant_box table th {
+  min-height: 50px;
+  border: 1px solid #333;
+}
+
+.supernatant_box table td {
+  min-height: 50px;
+  border: 1px solid #333;
+}
+
+.supernatant_box div {
+  margin: 5px 5px 5px 70px;
+}
+
+td {
+  text-align: left;
+}
+
+.black_overlay {
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1001;
+  -moz-opacity: 0.8;
+  opacity: .80;
+  filter: alpha(opacity = 80);
+}
+
+.white_content {
+  display: none;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border: 7px solid lightblue;
+  background-color: white;
+  z-index: 1002;
+  overflow: auto;
+}
+
+.white_content_small {
+  display: none;
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  width: 40%;
+  height: 50%;
+  border: 16px solid lightblue;
+  background-color: white;
+  z-index: 1002;
+  overflow: auto;
+}
+
+a {
+  color: #4c4c4c;
+  text-decoration: underline;
+}

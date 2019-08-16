@@ -1,0 +1,243 @@
+@charset "utf-8";
+/* CSS Document */
+.sie_menu {
+  width: 900px;
+  margin: 0px auto;
+}
+
+.sie_left {
+  float: left;
+  width: 450px;
+  margin-top: 10px;
+}
+
+.sie_left a {
+  color: #FFF;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 14px;
+}
+
+.sie_left a:hover {
+  color: #FFF;
+  text-decoration: underline;
+  margin-right: 20px;
+  font-size: 14px;
+}
+
+.sm_search_right {
+  float: right;
+  margin-top: 10px;
+}
+
+.sm_input {
+  height: 20px;
+  line-height: 20px;
+  padding-left: 3px;
+  width: 185px;
+  float: left;
+  border-bottom: 1px solid #254786;
+  border-top: 1px solid #254786;
+  border-left: 1px solid #254786;
+  border-right: none;
+  color: #999;
+}
+
+.sm_btn_zh_CN {
+  float: left;
+  background: url(../images_v5/index/sm_btn_zh_CN.gif) no-repeat;
+  width: 62px;
+  height: 22px;
+  border: 0;
+  cursor: pointer;
+}
+
+.sm_btn_en_US {
+  float: left;
+  background: url(../images_v5/index/sm_btn_en_US.gif) no-repeat;
+  width: 62px;
+  height: 22px;
+  border: 0;
+  cursor: pointer;
+}
+
+.sie_banner {
+  background: url(../images_v5/price/banner.jpg) no-repeat;
+  width: 900px;
+  height: 250px;
+  margin: 20px auto 30px;
+  position: relative;
+}
+
+.location_btn {
+  position: absolute;
+  bottom: 45px;
+  right: 130px;
+}
+
+a.open_btn {
+  width: 180px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #0069ae;
+  color: #FFF;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  font-family: "Microsoft YaHei";
+  font-style: italic;
+}
+
+a.open_btn:hover {
+  background-color: #1c88ce;
+  text-decoration: none;
+  color: #FFF;
+  font-style: italic;
+}
+
+.price_function {
+  font-family: "Microsoft YaHei";
+  width: 900px;
+  margin: 0px auto;
+}
+
+.price_function h3 {
+  font-size: 18px;
+  border-bottom: 1px solid #ebebeb;
+  padding-bottom: 12px;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+
+.price_function ul {
+  
+}
+
+.price_function ul li {
+  float: left;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 110px;
+  overflow: hidden;
+  width: 410px;
+}
+
+.price_function ul li .p_f_icon {
+  float: left;
+  width: 64px;
+  margin-right: 15px;
+}
+
+.price_function ul li .p_f_info {
+  float: left;
+  width: 325px;
+}
+
+.price_function ul li .p_f_info h4 {
+  font-size: 18px;
+  color: #333333;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.price_function ul li .p_f_info p {
+  color: #999999;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.price_table {
+  font-family: "Microsoft YaHei";
+  width: 900px;
+  margin: 0px auto;
+}
+
+.price_table h3 {
+  font-size: 18px;
+  border-bottom: 1px solid #ebebeb;
+  padding-bottom: 12px;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+
+.p_tcss {
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.p_tcss tr td {
+  padding: 8px 3px;
+  border: 1px solid #d5dce0;
+}
+
+.tit_cs01 {
+  background-color: #dfe5e8;
+}
+
+.tit_cs02 {
+  background-color: #f8f8f8;
+}
+
+.buy_block {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.buy_block input {
+  margin: 0px 5px;
+  width: 90px;
+  padding: 0px 5px;
+  height: 22px;
+  line-height: 22px;
+  outline: none;
+  background-color: #fff;
+  border: 1px solid #c0c0c1;
+  border-top-color: #ababab;
+  padding: 8px 4px;
+  -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  font-size: 16px;
+}
+
+.buy_block span {
+  color: #F00;
+  font-weight: bold;
+}
+
+#sie_footer {
+  text-align: center;
+  padding-top: 25px;
+  border-top: 1px solid #cbcbcb;
+  margin-top: 60px;
+  padding-bottom: 20px;
+}
+
+.footer_box {
+  width: 900px;
+  margin: 0px auto;
+}
+
+.footer_box p {
+  line-height: 25px;
+  color: #7b7c81;
+}
+
+.footer_box span {
+  color: #e1e1e1;
+  padding: 0px 15px;
+}
+
+.footer_box p a {
+  color: #7b7c81;
+  text-decoration: none;
+}
+
+.footer_box p a:hover {
+  color: #7b7c81;
+  text-decoration: underline;
+}

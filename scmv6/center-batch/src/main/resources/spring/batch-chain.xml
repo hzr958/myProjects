@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+  default-lazy-init="false">
+  <description>链</description>
+  <!-- 项目合并处理 -->
+    <bean id="batchApplicationContext" class="com.smate.center.batch.util.pub.BatchApplicationContext"/>
+  <bean id="openProjectHandler" class="com.smate.center.batch.handler.OpenProjectHandler" lazy-init="true">
+    <property name="executeChain">
+      <list>
+        <!-- 数据处理 -->
+        <bean class="com.smate.center.batch.chain.prj.OpenProjectDataHandleChain" />
+        <!-- 数据保存 -->
+        <bean class="com.smate.center.batch.chain.prj.OpenProjectDataSaveChain" />
+        <!-- 收尾处理 -->
+        <bean class="com.smate.center.batch.chain.prj.OpenProjectAftermatchChain" />
+      </list>
+    </property>
+  </bean>
+  <bean id="prjXmlStoreService" class="com.smate.center.batch.service.projectmerge.SnsPrjXmlStoreServiceImpl">
+    <property name="rootFolder" value="${file.root}"></property>
+  </bean>
+  <bean id="pubXmlStoreService" class="com.smate.center.batch.service.pub.ScholarPubXmlFSStoreService">
+    <property name="rootFolder" value="${pubxml.rootFolder}"></property>
+  </bean>
+  <bean id="rolPubXmlStoreService" class="com.smate.center.batch.service.pub.ROLPubXmlFSStoreService">
+    <property name="rootFolder" value="${pubxml.rootFolder}"></property>
+  </bean>
+  <bean id="archiveFilesService" class="com.smate.center.batch.service.pub.archiveFiles.ArchiveFilesServiceImpl">
+    <property name="fileRoot" value="${file.root}"></property>
+  </bean>
+  <!--对不同微信模板，构造对应发送消息的map -->
+  <bean id="weChatMsgMapTemplate1Builder" class="com.smate.center.batch.service.WeChatMsgMapTemplate1Builder" />
+  <bean id="weChatMsgMapTemplate2Builder" class="com.smate.center.batch.service.WeChatMsgMapTemplate2Builder" />
+  <bean id="weChatMsgPsnMapBuild" class="com.smate.center.batch.service.WeChatMsgPsnServiceImpl">
+    <property name="mapBuilders">
+      <map>
+        <!--构建smatetemplate1对应的map, smate_wechat_template中对应ID为1 -->
+        <entry key="smate_template_1" value-ref="weChatMsgMapTemplate1Builder" />
+        <!--构建smatetemplate2对应的map，smate_wechat_template中对应ID为2 -->
+        <entry key="smate_template_2" value-ref="weChatMsgMapTemplate2Builder" />
+        <entry key="smate_template_4" value-ref="weChatMsgMapTemplate2Builder" />
+        <entry key="smate_template_5" value-ref="weChatMsgMapTemplate2Builder" />
+      </map>
+    </property>
+  </bean>
+  <!--定时任务实现，构造定时任务管理Map -->
+  <bean id="weChatMsgPreProcessTask" class="com.smate.center.batch.quartz.service.BatchDemonServiceImpl" />
+  <!-- 全文导入 -->
+  <bean id="inputFullTextServiceTask" class="com.smate.center.batch.quartz.service.BatchInputFullTextServiceImpl" />
+  <!-- 机构主页动态 -->
+  <bean id="inspgDynamicTask" class="com.smate.center.batch.quartz.service.BatchQuartzInspgDynamic" />
+  <!-- 老系统publication表中成果转移到v_pub_simple -->
+  <bean id="pubToPubSimpleTask" class="com.smate.center.batch.quartz.service.BatchPubToPubSimpleTask" />
+  <!-- 基准库成果保存任务已经改造 ，关闭此任务 -->
+  <!-- <bean id="bFetchPubExpandTask" class="com.smate.center.batch.quartz.service.BFetchPubExpandTask"/> -->
+  <bean id="batchQuartzBaseService" class="com.smate.center.batch.quartz.service.BatchQuartzBaseServiceImpl">
+    <property name="quartzTaskDispatchers">
+      <map>
+        <!--构建weChatMsgPreProcessTask对应的task, 是发送微信WeChatMsgPsn任务的前置查重任务 -->
+        <entry key="65eb7d5a" value-ref="weChatMsgPreProcessTask" />
+        <entry key="a0t6c3ne" value-ref="inputFullTextServiceTask" />
+        <entry key="lot6i9ma" value-ref="inspgDynamicTask" />
+        <entry key="lot6i9mb" value-ref="pubToPubSimpleTask" />
+        <!-- <entry key="lo890uti" value-ref="bFetchPubExpandTask"/> -->
+      </map>
+    </property>
+  </bean>
+  <!-- 动态刷新链,任务用于机构主页产生动态 -->
+  <bean id="dynTaskServiceImpl" class="com.smate.center.batch.service.dynamic.DynTaskServiceImpl" lazy-init="false">
+    <property name="executeChain">
+      <list>
+        <bean class="com.smate.center.batch.service.dynamic.DynInspgFileShareServiceImpl" />
+        <bean class="com.smate.center.batch.service.dynamic.DynInspgImgUploadServiceImpl" />
+        <bean class="com.smate.center.batch.service.dynamic.DynInspgLinkShareServiceImpl" />
+        <bean class="com.smate.center.batch.service.dynamic.DynInspgMemberAddServiceImpl" />
+        <bean class="com.smate.center.batch.service.dynamic.DynInspgNewsAddServiceImpl" />
+      </list>
+    </property>
+  </bean>
+</beans>

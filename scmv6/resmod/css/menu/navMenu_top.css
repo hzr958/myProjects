@@ -1,0 +1,41 @@
+/* CSS Design by Semon */
+html {
+  background: url(../../images/login_pagebg.gif) repeat-x #fff;
+}
+
+#container {
+  margin: 0 auto;
+  width: 980px;
+}
+
+#box_top {
+  width: 980px;
+  margin-bottom: 10px;
+  float: left;
+}
+
+#box_top_logo {
+  width: 310px;
+  margin-top: 29px;
+  float: left;
+}
+
+#box_top_right {
+  width: 333px;
+  float: right;
+}
+
+.box_top_right_input {
+  width: 450px;
+  padding-top: 10px;
+  text-align: right;
+  float: right;
+}
+
+.top_right_nav {
+  width: 450px;
+  line-height: 25px;
+  color: #0055AA;
+  text-align: right;
+  float: right;
+}

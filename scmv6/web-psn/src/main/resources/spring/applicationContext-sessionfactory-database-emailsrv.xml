@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jee="http://www.springframework.org/schema/jee" xmlns:task="http://www.springframework.org/schema/task"
+  xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+  http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd 
+  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd 
+  http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd"
+  default-lazy-init="false">
+  <description>Spring数据源配置文件</description>
+  <!-- 数据源配置,使用应用服务器的数据库连接池 -->
+  <jee:jndi-lookup id="emailSrvDataSource" jndi-name="java:comp/env/jdbc/emailsrv" />
+  <!-- 使用annotation 自动注册bean,并保证@Required,@Autowired的属性被注入 -->
+  <!-- Hibernate配置 -->
+  <bean id="sessionFactory-emailsrv" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <property name="dataSource" ref="emailSrvDataSource" />
+    <!-- <property name="namingStrategy"> <bean class="org.hibernate.cfg.ImprovedNamingStrategy" /> </property> -->
+    <property name="hibernateProperties">
+      <props>
+        <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+        <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+        <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+        <prop key="hibernate.cache.use_second_level_cache">false</prop>
+        <prop key="hibernate.jdbc.batch_size">50</prop>
+      </props>
+    </property>
+    <property name="packagesToScan">
+      <list>
+        <value>com.smate.core.base.email.model</value>
+      </list>
+    </property>
+  </bean>
+  <!-- 事务管理器配置,单数据源事务 -->
+  <bean id="transactionManager-emailSrv" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    <property name="sessionFactory" ref="sessionFactory-emailsrv" />
+  </bean>
+  <!-- 使用annotation定义事务 -->
+  <tx:annotation-driven transaction-manager="transactionManager-emailSrv" />
+</beans>

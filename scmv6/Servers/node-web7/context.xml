@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file 
+  distributed with this work for additional information regarding copyright ownership. The ASF licenses this file to You under 
+  the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may 
+  obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to 
+  in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF 
+  ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under 
+  the License. --><!-- The contents of this file will be loaded for each web application -->
+<Context useHttpOnly="true" sessionCookiePath="/" sessionCookieDomain=".scholarmate.com">
+  <!-- Default set of monitored resources. If one of these changes, the -->
+  <!-- web application will be reloaded. -->
+  <WatchedResource>WEB-INF/web.xml</WatchedResource>
+  <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+  <!-- Uncomment this to disable session persistence across Tomcat restarts -->
+  <!-- <Manager pathname="" /> -->
+  <!-- Uncomment this to enable Comet connection tacking (provides events on session expiration as well as webapp lifecycle) -->
+  <!-- <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" /> -->
+  <Resource name="jdbc/sns" type="com.mchange.v2.c3p0.ComboPooledDataSource" maxPoolSize="2" minPoolSize="1"
+    acquireIncrement="1" maxIdleTime="120" initialPoolSize="1" factory="org.apache.naming.factory.BeanFactory"
+    user="scholar2" password="scholar2" driverClass="oracle.jdbc.driver.OracleDriver"
+    jdbcUrl="jdbc:oracle:thin:@192.168.15.190:1521:ora11g" />
+  <Resource name="jdbc/rcmd" type="com.mchange.v2.c3p0.ComboPooledDataSource" maxPoolSize="2" minPoolSize="1"
+    acquireIncrement="1" maxIdleTime="120" initialPoolSize="1" factory="org.apache.naming.factory.BeanFactory"
+    user="rcmd2" password="rcmd2" driverClass="oracle.jdbc.driver.OracleDriver"
+    jdbcUrl="jdbc:oracle:thin:@192.168.15.190:1521:ora11g" />
+  <Resource name="jdbc/pdwh" type="com.mchange.v2.c3p0.ComboPooledDataSource" maxPoolSize="9" minPoolSize="9"
+    acquireIncrement="1" maxIdleTime="120" initialPoolSize="9" factory="org.apache.naming.factory.BeanFactory"
+    user="scmpdwh" password="scmpdwh" driverClass="oracle.jdbc.driver.OracleDriver"
+    jdbcUrl="jdbc:oracle:thin:@192.168.15.190:1521:ora11g" />
+  <Resource name="jdbc/sie" type="com.mchange.v2.c3p0.ComboPooledDataSource" maxPoolSize="30" minPoolSize="5"
+    acquireIncrement="1" maxIdleTime="120" initialPoolSize="5" factory="org.apache.naming.factory.BeanFactory"
+    user="rol2" password="rol2" driverClass="oracle.jdbc.driver.OracleDriver"
+    jdbcUrl="jdbc:oracle:thin:@192.168.15.190:1521:ora11g" />
+  <Resource name="jdbc/cas" type="com.mchange.v2.c3p0.ComboPooledDataSource" maxPoolSize="10" minPoolSize="5"
+    acquireIncrement="1" maxIdleTime="120" initialPoolSize="1" factory="org.apache.naming.factory.BeanFactory"
+    user="cas2" password="cas2" driverClass="oracle.jdbc.driver.OracleDriver"
+    jdbcUrl="jdbc:oracle:thin:@192.168.15.190:1521:ora11g" />
+  <Resource name="jdbc/maildispatch" type="com.mchange.v2.c3p0.ComboPooledDataSource" maxPoolSize="2"
+    minPoolSize="1" acquireIncrement="1" maxIdleTime="120" initialPoolSize="1"
+    factory="org.apache.naming.factory.BeanFactory" user="maildispatch" password="maildispatch"
+    driverClass="oracle.jdbc.driver.OracleDriver" jdbcUrl="jdbc:oracle:thin:@192.168.15.190:1521:ora11g" />
+  <Resource name="jdbc/bpo" type="com.mchange.v2.c3p0.ComboPooledDataSource" maxPoolSize="2" minPoolSize="1"
+    acquireIncrement="1" maxIdleTime="120" initialPoolSize="1" factory="org.apache.naming.factory.BeanFactory"
+    user="bpo2" password="bpo2" driverClass="oracle.jdbc.driver.OracleDriver"
+    jdbcUrl="jdbc:oracle:thin:@192.168.15.190:1521:ora11g" />
+  <Resource name="jdbc/emailsrv" type="com.mchange.v2.c3p0.ComboPooledDataSource" maxPoolSize="2"
+    minPoolSize="1" acquireIncrement="1" maxIdleTime="120" initialPoolSize="1"
+    factory="org.apache.naming.factory.BeanFactory" user="emailsrv2" password="emailsrv2"
+    driverClass="oracle.jdbc.driver.OracleDriver" jdbcUrl="jdbc:oracle:thin:@192.168.15.190:1521:ora11g" />
+  <Manager className="de.javakaffee.web.msm.MemcachedBackupSessionManager"
+    memcachedNodes="n1:192.168.15.192:11212" lockingMode="auto" sticky="false"
+    requestUriIgnorePattern=".*\.(png|gif|jpg|css|js)$" sessionBackupAsync="false" sessionBackupTimeout="100"
+    transcoderFactoryClass="de.javakaffee.web.msm.JavaSerializationTranscoderFactory" />
+</Context>

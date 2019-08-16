@@ -1,0 +1,51 @@
+.spd_body_content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 80px;
+  box-sizing: border-box;
+}
+
+.spd_title {
+  font-size: 20px;
+  margin-bottom: 80px;
+}
+
+.spd_content {
+  width: 100%;
+  padding: 40px;
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.spd_section {
+  min-width: 200px;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.spd_section_title {
+  font-size: 16px;
+  text-align: center
+}
+
+.spd_section_logo_container {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.spd_section_logo {
+  width: 40px;
+  height: 40px;
+}
+
+.spd_section_operations {
+  display: flex;
+  justify-content: center;
+}

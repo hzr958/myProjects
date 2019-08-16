@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+  default-lazy-init="false">
+  <!-- 主调度器，只负责调度简单任务管理器 -->
+  <bean id="masterScheduler" lazy-init="true" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="triggers">
+      <list>
+        <!-- <ref bean="simpleTaskManagerTrigger" /> -->
+      </list>
+    </property>
+    <property name="quartzProperties">
+      <props>
+        <prop key="org.quartz.threadPool.threadCount">1</prop>
+      </props>
+    </property>
+  </bean>
+  <!-- 从调度器，只负责调度简单任务分片管理器 -->
+  <!-- <bean id="slaveScheduler" lazy-init="true" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"> <property 
+    name="triggers"> <list> <ref bean="simpleTaskPartManagerTrigger" /> </list> </property> <property name="quartzProperties"> 
+    <props> <prop key="org.quartz.threadPool.threadCount">1</prop> </props> </property> </bean> 任务分片调度器，负责任务分片的调度 <bean id="taskPartScheduler" 
+    lazy-init="true" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"> <property name="taskExecutor" 
+    ref="taskPartExecutor"/> </bean> 任务分片线程池 <bean id="taskPartExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor"> 
+    <property name="corePoolSize" value="200"/> 核心线程数 <property name="maxPoolSize" value="200"/> 最大线程数 <property name="keepAliveSeconds" 
+    value ="3000"/> 线程最大空闲时间 <property name="queueCapacity" value="200"/> 队列大小 <property name="threadNamePrefix" value="simpleTaskPartExecutor_Thread-"/> 
+    <property name="rejectedExecutionHandler"> <bean class="java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy"/> </property> 
+    </bean> 简单任务管理器 <bean id="simpleTaskManager" class="com.smate.center.data.task.quartz.simple.SimpleTaskManager"> <property 
+    name="scheduler" ref="masterScheduler" /> <property name="cacheService" ref="simpleTaskCacheService" /> </bean> <bean id="simpleTaskManagerJobDetail" 
+    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> <property name="targetObject" ref="simpleTaskManager"/> 
+    <property name="targetMethod" value="execute" /> <property name="concurrent" value="false" /> </bean> 简单任务调度器的触发器 <bean id="simpleTaskManagerTrigger" 
+    class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean"> <property name="jobDetail" ref="simpleTaskManagerJobDetail"/> 
+    <property name="repeatInterval" value="5000" /> </bean> 简单任务分片管理器 <bean id="simpleTaskPartManager" class="com.smate.center.data.task.quartz.simple.SimpleTaskPartManager"> 
+    <property name="slaveScheduler" ref="slaveScheduler" /> <property name="taskPartScheduler" ref="taskPartScheduler" /> <property 
+    name="taskPartExecutor" ref="taskPartExecutor" /> <property name="cacheService" ref="simpleTaskCacheService" /> <property 
+    name="nodeName" value="node1" /> </bean> <bean id="simpleTaskPartManagerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> 
+    <property name="targetObject" ref="simpleTaskPartManager"/> <property name="targetMethod" value="execute" /> <property name="concurrent" 
+    value="false" /> </bean> 简单任务分片调度器的触发器 <bean id="simpleTaskPartManagerTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean"> 
+    <property name="jobDetail" ref="simpleTaskPartManagerJobDetail"/> <property name="repeatInterval" value="5000" /> </bean> -->
+</beans>

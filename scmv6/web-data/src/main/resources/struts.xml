@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+  <constant name="struts.ui.theme" value="simple" />
+  <!-- 对于scm3的action默认用的 package配置为 default -->
+  <constant name="struts.convention.default.parent.package" value="crud-default" />
+  <!-- action包路径在struts2下面 -->
+  <constant name="struts.convention.package.locators" value="action" />
+  <constant name="struts.convention.result.path" value="/WEB-INF/jsp/" />
+  <!-- ognl静态方法访问 -->
+  <constant value="true" name="struts.ognl.allowStaticMethodAccess" />
+  <!-- 系统最大上传30M, 拦截器设1000M，后台判断文件实际大小(scm-6606由原来的拦截100M改成拦截1000M) -->
+  <constant name="struts.multipart.maxSize" value="1048576000" />
+  <!-- 用于SCM3 Action的parent package -->
+  <package name="crud-default" extends="convention-default">
+    <!-- 系统异常处理错误影射 -->
+    <global-exception-mappings>
+      <exception-mapping result="exception" exception="java.lang.Exception"></exception-mapping>
+    </global-exception-mappings>
+  </package>
+</struts>

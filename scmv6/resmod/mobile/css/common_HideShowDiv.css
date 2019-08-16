@@ -1,0 +1,240 @@
+@CHARSET "UTF-8";
+
+.show_bottom {
+  visibility: visible;
+  animation-name: slideIn;
+  -webkit-animation-name: slideIn;
+  -moz-animation-name: slideIn;
+}
+
+.hide_bottom {
+  animation-name: slideOut;
+  -webkit-animation-name: slideOut;
+  -moz-animation-name: slideOut;
+}
+
+.div_show {
+  animation-duration: 300ms;
+  -webkit-animation-duration: 300ms; /* Safari 和 Chrome */
+  -moz-animation-duration: 300ms; /* Safari 和 Chrome */
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+}
+
+@
+keyframes  slideIn { 0%{
+  bottom: -48px;
+}
+
+100%{
+bottom
+:
+ 
+0
+px
+;
+}
+}
+@
+-moz-keyframes  slideIn { /* firefox */ 0%{
+  bottom: -48px;
+}
+
+100%{
+bottom
+:
+ 
+0
+px
+;
+}
+}
+@
+-webkit-keyframes  slideIn { /* Safari 和 Chrome */ 0%{
+  bottom: -48px;
+}
+
+100%{
+bottom
+:
+ 
+0
+px
+;
+}
+}
+@
+keyframes  slideOut { 0%{
+  bottom: 0px;
+}
+
+100%{
+bottom
+:
+ 
+-48
+px
+;
+ 
+visibility
+:
+ 
+hidden
+;
+}
+}
+@
+-moz-keyframes  slideOut { 0%{
+  bottom: 0px;
+}
+
+100%{
+bottom
+:
+ 
+-48
+px
+;
+ 
+visibility
+:
+ 
+hidden
+;
+}
+}
+@
+-webkit-keyframes  slideOut { 0%{
+  bottom: 0px;
+}
+
+100%{
+bottom
+:
+ 
+-48
+px
+;
+ 
+visibility
+:
+ 
+hidden
+;
+}
+}
+.show_add {
+  visibility: visible;
+  animation-name: slideInAdd;
+  -webkit-animation-name: slideInAdd;
+  -moz-animation-name: slideInAdd;
+}
+
+.hide_add {
+  animation-name: slideOutAdd;
+  -webkit-animation-name: slideOutAdd;
+  -moz-animation-name: slideOutAdd;
+}
+
+@
+keyframes  slideInAdd { 0%{
+  bottom: -48px;
+}
+
+100%{
+bottom
+:
+ 
+60
+px
+;
+}
+}
+@
+-moz-keyframes  slideInAdd { 0%{
+  bottom: -48px;
+}
+
+100%{
+bottom
+:
+ 
+60
+px
+;
+}
+}
+@
+-webkit-keyframes  slideInAdd { 0%{
+  bottom: -48px;
+}
+
+100%{
+bottom
+:
+ 
+60
+px
+;
+}
+}
+@
+keyframes  slideOutAdd { 0%{
+  bottom: 60px;
+}
+
+100%{
+bottom
+:
+ 
+-48
+px
+;
+ 
+visibility
+:
+ 
+hidden
+;
+}
+}
+@
+-moz-keyframes  slideOutAdd { 0%{
+  bottom: 60px;
+}
+
+100%{
+bottom
+:
+ 
+-48
+px
+;
+ 
+visibility
+:
+ 
+hidden
+;
+}
+}
+@
+-webkit-keyframes  slideOutAdd { 0%{
+  bottom: 60px;
+}
+100%{
+bottom
+:
+ 
+-48
+px
+;
+ 
+visibility
+:
+ 
+hidden
+;
+}
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
+  http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd"
+  default-lazy-init="false">
+  <description>Spring数据源配置文件</description>
+  <!-- 数据源配置,使用应用服务器的数据库连接池 -->
+  <jee:jndi-lookup id="snsDataSource" jndi-name="java:comp/env/jdbc/sns" />
+  <!-- 使用annotation 自动注册bean,并保证@Required,@Autowired的属性被注入 -->
+  <!-- Hibernate配置 -->
+  <bean id="sessionFactory-sns" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <property name="dataSource" ref="snsDataSource" />
+    <property name="namingStrategy">
+      <bean class="org.hibernate.cfg.ImprovedNamingStrategy" />
+    </property>
+    <property name="hibernateProperties">
+      <props>
+        <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+        <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+        <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+        <prop key="hibernate.cache.use_second_level_cache">true</prop>
+        <prop key="hibernate.cache.use_query_cache">true</prop>
+        <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</prop>
+        <!-- 开启缓存统计功能 -->
+        <prop key="hibernate.generate_statistics">true</prop>
+        <!-- 设置使用结构化方式来维护缓存项 -->
+        <prop key="hibernate.cache.use_structured_entries">true</prop>
+        <prop key="net.sf.ehcache.configurationResourceName">${hibernate.ehcache_config_file_sns}</prop>
+        <prop key="hibernate.jdbc.batch_size">50</prop>
+        <prop key="hibernate.search.default.indexBase">${hibernate.search_index_direct}</prop>
+      </props>
+    </property>
+    <property name="packagesToScan">
+      <list>
+        <value>com.smate.core.web.sns.menu.model</value>
+        <value>com.smate.core.web.sys.security.model</value>
+        <value>com.smate.core.base.utils.model</value>
+        <value>com.smate.core.base.utils.constant</value>
+        <value>com.smate.core.base.utils.model.menu</value>
+        <value>com.smate.core.base.utils.model.consts</value>
+        <value>com.smate.core.base.utils.model.security</value>
+        <value>com.smate.center.batch.connector.model.job</value>
+        <value>com.smate.core.base.pub.po</value>
+        <value>com.smate.core.base.psn.model</value>
+        <value>com.smate.core.base.consts.model</value>
+        <value>com.smate.core.base.pub.model</value>
+        <value>com.smate.core.base.file.model</value>
+        <value>com.smate.core.base.project.model</value>
+        <value>com.smate.core.base.keywords.model</value>
+        <value>com.smate.core.base.statistics.model</value>
+        <value>com.smate.core.base.app.model</value>
+        <value>com.smate.core.base.privacy.model</value>
+        <value>com.smate.center.job.common.po</value>
+        <value>com.smate.web.v8pub.po.sns</value>
+        <value>com.smate.web.v8pub.po</value>
+        <value>com.smate.web.v8pub.po.dynamic</value>
+        <value>com.smate.web.v8pub.po.journal</value>
+        <value>com.smate.web.v8pub.po.pdwh</value>
+        <value>com.smate.center.mail.connector.model</value>
+        <value>com.smate.web.v8pub.po.sns.group</value>
+        <value>com.smate.web.v8pub.vo.sns</value>
+        <value>com.smate.web.v8pub.vo.sns.newresume</value>
+        <value>com.smate.web.v8pub.dao.job</value>
+        <value>com.smate.web.v8pub.po.autocomplete</value>
+        <value>com.smate.web.v8pub.dao.autocomplete</value>
+        <value>com.smate.core.base.psn.dao.autocomplete</value>
+        <value>com.smate.web.v8pub.po.backups</value>
+      </list>
+    </property>
+  </bean>
+  <!-- 事务管理器配置,单数据源事务 -->
+  <bean id="transactionManager-sns" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    <property name="sessionFactory" ref="sessionFactory-sns" />
+  </bean>
+  <!-- 使用annotation定义事务 -->
+  <tx:annotation-driven transaction-manager="transactionManager-sns" />
+</beans>

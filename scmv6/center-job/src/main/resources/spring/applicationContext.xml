@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+  default-lazy-init="false">
+
+  <description>Spring公共配置文件</description>
+
+  <!-- 定义受环境影响易变的变量 -->
+  <bean id="propertyPlaceholderConfigurer"
+    class="com.smate.core.base.utils.factory.config.DynamicServerConfig">
+    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+    <property name="ignoreResourceNotFound" value="true"/>
+    <property name="locations">
+      <list>
+        <value>classpath:config/system.development.properties</value>
+        <value>classpath:config/system.test.properties</value>
+        <value>classpath:config/system.uat.properties</value>
+        <value>classpath:config/system.run.properties</value>
+        <value>classpath:config/system.testyali.properties</value>
+        <value>classpath:config/system.alpha.properties</value>
+      </list>
+    </property>
+  </bean>
+  
+  <!--开启扫描配置注入-->
+  <context:annotation-config/>
+
+  <import resource="applicationContext-cache.xml"/>
+
+  <bean id="sessionFactoryMap" class="java.util.HashMap">
+    <constructor-arg>
+      <map>
+        <entry key="sns" value-ref="sessionFactory-sns"></entry>
+        <entry key="pdwh" value-ref="sessionFactory-pdwh"></entry>
+        <entry key="cas" value-ref="sessionFactory-cas"></entry>
+      </map>
+    </constructor-arg>
+  </bean>
+
+  <!-- 业务包扫描-->
+  <context:component-scan base-package="com.smate.center.job.business" />
+  <!--子任务执行器相关扫描-->
+  <context:component-scan base-package="com.smate.center.job.runner" />
+
+  <!--公共包依赖扫描-->
+  <context:component-scan base-package="com.smate.core.base.file" />
+  <context:component-scan base-package="com.smate.core.base.statistics.dao" />
+  <context:component-scan base-package="com.smate.core.base.statistics.dao" />
+  <context:component-scan base-package="com.smate.core.base.pub.dao.pdwh" />
+  <context:component-scan base-package="com.smate.core.base.psn.dao" />
+  <context:component-scan base-package="com.smate.core.base.utils.file" />
+
+  <!--登录权限相关扫描-->
+  <context:component-scan base-package="com.smate.core.base.utils.dao.security" />
+  <context:component-scan base-package="com.smate.core.base.psn.service.profile" />
+  <context:component-scan base-package="com.smate.core.base.psn.service.psncnf" />
+  <context:component-scan base-package="com.smate.core.base.psn.dao.psncnf" />
+
+
+  <!-- rest 接口调用 -->
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"/>
+
+  <bean id="authorityManager" class="com.smate.core.base.utils.service.security.AuthorityManagerImpl" />
+  <!-- 启动加载pdwh匹配词典 -->
+  <bean id="initPdwhInsPsnDic" class="com.smate.center.job.runner.offine.pdwhpub.InitPdwhInsPsnDic" lazy-init="false">
+  </bean>
+</beans>
+

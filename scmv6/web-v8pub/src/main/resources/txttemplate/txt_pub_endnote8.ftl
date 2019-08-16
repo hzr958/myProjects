@@ -1,0 +1,14 @@
+%0 Thesis
+%A ${pubAuthors}
+%D ${year}
+%T ${pubTitle}
+%B ${academicDept}
+%I ${issueOrg}
+%V ${degree}
+%8 ${publishDate}
+%! ${pubTitle}
+%R ${doi}
+%K ${keywords}
+%X ${abstract}
+%Z ${remark}
+%U ${fullTextUrl}

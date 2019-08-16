@@ -1,0 +1,575 @@
+/*index和organization页面*/
+/*==============index.css开始*/
+/*logo下的大图*/
+.banner{
+    width: 100%;
+    min-width: 1200px;
+    height: 520px;
+    background: url(../images/banner.jpg) top center no-repeat;
+    background-size: cover;
+}
+/*系统登录部分*/
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+.login:after,.introduce:after {
+    display: none;
+}
+.banner_cont {
+    margin: 0 auto;
+    width: 1200px;
+    height: 480px;
+    position: relative;
+}
+.login_cont {
+    width: 400px;
+    /*height: 400px;*/
+    padding:0 20px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+    background: url(../images/bg.png) repeat;
+    opacity: 0.93;
+    position: absolute;
+    top: 50%;
+    right:0;
+    transform: translateY(-50%);
+}
+
+.index-login_tit {
+    width:100%;
+    height:65px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+.index-login_tit li {
+    float:left;
+    cursor:pointer;
+    width:95px;
+    height:38px;
+    line-height: 38px;
+    margin-top:5px;
+    font-weight:bold;
+    border-bottom:2px solid transparent;
+    padding-top:20px;
+    font-size:20px;
+    color:#333;
+}
+.index-login_tit li:hover {
+    font-size:22px;
+}
+.index-login_tit li.hover,.index-login_tit li:active {
+    border-bottom:2px solid #2882d8;
+}
+.index-login_tit a {
+    color:#999;
+}
+/*系统注册的信息框*/
+.login li{
+    width:340px;
+    height:45px;
+    background:#FFFFFF;
+    margin:0 auto 16px;
+    float:none;
+}
+.login input {
+    position:relative;
+    width: 340px;
+    height: 45px;
+    line-height: 45px;
+    border: 1px solid #ddd;
+    opacity: 1;
+    padding-left: 50px;
+    color: #c1c1c1;
+    font-family: "Microsoft Yahei";
+    outline: none;
+    font-size: 14px;
+    z-index: 10000;
+    box-sizing: border-box;
+}
+.sie_login input {
+    color:#333;
+}
+.login input:focus {
+    border: 1px solid #3FAFFA;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+.login .login_admin_input {
+    background: url("../images/icon-message.png") no-repeat !important;
+}
+.login .login_admin_input:focus {
+    background: url("../images/icon-message.png") no-repeat 0 -55px !important;
+}
+.login .login_password_input {
+    background:url("../images/icon-password.png") no-repeat !important;
+}
+.login .login_password_input:focus {
+    background:url("../images/icon-password.png") no-repeat 0 -55px !important;
+}
+.login .login_surname_input {
+    background:url("../images/ixon-name.png") no-repeat !important;
+}
+.login .login_surname_input:focus{
+    background:url("../images/ixon-name.png") no-repeat 0 -56px !important;
+}
+.login .login_admin_input1 {
+    background: url("../images/icon-unit.png") no-repeat !important;
+}
+.login .login_admin_input1:focus {
+    background: url("../images/icon-unit.png") no-repeat 0 -55px !important;
+}
+.login .login_admin_input2 {
+    background: url("../images/icon-postbox.png") no-repeat !important;
+}
+.login .login_admin_input2:focus {
+    background: url("../images/icon-postbox.png") no-repeat 0 -55px !important;
+}
+.login_3 {
+    width:340px;
+    height:45px;
+    line-height: 45px;
+    padding:0;
+    margin-left:10px;
+    border:1px solid #2882d8;
+    color:#fff;
+    background:#2882d8;
+    font-size:20px;
+    cursor: pointer;
+}
+.login_3:hover {
+    border:1px solid #218aed;
+    background:#218aed;
+}
+.login_3:active{
+    border:1px solid #1e5cb3;
+    background:#1e5cb3;
+}
+.login_cont p{
+    margin:25px 10px 22px 10px;
+}
+
+/*系统注册结束*/
+/*banner下的内容部分*/
+.introduce {
+    margin:0 auto;
+    padding:105px 0;
+    width:1200px;
+    height:470px;
+    box-sizing: border-box;
+}
+.introduce li {
+    width:240px;
+    float:left;
+    margin:0px;
+    cursor: auto;
+}
+.introduce li img {
+    width: initial;
+    margin-left:12%;
+    margin-bottom:15px;
+}
+.introduce li p {
+    text-align: left;
+    line-height: 25px;
+}
+
+div.list_left_boder{
+    border: none;
+    padding-left: 0px;
+    width: 100%;
+    float: none;
+}
+p.sie_index_login{
+    margin: 0px;
+    margin-right: 12px;
+}
+/*--------------------index.css结束*/
+/*==============================================================organization.css开始*/
+/*banner部分*/
+.organization_banner {
+    width: 100%;
+    min-width: 1200px;
+    height: 480px;
+    background: url("../images/organization_banner.jpg") 50% 0% no-repeat;
+}
+.index-login_organization {
+    width:100%;
+    height:60px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+    box-sizing: border-box;
+}
+.index-login_organization li {
+    width: 318px;
+    cursor: pointer;
+    /* width: 95px; */
+    text-align: left;
+    margin-left: 30px;
+    height: 38px;
+    line-height: 38px;
+    margin-top: 5px;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    padding-top: 20px;
+    font-size: 20px;
+    color: #333;
+    box-sizing: border-box;
+}
+.index-login_organization li a {
+    float:right;
+    font-size: 14px;
+    color:#333;
+    font-weight:100;
+}
+.index-login_organization li a:hover {
+    color:#2882d8;
+}
+.index-login_organization li a:active {
+    color:#1265cf;
+}
+/*错误提示*/
+.login>li:first-child {
+    display: flex;
+    align-items: center;
+    padding: 9px 0;
+    border: 1px solid #f2d5d7;
+    background: #fffdd6;
+    color: #c8001b;
+    /* visibility: hidden; */
+    height: 40px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+/*错误提示显示时的样式*/
+ .login:hover>li:first-child {
+   /*  visibility:inherit; */
+/*    display: block;
+    height: inherit; */
+ /*    margin-top: 6px;
+    margin-bottom: 6px; */
+} 
+.login>li:first-child b {
+    margin-left: 12px;
+    margin-right: 0;
+}
+.login>li:first-child p {
+    width: calc( 100% - 38px );
+    margin: 0;
+    margin-left: 10px;
+}
+/*登录框图标*/
+.account-tip,.password-tip,.verify-tip {
+    display:inline-block;
+    width: 45px;
+    height: 44px;
+    border: none;
+    background: url("../images/icon-message.png") no-repeat;
+}
+.password-tip {
+    background:url("../images/icon-password.png") no-repeat;
+}
+
+.login li.hover .account-tip {
+    background: url("../images/icon-message.png") no-repeat 0 -55px ;
+}
+.login li.hover .password-tip {
+    background:url("../images/icon-password.png") no-repeat 0 -55px;
+}
+
+/*系统注册的信息框*/
+.banner_cont img {
+    width: initial;
+}
+span.check_fx:hover a{
+    color:#2882d8;
+}
+.login_cont p a {
+    color: #1265cf !important;
+}
+.login_cont p a:hover {
+    color:#2882d8 !important;
+    text-decoration: underline !important;
+}
+.login_cont p a:active,
+span.check_fx:active a{
+    color:#1265cf !important;
+}
+p.login_join_for {
+    margin-top:12px;
+}
+/*系统注册结束*/
+/*项目成果展示*/
+.organization_conter {
+    width:1200px;
+    margin:auto;
+}
+.show {
+    width:100%;
+    height:130px;
+    background: #f6f6f6;
+    margin-top:20px;
+    margin-bottom:30px;
+}
+.show li {
+    margin-right:0px;
+}
+.show a {
+    float:left;
+    width:300px;
+    text-align: center;
+    height:70px;
+    margin-top:30px;
+    border-right:1px solid #ddd;
+    box-sizing: border-box;
+    color:#999;
+}
+.show div {
+    float:left;
+    width:300px;
+    text-align: center;
+    height:70px;
+    margin-top:30px;
+    border-right:1px solid #ddd;
+    box-sizing: border-box;
+    color:#999;
+}
+.show a span {
+    display: inline-block;
+    border-bottom:1px solid transparent;
+    margin-left:3px;
+}
+
+li .show_1{
+    font-family:"arial";
+    font-size: 36px;
+    color:#1265cf !important;
+    padding:0;
+}
+.show a b {
+    font-weight:100;
+    height:50px;
+}
+.show a:hover span{
+    color:#2882d8 !important;
+}
+.patent {
+    color:#666;
+}
+.show a:active span.patent,.show a:active b{
+    color:#1265cf;
+    border-bottom:1px solid #1265cf;
+}
+.show li.br0 a{ border-right:none;}
+
+.show li p {
+    color:#666;
+}
+/*项目*/
+.article_header a {
+    float:right;
+    color:#666;
+    margin-top:10px;
+    margin-right:10px;
+}
+.article_header a:hover,
+.sie_organization_box li a:hover {
+    color:#2882d8 !important;
+}
+.article_header a:active,.sie_organization_box li a:active {
+    color:#1265cf !important;
+}
+.article_header ul {
+    height:40px;
+    width:100%;
+    background:#f6f6f6;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+}
+.article_header ul li {
+    float:left;
+    cursor:pointer;
+    width:95px;
+    text-align: center;
+    height:38px;
+    line-height: 38px;
+    border-bottom: 2px solid transparent;
+}
+.article_header li:hover {
+    color:#1265cf ;
+}
+.article_header li.hover,.article_header li:active {
+    color:#1265cf;
+    font-weight:bold;
+    border-bottom: 2px solid #1265cf;
+}
+/*选项部分*/
+.article_conter {
+    min-height:260px;
+    margin-bottom:50px;
+}
+
+.sie_organization_box li{
+    float: none;
+    width: 100%;
+    background: url(../images/icon_item.png) no-repeat 10px 21px;
+    line-height: 45px;
+    padding-left: 25px;
+    border-bottom: 1px dashed #ddd;
+    box-sizing: border-box;
+}
+/*organization侧边栏部分开始*/
+.sie_organization_fixation {
+        position:fixed;
+        top:70%;
+        right:0;
+}
+
+.sie_organization_stair {
+    position:relative;
+    width:52px;
+    height:52px;
+    text-align: center;
+    line-height: 100%;
+    background:#2882d8;
+    margin-top:1px;
+}
+.sie_organization_stair:hover {
+    background:#3faffa;
+}
+.sie_organization_stair i {
+    display: inline-block;
+    margin:12px auto;
+    width:29px;
+    height:28px;
+    background:url(../images/sie_organization_level.png)
+}
+i.sie_organization_satir1 {
+    background-position:-58px 0px;
+}
+i.sie_organization_satir2 {
+    background-position: -56px -38px;
+}
+i.sie_organization_satir3 {
+    background-position:-58px -76px;
+}
+i.sie_organization_satir4 {
+    background-position:-55px -112px;
+}
+/*二级弹出框*/
+/*边框开始*/
+.sie_level_bt {
+    position: absolute;
+    right: 42px;
+    top: 18px;
+    display: block;
+    width: 12px;
+    height: 14px;
+    background: url(../images/sie_level_bt_03.png) no-repeat;
+    z-index: 200;
+}
+.sie_organization_level {
+    position: absolute;
+    right: 53px;
+    top: 3px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px #ddd;
+    z-index: 100;
+    background:#fff;
+}
+.sie_level_bt,.sie_organization_level {
+    display: none;
+}
+.sie_organization_fixation li:hover .sie_level_bt,
+.sie_organization_fixation li:hover .sie_organization_level {
+    display: block;
+}
+/*边框结束*/
+/*内容开始*/
+.sie_organization_level li {
+    padding:0 8px;
+}
+.sie_organization_level a {
+    display: flex;
+    align-items: center;
+    width:120px;
+    height:58px;
+    padding-left:8px;
+    box-sizing: border-box;
+    border-bottom:1px solid #ddd;
+}
+.sie_organization_level li:last-child a{
+    border-bottom: none;
+}
+    /*弹出框图标开始*/
+.sie_organization_level span {
+    display: inline-block;
+    width:38px;
+    height:38px;
+    margin-right:4px;
+    border-radius: 100%;
+}
+.sie_organization_level1 {
+    background:#3d70a4;
+}
+.sie_organization_level a:hover .sie_organization_level1 {
+    background:#5688ba;
+}
+.sie_organization_level2 {
+    background:#1361a7;
+}
+.sie_organization_level a:hover .sie_organization_level2 {
+    background:#2883d4;
+}
+.sie_organization_level3 {
+    background:#df4d69;
+}
+.sie_organization_level a:hover .sie_organization_level3 {
+    background:#f6617e;
+}
+.sie_organization_level4 {
+    background:#3eb135;
+}
+.sie_organization_level a:hover .sie_organization_level4 {
+    background:#62d05a;
+}
+/*图标*/
+.sie_organization_level b{
+    display: inline-block;
+    width:23px;
+    height:23px;
+    margin:7.5px  auto;
+    background:url(../images/sie_organization_level.png) no-repeat;
+}
+b.sie_organization_level_bt1 {
+    background-position: -1px 0;
+}
+b.sie_organization_level_bt2 {
+    background-position: -1px -30px;
+}
+b.sie_organization_level_bt3 {
+    background-position: -1px -64px;
+}
+b.sie_organization_level_bt4 {
+    background-position: -1px -96px;
+}
+.sie_organization_level_bt5{
+    background:url(../images/Facebook.png) no-repeat;
+}
+div.article_conter li{
+    width: inherit;
+    display: inherit;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/*弹出框图标结束*/
+/*organization侧边栏结束*/
+/*-------------------------------------------------------organization.css结束*/
+

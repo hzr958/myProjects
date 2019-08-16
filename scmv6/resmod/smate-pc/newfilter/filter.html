@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport"
+  content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../../mobile/css/scmmobileframe.css">
+<title></title>
+<script type="text/javascript">
+		window.onload = function(){
+			var clicllist = document.getElementsByClassName("filter__body-item__list");
+			var canclbtn = document.getElementsByClassName("filter__footer-clear")[0];
+			for(var i = 0 ; i< clicllist.length;i++){
+				clicllist[i].onclick = function(){
+				    if(this.classList.contains("selector__list-target")){
+				    	this.classList.remove("selector__list-target");
+				    }else{
+				    	this.classList.add("selector__list-target");
+				    }
+				}
+			}
+			canclbtn.onclick = function(){
+				for(var i = 0 ; i< clicllist.length;i++){ 
+				    if(clicllist[i].classList.contains("selector__list-target")){
+				    	clicllist[i].classList.remove("selector__list-target");
+				    }
+			    }
+			}
+		}
+	</script>
+</head>
+<body>
+  <div class="filter__container">
+    <div class="filter__header">
+      <i class="material-icons filter__header-tip">keyboard_arrow_left</i>
+      <div class="filter__header-title">过滤条件</div>
+    </div>
+    <div class="filter__neck">请设置最少三个感兴趣的科技领域</div>
+    <div class="filter__body">
+      <div class="filter__body-item">
+        <div class="filter__body-item__title">科技领域</div>
+        <div class="filter__body-item__box">
+          <div class="filter__body-item__list selector__list-target">农学</div>
+          <div class="filter__body-item__list">林学</div>
+          <div class="filter__body-item__list">材料科学</div>
+          <div class="filter__body-item__list">畜牧,兽医科学</div>
+        </div>
+      </div>
+      <div class="filter__body-item">
+        <div class="filter__body-item__title">关键词</div>
+        <div class="filter__body-item__box">
+          <div class="filter__body-item__list">大数据</div>
+          <div class="filter__body-item__list">数据挖掘</div>
+          <div class="filter__body-item__list">云计算</div>
+          <div class="filter__body-item__list">人工智能</div>
+          <div class="filter__body-item__list">知识图谱</div>
+        </div>
+      </div>
+      <div class="filter__body-item">
+        <div class="filter__body-item__title">出版年份</div>
+        <div class="filter__body-item__box">
+          <div class="filter__body-item__list">1年以内</div>
+          <div class="filter__body-item__list">3年以内</div>
+          <div class="filter__body-item__list">5年以内</div>
+          <div class="filter__body-item__list">不限</div>
+        </div>
+      </div>
+      <div class="filter__body-item">
+        <div class="filter__body-item__title">成果类型</div>
+        <div class="filter__body-item__box">
+          <div class="filter__body-item__list">期刊论文</div>
+          <div class="filter__body-item__list">会议论文</div>
+          <div class="filter__body-item__list">专利</div>
+          <div class="filter__body-item__list">奖励</div>
+          <div class="filter__body-item__list">书/著作</div>
+          <div class="filter__body-item__list">书籍章节</div>
+          <div class="filter__body-item__list">学位论文</div>
+          <div class="filter__body-item__list">其他</div>
+        </div>
+      </div>
+    </div>
+    <div class="filter__footer">
+      <div class="filter__footer-clear">清除</div>
+      <div class="filter__footer-confirm">确定</div>
+    </div>
+  </div>
+</body>
+</html>

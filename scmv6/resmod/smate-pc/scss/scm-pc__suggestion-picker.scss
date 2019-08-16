@@ -1,0 +1,136 @@
+.sugg-picker {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 600px;
+	.sugg-picker__header {
+		@include font_subhead-1;
+		color: $light-theme-monochrome2;
+		margin-bottom: 16px;
+	}
+	.sugg-picker__panel {
+		flex-grow: 1;
+		height: 0%;
+		display: flex;
+		justify-content: space-between;
+		@at-root .sugg-panel {
+			width: 46%;
+			box-sizing: border-box;
+			border: $divider;
+			display: flex;
+			flex-direction: column;
+			&.right-panel {
+				.sugg-panel__content {
+				}
+			}
+			.sugg-panel__title {
+				@include font_subhead-2;
+				color: $light-theme-monochrome3;
+				height: 39px;
+				line-height: 39px;
+				border-bottom: $divider;
+				flex-shrink: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.sugg-panel__content {
+				@include font_body-1;
+				flex-grow: 1;
+				overflow-y: auto;
+                overflow-x: hidden;
+			}
+			.sugg-panel__custom {
+				@include font_body-1;
+				flex-shrink: 0;
+				height: 48px;
+				border-top: $divider;
+				display: flex;
+				align-items: center;
+				padding: 0 12px;
+			}
+		}
+	}
+}
+
+.promo__box {
+	width: 100%;
+    padding: 24px 20px;
+	box-sizing: border-box;
+	background-color: aliceblue;
+	position: relative;
+	display: flex;
+	.promo__content {
+		flex-grow: 1;
+		margin-right: 24px;
+		display: flex;
+		flex-direction: column;
+		.promo-content__main-text {
+			@include font-headline;			
+		}
+		.promo-content__sub-text {
+			@include font-subhead-1;			
+		}
+	}
+	.promo__action {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+	}
+	.promo__close {
+		position: absolute;
+		right: 8px;
+		top: 8px;
+		color: $light-theme-monochrome2;
+		cursor: pointer;
+	}
+	.promo__box-header{
+		display: flex; 
+		justify-content: space-between; 
+		margin-bottom: 12px;
+		.promo__box-title{
+			margin-bottom: 8px;
+			font-size: 18px;
+			}
+		.promo__box-check_all{
+			display: flex; 
+			justify-content: flex-end; 
+			color:#2882d8; 
+			cursor: pointer;
+			&:hover{
+				color: #134fa6;
+			}
+		}
+}
+		.promo__box-container{
+		    display: flex;
+			.promo__box-check{
+				 margin-left: 8px;
+				 font-size: 14px;
+				.promo__box-comfirm{
+					height:28px; 
+					line-height:28px; 
+					min-width:82px;
+                    border-radius: 3px;
+					text-align: center; 
+					border: 1px solid #2882d8; 
+					background:#2882d8; 
+                    color:#fff;
+					margin-bottom: 8px; 
+					cursor: pointer;
+					&:hover{
+					  background-color: #218aed;
+					  border: 1px solid #218aed;
+					  color: #fff;
+					}
+				}
+				.promo__box-refuse{
+					 width:108px; 
+					 text-align: center; 
+					 cursor: pointer;
+					 color: #666;
+				}
+			}
+		}
+	
+}

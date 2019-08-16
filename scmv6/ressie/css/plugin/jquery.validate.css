@@ -1,0 +1,107 @@
+﻿label.error {
+  color: #c00;
+  display: inline-block;
+  background: transparent url(../../images/hint.png) no-repeat scroll 0 0;
+  padding-left: 20px;
+  margin-left: 3px;
+  position: relative;
+  top: 6px;
+  /*     left: -305px; */
+  /*     height:44px; */
+}
+
+label.checked {
+  background: transparent url(images/checked.gif) no-repeat scroll 0 0;
+}
+
+.input-targetlocal_container-tip label {
+  display: inline;
+  margin-left: -2px;
+  top: 42px;
+}
+/*申请加入表单校验样式调整开始*/
+div.sie_targetlocal label.error {
+  left: 120px;
+  top: 6px;
+  background-position: 0px 3px;
+  height: 32px;
+}
+/*申请加入表单校验样式调整结束*/
+/*(优化)申请加入表单校验样式调整开始*/
+div.sie_targetlocal11 label.error {
+  padding-left: 20px;
+  margin-left: 3px;
+  position: relative;
+  top: 6px;
+  left: auto;
+  height: 24px;
+  line-height: 16px;
+}
+/*(优化)申请加入表单校验样式调整结束*/
+/*系统管理员单位审核表单校验的样式调整开始*/
+div.sie_targetlocal1 label.error {
+  top: 32px;
+  background-position: 0px 3px;
+  height: 58px;
+}
+
+div.sie_targetlocal2 label.error {
+  left: -314px;
+}
+
+div.sie_targetlocal3 label.error {
+  left: -97px;
+}
+/*系统管理员单位审核表单校验的样式调整结束*/
+/*产品首页注册表单校验样式*/
+div.sie_targetlocal4 label.error {
+  top: 37px;
+  height: 58px;
+  background-position: 0px 2px;
+  line-height: 20px;
+}
+/*人员手动加入表单校验样式调整开始*/
+li.sie_targetlocal4 label.error {
+  background-position: 0px 3px;
+  top: 32px;
+}
+
+div.SIE-confirm_password label.error {
+  top: 39px;
+  left: -298px;
+}
+
+.sie_targetlocal-error_tip label.error {
+  top: 6px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+}
+
+.edit-workspace_targetlocal label.error {
+  top: 6px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+  left: 0px !important;
+}
+
+.examine-work_Contacts label.error {
+  top: 6px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+  left: 0px !important;
+}
+
+.new-edit_personnel label.error {
+  top: 6px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+  left: 0px !important;
+}
+
+.apply-admission_target label.error {
+  top: 6px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+  left: 0px !important;
+}
+/*申请加入表单校验样式调整结束*/

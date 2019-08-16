@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+  <!-- SpringMvc配置文件 -->
+  <!-- mvc注解扫描 -->
+  <mvc:annotation-driven />
+  <mvc:default-servlet-handler />
+  <!-- ①：对web包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
+  <context:component-scan base-package="com.smate.web.vip.controller*" />
+  <context:component-scan base-package="com.smate.core.web.sns.controller.shorturl" />
+  <context:component-scan base-package="com.smate.web.vip.pay.controller*" />
+  <!-- 获取环境变量 -->
+  <context:property-placeholder location="classpath:config/system.${RUN_ENV}.properties" />
+  <!-- 这两个类用来启动基于Spring MVC的注解功能，将控制器与方法映射加入到容器中 -->
+  <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping " />
+  <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+    <property name="messageConverters">
+      <list>
+        <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+          <property name="supportedMediaTypes">
+            <list>
+              <value>application/json;charset=UTF-8</value>
+            </list>
+          </property>
+        </bean>
+        <!-- 输出对象转JSON支持 -->
+        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+      </list>
+    </property>
+  </bean>
+  <!-- 这个类用于Spring MVC视图解析 -->
+  <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+    <property name="prefix" value="/WEB-INF/jsp/" />
+    <property name="suffix" value=".jsp" />
+  </bean>
+  <!-- 国际化 begin -->
+  <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    <!-- 表示国际化资源文件在根路径下的language目录下，以i18n_pubEnter开头的文件，有其他的可以再加 -->
+    <property name="basenames">
+      <list>
+        <value>classpath:language/i18n_pubEnter</value>
+        <value>classpath:language/i18n_mvcskins</value>
+        <value>classpath:language/i18n_common</value>
+      </list>
+    </property>
+    <property name="useCodeAsDefaultMessage" value="true" />
+  </bean>
+  <mvc:interceptors>
+    <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+      <property name="paramName" value="locale" />
+    </bean>
+    <bean id="userDataMVCIntercepter" class="com.smate.core.web.sns.userdata.intercepter.UserDataMVCIntercepter">
+    </bean>
+    <bean id="xssMVCInterceptor" class="com.smate.core.web.sys.security.xss.XssMVCInterceptor">
+    </bean>
+  </mvc:interceptors>
+  <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+    <property name="cookieName" value="locale_request_change_attr" />
+    <!-- in seconds. If set to -1, the cookie is not persisted (deleted when browser shuts down) -->
+    <property name="cookieMaxAge" value="100000" />
+  </bean>
+  <!-- 国际化 begin -->
+  <!-- 文件上传 -->
+  <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <property name="maxUploadSize">
+      <value>1048576000</value>
+    </property>
+    <property name="defaultEncoding">
+      <value>UTF-8</value>
+    </property>
+  </bean>
+</beans>

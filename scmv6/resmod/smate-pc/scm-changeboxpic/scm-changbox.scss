@@ -1,0 +1,117 @@
+@mixin setboxstyle($setwidth,$setheight,$setline,$setpos){
+    box-sizing: border-box;
+    display: flex;
+    width: $setwidth;
+    height: $setheight;
+    border: 1px $setline #c7c7c7;
+    position: $setpos;
+}
+@mixin setdragstyle($Shape,$basis,$flexbasis){
+    cursor: $Shape; 
+    flex: $basis , 0, $flexbasis;
+    text-align: center;
+}
+@mixin flexpos($flexsize,$flexbasis){
+    display: flex;
+    flex:$flexsize 0 $flexbasis;
+}
+@mixin boxstyle($setline,$color,$setwidth,$setheight){
+    border:1px $setline $color;
+    width: $setwidth;
+    height: $setheight;
+}
+@mixin flexcenterpos($pos){
+    display: flex; 
+    justify-content: $pos; 
+    align-items: center; 
+    flex-direction: column;
+}
+@mixin publicsor($setWidth,$setheight){
+    width: $setWidth;
+    height: $setheight;
+    cursor: pointer;
+}
+.cut_pic-box{display: flex; align-items: center;}
+.cut_pic-container{ 
+    @include flexcenterpos(center);}
+.cut_pic-select{
+    position: relative;
+    margin: 8px 0 8px 0;
+    width: 148px;
+    height: 36px;
+    line-height: 36px;
+    .cut_pic-select-btn{
+        position: absolute;
+        @include publicsor(135px,32px);
+        top: 2px;
+        left: 4px;   
+        opacity: 0;
+    }
+    .cut_pic-select_load{
+        @include publicsor(148px,24px);
+        line-height: 24px;
+        margin: 0 0 2px 0; 
+        text-align: center;
+        border-bottom: 2px solid #c7c7c7;
+    } 
+}   
+.dragmove{
+    @include setboxstyle(302px, 302px, solid, relative);
+    justify-content: center;
+    align-items: center; 
+    margin: 36px;
+    .cutpic-box{
+        @include setboxstyle(100px, 100px, dashed, absolute);
+        flex-direction: column; 
+        opacity: 0.5; 
+        background-color: #fff;
+        top: 20px;
+        left: 30px;  
+        .cutpic-box_top{ 
+            @include flexpos(0,20px);
+            .cutpic-box_top-left{ 
+                @include setdragstyle(se-resize,0,20px);}
+            .cutpic-box_top-center{ 
+                @include setdragstyle(s-resize,1,20px);}
+            .cutpic-box_top-right{ 
+                @include setdragstyle(ne-resize,0,20px);}
+        }
+         .cutpic-box_center{ 
+            @include flexpos(1,20px);
+            .cutpic-box_center-left{ 
+                @include setdragstyle(w-resize,0,);}
+            .cutpic-box_center-center{
+                @include setdragstyle(move,1,20px);}
+            .cutpic-box_center-right{ 
+                @include setdragstyle(w-resize,0,20px);}
+        }
+        .cutpic-box-bottom{ 
+            @include flexpos(0,20px);
+            .cutpic-box_bottom-left{ 
+                @include setdragstyle(ne-resize,0);}
+            .cutpic-box_bottom-center{
+                @include setdragstyle(resize,1);}
+            .cutpic-box_bottom-right{ 
+                @include setdragstyle(se-resize,0);}
+        }
+    }
+}
+
+.preview_box{ 
+    @include boxstyle(solid,#c7c7c7,auto,auto);
+    @include flexcenterpos(space-around);
+    .preview_box-title{ 
+        text-align: center;}
+    .preview_box-showpic{ 
+        @include boxstyle(solid,#c7c7c7,100px,100px); 
+        margin: 16px;}
+}
+.select-btn{ 
+    display: flex;
+    margin: 8px 0px; 
+    justify-content: space-around;
+    .select-btn_upload{ 
+        cursor: pointer;}
+    .select-btn_giveup{ 
+        cursor: pointer;}
+}

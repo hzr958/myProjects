@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <import resource="classpath:spring/batch-jobcontext.xml" />
+  <import resource="classpath:spring/batch-quartz.xml" />
+  <import resource="classpath:spring/batch-chain.xml" />
+  <!-- 配置jobLauncher start -->
+  <bean id="jobLauncherMultiThread" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+    <property name="jobRepository" ref="jobRepository" />
+    <property name="taskExecutor" ref="taskExecutor"></property>
+  </bean>
+  <bean id="jobLauncherSingleThread" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+    <property name="jobRepository" ref="jobRepository" />
+  </bean>
+  <!-- 配置jobLauncher end -->
+  <job id="jobSteps" xmlns="http://www.springframework.org/schema/batch">
+    <step id="readStep" next="decision">
+      <tasklet>
+        <chunk reader="jobVoidReader" writer="jobVoidWriter" commit-interval="1">
+        </chunk>
+      </tasklet>
+    </step>
+    <!--在"on="设置跳转中的task名称，开头统一小写 -->
+    <decision id="decision" decider="taskExecutionDecider">
+      <next on="5eb7d5a3" to="weChatMsgPsnJob" /><!-- 在WeChatPreProcessPsnWriter中weChatPreProcessPsnTaskService.saveToBatchJobs设置的任务名标识 -->
+      <next on="80e6e33e" to="projectMergeJob" />
+      <next on="87eff869" to="pubCreateHighStep" />
+      <next on="ba59abbe" to="pubEditHighStep" />
+      <next on="ee747f8b" to="pubDeleteHighStep" />
+      <next on="dxvd63av" to="pubImportHighStep" />
+      <next on="87ef0869" to="pubConfirmStep" />
+      <next on="ee747f8c" to="pubDeleteComplementaryJob" />
+      <next on="87eff870" to="pubCreateAndEditComplementaryJob" />
+      <next on="5eb7d5a4" to="weChatMsgTaskletJob" />
+      <next on="a0t6c3ne" to="inputFulltextTaskletJob" />
+      <next on="5oul930i" to="pubFulltextToImageTaskletJob" />
+      <next on="abcdefgh" to="produceThumbnailImageTaskletStep" />
+      <next on="cetvceq6" to="personRegisterTaskletJob" />
+      <next on="67pub8a9" to="pubCacheSendTask" />
+      <next on="67pub8b1" to="rolPubAssignTask" />
+      <next on="regpuba1" to="matchPdwhPubTask" />
+      <next on="reginfo1" to="registerRcmdSyncFlagMsgTask" />
+      <next on="reginfo2" to="invitationHandleTask" />
+      <next on="reginfo3" to="refreshPersonCompletenessTask" />
+      <next on="reginfo4" to="updatePsnHtmlRefreshTask" />
+      <next on="addindx1" to="addPsnIndexTask" />
+      <next on="syncgro1" to="sysncGroupInfoTask" />
+      <next on="syncgro2" to="syncGroupPsnToSnsTask" />
+      <next on="syncgro3" to="syncGroupInvitePsnToSnsTask" />
+      <next on="syncgro4" to="syncForAllGroupUpdateToRolTask" />
+      <next on="syncgro5" to="refreshPsnGroupStatisticsTask" />
+      <next on="syncgro6" to="saveRcmdSyncInfoTask" />
+      <next on="gruppub1" to="groupPubReCalTask" />
+      <next on="pdwhpub2" to="pdwhPubImportTask" />
+      <next on="avatars1" to="syncPsnAvatarsTask" />
+      <next on="pdwhpub3" to="tmpOldPdwhPubImportTask" />
+      <next on="pubcite1" to="updatePubCiteTimesTask" />
+      <next on="attn2dyn" to="attentionDynamicTask" />
+      <next on="matpdpba" to="pdwhPubAddrAuthorMatchTask" />
+      <next on="snspimag" to="SnsPubFulltextToImageTask"/>
+      <next on ="pdwhpima" to="PdwhPubFulltextToImageTask"/>
+      <next on="crossref" to="SavePdwhPubFromCrossrefTask"/>
+      <!-- 更新人员solr信息 begin -->
+      <next on="oaftiz2b" to="refreshPsnSolrInfoTask" />
+      <!-- 更新人员solr信息 end -->
+      <!-- 重新初始化人员psn_config_XXX信息 begin -->
+      <next on="rpcxit26" to="refreshPsnConfigInfoTask" />
+      <!-- 重新初始化人员psn_config_XXX信息 end -->
+      <!-- 全文认领 begin -->
+      <!-- 同步人员统计信息,“syncpft1不用了” -->
+      <next on="syncpft1" to="psnStatisticsMessageTask" />
+      <!-- 同步成果信息 -->
+      <next on="syncpft2" to="rcmdSyncFlagMessageTask" />
+      <!-- 刷新成果信息. -->
+      <next on="syncpft3" to="psnRefreshInfoMessageTask" />
+      <!-- 全文认领 end -->
+      <next on="null" to="isNullJob" />
+    </decision>
+    <step id="weChatMsgPsnJob">
+      <tasklet>
+        <chunk reader="weChatMsgPsnReader" writer="weChatMsgPsnWriter" commit-interval="1">
+        </chunk>
+      </tasklet>
+    </step>
+    <step id="projectMergeJob">
+      <tasklet>
+        <chunk reader="projectMergeReader" writer="projectMergeWriter" commit-interval="1">
+        </chunk>
+      </tasklet>
+    </step>
+    <step id="pubCreateHighStep">
+      <tasklet ref="pubCreateHighTasklet" />
+    </step>
+    <step id="pubEditHighStep">
+      <tasklet ref="pubEditHighTasklet" />
+    </step>
+    <step id="pubDeleteHighStep">
+      <tasklet ref="pubDeleteHighTasklet" />
+    </step>
+    <step id="pubImportHighStep">
+      <tasklet ref="pubImportHighTasklet" />
+    </step>
+    <step id="pubConfirmStep">
+      <tasklet ref="pubConfirmTasklet" />
+    </step>
+    <step id="isNullJob">
+      <tasklet>
+        <chunk reader="isNullReader" writer="isNullWriter" commit-interval="1">
+        </chunk>
+      </tasklet>
+    </step>
+    <step id="weChatMsgTaskletJob">
+      <tasklet ref="weChatMsgTasklet" />
+    </step>
+    <step id="inputFulltextTaskletJob">
+      <tasklet ref="inputFulltextTask" />
+    </step>
+    <step id="personRegisterTaskletJob">
+      <tasklet ref="personRegister" />
+    </step>
+    <step id="pubFulltextToImageTaskletJob">
+      <tasklet ref="pubFulltextToImage" />
+    </step>
+    <step id="produceThumbnailImageTaskletStep">
+      <tasklet ref="produceThumbnailImageTasklet" />
+    </step>
+    <step id="pubCreateAndEditComplementaryJob">
+      <tasklet ref="pubCreateAndEditComplementaryTask" />
+    </step>
+    <step id="pubDeleteComplementaryJob">
+      <tasklet ref="pubDeleteComplementaryTasklet" />
+    </step>
+    <step id="pubCacheSendTask">
+      <tasklet ref="pubCacheSendTasklet" />
+    </step>
+    <step id="rolPubAssignTask">
+      <tasklet ref="rolPubAssignTasklet" />
+    </step>
+    <step id="matchPdwhPubTask">
+      <tasklet ref="matchPdwhPubTasklet" />
+    </step>
+    <step id="registerRcmdSyncFlagMsgTask">
+      <tasklet ref="registerRcmdSyncFlagMsgTasklet" />
+    </step>
+    <step id="invitationHandleTask">
+      <tasklet ref="invitationHandleTasklet" />
+    </step>
+    <step id="refreshPersonCompletenessTask">
+      <tasklet ref="refreshPersonCompletenessTasklet" />
+    </step>
+    <step id="updatePsnHtmlRefreshTask">
+      <tasklet ref="updatePsnHtmlRefreshTasklet" />
+    </step>
+    <step id="addPsnIndexTask">
+      <tasklet ref="addPsnIndexTasklet" />
+    </step>
+    <step id="refreshPsnGroupStatisticsTask">
+      <tasklet ref="refreshPsnGroupStatisticsTasklet" />
+    </step>
+    <step id="saveRcmdSyncInfoTask">
+      <tasklet ref="saveRcmdSyncInfoTasklet" />
+    </step>
+    <step id="syncForAllGroupUpdateToRolTask">
+      <tasklet ref="syncForAllGroupUpdateToRolTasklet" />
+    </step>
+    <step id="syncGroupInvitePsnToSnsTask">
+      <tasklet ref="syncGroupInvitePsnToSnsTasklet" />
+    </step>
+    <step id="syncGroupPsnToSnsTask">
+      <tasklet ref="syncGroupPsnToSnsTasklet" />
+    </step>
+    <step id="sysncGroupInfoTask">
+      <tasklet ref="sysncGroupInfoTasklet" />
+    </step>
+    <step id="groupPubReCalTask">
+      <tasklet ref="groupPubReCalTasklet" />
+    </step>
+    <step id="pdwhPubImportTask">
+      <tasklet ref="pdwhPubImportTasklet" />
+    </step>
+    <step id="syncPsnAvatarsTask">
+      <tasklet ref="syncPsnAvatarsTasklet" />
+    </step>
+    <step id="tmpOldPdwhPubImportTask">
+      <tasklet ref="tmpOldPdwhPubImportTasklet" />
+    </step>
+    <step id="pdwhPubAddrAuthorMatchTask">
+      <tasklet ref="pdwhPubAddrAuthorMatchTasklet" />
+    </step>
+    <step id="updatePubCiteTimesTask">
+      <tasklet ref="updatePubCiteTimesTasklet" />
+    </step>
+    <step id="SnsPubFulltextToImageTask">
+      <tasklet ref="SnsPubFulltextToImageTasklet" />
+    </step>
+     <step id="PdwhPubFulltextToImageTask">
+      <tasklet ref="PdwhPubFulltextToImageTasklet" />
+    </step>
+     <step id="SavePdwhPubFromCrossrefTask">
+      <tasklet ref="SavePdwhPubFromCrossrefTasklet" />
+    </step>
+    <step id="attentionDynamicTask">
+      <tasklet ref="attentionDynamicTasklet" />
+    </step>
+    <!-- 更新人员solr信息 begin -->
+    <step id="refreshPsnSolrInfoTask">
+      <tasklet ref="psnSolrRefresh" />
+    </step>
+    <!-- 更新人员solr信息 end -->
+    <!-- 重新初始化人员psn_config_XXX信息 begin -->
+    <step id="refreshPsnConfigInfoTask">
+      <tasklet ref="psnConfigRefresh" />
+    </step>
+    <!-- 重新初始化人员psn_config_XXX信息 end -->
+    <!-- 全文认领 begin -->
+    <step id="psnStatisticsMessageTask">
+      <tasklet ref="psnStatisticsMessage" />
+    </step>
+    <step id="rcmdSyncFlagMessageTask">
+      <tasklet ref="rcmdSyncFlagMessage" />
+    </step>
+    <step id="psnRefreshInfoMessageTask">
+      <tasklet ref="psnRefreshInfoMessage" />
+    </step>
+    <!-- 全文认领 end -->
+  </job>
+  <bean id="weChatMsgTasklet" class="com.smate.center.batch.tasklet.wechatmsg.WeChatMsgTasklet" scope="step">
+  </bean>
+  <bean id="inputFulltextTask" class="com.smate.center.batch.tasklet.fulltext.InputFulltextTaskletImpl"
+    scope="step">
+  </bean>
+  <bean id="personRegister" class="com.smate.center.batch.tasklet.psn.register.PersonRegisterTaskletImpl"
+    scope="step">
+  </bean>
+  <bean id="pubFulltextToImage" class="com.smate.center.batch.tasklet.pubfulltexttoimage.PubFullTextToImage"
+    scope="step">
+  </bean>
+  <!-- 生成文件缩略图任务 -->
+  <bean id="produceThumbnailImageTasklet"
+    class="com.smate.center.batch.tasklet.thumbnail.ProduceThumbnailImageTasklet" scope="step" />
+  <bean id="taskExecutionDecider" class="com.smate.center.batch.jobdetail.basejob.JobDecider">
+  </bean>
+  <bean id="pubCreateHighTasklet" class="com.smate.center.batch.tasklet.pub.PubCreateHighTasklet" scope="step">
+  </bean>
+  <bean id="pubEditHighTasklet" class="com.smate.center.batch.tasklet.pub.PubEditHighTasklet" scope="step">
+  </bean>
+  <bean id="pubDeleteHighTasklet" class="com.smate.center.batch.tasklet.pub.PubDeleteHighTasklet" scope="step">
+  </bean>
+  <bean id="pubImportHighTasklet" class="com.smate.center.batch.tasklet.pub.PubImportHighTasklet" scope="step">
+  </bean>
+  <bean id="pubConfirmTasklet" class="com.smate.center.batch.tasklet.pub.PubConfirmTasklet" scope="step">
+  </bean>
+  <bean id="pubCacheSendTasklet" class="com.smate.center.batch.tasklet.pubassign.PubCacheSendTasklet" scope="step">
+  </bean>
+  <bean id="rolPubAssignTasklet" class="com.smate.center.batch.tasklet.pubassign.RolPubAssignTasklet" scope="step">
+  </bean>
+  <bean id="matchPdwhPubTasklet" class="com.smate.center.batch.tasklet.psn.register.MatchPdwhPubTasklet"
+    scope="step">
+  </bean>
+  <bean id="registerRcmdSyncFlagMsgTasklet"
+    class="com.smate.center.batch.tasklet.psn.register.RegisterRcmdSyncFlagMsgTasklet" scope="step">
+  </bean>
+  <bean id="invitationHandleTasklet" class="com.smate.center.batch.tasklet.psn.register.InvitationHandleTasklet"
+    scope="step">
+  </bean>
+  <bean id="refreshPersonCompletenessTasklet"
+    class="com.smate.center.batch.tasklet.psn.register.RefreshPersonCompletenessTasklet" scope="step">
+  </bean>
+  <bean id="updatePsnHtmlRefreshTasklet"
+    class="com.smate.center.batch.tasklet.psn.register.UpdatePsnHtmlRefreshTasklet" scope="step">
+  </bean>
+  <bean id="addPsnIndexTasklet" class="com.smate.center.batch.tasklet.psn.register.AddPsnIndexTasklet" scope="step">
+  </bean>
+  <!-- 同步群组 -->
+  <bean id="refreshPsnGroupStatisticsTasklet"
+    class="com.smate.center.batch.tasklet.group.RefreshPsnGroupStatisticsTasklet" scope="step">
+  </bean>
+  <bean id="saveRcmdSyncInfoTasklet" class="com.smate.center.batch.tasklet.group.SaveRcmdSyncInfoTasklet"
+    scope="step">
+  </bean>
+  <bean id="syncForAllGroupUpdateToRolTasklet"
+    class="com.smate.center.batch.tasklet.group.SyncForAllGroupUpdateToRolTasklet" scope="step">
+  </bean>
+  <bean id="syncGroupInvitePsnToSnsTasklet"
+    class="com.smate.center.batch.tasklet.group.SyncGroupInvitePsnToSnsTasklet" scope="step">
+  </bean>
+  <bean id="syncGroupPsnToSnsTasklet" class="com.smate.center.batch.tasklet.group.SyncGroupPsnToSnsTasklet"
+    scope="step">
+  </bean>
+  <bean id="sysncGroupInfoTasklet" class="com.smate.center.batch.tasklet.group.SysncGroupInfoTasklet" scope="step">
+  </bean>
+  <bean id="groupPubReCalTasklet" class="com.smate.center.batch.tasklet.group.GroupPubReCalTasklet" scope="step">
+  </bean>
+  <bean id="pdwhPubImportTasklet" class="com.smate.center.batch.tasklet.pdwh.pubimport.PdwhPubImportTasklet"
+    scope="step">
+  </bean>
+  <bean id="syncPsnAvatarsTasklet" class="com.smate.center.batch.tasklet.psn.psninfo.SyncPsnAvatarsTasklet">
+  </bean>
+  <bean id="tmpOldPdwhPubImportTasklet"
+    class="com.smate.center.batch.tasklet.pdwh.pubimport.TmpOldPdwhPubImportTasklet" scope="step">
+  </bean>
+  <bean id="updatePubCiteTimesTasklet"
+    class="com.smate.center.batch.tasklet.pdwh.pubimport.updatePubCiteTimesTasklet" scope="step">
+  </bean>
+  <bean id="attentionDynamicTasklet" class="com.smate.center.batch.tasklet.dynamic.AttentionDynamicTasklet"
+    scope="step">
+  </bean>
+  <bean id="pdwhPubAddrAuthorMatchTasklet"
+    class="com.smate.center.batch.tasklet.pdwh.pubmatch.PdwhPubAddrAuthorMatchTasklet" scope="step">
+  </bean>
+  <bean id="SnsPubFulltextToImageTasklet"
+    class="com.smate.center.batch.tasklet.pub.img.SnsPubFulltextToImageTasklet" scope="step">
+  </bean>
+  <bean id="PdwhPubFulltextToImageTasklet"
+    class="com.smate.center.batch.tasklet.pub.img.PdwhPubFulltextToImageTasklet" scope="step">
+  </bean>
+  <bean id="SavePdwhPubFromCrossrefTasklet"
+    class="com.smate.center.batch.tasklet.pub.SavePdwhPubFromCrossrefTasklet" scope="step">
+  </bean>
+  <!-- 成果保存补充处理任务：次级任务 -->
+  <bean id="pubCreateAndEditComplementaryTask"
+    class="com.smate.center.batch.tasklet.pub.PubCreateAndEditComplementaryTask" scope="step">
+  </bean>
+  <!-- 成果删除补充处理任务：次级任务 -->
+  <bean id="pubDeleteComplementaryTasklet" class="com.smate.center.batch.tasklet.pub.PubDeleteComplementaryTasklet"
+    scope="step">
+  </bean>
+  <bean id="jobVoidReader" class="com.smate.center.batch.jobdetail.basejob.JobVoidReader" scope="step">
+  </bean>
+  <bean id="jobVoidWriter" class="com.smate.center.batch.jobdetail.basejob.JobVoidWriter" scope="step">
+  </bean>
+  <bean id="weChatMsgPsnReader" class="com.smate.center.batch.jobdetail.wechatmsgpsn.WeChatMsgPsnReader"
+    scope="step">
+  </bean>
+  <bean id="weChatMsgPsnWriter" class="com.smate.center.batch.jobdetail.wechatmsgpsn.WeChatMsgPsnWriter"
+    scope="step">
+  </bean>
+  <bean id="isNullReader" class="com.smate.center.batch.jobdetail.basejob.IsNullReader" scope="step">
+  </bean>
+  <bean id="isNullWriter" class="com.smate.center.batch.jobdetail.basejob.IsNullWriter" scope="step">
+  </bean>
+  <!-- 项目合并 -->
+  <bean id="projectMergeReader" class="com.smate.center.batch.jobdetail.projectmerge.ProjectMergeReader"
+    scope="step">
+  </bean>
+  <bean id="projectMergeWriter" class="com.smate.center.batch.jobdetail.projectmerge.ProjectMergeWriter"
+    scope="step">
+  </bean>
+  <!-- 更新人员solr信息 begin -->
+  <bean id="psnSolrRefresh" class="com.smate.center.batch.tasklet.psn.psninfo.RefreshPsnSolrInfoTasklet"
+    scope="step">
+  </bean>
+  <!-- 更新人员solr信息 end -->
+  <!-- 重新初始化人员psn_config_XXX信息 begin -->
+  <bean id="psnConfigRefresh" class="com.smate.center.batch.tasklet.psn.psninfo.RefreshPsnConfigInfoTasklet"
+    scope="step">
+  </bean>
+  <!-- 重新初始化人员psn_config_XXX信息 end -->
+  <!-- 全文认领 begin -->
+  <bean id="psnStatisticsMessage" class="com.smate.center.batch.tasklet.confirm.pubft.PsnStatisticsMessageTasklet"
+    scope="step">
+  </bean>
+  <bean id="rcmdSyncFlagMessage" class="com.smate.center.batch.tasklet.confirm.pubft.RcmdSyncFlagMessageTasklet"
+    scope="step">
+  </bean>
+  <bean id="psnRefreshInfoMessage"
+    class="com.smate.center.batch.tasklet.confirm.pubft.PsnRefreshInfoMessageTasklet" scope="step">
+  </bean>
+  <!-- 全文认领 end -->
+  <!-- 配置job end -->
+</beans>

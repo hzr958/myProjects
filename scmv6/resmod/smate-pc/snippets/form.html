@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="../css/scmpcframe.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <form>
+    <div class="form__sxn_row">
+      <div class="input__box input_invalid">
+        <label class="input__title">项目标题</label>
+        <div class="input__area">
+          <input>
+        </div>
+        <div class="input__helper" helper-text="" invalid-message=""></div>
+      </div>
+    </div>
+    <div class="form__sxn_row">
+      <div class="input__box">
+        <label class="input__title">项目摘要</label>
+        <div class="input__area">
+          <textarea></textarea>
+          <div class="textarea-autoresize-div"></div>
+        </div>
+        <div class="input__helper" helper-text="" invalid-message=""></div>
+      </div>
+    </div>
+    <div class="form__sxn_row">
+      <div class="input__box no-flex input_not-null">
+        <label class="input__title">研究领域</label>
+        <div class="sel__box" select-owner="">
+          <div class="sel__value">
+            <span class="sel__value_selected">信息科学</span> <i class="material-icons sel__dropdown-icon">arrow_drop_down</i>
+          </div>
+        </div>
+        <div class="input__helper" helper-text="" invalid-message=""></div>
+      </div>
+      <div class="input__box no-flex input_not-null">
+        <label class="input__title"></label>
+        <div class="sel__box" select-owner="">
+          <div class="sel__value">
+            <span class="sel__value_selected sel__value_placeholder">选择二级学科</span> <i
+              class="material-icons sel__dropdown-icon">arrow_drop_down</i>
+          </div>
+        </div>
+        <div class="input__helper" helper-text="" invalid-message=""></div>
+      </div>
+    </div>
+    <div class="form__sxn_row">
+      <div class="input__box no-input-area">
+        <label class="input__title">设置群组权限</label>
+        <div class="input-radio__box_vert">
+          <div class="input-radio__sxn">
+            <div class="input-custom-style">
+              <input type="radio" name=""> <i class="material-icons custom-style"></i>
+            </div>
+            <div class="input-radio__label">公开</div>
+          </div>
+          <div class="input-radio__sxn">
+            <div class="input-custom-style">
+              <input type="radio" name=""> <i class="material-icons custom-style"></i>
+            </div>
+            <div class="input-radio__label">半公开</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</body>
+</html>

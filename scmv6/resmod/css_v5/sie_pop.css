@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*弹出框外边框架*/
+#pop_main{ margin:0px auto; padding:0px; overflow:hidden;}
+.pop_dialog_table{ width:100%; height:100%; border-collapse:collapse; table-layout:fixed; margin:auto; border:0;}
+.pop_topleft{ background:url(../images_v5/pop_dialog_top_left.png) left top no-repeat; width:10px; height:10px; margin:0px; padding:0px;}
+.pop_topright{ background:url(../images_v5/pop_dialog_top_right.png) right top no-repeat; width:10px; height:10px; margin:0px; padding:0px;}
+.pop_bottomleft{ background: url(../images_v5/pop_dialog_bottom_left.png) left bottom no-repeat; width:10px; height:10px; margin:0px; padding:0px;}
+.pop_bottomright{ background:url(../images_v5/pop_dialog_bottom_right.png) right bottom no-repeat; width:10px; height:10px; margin:0px; padding:0px;}
+.pop_border{background:url(../images_v5/pop_dialog_border.png) repeat-x; margin:0px; padding:0px; overflow:hidden;}
+.pop_border2{background:url(../images_v5/pop_dialog_border.png) center bottom repeat-x; margin:0px; padding:0px; overflow:hidden;}
+.pop_border3{background:url(../images_v5/pop_dialog_border.png) repeat-y; margin:0px; padding:0px; overflow:hidden;}
+/*内容区*/
+.pop_content{ background:#FFF; border:1px solid #395c93; width:100%;}
+.pop_content h2{background:#426cad;color:#FFF;font-size:14px;font-weight:bold;margin:0; height:30px; line-height:30px; padding:0px 10px;}
+.dialog_content{background:#fff; padding:20px; overflow:hidden;}
+.dialog_content1{background:#fff; margin:10px 20px 20px 20px; overflow:hidden; *margin:10px 20px 15px 20px; }
+.dialog_content2{background:#fff; padding:20px 0px; overflow:hidden;}
+.dialog_content3{background:#fff; padding:20px 20px 5px 20px; overflow:hidden;}
+/**/
+.pop_box{ padding:0px 20px 0px 20px; clear:both;}
+/*翻页效果*/
+.pop_page{ width:100%; float:left; height:18px; /*border-top:1px solid #e9e9e9; background-color:#f2f2f2; margin-top:10px;*/ color:#666666; padding-top:4px; _margin-bottom:20px; text-align:center;}
+.pop_content table tr td{ padding:3px;}
+.Contentbox table tr td{ padding:3px;}
+
+/*Add User*/
+.add_user_zh_CN{ padding-left:45px;}
+.add_user_zh_CN li{ width:160px; float:left; padding-right:10px;}
+.add_user_zh_CN li h4{ color:#333333; width:120px; font-size:14px; font-weight:bold; /*border-bottom:1px dashed #b5b5b5; margin-bottom:8px; padding-bottom:8px;*/ text-align:center; margin-top:10px;}
+.add_user_zh_CN li p{ color:#666666; text-align:left; width:120px;}
+
+.right-wrap_pop{ width:645px; float:right; border-left:1px solid #e2e2e2; padding-left:18px; height:auto; min-height:300px;_height:expression((document.documentElement.clientHeight||document.body.clientHeight)>300?"300px":"");}/*min-height=最小高度*/
+
+.Restricted_tab{ padding-left:215px; margin-bottom:10px; font-size:14px; background-color:#ededed; line-height:30px;}

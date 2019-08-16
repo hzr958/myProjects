@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+  default-lazy-init="false">
+  <description>链</description>
+  <bean id="pubXmlStoreService" class="com.smate.center.task.single.service.pub.ScholarPubXmlFSStoreService">
+    <property name="rootFolder" value="${pubxml.rootFolder}"></property>
+  </bean>
+  <bean id="rolPubXmlStoreService" class="com.smate.center.task.single.service.pub.ROLPubXmlFSStoreService">
+    <property name="rootFolder" value="${pubxml.rootFolder}"></property>
+  </bean>
+  <bean id="archiveFilesService" class="com.smate.center.task.service.sns.quartz.ArchiveFilesServiceImpl">
+    <property name="fileRoot" value="${file.root}"></property>
+  </bean>
+</beans>

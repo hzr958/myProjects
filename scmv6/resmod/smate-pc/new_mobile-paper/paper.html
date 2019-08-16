@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport"
+  content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../../mobile/css/scmmobileframe.css">
+<script type="text/javascript">
+   	    window.onload = function(){
+   	      var targetlist = document.getElementsByClassName("my_paper-item");
+          for(var i = 0; i < targetlist.length;i++){
+          	document.getElementsByClassName("bottom_line")[0].style.left = targetlist[0].offsetLeft -15 + "px";
+              targetlist[i].onclick = function(){
+              	document.getElementsByClassName("paper_selecitme")[0].classList.remove("paper_selecitme");
+              	var disleft = this.offsetLeft;
+              	this.classList.add("paper_selecitme");
+                  this.closest(".paper_title-container").querySelector(".bottom_line").style.left=disleft -15 + "px";
+              }
+          } 
+   	    }
+   </script>
+</head>
+<body>
+  <div style="width: 100%;">
+    <div class="paper_title-container">
+      <div class="paper_title-container_list" style="border-right: 1px solid #ccc;">
+        <span class="my_paper-item paper_selecitme" style="color: #288aed;">我的论文</span>
+      </div>
+      <div class="paper_title-container_list">
+        <div class="paper_title-container_box">
+          <span class="my_paper-item">论文推荐</span> <i class="material-icons" style="color: #288aed; margin-right: -25px;">filter_list</i>
+        </div>
+      </div>
+      <div class="bottom_line"></div>
+    </div>
+    <div class="paper_content-container">
+      <div class="paper_content-container_list" style="">
+        <div class="paper_content-container_list-avator">
+          <img src="../../mobile/images/file_icon.png">
+        </div>
+        <div class="paper_content-container_list-box" style="">
+          <div class="paper_list-box_title">Label-free monitoring of DNA polymerase activity based on a
+            thrombin-binding aptamer G-quadruplex</div>
+          <div class="paper_list-box_author">Wang, Jing; Liu, Haisheng; Ma, Changbei; Wang, Jun; Zhong, Linxiu;
+            Wu, Kefeng</div>
+          <div class="paper_list-box_introdu">We have developed a label-free assay for the detection of DNA
+            polymerase activity based on a thrombin binding aptamer (TBA) G-quadruplex.</div>
+          <div class="paper_footer">
+            <span class="paper_footer-tool__box"><i class="paper_footer-tool paper_footer-fabulous"></i><span>(32)</span></span>
+            <span class="paper_footer-tool__box paper_footer-tool__pos"><i
+              class="paper_footer-tool paper_footer-comment"></i><span>(23)</span></span> <span
+              class="paper_footer-tool__box paper_footer-tool__pos"><i
+              class="paper_footer-tool paper_footer-share"></i><span>(122)</span></span>
+          </div>
+        </div>
+        <div class="paper_content-container_list-func"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

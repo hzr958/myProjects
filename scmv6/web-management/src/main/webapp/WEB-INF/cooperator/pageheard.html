@@ -1,0 +1,112 @@
+<!DOCTYPE>
+<html>
+<meta charset="utf-8">
+<head>
+<link href="ss.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+.nav_wrap-t {
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #106abc;
+}
+
+.nav_wrap-t-item {
+  margin: 0 16px;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid #106abc;
+  width: 56px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.nav_wrap-t-item:hover {
+  box-shadow: 2px 2px 2px #09439b;
+}
+
+.nav_wrap-t-item-box {
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  display: flex;
+  width: 160px;
+  height: auto;
+  flex-direction: column;
+  position: absolute;
+  top: 32px;
+  right: 0px;
+}
+
+.nav_wrap-t-item-box:hover {
+  box-shadow: 2px 2px 2px #ccc;
+  color: #fff;
+}
+
+.nav_wrap-t-item-section {
+  text-decoration: none;
+  color: black;
+}
+</style>
+<script type="text/javascript">
+    window.onload=function(){
+        document.getElementsByClassName("nav_wrap-t-item-else")[0].addEventListener("mouseover",function(){
+             document.getElementsByClassName("nav_wrap-t-item-box")[0].style.display="inline";
+        });
+        document.getElementsByClassName("nav_wrap-t-item-else")[0].addEventListener("mouseout",function(){
+             document.getElementsByClassName("nav_wrap-t-item-box")[0].style.display="none";
+        });
+    }
+  </script>
+</head>
+<body>
+  <div class="nav_wrap-t">
+    <div id="mm0">
+      <a class="nav_wrap-t-item" href="https://www.baidu.com/">科技推荐应用</a>
+    </div>
+    <div id="mm1">
+      <a class="nav_wrap-t-item" href="https://www.baidu.com/">研究主题词分布</a>
+    </div>
+    <div id="mm2">
+      <a class="nav_wrap-t-item" href="https://www.baidu.com/">研究前沿分析</a>
+    </div>
+    <div id="mm3">
+      <a class="nav_wrap-t-item" href="https://www.baidu.com/">研究关键分析</a>
+    </div>
+    <div id="mm4">
+      <a class="nav_wrap-t-item" href="https://www.baidu.com/">专利统计对比</a>
+    </div>
+    <div id="mm5">
+      <a class="nav_wrap-t-item" href="https://www.baidu.com/">专利地图</a>
+    </div>
+    <div id="mm6">
+      <a class="nav_wrap-t-item" href="https://www.baidu.com/">专利矩阵</a>
+    </div>
+    <div id="mm7">
+      <a class="nav_wrap-t-item" href="https://www.baidu.com/">专利聚类</a>
+    </div>
+    <div id="mm8" class="nav_wrap-t-item  nav_wrap-t-item-else" style="position: relative;">
+      其他
+      <div class="nav_wrap-t-item-box" style="dispaly: none;">
+        <div>
+          <a class="nav_wrap-t-item-section" href="${snsDomain}/scmwebsns/friend/main?menuId=10006">资助机构</a>
+        </div>
+        <div>
+          <a class="nav_wrap-t-item-section" href="${snsDomain}/scmwebsns/friend/know?menuId=10007">企业大学研究机构</a>
+        </div>
+        <div>
+          <a class="nav_wrap-t-item-section" href="${snsDomain}/scmmanagement/profile/researcherList">用户管理</a>
+        </div>
+        <div>
+          <a class="nav_wrap-t-item-section" href="${snsDomain}/scmwebsns/friend/invited?menuId=10019">研究主题词分布(1)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

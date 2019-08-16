@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link href="../css/scmpcframe.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+		window.onload = function(){
+            var checlall = document.getElementsByClassName("check__all-tip")[0];
+            var checlsingal = document.getElementsByClassName("formwork__item-icon");
+            for(var i = 0 ;i < checlsingal.length; i++){
+                checlsingal[i].onclick = function(){
+                	if(this.classList.contains("check__tip")){
+                		this.classList.remove("check__tip");
+                		this.classList.add("checked__tip");
+                	}else{
+                		this.classList.remove("checked__tip");
+                		this.classList.add("check__tip");
+                        checlall.classList.remove("checked__tip");
+                		checlall.classList.add("check__tip");
+                	}
+                }
+            }
+            checlall.onclick = function(){
+            	if(this.classList.contains("check__tip")){
+            		console.log(111);
+                	this.classList.remove("check__tip");
+                	this.classList.add("checked__tip");
+	                for(var i = 0 ;i < checlsingal.length; i++){
+	            		if(checlsingal[i].classList.contains("check__tip")){
+	            			checlsingal[i].classList.remove("check__tip");
+	                		checlsingal[i].classList.add("checked__tip");
+	            		}
+	            	}
+            	}else{
+            		this.classList.remove("checked__tip");
+                	this.classList.add("check__tip");
+	            	for(var i = 0 ;i < checlsingal.length; i++){
+	            		if(checlsingal[i].classList.contains("checked__tip")){
+	            			checlsingal[i].classList.remove("checked__tip");
+	                		checlsingal[i].classList.add("check__tip");
+	            		}
+	            	}
+            	}
+           
+            }
+		} 
+	</script>
+</head>
+<body>
+  <div style="width: 720px; height: 100%;">
+    <div class="formwork__header">
+      <div class="formwork__header-box">
+        <i class="check__tip check__all-tip"></i> <span class="formwork__header-title">全选</span>
+      </div>
+    </div>
+    <div class="formwork__content">
+      <div class="formwork__item">
+        <i class="check__tip formwork__item-icon"></i>
+        <div class="formwork__item-container">
+          <div>
+            <img class="formwork__avator" src="fileicon_default.png">
+          </div>
+          <div class="formwork__infor">
+            <div class="formwork__infor-title">Home/self-storage to improve DNA banking NCL 5 ECL 1 STA WI ZIP
+              54880-6546 STA WI ZIP 54880-6546 STA WI ZIP 54880-6546 STA WI ZIP 54880-6546 CLAS EDF 6</div>
+            <div class="formwork__infor-abstracts multipleline-ellipsis"
+              style="height: 40px; margin-top: 8px; margin-bottom: 8px;">
+              <div class="multipleline-ellipsis__content-box" style="white-space: normal;">The invention is the
+                improved process and methodThe invention is the improved process and methodThe invention is the improved
+                process and methodThe invention is the improved process and methodThe invention is the improved process
+                and methodThe invention is the improved process and methodThe invention is the improved process and
+                methodThe invention is the improved process and methodThe invention is the improved process and method
+                of DNA banking in which DNA or other genetic material is collected and stored, preserved, banked in a
+                home/self-storage setting. Home/self-storage is to mean "not commercially banked." The invention
+                includes the manufacture of kits designed to collect and bank DNA and other genetic material in a
+                home/self-storage setting. The objective of the invention is to preserve genetic material in the event
+                that it is needed for genetic analysis, genetic testing, genetic diagnosis, genetic therapy, forensic
+                analysis, identification.</div>
+            </div>
+            <div class="formwork__infor-author">
+              <span>Spellman Gordon B.</span> <span>Schutten Herman P.</span> <span>Jaskolski Stanley V</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="formwork__item">
+        <i class="check__tip formwork__item-icon"></i>
+        <div class="formwork__item-container">
+          <div>
+            <img class="formwork__avator" src="fileicon_default.png">
+          </div>
+          <div class="formwork__infor">
+            <div class="formwork__infor-title">Home/self-storage to improve DNA banking NCL 5 ECL 1 STA WI ZIP
+              54880-6546 STA WI ZIP 54880-6546 STA WI ZIP 54880-6546 STA WI ZIP 54880-6546 CLAS EDF 6</div>
+            <div class="formwork__infor-abstracts multipleline-ellipsis"
+              style="height: 40px; margin-top: 8px; margin-bottom: 8px;">
+              <div class="multipleline-ellipsis__content-box" style="white-space: normal;">The invention is the
+                improved process and methodThe invention is the improved process and methodThe invention is the improved
+                process and methodThe invention is the improved process and methodThe invention is the improved process
+                and methodThe invention is the improved process and methodThe invention is the improved process and
+                methodThe invention is the improved process and methodThe invention is the improved process and method
+                of DNA banking in which DNA or other genetic material is collected and stored, preserved, banked in a
+                home/self-storage setting. Home/self-storage is to mean "not commercially banked." The invention
+                includes the manufacture of kits designed to collect and bank DNA and other genetic material in a
+                home/self-storage setting. The objective of the invention is to preserve genetic material in the event
+                that it is needed for genetic analysis, genetic testing, genetic diagnosis, genetic therapy, forensic
+                analysis, identification.</div>
+            </div>
+            <div class="formwork__infor-author">
+              <span>Spellman Gordon B.</span> <span>Schutten Herman P.</span> <span>Jaskolski Stanley V</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="formwork__item">
+        <i class="check__tip formwork__item-icon"></i>
+        <div class="formwork__item-container">
+          <div>
+            <img class="formwork__avator" src="fileicon_default.png">
+          </div>
+          <div class="formwork__infor">
+            <div class="formwork__infor-title">Home/self-storage to improve DNA banking NCL 5 ECL 1 STA WI ZIP
+              54880-6546 STA WI ZIP 54880-6546 STA WI ZIP 54880-6546 STA WI ZIP 54880-6546 CLAS EDF 6</div>
+            <div class="formwork__infor-abstracts multipleline-ellipsis"
+              style="height: 40px; margin-top: 8px; margin-bottom: 8px;">
+              <div class="multipleline-ellipsis__content-box" style="white-space: normal;">The invention is the
+                improved process and methodThe invention is the improved process and methodThe invention is the improved
+                process and methodThe invention is the improved process and methodThe invention is the improved process
+                and methodThe invention is the improved process and methodThe invention is the improved process and
+                methodThe invention is the improved process and methodThe invention is the improved process and method
+                of DNA banking in which DNA or other genetic material is collected and stored, preserved, banked in a
+                home/self-storage setting. Home/self-storage is to mean "not commercially banked." The invention
+                includes the manufacture of kits designed to collect and bank DNA and other genetic material in a
+                home/self-storage setting. The objective of the invention is to preserve genetic material in the event
+                that it is needed for genetic analysis, genetic testing, genetic diagnosis, genetic therapy, forensic
+                analysis, identification.</div>
+            </div>
+            <div class="formwork__infor-author">
+              <span>Spellman Gordon B.</span> <span>Schutten Herman P.</span> <span>Jaskolski Stanley V</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

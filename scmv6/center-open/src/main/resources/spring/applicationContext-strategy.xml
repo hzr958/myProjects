@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jee="http://www.springframework.org/schema/jee" xmlns:task="http://www.springframework.org/schema/task"
+  xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd"
+  default-lazy-init="false">
+  <description></description>
+  <bean id="GooglPubXmlBuildFactory" class="com.smate.center.open.service.google.GooglePubXmlBuildFactory">
+    <property name="map">
+      <map>
+        <entry key="1">
+          <bean class="com.smate.center.open.service.google.GoogleAwardPubXmlComponent" />
+        </entry>
+        <entry key="2">
+          <bean class="com.smate.center.open.service.google.GoogleBookPubXmlComponent" />
+        </entry>
+        <entry key="3">
+          <bean class="com.smate.center.open.service.google.GooglePaperPubXmlComponent" />
+        </entry>
+        <entry key="4">
+          <bean class="com.smate.center.open.service.google.GoogleJnlPubXmlBuildComponent" />
+        </entry>
+        <entry key="5">
+          <bean class="com.smate.center.open.service.google.GooglePatentPubXmlComponent" />
+        </entry>
+        <entry key="7">
+          <bean class="com.smate.center.open.service.google.GoogleOtherPubXmlComponent" />
+        </entry>
+        <entry key="8">
+          <bean class="com.smate.center.open.service.google.GoogleThesisPubXmlComponent" />
+        </entry>
+        <entry key="10">
+          <bean class="com.smate.center.open.service.google.GoogleChapterPubXmlComponent" />
+        </entry>
+      </map>
+    </property>
+  </bean>
+</beans>

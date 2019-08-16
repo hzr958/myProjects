@@ -1,0 +1,17 @@
+/*--------------�˵���ʽ��ʼ----------------*/
+.hide {
+  display: none;
+}
+
+#mainmenu_body {
+  width: 980px;
+  margin: 0px auto;
+  background: url(../images/menu_bj.gif) left 27px no-repeat;
+  position: relative;
+}
+/* #mainmenu_top { width:705px; height: 29px;  overflow:hidden; display:block; margin-left:10px; float:left; position:relative;}
+#mainmenu_top ul li .menuhover, #nav01-hover { background:url(../images/mainmenu_bj.gif) left -30px no-repeat; width:92px; height:29px; line-height:29px; color:#fff; display:block;}
+#mainmenu_top ul li {float: left; margin-right:3px; font-size:14px;}
+#mainmenu_top ul li a {	width: 92px; height:29px; line-height:29px; display: block; color: #333; text-align:center; background:url(../images/mainmenu_bj.gif) left 0px no-repeat; cursor:pointer; text-decoration: none;}
+#mainmenu_bottom { width:980px; clear:both; height:30px; line-height:30px; *height:29px; *line-height:29px;}
+#mainmenu_bottom .mainmenu_rbg { margin:0px; padding: 0px 0px 0px 0px; float:left;} */

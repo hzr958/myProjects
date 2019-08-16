@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+  <title>使用科研之友登录</title>
+  <style>
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input,
+  textarea, select, th, td, div {
+  margin: 0;
+  padding: 0
+}
+
+ul, li {
+  list-style: none;
+}
+
+body {
+  background: #666;
+}
+
+.clear {
+  clear: both
+}
+
+.fr {
+  float: right
+}
+
+.mt15 {
+  margin-top: 15px;
+}
+
+.mr6 {
+  margin-right: 6px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.sm_login {
+  width: 800px;
+  margin: 0 auto;
+  height: 460px;
+  background: #fff;
+  font-family: arial, "宋体";
+}
+
+.sm_login .title {
+  height: 48px;
+  background: #f0eff1;
+  padding: 0 20px;
+}
+
+.sm_login .mid {
+  height: 360px;
+  padding-bottom: 50px;
+  margin: 50px 0 0 72px;
+  background: url(../images/sm_login/login_bg.jpg) no-repeat top right
+}
+
+.sm_login .lst {
+  width: 380px;
+  border-right: 1px #f0eff1 solid;
+  font-size: 12px;
+  padding: 10px 0 30px 0;
+  float: left;
+}
+
+.sm_login .lst input, .sm_login .lst span {
+  vertical-align: middle;
+  font-family: arial, "宋体";
+}
+
+.sm_login .lst li {
+  width: 100%;
+  float: left;
+}
+
+.sm_login .lst li label {
+  width: 60px;
+  font-size: 14px;
+  color: #666;
+  line-height: 32px;
+  display: inline-block;
+  padding-bottom: 12px;
+}
+
+.sm_login .lst_ipt {
+  width: 246px;
+  height: 22px;
+  line-height: 22px;
+  border: 1px #ddd7d9 solid;
+  padding: 5px;
+  background: #fff;
+  color: #666
+}
+
+.sm_login .lst_ipt_code {
+  width: 80px;
+  height: 22px;
+  line-height: 22px;
+  border: 1px #ddd7d9 solid;
+  padding: 5px;
+  background: #fff;
+  color: #666
+}
+
+.sm_login .lst div {
+  width: 256px;
+  color: #666;
+}
+
+.sm_login .lst div a {
+  color: #999;
+}
+
+.sm_login .lst div a:hover {
+  color: #777;
+}
+
+* html .sm_login .lst input {
+  margin-top: -3px;
+}
+
+.sm_login .but {
+  padding: 11px 0 0 60px;
+}
+
+.sm_login .button {
+  width: 256px;
+  height: 38px;
+  font-size: 14px;
+  color: #FFF;
+  font-weight: bold;
+  line-height: 100%;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  background: url(../images/sm_login/sm_icon.png) no-repeat scroll -352px -179px;
+  border: 1px solid #285510;
+}
+
+.sm_login .hint {
+  width: 308px;
+  margin-top: 26px;
+  border-top: 1px #ddd7d9 dotted;
+  padding-top: 20px;
+}
+
+.sm_login .hint dt, .sm_login .hint dd {
+  float: left;
+  vertical-align: middle;
+}
+
+.sm_login .hint dt {
+  width: 50px;
+}
+
+.sm_login .hint dd {
+  width: 250px;
+  font-size: 12px;
+  line-height: 21px;
+  color: #666;
+}
+
+.sm_ico1, .sm_ico2 {
+  background: url(../images/sm_login/sm_login_ico.png) no-repeat;
+  display: inline-block;
+}
+
+.sm_ico1 {
+  width: 40px;
+  height: 36px;
+  background-position: 0px 0px;
+  margin: 5px 0 0 2px;
+}
+
+.sm_ico2 {
+  width: 11px;
+  height: 11px;
+  background-position: -9px -39px;
+  margin-top: 18px;
+}
+
+.sm_ico2:hover {
+  background-position: -9px -62px;
+}
+
+.sm_login .txt {
+  width: 240px;
+  margin: 30px 0 0 70px;
+  float: left;
+}
+
+.sm_login .txt h2 {
+  font: 20px/30px "Microsoft YaHei", "SimHei";
+  color: #666;
+}
+
+.sm_login .txt {
+  font: 16px/30px "Microsoft YaHei", "SimHei";
+  color: #999;
+}
+</style>
+</head>
+<body>
+  <div class="sm_login">
+    <div class="title">
+      <a href="#" class="sm_ico2 fr"></a><img src="../images/sm_login/logo_zh_CN.gif" class="mt15" />
+    </div>
+    <div class="mid">
+      <div class="lst">
+        <ul>
+          <li><label>邮箱：</label><input type="text" class="lst_ipt" /></li>
+          <li><label>密码：</label><input type="password" class="lst_ipt" /></li>
+          <li><label>验证码：</label><input type="code" class="lst_ipt_code" /> <img width="88px;" align="absmiddle"
+            src="/open/validatecode.gif" alt="验证码" /> <a style="color: #005eac; text-decoration: underline;"
+            href="javascript:;" style="cursor:pointer" onclick="">刷新</a></li>
+          <div class="clear"></div>
+          <div class="but">
+            <input type="button" value="提交" class="button" />
+          </div>
+          <div class="but">
+            <a href="#" class="fr">忘记密码？</a> <input type="checkbox" class="mr6" /><span>记住登录</span>
+          </div>
+        </ul>
+        <dl class="hint">
+          <dt>
+            <span class="sm_ico1"></span>
+          </dt>
+          <dd>为保障账号安全，请认准本页URL地址必须以apiXXX.scholarmate.com开头</dd>
+        </dl>
+        <div class="clear"></div>
+      </div>
+      <div class="txt">
+        <h2>使用你的科研之友账号</h2>
+        访问科创资金平台（eGrant）
+      </div>
+    </div>
+  </div>
+</body>
+</html>

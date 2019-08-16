@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport"
+  content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,maximum-scale=1, user-scalable=no">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="global.css">
+<link href="../../mobile/css/mobile.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+   	    window.onload = function(){
+   	      var targetlist = document.getElementsByClassName("message-page__fuctool-item");
+   	      var targetline = document.getElementsByClassName("message-page__selector-line")[0];
+   	      var targetsearch = document.getElementsByClassName("message-page__neck-search")[0];
+          var localizelist = document.getElementsByClassName("message-page__fuctool-selector")[0];
+   	      var standwidth = document.getElementsByClassName("message-page__fuctool")[0].offsetWidth/3 - 30;
+   	      targetline.style.width = standwidth  + "px";
+          targetline.style.left = localizelist.offsetLeft + 15 + "px";
+          for(var i = 0; i < targetlist.length;i++){
+              targetlist[i].onclick = function(){
+              	document.getElementsByClassName("message-page__fuctool-selector")[0].classList.remove("message-page__fuctool-selector");
+              	var disleft = this.offsetLeft;
+              	this.classList.add("message-page__fuctool-selector");
+                this.closest(".message-page__fuctool").querySelector(".message-page__selector-line").style.left=disleft + 15  + "px";
+              }
+          } 
+          targetsearch.onfocus = function(){
+          	this.style.borderColor="#ddd";
+          	this.closest(".message-page__search-box").style.borderColor="#288aed";
+          }
+          targetsearch.onblur = function(){
+          	this.closest(".message-page__search-box").style.borderColor="#ddd";
+          } 
+   	    }
+   </script>
+</head>
+<body>
+  <div class="message-page">
+    <div class="message-page__header">消息</div>
+    <div class="message-page__neck">
+      <div class="message-page__search-box">
+        <i class="message-page__search-tip"></i> <input class="message-page__neck-search" placeholder="检索消息" />
+      </div>
+    </div>
+    <div class="message-page__body">
+      <div class="message-page__fuctool">
+        <div class="message-page__fuctool-item">消息通知</div>
+        <div class="message-page__fuctool-item__center message-page__fuctool-item message-page__fuctool-selector">
+          站内信 <span class="message-page__fuctool-item__num">(2)</span>
+        </div>
+        <div class="message-page__fuctool-item">全文请求</div>
+        <div class="message-page__selector-line"></div>
+      </div>
+      <div class="state-content__box">
+        <div class="state-content__commit-time">2017-11-20 15:30</div>
+        <div class="state-content__commit">
+          <div class="state-content__left">
+            <div class="state-content__left-infor">
+              <img class="state-content__left-avator" src="1.jpg">
+              <div class="state-content__left-name">陈文</div>
+            </div>
+            <div class="state-content__left-detail">最新版的设计,明天上午讨论,请参考最新附件讨论</div>
+          </div>
+          <div class="state-content__left">
+            <div class="state-content__left-infor">
+              <img class="state-content__left-avator" src="1.jpg">
+              <div class="state-content__left-name">陈文</div>
+            </div>
+            <div class="state-content__left-detail">
+              <img class="state-content__left-detail__avator" src="../img/file_bg.jpg"> <span
+                class="state-content__left-detail__name">IRISaaSMobile.pp</span>
+            </div>
+          </div>
+          <div class="state-content__right">
+            <div class="state-content__right-infor">
+              <span class="state-content__right-name">马建</span> <img src="1.jpg" class="state-content__right-avator">
+            </div>
+            <div class="state-content__right-detail">很好请继续跟进！！！</div>
+          </div>
+        </div>
+      </div>
+      <div class="state-footer">
+        <div class="state-footer__input" contenteditable="true"></div>
+        <div class="state-footer__selector">
+          <div>
+            <img class="state-footer__selector-tip" src="../img/acquiescence-add-file1.png"> <img
+              class="state-footer__selector-tip1" src="../img/add-Achievements2.png">
+          </div>
+          <div class="state-footer__selector-save">发送</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

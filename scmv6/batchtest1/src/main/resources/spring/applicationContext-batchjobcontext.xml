@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	 					http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+<!-- 任务信息记录在作业仓库：内存 -->
+<!-- <bean id = "jobRepository" class = "org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean"></bean> -->
+<!-- <bean id="transactionManager" class = "org.springframework.batch.support.transaction.ResourcelessTransactionManager">
+	</bean> -->
+
+<!-- 任务信息记录在作业仓库：数据库 -->	
+			
+	<bean id="jobRepository"
+		class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean">
+		<property name="isolationLevelForCreate" value="ISOLATION_DEFAULT" />
+		<property name="dataSource" ref="dataSource1" />
+		<property name="transactionManager" ref="transactionManager1" />
+	</bean>	
+				
+	<bean id="transactionManager1" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource1"/>
+	</bean>			
+
+	<bean id="dataSource1" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@192.168.15.220:1521:ora11g"/>
+		<property name="username" value="scholar2"/>
+		<property name="password" value="scholar2"/>
+	</bean>
+	
+	<!-- <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="5"></property>
+		<property name="maxPoolSize" value="100"></property>
+	</bean> -->
+	
+	<bean id="taskExecutor" class="org.springframework.core.task.SimpleAsyncTaskExecutor"></bean>
+	
+	
+	<bean id = "jobLauncherMultiThread" class = "org.springframework.batch.core.launch.support.SimpleJobLauncher">
+		<property name="jobRepository" ref="jobRepository"/>
+		<property name="taskExecutor" ref="taskExecutor"></property>
+	</bean>
+	
+	<bean id = "jobLauncherSingleThread" class = "org.springframework.batch.core.launch.support.SimpleJobLauncher">
+		<property name="jobRepository" ref="jobRepository"/>
+	</bean>
+</beans>

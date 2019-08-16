@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:export="https://www.scholarmate.com/schema/remote-export"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+	https://www.scholarmate.com/schema/remote-export
+	https://www.scholarmate.com/schema/remote-export.xsd "
+  default-lazy-init="false">
+  <!-- 根据org_guid获取单位论文数、单位专利数、单位项目数、单位人员数、单位部门数 start -->
+  <bean id="getDeptDataNumServiceImpl" class="com.smate.sie.center.open.service.dept.GetDeptDataNumServiceImpl"></bean>
+  <!-- 根据org_guid获取单位论文数、单位专利数、单位项目数、单位人员数、单位部门数 end -->
+  <!-- 获取单位专利数据 start -->
+  <bean id="getPatentInfoServiceImpl" class="com.smate.sie.center.open.service.dept.GetPatentInfoServiceImpl"></bean>
+  <!-- 获取单位专利数据 end -->
+  <!-- 获取单位专利数据 start -->
+  <bean id="getPatentInfoByInsServiceImpl"
+    class="com.smate.sie.center.open.service.dept.GetPatentInfoByInsServiceImpl"></bean>
+  <!-- 获取单位专利数据 end -->
+  <!-- 获取单位成果数据 start -->
+  <bean id="getPublicationInfoServiceImpl"
+    class="com.smate.sie.center.open.service.dept.GetPublicationInfoServiceImpl"></bean>
+  <!-- 获取单位成果数据 end -->
+  <!-- 增量获取按单位专利接口 start -->
+  <bean id="getIncPatentInfoServiceImpl" class="com.smate.sie.center.open.service.dept.GetIncPatentInfoServiceImpl"></bean>
+  <!-- 增量获取按单位专利接口 end -->
+  <!-- 增量获取按单位成果接口 start -->
+  <bean id="getIncPublicationInfoServiceImpl" class="com.smate.sie.center.open.service.dept.GetIncPublicationInfoServiceImpl"></bean>
+  <!-- 增量获取按单位成果接口 end -->
+  <!-- 获取单位项目数据 start -->
+  <bean id="getProjectInfoServiceImpl" class="com.smate.sie.center.open.service.dept.GetProjectInfoServiceImpl"></bean>
+  <!-- 获取单位项目数据 end -->
+  <!-- 获取单位人员数据 start -->
+  <bean id="getInsPsnInfoServiceImpl" class="com.smate.sie.center.open.service.dept.GetInsPsnInfoServiceImpl"></bean>
+  <!-- 获取单位人员数据 end -->
+  <!-- 同步人员信息 start -->
+  <bean id="sieSyncPsnServiceImpl" class="com.smate.sie.center.open.service.dept.SyncPsnServiceImpl"></bean>
+  <!-- 同步人员信息 end -->
+  <!-- 同步部门信息 start -->
+  <bean id="sieSyncUnitServiceImpl" class="com.smate.sie.center.open.service.dept.SyncUnitServiceImpl"></bean>
+  <!-- 同步部门信息 end -->
+  <!-- 同步人员账号信息 start -->
+  <bean id="sieSyncUserInfoServiceImpl" class="com.smate.sie.center.open.service.psn.SyncUserInfoServiceImpl"></bean>
+  <!-- 同步人员账号信息 end -->
+  <!-- 同步人员信息 start -->
+  <bean id="sieSyncPsnInfoServiceImpl" class="com.smate.sie.center.open.service.psn.SyncPsnInfoServiceImpl"></bean>
+  <!-- 同步人员信息 end -->
+  <!-- 同步科研之友个人版人员信息 start -->
+  <bean id="sieSyncSNSPsnServiceImpl" class="com.smate.sie.center.open.service.psn.SyncSNSPsnInfoServiceImpl"></bean>
+  <!-- 同步科研之友个人版人员信息 end -->
+  <!-- 获取账号信息 start -->
+  <bean id="sieGetUserByIdServiceImpl" class="com.smate.sie.center.open.service.psn.GetUserByIdServiceImpl"></bean>
+  <!-- 获取账号信息 end -->
+  <!-- 重置用户账号标志位 start -->
+  <bean id="sieResetUserTokenServiceImpl" class="com.smate.sie.center.open.service.psn.ResetUserTokenServiceImpl"></bean>
+  <!-- 重置用户账号标志位 end -->
+  <!-- 单位注册 start -->
+  <bean id="sieInsRegByOtherSysServiceImpl"
+    class="com.smate.sie.center.open.service.ins.InsRegByOtherSysServiceImpl"></bean>
+  <!-- 单位注册 end -->
+  <!-- 获取用户是否登录 start -->
+  <bean id="getUserIsLoginServiceImpl" class="com.smate.sie.center.open.service.psn.GetUserIsLoginServiceImpl"></bean>
+  <!-- 获取用户是否登录 end -->
+  <!-- 供SIE调用更新SNS库人员信息 start -->
+  <bean id="syncPsnFromSieServiceImpl" class="com.smate.center.open.service.data.psnInfo.SyncPsnFromSieServiceImpl"></bean>
+  <!-- 供SIE调用更新SNS库人员信息 end -->
+  <!-- 文件下载地址接口start -->
+  <bean id="sieGenFilePathServiceImpl" class="com.smate.sie.center.open.service.file.SieGetFilePathServiceImpl"></bean>
+  <!-- 文件下载地址接口end -->
+  <!-- 相关单位 start -->
+  <bean id="searchInsByPaperKeywordsServiceImpl"
+    class="com.smate.sie.center.open.service.data.keywords.SearchInsByPaperKeywordsServiceImpl"></bean>
+  <!-- 相关单位 end -->
+  <!-- 根据关键词查找相关学者接口start -->
+  <bean id="searchPersonsByPsnKeywordsServiceImpl"
+    class="com.smate.sie.center.open.service.data.keywords.SearchPersonsByPsnKeywordsServiceImpl"></bean>
+  <!-- 根据关键词查找相关学者接口end -->
+  <!-- 科研验证服务受理接口start -->
+  <bean id="sciResearchVerifyServiceImpl"
+    class="com.smate.sie.center.open.service.valisent.SciResearchVerifyServiceImpl"></bean>
+  <!-- 科研验证服务受理接口end -->
+  <!-- 科研验证服务获取接口start -->
+  <bean id="sciVerificationGainServiceImpl"
+    class="com.smate.sie.center.open.service.valiget.SciVerificationGainServiceImpl"></bean>
+  <!-- 科研验证服务获取接口end -->
+  <!-- 科研验证判断单位模块是否付费接口接口start -->
+  <bean id="kpiPaymentVarificationServiceImpl"
+    class="com.smate.sie.center.open.service.valiget.KpiPaymentVarificationServiceImpl"></bean>
+  <!-- 科研验证判断单位模块是否付费接口接口end -->
+</beans>
