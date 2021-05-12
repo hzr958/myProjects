@@ -18,7 +18,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- 主要依赖库的版本定义 -->
     <spring.data.solr.version>1.0.0.RELEASE</spring.data.solr.version>
-    <solr.version>4.10.0</solr.version>
+    <solr.version>8.8.2</solr.version>
 	 <maven.deploy.skip>true</maven.deploy.skip>
   </properties>
 
